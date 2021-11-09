@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		77062DED2739467700A7F090 /* VertexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77062DEC2739467700A7F090 /* VertexPath.swift */; };
 		77062DEF27394B8300A7F090 /* DijkstraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77062DEE27394B8300A7F090 /* DijkstraData.swift */; };
+		770B49C9273A5C7100B55FBB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770B49C8273A5C7000B55FBB /* BaseViewController.swift */; };
 		771005722735299300733EF7 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771005622735299300733EF7 /* Interval.swift */; };
 		771005732735299300733EF7 /* IntervalNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771005632735299300733EF7 /* IntervalNode.swift */; };
 		771005742735299300733EF7 /* IntervalTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771005642735299300733EF7 /* IntervalTree.swift */; };
@@ -161,7 +162,6 @@
 		77F6522B26F5CBAC00280568 /* icon_between@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77F6521826F5CBAB00280568 /* icon_between@2x.png */; };
 		77F6522C26F5CBAC00280568 /* icon_cal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77F6521926F5CBAB00280568 /* icon_cal@2x.png */; };
 		77F6522D26F5CBAC00280568 /* home_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77F6521A26F5CBAB00280568 /* home_selected@2x.png */; };
-		77F6523526F5CE7100280568 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6523426F5CE7100280568 /* BaseViewController.swift */; };
 		77F6527426F5D06B00280568 /* UIKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6527326F5D06B00280568 /* UIKitViewController.swift */; };
 		77F6527826F5D20300280568 /* GlobalConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6527726F5D20300280568 /* GlobalConfig.swift */; };
 		77F6527A26F5D23500280568 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6527926F5D23500280568 /* UIColorExtension.swift */; };
@@ -228,6 +228,7 @@
 		3DFE8F5478514005495A6DEF /* Pods-SwiftCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCase.debug.xcconfig"; path = "Target Support Files/Pods-SwiftCase/Pods-SwiftCase.debug.xcconfig"; sourceTree = "<group>"; };
 		77062DEC2739467700A7F090 /* VertexPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexPath.swift; sourceTree = "<group>"; };
 		77062DEE27394B8300A7F090 /* DijkstraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DijkstraData.swift; sourceTree = "<group>"; };
+		770B49C8273A5C7000B55FBB /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		771005622735299300733EF7 /* Interval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		771005632735299300733EF7 /* IntervalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalNode.swift; sourceTree = "<group>"; };
 		771005642735299300733EF7 /* IntervalTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalTree.swift; sourceTree = "<group>"; };
@@ -389,7 +390,6 @@
 		77F6521826F5CBAB00280568 /* icon_between@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_between@2x.png"; sourceTree = "<group>"; };
 		77F6521926F5CBAB00280568 /* icon_cal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cal@2x.png"; sourceTree = "<group>"; };
 		77F6521A26F5CBAB00280568 /* home_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_selected@2x.png"; sourceTree = "<group>"; };
-		77F6523426F5CE7100280568 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = "../../grpc-demo/GrpcDemo/GrpcDemo/Component/BaseViewController.swift"; sourceTree = "<group>"; };
 		77F6527326F5D06B00280568 /* UIKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitViewController.swift; sourceTree = "<group>"; };
 		77F6527726F5D20300280568 /* GlobalConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConfig.swift; sourceTree = "<group>"; };
 		77F6527926F5D23500280568 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -795,9 +795,9 @@
 				77E0ACB026F5C228000EABC1 /* AppDelegate.swift */,
 				77E0ACB226F5C229000EABC1 /* SceneDelegate.swift */,
 				77F652C426F5E2C500280568 /* SCUITabBarController.swift */,
+				770B49C8273A5C7000B55FBB /* BaseViewController.swift */,
 				77F652BB26F5D98900280568 /* R.generated.swift */,
 				77E0ACB426F5C229000EABC1 /* ContentView.swift */,
-				77F6523426F5CE7100280568 /* BaseViewController.swift */,
 				77F652C626F5E7F200280568 /* ItemListViewController.swift */,
 				77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */,
 				77E0ACB626F5C235000EABC1 /* Assets.xcassets */,
@@ -1319,7 +1319,6 @@
 				77201D84271E9DB500F6188E /* RadixSort.swift in Sources */,
 				7710057A2735299300733EF7 /* FragmentToken.swift in Sources */,
 				77F652B026F5D25F00280568 /* StepBuilder.swift in Sources */,
-				77F6523526F5CE7100280568 /* BaseViewController.swift in Sources */,
 				7747B4F4272CF7CB00D315FA /* GSEdge.swift in Sources */,
 				773967B927118DF700BF7469 /* LinkedList.swift in Sources */,
 				7756E84626FAE48200AB139F /* SCNetworkLoggerPlugin.swift in Sources */,
@@ -1368,6 +1367,7 @@
 				771005722735299300733EF7 /* Interval.swift in Sources */,
 				77F652C526F5E2C500280568 /* SCUITabBarController.swift in Sources */,
 				77C25442270319470012F078 /* UITextView+Extension.swift in Sources */,
+				770B49C9273A5C7100B55FBB /* BaseViewController.swift in Sources */,
 				779843A22702B03F001D73AF /* ChatListTableViewCell.swift in Sources */,
 				77F652A126F5D25F00280568 /* TrackingState.swift in Sources */,
 				7798439F2702B03F001D73AF /* Message.swift in Sources */,
