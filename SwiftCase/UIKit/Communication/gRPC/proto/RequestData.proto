@@ -1,0 +1,32 @@
+syntax = "proto3";
+package grpc;
+option java_package = "com.forrest.grpc.net";
+option java_outer_classname = "RequestBodyServiceProto";
+option java_multiple_files = true;
+//服务端接口类
+service RequestBody {
+  rpc RequestData (Request) returns (Response) {} //服务端接口方法
+}
+//请求头
+message Header {
+  string token = 1;
+  string custid = 2;
+  string version = 3;
+  string appType = 4;
+  string appName = 5;
+}
+// 请求参数
+message Request {
+  Header header = 1;
+  string params = 2;//"{k:v,k2:v2}"
+}
+
+//响应参数
+message Response {
+  int32 retCode = 1;
+  string data = 2; //"{k:v,k2:v2}"
+  string msg = 3;
+  uint32 totalPage = 4;
+  uint32 currentPage = 5;
+  uint32 rows = 6;
+}
