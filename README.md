@@ -1,2 +1,3 @@
 # SwiftCase
-Example write by swift
+
+Example write by swift.
