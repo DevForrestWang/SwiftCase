@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FILEHEADER</key>
+	<string>
+//===--- ___FILENAME___ - Defines the ___FILEBASENAME___ class ----------===//
+//
+// This source file is part of the ___PRODUCTNAME___ open source project
+//
+// Created by ___FULLUSERNAME___ on ___DATE___.
+// Copyright © ___YEAR___ ___PRODUCTNAME___. All rights reserved.
+// Licensed under Apache License v2.0 with Runtime Library Exception
+//
+// See more information
+//
+//===----------------------------------------------------------------------===//
+    </string>
+</dict>
+</plist>

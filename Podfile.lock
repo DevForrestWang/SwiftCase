@@ -1,0 +1,220 @@
+PODS:
+  - _NIODataStructures (2.32.3)
+  - Alamofire (5.4.4)
+  - AMap3DMap (8.1.0):
+    - AMapFoundation (~> 1.6.9)
+  - AMapFoundation (1.6.9)
+  - AMapLocation (2.8.0):
+    - AMapFoundation (~> 1.6.9)
+  - CGRPCZlib (1.5.0)
+  - CNIOAtomics (2.32.3)
+  - CNIOBoringSSL (2.15.1)
+  - CNIOBoringSSLShims (2.15.1):
+    - CNIOBoringSSL (= 2.15.1)
+  - CNIODarwin (2.32.3)
+  - CNIOHTTPParser (2.32.3)
+  - CNIOLinux (2.32.3)
+  - CNIOWindows (2.32.3)
+  - gRPC-Swift (1.5.0):
+    - CGRPCZlib (= 1.5.0)
+    - Logging (< 2.0.0, >= 1.4.0)
+    - SwiftNIO (< 3.0.0, >= 2.32.0)
+    - SwiftNIOExtras (< 2.0.0, >= 1.4.0)
+    - SwiftNIOHTTP2 (< 2.0.0, >= 1.18.2)
+    - SwiftNIOSSL (< 3.0.0, >= 2.14.0)
+    - SwiftNIOTransportServices (< 2.0.0, >= 1.11.1)
+    - SwiftProtobuf (< 2.0.0, >= 1.9.0)
+  - gRPC-Swift-Plugins (1.5.0):
+    - gRPC-Swift (= 1.5.0)
+  - HandyJSON (5.0.2)
+  - IQKeyboardManagerSwift (6.5.8)
+  - Kingfisher (7.1.1)
+  - Logging (1.4.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (15.0.0):
+    - Moya/Core
+    - RxSwift (~> 6.0)
+  - R.swift (5.4.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
+  - RxSwift (6.2.0)
+  - SnapKit (5.0.1)
+  - Socket.IO-Client-Swift (16.0.1):
+    - Starscream (~> 4.0)
+  - Starscream (4.0.4)
+  - SwiftFormat/CLI (0.48.18)
+  - SwiftNIO (2.32.3):
+    - SwiftNIOCore (= 2.32.3)
+    - SwiftNIOEmbedded (= 2.32.3)
+    - SwiftNIOPosix (= 2.32.3)
+  - SwiftNIOConcurrencyHelpers (2.32.3):
+    - CNIOAtomics (= 2.32.3)
+  - SwiftNIOCore (2.32.3):
+    - CNIOLinux (= 2.32.3)
+    - SwiftNIOConcurrencyHelpers (= 2.32.3)
+  - SwiftNIOEmbedded (2.32.3):
+    - _NIODataStructures (= 2.32.3)
+    - SwiftNIOCore (= 2.32.3)
+  - SwiftNIOExtras (1.10.2):
+    - SwiftNIO (< 3, >= 2.32.0)
+  - SwiftNIOFoundationCompat (2.32.3):
+    - SwiftNIO (= 2.32.3)
+    - SwiftNIOCore (= 2.32.3)
+  - SwiftNIOHPACK (1.18.3):
+    - SwiftNIO (< 3, >= 2.32.0)
+    - SwiftNIOConcurrencyHelpers (< 3, >= 2.32.0)
+    - SwiftNIOCore (< 3, >= 2.32.0)
+    - SwiftNIOHTTP1 (< 3, >= 2.32.0)
+  - SwiftNIOHTTP1 (2.32.3):
+    - CNIOHTTPParser (= 2.32.3)
+    - SwiftNIO (= 2.32.3)
+    - SwiftNIOConcurrencyHelpers (= 2.32.3)
+    - SwiftNIOCore (= 2.32.3)
+  - SwiftNIOHTTP2 (1.18.3):
+    - SwiftNIO (< 3, >= 2.32.0)
+    - SwiftNIOConcurrencyHelpers (< 3, >= 2.32.0)
+    - SwiftNIOCore (< 3, >= 2.32.0)
+    - SwiftNIOHPACK (= 1.18.3)
+    - SwiftNIOHTTP1 (< 3, >= 2.32.0)
+    - SwiftNIOTLS (< 3, >= 2.32.0)
+  - SwiftNIOPosix (2.32.3):
+    - _NIODataStructures (= 2.32.3)
+    - CNIODarwin (= 2.32.3)
+    - CNIOLinux (= 2.32.3)
+    - CNIOWindows (= 2.32.3)
+    - SwiftNIOConcurrencyHelpers (= 2.32.3)
+    - SwiftNIOCore (= 2.32.3)
+  - SwiftNIOSSL (2.15.1):
+    - CNIOBoringSSL (= 2.15.1)
+    - CNIOBoringSSLShims (= 2.15.1)
+    - SwiftNIO (< 3, >= 2.32.0)
+    - SwiftNIOConcurrencyHelpers (< 3, >= 2.32.0)
+    - SwiftNIOCore (< 3, >= 2.32.0)
+    - SwiftNIOTLS (< 3, >= 2.32.0)
+  - SwiftNIOTLS (2.32.3):
+    - SwiftNIO (= 2.32.3)
+    - SwiftNIOCore (= 2.32.3)
+  - SwiftNIOTransportServices (1.11.3):
+    - SwiftNIO (< 3, >= 2.32.0)
+    - SwiftNIOConcurrencyHelpers (< 3, >= 2.32.0)
+    - SwiftNIOFoundationCompat (< 3, >= 2.32.0)
+    - SwiftNIOTLS (< 3, >= 2.32.0)
+  - SwiftProtobuf (1.18.0)
+  - SwiftyJSON (5.0.1)
+  - Then (2.7.0)
+  - Toast-Swift (5.0.1)
+
+DEPENDENCIES:
+  - AMap3DMap
+  - AMapLocation
+  - gRPC-Swift
+  - gRPC-Swift-Plugins
+  - HandyJSON
+  - IQKeyboardManagerSwift
+  - Kingfisher
+  - Moya/RxSwift
+  - R.swift
+  - SnapKit
+  - Socket.IO-Client-Swift
+  - SwiftFormat/CLI
+  - SwiftyJSON
+  - Then
+  - Toast-Swift
+
+SPEC REPOS:
+  trunk:
+    - _NIODataStructures
+    - Alamofire
+    - AMap3DMap
+    - AMapFoundation
+    - AMapLocation
+    - CGRPCZlib
+    - CNIOAtomics
+    - CNIOBoringSSL
+    - CNIOBoringSSLShims
+    - CNIODarwin
+    - CNIOHTTPParser
+    - CNIOLinux
+    - CNIOWindows
+    - gRPC-Swift
+    - gRPC-Swift-Plugins
+    - HandyJSON
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - Logging
+    - Moya
+    - R.swift
+    - R.swift.Library
+    - RxSwift
+    - SnapKit
+    - Socket.IO-Client-Swift
+    - Starscream
+    - SwiftFormat
+    - SwiftNIO
+    - SwiftNIOConcurrencyHelpers
+    - SwiftNIOCore
+    - SwiftNIOEmbedded
+    - SwiftNIOExtras
+    - SwiftNIOFoundationCompat
+    - SwiftNIOHPACK
+    - SwiftNIOHTTP1
+    - SwiftNIOHTTP2
+    - SwiftNIOPosix
+    - SwiftNIOSSL
+    - SwiftNIOTLS
+    - SwiftNIOTransportServices
+    - SwiftProtobuf
+    - SwiftyJSON
+    - Then
+    - Toast-Swift
+
+SPEC CHECKSUMS:
+  _NIODataStructures: e2077c7dc7c1d6c93e698c85fe04d663a17f53a4
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  AMap3DMap: 135eaaf64a29aeb2f0bca07670db26fbf3271245
+  AMapFoundation: 8d8ecbb0b2e9ce5487995360d26c885d94642bfd
+  AMapLocation: 5ef44a1117be7dc541cb7a7d43d03c5ee91e4387
+  CGRPCZlib: db324e4e4e71262d48faceb86b52dd7d4f71ff62
+  CNIOAtomics: 4dde57e1838a29a9b23ef91617505f34751cdbe5
+  CNIOBoringSSL: c99129423da079a9eb74bcfc7cfec41a6775cf94
+  CNIOBoringSSLShims: 902ae35fea0b6be5eefb4fdce906751886cfa46f
+  CNIODarwin: 0489511f8486443af71ff986ccd5abbc680ae713
+  CNIOHTTPParser: f7a6816f7ddbe7dfa57a74cd36dc2db2c53b56e8
+  CNIOLinux: 5921dfefbc4bbe017380b34c510855622147ea41
+  CNIOWindows: f5aa9dfb401b440a7b4c9cd911e53e981a787193
+  gRPC-Swift: 8942047451bf81413077e6b94bf4213e47b181cc
+  gRPC-Swift-Plugins: 6646fb217cdd25636a5f2ebc39555283db72ec47
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  IQKeyboardManagerSwift: 8139150a3c90a915a413d72a8a3e8634c2d3278b
+  Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
+  Logging: beeb016c9c80cf77042d62e83495816847ef108b
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  SwiftFormat: 7dd2b33a0a3d61095b61c911b6d89ff962ae695c
+  SwiftNIO: bb336ceef32850e9671d3fa0e0cc2b9add3b5948
+  SwiftNIOConcurrencyHelpers: ca2594e10749655f42baf5468212be83d2f94fe3
+  SwiftNIOCore: 9deed6620f80c7c82e8e2c2ffb9864495416d892
+  SwiftNIOEmbedded: b7ccf12b402dff35a5d4356990a6253621e4337d
+  SwiftNIOExtras: 70f09aa8eca3ab6baeaf1993da9c855b6e95e97f
+  SwiftNIOFoundationCompat: d3b888766e7c67354a4e4e145d38edf9586efa0c
+  SwiftNIOHPACK: e2fc784ce453bec4c058b21071e89fb7e542ac30
+  SwiftNIOHTTP1: 349a16aae363250cd49f430a9fdb93cff518adfa
+  SwiftNIOHTTP2: a0322f3dcecd949e03df65f4dac106411df0f12c
+  SwiftNIOPosix: e4988a8dcfd5a6319bde219d7a3d0acc5fbe7a89
+  SwiftNIOSSL: 7c2ddcbcbb2a8188468b7fe9c2bc6124df4b3772
+  SwiftNIOTLS: 1b8290ec775238ccc714ed842d929494df95a2c2
+  SwiftNIOTransportServices: 1fbbdb58510af3c53a838a1dbea98f18132dc952
+  SwiftProtobuf: c3c12645230d9b09c72267e0de89468c5543bd86
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  Then: acfe0be7e98221c6204e12f8161459606d5d822d
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+
+PODFILE CHECKSUM: 87378879af1a6ee00df5202f92269ad4460522f2
+
+COCOAPODS: 1.11.2
