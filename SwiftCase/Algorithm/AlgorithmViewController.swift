@@ -62,9 +62,9 @@ class AlgorithmViewController: ItemListViewController {
             SCItemModel(title: "Aho-Corasick", controllerName: "", action: #selector(ahoCorasickAction)),
             SCItemModel(title: "Huffman Coding", controllerName: "", action: #selector(huffmanCodingAction)),
             SCItemModel(title: "Dijkstra's shortest path", controllerName: "", action: #selector(dijkstraShortestPathAction)),
-            SCItemModel(title: "->Bit Set", controllerName: "", action: #selector(bitSetAction)),
+            SCItemModel(title: "Bit Set", controllerName: "", action: #selector(bitSetAction)),
             SCItemModel(title: "Bloom Filter", controllerName: "", action: #selector(bloomFilterAction)),
-            SCItemModel(title: "Naive Bayes Classifier", controllerName: "", action: #selector(naiveBayesAction)),
+            SCItemModel(title: "->Naive Bayes Classifier", controllerName: "", action: #selector(naiveBayesAction)),
             SCItemModel(title: "B-Tree", controllerName: "", action: #selector(bTreeAction)),
         ]
     }
@@ -840,7 +840,17 @@ class AlgorithmViewController: ItemListViewController {
 
     @objc private func bloomFilterAction() {
         printEnter(message: "Bloom Filter")
-        // BloomFilter.swift
+        let bloom = BloomFilter<String>(size: 17, hashFunctions: [djb2, sdbm])
+        bloom.insert("Hello world!")
+        yxc_debugPrint("BloomFilter: \(bloom)")
+        // true
+        yxc_debugPrint("query Hello world!, result: \(bloom.query("Hello world!"))")
+        // false
+        yxc_debugPrint("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
+
+        // false
+        bloom.insert("Bloom Filterz")
+        yxc_debugPrint("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
         showLogs()
     }
 
