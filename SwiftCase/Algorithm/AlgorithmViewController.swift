@@ -822,7 +822,19 @@ class AlgorithmViewController: ItemListViewController {
 
     @objc private func bitSetAction() {
         printEnter(message: "Bit Set")
-        // BitSet.swift
+
+        var b4 = BitSet(size: 4)
+        print("BitSet 4: \(b4)")
+        b4.setAll()
+        print("BitSet 4 setAll(): \(b4)")
+        // 4
+        print("BitSet 4, cardinality :\(b4.cardinality)")
+        b4[1] = false
+        b4[2] = false
+        b4[3] = false
+        print("BitSet 4: \(b4)")
+        print("BitSet 1/4: \(b4[0])")
+
         showLogs()
     }
 
