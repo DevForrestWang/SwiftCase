@@ -63,6 +63,17 @@ public class BloomFilter<T> {
     }
 }
 
+extension BloomFilter: CustomStringConvertible {
+    public var description: String {
+        var s = ""
+        for x in array {
+            s += (x ? "1" : "0") + " "
+        }
+
+        return s
+    }
+}
+
 //===----------------------------------------------------------------------===//
 //                              Hash Functions
 //===----------------------------------------------------------------------===//

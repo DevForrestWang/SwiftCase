@@ -841,8 +841,10 @@ class AlgorithmViewController: ItemListViewController {
     @objc private func bloomFilterAction() {
         printEnter(message: "Bloom Filter")
         let bloom = BloomFilter<String>(size: 17, hashFunctions: [djb2, sdbm])
-        bloom.insert("Hello world!")
         yxc_debugPrint("BloomFilter: \(bloom)")
+
+        bloom.insert("Hello world!")
+        yxc_debugPrint("insert Hello world!: \(bloom)")
         // true
         yxc_debugPrint("query Hello world!, result: \(bloom.query("Hello world!"))")
         // false
@@ -851,6 +853,8 @@ class AlgorithmViewController: ItemListViewController {
         // false
         bloom.insert("Bloom Filterz")
         yxc_debugPrint("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
+        yxc_debugPrint("insert Bloom Filterz: \(bloom)")
+
         showLogs()
     }
 
