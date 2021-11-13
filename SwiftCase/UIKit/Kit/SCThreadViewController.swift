@@ -11,6 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
+import Foundation
 import SnapKit
 import Then
 import UIKit
@@ -31,6 +32,29 @@ class SCThreadViewController: BaseViewController {
 
     // MARK: - Thread
 
+    @objc private func threadAction(_ obj: Any) {
+        print("Thread action parameter: \(obj), current thread: \(Thread.current)")
+    }
+
+    private func saleTicket() {
+        let thread1 = Thread(target: self, selector: #selector(saleTicketAction(_:)), object: "Thread One")
+        thread1.name = "Thread One"
+
+        let thread2 = Thread(target: self, selector: #selector(saleTicketAction(_:)), object: "Thread Two")
+        thread2.name = "Thread Two"
+
+        let thread3 = Thread(target: self, selector: #selector(saleTicketAction(_:)), object: "Thread Three")
+        thread3.name = "Thread Three"
+
+        thread1.start()
+        thread2.start()
+        thread3.start()
+    }
+
+    @objc private func saleTicketAction(_ obj: Any) {
+        print("Thread 3 action parameter: \(obj), current thread: \(Thread.current)")
+    }
+
     // MARK: - Cocoa Operation(Operation、OperationQueue)
 
     // MARK: - Grand Central Dispath(GCD)
@@ -39,15 +63,23 @@ class SCThreadViewController: BaseViewController {
 
     // MARK: - IBActions
 
-    @objc private func threadAction() {
+    @objc private func threadBtnAction() {
         printEnter(message: "Thread")
+        // 方式1
+        Thread.detachNewThreadSelector(#selector(threadAction(_:)), toTarget: self, with: "ThreadName1")
+
+        // 方式2
+        performSelector(inBackground: #selector(threadAction(_:)), with: "ThreadName2")
+
+        // 方式3
+        saleTicket()
     }
 
-    @objc private func operationAction() {
+    @objc private func operationBtnAction() {
         printEnter(message: "Cocoa Operation")
     }
 
-    @objc private func gcgAction() {
+    @objc private func gcgBtnAction() {
         printEnter(message: "Grand Central Dispath(GCD)")
     }
 
@@ -97,7 +129,7 @@ class SCThreadViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 20
-        $0.addTarget(self, action: #selector(threadAction), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(threadBtnAction), for: .touchUpInside)
     }
 
     let operationBtn = UIButton().then {
@@ -106,7 +138,7 @@ class SCThreadViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 20
-        $0.addTarget(self, action: #selector(operationAction), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(operationBtnAction), for: .touchUpInside)
     }
 
     let gcdButton = UIButton().then {
@@ -115,6 +147,6 @@ class SCThreadViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 20
-        $0.addTarget(self, action: #selector(gcgAction), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(gcgBtnAction), for: .touchUpInside)
     }
 }
