@@ -37,13 +37,17 @@ class SCThreadViewController: BaseViewController {
     }
 
     private func saleTicket() {
-        let thread1 = Thread(target: self, selector: #selector(saleTicketAction(_:)), object: "Thread One")
+        if ticketCount <= 0 {
+            ticketCount = 30
+        }
+
+        thread1 = Thread(target: self, selector: #selector(saleTicketAction(_:)), object: "Thread One")
         thread1.name = "Thread One"
 
-        let thread2 = Thread(target: self, selector: #selector(saleTicketAction(_:)), object: "Thread Two")
+        thread2 = Thread(target: self, selector: #selector(saleTicketAction(_:)), object: "Thread Two")
         thread2.name = "Thread Two"
 
-        let thread3 = Thread(target: self, selector: #selector(saleTicketAction(_:)), object: "Thread Three")
+        thread3 = Thread(target: self, selector: #selector(saleTicketAction(_:)), object: "Thread Three")
         thread3.name = "Thread Three"
 
         thread1.start()
@@ -52,7 +56,38 @@ class SCThreadViewController: BaseViewController {
     }
 
     @objc private func saleTicketAction(_ obj: Any) {
-        print("Thread 3 action parameter: \(obj), current thread: \(Thread.current)")
+        print("Thread 3 action parameter: \(obj), current thread: \(String(describing: Thread.current.name))")
+        while ticketCount > 0 {
+            synchronized(self) {
+                Thread.sleep(forTimeInterval: 0.1)
+                if ticketCount > 0 {
+                    ticketCount -= 1
+                    print("\(Thread.current.name!) sold 1 ticket, \(self.ticketCount) remains.")
+                    // 主线程显示余票
+                    self.performSelector(onMainThread: #selector(updateTicketNum), with: nil, waitUntilDone: true)
+                } else {
+                    print("Tickets have been sold out.")
+                    // 终止线程
+                    thread1.cancel()
+                    thread2.cancel()
+                    thread3.cancel()
+                }
+            }
+        }
+    }
+
+    func synchronized(_ lock: AnyObject, closure: () -> Void) {
+        objc_sync_enter(lock)
+        closure()
+        objc_sync_exit(lock)
+    }
+
+    @objc func updateTicketNum() {
+        threadButton.setTitle("Start Thread, Ticket: \(ticketCount)", for: .normal)
+
+        if ticketCount == 0 {
+            threadButton.setTitle("Start Thread", for: .normal)
+        }
     }
 
     // MARK: - Cocoa Operation(Operation、OperationQueue)
@@ -122,6 +157,11 @@ class SCThreadViewController: BaseViewController {
     }
 
     // MARK: - Property
+
+    var ticketCount = 30
+    var thread1: Thread!
+    var thread2: Thread!
+    var thread3: Thread!
 
     let threadButton = UIButton().then {
         $0.backgroundColor = .orange
