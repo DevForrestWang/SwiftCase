@@ -43,18 +43,75 @@ class SCGCDViewController: BaseViewController {
 
     @objc private func serialSyncAction() {
         yxc_debugPrint("serialSyncAction")
+        let queue = DispatchQueue(label: "com.forrest.serial")
+
+        // 串行队列做同步操作, 容易造成死锁
+        queue.sync {
+            yxc_debugPrint("Sync operation in as serial queue.")
+        }
     }
 
     @objc private func serialAsyncAction() {
         yxc_debugPrint("serialAsyncAction")
+        let queue = DispatchQueue(label: "com.forrest.serail2")
+        // 串行队列做异步操作是顺序执行
+        queue.async {
+            print(Thread.current)
+            for i in 0 ..< 2 {
+                yxc_debugPrint("First i: \(i)")
+            }
+        }
+
+        queue.async {
+            print(Thread.current)
+            for i in 0 ..< 2 {
+                yxc_debugPrint("Second i: \(i)")
+            }
+        }
     }
 
     @objc private func concurrentSyncAction() {
         yxc_debugPrint("concurrentSyncAction")
+
+        let lable = "com.forrest.concurrent1"
+        let qos = DispatchQoS.default
+        let attributes = DispatchQueue.Attributes.concurrent
+        let autoreleaseFrequency = DispatchQueue.AutoreleaseFrequency.never
+        let queue = DispatchQueue(label: lable, qos: qos, attributes: attributes, autoreleaseFrequency: autoreleaseFrequency, target: nil)
+
+        // 并发队列同步操作是顺序执行
+        queue.sync {
+            for i in 0 ..< 2 {
+                print("First sync i: \(i)")
+            }
+        }
+
+        queue.sync {
+            for i in 0 ..< 2 {
+                print("Second sync i: \(i)")
+            }
+        }
     }
 
     @objc private func concurrentAsyncAction() {
         yxc_debugPrint("concurrentAsyncAction")
+
+        let lable = "com.forrest.concurrent2"
+        let attributes = DispatchQueue.Attributes.concurrent
+        let queue = DispatchQueue(label: lable, attributes: attributes)
+
+        // 并发队列做异步操作执行顺序不固定
+        queue.async {
+            for i in 0 ..< 2 {
+                print("First async i: \(i)")
+            }
+        }
+
+        queue.async {
+            for i in 0 ..< 2 {
+                print("Second async i: \(i)")
+            }
+        }
     }
 
     @objc private func downImageInGroupAction() {
@@ -87,6 +144,18 @@ class SCGCDViewController: BaseViewController {
 
         imageView1.addSubview(indicator1)
         imageView2.addSubview(indicator2)
+
+        let dispatchTime = DispatchTime.now() + 0.5
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            yxc_debugPrint("After 0.5 second.")
+        }
+
+        // 串行队列做异步操作是顺序执行
+        DispatchQueue.main.async {
+            for i in 0 ..< 2 {
+                print("First main queue async i: \(i)")
+            }
+        }
     }
 
     // MARK: - Constraints
@@ -158,6 +227,9 @@ class SCGCDViewController: BaseViewController {
     }
 
     // MARK: - Property
+
+    let imageURL = "https://cdn.pixabay.com/photo/2021/08/19/12/53/bremen-6557996_960_720.jpg"
+    let imageURL2 = "https://cdn.pixabay.com/photo/2020/09/01/21/03/sunset-5536777_960_720.jpg"
 
     let serialSyncBtn = UIButton().then {
         $0.backgroundColor = .orange
