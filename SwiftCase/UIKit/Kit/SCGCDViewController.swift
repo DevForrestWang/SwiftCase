@@ -118,10 +118,108 @@ class SCGCDViewController: BaseViewController {
         yxc_debugPrint("downImageInGroupAction")
         indicator1.startAnimating()
         indicator2.startAnimating()
+
+        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+        var fileURL1 = URL(fileURLWithPath: documentPath!)
+        fileURL1 = fileURL1.appendingPathComponent("lb1")
+        fileURL1 = fileURL1.appendingPathExtension("jpg")
+
+        var fileURL2 = URL(fileURLWithPath: documentPath!)
+        fileURL2 = fileURL2.appendingPathComponent("lb2")
+        fileURL2 = fileURL2.appendingPathExtension("jpg")
+
+        let group = DispatchGroup()
+        group.enter()
+        DispatchQueue.global().async {
+            yxc_debugPrint("Begin to download image 1.")
+            let imageURL = URL(string: self.strImageURL)
+            let data = try? Data(contentsOf: imageURL!)
+
+            guard let tmpData = data else {
+                DispatchQueue.main.async {
+                    self.indicator1.stopAnimating()
+                }
+                yxc_debugPrint("Failed to download image 1.")
+                return
+            }
+
+            try! tmpData.write(to: fileURL1, options: .atomic)
+            yxc_debugPrint("image 1 download")
+            sleep(1)
+            group.leave()
+        }
+
+        group.enter()
+        DispatchQueue.global().async {
+            yxc_debugPrint("Begin to down image 2.")
+
+            let imageURL = URL(string: self.strImageURL2)
+            let data = try? Data(contentsOf: imageURL!)
+
+            guard let tmpData = data else {
+                DispatchQueue.main.async {
+                    self.indicator2.stopAnimating()
+                }
+                yxc_debugPrint("Failed to download image 2.")
+                return
+            }
+
+            try! tmpData.write(to: fileURL2, options: .atomic)
+            sleep(1)
+            yxc_debugPrint("image 2 download.")
+            group.leave()
+        }
+
+        group.notify(queue: .main) {
+            let imageData1 = try? Data(contentsOf: fileURL1)
+            let imageData2 = try? Data(contentsOf: fileURL2)
+
+            guard let tmpData1 = imageData1 else {
+                yxc_debugPrint("The imageData1 is nil")
+                return
+            }
+
+            guard let tmpData2 = imageData2 else {
+                yxc_debugPrint("The imageData2 is nil")
+                return
+            }
+
+            self.imageView1.image = UIImage(data: tmpData1)
+            self.imageView2.image = UIImage(data: tmpData2)
+            self.indicator1.stopAnimating()
+            self.indicator2.stopAnimating()
+        }
     }
 
     @objc private func dispatchSemaphoreAction() {
         yxc_debugPrint("dispatchSemaphoreAction")
+        let semaphore = DispatchSemaphore(value: 2)
+        // semaphore 在串行队列需要注意死锁问题
+        let queue = DispatchQueue(label: "com.forrest.concurrent", qos: .default, attributes: .concurrent)
+
+        queue.async {
+            semaphore.wait()
+            yxc_debugPrint("First car in")
+            sleep(3)
+            yxc_debugPrint("First car out.")
+            semaphore.signal()
+        }
+
+        queue.async {
+            semaphore.wait()
+            yxc_debugPrint("Second car in")
+            sleep(2)
+            yxc_debugPrint("Second car out.")
+            semaphore.signal()
+        }
+
+        queue.async {
+            semaphore.wait()
+            yxc_debugPrint("Third car in")
+            sleep(4)
+            yxc_debugPrint("Third car out.")
+            semaphore.signal()
+        }
     }
 
     // MARK: - Private
@@ -228,8 +326,8 @@ class SCGCDViewController: BaseViewController {
 
     // MARK: - Property
 
-    let imageURL = "https://cdn.pixabay.com/photo/2021/08/19/12/53/bremen-6557996_960_720.jpg"
-    let imageURL2 = "https://cdn.pixabay.com/photo/2020/09/01/21/03/sunset-5536777_960_720.jpg"
+    let strImageURL = "https://cdn.pixabay.com/photo/2021/08/19/12/53/bremen-6557996_960_720.jpg"
+    let strImageURL2 = "https://cdn.pixabay.com/photo/2020/09/01/21/03/sunset-5536777_960_720.jpg"
 
     let serialSyncBtn = UIButton().then {
         $0.backgroundColor = .orange
