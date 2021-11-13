@@ -100,7 +100,6 @@
 		777BA9CB272941800030DCB9 /* Dijkstra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9CA272941800030DCB9 /* Dijkstra.swift */; };
 		777BA9CD272943520030DCB9 /* BloomFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9CC272943520030DCB9 /* BloomFilter.swift */; };
 		777BA9CF272943B40030DCB9 /* BitSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9CE272943B40030DCB9 /* BitSet.swift */; };
-		777BA9D1272944780030DCB9 /* NaiveBayes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9D0272944780030DCB9 /* NaiveBayes.swift */; };
 		777BA9D3272945830030DCB9 /* BTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9D2272945830030DCB9 /* BTree.swift */; };
 		777BA9D5272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9D4272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift */; };
 		777BA9D7272B9A030030DCB9 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9D6272B9A030030DCB9 /* Heap.swift */; };
@@ -325,7 +324,6 @@
 		777BA9CA272941800030DCB9 /* Dijkstra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dijkstra.swift; sourceTree = "<group>"; };
 		777BA9CC272943520030DCB9 /* BloomFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomFilter.swift; sourceTree = "<group>"; };
 		777BA9CE272943B40030DCB9 /* BitSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitSet.swift; sourceTree = "<group>"; };
-		777BA9D0272944780030DCB9 /* NaiveBayes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiveBayes.swift; sourceTree = "<group>"; };
 		777BA9D2272945830030DCB9 /* BTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTree.swift; sourceTree = "<group>"; };
 		777BA9D4272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrintBinaryTree+Extension.swift"; sourceTree = "<group>"; };
 		777BA9D6272B9A030030DCB9 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
@@ -556,7 +554,6 @@
 				777BA9C2272938C90030DCB9 /* BoyerMooreHorspool.swift */,
 				777BA9CC272943520030DCB9 /* BloomFilter.swift */,
 				777BA9CE272943B40030DCB9 /* BitSet.swift */,
-				777BA9D0272944780030DCB9 /* NaiveBayes.swift */,
 				A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */,
 				7760EFF1272FC86B00F1ADE8 /* RabinKarpStringSearch.swift */,
 				77B53BFA2731629F001BC650 /* KnuthMorrisPratt.swift */,
@@ -1331,7 +1328,6 @@
 				777BA9D3272945830030DCB9 /* BTree.swift in Sources */,
 				778F4FEF26FC68D900B9E08A /* SCUICollectionReusableViewFooter.swift in Sources */,
 				7798439E2702B03F001D73AF /* ChatDetailViewController.swift in Sources */,
-				777BA9D1272944780030DCB9 /* NaiveBayes.swift in Sources */,
 				C88F930526F8D8D300739819 /* SCUIButtonViewController.swift in Sources */,
 				C88F930726F8D8D300739819 /* SCUITextViewVC.swift in Sources */,
 				77C1B69C2738D9A80028C5B5 /* PriorityQueue.swift in Sources */,

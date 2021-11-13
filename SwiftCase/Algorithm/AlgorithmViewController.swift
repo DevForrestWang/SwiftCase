@@ -64,7 +64,6 @@ class AlgorithmViewController: ItemListViewController {
             SCItemModel(title: "Dijkstra's shortest path", controllerName: "", action: #selector(dijkstraShortestPathAction)),
             SCItemModel(title: "Bit Set", controllerName: "", action: #selector(bitSetAction)),
             SCItemModel(title: "Bloom Filter", controllerName: "", action: #selector(bloomFilterAction)),
-            SCItemModel(title: "->Naive Bayes Classifier", controllerName: "", action: #selector(naiveBayesAction)),
             SCItemModel(title: "B-Tree", controllerName: "", action: #selector(bTreeAction)),
         ]
     }
@@ -855,12 +854,6 @@ class AlgorithmViewController: ItemListViewController {
         yxc_debugPrint("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
         yxc_debugPrint("insert Bloom Filterz: \(bloom)")
 
-        showLogs()
-    }
-
-    @objc private func naiveBayesAction() {
-        printEnter(message: "Naive Bayes Classifier")
-        // NaiveBayes.swift
         showLogs()
     }
 
