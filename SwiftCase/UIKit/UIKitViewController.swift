@@ -35,8 +35,8 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "MapView-GaoDe Map", controllerName: "SCUIMapViewVC", action: nil),
             SCItemModel(title: "Event", controllerName: "SCUIEventViewVC", action: nil),
             SCItemModel(title: "UI Event", controllerName: "", action: #selector(uiEventAction)),
-            SCItemModel(title: "Thread", controllerName: "SCUIAnimationViewVC", action: #selector(expectAction)),
-            SCItemModel(title: "Animation", controllerName: "SCUIAnimationViewVC", action: #selector(expectAction)),
+            SCItemModel(title: "Thread", controllerName: "SCThreadViewController", action: nil),
+            SCItemModel(title: "Animation", controllerName: "SCUIAnimationViewVC", action: nil),
             SCItemModel(title: "Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi", controllerName: "SCommunicationVC", action: nil),
         ]
     }
