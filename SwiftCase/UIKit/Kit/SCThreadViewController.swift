@@ -112,10 +112,14 @@ class SCThreadViewController: BaseViewController {
 
     @objc private func operationBtnAction() {
         printEnter(message: "Cocoa Operation")
+        let vc = SCOperationViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc private func gcgBtnAction() {
         printEnter(message: "Grand Central Dispath(GCD)")
+        let vc = SCGCDViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     // MARK: - Private

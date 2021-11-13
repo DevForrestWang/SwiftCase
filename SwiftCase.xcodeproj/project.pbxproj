@@ -130,6 +130,8 @@
 		779EAC8927198AA40046610C /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779EAC8827198AA40046610C /* InsertionSort.swift */; };
 		77A842A7273F623900D08148 /* SCThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A842A6273F623900D08148 /* SCThreadViewController.swift */; };
 		77A842A9273F62F900D08148 /* SCUIAnimationViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */; };
+		77A842AB273FB17D00D08148 /* SCGCDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A842AA273FB17D00D08148 /* SCGCDViewController.swift */; };
+		77A842AD273FB1A400D08148 /* SCOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A842AC273FB1A400D08148 /* SCOperationViewController.swift */; };
 		77B53BFB2731629F001BC650 /* KnuthMorrisPratt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B53BFA2731629F001BC650 /* KnuthMorrisPratt.swift */; };
 		77B66B4727001FB1009700A2 /* SCFunctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B66B4627001FB1009700A2 /* SCFunctionViewController.swift */; };
 		77C1B69A2738D7020028C5B5 /* NSData+Bits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C1B6992738D7020028C5B5 /* NSData+Bits.swift */; };
@@ -356,6 +358,8 @@
 		779EAC8827198AA40046610C /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
 		77A842A6273F623900D08148 /* SCThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCThreadViewController.swift; sourceTree = "<group>"; };
 		77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIAnimationViewVC.swift; sourceTree = "<group>"; };
+		77A842AA273FB17D00D08148 /* SCGCDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCGCDViewController.swift; sourceTree = "<group>"; };
+		77A842AC273FB1A400D08148 /* SCOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCOperationViewController.swift; sourceTree = "<group>"; };
 		77B53BFA2731629F001BC650 /* KnuthMorrisPratt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnuthMorrisPratt.swift; sourceTree = "<group>"; };
 		77B66B4627001FB1009700A2 /* SCFunctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCFunctionViewController.swift; sourceTree = "<group>"; };
 		77C1B6992738D7020028C5B5 /* NSData+Bits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Bits.swift"; sourceTree = "<group>"; };
@@ -1006,6 +1010,8 @@
 				7765BBEC273375E7009DF9BD /* UIEventViewController.h */,
 				7765BBED273375E8009DF9BD /* UIEventViewController.m */,
 				77A842A6273F623900D08148 /* SCThreadViewController.swift */,
+				77A842AA273FB17D00D08148 /* SCGCDViewController.swift */,
+				77A842AC273FB1A400D08148 /* SCOperationViewController.swift */,
 				77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */,
 			);
 			path = Kit;
@@ -1337,8 +1343,10 @@
 				7798439E2702B03F001D73AF /* ChatDetailViewController.swift in Sources */,
 				C88F930526F8D8D300739819 /* SCUIButtonViewController.swift in Sources */,
 				C88F930726F8D8D300739819 /* SCUITextViewVC.swift in Sources */,
+				77A842AB273FB17D00D08148 /* SCGCDViewController.swift in Sources */,
 				77C1B69C2738D9A80028C5B5 /* PriorityQueue.swift in Sources */,
 				77A842A9273F62F900D08148 /* SCUIAnimationViewVC.swift in Sources */,
+				77A842AD273FB1A400D08148 /* SCOperationViewController.swift in Sources */,
 				778F4FF026FC68D900B9E08A /* SCUICollectionViewCell.swift in Sources */,
 				77F652AC26F5D25F00280568 /* ProjectorFactory.swift in Sources */,
 				779843A92702C301001D73AF /* ChatListTableView.swift in Sources */,
