@@ -866,7 +866,21 @@ class AlgorithmViewController: ItemListViewController {
 
     @objc private func bTreeAction() {
         printEnter(message: "B-Tree")
-        // BTree.swift
+        let bTree = BTree<Int, Int>(order: 1)!
+        bTree.insert(1, for: 1)
+        bTree.insert(2, for: 2)
+        bTree.insert(3, for: 3)
+        bTree.insert(4, for: 4)
+        bTree.insert(5, for: 5)
+        yxc_debugPrint("value for 3: \(String(describing: bTree.value(for: 3))), bTree[3]: \(String(describing: bTree[3]))")
+
+        bTree.traverseKeysInOrder { key in
+            print(key)
+        }
+
+        yxc_debugPrint("numberOfKeys: \(bTree.numberOfKeys)")
+        yxc_debugPrint("inorderArrayFromKeys: \(bTree.inorderArrayFromKeys)")
+
         showLogs()
     }
 
