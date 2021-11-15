@@ -90,7 +90,7 @@ class SCUILableViewController: BaseViewController {
 
         \(wrap: """
         \(" Merry Xmas! ", .font(.systemFont(ofSize: 36)), .color(.red), .bgColor(.yellow))
-        \(image: #imageLiteral(resourceName: "santa.png"), scale: 1)
+        \(image: #imageLiteral(resourceName: "santa.png"), scale: 0.7)
         """, .alignment(.center))
 
         Go there to \("learn more about String Interpolation", .link("https://github.com/apple/swift-evolution/blob/master/proposals/0228-fix-expressiblebystringinterpolation.md"), .underline(.blue, .single))!

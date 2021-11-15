@@ -105,11 +105,16 @@ extension AttrString.StringInterpolation {
 
 extension AttrString.StringInterpolation {
     func appendInterpolation(image: UIImage, scale: CGFloat = 1.0) {
-        let attachment = NSTextAttachment()
-        if let cgImage = image.cgImage {
-            attachment.image = UIImage(cgImage: cgImage, scale: scale, orientation: .up)
-            attributedString.append(NSAttributedString(attachment: attachment))
+        let width = image.size.width * scale < 10 ? 10 : image.size.width * scale
+        let height = image.size.height * scale < 10 ? 10 : image.size.height * scale
+        let render = UIGraphicsImageRenderer(size: CGSize(width: width, height: height))
+        let tmpImage = render.image { _ in
+            image.draw(in: render.format.bounds)
         }
+
+        let attachment = NSTextAttachment()
+        attachment.image = tmpImage
+        attributedString.append(NSAttributedString(attachment: attachment))
     }
 }
 
