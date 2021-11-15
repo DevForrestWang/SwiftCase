@@ -83,6 +83,21 @@ class SCUILableViewController: BaseViewController {
         lab1.text! += ", \(lab1.text!)"
     }
 
+    private func useAttributedStrings() {
+        let username = "AliGator"
+        let str: AttrString = """
+        Hello \(username, .color(.red)), isn't this \("cool", .color(.blue), .oblique, .underline(.purple, .single))?
+
+        \(wrap: """
+        \(" Merry Xmas! ", .font(.systemFont(ofSize: 36)), .color(.red), .bgColor(.yellow))
+        \(image: #imageLiteral(resourceName: "santa.png"), scale: 1)
+        """, .alignment(.center))
+
+        Go there to \("learn more about String Interpolation", .link("https://github.com/apple/swift-evolution/blob/master/proposals/0228-fix-expressiblebystringinterpolation.md"), .underline(.blue, .single))!
+        """
+        lab4.attributedText = str.attributedString
+    }
+
     // MARK: - UI
 
     func setupUI() {
@@ -97,6 +112,9 @@ class SCUILableViewController: BaseViewController {
         yxc_debugPrint("The lable calculate height:\(String(format: "%.2f", messageRect.height))")
 
         view.addSubview(lab3)
+
+        view.addSubview(lab4)
+        useAttributedStrings()
     }
 
     // MARK: - Constraints
@@ -105,8 +123,8 @@ class SCUILableViewController: BaseViewController {
         // 文字长度如果短于某个值,则让 label 适应文字宽度,如果长于这个值的话,则让 label 的宽度固定,高度适应其文本
         lab1.snp.makeConstraints { make in
             make.width.lessThanOrEqualTo(view).offset(-50)
-            // make.top.equalTo(20)
-            make.centerY.equalToSuperview().offset(-150)
+            make.top.equalTo(20)
+            // make.centerY.equalToSuperview().offset(-150)
             make.centerX.equalToSuperview()
         }
 
@@ -119,6 +137,12 @@ class SCUILableViewController: BaseViewController {
         lab3.snp.makeConstraints { make in
             make.width.lessThanOrEqualTo(view).offset(-50)
             make.top.equalTo(lab2.snp.bottom).offset(30)
+            make.centerX.equalToSuperview()
+        }
+
+        lab4.snp.makeConstraints { make in
+            make.width.lessThanOrEqualTo(view).offset(-50)
+            make.top.equalTo(lab3.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
         }
     }
@@ -164,6 +188,11 @@ class SCUILableViewController: BaseViewController {
         // 高度自适应
         $0.numberOfLines = 0
         $0.lineBreakMode = .byWordWrapping
+    }
+
+    let lab4 = UILabel().then {
+        $0.backgroundColor = .cyan
+        $0.numberOfLines = 0
     }
 
     /// 定义文字到边框距离

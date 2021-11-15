@@ -130,7 +130,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 38 files.
+  /// This `R.file` struct is generated, and contains static references to 39 files.
   struct file {
     /// Resource file `README.md`.
     static let readmeMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "md")
@@ -202,6 +202,8 @@ struct R: Rswift.Validatable {
     static let normalImage3xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "normalImage@3x", pathExtension: "png")
     /// Resource file `placeholder@2x.png`.
     static let placeholder2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "placeholder@2x", pathExtension: "png")
+    /// Resource file `santa.png`.
+    static let santaPng = Rswift.FileResource(bundle: R.hostingBundle, name: "santa", pathExtension: "png")
     /// Resource file `student@2x.png`.
     static let student2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "student@2x", pathExtension: "png")
     /// Resource file `trie_data.txt`.
@@ -419,6 +421,12 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
+    /// `bundle.url(forResource: "santa", withExtension: "png")`
+    static func santaPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.santaPng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
     /// `bundle.url(forResource: "student@2x", withExtension: "png")`
     static func student2xPng(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.student2xPng
@@ -440,7 +448,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 32 images.
+  /// This `R.image` struct is generated, and contains static references to 33 images.
   struct image {
     /// Image `LaunchScreen`.
     static let launchScreen = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchScreen")
@@ -500,6 +508,8 @@ struct R: Rswift.Validatable {
     static let normalImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "normalImage")
     /// Image `placeholder`.
     static let placeholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholder")
+    /// Image `santa`.
+    static let santa = Rswift.ImageResource(bundle: R.hostingBundle, name: "santa")
     /// Image `send`.
     static let send = Rswift.ImageResource(bundle: R.hostingBundle, name: "send")
     /// Image `student`.
@@ -707,6 +717,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "placeholder", bundle: ..., traitCollection: ...)`
     static func placeholder(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.placeholder, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "santa", bundle: ..., traitCollection: ...)`
+    static func santa(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.santa, compatibleWith: traitCollection)
     }
     #endif
 

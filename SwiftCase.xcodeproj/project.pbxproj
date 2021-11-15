@@ -139,6 +139,8 @@
 		77C25440270300C10012F078 /* SCUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C2543F270300C10012F078 /* SCUtils.swift */; };
 		77C25442270319470012F078 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C25441270319470012F078 /* UITextView+Extension.swift */; };
 		77C299F52727E05800046299 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C299F42727E05800046299 /* LRUCache.swift */; };
+		77DC113327423D9D002AED0C /* AttrString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC113227423D9D002AED0C /* AttrString.swift */; };
+		77DC1135274241F9002AED0C /* santa.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DC1134274241F9002AED0C /* santa.png */; };
 		77E0ACB126F5C228000EABC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E0ACB026F5C228000EABC1 /* AppDelegate.swift */; };
 		77E0ACB326F5C229000EABC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E0ACB226F5C229000EABC1 /* SceneDelegate.swift */; };
 		77E0ACB526F5C229000EABC1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E0ACB426F5C229000EABC1 /* ContentView.swift */; };
@@ -367,6 +369,8 @@
 		77C2543F270300C10012F078 /* SCUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUtils.swift; sourceTree = "<group>"; };
 		77C25441270319470012F078 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		77C299F42727E05800046299 /* LRUCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
+		77DC113227423D9D002AED0C /* AttrString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttrString.swift; sourceTree = "<group>"; };
+		77DC1134274241F9002AED0C /* santa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = santa.png; sourceTree = "<group>"; };
 		77E0ACAD26F5C228000EABC1 /* SwiftCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E0ACB026F5C228000EABC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77E0ACB226F5C229000EABC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -833,6 +837,7 @@
 		77F6520726F5CB2000280568 /* Resouce */ = {
 			isa = PBXGroup;
 			children = (
+				77DC1134274241F9002AED0C /* santa.png */,
 				7765BBF32733B8AE009DF9BD /* trie_data.txt */,
 				773967A827101CBC00BF7469 /* manor.jpg */,
 				773967A927101CBD00BF7469 /* yacht.jpg */,
@@ -999,6 +1004,7 @@
 				C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */,
 				C88F92FD26F8D8D300739819 /* SCUIButtonViewController.swift */,
 				C88F930026F8D8D300739819 /* SCUILableViewController.swift */,
+				77DC113227423D9D002AED0C /* AttrString.swift */,
 				C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */,
 				778F4FED26FC68D900B9E08A /* SCUICollectionViewCell.swift */,
 				778F4FEB26FC68D800B9E08A /* SCUICollectionReusableViewHeader.swift */,
@@ -1149,6 +1155,7 @@
 				77F6522C26F5CBAC00280568 /* icon_cal@2x.png in Resources */,
 				7756E88326FC28FB00AB139F /* normalImage@2x.png in Resources */,
 				7756C25B26FDD33400C43EFD /* map_home@2x.png in Resources */,
+				77DC1135274241F9002AED0C /* santa.png in Resources */,
 				77E0ACB726F5C235000EABC1 /* Assets.xcassets in Resources */,
 				77F6521B26F5CBAC00280568 /* icon_course@2x.png in Resources */,
 				779843A12702B03F001D73AF /* ChatListTableViewCell.xib in Resources */,
@@ -1394,6 +1401,7 @@
 				7760EFF2272FC86B00F1ADE8 /* RabinKarpStringSearch.swift in Sources */,
 				7798437A2702AFD7001D73AF /* Application+Extension.swift in Sources */,
 				C88F930626F8D8D300739819 /* SCUITextFieldVC.swift in Sources */,
+				77DC113327423D9D002AED0C /* AttrString.swift in Sources */,
 				778F4FEE26FC68D900B9E08A /* SCUICollectionReusableViewHeader.swift in Sources */,
 				77F652AA26F5D25F00280568 /* PagePrototype.swift in Sources */,
 				A8621264272E82A9007C4556 /* BruteForceStringSearch.swift in Sources */,
