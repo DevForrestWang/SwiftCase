@@ -116,6 +116,9 @@ class SCGCDViewController: BaseViewController {
 
     @objc private func downImageInGroupAction() {
         yxc_debugPrint("downImageInGroupAction")
+
+        imageView1.image = UIImage(named: "placeholder")
+        imageView2.image = UIImage(named: "placeholder")
         indicator1.startAnimating()
         indicator2.startAnimating()
 
