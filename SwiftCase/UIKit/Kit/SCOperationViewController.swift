@@ -69,6 +69,8 @@ class SCOperationViewController: BaseViewController {
 
         // 自定义子类
         CustomOperation().start()
+
+        showToast("console logs")
     }
 
     @objc private func addDependencyAction() {
@@ -100,10 +102,37 @@ class SCOperationViewController: BaseViewController {
         queue.addOperation(op1)
         queue.addOperation(op2)
         queue.addOperation(customOp)
+
+        showToast("console logs")
     }
 
     @objc private func downLoadImageAction() {
         yxc_debugPrint("downLoadImageAction")
+        imageView.image = UIImage(named: "placeholder")
+        indicator.startAnimating()
+
+        let downloadQueue = OperationQueue()
+        downloadQueue.addOperation {
+            Thread.sleep(forTimeInterval: 1)
+            let imageURL = URL(string: self.strImageURL)
+            let data = try? Data(contentsOf: imageURL!)
+
+            guard let tmpData = data else {
+                OperationQueue.main.addOperation {
+                    self.indicator.stopAnimating()
+                }
+                yxc_debugPrint("Download failed.")
+                return
+            }
+
+            let image = UIImage(data: tmpData)
+            OperationQueue.main.addOperation {
+                if let image = image {
+                    self.imageView.image = image
+                }
+                self.indicator.stopAnimating()
+            }
+        }
     }
 
     // MARK: - Private
@@ -118,8 +147,8 @@ class SCOperationViewController: BaseViewController {
         view.addSubview(addDependencyBtn)
         view.addSubview(downLoadImageBtn)
 
-        view.addSubview(imageView1)
-        imageView1.addSubview(indicator1)
+        view.addSubview(imageView)
+        imageView.addSubview(indicator)
     }
 
     // MARK: - Constraints
@@ -146,12 +175,12 @@ class SCOperationViewController: BaseViewController {
             make.centerX.equalToSuperview()
         }
 
-        indicator1.snp.makeConstraints { make in
+        indicator.snp.makeConstraints { make in
             make.width.height.equalTo(20)
             make.center.equalToSuperview()
         }
 
-        imageView1.snp.makeConstraints { make in
+        imageView.snp.makeConstraints { make in
             make.height.equalTo(223)
             make.width.equalToSuperview()
             make.top.equalTo(downLoadImageBtn.snp.bottom).offset(20)
@@ -159,6 +188,8 @@ class SCOperationViewController: BaseViewController {
     }
 
     // MARK: - Property
+
+    let strImageURL = "https://cdn.pixabay.com/photo/2021/08/19/12/53/bremen-6557996_960_720.jpg"
 
     let addExecutionBtn = UIButton().then {
         $0.backgroundColor = .orange
@@ -187,12 +218,12 @@ class SCOperationViewController: BaseViewController {
         $0.addTarget(self, action: #selector(downLoadImageAction), for: .touchUpInside)
     }
 
-    let imageView1 = UIImageView().then {
+    let imageView = UIImageView().then {
         $0.contentMode = .scaleToFill
         $0.image = UIImage(named: "placeholder")
     }
 
-    let indicator1 = UIActivityIndicatorView().then {
+    let indicator = UIActivityIndicatorView().then {
         $0.style = UIActivityIndicatorView.Style.medium
     }
 }

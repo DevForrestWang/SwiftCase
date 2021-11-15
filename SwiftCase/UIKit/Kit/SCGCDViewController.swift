@@ -49,6 +49,8 @@ class SCGCDViewController: BaseViewController {
         queue.sync {
             yxc_debugPrint("Sync operation in as serial queue.")
         }
+
+        showToast("console logs")
     }
 
     @objc private func serialAsyncAction() {
@@ -68,6 +70,8 @@ class SCGCDViewController: BaseViewController {
                 yxc_debugPrint("Second i: \(i)")
             }
         }
+
+        showToast("console logs")
     }
 
     @objc private func concurrentSyncAction() {
@@ -91,6 +95,8 @@ class SCGCDViewController: BaseViewController {
                 print("Second sync i: \(i)")
             }
         }
+
+        showToast("console logs")
     }
 
     @objc private func concurrentAsyncAction() {
@@ -112,6 +118,8 @@ class SCGCDViewController: BaseViewController {
                 print("Second async i: \(i)")
             }
         }
+
+        showToast("console logs")
     }
 
     @objc private func downImageInGroupAction() {
@@ -223,6 +231,8 @@ class SCGCDViewController: BaseViewController {
             yxc_debugPrint("Third car out.")
             semaphore.signal()
         }
+
+        showToast("console logs")
     }
 
     // MARK: - Private
