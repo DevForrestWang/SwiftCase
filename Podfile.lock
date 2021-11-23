@@ -6,7 +6,7 @@ PODS:
   - AMapFoundation (1.6.9)
   - AMapLocation (2.8.0):
     - AMapFoundation (~> 1.6.9)
-  - CGRPCZlib (1.5.0)
+  - CGRPCZlib (1.6.0)
   - CNIOAtomics (2.32.3)
   - CNIOBoringSSL (2.15.1)
   - CNIOBoringSSLShims (2.15.1):
@@ -15,8 +15,8 @@ PODS:
   - CNIOHTTPParser (2.32.3)
   - CNIOLinux (2.32.3)
   - CNIOWindows (2.32.3)
-  - gRPC-Swift (1.5.0):
-    - CGRPCZlib (= 1.5.0)
+  - gRPC-Swift (1.6.0):
+    - CGRPCZlib (= 1.6.0)
     - Logging (< 2.0.0, >= 1.4.0)
     - SwiftNIO (< 3.0.0, >= 2.32.0)
     - SwiftNIOExtras (< 2.0.0, >= 1.4.0)
@@ -24,10 +24,11 @@ PODS:
     - SwiftNIOSSL (< 3.0.0, >= 2.14.0)
     - SwiftNIOTransportServices (< 2.0.0, >= 1.11.1)
     - SwiftProtobuf (< 2.0.0, >= 1.9.0)
-  - gRPC-Swift-Plugins (1.5.0):
-    - gRPC-Swift (= 1.5.0)
+  - gRPC-Swift-Plugins (1.6.0):
+    - gRPC-Swift (= 1.6.0)
   - HandyJSON (5.0.2)
-  - IQKeyboardManagerSwift (6.5.8)
+  - IQKeyboardManagerSwift (6.5.9)
+  - JJLISO8601DateFormatter (0.1.4)
   - Kingfisher (7.1.1)
   - Logging (1.4.0)
   - Moya/Core (15.0.0):
@@ -35,7 +36,7 @@ PODS:
   - Moya/RxSwift (15.0.0):
     - Moya/Core
     - RxSwift (~> 6.0)
-  - R.swift (5.4.0):
+  - R.swift (6.0.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
   - RxSwift (6.2.0)
@@ -104,6 +105,10 @@ PODS:
   - SwiftyJSON (5.0.1)
   - Then (2.7.0)
   - Toast-Swift (5.0.1)
+  - ZippyJSON (1.2.4):
+    - JJLISO8601DateFormatter (= 0.1.4)
+    - ZippyJSONCFamily (= 1.2.4)
+  - ZippyJSONCFamily (1.2.4)
 
 DEPENDENCIES:
   - AMap3DMap
@@ -121,6 +126,7 @@ DEPENDENCIES:
   - SwiftyJSON
   - Then
   - Toast-Swift
+  - ZippyJSON
 
 SPEC REPOS:
   trunk:
@@ -141,6 +147,7 @@ SPEC REPOS:
     - gRPC-Swift-Plugins
     - HandyJSON
     - IQKeyboardManagerSwift
+    - JJLISO8601DateFormatter
     - Kingfisher
     - Logging
     - Moya
@@ -168,6 +175,8 @@ SPEC REPOS:
     - SwiftyJSON
     - Then
     - Toast-Swift
+    - ZippyJSON
+    - ZippyJSONCFamily
 
 SPEC CHECKSUMS:
   _NIODataStructures: e2077c7dc7c1d6c93e698c85fe04d663a17f53a4
@@ -175,7 +184,7 @@ SPEC CHECKSUMS:
   AMap3DMap: 135eaaf64a29aeb2f0bca07670db26fbf3271245
   AMapFoundation: 8d8ecbb0b2e9ce5487995360d26c885d94642bfd
   AMapLocation: 5ef44a1117be7dc541cb7a7d43d03c5ee91e4387
-  CGRPCZlib: db324e4e4e71262d48faceb86b52dd7d4f71ff62
+  CGRPCZlib: 4b085da5f35c496d30f04ca5f2e97ddc3d0cf0fc
   CNIOAtomics: 4dde57e1838a29a9b23ef91617505f34751cdbe5
   CNIOBoringSSL: c99129423da079a9eb74bcfc7cfec41a6775cf94
   CNIOBoringSSLShims: 902ae35fea0b6be5eefb4fdce906751886cfa46f
@@ -183,14 +192,15 @@ SPEC CHECKSUMS:
   CNIOHTTPParser: f7a6816f7ddbe7dfa57a74cd36dc2db2c53b56e8
   CNIOLinux: 5921dfefbc4bbe017380b34c510855622147ea41
   CNIOWindows: f5aa9dfb401b440a7b4c9cd911e53e981a787193
-  gRPC-Swift: 8942047451bf81413077e6b94bf4213e47b181cc
-  gRPC-Swift-Plugins: 6646fb217cdd25636a5f2ebc39555283db72ec47
+  gRPC-Swift: f9a5e2c640944f0dfe09bd0959f35d880b025f9c
+  gRPC-Swift-Plugins: 6d1a758024fd9f557ac5e211de42cb4e1ed2d4bd
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
-  IQKeyboardManagerSwift: 8139150a3c90a915a413d72a8a3e8634c2d3278b
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  JJLISO8601DateFormatter: 9a5cb2f717c6a4f6a36f50b9015813b67f9f38f0
   Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
-  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
+  R.swift: 5ec056f5ba2744de1c3f6deeb4882ae2630f6e63
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
@@ -214,7 +224,9 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  ZippyJSON: fd3ee54ad169ba2d3c2d9216222dab8c12de6ff5
+  ZippyJSONCFamily: 23021697519e64bef73263c4d4108c6811dab6e8
 
-PODFILE CHECKSUM: 87378879af1a6ee00df5202f92269ad4460522f2
+PODFILE CHECKSUM: 71301f4bc62eafa726edd352cef7a629994bc10d
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.9.1

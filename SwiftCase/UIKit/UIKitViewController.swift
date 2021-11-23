@@ -11,7 +11,9 @@
 //
 //===----------------------------------------------------------------------===//
 
+import Foundation
 import UIKit
+import ZippyJSON
 
 class UIKitViewController: ItemListViewController {
     // MARK: - Lifecycle
@@ -37,6 +39,7 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "UI Event", controllerName: "", action: #selector(uiEventAction)),
             SCItemModel(title: "Thread, OperationQueue, GCD", controllerName: "SCThreadViewController", action: nil),
             SCItemModel(title: "Animation", controllerName: "SCUIAnimationViewVC", action: nil),
+            SCItemModel(title: "Parse JSON by simdjson(Cocoapods ZippyJSON)", controllerName: "", action: #selector(zippyParseJSON)),
             SCItemModel(title: "Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi", controllerName: "SCommunicationVC", action: nil),
         ]
     }
@@ -48,6 +51,39 @@ class UIKitViewController: ItemListViewController {
     @objc private func uiEventAction() {
         let vc = UIEventViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+
+    ///  Parsing JSON by simdjson
+    ///
+    /// [simdjson/simdjson: Parsing gigabytes of JSON per second (github.com)](https://github.com/simdjson/simdjson)
+    /// [michaeleisel/ZippyJSON: A much faster version of JSONDecoder (github.com)](https://github.com/michaeleisel/zippyjson)
+    @objc private func zippyParseJSON() {
+        printEnter(message: "ZippyJSON")
+
+        let json = """
+        {
+            "id": "100",
+            "username": "Joannis",
+            "role": "admin",
+            "awesome": true,
+            "superAwesome": false
+        }
+        """.data(using: .utf8)!
+
+        struct User: Decodable {
+            let id: String
+            let username: String
+            let role: String
+            let awesome: Bool
+            let superAwesome: Bool
+        }
+
+        let user = try! ZippyJSONDecoder().decode(User.self, from: json)
+
+        print("User data: ")
+        print("id:\(user.id), \nusername: \(user.username), \nrole: \(user.role), \nawesome: \(user.awesome), \nsuperAwesome: \(user.superAwesome)")
+
+        showLogs()
     }
 
     // MARK: - Private

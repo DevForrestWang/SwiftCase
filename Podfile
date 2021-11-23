@@ -16,6 +16,8 @@ target 'SwiftCase' do
   #pod 'ObjectMapper'
   pod 'HandyJSON'
   pod 'SwiftyJSON'
+  # Parsing gigabytes of JSON per second
+  pod 'ZippyJSON'
   
   # UI布局
   pod "SnapKit"
