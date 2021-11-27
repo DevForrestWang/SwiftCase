@@ -13,6 +13,7 @@
 
 import AMapFoundationKit
 import IQKeyboardManagerSwift
+import MAMapKit
 import SwiftUI
 import Then
 import UIKit
@@ -43,6 +44,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // 添加高德地图key
             AMapServices.shared().apiKey = GlobalConfig.gGaoDeMapKey
             AMapServices.shared().enableHTTPS = true
+
+            // 判断是否是首次启动
+            if !UserDefaults.standard.bool(forKey: "agreeStatus") {
+                // 添加隐私合规弹窗
+                addAlertController()
+                // 更新App是否显示隐私弹窗的状态，隐私弹窗是否包含高德SDK隐私协议内容的状态. since 8.1.0
+                MAMapView.updatePrivacyShow(AMapPrivacyShowStatus.didShow, privacyInfo: AMapPrivacyInfoStatus.didContain)
+            }
         }
 
         #if DEBUG
@@ -74,6 +83,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidEnterBackground(_: UIScene) {
         SocketHelper.shared.closeConnection()
     }
+
+    // MARK: - Private
 
     /// 添加启动闪屏动画
     private func startSplashScreen(window: UIWindow) {
@@ -117,5 +128,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 splashView.removeFromSuperview()
             }
         }
+    }
+
+    /// 高德地图隐私授权提示
+    private func addAlertController() {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.left
+
+        let message = NSMutableAttributedString(string: "\n亲，感谢您对SwiftCase一直以来的信任！我们依据最新的监管要求更新了《隐私权政策》，特向您说明如下：\n1.基于您的明示授权，我们可能会获取您的位置，用于演示定位功能，您有权拒绝或取消授权；\n2.我们会采取业界先进的安全措施保护您的信息安全；\n3.未经您同意，我们不会从第三方处获取、共享或向提供您的信息；", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+
+        message.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.blue], range: message.mutableString.range(of: "《隐私权政策》"))
+
+        let alert = UIAlertController(title: "温馨提示", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.setValue(message, forKey: "attributedMessage")
+
+        let conform = UIAlertAction(title: "同意", style: UIAlertAction.Style.default) { _ in
+            UserDefaults.standard.set(true, forKey: "agreeStatus")
+            UserDefaults.standard.synchronize()
+            // 更新用户授权高德SDK隐私协议状态. since 8.1.0
+            MAMapView.updatePrivacyAgree(AMapPrivacyAgreeStatus.didAgree)
+        }
+
+        let cancel = UIAlertAction(title: "不同意", style: UIAlertAction.Style.default) { _ in
+            UserDefaults.standard.set(false, forKey: "agreeStatus")
+            UserDefaults.standard.synchronize()
+            // 更新用户授权高德SDK隐私协议状态. since 8.1.0
+            MAMapView.updatePrivacyAgree(AMapPrivacyAgreeStatus.notAgree)
+        }
+
+        alert.addAction(conform)
+        alert.addAction(cancel)
+        window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }
