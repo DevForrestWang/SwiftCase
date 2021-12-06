@@ -66,6 +66,7 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
+Podfile.lock
 
 # CocoaPods
 #
