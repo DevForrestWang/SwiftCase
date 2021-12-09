@@ -116,7 +116,7 @@ final class SocketHelper: NSObject {
             return
         }
 
-        socket.on(kUserList) { [weak self] result, _ -> Void in
+        socket.on(kUserList) { [weak self] result, _ in
 
             // 注意：dataInfo变量，数据解析如果不重新赋值，将无法解析
             guard result.count > 0, let dataInfo = result.first, let _ = self else {
@@ -152,7 +152,7 @@ final class SocketHelper: NSObject {
             return
         }
 
-        socket.on("newChatMessage") { dataArray, _ -> Void in
+        socket.on("newChatMessage") { dataArray, _ in
 
             var messageInfo = [String: Any]()
 

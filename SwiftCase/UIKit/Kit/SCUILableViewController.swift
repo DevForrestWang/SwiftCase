@@ -44,7 +44,7 @@ class SCUILableViewController: BaseViewController {
 
     private func showAllFonts() {
         let familyNames = UIFont.familyNames
-        var index: Int = 0
+        var index = 0
         for familyName in familyNames {
             let fontNames = UIFont.fontNames(forFamilyName: familyName)
             for font in fontNames {

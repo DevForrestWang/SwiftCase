@@ -167,7 +167,7 @@ class SCFunctionViewController: BaseViewController {
 
     /// 判断字符串相等
     private func equalString() {
-        let str1: String = "Hello"
+        let str1 = "Hello"
         let str2 = "Hello"
         let str3 = "Hello World"
 
@@ -268,11 +268,11 @@ class SCFunctionViewController: BaseViewController {
 
     private func convertData() {
         // Convert Int To String
-        let tInt: Int = 10
+        let tInt = 10
         let sValue = String(tInt)
 
         // Convert String to Int
-        let sData: String = "10"
+        let sData = "10"
         let iData = Int(sData)
 
         yxc_debugPrint("sValue:\(sValue), iData:\(iData ?? 0)")

@@ -56,7 +56,7 @@ class SCommunicationVC: ItemListViewController {
         alertController.addTextField(configurationHandler: nil)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
-        let OKAction = UIAlertAction(title: "OK", style: .default) { _ -> Void in
+        let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
 
             guard let textFields = alertController.textFields else {
                 return

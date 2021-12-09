@@ -111,11 +111,11 @@ extension Grpc_Header: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
             // allocates stack space for every case branch when no optimizations are
             // enabled. https://github.com/apple/swift-protobuf/issues/1034
             switch fieldNumber {
-            case 1: try { try decoder.decodeSingularStringField(value: &self.token) }()
-            case 2: try { try decoder.decodeSingularStringField(value: &self.custid) }()
-            case 3: try { try decoder.decodeSingularStringField(value: &self.version) }()
-            case 4: try { try decoder.decodeSingularStringField(value: &self.appType) }()
-            case 5: try { try decoder.decodeSingularStringField(value: &self.appName) }()
+            case 1: try try decoder.decodeSingularStringField(value: &token)
+            case 2: try try decoder.decodeSingularStringField(value: &custid)
+            case 3: try try decoder.decodeSingularStringField(value: &version)
+            case 4: try try decoder.decodeSingularStringField(value: &appType)
+            case 5: try try decoder.decodeSingularStringField(value: &appName)
             default: break
             }
         }
@@ -164,8 +164,8 @@ extension Grpc_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
             // allocates stack space for every case branch when no optimizations are
             // enabled. https://github.com/apple/swift-protobuf/issues/1034
             switch fieldNumber {
-            case 1: try { try decoder.decodeSingularMessageField(value: &self._header) }()
-            case 2: try { try decoder.decodeSingularStringField(value: &self.params) }()
+            case 1: try try decoder.decodeSingularMessageField(value: &_header)
+            case 2: try try decoder.decodeSingularStringField(value: &params)
             default: break
             }
         }
@@ -206,12 +206,12 @@ extension Grpc_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
             // allocates stack space for every case branch when no optimizations are
             // enabled. https://github.com/apple/swift-protobuf/issues/1034
             switch fieldNumber {
-            case 1: try { try decoder.decodeSingularInt32Field(value: &self.retCode) }()
-            case 2: try { try decoder.decodeSingularStringField(value: &self.data) }()
-            case 3: try { try decoder.decodeSingularStringField(value: &self.msg) }()
-            case 4: try { try decoder.decodeSingularUInt32Field(value: &self.totalPage) }()
-            case 5: try { try decoder.decodeSingularUInt32Field(value: &self.currentPage) }()
-            case 6: try { try decoder.decodeSingularUInt32Field(value: &self.rows) }()
+            case 1: try try decoder.decodeSingularInt32Field(value: &retCode)
+            case 2: try try decoder.decodeSingularStringField(value: &data)
+            case 3: try try decoder.decodeSingularStringField(value: &msg)
+            case 4: try try decoder.decodeSingularUInt32Field(value: &totalPage)
+            case 5: try try decoder.decodeSingularUInt32Field(value: &currentPage)
+            case 6: try try decoder.decodeSingularUInt32Field(value: &rows)
             default: break
             }
         }

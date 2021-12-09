@@ -50,7 +50,7 @@ open class SkipList<Key: Comparable, Payload> {
 extension SkipList {
     func findNode(key: Key) -> Node? {
         var currentNode: Node? = head
-        var isFound: Bool = false
+        var isFound = false
 
         while !isFound {
             if let node = currentNode {

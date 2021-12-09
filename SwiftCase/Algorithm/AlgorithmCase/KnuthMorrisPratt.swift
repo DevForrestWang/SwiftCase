@@ -35,12 +35,12 @@ func ZetaAlgorithm(ptrn: String) -> [Int]? {
 
     var zeta = [Int](repeating: 0, count: patternLength)
 
-    var left: Int = 0
-    var right: Int = 0
-    var k_1: Int = 0
-    var betaLength: Int = 0
-    var textIndex: Int = 0
-    var patternIndex: Int = 0
+    var left = 0
+    var right = 0
+    var k_1 = 0
+    var betaLength = 0
+    var textIndex = 0
+    var patternIndex = 0
 
     for k in 1 ..< patternLength {
         if k > right {
@@ -95,8 +95,8 @@ extension String {
         }
 
         var suffixPrefix = [Int](repeating: 0, count: patternLength)
-        var textIndex: Int = 0
-        var patternIndex: Int = 0
+        var textIndex = 0
+        var patternIndex = 0
         var indexes = [Int]()
 
         // Pre-processing stage: computing the table for the shifts (through Z-Algorithm)
