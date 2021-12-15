@@ -33,6 +33,9 @@
 		77201D88271E9E0500F6188E /* BucketSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77201D87271E9E0500F6188E /* BucketSort.swift */; };
 		77201D8A272004B300F6188E /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77201D89272004B200F6188E /* BinarySearch.swift */; };
 		77201D8C2720165300F6188E /* SkipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77201D8B2720165300F6188E /* SkipList.swift */; };
+		772D6BDB276873E000C12288 /* SCSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772D6BDA276873E000C12288 /* SCSwipeViewController.swift */; };
+		772D6BDE2768891C00C12288 /* PanExUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772D6BDC2768891B00C12288 /* PanExUtil.swift */; };
+		772D6BDF2768891C00C12288 /* ScrollViewExUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772D6BDD2768891B00C12288 /* ScrollViewExUtil.swift */; };
 		773967AA27101CBD00BF7469 /* manor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 773967A827101CBC00BF7469 /* manor.jpg */; };
 		773967AB27101CBD00BF7469 /* yacht.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 773967A927101CBD00BF7469 /* yacht.jpg */; };
 		773967B0271049B600BF7469 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773967AF271049B600BF7469 /* Array2D.swift */; };
@@ -257,6 +260,9 @@
 		77201D87271E9E0500F6188E /* BucketSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketSort.swift; sourceTree = "<group>"; };
 		77201D89272004B200F6188E /* BinarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearch.swift; sourceTree = "<group>"; };
 		77201D8B2720165300F6188E /* SkipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipList.swift; sourceTree = "<group>"; };
+		772D6BDA276873E000C12288 /* SCSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCSwipeViewController.swift; sourceTree = "<group>"; };
+		772D6BDC2768891B00C12288 /* PanExUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanExUtil.swift; sourceTree = "<group>"; };
+		772D6BDD2768891B00C12288 /* ScrollViewExUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewExUtil.swift; sourceTree = "<group>"; };
 		773967A827101CBC00BF7469 /* manor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = manor.jpg; sourceTree = "<group>"; };
 		773967A927101CBD00BF7469 /* yacht.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yacht.jpg; sourceTree = "<group>"; };
 		773967AF271049B600BF7469 /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
@@ -521,6 +527,16 @@
 				771005712735299300733EF7 /* ACEmit.swift */,
 			);
 			path = Trie;
+			sourceTree = "<group>";
+		};
+		772D6BD92768737700C12288 /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				772D6BDC2768891B00C12288 /* PanExUtil.swift */,
+				772D6BDD2768891B00C12288 /* ScrollViewExUtil.swift */,
+				772D6BDA276873E000C12288 /* SCSwipeViewController.swift */,
+			);
+			path = SwipeView;
 			sourceTree = "<group>";
 		};
 		773967AD2710497000BF7469 /* DataStructure */ = {
@@ -911,6 +927,7 @@
 		77F6523126F5CD5200280568 /* Case */ = {
 			isa = PBXGroup;
 			children = (
+				772D6BD92768737700C12288 /* SwipeView */,
 				7756E86326FB2E9800AB139F /* Mine */,
 				7756E84C26FB173700AB139F /* OC */,
 				C88F934026F8DEAD00739819 /* BrowseImages */,
@@ -1314,6 +1331,7 @@
 				7710057D2735299300733EF7 /* ACTrie.swift in Sources */,
 				7756E86F26FB2F1D00AB139F /* CommonCell.swift in Sources */,
 				7756E84326FAE48200AB139F /* hello.grpc.swift in Sources */,
+				772D6BDB276873E000C12288 /* SCSwipeViewController.swift in Sources */,
 				77F652A526F5D25F00280568 /* ImageDecorator.swift in Sources */,
 				77201D8A272004B300F6188E /* BinarySearch.swift in Sources */,
 				7756E84226FAE48200AB139F /* RequestData.pb.swift in Sources */,
@@ -1389,6 +1407,7 @@
 				770B49C9273A5C7100B55FBB /* BaseViewController.swift in Sources */,
 				779843A22702B03F001D73AF /* ChatListTableViewCell.swift in Sources */,
 				77F652A126F5D25F00280568 /* TrackingState.swift in Sources */,
+				772D6BDE2768891C00C12288 /* PanExUtil.swift in Sources */,
 				7798439F2702B03F001D73AF /* Message.swift in Sources */,
 				771005762735299300733EF7 /* CharacterExtensions.swift in Sources */,
 				777BA9B62729338C0030DCB9 /* AVLTree.swift in Sources */,
@@ -1413,6 +1432,7 @@
 				77F652AF26F5D25F00280568 /* CurrencyFactory.swift in Sources */,
 				77F652A226F5D25F00280568 /* DPInterpreter.swift in Sources */,
 				779843A52702B03F001D73AF /* MessageSendTableViewCell.swift in Sources */,
+				772D6BDF2768891C00C12288 /* ScrollViewExUtil.swift in Sources */,
 				77F652BF26F5E1C900280568 /* AlgorithmViewController.swift in Sources */,
 				C88F934426F8DEAD00739819 /* SCBrowsImageCell.swift in Sources */,
 				77062DED2739467700A7F090 /* VertexPath.swift in Sources */,

@@ -12,6 +12,7 @@
 //===----------------------------------------------------------------------===//
 
 import SnapKit
+import Then
 import UIKit
 
 /*
@@ -20,6 +21,7 @@ import UIKit
  [移动端 Swift自动布局篇之Snapkit简单使用](https://www.dazhuanlan.com/lxalex/topics/1356918)
  [Swift自动布局SnapKit的详细使用介绍](https://www.jianshu.com/p/2bad53a2a180)
 
+ [Swift中用API纯代码写autolayout](https://www.jianshu.com/p/17076f6e944b) - 适用于视图动态调整
  */
 class SCUIVIewViewController: BaseViewController {
     // MARK: - Property
@@ -61,6 +63,12 @@ class SCUIVIewViewController: BaseViewController {
     }
 
     var box8TopConstraint: Constraint?
+
+    let box9 = UIView().then {
+        $0.backgroundColor = .cyan
+        // 关闭autoresizing 不关闭否则程序崩溃
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
 
     // MARK: - Lifecycle
 
@@ -115,6 +123,8 @@ class SCUIVIewViewController: BaseViewController {
         view.addSubview(box7)
         view.addSubview(box8)
         view.addSubview(box82)
+
+        view.addSubview(box9)
     }
 
     // MARK: - Constraints
@@ -172,5 +182,11 @@ class SCUIVIewViewController: BaseViewController {
         box82.snp.makeConstraints { make in
             make.edges.equalTo(box7).inset(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         }
+
+        // 添加约束 autolayout
+        box9.topAnchor.constraint(equalTo: box82.bottomAnchor, constant: 140).isActive = true
+        box9.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        box9.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        box9.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }
