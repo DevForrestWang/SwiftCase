@@ -33,6 +33,7 @@ target 'SwiftCase' do
 
   pod 'Toast-Swift'
   pod 'Then'
+  pod 'RxCocoa'
   
   # 代码格式插件
   pod 'SwiftFormat/CLI'

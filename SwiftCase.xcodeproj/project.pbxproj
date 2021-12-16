@@ -89,6 +89,10 @@
 		7760EFF2272FC86B00F1ADE8 /* RabinKarpStringSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7760EFF1272FC86B00F1ADE8 /* RabinKarpStringSearch.swift */; };
 		7765BBEE273375E8009DF9BD /* UIEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7765BBED273375E8009DF9BD /* UIEventViewController.m */; };
 		7765BBF42733B8AF009DF9BD /* trie_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7765BBF32733B8AE009DF9BD /* trie_data.txt */; };
+		77753152276B229E00A80E96 /* EasyCarouseViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7775314F276B229D00A80E96 /* EasyCarouseViewLayout.swift */; };
+		77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753150276B229D00A80E96 /* UICollectionView+Register.swift */; };
+		77753154276B229E00A80E96 /* EasyCarouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753151276B229D00A80E96 /* EasyCarouseView.swift */; };
+		77753156276B22CD00A80E96 /* EasyCarouseViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */; };
 		777B9B09272811ED0030DCB9 /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777B9B08272811ED0030DCB9 /* BinaryTree.swift */; };
 		777B9B0B272830430030DCB9 /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777B9B0A272830430030DCB9 /* BinarySearchTree.swift */; };
 		777BA9B62729338C0030DCB9 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9B52729338C0030DCB9 /* AVLTree.swift */; };
@@ -322,6 +326,10 @@
 		7765BBEC273375E7009DF9BD /* UIEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIEventViewController.h; sourceTree = "<group>"; };
 		7765BBED273375E8009DF9BD /* UIEventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIEventViewController.m; sourceTree = "<group>"; };
 		7765BBF32733B8AE009DF9BD /* trie_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trie_data.txt; sourceTree = "<group>"; };
+		7775314F276B229D00A80E96 /* EasyCarouseViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseViewLayout.swift; sourceTree = "<group>"; };
+		77753150276B229D00A80E96 /* UICollectionView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Register.swift"; sourceTree = "<group>"; };
+		77753151276B229D00A80E96 /* EasyCarouseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseView.swift; sourceTree = "<group>"; };
+		77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseViewVC.swift; sourceTree = "<group>"; };
 		777B9B08272811ED0030DCB9 /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 		777B9B0A272830430030DCB9 /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		777BA9B52729338C0030DCB9 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
@@ -532,9 +540,11 @@
 		772D6BD92768737700C12288 /* SwipeView */ = {
 			isa = PBXGroup;
 			children = (
+				7775314E276B229D00A80E96 /* EasyCarouseView */,
 				772D6BDC2768891B00C12288 /* PanExUtil.swift */,
 				772D6BDD2768891B00C12288 /* ScrollViewExUtil.swift */,
 				772D6BDA276873E000C12288 /* SCSwipeViewController.swift */,
+				77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */,
 			);
 			path = SwipeView;
 			sourceTree = "<group>";
@@ -695,6 +705,16 @@
 				7756E86726FB2E9800AB139F /* FakeData.swift */,
 			);
 			path = Mine;
+			sourceTree = "<group>";
+		};
+		7775314E276B229D00A80E96 /* EasyCarouseView */ = {
+			isa = PBXGroup;
+			children = (
+				7775314F276B229D00A80E96 /* EasyCarouseViewLayout.swift */,
+				77753150276B229D00A80E96 /* UICollectionView+Register.swift */,
+				77753151276B229D00A80E96 /* EasyCarouseView.swift */,
+			);
+			path = EasyCarouseView;
 			sourceTree = "<group>";
 		};
 		777BA9BB272935F00030DCB9 /* Graph */ = {
@@ -1322,6 +1342,7 @@
 				779843972702B03F001D73AF /* SocketHelper.swift in Sources */,
 				777BA9C827293BD50030DCB9 /* Huffman.swift in Sources */,
 				779843A62702B03F001D73AF /* MessageTableViewCell.swift in Sources */,
+				77753154276B229E00A80E96 /* EasyCarouseView.swift in Sources */,
 				7756E84826FAE48200AB139F /* SCommunicationVC.swift in Sources */,
 				779843A02702B03F001D73AF /* User.swift in Sources */,
 				77201D86271E9DE200F6188E /* CountingSort.swift in Sources */,
@@ -1347,6 +1368,7 @@
 				77201D82271E6BC500F6188E /* MergeSort.swift in Sources */,
 				7747B4EA272BE6B500D315FA /* Vertex.swift in Sources */,
 				77F6529F26F5D25F00280568 /* TextViewMemento.swift in Sources */,
+				77753152276B229E00A80E96 /* EasyCarouseViewLayout.swift in Sources */,
 				7756E86B26FB2E9900AB139F /* FakeData.swift in Sources */,
 				7798439C2702B03F001D73AF /* ChatDetailsTableView.swift in Sources */,
 				77F652C726F5E7F200280568 /* ItemListViewController.swift in Sources */,
@@ -1410,6 +1432,7 @@
 				772D6BDE2768891C00C12288 /* PanExUtil.swift in Sources */,
 				7798439F2702B03F001D73AF /* Message.swift in Sources */,
 				771005762735299300733EF7 /* CharacterExtensions.swift in Sources */,
+				77753156276B22CD00A80E96 /* EasyCarouseViewVC.swift in Sources */,
 				777BA9B62729338C0030DCB9 /* AVLTree.swift in Sources */,
 				7747B4EC272BE8D900D315FA /* Edge.swift in Sources */,
 				7756E83E26FAE48200AB139F /* RequestData.proto in Sources */,
@@ -1452,6 +1475,7 @@
 				778159A72714652C0046D14D /* Queue.swift in Sources */,
 				7765BBEE273375E8009DF9BD /* UIEventViewController.m in Sources */,
 				77F6529E26F5D25F00280568 /* NotificationVisitor.swift in Sources */,
+				77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */,
 				777BA9BD272936230030DCB9 /* Graph.swift in Sources */,
 				7756E84426FAE48200AB139F /* SCNetWorkModel.swift in Sources */,
 				777BA9C3272938C90030DCB9 /* BoyerMooreHorspool.swift in Sources */,

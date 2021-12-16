@@ -47,7 +47,8 @@ class SCSwipeViewController: UIViewController {
 //        let progressX = (translation.x / 2) / view.bounds.width
 //        let progressY = (translation.y / 2) / view.bounds.height
 
-//        let currentTouchPoint =  recognizer.location(in: view)
+        let currentTouchPoint = recognizer.location(in: view)
+//        print("---t.y:\(translation.y), cur.y:\(currentTouchPoint.y), deltaY:\(currentTouchPoint.y - translation.y)")
 //        let previousTouchPoint = recognizer.previousLocation(in:view)
 //        let deltaY = currentTouchPoint.y - previousTouchPoint.y
 
@@ -77,22 +78,26 @@ class SCSwipeViewController: UIViewController {
 
             let currentPos = CGPoint(x: view.center.x, y: translation.y + view.center.y)
             let opacity = currentPos.y / (view.bounds.height - 50)
+
+            print("---currentTouchPoint.y:\(currentTouchPoint.y), midTopConstraint:\(midTopConstraint.constant)")
+
             if upDownProgress == 1 {
                 print("up y:\(currentPos.y), opacity:\(opacity)")
 
                 upView.layer.opacity = Float(opacity)
 //                middleView.layer.opacity = Float(opacity)
 
-                middleView.layer.transform = CATransform3DMakeTranslation(0, currentPos.y + 50, 0)
+//                middleView.layer.transform = CATransform3DMakeTranslation(0, currentPos.y + 50, 0)
+                midBottomConstraint.constant = currentTouchPoint.y
 
             } else if upDownProgress == -1 {
                 print("down y:\(currentPos.y), opacity:\(opacity)")
                 upView.layer.opacity = Float(opacity)
 //                middleView.layer.opacity = Float(opacity)
 
-                middleView.layer.transform = CATransform3DMakeTranslation(0, currentPos.y + 50, 0)
+//                middleView.layer.transform = CATransform3DMakeTranslation(0, currentPos.y + 50, 0)
 
-                // midTopConstraint.constant += currentPos.y
+                midTopConstraint.constant = currentTouchPoint.y
 
 //                middleView.frame = CGRect(x: middleView.frame.origin.x, y: currentPos.y,
 //                                          width: middleView.frame.size.width, height: middleView.frame.size.height - currentPos.y)
@@ -128,7 +133,7 @@ class SCSwipeViewController: UIViewController {
         downView.layer.opacity = 0
 
         panGR = UIPanGestureRecognizer(target: self, action: #selector(pan))
-        view.addGestureRecognizer(panGR)
+        middleView.addGestureRecognizer(panGR)
     }
 
     // MARK: - Constraints
@@ -140,12 +145,13 @@ class SCSwipeViewController: UIViewController {
             make.center.equalToSuperview()
         }
 
-        middleView.snp.makeConstraints { make in
-            make.height.equalToSuperview().offset(-100)
-            make.width.equalToSuperview().offset(-40)
-            make.center.equalToSuperview()
-            // midTopConstraint = make.top.equalTo(50).constraint.layoutConstraints.first
-        }
+        // 添加约束 autolayout
+        midTopConstraint = middleView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50)
+        midTopConstraint.isActive = true
+        middleView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        midBottomConstraint = middleView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50)
+        midBottomConstraint.isActive = true
+        middleView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
 
         downView.snp.makeConstraints { make in
             make.height.equalToSuperview().offset(-100)
@@ -158,7 +164,8 @@ class SCSwipeViewController: UIViewController {
 
     var panGR: UIPanGestureRecognizer!
     var upDownProgress: Int = 0
-    // weak var midTopConstraint: NSLayoutConstraint!
+    weak var midTopConstraint: NSLayoutConstraint!
+    weak var midBottomConstraint: NSLayoutConstraint!
 
     let upView = UIView().then {
         $0.backgroundColor = .cyan
@@ -166,6 +173,7 @@ class SCSwipeViewController: UIViewController {
 
     let middleView = UIView().then {
         $0.backgroundColor = .orange
+        $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     let downView = UIView().then {
