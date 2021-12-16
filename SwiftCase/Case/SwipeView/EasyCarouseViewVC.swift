@@ -102,6 +102,11 @@ class MiddleCarouseCell: UICollectionViewCell {
         verCarouseView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
+//        let midView = MiddleViewController().view
+//        addSubview(midView!)
+//        midView?.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
     }
 
     @available(*, unavailable)
