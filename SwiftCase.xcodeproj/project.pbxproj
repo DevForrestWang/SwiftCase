@@ -93,12 +93,9 @@
 		77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753150276B229D00A80E96 /* UICollectionView+Register.swift */; };
 		77753154276B229E00A80E96 /* EasyCarouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753151276B229D00A80E96 /* EasyCarouseView.swift */; };
 		77753156276B22CD00A80E96 /* EasyCarouseViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */; };
-		7775315E276B41C400A80E96 /* GripperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753159276B41C300A80E96 /* GripperView.swift */; };
-		7775315F276B41C400A80E96 /* AvoidingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7775315A276B41C300A80E96 /* AvoidingScrollView.swift */; };
-		77753160276B41C400A80E96 /* TIUpDownSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7775315B276B41C300A80E96 /* TIUpDownSwipeViewController.swift */; };
-		77753161276B41C400A80E96 /* GlobalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7775315C276B41C300A80E96 /* GlobalProperties.swift */; };
-		77753163276B424C00A80E96 /* MiddleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753162276B424C00A80E96 /* MiddleViewController.swift */; };
-		77753165276B429300A80E96 /* UPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753164276B429300A80E96 /* UPViewController.swift */; };
+		7775403E276C6FF700A80E96 /* TestUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7775403D276C6FF700A80E96 /* TestUIViewController.swift */; };
+		77754042276C83C600A80E96 /* UpDownSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77754040276C83C500A80E96 /* UpDownSwipeView.swift */; };
+		77754043276C83C600A80E96 /* AvoidingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77754041276C83C500A80E96 /* AvoidingScrollView.swift */; };
 		777B9B09272811ED0030DCB9 /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777B9B08272811ED0030DCB9 /* BinaryTree.swift */; };
 		777B9B0B272830430030DCB9 /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777B9B0A272830430030DCB9 /* BinarySearchTree.swift */; };
 		777BA9B62729338C0030DCB9 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9B52729338C0030DCB9 /* AVLTree.swift */; };
@@ -336,12 +333,9 @@
 		77753150276B229D00A80E96 /* UICollectionView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Register.swift"; sourceTree = "<group>"; };
 		77753151276B229D00A80E96 /* EasyCarouseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseView.swift; sourceTree = "<group>"; };
 		77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseViewVC.swift; sourceTree = "<group>"; };
-		77753159276B41C300A80E96 /* GripperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GripperView.swift; sourceTree = "<group>"; };
-		7775315A276B41C300A80E96 /* AvoidingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvoidingScrollView.swift; sourceTree = "<group>"; };
-		7775315B276B41C300A80E96 /* TIUpDownSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIUpDownSwipeViewController.swift; sourceTree = "<group>"; };
-		7775315C276B41C300A80E96 /* GlobalProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalProperties.swift; sourceTree = "<group>"; };
-		77753162276B424C00A80E96 /* MiddleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleViewController.swift; sourceTree = "<group>"; };
-		77753164276B429300A80E96 /* UPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPViewController.swift; sourceTree = "<group>"; };
+		7775403D276C6FF700A80E96 /* TestUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIViewController.swift; sourceTree = "<group>"; };
+		77754040276C83C500A80E96 /* UpDownSwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownSwipeView.swift; sourceTree = "<group>"; };
+		77754041276C83C500A80E96 /* AvoidingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvoidingScrollView.swift; sourceTree = "<group>"; };
 		777B9B08272811ED0030DCB9 /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 		777B9B0A272830430030DCB9 /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		777BA9B52729338C0030DCB9 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
@@ -552,14 +546,13 @@
 		772D6BD92768737700C12288 /* SwipeView */ = {
 			isa = PBXGroup;
 			children = (
-				77753157276B41C300A80E96 /* TIUpDownSwipe */,
+				7775403F276C83C500A80E96 /* UpDownSwipe */,
 				7775314E276B229D00A80E96 /* EasyCarouseView */,
 				772D6BDC2768891B00C12288 /* PanExUtil.swift */,
 				772D6BDD2768891B00C12288 /* ScrollViewExUtil.swift */,
 				772D6BDA276873E000C12288 /* SCSwipeViewController.swift */,
 				77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */,
-				77753162276B424C00A80E96 /* MiddleViewController.swift */,
-				77753164276B429300A80E96 /* UPViewController.swift */,
+				7775403D276C6FF700A80E96 /* TestUIViewController.swift */,
 			);
 			path = SwipeView;
 			sourceTree = "<group>";
@@ -732,15 +725,13 @@
 			path = EasyCarouseView;
 			sourceTree = "<group>";
 		};
-		77753157276B41C300A80E96 /* TIUpDownSwipe */ = {
+		7775403F276C83C500A80E96 /* UpDownSwipe */ = {
 			isa = PBXGroup;
 			children = (
-				77753159276B41C300A80E96 /* GripperView.swift */,
-				7775315A276B41C300A80E96 /* AvoidingScrollView.swift */,
-				7775315B276B41C300A80E96 /* TIUpDownSwipeViewController.swift */,
-				7775315C276B41C300A80E96 /* GlobalProperties.swift */,
+				77754040276C83C500A80E96 /* UpDownSwipeView.swift */,
+				77754041276C83C500A80E96 /* AvoidingScrollView.swift */,
 			);
-			path = TIUpDownSwipe;
+			path = UpDownSwipe;
 			sourceTree = "<group>";
 		};
 		777BA9BB272935F00030DCB9 /* Graph */ = {
@@ -1354,6 +1345,7 @@
 			files = (
 				77C25440270300C10012F078 /* SCUtils.swift in Sources */,
 				777BA9BA272935290030DCB9 /* RedBlackTree.swift in Sources */,
+				77754043276C83C600A80E96 /* AvoidingScrollView.swift in Sources */,
 				77201D7E271D9A6600F6188E /* Quicksort.swift in Sources */,
 				777BA9D5272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift in Sources */,
 				77B53BFB2731629F001BC650 /* KnuthMorrisPratt.swift in Sources */,
@@ -1374,6 +1366,7 @@
 				77201D86271E9DE200F6188E /* CountingSort.swift in Sources */,
 				7756E84726FAE48200AB139F /* GrpcModuleAPI.swift in Sources */,
 				77F6527826F5D20300280568 /* GlobalConfig.swift in Sources */,
+				77754042276C83C600A80E96 /* UpDownSwipeView.swift in Sources */,
 				7798439A2702B03F001D73AF /* ChatListViewController.swift in Sources */,
 				7710057D2735299300733EF7 /* ACTrie.swift in Sources */,
 				7756E86F26FB2F1D00AB139F /* CommonCell.swift in Sources */,
@@ -1386,6 +1379,7 @@
 				77F6529B26F5D25F00280568 /* ScreenMediator.swift in Sources */,
 				7756E85026FB17C800AB139F /* SCObjectClass.m in Sources */,
 				C88F930826F8D8D300739819 /* SCUILableViewController.swift in Sources */,
+				7775403E276C6FF700A80E96 /* TestUIViewController.swift in Sources */,
 				779EAC8927198AA40046610C /* InsertionSort.swift in Sources */,
 				C88F930426F8D8D300739819 /* SCUIMapViewVC.swift in Sources */,
 				77A842A7273F623900D08148 /* SCThreadViewController.swift in Sources */,
@@ -1402,14 +1396,12 @@
 				77201D84271E9DB500F6188E /* RadixSort.swift in Sources */,
 				7710057A2735299300733EF7 /* FragmentToken.swift in Sources */,
 				77F652B026F5D25F00280568 /* StepBuilder.swift in Sources */,
-				7775315F276B41C400A80E96 /* AvoidingScrollView.swift in Sources */,
 				7747B4F4272CF7CB00D315FA /* GSEdge.swift in Sources */,
 				773967B927118DF700BF7469 /* LinkedList.swift in Sources */,
 				7756E84626FAE48200AB139F /* SCNetworkLoggerPlugin.swift in Sources */,
 				7756E86826FB2E9900AB139F /* ListViewController.swift in Sources */,
 				77E0ACB326F5C229000EABC1 /* SceneDelegate.swift in Sources */,
 				7747B4F0272BF2FA00D315FA /* AdjacencyListGraph.swift in Sources */,
-				77753165276B429300A80E96 /* UPViewController.swift in Sources */,
 				7710057E2735299300733EF7 /* TrieConfig.swift in Sources */,
 				771005742735299300733EF7 /* IntervalTree.swift in Sources */,
 				7710057C2735299300733EF7 /* ACToken.swift in Sources */,
@@ -1428,12 +1420,10 @@
 				C88F934326F8DEAD00739819 /* SCBrowseImageView.swift in Sources */,
 				77F6529D26F5D25F00280568 /* DelayedOperationCmd.swift in Sources */,
 				77C299F52727E05800046299 /* LRUCache.swift in Sources */,
-				77753161276B41C400A80E96 /* GlobalProperties.swift in Sources */,
 				77F652A726F5D25F00280568 /* DPComposite.swift in Sources */,
 				779EAC872719841A0046610C /* BubbleSort.swift in Sources */,
 				7756E84A26FAE48200AB139F /* Params.swift in Sources */,
 				771005732735299300733EF7 /* IntervalNode.swift in Sources */,
-				77753163276B424C00A80E96 /* MiddleViewController.swift in Sources */,
 				7756E84126FAE48200AB139F /* hello.pb.swift in Sources */,
 				7747B4EE272BF2DF00D315FA /* AdjacencyMatrixGraph.swift in Sources */,
 				77F652C126F5E1F500280568 /* DesignPatternViewController.swift in Sources */,
@@ -1503,11 +1493,9 @@
 				7710057F2735299300733EF7 /* ACEmit.swift in Sources */,
 				77062DEF27394B8300A7F090 /* DijkstraData.swift in Sources */,
 				778159A72714652C0046D14D /* Queue.swift in Sources */,
-				7775315E276B41C400A80E96 /* GripperView.swift in Sources */,
 				7765BBEE273375E8009DF9BD /* UIEventViewController.m in Sources */,
 				77F6529E26F5D25F00280568 /* NotificationVisitor.swift in Sources */,
 				77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */,
-				77753160276B41C400A80E96 /* TIUpDownSwipeViewController.swift in Sources */,
 				777BA9BD272936230030DCB9 /* Graph.swift in Sources */,
 				7756E84426FAE48200AB139F /* SCNetWorkModel.swift in Sources */,
 				777BA9C3272938C90030DCB9 /* BoyerMooreHorspool.swift in Sources */,
