@@ -15,15 +15,12 @@ import SnapKit
 import Then
 import UIKit
 
-class TestUIViewController: UIViewController {
+class UpDownSwipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .cyan
+        view.backgroundColor = .white
 
         view.addSubview(upDView)
-        upDView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -31,14 +28,14 @@ class TestUIViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
 
-    let upDView = MiddleView().then {
+    let upDView = MiddleView(frame: CGRect(x: 20, y: 20, width: GlobalConfig.gScreenWidth - 40, height: GlobalConfig.gScreenHeight - 40), itemIndex: 1).then {
         $0.backgroundColor = .yellow
     }
 }
 
 class MiddleView: UpDownSwipeView, UpDownSwipeDataSource {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(frame: CGRect, itemIndex: Int) {
+        super.init(frame: frame, itemIndex: itemIndex)
 
         dataSource = self
     }

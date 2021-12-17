@@ -21,6 +21,11 @@ class EasyCarouseViewVC: UIViewController {
         setSubviews()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+
     fileprivate func setSubviews() {
         view.addSubview(carouseView)
         carouseView.snp.makeConstraints { maker in

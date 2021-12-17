@@ -13,6 +13,7 @@
 
 import UIKit
 
+/// 注册的View视图
 public protocol UpDownSwipeDataSource {
     var upDownSwipeTopView: UpDownSwipeAppearance { get }
     var upDownSwipeMiddleView: UpDownSwipeAppearance { get }
@@ -31,11 +32,16 @@ public protocol UpDownSwipeAppearanceProtocol: UIView {
 public typealias UpDownSwipeAppearance = UpDownSwipeAppearanceProtocol
 
 class UpDownSwipeView: UIView {
-    // MARK: - Lifecycle
+    // MARK: - Public
 
-    override init(frame: CGRect) {
+    /// 初始化方法
+    /// - Parameters:
+    ///   - frame: 视图大小
+    ///   - itemIndex: 默认显示的视图
+    public init(frame: CGRect, itemIndex: Int = 0) {
+        self.itemIndex = itemIndex
+
         super.init(frame: frame)
-
         setupUI()
         setupConstraints()
     }
@@ -44,29 +50,32 @@ class UpDownSwipeView: UIView {
         super.init(coder: coder)
     }
 
-    // MARK: - Public
-
-    // MARK: - Protocol
-
-    // MARK: - IBActions
-
     // MARK: - Private
 
     private func initScrollView() {
         guard let dataSource = dataSource else {
+            print("The dataSource is empty")
             return
         }
+
+        let fWidth: CGFloat = frame.size.width
+        let fHeight: CGFloat = frame.size.height
+        if fWidth <= 0 || fHeight <= 0 {
+            print("The frame:\(frame) is zero.")
+            return
+        }
+
         childViews = [dataSource.upDownSwipeTopView, dataSource.upDownSwipeMiddleView, dataSource.upDownSwipeBottomView]
 
+        addSubview(scrollView)
         scrollView.contentInsetAdjustmentBehavior = .never
-
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
 
-        addSubview(scrollView)
-        scrollView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
-        scrollView.contentSize = CGSize(width: 0, height: CGFloat(childViews.count) * screenHeight)
+        scrollView.frame = CGRect(x: 0, y: 0, width: fWidth, height: fHeight)
+        scrollView.contentSize = CGSize(width: 0, height: CGFloat(childViews.count) * fHeight)
+        scrollView.delegate = self
 
         let uiView = childViews.map { mView -> UIView in
             mView as UIView
@@ -74,21 +83,18 @@ class UpDownSwipeView: UIView {
 
         _ = uiView.map {
             scrollView.addSubview($0)
-            $0.frame = CGRect(x: 0, y: CGFloat(uiView.firstIndex(of: $0)!) * screenHeight, width: screenWidth, height: screenHeight)
-            // $0.frame.origin = CGPoint(x: 0, y: CGFloat(uiView.firstIndex(of: $0)!) * screenHeight)
+            $0.frame = CGRect(x: 0, y: CGFloat(uiView.firstIndex(of: $0)!) * fHeight, width: fWidth, height: fHeight)
         }
 
-        scrollView.delegate = self
-        // scrollView.backgroundColor = middleColor
+        if itemIndex < childViews.count {
+            scrollView.contentOffset = CGPoint(x: 0, y: CGFloat(itemIndex) * fHeight)
+        }
     }
 
     // MARK: - UI
 
     func setupUI() {
         initScrollView()
-
-        //
-        scrollView.contentOffset = CGPoint(x: 0, y: 1 * screenHeight)
     }
 
     // MARK: - Constraints
@@ -97,16 +103,14 @@ class UpDownSwipeView: UIView {
 
     // MARK: - Property
 
-    let screenHeight = UIScreen.main.bounds.size.height
-    let screenWidth = UIScreen.main.bounds.size.width
-
     public var dataSource: UpDownSwipeDataSource! {
         didSet {
             initScrollView()
         }
     }
 
-    private let scrollView = AvoidingScrollView()
+    private var itemIndex: Int = 0
+    private let scrollView = UIScrollView()
     private var currentView: UpDownSwipeAppearance? {
         didSet {
             if oldValue != currentView {
@@ -123,9 +127,6 @@ extension UpDownSwipeView: UIScrollViewDelegate {
         let maximumVerticalOffset: CGFloat = scrollView.contentSize.height - scrollView.frame.height
         let currentVertiicalOffset: CGFloat = scrollView.contentOffset.y
         let percentageVerticalOffset: CGFloat = currentVertiicalOffset / maximumVerticalOffset
-
-//        let scolor = scrollColor(percent: Double(percentageVerticalOffset))
-//        scrollView.backgroundColor = scolor
 
         switch percentageVerticalOffset {
         case 0.0:

@@ -93,9 +93,8 @@
 		77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753150276B229D00A80E96 /* UICollectionView+Register.swift */; };
 		77753154276B229E00A80E96 /* EasyCarouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753151276B229D00A80E96 /* EasyCarouseView.swift */; };
 		77753156276B22CD00A80E96 /* EasyCarouseViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */; };
-		7775403E276C6FF700A80E96 /* TestUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7775403D276C6FF700A80E96 /* TestUIViewController.swift */; };
+		7775403E276C6FF700A80E96 /* UpDownSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7775403D276C6FF700A80E96 /* UpDownSwipeViewController.swift */; };
 		77754042276C83C600A80E96 /* UpDownSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77754040276C83C500A80E96 /* UpDownSwipeView.swift */; };
-		77754043276C83C600A80E96 /* AvoidingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77754041276C83C500A80E96 /* AvoidingScrollView.swift */; };
 		777B9B09272811ED0030DCB9 /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777B9B08272811ED0030DCB9 /* BinaryTree.swift */; };
 		777B9B0B272830430030DCB9 /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777B9B0A272830430030DCB9 /* BinarySearchTree.swift */; };
 		777BA9B62729338C0030DCB9 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9B52729338C0030DCB9 /* AVLTree.swift */; };
@@ -333,9 +332,8 @@
 		77753150276B229D00A80E96 /* UICollectionView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Register.swift"; sourceTree = "<group>"; };
 		77753151276B229D00A80E96 /* EasyCarouseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseView.swift; sourceTree = "<group>"; };
 		77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseViewVC.swift; sourceTree = "<group>"; };
-		7775403D276C6FF700A80E96 /* TestUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIViewController.swift; sourceTree = "<group>"; };
+		7775403D276C6FF700A80E96 /* UpDownSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDownSwipeViewController.swift; sourceTree = "<group>"; };
 		77754040276C83C500A80E96 /* UpDownSwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownSwipeView.swift; sourceTree = "<group>"; };
-		77754041276C83C500A80E96 /* AvoidingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvoidingScrollView.swift; sourceTree = "<group>"; };
 		777B9B08272811ED0030DCB9 /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 		777B9B0A272830430030DCB9 /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		777BA9B52729338C0030DCB9 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
@@ -546,13 +544,13 @@
 		772D6BD92768737700C12288 /* SwipeView */ = {
 			isa = PBXGroup;
 			children = (
-				7775403F276C83C500A80E96 /* UpDownSwipe */,
+				77754040276C83C500A80E96 /* UpDownSwipeView.swift */,
+				7775403D276C6FF700A80E96 /* UpDownSwipeViewController.swift */,
 				7775314E276B229D00A80E96 /* EasyCarouseView */,
 				772D6BDC2768891B00C12288 /* PanExUtil.swift */,
 				772D6BDD2768891B00C12288 /* ScrollViewExUtil.swift */,
 				772D6BDA276873E000C12288 /* SCSwipeViewController.swift */,
 				77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */,
-				7775403D276C6FF700A80E96 /* TestUIViewController.swift */,
 			);
 			path = SwipeView;
 			sourceTree = "<group>";
@@ -723,15 +721,6 @@
 				77753151276B229D00A80E96 /* EasyCarouseView.swift */,
 			);
 			path = EasyCarouseView;
-			sourceTree = "<group>";
-		};
-		7775403F276C83C500A80E96 /* UpDownSwipe */ = {
-			isa = PBXGroup;
-			children = (
-				77754040276C83C500A80E96 /* UpDownSwipeView.swift */,
-				77754041276C83C500A80E96 /* AvoidingScrollView.swift */,
-			);
-			path = UpDownSwipe;
 			sourceTree = "<group>";
 		};
 		777BA9BB272935F00030DCB9 /* Graph */ = {
@@ -1345,7 +1334,6 @@
 			files = (
 				77C25440270300C10012F078 /* SCUtils.swift in Sources */,
 				777BA9BA272935290030DCB9 /* RedBlackTree.swift in Sources */,
-				77754043276C83C600A80E96 /* AvoidingScrollView.swift in Sources */,
 				77201D7E271D9A6600F6188E /* Quicksort.swift in Sources */,
 				777BA9D5272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift in Sources */,
 				77B53BFB2731629F001BC650 /* KnuthMorrisPratt.swift in Sources */,
@@ -1379,7 +1367,7 @@
 				77F6529B26F5D25F00280568 /* ScreenMediator.swift in Sources */,
 				7756E85026FB17C800AB139F /* SCObjectClass.m in Sources */,
 				C88F930826F8D8D300739819 /* SCUILableViewController.swift in Sources */,
-				7775403E276C6FF700A80E96 /* TestUIViewController.swift in Sources */,
+				7775403E276C6FF700A80E96 /* UpDownSwipeViewController.swift in Sources */,
 				779EAC8927198AA40046610C /* InsertionSort.swift in Sources */,
 				C88F930426F8D8D300739819 /* SCUIMapViewVC.swift in Sources */,
 				77A842A7273F623900D08148 /* SCThreadViewController.swift in Sources */,
