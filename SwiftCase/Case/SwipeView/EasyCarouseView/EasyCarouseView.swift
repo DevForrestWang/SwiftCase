@@ -2,8 +2,8 @@
 //  EasyCarouseView.swift
 //  EasyKits
 //
+// See more information
 // https://github.com/MengLiMing/EasyKits
-//
 //  Created by 孟利明 on 2021/2/24.
 //
 
