@@ -2,7 +2,7 @@
 
 SwiftCase is a pure Swift development example that includes basic component usage, design patterns, algorithms, and some small examples.
 
-<img src="./images/skdemo.gif" style="zoom:100%;" />
+![screenshot](images/scdemo.gif)
 
 ### [中文文档](./README_ZH.md)
 

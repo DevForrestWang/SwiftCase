@@ -2,7 +2,13 @@
 
 SwiftCase 是一个纯swift的开发示例，主要包括：基本组件用法、设计模式、算法及一些小的示例。
 
-<img src="./images/skdemo.gif" style="zoom:100%;" />
+![screenshot](images/scdemo.gif)
+
+<img src="" style="zoom:100%;" />
+
+
+
+
 
 ### [英文文档](./README.md)
 
