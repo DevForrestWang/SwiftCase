@@ -28,6 +28,7 @@ class CaseViewController: ItemListViewController {
             SCItemModel(title: "Brows Images", controllerName: "SCBrowseImageView", action: #selector(showImageView)),
             SCItemModel(title: "Call OC function", controllerName: "SCObjectClass", action: #selector(callOCFunction)),
             SCItemModel(title: "List", controllerName: "ListViewController", action: nil),
+            SCItemModel(title: "Up down swipe", controllerName: "UpDownSwipeViewController", action: nil),
         ]
     }
 

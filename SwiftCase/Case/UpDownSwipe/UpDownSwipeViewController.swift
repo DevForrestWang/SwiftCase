@@ -15,20 +15,21 @@ import SnapKit
 import Then
 import UIKit
 
-class UpDownSwipeViewController: UIViewController {
+class UpDownSwipeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        title = "Up Down Swipe"
 
         view.addSubview(upDView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        // navigationController?.navigationBar.isHidden = true
     }
 
-    let upDView = MiddleView(frame: CGRect(x: 20, y: 20, width: GlobalConfig.gScreenWidth - 40, height: GlobalConfig.gScreenHeight - 40), itemIndex: 1).then {
+    let upDView = MiddleView(frame: CGRect(x: 20, y: 20, width: GlobalConfig.gScreenWidth - 40, height: GlobalConfig.gScreenHeight - 40 - 64), itemIndex: 1).then {
         $0.backgroundColor = .yellow
     }
 }

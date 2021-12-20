@@ -86,6 +86,9 @@
 		7756E88126FC28FB00AB139F /* hightImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7756E87D26FC28FA00AB139F /* hightImage@3x.png */; };
 		7756E88226FC28FB00AB139F /* normalImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7756E87E26FC28FA00AB139F /* normalImage@3x.png */; };
 		7756E88326FC28FB00AB139F /* normalImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7756E87F26FC28FB00AB139F /* normalImage@2x.png */; };
+		775F803A277075AC00D167A7 /* UpDownSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F8038277075AB00D167A7 /* UpDownSwipeView.swift */; };
+		775F803B277075AC00D167A7 /* UpDownSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F8039277075AB00D167A7 /* UpDownSwipeViewController.swift */; };
+		775F803D2770776400D167A7 /* README_ZH.md in Resources */ = {isa = PBXBuildFile; fileRef = 775F803C2770776400D167A7 /* README_ZH.md */; };
 		7760EFF2272FC86B00F1ADE8 /* RabinKarpStringSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7760EFF1272FC86B00F1ADE8 /* RabinKarpStringSearch.swift */; };
 		7765BBEE273375E8009DF9BD /* UIEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7765BBED273375E8009DF9BD /* UIEventViewController.m */; };
 		7765BBF42733B8AF009DF9BD /* trie_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7765BBF32733B8AE009DF9BD /* trie_data.txt */; };
@@ -93,8 +96,6 @@
 		77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753150276B229D00A80E96 /* UICollectionView+Register.swift */; };
 		77753154276B229E00A80E96 /* EasyCarouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753151276B229D00A80E96 /* EasyCarouseView.swift */; };
 		77753156276B22CD00A80E96 /* EasyCarouseViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */; };
-		7775403E276C6FF700A80E96 /* UpDownSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7775403D276C6FF700A80E96 /* UpDownSwipeViewController.swift */; };
-		77754042276C83C600A80E96 /* UpDownSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77754040276C83C500A80E96 /* UpDownSwipeView.swift */; };
 		777B9B09272811ED0030DCB9 /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777B9B08272811ED0030DCB9 /* BinaryTree.swift */; };
 		777B9B0B272830430030DCB9 /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777B9B0A272830430030DCB9 /* BinarySearchTree.swift */; };
 		777BA9B62729338C0030DCB9 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9B52729338C0030DCB9 /* AVLTree.swift */; };
@@ -324,6 +325,9 @@
 		7756E87D26FC28FA00AB139F /* hightImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hightImage@3x.png"; sourceTree = "<group>"; };
 		7756E87E26FC28FA00AB139F /* normalImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "normalImage@3x.png"; sourceTree = "<group>"; };
 		7756E87F26FC28FB00AB139F /* normalImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "normalImage@2x.png"; sourceTree = "<group>"; };
+		775F8038277075AB00D167A7 /* UpDownSwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownSwipeView.swift; sourceTree = "<group>"; };
+		775F8039277075AB00D167A7 /* UpDownSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownSwipeViewController.swift; sourceTree = "<group>"; };
+		775F803C2770776400D167A7 /* README_ZH.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_ZH.md; sourceTree = "<group>"; };
 		7760EFF1272FC86B00F1ADE8 /* RabinKarpStringSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabinKarpStringSearch.swift; sourceTree = "<group>"; };
 		7765BBEC273375E7009DF9BD /* UIEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIEventViewController.h; sourceTree = "<group>"; };
 		7765BBED273375E8009DF9BD /* UIEventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIEventViewController.m; sourceTree = "<group>"; };
@@ -332,8 +336,6 @@
 		77753150276B229D00A80E96 /* UICollectionView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Register.swift"; sourceTree = "<group>"; };
 		77753151276B229D00A80E96 /* EasyCarouseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseView.swift; sourceTree = "<group>"; };
 		77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseViewVC.swift; sourceTree = "<group>"; };
-		7775403D276C6FF700A80E96 /* UpDownSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDownSwipeViewController.swift; sourceTree = "<group>"; };
-		77754040276C83C500A80E96 /* UpDownSwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownSwipeView.swift; sourceTree = "<group>"; };
 		777B9B08272811ED0030DCB9 /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 		777B9B0A272830430030DCB9 /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		777BA9B52729338C0030DCB9 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
@@ -544,8 +546,6 @@
 		772D6BD92768737700C12288 /* SwipeView */ = {
 			isa = PBXGroup;
 			children = (
-				77754040276C83C500A80E96 /* UpDownSwipeView.swift */,
-				7775403D276C6FF700A80E96 /* UpDownSwipeViewController.swift */,
 				7775314E276B229D00A80E96 /* EasyCarouseView */,
 				772D6BDC2768891B00C12288 /* PanExUtil.swift */,
 				772D6BDD2768891B00C12288 /* ScrollViewExUtil.swift */,
@@ -713,6 +713,15 @@
 			path = Mine;
 			sourceTree = "<group>";
 		};
+		775F8037277075AB00D167A7 /* UpDownSwipe */ = {
+			isa = PBXGroup;
+			children = (
+				775F8038277075AB00D167A7 /* UpDownSwipeView.swift */,
+				775F8039277075AB00D167A7 /* UpDownSwipeViewController.swift */,
+			);
+			path = UpDownSwipe;
+			sourceTree = "<group>";
+		};
 		7775314E276B229D00A80E96 /* EasyCarouseView */ = {
 			isa = PBXGroup;
 			children = (
@@ -814,6 +823,7 @@
 			isa = PBXGroup;
 			children = (
 				77F6520326F5C7EA00280568 /* README.md */,
+				775F803C2770776400D167A7 /* README_ZH.md */,
 				77F6520426F5CA5100280568 /* Doc */,
 				77E0ACAF26F5C228000EABC1 /* SwiftCase */,
 				7756E85826FB1A7400AB139F /* SwiftCaseTests */,
@@ -953,6 +963,7 @@
 		77F6523126F5CD5200280568 /* Case */ = {
 			isa = PBXGroup;
 			children = (
+				775F8037277075AB00D167A7 /* UpDownSwipe */,
 				772D6BD92768737700C12288 /* SwipeView */,
 				7756E86326FB2E9800AB139F /* Mine */,
 				7756E84C26FB173700AB139F /* OC */,
@@ -1196,6 +1207,7 @@
 				779843A72702B03F001D73AF /* MessageTableViewCell.xib in Resources */,
 				77F6522526F5CBAC00280568 /* defaultAvatar@2x.jpg in Resources */,
 				77F6522C26F5CBAC00280568 /* icon_cal@2x.png in Resources */,
+				775F803D2770776400D167A7 /* README_ZH.md in Resources */,
 				7756E88326FC28FB00AB139F /* normalImage@2x.png in Resources */,
 				7756C25B26FDD33400C43EFD /* map_home@2x.png in Resources */,
 				77DC1135274241F9002AED0C /* santa.png in Resources */,
@@ -1354,7 +1366,6 @@
 				77201D86271E9DE200F6188E /* CountingSort.swift in Sources */,
 				7756E84726FAE48200AB139F /* GrpcModuleAPI.swift in Sources */,
 				77F6527826F5D20300280568 /* GlobalConfig.swift in Sources */,
-				77754042276C83C600A80E96 /* UpDownSwipeView.swift in Sources */,
 				7798439A2702B03F001D73AF /* ChatListViewController.swift in Sources */,
 				7710057D2735299300733EF7 /* ACTrie.swift in Sources */,
 				7756E86F26FB2F1D00AB139F /* CommonCell.swift in Sources */,
@@ -1367,7 +1378,6 @@
 				77F6529B26F5D25F00280568 /* ScreenMediator.swift in Sources */,
 				7756E85026FB17C800AB139F /* SCObjectClass.m in Sources */,
 				C88F930826F8D8D300739819 /* SCUILableViewController.swift in Sources */,
-				7775403E276C6FF700A80E96 /* UpDownSwipeViewController.swift in Sources */,
 				779EAC8927198AA40046610C /* InsertionSort.swift in Sources */,
 				C88F930426F8D8D300739819 /* SCUIMapViewVC.swift in Sources */,
 				77A842A7273F623900D08148 /* SCThreadViewController.swift in Sources */,
@@ -1424,6 +1434,7 @@
 				C88F930326F8D8D300739819 /* SCUIVIewViewController.swift in Sources */,
 				7747B4F6272CF89200D315FA /* GSNode.swift in Sources */,
 				C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */,
+				775F803B277075AC00D167A7 /* UpDownSwipeViewController.swift in Sources */,
 				A819C63D2723F3600023EC3D /* HashTable.swift in Sources */,
 				777B9B09272811ED0030DCB9 /* BinaryTree.swift in Sources */,
 				7756E84926FAE48200AB139F /* Grade.swift in Sources */,
@@ -1470,6 +1481,7 @@
 				77F652C326F5E24E00280568 /* CaseViewController.swift in Sources */,
 				777BA9CB272941800030DCB9 /* Dijkstra.swift in Sources */,
 				7756E81326FADB2800AB139F /* UIWindowExtension.swift in Sources */,
+				775F803A277075AC00D167A7 /* UpDownSwipeView.swift in Sources */,
 				77F652A426F5D25F00280568 /* AdapterAuthSDK.swift in Sources */,
 				777B9B0B272830430030DCB9 /* BinarySearchTree.swift in Sources */,
 				779843942702B03F001D73AF /* ChatViewModel.swift in Sources */,
