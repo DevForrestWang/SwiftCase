@@ -40,11 +40,24 @@ class SCUpCarouseView: UIView {
 
     func setupUI() {
         backgroundColor = .yellow
+        addSubview(tLable)
     }
 
     // MARK: - Constraints
 
-    func setupConstraints() {}
+    func setupConstraints() {
+        tLable.snp.makeConstraints { make in
+            make.height.equalTo(21)
+            make.width.equalTo(100)
+            make.center.equalToSuperview()
+        }
+    }
 
     // MARK: - Property//
+
+    let tLable = UILabel().then {
+        $0.textColor = .red
+        $0.text = "Up View"
+        $0.font = .systemFont(ofSize: 16)
+    }
 }
