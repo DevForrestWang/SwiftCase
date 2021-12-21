@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             // window.rootViewController = UIHostingController(rootView: ContentView())
-            // window.rootViewController = UINavigationController(rootViewController: EasyCarouseViewVC())
+            // window.rootViewController = UINavigationController(rootViewController: SCAssistantMainViewController())
             window.rootViewController = SCUITabBarController()
             self.window = window
             window.makeKeyAndVisible()

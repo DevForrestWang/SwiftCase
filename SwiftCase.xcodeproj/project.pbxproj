@@ -24,6 +24,13 @@
 		7710057D2735299300733EF7 /* ACTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710056F2735299300733EF7 /* ACTrie.swift */; };
 		7710057E2735299300733EF7 /* TrieConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771005702735299300733EF7 /* TrieConfig.swift */; };
 		7710057F2735299300733EF7 /* ACEmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771005712735299300733EF7 /* ACEmit.swift */; };
+		7710F0332771B2EB0083E067 /* SCAssistantMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710F0322771B2EB0083E067 /* SCAssistantMainViewController.swift */; };
+		7710F0372771B5480083E067 /* SCAssimtantCarouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710F0362771B5480083E067 /* SCAssimtantCarouseView.swift */; };
+		7710F0392771B5C60083E067 /* SCMiddleCarouseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710F0382771B5C60083E067 /* SCMiddleCarouseCell.swift */; };
+		7710F03B2771B69B0083E067 /* SCPrevCarouseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710F03A2771B69B0083E067 /* SCPrevCarouseCell.swift */; };
+		7710F03D2771B6FD0083E067 /* SCNextCarouseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710F03C2771B6FD0083E067 /* SCNextCarouseCell.swift */; };
+		7710F03F2771B7540083E067 /* SCUpCarouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710F03E2771B7540083E067 /* SCUpCarouseView.swift */; };
+		7710F0412771B7720083E067 /* SCBottomCarouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710F0402771B7720083E067 /* SCBottomCarouseView.swift */; };
 		77201D7C271D831D00F6188E /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77201D7B271D831D00F6188E /* SelectionSort.swift */; };
 		77201D7E271D9A6600F6188E /* Quicksort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77201D7D271D9A6600F6188E /* Quicksort.swift */; };
 		77201D80271E61E000F6188E /* Randoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77201D7F271E61E000F6188E /* Randoms.swift */; };
@@ -33,9 +40,7 @@
 		77201D88271E9E0500F6188E /* BucketSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77201D87271E9E0500F6188E /* BucketSort.swift */; };
 		77201D8A272004B300F6188E /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77201D89272004B200F6188E /* BinarySearch.swift */; };
 		77201D8C2720165300F6188E /* SkipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77201D8B2720165300F6188E /* SkipList.swift */; };
-		772D6BDB276873E000C12288 /* SCSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772D6BDA276873E000C12288 /* SCSwipeViewController.swift */; };
-		772D6BDE2768891C00C12288 /* PanExUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772D6BDC2768891B00C12288 /* PanExUtil.swift */; };
-		772D6BDF2768891C00C12288 /* ScrollViewExUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772D6BDD2768891B00C12288 /* ScrollViewExUtil.swift */; };
+		772D6BDE2768891C00C12288 /* UIPanGestureRecognizer+Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772D6BDC2768891B00C12288 /* UIPanGestureRecognizer+Direction.swift */; };
 		773967AA27101CBD00BF7469 /* manor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 773967A827101CBC00BF7469 /* manor.jpg */; };
 		773967AB27101CBD00BF7469 /* yacht.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 773967A927101CBD00BF7469 /* yacht.jpg */; };
 		773967B0271049B600BF7469 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773967AF271049B600BF7469 /* Array2D.swift */; };
@@ -95,7 +100,6 @@
 		77753152276B229E00A80E96 /* EasyCarouseViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7775314F276B229D00A80E96 /* EasyCarouseViewLayout.swift */; };
 		77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753150276B229D00A80E96 /* UICollectionView+Register.swift */; };
 		77753154276B229E00A80E96 /* EasyCarouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753151276B229D00A80E96 /* EasyCarouseView.swift */; };
-		77753156276B22CD00A80E96 /* EasyCarouseViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */; };
 		777B9B09272811ED0030DCB9 /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777B9B08272811ED0030DCB9 /* BinaryTree.swift */; };
 		777B9B0B272830430030DCB9 /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777B9B0A272830430030DCB9 /* BinarySearchTree.swift */; };
 		777BA9B62729338C0030DCB9 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BA9B52729338C0030DCB9 /* AVLTree.swift */; };
@@ -258,6 +262,13 @@
 		7710056F2735299300733EF7 /* ACTrie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTrie.swift; sourceTree = "<group>"; };
 		771005702735299300733EF7 /* TrieConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieConfig.swift; sourceTree = "<group>"; };
 		771005712735299300733EF7 /* ACEmit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACEmit.swift; sourceTree = "<group>"; };
+		7710F0322771B2EB0083E067 /* SCAssistantMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCAssistantMainViewController.swift; sourceTree = "<group>"; };
+		7710F0362771B5480083E067 /* SCAssimtantCarouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCAssimtantCarouseView.swift; sourceTree = "<group>"; };
+		7710F0382771B5C60083E067 /* SCMiddleCarouseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCMiddleCarouseCell.swift; sourceTree = "<group>"; };
+		7710F03A2771B69B0083E067 /* SCPrevCarouseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPrevCarouseCell.swift; sourceTree = "<group>"; };
+		7710F03C2771B6FD0083E067 /* SCNextCarouseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNextCarouseCell.swift; sourceTree = "<group>"; };
+		7710F03E2771B7540083E067 /* SCUpCarouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUpCarouseView.swift; sourceTree = "<group>"; };
+		7710F0402771B7720083E067 /* SCBottomCarouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCBottomCarouseView.swift; sourceTree = "<group>"; };
 		77201D7B271D831D00F6188E /* SelectionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
 		77201D7D271D9A6600F6188E /* Quicksort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quicksort.swift; sourceTree = "<group>"; };
 		77201D7F271E61E000F6188E /* Randoms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Randoms.swift; sourceTree = "<group>"; };
@@ -267,9 +278,7 @@
 		77201D87271E9E0500F6188E /* BucketSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketSort.swift; sourceTree = "<group>"; };
 		77201D89272004B200F6188E /* BinarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearch.swift; sourceTree = "<group>"; };
 		77201D8B2720165300F6188E /* SkipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipList.swift; sourceTree = "<group>"; };
-		772D6BDA276873E000C12288 /* SCSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCSwipeViewController.swift; sourceTree = "<group>"; };
-		772D6BDC2768891B00C12288 /* PanExUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanExUtil.swift; sourceTree = "<group>"; };
-		772D6BDD2768891B00C12288 /* ScrollViewExUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewExUtil.swift; sourceTree = "<group>"; };
+		772D6BDC2768891B00C12288 /* UIPanGestureRecognizer+Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+Direction.swift"; sourceTree = "<group>"; };
 		773967A827101CBC00BF7469 /* manor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = manor.jpg; sourceTree = "<group>"; };
 		773967A927101CBD00BF7469 /* yacht.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yacht.jpg; sourceTree = "<group>"; };
 		773967AF271049B600BF7469 /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
@@ -335,7 +344,6 @@
 		7775314F276B229D00A80E96 /* EasyCarouseViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseViewLayout.swift; sourceTree = "<group>"; };
 		77753150276B229D00A80E96 /* UICollectionView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Register.swift"; sourceTree = "<group>"; };
 		77753151276B229D00A80E96 /* EasyCarouseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseView.swift; sourceTree = "<group>"; };
-		77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCarouseViewVC.swift; sourceTree = "<group>"; };
 		777B9B08272811ED0030DCB9 /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 		777B9B0A272830430030DCB9 /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		777BA9B52729338C0030DCB9 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
@@ -543,14 +551,33 @@
 			path = Trie;
 			sourceTree = "<group>";
 		};
+		7710F0342771B4F20083E067 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7710F0322771B2EB0083E067 /* SCAssistantMainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7710F0352771B5090083E067 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7710F0362771B5480083E067 /* SCAssimtantCarouseView.swift */,
+				7710F0382771B5C60083E067 /* SCMiddleCarouseCell.swift */,
+				7710F03A2771B69B0083E067 /* SCPrevCarouseCell.swift */,
+				7710F03C2771B6FD0083E067 /* SCNextCarouseCell.swift */,
+				7710F03E2771B7540083E067 /* SCUpCarouseView.swift */,
+				7710F0402771B7720083E067 /* SCBottomCarouseView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		772D6BD92768737700C12288 /* SwipeView */ = {
 			isa = PBXGroup;
 			children = (
+				7710F0352771B5090083E067 /* View */,
+				7710F0342771B4F20083E067 /* Controller */,
 				7775314E276B229D00A80E96 /* EasyCarouseView */,
-				772D6BDC2768891B00C12288 /* PanExUtil.swift */,
-				772D6BDD2768891B00C12288 /* ScrollViewExUtil.swift */,
-				772D6BDA276873E000C12288 /* SCSwipeViewController.swift */,
-				77753155276B22CD00A80E96 /* EasyCarouseViewVC.swift */,
 			);
 			path = SwipeView;
 			sourceTree = "<group>";
@@ -725,6 +752,7 @@
 		7775314E276B229D00A80E96 /* EasyCarouseView */ = {
 			isa = PBXGroup;
 			children = (
+				772D6BDC2768891B00C12288 /* UIPanGestureRecognizer+Direction.swift */,
 				7775314F276B229D00A80E96 /* EasyCarouseViewLayout.swift */,
 				77753150276B229D00A80E96 /* UICollectionView+Register.swift */,
 				77753151276B229D00A80E96 /* EasyCarouseView.swift */,
@@ -1370,7 +1398,6 @@
 				7710057D2735299300733EF7 /* ACTrie.swift in Sources */,
 				7756E86F26FB2F1D00AB139F /* CommonCell.swift in Sources */,
 				7756E84326FAE48200AB139F /* hello.grpc.swift in Sources */,
-				772D6BDB276873E000C12288 /* SCSwipeViewController.swift in Sources */,
 				77F652A526F5D25F00280568 /* ImageDecorator.swift in Sources */,
 				77201D8A272004B300F6188E /* BinarySearch.swift in Sources */,
 				7756E84226FAE48200AB139F /* RequestData.pb.swift in Sources */,
@@ -1380,12 +1407,14 @@
 				C88F930826F8D8D300739819 /* SCUILableViewController.swift in Sources */,
 				779EAC8927198AA40046610C /* InsertionSort.swift in Sources */,
 				C88F930426F8D8D300739819 /* SCUIMapViewVC.swift in Sources */,
+				7710F03F2771B7540083E067 /* SCUpCarouseView.swift in Sources */,
 				77A842A7273F623900D08148 /* SCThreadViewController.swift in Sources */,
 				77F652B126F5D25F00280568 /* URLBuilder.swift in Sources */,
 				771005792735299300733EF7 /* ACState.swift in Sources */,
 				77201D82271E6BC500F6188E /* MergeSort.swift in Sources */,
 				7747B4EA272BE6B500D315FA /* Vertex.swift in Sources */,
 				77F6529F26F5D25F00280568 /* TextViewMemento.swift in Sources */,
+				7710F0332771B2EB0083E067 /* SCAssistantMainViewController.swift in Sources */,
 				77753152276B229E00A80E96 /* EasyCarouseViewLayout.swift in Sources */,
 				7756E86B26FB2E9900AB139F /* FakeData.swift in Sources */,
 				7798439C2702B03F001D73AF /* ChatDetailsTableView.swift in Sources */,
@@ -1402,10 +1431,12 @@
 				7747B4F0272BF2FA00D315FA /* AdjacencyListGraph.swift in Sources */,
 				7710057E2735299300733EF7 /* TrieConfig.swift in Sources */,
 				771005742735299300733EF7 /* IntervalTree.swift in Sources */,
+				7710F0392771B5C60083E067 /* SCMiddleCarouseCell.swift in Sources */,
 				7710057C2735299300733EF7 /* ACToken.swift in Sources */,
 				777BA9D3272945830030DCB9 /* BTree.swift in Sources */,
 				778F4FEF26FC68D900B9E08A /* SCUICollectionReusableViewFooter.swift in Sources */,
 				7798439E2702B03F001D73AF /* ChatDetailViewController.swift in Sources */,
+				7710F0372771B5480083E067 /* SCAssimtantCarouseView.swift in Sources */,
 				C88F930526F8D8D300739819 /* SCUIButtonViewController.swift in Sources */,
 				C88F930726F8D8D300739819 /* SCUITextViewVC.swift in Sources */,
 				77A842AB273FB17D00D08148 /* SCGCDViewController.swift in Sources */,
@@ -1432,6 +1463,7 @@
 				777BA9D7272B9A030030DCB9 /* Heap.swift in Sources */,
 				7756E86926FB2E9900AB139F /* Product.swift in Sources */,
 				C88F930326F8D8D300739819 /* SCUIVIewViewController.swift in Sources */,
+				7710F0412771B7720083E067 /* SCBottomCarouseView.swift in Sources */,
 				7747B4F6272CF89200D315FA /* GSNode.swift in Sources */,
 				C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */,
 				775F803B277075AC00D167A7 /* UpDownSwipeViewController.swift in Sources */,
@@ -1448,10 +1480,9 @@
 				770B49C9273A5C7100B55FBB /* BaseViewController.swift in Sources */,
 				779843A22702B03F001D73AF /* ChatListTableViewCell.swift in Sources */,
 				77F652A126F5D25F00280568 /* TrackingState.swift in Sources */,
-				772D6BDE2768891C00C12288 /* PanExUtil.swift in Sources */,
+				772D6BDE2768891C00C12288 /* UIPanGestureRecognizer+Direction.swift in Sources */,
 				7798439F2702B03F001D73AF /* Message.swift in Sources */,
 				771005762735299300733EF7 /* CharacterExtensions.swift in Sources */,
-				77753156276B22CD00A80E96 /* EasyCarouseViewVC.swift in Sources */,
 				777BA9B62729338C0030DCB9 /* AVLTree.swift in Sources */,
 				7747B4EC272BE8D900D315FA /* Edge.swift in Sources */,
 				7756E83E26FAE48200AB139F /* RequestData.proto in Sources */,
@@ -1474,13 +1505,13 @@
 				77F652AF26F5D25F00280568 /* CurrencyFactory.swift in Sources */,
 				77F652A226F5D25F00280568 /* DPInterpreter.swift in Sources */,
 				779843A52702B03F001D73AF /* MessageSendTableViewCell.swift in Sources */,
-				772D6BDF2768891C00C12288 /* ScrollViewExUtil.swift in Sources */,
 				77F652BF26F5E1C900280568 /* AlgorithmViewController.swift in Sources */,
 				C88F934426F8DEAD00739819 /* SCBrowsImageCell.swift in Sources */,
 				77062DED2739467700A7F090 /* VertexPath.swift in Sources */,
 				77F652C326F5E24E00280568 /* CaseViewController.swift in Sources */,
 				777BA9CB272941800030DCB9 /* Dijkstra.swift in Sources */,
 				7756E81326FADB2800AB139F /* UIWindowExtension.swift in Sources */,
+				7710F03D2771B6FD0083E067 /* SCNextCarouseCell.swift in Sources */,
 				775F803A277075AC00D167A7 /* UpDownSwipeView.swift in Sources */,
 				77F652A426F5D25F00280568 /* AdapterAuthSDK.swift in Sources */,
 				777B9B0B272830430030DCB9 /* BinarySearchTree.swift in Sources */,
@@ -1502,6 +1533,7 @@
 				7756E85226FB180800AB139F /* SwiftObj.swift in Sources */,
 				777BA9C5272939850030DCB9 /* Trie.swift in Sources */,
 				779843A32702B03F001D73AF /* TableView+Extension.swift in Sources */,
+				7710F03B2771B69B0083E067 /* SCPrevCarouseCell.swift in Sources */,
 				77C1B69A2738D7020028C5B5 /* NSData+Bits.swift in Sources */,
 				777BA9C1272937C70030DCB9 /* BreadthFirstSearch.swift in Sources */,
 				777BA9CF272943B40030DCB9 /* BitSet.swift in Sources */,
