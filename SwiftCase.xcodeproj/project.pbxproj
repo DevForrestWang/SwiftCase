@@ -142,6 +142,7 @@
 		779843A92702C301001D73AF /* ChatListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779843A82702C301001D73AF /* ChatListTableView.swift */; };
 		779EAC872719841A0046610C /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779EAC862719841A0046610C /* BubbleSort.swift */; };
 		779EAC8927198AA40046610C /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779EAC8827198AA40046610C /* InsertionSort.swift */; };
+		77A586E0277327A6008C0A7C /* SCRxSwiftAndRxCocoaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A586DF277327A6008C0A7C /* SCRxSwiftAndRxCocoaVC.swift */; };
 		77A842A7273F623900D08148 /* SCThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A842A6273F623900D08148 /* SCThreadViewController.swift */; };
 		77A842A9273F62F900D08148 /* SCUIAnimationViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */; };
 		77A842AB273FB17D00D08148 /* SCGCDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A842AA273FB17D00D08148 /* SCGCDViewController.swift */; };
@@ -386,6 +387,7 @@
 		779843A82702C301001D73AF /* ChatListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableView.swift; sourceTree = "<group>"; };
 		779EAC862719841A0046610C /* BubbleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
 		779EAC8827198AA40046610C /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
+		77A586DF277327A6008C0A7C /* SCRxSwiftAndRxCocoaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCRxSwiftAndRxCocoaVC.swift; sourceTree = "<group>"; };
 		77A842A6273F623900D08148 /* SCThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCThreadViewController.swift; sourceTree = "<group>"; };
 		77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIAnimationViewVC.swift; sourceTree = "<group>"; };
 		77A842AA273FB17D00D08148 /* SCGCDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCGCDViewController.swift; sourceTree = "<group>"; };
@@ -1101,6 +1103,7 @@
 				77A842AA273FB17D00D08148 /* SCGCDViewController.swift */,
 				77A842AC273FB1A400D08148 /* SCOperationViewController.swift */,
 				77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */,
+				77A586DF277327A6008C0A7C /* SCRxSwiftAndRxCocoaVC.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -1427,6 +1430,7 @@
 				773967B927118DF700BF7469 /* LinkedList.swift in Sources */,
 				7756E84626FAE48200AB139F /* SCNetworkLoggerPlugin.swift in Sources */,
 				7756E86826FB2E9900AB139F /* ListViewController.swift in Sources */,
+				77A586E0277327A6008C0A7C /* SCRxSwiftAndRxCocoaVC.swift in Sources */,
 				77E0ACB326F5C229000EABC1 /* SceneDelegate.swift in Sources */,
 				7747B4F0272BF2FA00D315FA /* AdjacencyListGraph.swift in Sources */,
 				7710057E2735299300733EF7 /* TrieConfig.swift in Sources */,

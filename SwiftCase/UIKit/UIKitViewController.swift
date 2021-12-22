@@ -41,6 +41,7 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "Animation", controllerName: "SCUIAnimationViewVC", action: nil),
             SCItemModel(title: "Parse JSON by simdjson(Cocoapods ZippyJSON)", controllerName: "", action: #selector(zippyParseJSON)),
             SCItemModel(title: "Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi", controllerName: "SCommunicationVC", action: nil),
+            SCItemModel(title: "RxSwift and RxCocoa", controllerName: "SCRxSwiftAndRxCocoaVC", action: nil),
         ]
     }
 
