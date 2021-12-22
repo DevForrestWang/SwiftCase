@@ -38,6 +38,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
     // MARK: - Private
 
     /// 可观察序列Observable的创建方法
+    /// 参考：https://github.com/Lorwy/RxSwiftExample
     private func obserableFun() {
         let observable = Observable<String>.create { observer -> Disposable in
             // 对订阅者发出了.next事件
@@ -79,14 +80,28 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
         title = "RxSwift and RxCocoa"
         view.backgroundColor = .white
 
+        view.addSubview(rxLable)
+
         obserableFun()
     }
 
     // MARK: - Constraints
 
-    func setupConstraints() {}
+    func setupConstraints() {
+        rxLable.snp.makeConstraints { make in
+            make.top.equalTo(20)
+            make.width.equalTo(100)
+            make.height.equalTo(21)
+            make.centerX.equalToSuperview()
+        }
+    }
 
     // MARK: - Property
 
     private let disposeBag = DisposeBag()
+    private let rxLable = UILabel().then {
+        $0.text = "Time"
+    }
+
+    private let timer = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
 }
