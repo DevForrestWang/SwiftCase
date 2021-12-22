@@ -108,36 +108,36 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
         if recognizer.direction == .up {
             // print("up")
             upDownProgress = 1
-            upAction()
         } else if recognizer.direction == .down {
             // print("down")
             upDownProgress = -1
-            downAction()
         } else if recognizer.direction == .left {
             print("left")
         } else if recognizer.direction == .right {
             print("right")
         }
 
-        /*
-         // 3. Gesture states
-         switch recognizer.state {
-         // 3.1 Gesture states began to check the pan direction the user initiated
-         case .began:
-             print("began")
+        // 3. Gesture states
+        switch recognizer.state {
+        // 3.1 Gesture states began to check the pan direction the user initiated
+        case .began:
+            print("began")
 
-         // 3.2 Gesture state changed to Translate the view according to the user pan gesture
-         case .changed:
-             if upDownProgress == 1 {
-                 print("up")
-             } else if upDownProgress == -1 {
-                 print("down")
-             }
-         // 3.3 Gesture state end to finish the animation
-         default:
-             print("defaule")
-         }
-          */
+        // 3.2 Gesture state changed to Translate the view according to the user pan gesture
+        case .changed:
+            print("changed")
+        // 3.3 Gesture state end to finish the animation
+        case .ended:
+            if upDownProgress == 1 {
+                print("up")
+                upAction()
+            } else if upDownProgress == -1 {
+                print("down")
+                downAction()
+            }
+        default:
+            print("defaule")
+        }
     }
 
     // MARK: - UI

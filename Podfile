@@ -19,6 +19,11 @@ target 'SwiftCase' do
   # Parsing gigabytes of JSON per second
   pod 'ZippyJSON'
   
+  # 编程框架
+  pod 'Then'
+  # pod 'RxSwift'
+  pod 'RxCocoa'
+  
   # UI布局
   pod "SnapKit"
   pod "R.swift"
@@ -32,8 +37,6 @@ target 'SwiftCase' do
   pod 'Socket.IO-Client-Swift'
 
   pod 'Toast-Swift'
-  pod 'Then'
-  pod 'RxCocoa'
   
   # 代码格式插件
   pod 'SwiftFormat/CLI'
