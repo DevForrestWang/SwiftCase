@@ -27,7 +27,9 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
     }
 
     // 执行析构过程
-    deinit {}
+    deinit {
+        disposeBag = nil
+    }
 
     // MARK: - Public
 
@@ -74,6 +76,18 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
         }.disposed(by: disposeBag)
     }
 
+    /// 时间富文本
+    private func formatTimeInterval(ms: NSInteger) -> NSMutableAttributedString {
+        let string = String(format: "%0.2d:%0.2d.%0.1d", arguments: [(ms / 600) % 600, (ms % 600) / 10, ms % 10])
+        print("Time: \(string)")
+        let attString = NSMutableAttributedString(string: string)
+        attString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18), range: NSMakeRange(0, 5))
+        attString.addAttribute(.foregroundColor, value: UIColor.white, range: NSMakeRange(0, 5))
+        attString.addAttribute(.backgroundColor, value: UIColor.orange, range: NSMakeRange(0, 5))
+
+        return attString
+    }
+
     // MARK: - UI
 
     func setupUI() {
@@ -81,6 +95,10 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
         view.backgroundColor = .white
 
         view.addSubview(rxLable)
+        // 富文本
+        Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance).map(
+            formatTimeInterval(ms:)
+        ).bind(to: rxLable.rx.attributedText).disposed(by: disposeBag)
 
         obserableFun()
     }
@@ -98,10 +116,9 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
 
     // MARK: - Property
 
-    private let disposeBag = DisposeBag()
+    private var disposeBag: DisposeBag! = DisposeBag()
     private let rxLable = UILabel().then {
         $0.text = "Time"
+        $0.textAlignment = .center
     }
-
-    private let timer = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
 }
