@@ -117,8 +117,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         UIView.animate(withDuration: shrinkDuration, delay: 1.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10,
-                       options: .curveEaseInOut)
-        {
+                       options: .curveEaseInOut) {
             let scaleTransform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             imageView.transform = scaleTransform
         } completion: { _ in

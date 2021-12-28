@@ -26,10 +26,14 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
         setupConstraints()
     }
 
-    // 执行析构过程
-    deinit {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Off timer
         disposeBag = nil
     }
+
+    // 执行析构过程
+    deinit {}
 
     // MARK: - Public
 
