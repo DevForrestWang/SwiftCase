@@ -34,6 +34,7 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "UICollectionView", controllerName: "SCUICollectionViewVC", action: nil),
             SCItemModel(title: "UITextField", controllerName: "SCUITextFieldVC", action: nil),
             SCItemModel(title: "UITextView", controllerName: "SCUITextViewVC", action: nil),
+            SCItemModel(title: "Widget By Rx", controllerName: "SCWidgetVC", action: nil),
             SCItemModel(title: "MapView-GaoDe Map", controllerName: "SCUIMapViewVC", action: nil),
             SCItemModel(title: "Event", controllerName: "SCUIEventViewVC", action: nil),
             SCItemModel(title: "UI Event", controllerName: "", action: #selector(uiEventAction)),
