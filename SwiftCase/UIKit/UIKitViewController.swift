@@ -35,6 +35,7 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "UITextField", controllerName: "SCUITextFieldVC", action: nil),
             SCItemModel(title: "UITextView", controllerName: "SCUITextViewVC", action: nil),
             SCItemModel(title: "Widget By Rx", controllerName: "SCWidgetVC", action: nil),
+            SCItemModel(title: "RxSwift and RxCocoa", controllerName: "SCRxSwiftAndRxCocoaVC", action: nil),
             SCItemModel(title: "MapView-GaoDe Map", controllerName: "SCUIMapViewVC", action: nil),
             SCItemModel(title: "Event", controllerName: "SCUIEventViewVC", action: nil),
             SCItemModel(title: "UI Event", controllerName: "", action: #selector(uiEventAction)),
@@ -42,7 +43,6 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "Animation", controllerName: "SCUIAnimationViewVC", action: nil),
             SCItemModel(title: "Parse JSON by simdjson(Cocoapods ZippyJSON)", controllerName: "", action: #selector(zippyParseJSON)),
             SCItemModel(title: "Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi", controllerName: "SCommunicationVC", action: nil),
-            SCItemModel(title: "RxSwift and RxCocoa", controllerName: "SCRxSwiftAndRxCocoaVC", action: nil),
         ]
     }
 

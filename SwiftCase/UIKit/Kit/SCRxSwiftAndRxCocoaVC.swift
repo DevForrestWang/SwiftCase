@@ -8,7 +8,8 @@
 // Licensed under Apache License v2.0 with Runtime Library Exception
 //
 // See more information
-//
+// [RxSwift中文文档](https://beeth0ven.github.io/RxSwift-Chinese-Documentation/)
+// [Lorwy/RxSwiftExample](https://github.com/Lorwy/RxSwiftExample)
 //===----------------------------------------------------------------------===//
 
 import RxCocoa
@@ -44,8 +45,9 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
     // MARK: - Private
 
     /// 可观察序列Observable的创建方法
-    /// 参考：https://github.com/Lorwy/RxSwiftExample
     private func obserableFun() {
+        printEnter(message: "Observable")
+
         let observable = Observable<String>.create { observer -> Disposable in
             // 对订阅者发出了.next事件
             observer.onNext("next string")
@@ -80,6 +82,38 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
         }.disposed(by: disposeBag)
     }
 
+    /// BehaviorRelay 使用
+    private func behaviorRelayTest() {
+        printEnter(message: "BehaviorRelay")
+
+        let relay = BehaviorRelay<String>(value: "1")
+        relay.subscribe {
+            print("Event:", $0)
+        }.disposed(by: disposeBag)
+
+        relay.accept("2")
+        relay.accept("3")
+    }
+
+    private func transformingObservables() {
+        printEnter(message: "Transforming Observables")
+
+        let s1 = BehaviorSubject(value: "A")
+        let s2 = BehaviorSubject(value: "1")
+
+        let relay = BehaviorRelay<BehaviorSubject>(value: s1)
+        relay.flatMap { $0 }
+            .subscribe(onNext: {
+                print($0)
+            }).disposed(by: disposeBag)
+
+        s1.onNext("B")
+
+        relay.accept(s2)
+        s2.onNext("2")
+        s1.onNext("C")
+    }
+
     /// 时间富文本
     private func formatTimeInterval(ms: NSInteger) -> NSMutableAttributedString {
         let string = String(format: "%0.2d:%0.2d.%0.1d", arguments: [(ms / 600) % 600, (ms % 600) / 10, ms % 10])
@@ -105,6 +139,8 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
         ).bind(to: rxLable.rx.attributedText).disposed(by: disposeBag)
 
         obserableFun()
+        behaviorRelayTest()
+        transformingObservables()
     }
 
     // MARK: - Constraints

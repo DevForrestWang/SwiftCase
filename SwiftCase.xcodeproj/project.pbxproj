@@ -1098,6 +1098,7 @@
 				C88F92FE26F8D8D300739819 /* SCUITextFieldVC.swift */,
 				C88F92FF26F8D8D300739819 /* SCUITextViewVC.swift */,
 				772F9B3B277DA09800F4D43C /* SCWidgetVC.swift */,
+				77A586DF277327A6008C0A7C /* SCRxSwiftAndRxCocoaVC.swift */,
 				C88F92FC26F8D8D300739819 /* SCUIMapViewVC.swift */,
 				C822E403270EF558001C39FF /* SCUIEventViewVC.swift */,
 				7765BBEC273375E7009DF9BD /* UIEventViewController.h */,
@@ -1106,7 +1107,6 @@
 				77A842AA273FB17D00D08148 /* SCGCDViewController.swift */,
 				77A842AC273FB1A400D08148 /* SCOperationViewController.swift */,
 				77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */,
-				77A586DF277327A6008C0A7C /* SCRxSwiftAndRxCocoaVC.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
