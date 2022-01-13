@@ -1,4 +1,6 @@
- source 'https://cdn.cocoapods.org/'
+source 'https://cdn.cocoapods.org/'
+source 'https://github.com/CocoaPods/Specs.git'
+
 platform :ios, '13.0'
 
 # M1芯片，模拟器运行配置

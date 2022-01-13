@@ -398,7 +398,7 @@ private extension EasyCarouseView {
         }
         Observable<Int>
             .interval(.seconds(second), scheduler: MainScheduler.asyncInstance)
-            .take(until: rx.deallocated)
+            .takeUntil(rx.deallocated)
             .subscribe(onNext: { [weak self] _ in
                 self?.automaticScroll()
             })

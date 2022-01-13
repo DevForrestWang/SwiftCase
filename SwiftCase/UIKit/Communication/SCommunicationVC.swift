@@ -270,7 +270,7 @@ class SCommunicationVC: ItemListViewController {
                 let message = jsonString ?? "Couldn't access API"
                 // self.showAlert("restTest: ", message:message)
                 yxc_debugPrint("Response: \(message)")
-            case let .failure(error):
+            case let .error(error):
                 let message = error.localizedDescription
                 // self.showAlert("restTest: ", message: message)
                 yxc_debugPrint("Error: \(message)")
@@ -285,7 +285,7 @@ class SCommunicationVC: ItemListViewController {
                 switch event {
                 case let .success(response):
                     yxc_debugPrint("index:\(index), gradeObj: \(response)")
-                case let .failure(error):
+                case let .error(error):
                     let message = error.localizedDescription
                     // self.showAlert("restTest: ", message: message)
                     yxc_debugPrint("index:\(index), Error: \(message)")
