@@ -17,7 +17,12 @@ import Toast_Swift
 // MARK: - Print info
 
 public func yxc_debugPrint(_ message: Any...) {
-    debugPrint(message)
+    debugPrint("\(#file):\(#line): \(message)")
+}
+
+/// 错误信息
+public func scError(_ error: String, location: String = "\(#file):\(#line)") -> NSError {
+    return NSError(domain: "SwiftCaseError", code: -1, userInfo: [NSLocalizedDescriptionKey: "\(location): \(error)"])
 }
 
 public func printEnter(message: String) {
