@@ -29,6 +29,7 @@ class CaseViewController: ItemListViewController {
             SCItemModel(title: "Call OC function", controllerName: "SCObjectClass", action: #selector(callOCFunction)),
             SCItemModel(title: "List", controllerName: "ListViewController", action: nil),
             SCItemModel(title: "Up down swipe", controllerName: "UpDownSwipeViewController", action: nil),
+            SCItemModel(title: "Show RxSwift + MVVM", controllerName: "SCMvvmVC", action: nil),
         ]
     }
 

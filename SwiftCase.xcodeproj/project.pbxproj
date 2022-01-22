@@ -220,6 +220,12 @@
 		77F652C726F5E7F200280568 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F652C626F5E7F200280568 /* ItemListViewController.swift */; };
 		77F652C926F5EA3000280568 /* SCUIKitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */; };
 		8A3E2A5B2799699A006ECFB8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */; };
+		8A8ED9B4279BFC2400971DDA /* SCMvvmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AB279BFC2400971DDA /* SCMvvmVC.swift */; };
+		8A8ED9B5279BFC2400971DDA /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AD279BFC2400971DDA /* Track.swift */; };
+		8A8ED9B6279BFC2400971DDA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AF279BFC2400971DDA /* LoginView.swift */; };
+		8A8ED9B7279BFC2400971DDA /* BindingDataViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9B1279BFC2400971DDA /* BindingDataViewModelType.swift */; };
+		8A8ED9B8279BFC2400971DDA /* BindingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9B2279BFC2400971DDA /* BindingExtensions.swift */; };
+		8A8ED9B9279BFC2400971DDA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9B3279BFC2400971DDA /* SignUpViewModel.swift */; };
 		A819C63D2723F3600023EC3D /* HashTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819C63C2723F3600023EC3D /* HashTable.swift */; };
 		A8621264272E82A9007C4556 /* BruteForceStringSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
@@ -470,6 +476,12 @@
 		77F652C626F5E7F200280568 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIKitTableViewCell.swift; sourceTree = "<group>"; };
 		8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		8A8ED9AB279BFC2400971DDA /* SCMvvmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCMvvmVC.swift; sourceTree = "<group>"; };
+		8A8ED9AD279BFC2400971DDA /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		8A8ED9AF279BFC2400971DDA /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8A8ED9B1279BFC2400971DDA /* BindingDataViewModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingDataViewModelType.swift; sourceTree = "<group>"; };
+		8A8ED9B2279BFC2400971DDA /* BindingExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingExtensions.swift; sourceTree = "<group>"; };
+		8A8ED9B3279BFC2400971DDA /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9F28E3FA941807E923F79B8C /* Pods_SwiftCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A819C63C2723F3600023EC3D /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
 		A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceStringSearch.swift; sourceTree = "<group>"; };
@@ -997,6 +1009,7 @@
 		77F6523126F5CD5200280568 /* Case */ = {
 			isa = PBXGroup;
 			children = (
+				8A8ED9A9279BFC2400971DDA /* MVVM */,
 				775F8037277075AB00D167A7 /* UpDownSwipe */,
 				772D6BD92768737700C12288 /* SwipeView */,
 				7756E86326FB2E9800AB139F /* Mine */,
@@ -1075,6 +1088,51 @@
 				77F6529726F5D25F00280568 /* URLBuilder.swift */,
 			);
 			path = Creational;
+			sourceTree = "<group>";
+		};
+		8A8ED9A9279BFC2400971DDA /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				8A8ED9AA279BFC2400971DDA /* Controller */,
+				8A8ED9AC279BFC2400971DDA /* Model */,
+				8A8ED9AE279BFC2400971DDA /* View */,
+				8A8ED9B0279BFC2400971DDA /* ViewModel */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		8A8ED9AA279BFC2400971DDA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A8ED9AB279BFC2400971DDA /* SCMvvmVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8A8ED9AC279BFC2400971DDA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8A8ED9AD279BFC2400971DDA /* Track.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A8ED9AE279BFC2400971DDA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A8ED9AF279BFC2400971DDA /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A8ED9B0279BFC2400971DDA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A8ED9B1279BFC2400971DDA /* BindingDataViewModelType.swift */,
+				8A8ED9B2279BFC2400971DDA /* BindingExtensions.swift */,
+				8A8ED9B3279BFC2400971DDA /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B289C5184CEC035CC725B247 /* Pods */ = {
@@ -1412,6 +1470,8 @@
 				772F9B3C277DA09800F4D43C /* SCWidgetVC.swift in Sources */,
 				7756E84226FAE48200AB139F /* RequestData.pb.swift in Sources */,
 				77201D80271E61E000F6188E /* Randoms.swift in Sources */,
+				8A8ED9B9279BFC2400971DDA /* SignUpViewModel.swift in Sources */,
+				8A8ED9B7279BFC2400971DDA /* BindingDataViewModelType.swift in Sources */,
 				77F6529B26F5D25F00280568 /* ScreenMediator.swift in Sources */,
 				7756E85026FB17C800AB139F /* SCObjectClass.m in Sources */,
 				C88F930826F8D8D300739819 /* SCUILableViewController.swift in Sources */,
@@ -1485,6 +1545,7 @@
 				779843962702B03F001D73AF /* MessageViewModel.swift in Sources */,
 				77B66B4727001FB1009700A2 /* SCFunctionViewController.swift in Sources */,
 				7756E86D26FB2EFB00AB139F /* CommonList.swift in Sources */,
+				8A8ED9B8279BFC2400971DDA /* BindingExtensions.swift in Sources */,
 				771005722735299300733EF7 /* Interval.swift in Sources */,
 				77F652C526F5E2C500280568 /* SCUITabBarController.swift in Sources */,
 				77C25442270319470012F078 /* UITextView+Extension.swift in Sources */,
@@ -1501,6 +1562,7 @@
 				77E0ACB526F5C229000EABC1 /* ContentView.swift in Sources */,
 				7756E84B26FAE48200AB139F /* Student.swift in Sources */,
 				7710057B2735299300733EF7 /* MatchToken.swift in Sources */,
+				8A8ED9B5279BFC2400971DDA /* Track.swift in Sources */,
 				7760EFF2272FC86B00F1ADE8 /* RabinKarpStringSearch.swift in Sources */,
 				7798437A2702AFD7001D73AF /* Application+Extension.swift in Sources */,
 				C88F930626F8D8D300739819 /* SCUITextFieldVC.swift in Sources */,
@@ -1518,6 +1580,7 @@
 				779843A52702B03F001D73AF /* MessageSendTableViewCell.swift in Sources */,
 				77F652BF26F5E1C900280568 /* AlgorithmViewController.swift in Sources */,
 				C88F934426F8DEAD00739819 /* SCBrowsImageCell.swift in Sources */,
+				8A8ED9B6279BFC2400971DDA /* LoginView.swift in Sources */,
 				77062DED2739467700A7F090 /* VertexPath.swift in Sources */,
 				77F652C326F5E24E00280568 /* CaseViewController.swift in Sources */,
 				8A3E2A5B2799699A006ECFB8 /* String+Extension.swift in Sources */,
@@ -1545,6 +1608,7 @@
 				7756E85226FB180800AB139F /* SwiftObj.swift in Sources */,
 				777BA9C5272939850030DCB9 /* Trie.swift in Sources */,
 				779843A32702B03F001D73AF /* TableView+Extension.swift in Sources */,
+				8A8ED9B4279BFC2400971DDA /* SCMvvmVC.swift in Sources */,
 				7710F03B2771B69B0083E067 /* SCPrevCarouseCell.swift in Sources */,
 				77C1B69A2738D7020028C5B5 /* NSData+Bits.swift in Sources */,
 				777BA9C1272937C70030DCB9 /* BreadthFirstSearch.swift in Sources */,
