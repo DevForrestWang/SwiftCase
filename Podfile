@@ -29,6 +29,8 @@ target 'SwiftCase' do
   # UI布局
   pod "SnapKit"
   pod "R.swift"
+  # Flexbox 布局
+  pod "YogaKit"
   
   # 图片库
   pod "Kingfisher"

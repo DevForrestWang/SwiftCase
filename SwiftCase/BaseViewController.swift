@@ -23,14 +23,14 @@ class BaseViewController: UIViewController {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor(red: 0.27, green: 0.71, blue: 0.94, alpha: 1)
-            let titleColor = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18) as Any, NSAttributedString.Key.foregroundColor: UIColor.hexColor(0x333333)]
+            let titleColor = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18) as Any, NSAttributedString.Key.foregroundColor: UIColor.white]
             appearance.titleTextAttributes = titleColor
             appearance.largeTitleTextAttributes = titleColor
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
         } else {
             navigationController?.navigationBar.barTintColor = UIColor(red: 0.27, green: 0.71, blue: 0.94, alpha: 1)
-            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.hexColor(0x333333)]
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         }
 
         if responds(to: Selector(("edgesForExtendedLayout"))) {

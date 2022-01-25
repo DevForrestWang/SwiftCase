@@ -29,6 +29,7 @@ class UIKitViewController: ItemListViewController {
         return [
             SCItemModel(title: "Function", controllerName: "SCFunctionViewController", action: nil),
             SCItemModel(title: "UIVIew", controllerName: "SCUIVIewViewController", action: nil),
+            SCItemModel(title: "Flexbox case", controllerName: "SCFlexBoxVC", action: nil),
             SCItemModel(title: "UIButton", controllerName: "SCUIButtonViewController", action: nil),
             SCItemModel(title: "UILable", controllerName: "SCUILableViewController", action: nil),
             SCItemModel(title: "UICollectionView", controllerName: "SCUICollectionViewVC", action: nil),

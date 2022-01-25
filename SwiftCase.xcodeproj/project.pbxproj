@@ -220,6 +220,7 @@
 		77F652C726F5E7F200280568 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F652C626F5E7F200280568 /* ItemListViewController.swift */; };
 		77F652C926F5EA3000280568 /* SCUIKitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */; };
 		8A3E2A5B2799699A006ECFB8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */; };
+		8A486261279FD5BE004ABF6C /* SCFlexBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */; };
 		8A8ED9B4279BFC2400971DDA /* SCMvvmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AB279BFC2400971DDA /* SCMvvmVC.swift */; };
 		8A8ED9B5279BFC2400971DDA /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AD279BFC2400971DDA /* Track.swift */; };
 		8A8ED9B6279BFC2400971DDA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AF279BFC2400971DDA /* LoginView.swift */; };
@@ -476,6 +477,7 @@
 		77F652C626F5E7F200280568 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIKitTableViewCell.swift; sourceTree = "<group>"; };
 		8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCFlexBoxVC.swift; sourceTree = "<group>"; };
 		8A8ED9AB279BFC2400971DDA /* SCMvvmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCMvvmVC.swift; sourceTree = "<group>"; };
 		8A8ED9AD279BFC2400971DDA /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		8A8ED9AF279BFC2400971DDA /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -1090,6 +1092,14 @@
 			path = Creational;
 			sourceTree = "<group>";
 		};
+		8A486262279FD7C4004ABF6C /* FlexBoxCase */ = {
+			isa = PBXGroup;
+			children = (
+				8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */,
+			);
+			path = FlexBoxCase;
+			sourceTree = "<group>";
+		};
 		8A8ED9A9279BFC2400971DDA /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
@@ -1147,6 +1157,7 @@
 		C88F92F926F8D83200739819 /* Kit */ = {
 			isa = PBXGroup;
 			children = (
+				8A486262279FD7C4004ABF6C /* FlexBoxCase */,
 				77B66B4627001FB1009700A2 /* SCFunctionViewController.swift */,
 				C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */,
 				C88F92FD26F8D8D300739819 /* SCUIButtonViewController.swift */,
@@ -1562,6 +1573,7 @@
 				77E0ACB526F5C229000EABC1 /* ContentView.swift in Sources */,
 				7756E84B26FAE48200AB139F /* Student.swift in Sources */,
 				7710057B2735299300733EF7 /* MatchToken.swift in Sources */,
+				8A486261279FD5BE004ABF6C /* SCFlexBoxVC.swift in Sources */,
 				8A8ED9B5279BFC2400971DDA /* Track.swift in Sources */,
 				7760EFF2272FC86B00F1ADE8 /* RabinKarpStringSearch.swift in Sources */,
 				7798437A2702AFD7001D73AF /* Application+Extension.swift in Sources */,
