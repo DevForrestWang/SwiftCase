@@ -221,6 +221,10 @@
 		77F652C926F5EA3000280568 /* SCUIKitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */; };
 		8A3E2A5B2799699A006ECFB8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */; };
 		8A486261279FD5BE004ABF6C /* SCFlexBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */; };
+		8A486264279FD865004ABF6C /* Shows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A486263279FD865004ABF6C /* Shows.plist */; };
+		8A486266279FD9DB004ABF6C /* sherlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A486265279FD9DB004ABF6C /* sherlock.png */; };
+		8A486268279FDC4C004ABF6C /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486267279FDC4C004ABF6C /* LoadData.swift */; };
+		8A48626A279FDFE3004ABF6C /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486269279FDFE3004ABF6C /* ShowTableViewCell.swift */; };
 		8A8ED9B4279BFC2400971DDA /* SCMvvmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AB279BFC2400971DDA /* SCMvvmVC.swift */; };
 		8A8ED9B5279BFC2400971DDA /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AD279BFC2400971DDA /* Track.swift */; };
 		8A8ED9B6279BFC2400971DDA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AF279BFC2400971DDA /* LoginView.swift */; };
@@ -478,6 +482,10 @@
 		77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIKitTableViewCell.swift; sourceTree = "<group>"; };
 		8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCFlexBoxVC.swift; sourceTree = "<group>"; };
+		8A486263279FD865004ABF6C /* Shows.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shows.plist; sourceTree = "<group>"; };
+		8A486265279FD9DB004ABF6C /* sherlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sherlock.png; sourceTree = "<group>"; };
+		8A486267279FDC4C004ABF6C /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
+		8A486269279FDFE3004ABF6C /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
 		8A8ED9AB279BFC2400971DDA /* SCMvvmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCMvvmVC.swift; sourceTree = "<group>"; };
 		8A8ED9AD279BFC2400971DDA /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		8A8ED9AF279BFC2400971DDA /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -937,6 +945,7 @@
 		77F6520726F5CB2000280568 /* Resouce */ = {
 			isa = PBXGroup;
 			children = (
+				8A486265279FD9DB004ABF6C /* sherlock.png */,
 				77DC1134274241F9002AED0C /* santa.png */,
 				7765BBF32733B8AE009DF9BD /* trie_data.txt */,
 				773967A827101CBC00BF7469 /* manor.jpg */,
@@ -1095,7 +1104,10 @@
 		8A486262279FD7C4004ABF6C /* FlexBoxCase */ = {
 			isa = PBXGroup;
 			children = (
+				8A486263279FD865004ABF6C /* Shows.plist */,
 				8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */,
+				8A486267279FDC4C004ABF6C /* LoadData.swift */,
+				8A486269279FDFE3004ABF6C /* ShowTableViewCell.swift */,
 			);
 			path = FlexBoxCase;
 			sourceTree = "<group>";
@@ -1299,6 +1311,7 @@
 				7756E87A26FC17A400AB139F /* nav_btn_closed@2x.png in Resources */,
 				77F6522326F5CBAC00280568 /* icon_right_arrow@2x.png in Resources */,
 				77F6522726F5CBAC00280568 /* placeholder@2x.png in Resources */,
+				8A486266279FD9DB004ABF6C /* sherlock.png in Resources */,
 				7756E88226FC28FB00AB139F /* normalImage@3x.png in Resources */,
 				7756E81026FACF2100AB139F /* forrest-icon.png in Resources */,
 				77E0ACBD26F5C235000EABC1 /* LaunchScreen.storyboard in Resources */,
@@ -1320,6 +1333,7 @@
 				77E0ACB726F5C235000EABC1 /* Assets.xcassets in Resources */,
 				77F6521B26F5CBAC00280568 /* icon_course@2x.png in Resources */,
 				779843A12702B03F001D73AF /* ChatListTableViewCell.xib in Resources */,
+				8A486264279FD865004ABF6C /* Shows.plist in Resources */,
 				77F6522826F5CBAC00280568 /* mine@2x.png in Resources */,
 				77F6521D26F5CBAC00280568 /* icon_live@2x.png in Resources */,
 				7756E88126FC28FB00AB139F /* hightImage@3x.png in Resources */,
@@ -1486,6 +1500,7 @@
 				77F6529B26F5D25F00280568 /* ScreenMediator.swift in Sources */,
 				7756E85026FB17C800AB139F /* SCObjectClass.m in Sources */,
 				C88F930826F8D8D300739819 /* SCUILableViewController.swift in Sources */,
+				8A48626A279FDFE3004ABF6C /* ShowTableViewCell.swift in Sources */,
 				779EAC8927198AA40046610C /* InsertionSort.swift in Sources */,
 				C88F930426F8D8D300739819 /* SCUIMapViewVC.swift in Sources */,
 				7710F03F2771B7540083E067 /* SCUpCarouseView.swift in Sources */,
@@ -1611,6 +1626,7 @@
 				7710057F2735299300733EF7 /* ACEmit.swift in Sources */,
 				77062DEF27394B8300A7F090 /* DijkstraData.swift in Sources */,
 				778159A72714652C0046D14D /* Queue.swift in Sources */,
+				8A486268279FDC4C004ABF6C /* LoadData.swift in Sources */,
 				7765BBEE273375E8009DF9BD /* UIEventViewController.m in Sources */,
 				77F6529E26F5D25F00280568 /* NotificationVisitor.swift in Sources */,
 				77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */,
