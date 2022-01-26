@@ -38,7 +38,7 @@ class BaseViewController: UIViewController {
         }
 
         // 隐藏返回按钮的文字，要通过重新leftItem方式，如果通过 navigationController!.navigationBar.topItem!.title = "" 返回时前一个页面title没有
-        if (navigationController?.children.count)! > 1 {
+        if (navigationController?.children.count) ?? 0 > 1 {
             let backButtonItem = UIBarButtonItem(image: R.image.nav_btn_backs(), style: .plain, target: self, action: #selector(backButtonClicked))
             backButtonItem.tintColor = .white
             navigationItem.leftBarButtonItems = [backButtonItem]

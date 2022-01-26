@@ -161,10 +161,58 @@ class SCFlexBoxVC: BaseViewController {
         episodeImageView.image = image
         episodeImageView.configureLayout { layout in
             layout.isEnabled = true
-            layout.flexGrow = 1.0
+            // layout.flexGrow = 1.0
             layout.aspectRatio = imageWidth / imageHeight
         }
         contentView.addSubview(episodeImageView)
+
+        // Sumary View
+        let summaryView = UIView(frame: .zero)
+        summaryView.configureLayout { layout in
+            layout.isEnabled = true
+            layout.flexDirection = .row
+            layout.padding = self.padding
+        }
+
+        let summaryPopularityLable = UILabel(frame: .zero)
+        summaryPopularityLable.text = String(repeating: "★", count: 5)
+        summaryPopularityLable.font = .systemFont(ofSize: 14.0)
+        summaryPopularityLable.textColor = .red
+        summaryPopularityLable.configureLayout { layout in
+            layout.isEnabled = true
+            layout.flexGrow = 1.0
+        }
+        summaryView.addSubview(summaryPopularityLable)
+
+        // Info: Year, Rating, Length
+        let summaryInfoView = UIView(frame: .zero)
+        summaryInfoView.configureLayout { layout in
+            layout.isEnabled = true
+            layout.flexGrow = 2.0
+            layout.flexDirection = .row
+            layout.justifyContent = .spaceBetween
+        }
+
+        for text in ["2022", "TV-14", "3 Series"] {
+            let summaryInfoLable = UILabel(frame: .zero)
+            summaryInfoLable.text = text
+            summaryInfoLable.font = .systemFont(ofSize: 14.0)
+            summaryInfoLable.textColor = .lightGray
+            summaryInfoLable.configureLayout { layout in
+                layout.isEnabled = true
+            }
+            summaryInfoView.addSubview(summaryInfoLable)
+        }
+        summaryView.addSubview(summaryInfoView)
+
+        let summaryInfoSpacerView = UIView(frame: .zero)
+        summaryInfoSpacerView.configureLayout { layout in
+            layout.isEnabled = true
+            layout.flexGrow = 1.0
+        }
+        summaryView.addSubview(summaryInfoSpacerView)
+
+        contentView.addSubview(summaryView)
 
         // Apply the layout to view and subviews
         contentView.yoga.applyLayout(preservingOrigin: false)
@@ -175,6 +223,9 @@ class SCFlexBoxVC: BaseViewController {
     fileprivate var datasource = [LoadData]()
 
     fileprivate let cellIdentifier = "ShowCell"
+
+    private let paddingHorizontal: YGValue = 8.0
+    private let padding: YGValue = 8.0
 
     fileprivate let contentView = UIScrollView(frame: .zero)
 }

@@ -222,9 +222,9 @@
 		8A3E2A5B2799699A006ECFB8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */; };
 		8A486261279FD5BE004ABF6C /* SCFlexBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */; };
 		8A486264279FD865004ABF6C /* Shows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A486263279FD865004ABF6C /* Shows.plist */; };
-		8A486266279FD9DB004ABF6C /* sherlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A486265279FD9DB004ABF6C /* sherlock.png */; };
 		8A486268279FDC4C004ABF6C /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486267279FDC4C004ABF6C /* LoadData.swift */; };
 		8A48626A279FDFE3004ABF6C /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486269279FDFE3004ABF6C /* ShowTableViewCell.swift */; };
+		8A48626E27A0EE48004ABF6C /* sherlock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A48626D27A0EE48004ABF6C /* sherlock@3x.png */; };
 		8A8ED9B4279BFC2400971DDA /* SCMvvmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AB279BFC2400971DDA /* SCMvvmVC.swift */; };
 		8A8ED9B5279BFC2400971DDA /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AD279BFC2400971DDA /* Track.swift */; };
 		8A8ED9B6279BFC2400971DDA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9AF279BFC2400971DDA /* LoginView.swift */; };
@@ -483,9 +483,9 @@
 		8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCFlexBoxVC.swift; sourceTree = "<group>"; };
 		8A486263279FD865004ABF6C /* Shows.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shows.plist; sourceTree = "<group>"; };
-		8A486265279FD9DB004ABF6C /* sherlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sherlock.png; sourceTree = "<group>"; };
 		8A486267279FDC4C004ABF6C /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
 		8A486269279FDFE3004ABF6C /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
+		8A48626D27A0EE48004ABF6C /* sherlock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sherlock@3x.png"; sourceTree = "<group>"; };
 		8A8ED9AB279BFC2400971DDA /* SCMvvmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCMvvmVC.swift; sourceTree = "<group>"; };
 		8A8ED9AD279BFC2400971DDA /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		8A8ED9AF279BFC2400971DDA /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -945,7 +945,7 @@
 		77F6520726F5CB2000280568 /* Resouce */ = {
 			isa = PBXGroup;
 			children = (
-				8A486265279FD9DB004ABF6C /* sherlock.png */,
+				8A48626D27A0EE48004ABF6C /* sherlock@3x.png */,
 				77DC1134274241F9002AED0C /* santa.png */,
 				7765BBF32733B8AE009DF9BD /* trie_data.txt */,
 				773967A827101CBC00BF7469 /* manor.jpg */,
@@ -1311,12 +1311,12 @@
 				7756E87A26FC17A400AB139F /* nav_btn_closed@2x.png in Resources */,
 				77F6522326F5CBAC00280568 /* icon_right_arrow@2x.png in Resources */,
 				77F6522726F5CBAC00280568 /* placeholder@2x.png in Resources */,
-				8A486266279FD9DB004ABF6C /* sherlock.png in Resources */,
 				7756E88226FC28FB00AB139F /* normalImage@3x.png in Resources */,
 				7756E81026FACF2100AB139F /* forrest-icon.png in Resources */,
 				77E0ACBD26F5C235000EABC1 /* LaunchScreen.storyboard in Resources */,
 				7756E88026FC28FB00AB139F /* hightImage@2x.png in Resources */,
 				77F6522A26F5CBAC00280568 /* home@2x.png in Resources */,
+				8A48626E27A0EE48004ABF6C /* sherlock@3x.png in Resources */,
 				77E0ACBA26F5C235000EABC1 /* Preview Assets.xcassets in Resources */,
 				773967AB27101CBD00BF7469 /* yacht.jpg in Resources */,
 				77F6522926F5CBAC00280568 /* student@2x.png in Resources */,
