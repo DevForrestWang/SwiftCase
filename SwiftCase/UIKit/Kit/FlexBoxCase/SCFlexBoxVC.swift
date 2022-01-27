@@ -23,6 +23,13 @@ class SCFlexBoxVC: BaseViewController {
         setupConstraints()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // 代码调试
+        contentView.showAllBoder()
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -180,7 +187,7 @@ class SCFlexBoxVC: BaseViewController {
         summaryPopularityLable.textColor = .red
         summaryPopularityLable.configureLayout { layout in
             layout.isEnabled = true
-            layout.flexGrow = 1.0
+            layout.flexBasis = 25%
         }
         summaryView.addSubview(summaryPopularityLable)
 
@@ -188,7 +195,7 @@ class SCFlexBoxVC: BaseViewController {
         let summaryInfoView = UIView(frame: .zero)
         summaryInfoView.configureLayout { layout in
             layout.isEnabled = true
-            layout.flexGrow = 2.0
+            layout.flexBasis = 50%
             layout.flexDirection = .row
             layout.justifyContent = .spaceBetween
         }
@@ -208,10 +215,9 @@ class SCFlexBoxVC: BaseViewController {
         let summaryInfoSpacerView = UIView(frame: .zero)
         summaryInfoSpacerView.configureLayout { layout in
             layout.isEnabled = true
-            layout.flexGrow = 1.0
+            layout.flexBasis = 25%
         }
         summaryView.addSubview(summaryInfoSpacerView)
-
         contentView.addSubview(summaryView)
 
         // Apply the layout to view and subviews
