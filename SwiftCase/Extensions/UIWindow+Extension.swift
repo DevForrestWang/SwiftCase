@@ -1,5 +1,5 @@
 //
-//===--- UIWindowExtension.swift - Defines the UIWindowExtension class ----------===//
+//===--- UIWindow+Extension.swift - Defines the UIWindow+Extension class ----------===//
 //
 // This source file is part of the SwiftCase open source project
 //

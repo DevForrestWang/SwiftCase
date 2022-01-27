@@ -1,5 +1,5 @@
 //
-//===--- UIColorExtension.swift - Defines the UIColorExtension class ----------===//
+//===--- UIColor+Extension.swift - Defines the UIColor+Extension class ----------===//
 //
 // This source file is part of the SwiftCase open source project
 //
