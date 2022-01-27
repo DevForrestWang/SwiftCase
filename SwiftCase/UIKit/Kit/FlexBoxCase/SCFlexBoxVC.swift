@@ -220,6 +220,83 @@ class SCFlexBoxVC: BaseViewController {
         summaryView.addSubview(summaryInfoSpacerView)
         contentView.addSubview(summaryView)
 
+        // title view
+        let titleView = UIView(frame: .zero)
+        titleView.configureLayout { layout in
+            layout.isEnabled = true
+            layout.flexDirection = .row
+            layout.padding = self.padding
+        }
+
+        let titleEpisodeLabel = showLableFor(text: "S3:E3", font: .boldSystemFont(ofSize: 16.0))
+        titleView.addSubview(titleEpisodeLabel)
+
+        let titleFullLabel = UILabel(frame: .zero)
+        titleFullLabel.text = show.title
+        titleFullLabel.font = .boldSystemFont(ofSize: 16.0)
+        titleFullLabel.textColor = .lightGray
+        titleFullLabel.configureLayout { layout in
+            layout.isEnabled = true
+            layout.marginLeft = 20.0
+            layout.marginBottom = 5.0
+        }
+        titleView.addSubview(titleFullLabel)
+        contentView.addSubview(titleView)
+
+        // Description View
+        let descriptionView = UIView(frame: .zero)
+        descriptionView.configureLayout { layout in
+            layout.isEnabled = true
+            layout.paddingHorizontal = self.paddingHorizontal
+        }
+
+        let descriptionLabel = UILabel(frame: .zero)
+        descriptionLabel.font = .systemFont(ofSize: 14.0)
+        descriptionLabel.numberOfLines = 3
+        descriptionLabel.textColor = .lightGray
+        descriptionLabel.text = show.detail
+        descriptionLabel.configureLayout { layout in
+            layout.isEnabled = true
+            layout.marginBottom = 5.0
+        }
+        descriptionView.addSubview(descriptionLabel)
+
+        let castLabel = showLableFor(text: "Cast: Benedict Cumberbatch, Martin Freeman, Una Stubbs", font: .systemFont(ofSize: 14.0))
+        descriptionView.addSubview(castLabel)
+
+        let creatorLabel = showLableFor(text: "Creators: Mark Gatiss, Steven Moffat", font: .systemFont(ofSize: 14.0))
+        descriptionView.addSubview(creatorLabel)
+        contentView.addSubview(descriptionView)
+
+        // Actions View
+        let actionView = UIView(frame: .zero)
+        actionView.configureLayout { layout in
+            layout.isEnabled = true
+            layout.flexDirection = .row
+            layout.padding = self.padding
+        }
+
+        let addActionView = showActionViewFor(imageName: "add", text: "My List")
+        actionView.addSubview(addActionView)
+
+        let shareActionView = showActionViewFor(imageName: "share", text: "Share")
+        actionView.addSubview(shareActionView)
+        contentView.addSubview(actionView)
+
+        // Tabs View
+        let tabsView = UIView(frame: .zero)
+        tabsView.configureLayout { layout in
+            layout.isEnabled = true
+            layout.flexDirection = .row
+            layout.padding = self.padding
+        }
+
+        let episodesTabView = showTabBarFor(text: "EPISODES", selected: true)
+        tabsView.addSubview(episodesTabView)
+        let moreTabView = showTabBarFor(text: "MORE LIKE THIS", selected: false)
+        tabsView.addSubview(moreTabView)
+        contentView.addSubview(tabsView)
+
         // Apply the layout to view and subviews
         contentView.yoga.applyLayout(preservingOrigin: false)
     }
