@@ -1,8 +1,8 @@
 ## SwiftCase
 
-**SwiftCase** 是一个纯swift的开发示例，主要包括：基本组件用法、设计模式、算法及一些小的示例。
+**SwiftCase** 是一个Swift的开发示例，便于一些用法的参考，提高开发速度；该项目主要包括：基本组件、设计模式、算法及一些案例。
 
-![screenshot](images/scdemo.gif)
+![screenshot](images/scdemo1.gif)
 
 
 
@@ -20,20 +20,23 @@
 
 - **UIKit**
 
-  - Function - 描述字符串、数组、字典、集合和元组的用法
-  - UIVIew 
-  - UIButton
-  - UILable
-  - UICollectionView
-  - UITextField
-  - UITextView
-  - MapView-GaoDe Map
-  - Event
-  - UI Event
-  - Thread, OperationQueue, GCD
-  - Animation
-  - Parse JSON by simdjson(Cocoapods ZippyJSON)
-  - Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi
+  - Function - 整理字符串、数组、字典、集合和元组的用法
+  - UIVIew  - 使用SnapKit 进行界面布局及autolayout方式页面布局
+  - Flexbox case - 使用FlexBox进行界面布局、plist文件的加载
+  - UIButton - Button的常用属性；圆角按钮，文字按钮、图文按钮
+  - UILable - Lable的常用属性；多行文本、富文本、及图文混排
+  - UICollectionView - Collection属性，页头、页脚等设置
+  - UITextField - testField 属性、左右View的定义、键盘抬起、关闭等功能
+  - UITextView - testView属性及Placeholder定义
+  - Widget By Rx - Rx的常用组件的使用
+  - RxSwift and RxCocoa - Rx的语法及特性
+  - MapView-GaoDe Map - 高德地图使用示例
+  - Event - 点击事件、长按事件、滑动、拖动、及图片的放大缩小演示
+  - UI Event - 演示Swift与OC通过闭包、代理的方式进行数据传递
+  - Thread, OperationQueue, GCD - 演示线程的三种使用方法
+  - Animation - 待实现
+  - Parse JSON by simdjson(Cocoapods ZippyJSON) - 解析JSON最快的库的使用
+  - Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi - 数据通信方式，当前实现了HTTP及gPRC网络请求、通过聊天室演示WebSocket的使用
 
   
 
