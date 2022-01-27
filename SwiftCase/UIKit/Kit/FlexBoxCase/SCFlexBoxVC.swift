@@ -14,7 +14,7 @@
 import UIKit
 import YogaKit
 
-class SCFlexBoxVC: BaseViewController {
+class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -57,6 +57,11 @@ class SCFlexBoxVC: BaseViewController {
         let cell: ShowTableViewCell =
             tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ShowTableViewCell
         cell.show = datasource[indexPath.row]
+
+        let lineView = UIView(frame: CGRect(x: 0, y: cell.frame.size.height - 1, width: view.bounds.size.width, height: 1))
+        lineView.backgroundColor = .lightGray
+        cell.addSubview(lineView)
+
         return cell
     }
 
@@ -121,12 +126,15 @@ class SCFlexBoxVC: BaseViewController {
 
         let tabLableFont = selected ? UIFont.boldSystemFont(ofSize: 14.0) : UIFont.systemFont(ofSize: 14.0)
         let fontSize = text.size(withAttributes: [NSAttributedString.Key.font: tabLableFont])
-        let tabSelectView = UIView(frame: CGRect(x: 0, y: 0, width: fontSize.width, height: 3))
+        let tabSelectView = UIView(frame: .zero)
+        tabSelectView.backgroundColor = .clear
         if selected {
             tabSelectView.backgroundColor = .red
         }
         tabSelectView.configureLayout { layout in
             layout.isEnabled = true
+            layout.width = YGValue(fontSize.width)
+            layout.height = 3
             layout.marginBottom = 5.0
         }
         tabView.addSubview(tabSelectView)
@@ -291,11 +299,24 @@ class SCFlexBoxVC: BaseViewController {
             layout.padding = self.padding
         }
 
-        let episodesTabView = showTabBarFor(text: "EPISODES", selected: true)
+        let episodesTabView = showTabBarFor(text: "EPISODES", selected: false)
         tabsView.addSubview(episodesTabView)
-        let moreTabView = showTabBarFor(text: "MORE LIKE THIS", selected: false)
+
+        let moreTabView = showTabBarFor(text: "MORE LIKE THIS", selected: true)
         tabsView.addSubview(moreTabView)
         contentView.addSubview(tabsView)
+
+        // Shows
+        let showTableView = UITableView()
+        showTableView.delegate = self
+        showTableView.dataSource = self
+        showTableView.backgroundColor = .black
+        showTableView.register(ShowTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        showTableView.configureLayout { layout in
+            layout.isEnabled = true
+            layout.flexGrow = 1.0
+        }
+        contentView.addSubview(showTableView)
 
         // Apply the layout to view and subviews
         contentView.yoga.applyLayout(preservingOrigin: false)
