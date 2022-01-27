@@ -22,7 +22,7 @@ class ShowTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    var show: LoadData! {
+    var show: SCFlexBoxData! {
         didSet {
             self.textLabel?.text = show.title
             self.detailTextLabel?.text = show.length

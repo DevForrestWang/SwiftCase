@@ -10,7 +10,7 @@
 		<key>detail</key>
 		<string>Two years after Shelock&apos;s &quot;death&quot;. Watson has moved on. But when Long is threatened by a terrorrist attack, Sherlock decides it&apos;s time to return.</string>
 		<key>image</key>
-		<string>sherlock</string>
+		<string>manor.jpg</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -20,7 +20,7 @@
 		<key>detail</key>
 		<string>While mortal danger stalks Watson&apos;s wedding reception, Sherlock faces his biggest challenge of all: delivering a best man&apos;s speech!</string>
 		<key>image</key>
-		<string>sherlock</string>
+		<string>manor.jpg</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -30,7 +30,7 @@
 		<key>detail</key>
 		<string>A case of stoeln letters leads Sherlock Holmes to engage in a long conflict with the powerful Chales Augustus Magnussen, the Napolean of blackmail.</string>
 		<key>image</key>
-		<string>sherlock</string>
+		<string>manor.jpg</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -40,7 +40,7 @@
 		<key>detail</key>
 		<string>In this special set in 1895, Holmes and Watson investigate a vengeful apparition in a wedding dress, reportedly the ghost of a suicide victim.</string>
 		<key>image</key>
-		<string>sherlock</string>
+		<string>manor.jpg</string>
 	</dict>
 </array>
 </plist>

@@ -1,5 +1,5 @@
 //
-//===--- LoadData.swift - Defines the LoadData class ----------===//
+//===--- SCFlexBoxData.swift - Defines the SCFlexBoxData class ----------===//
 //
 // This source file is part of the SwiftCase open source project
 //
@@ -13,7 +13,7 @@
 
 import Foundation
 
-struct LoadData {
+struct SCFlexBoxData {
     let title: String
     let length: String
     let detail: String
@@ -21,15 +21,15 @@ struct LoadData {
 }
 
 /// loading data form plist
-extension LoadData {
-    static func loadShows() -> [LoadData] {
+extension SCFlexBoxData {
+    static func loadShows() -> [SCFlexBoxData] {
         guard let path = Bundle.main.path(forResource: "Shows", ofType: "plist"),
               let dictArray = NSArray(contentsOfFile: path) as? [[String: AnyObject]]
         else {
             fatalError("Failed to reading Shows.plist")
         }
 
-        var dataAry = [LoadData]()
+        var dataAry = [SCFlexBoxData]()
         for dic in dictArray {
             guard
                 let title = dic["title"] as? String,
@@ -40,7 +40,7 @@ extension LoadData {
                 fatalError("Failed to parsing dict \(dic)")
             }
 
-            let data = LoadData(title: title, length: lenght, detail: detail, image: image)
+            let data = SCFlexBoxData(title: title, length: lenght, detail: detail, image: image)
             dataAry.append(data)
         }
 

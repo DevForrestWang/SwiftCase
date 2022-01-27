@@ -27,7 +27,7 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         super.viewWillAppear(animated)
 
         // 代码调试
-        contentView.showAllBoder()
+        // contentView.showAllBoder()
     }
 
     override func viewDidLayoutSubviews() {
@@ -73,10 +73,18 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("Selected row \(indexPath.row)")
+        showToast("Selected row \(indexPath.row)")
     }
 
     // MARK: - IBActions
+
+    @objc private func buttonAction(_ button: UIButton) {
+        if button.tag == 100 {
+            showToast("My List action")
+        } else if button.tag == 101 {
+            showToast("Share action")
+        }
+    }
 
     // MARK: - Private
 
@@ -94,7 +102,7 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         return label
     }
 
-    private func showActionViewFor(imageName: String, text: String) -> UIView {
+    private func showActionViewFor(buttonTag: Int, imageName: String, selectImage: String, text: String) -> UIView {
         let actionView = UIView(frame: .zero)
         actionView.configureLayout { layout in
             layout.isEnabled = true
@@ -103,11 +111,14 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         }
 
         let actionButton = UIButton(type: .custom)
+        actionButton.tag = buttonTag
         actionButton.setImage(UIImage(named: imageName), for: .normal)
+        actionButton.setImage(UIImage(named: selectImage), for: .selected)
         actionButton.configureLayout { layout in
             layout.isEnabled = true
             layout.padding = 10.0
         }
+        actionButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         actionView.addSubview(actionButton)
 
         let actionLable = showLableFor(text: text)
@@ -151,7 +162,7 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         title = "Flexbox Case"
         view.backgroundColor = .white
 
-        datasource = LoadData.loadShows()
+        datasource = SCFlexBoxData.loadShows()
     }
 
     // MARK: - Constraints
@@ -170,7 +181,7 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         let show = datasource[2]
         let episodeImageView = UIImageView(frame: .zero)
         episodeImageView.backgroundColor = .gray
-        let image = UIImage(named: show.image)
+        let image = UIImage(named: "sherlock")
         let imageWidth = image?.size.width ?? 1.0
         let imageHeight = image?.size.height ?? 1.0
         episodeImageView.image = image
@@ -284,10 +295,10 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
             layout.padding = self.padding
         }
 
-        let addActionView = showActionViewFor(imageName: "add", text: "My List")
+        let addActionView = showActionViewFor(buttonTag: 100, imageName: "add", selectImage: "add_select", text: "My List")
         actionView.addSubview(addActionView)
 
-        let shareActionView = showActionViewFor(imageName: "share", text: "Share")
+        let shareActionView = showActionViewFor(buttonTag: 101, imageName: "share", selectImage: "share_select", text: "Share")
         actionView.addSubview(shareActionView)
         contentView.addSubview(actionView)
 
@@ -307,6 +318,12 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         contentView.addSubview(tabsView)
 
         // Shows
+        let tableViewSpace = UIView(frame: .zero)
+        tableViewSpace.configureLayout { layout in
+            layout.isEnabled = true
+            layout.height = YGValue(integerLiteral: self.datasource.count * 100)
+        }
+
         let showTableView = UITableView()
         showTableView.delegate = self
         showTableView.dataSource = self
@@ -316,7 +333,8 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
             layout.isEnabled = true
             layout.flexGrow = 1.0
         }
-        contentView.addSubview(showTableView)
+        tableViewSpace.addSubview(showTableView)
+        contentView.addSubview(tableViewSpace)
 
         // Apply the layout to view and subviews
         contentView.yoga.applyLayout(preservingOrigin: false)
@@ -324,7 +342,7 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
 
     // MARK: - Property
 
-    fileprivate var datasource = [LoadData]()
+    fileprivate var datasource = [SCFlexBoxData]()
 
     fileprivate let cellIdentifier = "ShowCell"
 
