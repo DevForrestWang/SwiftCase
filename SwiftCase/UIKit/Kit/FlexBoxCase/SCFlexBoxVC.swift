@@ -8,6 +8,9 @@
 // Licensed under Apache License v2.0 with Runtime Library Exception
 //
 // See more information
+// [Yoga 教程-使用跨平台布局引擎](https://iangeli.com/2018/04/16/Yoga%E6%95%99%E7%A8%8B.html#gbjvt)
+// [iOS - FlexBox layout YOGAKIT](https://www.programmerall.com/article/68451490868/)
+// [Flexbox playground](https://codepen.io/enxaneta/full/adLPwv/)
 //
 //===----------------------------------------------------------------------===//
 
