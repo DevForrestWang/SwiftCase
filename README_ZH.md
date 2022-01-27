@@ -2,7 +2,7 @@
 
 **SwiftCase** 是一个Swift的开发示例，便于一些用法的参考，提高开发速度；该项目主要包括：基本组件、设计模式、算法及一些案例。
 
-![screenshot](images/scdemo1.gif)
+![screenshot](images/scdemo.gif)
 
 
 
@@ -42,25 +42,25 @@
 
 - **Algorithms**
 
-  - Swift-algorithms
-  - Collections: Array、Dictionary、Sets
-  - Array2D: two-dimensional array
-  - Linked List
-  - Stack
-  - Queue
-  - Recursion  
-  - Bubble Sort   
-  - Insertion Sort   
-  - Selection Sort  
-  - *Quick Sort   
-  - Merge Sort  
-  - Bucket Sort  
-  - Counting Sort   
-  - Radix Sort   
-  - Binary Search   
-  - Skip List  
-  - Hash Table   
-  - LRU(Least Recently Used) Cache   
+  - Swift-algorithms - apple/swift-algorithms的使用
+  - Collections: Array、Dictionary、Sets - Swift提供的数组、字典、集合的使用
+  - Array2D: two-dimensional array - 具有固定数目的行和列的二维数组。
+  - Linked List - 双向链表数据结构
+  - Stack - 栈的数据结构
+  - Queue - 队列数据结构
+  - Recursion  - 递归求方法的使用
+  - Bubble Sort   - 冒泡排序算法
+  - Insertion Sort    - 插入法排序算法
+  - Selection Sort   - 选择法法排序算法
+  - *Quick Sort    - 快速排序算法
+  - Merge Sort  - 归并排序算法
+  - Bucket Sort  - 桶排序算法
+  - Counting Sort   - 计数排序算法
+  - Radix Sort   - 索引法排序算法
+  - Binary Search   - 二叉树搜索
+  - Skip List  - Skip List是一种概率数据结构，与AVL/或红黑树具有相同的对数时间限制和效率，提供了一种巧妙的折衷，有效地支持搜索和更新操作，与其他地图数据结构相比，实现起来相对简单。
+  - Hash Table   - 哈希表允许你通过一个“键”来存储和检索对象。
+  - LRU(Least Recently Used) Cache  - 缓存用于在内存中保存对象。缓存大小是有限的;如果系统没有足够的内存，必须清除缓存，否则程序将崩溃。最近最少使用算法(Least Recently Used, LRU)是缓存设计中常用的算法。
   - Binary Tree   
   - Binary Search Tree (BST)   
   - AVL tree (named after inventors Adelson-Velsky and Landis)
