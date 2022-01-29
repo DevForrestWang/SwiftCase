@@ -130,7 +130,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 40 files.
+  /// This `R.file` struct is generated, and contains static references to 42 files.
   struct file {
     /// Resource file `README.md`.
     static let readmeMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "md")
@@ -138,6 +138,8 @@ struct R: Rswift.Validatable {
     static let readmeTxt = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "txt")
     /// Resource file `README_ZH.md`.
     static let readme_ZHMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README_ZH", pathExtension: "md")
+    /// Resource file `Shows.plist`.
+    static let showsPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Shows", pathExtension: "plist")
     /// Resource file `Swift代码规范.md`.
     static let swift代码规范Md = Rswift.FileResource(bundle: R.hostingBundle, name: "Swift代码规范", pathExtension: "md")
     /// Resource file `algorithm@2x.png`.
@@ -206,6 +208,8 @@ struct R: Rswift.Validatable {
     static let placeholder2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "placeholder@2x", pathExtension: "png")
     /// Resource file `santa.png`.
     static let santaPng = Rswift.FileResource(bundle: R.hostingBundle, name: "santa", pathExtension: "png")
+    /// Resource file `sherlock@3x.png`.
+    static let sherlock3xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "sherlock@3x", pathExtension: "png")
     /// Resource file `student@2x.png`.
     static let student2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "student@2x", pathExtension: "png")
     /// Resource file `trie_data.txt`.
@@ -228,6 +232,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "README_ZH", withExtension: "md")`
     static func readme_ZHMd(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.readme_ZHMd
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Shows", withExtension: "plist")`
+    static func showsPlist(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.showsPlist
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -435,6 +445,12 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
+    /// `bundle.url(forResource: "sherlock@3x", withExtension: "png")`
+    static func sherlock3xPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.sherlock3xPng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
     /// `bundle.url(forResource: "student@2x", withExtension: "png")`
     static func student2xPng(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.student2xPng
@@ -456,10 +472,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 33 images.
+  /// This `R.image` struct is generated, and contains static references to 39 images.
   struct image {
     /// Image `LaunchScreen`.
     static let launchScreen = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchScreen")
+    /// Image `add_select`.
+    static let add_select = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_select")
+    /// Image `add`.
+    static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "add")
     /// Image `algorithm`.
     static let algorithm = Rswift.ImageResource(bundle: R.hostingBundle, name: "algorithm")
     /// Image `book`.
@@ -472,6 +492,8 @@ struct R: Rswift.Validatable {
     static let design_pattern = Rswift.ImageResource(bundle: R.hostingBundle, name: "design_pattern")
     /// Image `detailBg`.
     static let detailBg = Rswift.ImageResource(bundle: R.hostingBundle, name: "detailBg")
+    /// Image `download`.
+    static let download = Rswift.ImageResource(bundle: R.hostingBundle, name: "download")
     /// Image `forrest-icon`.
     static let forrestIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "forrest-icon")
     /// Image `hightImage`.
@@ -520,6 +542,12 @@ struct R: Rswift.Validatable {
     static let santa = Rswift.ImageResource(bundle: R.hostingBundle, name: "santa")
     /// Image `send`.
     static let send = Rswift.ImageResource(bundle: R.hostingBundle, name: "send")
+    /// Image `share_select`.
+    static let share_select = Rswift.ImageResource(bundle: R.hostingBundle, name: "share_select")
+    /// Image `share`.
+    static let share = Rswift.ImageResource(bundle: R.hostingBundle, name: "share")
+    /// Image `sherlock`.
+    static let sherlock = Rswift.ImageResource(bundle: R.hostingBundle, name: "sherlock")
     /// Image `student`.
     static let student = Rswift.ImageResource(bundle: R.hostingBundle, name: "student")
     /// Image `yacht.jpg`.
@@ -529,6 +557,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "LaunchScreen", bundle: ..., traitCollection: ...)`
     static func launchScreen(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.launchScreen, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "add", bundle: ..., traitCollection: ...)`
+    static func add(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.add, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "add_select", bundle: ..., traitCollection: ...)`
+    static func add_select(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.add_select, compatibleWith: traitCollection)
     }
     #endif
 
@@ -571,6 +613,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "detailBg", bundle: ..., traitCollection: ...)`
     static func detailBg(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.detailBg, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "download", bundle: ..., traitCollection: ...)`
+    static func download(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.download, compatibleWith: traitCollection)
     }
     #endif
 
@@ -739,6 +788,27 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "send", bundle: ..., traitCollection: ...)`
     static func send(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.send, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "share", bundle: ..., traitCollection: ...)`
+    static func share(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.share, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "share_select", bundle: ..., traitCollection: ...)`
+    static func share_select(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.share_select, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sherlock", bundle: ..., traitCollection: ...)`
+    static func sherlock(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sherlock, compatibleWith: traitCollection)
     }
     #endif
 
