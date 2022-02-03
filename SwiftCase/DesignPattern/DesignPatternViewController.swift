@@ -41,8 +41,8 @@ class DesignPatternViewController: ItemListViewController {
             SCItemModel(title: "Structural-Flyweight", controllerName: "FlyweightFactory", action: #selector(testFlyweight)),
             SCItemModel(title: "Structural-Composite", controllerName: "ComponentClient", action: #selector(testDPComposite)),
 
-            SCItemModel(title: "Behavioral-Subscriber", controllerName: "CarManager", action: #selector(testCartSubscriber)),
-            SCItemModel(title: "Behavioral-Accessor", controllerName: "CameraAccessor", action: #selector(testAccessorTemplate)),
+            SCItemModel(title: "Behavioral-Observer", controllerName: "CarManager", action: #selector(testCartSubscriber)),
+            SCItemModel(title: "Behavioral-Template Method", controllerName: "CameraAccessor", action: #selector(testAccessorTemplate)),
             SCItemModel(title: "Behavioral-Strategy", controllerName: "StrategyClient", action: #selector(testDataSouceStrategy)),
             SCItemModel(title: "Behavioral-ChainResponsibility", controllerName: "SignUpHandler", action: #selector(testChainResponsibility)),
             SCItemModel(title: "Behavioral-Iterator", controllerName: "TreeIterator", action: #selector(testTreeIterator)),

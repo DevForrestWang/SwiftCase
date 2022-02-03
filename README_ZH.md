@@ -20,14 +20,15 @@
 
 - **UIKit**
 
-  - Function - 整理字符串、数组、字典、集合和元组的用法
+  - Function - Describes the usage of strings, arrays, dictionaries, sets, and tuples
   - UIVIew  - 使用SnapKit 进行界面布局及autolayout方式页面布局
   - Flexbox case - 使用FlexBox进行界面布局、plist文件的加载
   - UIButton - Button的常用属性；圆角按钮，文字按钮、图文按钮
   - UILable - Lable的常用属性；多行文本、富文本、及图文混排
   - UICollectionView - Collection属性，页头、页脚等设置
-  - UITextField - testField 属性、左右View的定义、键盘抬起、关闭等功能
-  - UITextView - testView属性及Placeholder定义
+
+  - UITextField - TextField 属性、左右View的定义、键盘抬起、关闭等功能
+  - UITextView - TextView属性及Placeholder定义
   - Widget By Rx - Rx的常用组件的使用
   - RxSwift and RxCocoa - Rx的语法及特性
   - MapView-GaoDe Map - 高德地图使用示例
@@ -74,7 +75,7 @@
   - Rabin-Karp string search   - Rabin-Karp字符串搜索算法用于搜索文本中的模式。
   - Boyer-Moore string search   - 超前跳跃算法被称为博伊尔-摩尔算法，已经存在很长时间了。它被认为是所有字符串搜索算法的基准。
   - Knuth-Morris-Pratt string search - Knuth-Morris-Pratt算法被认为是解决模式匹配问题的最佳算法之一。
-  - Trie - A `Trie`, (also known as a prefix tree, or radix tree in some other implementations) is a special type of tree used to store associative data structures.
+  - Trie - Trie(在其他一些实现中也称为前缀树或基数树)是一种用于存储关联数据结构的特殊类型的树。
   - Aho-Corasick - **Aho–Corasick算法**是由[Alfred V. Aho](https://zh.wikipedia.org/wiki/阿尔佛雷德·艾侯)和Margaret J.Corasick 发明的字符串搜索算法，用于在输入的一串字符串中匹配有限组“字典”中的子串。
   - Huffman Coding  - 霍夫曼编码使用变长编码表对源符号（如文件中的一个字母）进行编码，其中变长编码表是通过一种评估来源符号出现概率的方法得到的，出现概率高的字母使用较短的编码，反之出现概率低的则使用较长的编码，这便使编码之后的字符串的平均长度、期望值降低，从而达到无损压缩数据的目的。
   - Dijkstra's shortest path - 戴克斯特拉的原始版本仅适用于找到两个顶点之间的最短路径，后来更常见的变体固定了一个顶点作为源结点然后找到该顶点到图中所有其它结点的最短路径，产生一个最短路径树。
@@ -86,38 +87,40 @@
 
 - **Design Patterns**
 
-  - Creational 
-    - Singleton          
-    - Factory            
-    - AbstractFactory                 
-    - Builder                 
-    - Prototype 
-  - Structural          
-    - Proxy           
-    - Bridge           
-    - Decorator           
-    - Adapte           
-    - Flyweight           
-    - Composite
-  - Behavioral       
-    - Subscriber       
-    - Accessor        
-    - Strategy           
-    - ChainResponsibility       
-    - Iterator           
-    - State           
-    - Visitor           
-    - Memento           
-    - Mediator           
-    - Interpreter
+  - 创建型 
+    - Singleton   - 单例模式       
+    - Factory - 工厂模式            
+    - AbstractFactory   - 抽象工厂              
+    - Builder - 建造者模式                
+    - Prototype - 原型模式
+  - 结构型          
+    - Proxy - 代理模式          
+    - Bridge   - 桥接模式        
+    - Decorator - 装饰者模式          
+    - Adapte - 适配器模式          
+    - Flyweight - 享元模式           
+    - Composite - 组合模式
+  - 行为型       
+    - Observer  -   观察者模式   
+    - Template Method - 模板方法模式      
+    - Strategy  - 策略模式         
+    - ChainResponsibility  - 职责链模式     
+    - Iterator - 迭代器模式       
+    - State   - 状态模式        
+    - Visitor  - 访问者模式         
+    - Memento - 备忘录模式          
+    - Mediator  - 中介模式         
+    - Interpreter - 解释器模式
 
   
 
 - **Case**
 
-  - Brows Images
-  - Call OC function
-  - List
+  - Brows Images - 浏览图片示例
+  - Call OC function - OC与Swift相互使用
+  - List - 列表使用
+  - Up down swipe - 视图的上下切换
+  - Show RxSwift + MVVM - 使用RX的MVVM架构示例
 
 
 

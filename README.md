@@ -10,7 +10,7 @@
 
 
 
-### [ 网站资料 - 力学笃行](https://fd-learning.com/learner/page/index.html)
+### [ Website information - Learn And Practice](https://fd-learning.com/learner/page/index.html)
 
 
 
@@ -21,23 +21,23 @@
 
 - **UIKit**
 
-  - Function - Describes the usage of strings, arrays, dictionaries, sets, and tuples
-  - UIVIew  - 使用SnapKit 进行界面布局及autolayout方式页面布局
-  - Flexbox case - 使用FlexBox进行界面布局、plist文件的加载
-  - UIButton - Button的常用属性；圆角按钮，文字按钮、图文按钮
-  - UILable - Lable的常用属性；多行文本、富文本、及图文混排
-  - UICollectionView - Collection属性，页头、页脚等设置
-  - UITextField - testField 属性、左右View的定义、键盘抬起、关闭等功能
-  - UITextView - testView属性及Placeholder定义
-  - Widget By Rx - Rx的常用组件的使用
-  - RxSwift and RxCocoa - Rx的语法及特性
-  - MapView-GaoDe Map - 高德地图使用示例
-  - Event - 点击事件、长按事件、滑动、拖动、及图片的放大缩小演示
-  - UI Event - 演示Swift与OC通过闭包、代理的方式进行数据传递
-  - Thread, OperationQueue, GCD - 演示线程的三种使用方法
-  - Animation - 待实现
-  - Parse JSON by simdjson(Cocoapods ZippyJSON) - 解析JSON最快的库的使用
-  - Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi - 数据通信方式，当前实现了HTTP及gPRC网络请求、通过聊天室演示WebSocket的使用 
+  - Function - the usage of strings, arrays, dictionaries, sets and tuples
+  - UIVIew  - Use snapkit for interface layout and AutoLayout page layout
+  - Flexbox case - Use flexbox to load interface layout and plist files
+  - UIButton - Common attributes of button; Fillet button, text button, graphic button
+  - UILable - Common attributes of label; Multiline text, rich text, and mixed text and text arrangement
+  - UICollectionView - Collection property, page header, footer and other settings
+  - UITextField - Textfield property, definition of left and right views, keyboard lifting, closing and other functions
+  - UITextView - Textview property and placeholder definition
+  - Widget By Rx - Use of common components of RX
+  - RxSwift and RxCocoa - Syntax and characteristics of RX
+  - MapView-GaoDe Map - Use example of Gaode map
+  - Event - Click event, long press event, slide, drag, and zoom in and out demonstration of pictures
+  - UI Event - Demonstrate the data transfer between swift and OC through closures and agents
+  - Thread, OperationQueue, GCD - Three ways to use threads
+  - Animation - To be realized
+  - Parse JSON by simdjson(Cocoapods ZippyJSON) - Use of the fastest library for parsing JSON
+  - Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi - Data communication mode. At present, HTTP and GPRC network requests are realized, and the use of websocket is demonstrated through chat room
 
   
 
@@ -75,7 +75,7 @@
   - Rabin-Karp string search   - The Rabin-Karp string search algorithm is used to search text for a pattern.
   - Boyer-Moore string search   - The skip-ahead algorithm is called Boyer-Moore and it has been around for a long time. It is considered the benchmark for all string search algorithms.
   - Knuth-Morris-Pratt string search - The [Knuth-Morris-Pratt algorithm](https://en.wikipedia.org/wiki/Knuth–Morris–Pratt_algorithm) is considered one of the best algorithms for solving the pattern matching problem. 
-  - Trie  - Trie(在其他一些实现中也称为前缀树或基数树)是一种用于存储关联数据结构的特殊类型的树。
+  - Trie  - A `Trie`, (also known as a prefix tree, or radix tree in some other implementations) is a special type of tree used to store associative data structures.
   - Aho-Corasick - The AHO-CORASICK algorithm is a string search algorithm invented by Alfred V. AHO and Margaret J.Corasick,  for matching substrings in the Finite Group "Dictionary" in the input string. 
   - Huffman Coding  - Hoffman coding uses the beam-leader code table to encode the source symbol (such as one letter in the file), where the bearing length coded table is obtained by a method of evaluating the probability of an evaluation source symbol, shorter use of high probability is shorter.The encoding, the probability is low, which uses a longer code, which makes the average length of the string after the encoding, and the desired value is lowered, thereby achieving lossless compressed data.
   - Dijkstra's shortest path - The original version of Daxterra applies only to find the shortest path between the two vertices, and later, the more common variants are fixed as a source of source and then find the vertex to all other nodes in the figure.The shortest path produces a shortest path tree.
@@ -101,8 +101,8 @@
     - Flyweight           
     - Composite
   - Behavioral       
-    - Subscriber       
-    - Accessor        
+    - Observer       
+    - Template Method        
     - Strategy           
     - ChainResponsibility       
     - Iterator           
@@ -116,9 +116,11 @@
 
 - **Case**
 
-  - Brows Images
-  - Call OC function
-  - List
+  - Brows Images - Browse image examples
+  - Call OC function - OC and swift use each other
+  - List -List use
+  - Up down swipe - View up and down switching
+  - Show RxSwift + MVVM - MVVM architecture example using RX
 
 
 
