@@ -6,7 +6,7 @@
 
 
 
-### [中文文档](./README_ZH.md)
+### [中文](./README_ZH.md)
 
 
 

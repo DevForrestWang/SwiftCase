@@ -6,7 +6,7 @@
 
 
 
-### [英文文档](./README.md)
+### [English](./README.md)
 
 
 
