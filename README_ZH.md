@@ -61,26 +61,26 @@
   - Skip List  - Skip List是一种概率数据结构，与AVL/或红黑树具有相同的对数时间限制和效率，提供了一种巧妙的折衷，有效地支持搜索和更新操作，与其他地图数据结构相比，实现起来相对简单。
   - Hash Table   - 哈希表允许你通过一个“键”来存储和检索对象。
   - LRU(Least Recently Used) Cache  - 缓存用于在内存中保存对象。缓存大小是有限的;如果系统没有足够的内存，必须清除缓存，否则程序将崩溃。最近最少使用算法(Least Recently Used, LRU)是缓存设计中常用的算法。
-  - Binary Tree   
-  - Binary Search Tree (BST)   
-  - AVL tree (named after inventors Adelson-Velsky and Landis)
-  - Red-Black Tree   
-  - Heap  
-  - Heap Sort   
-  - Graph  
-  - Depth-First Search   
-  - Breadth-First Search   
-  - Brute Force string search   
-  - Rabin-Karp string search   
-  - Boyer-Moore string search   
-  - Knuth-Morris-Pratt string search
-  - Trie 
-  - Aho-Corasick
-  - Huffman Coding  
-  - Dijkstra's shortest path 
-  - Bit Set  
-  - Bloom Filter   
-  - B-Tree
+  - Binary Tree - 二叉树是每个节点都有0、1或2个子结点的树。
+  - Binary Search Tree (BST)   - 二叉搜索树是一种特殊的二叉树(树中每个节点最多有两个子节点)，它执行插入和删除操作，使树始终是有序的。
+  - AVL tree (named after inventors Adelson-Velsky and Landis) - AVL树是二叉搜索树的一种自平衡形式，其中子树的高度最多相差1。
+  - Red-Black Tree   - 红黑树(RBT)是二叉搜索树的一个平衡版本，它保证了基本的操作(搜索、前身、后继、最小、最大值、插入和删除)在最坏情况下具有对数性能。
+  - Heap  - 堆是数组内的二进制树，因此它不使用父/子指针。基于“堆属性”对堆进行排序，该“堆属性”确定树中节点的顺序。
+  - Heap Sort   - 使用堆将数组从低到高排序。
+  - Graph  - 图被定义为顶点与边的集合。顶点用圆表示，边是它们之间的线。边连接一个顶点和其他顶点。
+  - Depth-First Search   - 深度优先搜索(DFS)是一种遍历或搜索树或图数据结构的算法。它从一个源节点开始，在回溯之前尽可能沿着每个分支进行探索。
+  - Breadth-First Search   - 宽度优先搜索(BFS)是一种遍历或搜索树或图数据结构的算法。它从一个源节点开始，首先探索邻近节点，然后再移动到下一层邻居。
+  - Brute Force string search   - 蛮力方法是可行的，但它不是很有效(或漂亮)。
+  - Rabin-Karp string search   - Rabin-Karp字符串搜索算法用于搜索文本中的模式。
+  - Boyer-Moore string search   - 超前跳跃算法被称为博伊尔-摩尔算法，已经存在很长时间了。它被认为是所有字符串搜索算法的基准。
+  - Knuth-Morris-Pratt string search - Knuth-Morris-Pratt算法被认为是解决模式匹配问题的最佳算法之一。
+  - Trie - A `Trie`, (also known as a prefix tree, or radix tree in some other implementations) is a special type of tree used to store associative data structures.
+  - Aho-Corasick - **Aho–Corasick算法**是由[Alfred V. Aho](https://zh.wikipedia.org/wiki/阿尔佛雷德·艾侯)和Margaret J.Corasick 发明的字符串搜索算法，用于在输入的一串字符串中匹配有限组“字典”中的子串。
+  - Huffman Coding  - 霍夫曼编码使用变长编码表对源符号（如文件中的一个字母）进行编码，其中变长编码表是通过一种评估来源符号出现概率的方法得到的，出现概率高的字母使用较短的编码，反之出现概率低的则使用较长的编码，这便使编码之后的字符串的平均长度、期望值降低，从而达到无损压缩数据的目的。
+  - Dijkstra's shortest path - 戴克斯特拉的原始版本仅适用于找到两个顶点之间的最短路径，后来更常见的变体固定了一个顶点作为源结点然后找到该顶点到图中所有其它结点的最短路径，产生一个最短路径树。
+  - Bit Set  - 一个固定大小的n位序列。也称为位数组或位向量。
+  - Bloom Filter   - Bloom Filter是一种空间高效的数据结构，它告诉您一个元素是否存在于一个集合中。
+  - B-Tree - B-Tree是一种自平衡的搜索树，其中的节点可以有两个以上的子节点。
 
   
 
