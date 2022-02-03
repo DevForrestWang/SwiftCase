@@ -86,7 +86,7 @@
 
 - **Design Patterns**
 
-  - Creational
+  - Creational 
     - Singleton          
     - Factory            
     - AbstractFactory                 

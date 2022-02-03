@@ -37,7 +37,7 @@
   - Thread, OperationQueue, GCD - 演示线程的三种使用方法
   - Animation - 待实现
   - Parse JSON by simdjson(Cocoapods ZippyJSON) - 解析JSON最快的库的使用
-  - Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi - 数据通信方式，当前实现了HTTP及gPRC网络请求、通过聊天室演示WebSocket的使用
+  - Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi - 数据通信方式，当前实现了HTTP及gPRC网络请求、通过聊天室演示WebSocket的使用 
 
   
 
