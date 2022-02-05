@@ -46,11 +46,11 @@
   - Swift-algorithms
   - Collections: Array、Dictionary、Sets
   - Array2D: two-dimensional array
-  - Linked List
-  - Stack
-  - Queue
-  - Recursion  
-  - Bubble Sort   
+  - Linked List - Bidirectional linked list data structure
+  - Stack - Data structure of stack
+  - Queue - Queue data structure
+  - Recursion  - Use of recursive search
+  - Bubble Sort   - Bubble sort algorithm 
   - Insertion Sort - Insertion sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time.  
   - Selection Sort  -  The selection sort algorithm divides the array into two parts: the beginning of the array is sorted, while the rest of the array consists of the numbers that still remain to be sorted.
   - *Quick Sort  - Quicksort is an in-place sorting algorithm. 

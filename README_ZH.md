@@ -49,7 +49,7 @@
   - Linked List - 双向链表数据结构
   - Stack - 栈的数据结构
   - Queue - 队列数据结构
-  - Recursion  - 递归求方法的使用
+  - Recursion  - 递归求的使用
   - Bubble Sort   - 冒泡排序算法
   - Insertion Sort    - 插入法排序算法
   - Selection Sort   - 选择法法排序算法
