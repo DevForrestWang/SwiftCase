@@ -39,104 +39,69 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
     // MARK: - SCAssimtantCarouseViewProtocol
 
     func currentView(viewType: SCAssimationViewType) {
-        currentViewType = viewType
-        // print("type: \(currentViewType)")
+        print("type: \(viewType)")
     }
 
     // MARK: - IBActions
 
     // MARK: - Private
 
-    private func upAction() {
-        if currentViewType == .middleView {
-            // show bottom view
-            if bottomView.isHidden == false {
-                return
-            }
-            print("show middle -> bottom view")
-            bottomView.isHidden = false
-            astCarouseView.isHidden = true
-            upView.isHidden = true
-
-            currentViewType = .bottomView
-
-        } else if currentViewType == .bottomView {
-            // show middle view
-            if astCarouseView.isHidden == false {
-                return
-            }
-            print("show bottom -> middle view")
-            astCarouseView.isHidden = false
-            upView.isHidden = true
-            bottomView.isHidden = true
-
-            currentViewType = .middleView
-        }
-    }
-
-    private func downAction() {
-        if currentViewType == .middleView {
-            // show up view
-            if bottomView.isHidden == false {
-                return
-            }
-            print("show  middle -> up view")
-            upView.isHidden = false
-            bottomView.isHidden = true
-            astCarouseView.isHidden = true
-
-            currentViewType = .upView
-
-        } else if currentViewType == .upView {
-            // show middle view
-            print("show up -> middle view")
-            if astCarouseView.isHidden == false {
-                return
-            }
-            print("show middle view")
-            astCarouseView.isHidden = false
-            upView.isHidden = true
-            bottomView.isHidden = true
-
-            currentViewType = .middleView
-        }
-    }
-
-    @objc func swipAction(recognizer: UIPanGestureRecognizer) {
-        // 1. Monitor the direction of view
+    @objc func upSwipAction(recognizer: UIPanGestureRecognizer) {
         upDownProgress = 0
         if recognizer.direction == .up {
-            // print("up")
             upDownProgress = 1
         } else if recognizer.direction == .down {
-            // print("down")
             upDownProgress = -1
-        } else if recognizer.direction == .left {
-            print("left")
-        } else if recognizer.direction == .right {
-            print("right")
         }
 
-        // 3. Gesture states
-        switch recognizer.state {
-        // 3.1 Gesture states began to check the pan direction the user initiated
-        case .began:
-            print("began")
+        if recognizer.state == .ended {
+            if upDownProgress == 1 {
+                print("up up")
+                upView.isHidden = true
+                astCarouseView.isHidden = false
+                bottomView.isHidden = true
+            }
+        }
+    }
 
-        // 3.2 Gesture state changed to Translate the view according to the user pan gesture
-        case .changed:
-            print("changed")
-        // 3.3 Gesture state end to finish the animation
-        case .ended:
+    @objc func middleSwipAction(recognizer: UIPanGestureRecognizer) {
+        upDownProgress = 0
+        if recognizer.direction == .up {
+            upDownProgress = 1
+        } else if recognizer.direction == .down {
+            upDownProgress = -1
+        }
+
+        if recognizer.state == .ended {
             if upDownProgress == 1 {
                 print("up")
-                upAction()
+                upView.isHidden = true
+                astCarouseView.isHidden = true
+                bottomView.isHidden = false
             } else if upDownProgress == -1 {
                 print("down")
-                downAction()
+                upView.isHidden = false
+                astCarouseView.isHidden = true
+                bottomView.isHidden = true
             }
-        default:
-            print("defaule")
+        }
+    }
+
+    @objc func bottomSwipAction(recognizer: UIPanGestureRecognizer) {
+        upDownProgress = 0
+        if recognizer.direction == .up {
+            upDownProgress = 1
+        } else if recognizer.direction == .down {
+            upDownProgress = -1
+        }
+
+        if recognizer.state == .ended {
+            if upDownProgress == -1 {
+                print("down")
+                upView.isHidden = true
+                astCarouseView.isHidden = false
+                bottomView.isHidden = true
+            }
         }
     }
 
@@ -154,8 +119,14 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
         upView.isHidden = true
         bottomView.isHidden = true
 
-        panGR = UIPanGestureRecognizer(target: self, action: #selector(swipAction))
-        view.addGestureRecognizer(panGR)
+        let upPanGR = UIPanGestureRecognizer(target: self, action: #selector(upSwipAction))
+        upView.addGestureRecognizer(upPanGR)
+
+        let middlePanGR = UIPanGestureRecognizer(target: self, action: #selector(middleSwipAction))
+        astCarouseView.addGestureRecognizer(middlePanGR)
+
+        let bottomPanGR = UIPanGestureRecognizer(target: self, action: #selector(bottomSwipAction))
+        bottomView.addGestureRecognizer(bottomPanGR)
     }
 
     // MARK: - Constraints
@@ -182,10 +153,7 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
 
     // MARK: - Property
 
-    var panGR: UIPanGestureRecognizer!
     var upDownProgress: Int = 0
-    var currentViewType = SCAssimationViewType.middleView
-
     let astCarouseView = SCAssimtantCarouseView().then {
         $0.backgroundColor = .white
     }
