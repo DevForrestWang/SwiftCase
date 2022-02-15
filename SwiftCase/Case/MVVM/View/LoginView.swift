@@ -39,6 +39,7 @@ class LoginView: UIView {
     // MARK: - Private
 
     private func bindViewModel() {
+        // 说明：1
         // 点击关闭输入框
         let tap = UITapGestureRecognizer()
         tap.cancelsTouchesInView = false
@@ -47,11 +48,13 @@ class LoginView: UIView {
         }).disposed(by: disposeBag)
         addGestureRecognizer(tap)
 
+        // 说明：2
         // 绑定cell数据
         tracks.bind(to: tracksTableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { _, element, cell in
             cell.textLabel?.text = element.name
         }.disposed(by: disposeBag)
 
+        // 说明：3
         // 获取选中项的内容
         tracksTableView.rx.modelSelected(Track.self).subscribe(onNext: { item in
             print("select: \(String(describing: item.name))")

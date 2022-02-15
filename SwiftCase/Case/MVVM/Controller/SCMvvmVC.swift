@@ -69,14 +69,19 @@ class SCMvvmVC: BaseViewController {
     // MARK: - Private
 
     private func bindViewModel() {
+        // 说明：1
         let username = loginView.userTextField.rx.text.orEmpty.asObservable()
         let password = loginView.passwordTextField.rx.text.orEmpty.asObservable()
         let outputs = viewModel.configure(input: SignUpViewModel.Input(username: username, password: password))
 
+        // 说明：2
         viewModel.tracks.observe(on: MainScheduler.instance).bind(to: loginView.tracks).disposed(by: disposeBag)
+        
+        // 说明：3
         outputs.validatedUsername.bind(to: loginView.userOutletLable.rx.validationResult).disposed(by: disposeBag)
         outputs.validatedPassword.bind(to: loginView.passwordOutletLable.rx.validationResult).disposed(by: disposeBag)
 
+        // 说明：4
         outputs.isLoginAllowed.subscribe(onNext: { [weak self] valid in
             self?.loginView.confirmBtn.isEnabled = valid
             self?.loginView.confirmBtn.alpha = valid ? 1.0 : 0.5
@@ -86,6 +91,7 @@ class SCMvvmVC: BaseViewController {
             }
         }).disposed(by: disposeBag)
 
+        // 说明：5
         loginView.confirmBtn.rx.tap.subscribe(onNext: { [weak self] in
             print("submit")
             self?.viewModel.loadDataFromNewWork()
