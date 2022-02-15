@@ -39,12 +39,25 @@ class SCMiddleCarouseCell: UICollectionViewCell {
     // MARK: - UI
 
     func setupUI() {
-        backgroundColor = .cyan
+        backgroundColor = .cyan // UIColor.hexColor(0xFEFFFF)
+        addSubview(tLable)
     }
 
     // MARK: - Constraints
 
-    func setupConstraints() {}
+    func setupConstraints() {
+        tLable.snp.makeConstraints { make in
+            make.height.equalTo(21)
+            make.width.equalTo(100)
+            make.center.equalToSuperview()
+        }
+    }
 
     // MARK: - Property
+
+    let tLable = UILabel().then {
+        $0.textColor = .red
+        $0.text = "主页面"
+        $0.font = .systemFont(ofSize: 16)
+    }
 }

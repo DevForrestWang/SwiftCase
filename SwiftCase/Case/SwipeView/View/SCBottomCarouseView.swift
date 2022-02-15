@@ -39,7 +39,7 @@ class SCBottomCarouseView: UIView {
     // MARK: - UI
 
     func setupUI() {
-        backgroundColor = .yellow
+        backgroundColor = UIColor.hexColor(0xFEFFFF)
         addSubview(tLable)
     }
 
@@ -57,7 +57,7 @@ class SCBottomCarouseView: UIView {
 
     let tLable = UILabel().then {
         $0.textColor = .red
-        $0.text = "Bottom View"
+        $0.text = "送数字红包"
         $0.font = .systemFont(ofSize: 16)
     }
 }

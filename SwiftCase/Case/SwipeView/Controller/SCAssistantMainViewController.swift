@@ -57,9 +57,11 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
         if recognizer.state == .ended {
             if upDownProgress == 1 {
                 print("up up")
-                upView.isHidden = true
-                astCarouseView.isHidden = false
-                bottomView.isHidden = true
+                viewTransition(view: astCarouseView, subType: .fromTop, closure: { [weak self] in
+                    self?.upView.isHidden = true
+                    self?.astCarouseView.isHidden = false
+                    self?.bottomView.isHidden = true
+                })
             }
         }
     }
@@ -75,14 +77,20 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
         if recognizer.state == .ended {
             if upDownProgress == 1 {
                 print("up")
-                upView.isHidden = true
-                astCarouseView.isHidden = true
-                bottomView.isHidden = false
+
+                viewTransition(view: bottomView, subType: .fromTop, closure: { [weak self] in
+                    self?.upView.isHidden = true
+                    self?.astCarouseView.isHidden = true
+                    self?.bottomView.isHidden = false
+                })
             } else if upDownProgress == -1 {
                 print("down")
-                upView.isHidden = false
-                astCarouseView.isHidden = true
-                bottomView.isHidden = true
+
+                viewTransition(view: upView, subType: .fromBottom, closure: { [weak self] in
+                    self?.upView.isHidden = false
+                    self?.astCarouseView.isHidden = true
+                    self?.bottomView.isHidden = true
+                })
             }
         }
     }
@@ -98,11 +106,24 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
         if recognizer.state == .ended {
             if upDownProgress == -1 {
                 print("down")
-                upView.isHidden = true
-                astCarouseView.isHidden = false
-                bottomView.isHidden = true
+
+                viewTransition(view: astCarouseView, subType: .fromBottom, closure: { [weak self] in
+                    self?.upView.isHidden = true
+                    self?.astCarouseView.isHidden = false
+                    self?.bottomView.isHidden = true
+                })
             }
         }
+    }
+
+    private func viewTransition(view: UIView, subType: CATransitionSubtype, closure: @escaping () -> Void) {
+        let transition = CATransition()
+        transition.duration = 0.8
+        transition.type = .fade
+        transition.subtype = subType
+        view.layer.add(transition, forKey: "transition")
+
+        closure()
     }
 
     // MARK: - UI
@@ -122,6 +143,7 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
         let upPanGR = UIPanGestureRecognizer(target: self, action: #selector(upSwipAction))
         upView.addGestureRecognizer(upPanGR)
 
+        // TODO: 将滑动事件移到MiddleCell上
         let middlePanGR = UIPanGestureRecognizer(target: self, action: #selector(middleSwipAction))
         astCarouseView.addGestureRecognizer(middlePanGR)
 
@@ -159,10 +181,10 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
     }
 
     let upView = SCUpCarouseView().then {
-        $0.backgroundColor = .yellow
+        $0.backgroundColor = .cyan
     }
 
     let bottomView = SCBottomCarouseView().then {
-        $0.backgroundColor = .brown
+        $0.backgroundColor = .cyan
     }
 }

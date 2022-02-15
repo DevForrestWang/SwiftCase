@@ -39,7 +39,7 @@ class SCUpCarouseView: UIView {
     // MARK: - UI
 
     func setupUI() {
-        backgroundColor = .yellow
+        backgroundColor = UIColor.hexColor(0xFEFFFF)
         addSubview(tLable)
     }
 
@@ -57,7 +57,7 @@ class SCUpCarouseView: UIView {
 
     let tLable = UILabel().then {
         $0.textColor = .red
-        $0.text = "Up View"
+        $0.text = "登记积分"
         $0.font = .systemFont(ofSize: 16)
     }
 }

@@ -39,12 +39,25 @@ class SCPrevCarouseCell: UICollectionViewCell {
     // MARK: - UI
 
     func setupUI() {
-        backgroundColor = .orange
+        backgroundColor = .orange // UIColor.hexColor(0xFEFFFF)
+        addSubview(tLable)
     }
 
     // MARK: - Constraints
 
-    func setupConstraints() {}
+    func setupConstraints() {
+        tLable.snp.makeConstraints { make in
+            make.height.equalTo(21)
+            make.width.equalTo(150)
+            make.center.equalToSuperview()
+        }
+    }
 
-    // MARK: - Property/
+    // MARK: - Property
+
+    let tLable = UILabel().then {
+        $0.textColor = .red
+        $0.text = "固定积分登记码"
+        $0.font = .systemFont(ofSize: 16)
+    }
 }
