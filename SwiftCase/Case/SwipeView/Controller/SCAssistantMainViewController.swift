@@ -39,7 +39,7 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
     // MARK: - SCAssimtantCarouseViewProtocol
 
     func currentView(viewType: SCAssimationViewType) {
-        print("type: \(viewType)")
+        assimationView = viewType
     }
 
     // MARK: - IBActions
@@ -67,6 +67,11 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
     }
 
     @objc func middleSwipAction(recognizer: UIPanGestureRecognizer) {
+        // 中间页面才运行上下滑动
+        if assimationView != .middleView {
+            return
+        }
+
         upDownProgress = 0
         if recognizer.direction == .up {
             upDownProgress = 1
@@ -143,7 +148,6 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
         let upPanGR = UIPanGestureRecognizer(target: self, action: #selector(upSwipAction))
         upView.addGestureRecognizer(upPanGR)
 
-        // TODO: 将滑动事件移到MiddleCell上
         let middlePanGR = UIPanGestureRecognizer(target: self, action: #selector(middleSwipAction))
         astCarouseView.addGestureRecognizer(middlePanGR)
 
@@ -176,6 +180,9 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
     // MARK: - Property
 
     var upDownProgress: Int = 0
+
+    var assimationView: SCAssimationViewType?
+
     let astCarouseView = SCAssimtantCarouseView().then {
         $0.backgroundColor = .white
     }

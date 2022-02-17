@@ -120,7 +120,7 @@
   - Call OC function - OC与Swift相互使用
   - List - 列表使用
   - Up down swipe - 视图的上下切换
-  - Show RxSwift + MVVM - 使用RX的MVVM架构示例
+  - Show RxSwift + MVVM - 使用RX的MVVM架构示例, [MVVM 和 RxSwift实践](http://fd-learning.com/learner/page/course.html?couseid=2001202106130816140000006012#)
 
 
 

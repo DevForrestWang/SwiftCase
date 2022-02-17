@@ -76,7 +76,7 @@ class SCMvvmVC: BaseViewController {
 
         // 说明：2
         viewModel.tracks.observe(on: MainScheduler.instance).bind(to: loginView.tracks).disposed(by: disposeBag)
-        
+
         // 说明：3
         outputs.validatedUsername.bind(to: loginView.userOutletLable.rx.validationResult).disposed(by: disposeBag)
         outputs.validatedPassword.bind(to: loginView.passwordOutletLable.rx.validationResult).disposed(by: disposeBag)
