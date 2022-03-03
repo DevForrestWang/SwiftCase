@@ -16,33 +16,6 @@ import Then
 import UIKit
 
 class SCUIButtonViewController: BaseViewController {
-    // MARK: - Property
-
-    let btn1 = UIButton(type: .custom).then {
-        $0.backgroundColor = UIColor.orange
-        $0.setTitle("Login", for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 16)
-        $0.setTitleColor(.white, for: .normal)
-        $0.layer.cornerRadius = 20
-        $0.addTarget(self, action: #selector(btn1Action), for: .touchUpInside)
-    }
-
-    let btn2 = UIButton(type: .custom).then {
-        $0.setImage(R.image.normalImage(), for: .normal)
-        $0.setImage(R.image.hightImage(), for: .highlighted)
-        $0.imageEdgeInsets = UIEdgeInsets(top: 5, left: -50, bottom: 5, right: 0)
-        $0.layer.cornerRadius = 5
-
-        $0.backgroundColor = .orange
-        $0.setTitle("Logo", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.setTitleColor(.red, for: .highlighted)
-        $0.setTitleShadowColor(.green, for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 16)
-        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -50)
-        $0.addTarget(self, action: #selector(btn1Action), for: .touchUpInside)
-    }
-
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -88,6 +61,7 @@ class SCUIButtonViewController: BaseViewController {
 
         view.addSubview(btn1)
         view.addSubview(btn2)
+        view.addSubview(btnFlash)
     }
 
     // MARK: - Constraints
@@ -107,5 +81,82 @@ class SCUIButtonViewController: BaseViewController {
             make.top.equalTo(btn1.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
         }
+
+        btnFlash.snp.makeConstraints { make in
+            make.top.equalTo(btn2.snp.bottom).offset(20)
+            make.width.equalTo(60)
+            make.height.equalTo(70)
+            make.centerX.equalToSuperview()
+        }
+    }
+
+    // MARK: - Property
+
+    let btn1 = UIButton(type: .custom).then {
+        $0.backgroundColor = UIColor.orange
+        $0.setTitle("Login", for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 16)
+        $0.setTitleColor(.white, for: .normal)
+        $0.layer.cornerRadius = 20
+        $0.addTarget(self, action: #selector(btn1Action), for: .touchUpInside)
+    }
+
+    let btn2 = UIButton(type: .custom).then {
+        $0.setImage(R.image.normalImage(), for: .normal)
+        $0.setImage(R.image.hightImage(), for: .highlighted)
+        $0.imageEdgeInsets = UIEdgeInsets(top: 5, left: -50, bottom: 5, right: 0)
+        $0.layer.cornerRadius = 5
+
+        $0.backgroundColor = .orange
+        $0.setTitle("Logo", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.setTitleColor(.red, for: .highlighted)
+        $0.setTitleShadowColor(.green, for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 16)
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -50)
+        $0.addTarget(self, action: #selector(btn1Action), for: .touchUpInside)
+    }
+
+    let btnFlash = ImageTextButton(type: .custom).then {
+        // $0.backgroundColor = .white
+        $0.setImage(UIImage(named: "search"), for: .normal)
+        $0.setTitle("手电筒", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 16)
+    }
+}
+
+/// 图文混排，图片在上，文字在下
+// 来自：https://codeleading.com/article/30281015726/
+class ImageTextButton: UIButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        commonInit()
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func commonInit() {
+        titleLabel?.textAlignment = .center
+        imageView?.contentMode = .scaleAspectFit
+        titleLabel?.font = UIFont.systemFont(ofSize: 12)
+    }
+
+    override func titleRect(forContentRect contentRect: CGRect) -> CGRect {
+        let titleX = 0
+        let titleY = contentRect.size.height * 0.35
+        let titleW = contentRect.size.width
+        let titleH = contentRect.size.height - titleY
+        return CGRect(x: CGFloat(titleX), y: titleY, width: titleW, height: titleH)
+    }
+
+    override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
+        let imageW = contentRect.width
+        let imageH = contentRect.size.height * 0.4
+        return CGRect(x: 0, y: 5, width: imageW, height: imageH)
     }
 }
