@@ -108,6 +108,10 @@ class SCFunctionViewController: BaseViewController {
 
         let str4 = String(format: "The course %d, price: %.2f", 1, 5.6876)
         yxc_debugPrint(str4)
+        
+        // [String Format Specifiers](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html)
+        let s1 = "lazy"
+        yxc_debugPrint(String(format: "%@ boy %.2f", s1, 12.344))
     }
 
     /// 获取字符串长度
