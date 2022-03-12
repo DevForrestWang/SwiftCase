@@ -13,15 +13,27 @@
 
 import Foundation
 
-extension String {
+public extension String {
     /// String to float
     func toFloat() -> Float? {
         let number = NumberFormatter()
         return number.number(from: self)?.floatValue
     }
 
+    /// String to double
     func toDouble() -> Double? {
         let number = NumberFormatter()
         return number.number(from: self)?.doubleValue
+    }
+    
+    /// URL 编码
+    func urlEncoded() -> String {
+        let encodeUrlString = self.addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed)
+        return encodeUrlString ?? ""
+    }
+    
+    /// URL 解码
+    func urlDecoded() -> String {
+        return self.removingPercentEncoding ?? ""
     }
 }

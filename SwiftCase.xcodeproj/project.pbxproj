@@ -219,6 +219,7 @@
 		77F652C526F5E2C500280568 /* SCUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F652C426F5E2C500280568 /* SCUITabBarController.swift */; };
 		77F652C726F5E7F200280568 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F652C626F5E7F200280568 /* ItemListViewController.swift */; };
 		77F652C926F5EA3000280568 /* SCUIKitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */; };
+		8A21BE8027DC8DF10008D74B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */; };
 		8A3E2A5B2799699A006ECFB8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */; };
 		8A486261279FD5BE004ABF6C /* SCFlexBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */; };
 		8A486264279FD865004ABF6C /* Shows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A486263279FD865004ABF6C /* Shows.plist */; };
@@ -482,6 +483,7 @@
 		77F652C426F5E2C500280568 /* SCUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUITabBarController.swift; sourceTree = "<group>"; };
 		77F652C626F5E7F200280568 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIKitTableViewCell.swift; sourceTree = "<group>"; };
+		8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCFlexBoxVC.swift; sourceTree = "<group>"; };
 		8A486263279FD865004ABF6C /* Shows.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shows.plist; sourceTree = "<group>"; };
@@ -1039,6 +1041,7 @@
 		77F6523226F5CDD500280568 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */,
 				779843792702AFD7001D73AF /* Application+Extension.swift */,
 				7756E81226FADB2800AB139F /* UIWindow+Extension.swift */,
 				77F6527926F5D23500280568 /* UIColor+Extension.swift */,
@@ -1538,6 +1541,7 @@
 				7710F0392771B5C60083E067 /* SCMiddleCarouseCell.swift in Sources */,
 				7710057C2735299300733EF7 /* ACToken.swift in Sources */,
 				777BA9D3272945830030DCB9 /* BTree.swift in Sources */,
+				8A21BE8027DC8DF10008D74B /* ArrayExtension.swift in Sources */,
 				778F4FEF26FC68D900B9E08A /* SCUICollectionReusableViewFooter.swift in Sources */,
 				7798439E2702B03F001D73AF /* ChatDetailViewController.swift in Sources */,
 				7710F0372771B5480083E067 /* SCAssimtantCarouseView.swift in Sources */,

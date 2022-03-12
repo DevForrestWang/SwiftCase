@@ -31,4 +31,20 @@ public extension UIView {
             }
         }
     }
+    
+    /// 绘制虚线
+    func drawDottedLine(_ rect: CGRect, _ radius: CGFloat, _ color: UIColor) {
+        let layer = CAShapeLayer()
+        layer.bounds = CGRect(x: 0, y: 0, width: rect.width, height: rect.height)
+        layer.position = CGPoint(x: rect.midX, y: rect.midY)
+        layer.path = UIBezierPath(rect: layer.bounds).cgPath
+        layer.path = UIBezierPath(roundedRect: layer.bounds, cornerRadius: radius).cgPath
+        layer.lineWidth = 1/UIScreen.main.scale
+        //虚线边框
+        layer.lineDashPattern = [NSNumber(value: 5), NSNumber(value: 5)]
+        layer.fillColor = UIColor.clear.cgColor
+        layer.strokeColor = color.cgColor
+        
+        self.layer.addSublayer(layer)
+    }
 }
