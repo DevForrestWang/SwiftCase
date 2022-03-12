@@ -25,15 +25,15 @@ public extension String {
         let number = NumberFormatter()
         return number.number(from: self)?.doubleValue
     }
-    
+
     /// URL 编码
     func urlEncoded() -> String {
-        let encodeUrlString = self.addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed)
+        let encodeUrlString = addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         return encodeUrlString ?? ""
     }
-    
+
     /// URL 解码
     func urlDecoded() -> String {
-        return self.removingPercentEncoding ?? ""
+        return removingPercentEncoding ?? ""
     }
 }
