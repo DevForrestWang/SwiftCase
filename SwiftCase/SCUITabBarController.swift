@@ -29,6 +29,12 @@ class SCUITabBarController: UITabBarController {
 
         let caseVC = CaseViewController()
         addBarItem(vc: caseVC, title: "Case", image: R.image.case(), selectImage: R.image.case())
+
+        // 设置tabbar样式
+        tabBar.isTranslucent = true
+        tabBar.backgroundColor = .white
+        UITabBar.appearance().unselectedItemTintColor = .gray
+        UITabBar.appearance().tintColor = UIColor.hexColor(0x1D7DD6)
     }
 
     private func addBarItem(vc: UIViewController, title: String, image: UIImage?, selectImage: UIImage?) {
