@@ -36,4 +36,18 @@ public extension String {
     func urlDecoded() -> String {
         return removingPercentEncoding ?? ""
     }
+
+    /// 判断是否是数字，包括小数点
+    func isPureFloat() -> Bool {
+        let scan = Scanner(string: self)
+        var val: Float = 0
+        return scan.scanFloat(&val) && scan.isAtEnd
+    }
+
+    /// 判断是否是数字
+    func isPureInt() -> Bool {
+        let scan = Scanner(string: self)
+        var val = 0
+        return scan.scanInt(&val) && scan.isAtEnd
+    }
 }

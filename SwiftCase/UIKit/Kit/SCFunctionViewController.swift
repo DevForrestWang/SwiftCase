@@ -85,6 +85,13 @@ class SCFunctionViewController: BaseViewController {
         till you come to the end; then stop."
         """
         yxc_debugPrint(quotation)
+        
+        yxc_debugPrint("0.01: \("0.01".isPureFloat())")
+        yxc_debugPrint("1.00: \("1.00".isPureFloat())")
+        yxc_debugPrint("2: \("2".isPureFloat())")
+
+        yxc_debugPrint("2: \("2".isPureInt())")
+        yxc_debugPrint("2.1: \("2.1".isPureInt())")
     }
 
     /// 字符串拼接
