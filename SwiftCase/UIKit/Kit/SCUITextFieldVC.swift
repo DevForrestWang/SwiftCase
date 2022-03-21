@@ -60,6 +60,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         print("I have finished editing")
     }
 
+    // UITextField.textDidChangeNotification通知可以实时获取输入的内容；shouldChangeCharactersIn只能获取上一次输入的内容
     func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString _: String) -> Bool {
         print("The text input will change (called each time it is typed:\(String(describing: textField.text))")
 
