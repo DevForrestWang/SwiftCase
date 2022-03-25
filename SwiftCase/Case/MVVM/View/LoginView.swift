@@ -167,7 +167,7 @@ class LoginView: UIView {
         $0.isEnabled = false
     }
 
-    private let tracksTableView = UITableView().then {
+    private let tracksTableView = UITableView(frame: .zero, style: .plain).then {
         $0.backgroundColor = .white
     }
 }

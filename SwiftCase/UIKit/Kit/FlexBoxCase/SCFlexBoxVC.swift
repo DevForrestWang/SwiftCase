@@ -12,6 +12,7 @@
 // [iOS - FlexBox layout YOGAKIT](https://www.programmerall.com/article/68451490868/)
 // [Flexbox playground](https://codepen.io/enxaneta/full/adLPwv/)
 //
+// [Table Views | Apple Developer Documentation](https://developer.apple.com/documentation/uikit/views_and_controls/table_views)
 //===----------------------------------------------------------------------===//
 
 import UIKit
@@ -52,6 +53,10 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
 
     // MARK: - UITableViewDataSource
 
+    func numberOfSections(in _: UITableView) -> Int {
+        return 1
+    }
+
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return datasource.count
     }
@@ -67,6 +72,19 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
 
         return cell
     }
+
+    /*
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+         return 21
+     }
+
+     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+         let view = UIView().then {
+             $0.backgroundColor = UIColor.hexColor(0xf2f6f7)
+         }
+         return view
+     }
+     */
 
     // MARK: - UITableViewDelegate methods
 
@@ -327,7 +345,7 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
             layout.height = YGValue(integerLiteral: self.datasource.count * 100)
         }
 
-        let showTableView = UITableView()
+        let showTableView = UITableView(frame: .zero, style: .plain)
         showTableView.delegate = self
         showTableView.dataSource = self
         showTableView.backgroundColor = .black

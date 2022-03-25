@@ -10,9 +10,9 @@ import UIKit
 
 public extension Dictionary {
     /// 将一个字典添加到另一个字典里
-     mutating func update(other:Dictionary) {
-        for (key,value) in other {
-            self.updateValue(value, forKey:key)
+    mutating func update(other: Dictionary) {
+        for (key, value) in other {
+            updateValue(value, forKey: key)
         }
     }
 }

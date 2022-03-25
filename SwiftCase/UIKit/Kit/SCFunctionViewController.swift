@@ -70,6 +70,10 @@ class SCFunctionViewController: BaseViewController {
         // lowercase()    converts string to lowercase
         // hasPrefix()    determines if a string starts with certain characters or not
         // hasSuffix()    determines if a string ends with certain characters or not
+
+        // 首字母大写，
+        print("wo xiao wo ku".capitalized) // Wo Xiao Wo Ku
+        print("已选择: \("已选择".transformToPinYin())")
     }
 
     /// 字符基本
@@ -85,7 +89,7 @@ class SCFunctionViewController: BaseViewController {
         till you come to the end; then stop."
         """
         yxc_debugPrint(quotation)
-        
+
         yxc_debugPrint("0.01: \("0.01".isPureFloat())")
         yxc_debugPrint("1.00: \("1.00".isPureFloat())")
         yxc_debugPrint("2: \("2".isPureFloat())")

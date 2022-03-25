@@ -128,7 +128,7 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
 
     // MARK: - Property
 
-    let tableView = UITableView().then {
+    let tableView = UITableView(frame: .zero, style: .plain).then {
         $0.tableFooterView = UIView()
         $0.backgroundColor = .white
         $0.register(SCUIKitTableViewCell.self, forCellReuseIdentifier: "SCUIKitTableViewCell")
