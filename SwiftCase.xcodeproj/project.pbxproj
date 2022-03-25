@@ -235,6 +235,7 @@
 		8A8ED9B7279BFC2400971DDA /* BindingDataViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9B1279BFC2400971DDA /* BindingDataViewModelType.swift */; };
 		8A8ED9B8279BFC2400971DDA /* BindingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9B2279BFC2400971DDA /* BindingExtensions.swift */; };
 		8A8ED9B9279BFC2400971DDA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9B3279BFC2400971DDA /* SignUpViewModel.swift */; };
+		8AAAEDE427EDB64E009ED9D7 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAAEDE327EDB64E009ED9D7 /* DictionaryExtension.swift */; };
 		A819C63D2723F3600023EC3D /* HashTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819C63C2723F3600023EC3D /* HashTable.swift */; };
 		A8621264272E82A9007C4556 /* BruteForceStringSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
@@ -500,6 +501,7 @@
 		8A8ED9B1279BFC2400971DDA /* BindingDataViewModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingDataViewModelType.swift; sourceTree = "<group>"; };
 		8A8ED9B2279BFC2400971DDA /* BindingExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingExtensions.swift; sourceTree = "<group>"; };
 		8A8ED9B3279BFC2400971DDA /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		8AAAEDE327EDB64E009ED9D7 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		9F28E3FA941807E923F79B8C /* Pods_SwiftCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A819C63C2723F3600023EC3D /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
 		A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceStringSearch.swift; sourceTree = "<group>"; };
@@ -1043,6 +1045,7 @@
 		77F6523226F5CDD500280568 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8AAAEDE327EDB64E009ED9D7 /* DictionaryExtension.swift */,
 				8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */,
 				779843792702AFD7001D73AF /* Application+Extension.swift */,
 				7756E81226FADB2800AB139F /* UIWindow+Extension.swift */,
@@ -1644,6 +1647,7 @@
 				778159A72714652C0046D14D /* Queue.swift in Sources */,
 				8A486268279FDC4C004ABF6C /* SCFlexBoxData.swift in Sources */,
 				7765BBEE273375E8009DF9BD /* UIEventViewController.m in Sources */,
+				8AAAEDE427EDB64E009ED9D7 /* DictionaryExtension.swift in Sources */,
 				77F6529E26F5D25F00280568 /* NotificationVisitor.swift in Sources */,
 				77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */,
 				777BA9BD272936230030DCB9 /* Graph.swift in Sources */,
