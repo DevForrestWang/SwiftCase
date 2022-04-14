@@ -45,11 +45,28 @@ let device_iPhone12_13 = __CGSizeEqualToSize(CGSize(width: 1170 / 3, height: 253
 let device_iPhone12_13_Max = __CGSizeEqualToSize(CGSize(width: 1284 / 3, height: 2778 / 3), UIScreen.main.bounds.size)
 let isIphone12_13 = (device_iPhone12_13m || device_iPhone12_13 || device_iPhone12_13_Max)
 
-/// 状态栏高度
-let StateBarHigh = ((isIphoneX || isIphone12_13) ? 44 : 20)
+var isFullScreen: Bool {
+    if #available(iOS 11, *) {
+        guard let w = UIApplication.shared.delegate?.window, let unwrapedWindow = w else {
+            return false
+        }
 
-/// 顶部状态栏+导航高度
-let TopSpaceHigh = ((isIphoneX || isIphone12_13) ? 88 : 64)
+        if unwrapedWindow.safeAreaInsets.left > 0 || unwrapedWindow.safeAreaInsets.bottom > 0 {
+            // print(unwrapedWindow.safeAreaInsets)
+            return true
+        }
+    }
+    return false
+}
 
-/// 底部安全区域的高度
-let bottomSafeHeight = ((isIphoneX || isIphone12_13) ? 34 : 0)
+// 状态栏高度
+let gStateBarHigh = isFullScreen ? 44 : 20
+// 导航栏高度
+let gNaviHeight: CGFloat = isFullScreen ? 88 : 64
+// 屏幕安全区高度
+let gBottomSafeHeight: CGFloat = isFullScreen ? 34 : 0
+
+// 屏幕高度
+let gScreenHeight = isFullScreen ? UIScreen.main.bounds.height - 34 : UIScreen.main.bounds.height
+// 屏幕宽度
+let gScreenWidth = UIScreen.main.bounds.width
