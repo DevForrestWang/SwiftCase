@@ -123,6 +123,10 @@ class SCFunctionViewController: BaseViewController {
         // [String Format Specifiers](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html)
         let s1 = "lazy"
         yxc_debugPrint(String(format: "%@ boy %.2f", s1, 12.344))
+        
+        // 不足两位前面补0
+        yxc_debugPrint(String(format: "%02d", 1))
+        yxc_debugPrint(String(format: "%02d", 11))
     }
 
     /// 获取字符串长度
@@ -344,6 +348,11 @@ class SCFunctionViewController: BaseViewController {
         // Array With Mixed Data Types
         let address: [Any] = ["Scranton", 570]
         yxc_debugPrint("Array, address: \(address)")
+        
+        // 倒叙循环
+        for year in stride(from:2022, through: 2019, by: -1) {
+            yxc_debugPrint("year: \(year)")
+        }
     }
 
     // MARK: - Dictionaries
