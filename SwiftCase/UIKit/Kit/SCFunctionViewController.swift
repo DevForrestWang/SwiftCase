@@ -123,7 +123,7 @@ class SCFunctionViewController: BaseViewController {
         // [String Format Specifiers](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html)
         let s1 = "lazy"
         yxc_debugPrint(String(format: "%@ boy %.2f", s1, 12.344))
-        
+
         // 不足两位前面补0
         yxc_debugPrint(String(format: "%02d", 1))
         yxc_debugPrint(String(format: "%02d", 11))
@@ -305,15 +305,22 @@ class SCFunctionViewController: BaseViewController {
         // Create an Empty Array
         let someInts = [Int]()
         let threeDouble = Array(repeating: 0.0, count: 3)
+
+        // 数组的初始
         var numbers = [21, 34, 54, 12]
         var evenNumbers = [4, 6, 8]
         yxc_debugPrint("Array, someInts:\(someInts), threeDouble:\(threeDouble)")
 
+        let initArray = Array(0 ... 20)
+        yxc_debugPrint("initArray: \(initArray)")
+
         // Add Elements to an Array
         numbers.append(32)
         numbers.append(contentsOf: evenNumbers)
+        numbers += [1, 2, 3]
         numbers.insert(32, at: 1)
         yxc_debugPrint("Array, Add numbers:\(numbers)")
+        yxc_debugPrint("find 5, result: \(numbers.contains(5))")
 
         // Modify the Elements of an Array
         numbers[1] = 16
@@ -339,6 +346,20 @@ class SCFunctionViewController: BaseViewController {
             yxc_debugPrint(num)
         }
 
+        // 同时遍历索引和元素
+        for (index, num) in numbers.enumerated() {
+            yxc_debugPrint("\(index): \(num)")
+        }
+
+        numbers.forEach { num in
+            yxc_debugPrint(num)
+        }
+
+        // 倒叙循环
+        for year in stride(from: 2022, through: 2019, by: -1) {
+            yxc_debugPrint("year: \(year)")
+        }
+
         // Find Number of Array Elements
         yxc_debugPrint("Array, Number: \(numbers.count)")
 
@@ -348,11 +369,57 @@ class SCFunctionViewController: BaseViewController {
         // Array With Mixed Data Types
         let address: [Any] = ["Scranton", 570]
         yxc_debugPrint("Array, address: \(address)")
-        
-        // 倒叙循环
-        for year in stride(from:2022, through: 2019, by: -1) {
-            yxc_debugPrint("year: \(year)")
+
+        // 数组的索引
+        yxc_debugPrint("startIndex and EndIndex: \(numbers[numbers.startIndex ..< numbers.endIndex])")
+
+        // filter
+        let numAry = numbers.filter { $0 > 10 }
+        yxc_debugPrint("filter more 10: \(numAry)")
+
+        let arry = ["123Z", "456Z", "789"]
+        let num2Ary = arry.filter { str -> Bool in
+            str.contains("Z")
         }
+        yxc_debugPrint("filter contain Z: \(num2Ary)")
+
+        // map 将原来数组元素映射到新数组中；映射数组、转换元素
+        let mapAry1 = numbers.map { num -> String in
+            "\(num)Z"
+        }
+        yxc_debugPrint("Map add Z: \(mapAry1)")
+
+        let mapAry2 = (1 ... 5).map { $0 * 3 }
+        yxc_debugPrint("map multiplicat 3: \(mapAry2)")
+
+        // compactMap 空值过滤，去掉数组中nil元素
+        let latMapAry = ["1", "2", "3", nil].compactMap { $0 }
+        yxc_debugPrint("Filter nil: \(latMapAry)")
+
+        // compactMap 强制解包
+        let baseFlat: [String?] = ["123", "456", "789"]
+        yxc_debugPrint("map: \(baseFlat.map { $0 })")
+        yxc_debugPrint("flatMap: \(baseFlat.compactMap { $0 })")
+
+        // 嵌套数组的压平
+        let baseFlat2 = [[1], [2], [3, 4], [5, 6]]
+        yxc_debugPrint("\(baseFlat2.compactMap { $0 })")
+
+        // reduce 把数组变成一个元素， 初始化值、闭包规则
+        yxc_debugPrint("1...5 = \((1 ... 5).reduce(0, +))")
+
+        let reduceAry2 = numbers.reduce("strengthen") { a1, a2 -> String in
+            "\(a1)" + "\(a2)"
+        }
+        yxc_debugPrint("number + strengthen:  \(reduceAry2)")
+
+        yxc_debugPrint("numbers first 3:  \(numbers.prefix(upTo: 3))")
+        yxc_debugPrint("numbers from 3:  \(numbers.suffix(from: 3))")
+
+        // 从头部开始的3个元素
+        yxc_debugPrint("delete first 3 nums:  \(numbers.dropFirst(3))")
+
+        yxc_debugPrint("delete last 3 nums:  \(numbers.dropLast(3))")
     }
 
     // MARK: - Dictionaries
