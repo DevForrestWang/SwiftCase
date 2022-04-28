@@ -485,6 +485,7 @@
 		77F652C426F5E2C500280568 /* SCUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUITabBarController.swift; sourceTree = "<group>"; };
 		77F652C626F5E7F200280568 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIKitTableViewCell.swift; sourceTree = "<group>"; };
+		8A1CB1CB281A3C27000BAA22 /* WillDo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = WillDo.md; sourceTree = "<group>"; };
 		8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		8A21BE8127DC9A2F0008D74B /* SCDeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDeviceInfo.swift; sourceTree = "<group>"; };
 		8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -948,6 +949,7 @@
 			children = (
 				7756E87026FB34B900AB139F /* codesnippet.tar.gz */,
 				77F6520526F5CAA000280568 /* Swift代码规范.md */,
+				8A1CB1CB281A3C27000BAA22 /* WillDo.md */,
 			);
 			path = Doc;
 			sourceTree = "<group>";
