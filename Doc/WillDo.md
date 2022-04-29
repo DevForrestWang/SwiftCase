@@ -176,5 +176,29 @@ class GYActivitySelectTimeView: GYPopupBaseView, UIPickerViewDataSource,UIPicker
 }
 
 
-
+--------------------------------
+class GYActivityTableViewCell: UITableViewCell {
+    
+    // MARK: - Lifecycle
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        // 开启否则按钮无事件响应
+        contentView.isUserInteractionEnabled = true
+        
+        setupUI()
+        setupConstraints()
+    }
+    
+    func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GYActivityTableViewCell") as? GYActivityTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        let model: GYActivityListModel = dataSource[indexPath.row]
+        cell.update(model: model)
+        // 去掉选中背景颜色
+        cell.selectionStyle = .none
+        return cell
+    }
+------------------
 
