@@ -18,6 +18,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.hexColor(0xF2F4F7)
+        edgesForExtendedLayout = UIRectEdge.bottom
 
         if #available(iOS 15.0, *) {
             let appearance = UINavigationBarAppearance()
