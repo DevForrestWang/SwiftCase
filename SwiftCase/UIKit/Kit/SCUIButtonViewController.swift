@@ -54,14 +54,35 @@ class SCUIButtonViewController: BaseViewController {
 
     // MARK: - Private
 
+    @objc private func photoAlbumAction() {
+        let imageURL = "https://t7.baidu.com/it/u=3655946603,4193416998&fm=193&f=GIF"
+        SCUtils.downloadWith(urlStr: imageURL) { [weak self] image in
+            guard let saveImage = image else {
+                showToast("图片下载失败")
+                return
+            }
+            // 图片写入相册
+            UIImageWriteToSavedPhotosAlbum(saveImage, self, #selector(self?.saveImageResult(image:didFinishSavingWithError:contextInfo:)), nil)
+        }
+    }
+
+    @objc private func saveImageResult(image _: UIImage, didFinishSavingWithError error: NSError?, contextInfo _: AnyObject) {
+        if error != nil {
+            showToast("图片保存失败")
+        } else {
+            showToast("图片保存成功")
+        }
+    }
+
     // MARK: - UI
 
     func setupUI() {
         title = "UIButton"
-
         view.addSubview(btn1)
         view.addSubview(btn2)
         view.addSubview(btnFlash)
+        view.addSubview(saveImageBtn)
+        saveImageBtn.addTarget(self, action: #selector(photoAlbumAction), for: .touchUpInside)
     }
 
     // MARK: - Constraints
@@ -71,7 +92,7 @@ class SCUIButtonViewController: BaseViewController {
             make.height.equalTo(44)
             make.width.equalTo(view).offset(-50)
             // make.top.equalTo(20)
-            make.centerY.equalToSuperview().offset(-50)
+            make.centerY.equalToSuperview().offset(-200)
             make.centerX.equalToSuperview()
         }
 
@@ -86,6 +107,14 @@ class SCUIButtonViewController: BaseViewController {
             make.top.equalTo(btn2.snp.bottom).offset(20)
             make.width.equalTo(60)
             make.height.equalTo(70)
+            make.centerX.equalToSuperview()
+        }
+
+        saveImageBtn.snp.makeConstraints { make in
+            make.top.equalTo(btnFlash.snp.bottom).offset(20)
+            make.height.equalTo(44)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
             make.centerX.equalToSuperview()
         }
     }
@@ -123,6 +152,14 @@ class SCUIButtonViewController: BaseViewController {
         $0.setTitle("手电筒", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 16)
+    }
+
+    let saveImageBtn = UIButton(type: .custom).then {
+        $0.backgroundColor = .white
+        $0.setTitle("图片下载及相册保存", for: .normal)
+        $0.setTitleColor(UIColor.hexColor(0x3F6D03), for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 14.0)
+        $0.layer.cornerRadius = 15
     }
 }
 

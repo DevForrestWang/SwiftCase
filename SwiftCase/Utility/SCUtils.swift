@@ -12,6 +12,7 @@
 //===----------------------------------------------------------------------===//
 
 import Foundation
+import Kingfisher
 import Toast_Swift
 
 // MARK: - Print info
@@ -92,5 +93,25 @@ public enum SCUtils {
         }
 
         return nil
+    }
+
+    /// 图片下载
+    /// - Parameters:
+    ///  - urlStr: 下载URL
+    ///  - complete: 下载的图片
+    public static func downloadWith(urlStr: String, complete: ((UIImage?) -> Void)? = nil) {
+        if let url = URL(string: urlStr) {
+            KingfisherManager.shared.retrieveImage(with: url) { result in
+                switch result {
+                case let .success(imgResult):
+                    complete?(imgResult.image)
+                case let .failure(error):
+                    print(error)
+                    complete?(nil)
+                }
+            }
+        } else {
+            complete?(nil)
+        }
     }
 }

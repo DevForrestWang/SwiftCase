@@ -32,6 +32,8 @@ class ShowTableViewCell: UITableViewCell {
 
     override init(style _: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        // 开启否则按钮无事件响应
+        contentView.isUserInteractionEnabled = true
 
         textLabel?.textColor = .white
         textLabel?.font = .systemFont(ofSize: 14.0)
@@ -41,9 +43,12 @@ class ShowTableViewCell: UITableViewCell {
 
         detailTextLabel?.textColor = .lightGray
 
-        let accessoryView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-        accessoryView.image = UIImage(named: "download")
-        self.accessoryView = accessoryView
+        let accessoryBtn = UIButton(type: .custom).then {
+            $0.setImage(UIImage(named: "download"), for: .normal)
+        }
+        accessoryBtn.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        accessoryBtn.addTarget(self, action: #selector(accessoryBtnAction), for: .touchUpInside)
+        accessoryView = accessoryBtn
 
         backgroundColor = .clear
         separatorInset = .zero
@@ -51,5 +56,9 @@ class ShowTableViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+
+    @objc private func accessoryBtnAction() {
+        print("click: \(show.title)")
     }
 }

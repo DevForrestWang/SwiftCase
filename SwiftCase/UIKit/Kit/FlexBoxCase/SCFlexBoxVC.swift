@@ -70,6 +70,8 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         lineView.backgroundColor = .lightGray
         cell.addSubview(lineView)
 
+        // 去掉选中背景颜色
+        cell.selectionStyle = .none
         return cell
     }
 
