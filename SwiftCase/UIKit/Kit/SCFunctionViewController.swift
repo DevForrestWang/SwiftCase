@@ -342,6 +342,22 @@ class SCFunctionViewController: BaseViewController {
         // reverse()  reverses the order of array elements
 
         // Looping Through Array
+        
+        //0到9
+        for i in (0..<10) {
+            yxc_debugPrint(i)
+        }
+
+        //0到10
+        for i in (0...10) {
+            yxc_debugPrint(i)
+        }
+        
+        // 反向遍历
+        for i in (0..<10).reversed() {
+            yxc_debugPrint(i)
+        }
+        
         for num in numbers {
             yxc_debugPrint(num)
         }
