@@ -220,6 +220,7 @@
 		77F652C726F5E7F200280568 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F652C626F5E7F200280568 /* ItemListViewController.swift */; };
 		77F652C926F5EA3000280568 /* SCUIKitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */; };
 		8A01AA43282F56E6001A3F9B /* UILableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01AA42282F56E6001A3F9B /* UILableExtension.swift */; };
+		8A01AA49282FB891001A3F9B /* SCSelectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01AA48282FB891001A3F9B /* SCSelectTableView.swift */; };
 		8A21BE8027DC8DF10008D74B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */; };
 		8A21BE8227DC9A2F0008D74B /* SCDeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21BE8127DC9A2F0008D74B /* SCDeviceInfo.swift */; };
 		8A2EDF162826751A00A43A28 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EDF152826751A00A43A28 /* DateExtension.swift */; };
@@ -489,6 +490,7 @@
 		77F652C626F5E7F200280568 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIKitTableViewCell.swift; sourceTree = "<group>"; };
 		8A01AA42282F56E6001A3F9B /* UILableExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILableExtension.swift; sourceTree = "<group>"; };
+		8A01AA48282FB891001A3F9B /* SCSelectTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectTableView.swift; sourceTree = "<group>"; };
 		8A1CB1CB281A3C27000BAA22 /* WillDo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = WillDo.md; sourceTree = "<group>"; };
 		8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		8A21BE8127DC9A2F0008D74B /* SCDeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDeviceInfo.swift; sourceTree = "<group>"; };
@@ -1217,6 +1219,7 @@
 				77A842AA273FB17D00D08148 /* SCGCDViewController.swift */,
 				77A842AC273FB1A400D08148 /* SCOperationViewController.swift */,
 				77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */,
+				8A01AA48282FB891001A3F9B /* SCSelectTableView.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -1594,6 +1597,7 @@
 				C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */,
 				775F803B277075AC00D167A7 /* UpDownSwipeViewController.swift in Sources */,
 				A819C63D2723F3600023EC3D /* HashTable.swift in Sources */,
+				8A01AA49282FB891001A3F9B /* SCSelectTableView.swift in Sources */,
 				777B9B09272811ED0030DCB9 /* BinaryTree.swift in Sources */,
 				7756E84926FAE48200AB139F /* Grade.swift in Sources */,
 				77201D8C2720165300F6188E /* SkipList.swift in Sources */,
