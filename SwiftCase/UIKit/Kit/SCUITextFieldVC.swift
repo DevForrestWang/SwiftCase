@@ -122,6 +122,17 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         title = "UITextField"
         hideKeyboardWhenTapedAround()
 
+        view.addSubview(selectTableView)
+
+        // 表格数据
+        let spaceAry = ["空间数", "100", "1000", "10000"]
+        let priceAry = ["价格", "￥100", "￥1000", "￥10000"]
+        let descAry = ["描述", "aa", "bb", "cc"]
+        selectTableView.gySelectTableViewClosure = { row, isSelect in
+            print("select row: \(row), state: \(isSelect)")
+        }
+        selectTableView.show(dataSource: [spaceAry, priceAry, descAry], noDataInfo: "没有可选择空间扩容数")
+
         view.addSubview(textField)
 
         leftView.addSubview(leftButton)
@@ -146,6 +157,13 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
             make.width.equalTo(view).offset(-40)
             make.centerX.equalToSuperview()
             make.bottom.equalTo(view.snp.bottom).offset(-60)
+        }
+
+        selectTableView.snp.makeConstraints { make in
+            make.top.equalTo(20)
+            make.bottom.equalTo(textField.snp.top).offset(-20)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
         }
     }
 
@@ -228,4 +246,6 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         // 右侧 view
         $0.rightViewMode = .always
     }
+
+    let selectTableView = SCSelectTableView()
 }

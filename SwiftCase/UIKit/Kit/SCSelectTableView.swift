@@ -17,15 +17,15 @@ class SCSelectTableView: UIView {
         setupUI()
         setupConstraints()
     }
-    
+
     @available(*, unavailable)
     public required init?(coder _: NSCoder) {
         fatalError()
     }
-    
+
     // 执行析构过程
     deinit {}
-    
+
     // MARK: - Public
 
     public func show(dataSource: [[String]], noDataInfo: String) {
@@ -33,15 +33,15 @@ class SCSelectTableView: UIView {
             print("The dataSource is empty.")
             return
         }
-        
+
         let titleAry = dataSource.map { itemAry in
             itemAry[0]
         }
-        
+
         // 创建表格头部
         let titleView = createView(yPoint: 0, titleAry: titleAry)
         addSubview(titleView)
-        
+
         // 校验数据，按最短的输出创建表格
         var dataSize: Int = dataSource.first?.count ?? 0
         for itemAry in dataSource {
@@ -49,7 +49,7 @@ class SCSelectTableView: UIView {
                 dataSize = itemAry.count
             }
         }
-        
+
         if dataSize > 1 {
             for index in 1 ..< dataSize {
                 let itemAry = dataSource.map { tmpAry in
@@ -63,9 +63,9 @@ class SCSelectTableView: UIView {
             addSubview(emptyView)
         }
     }
-    
+
     // MARK: - Protocol
-    
+
     // MARK: - IBActions
 
     @objc private func selectButtonAction(button: UIButton) {
@@ -75,12 +75,12 @@ class SCSelectTableView: UIView {
         } else {
             button.setImage(UIImage(named: "gy_assistant_active_unselect_box"), for: .normal)
         }
-        
+
         if let tmpClosure = gySelectTableViewClosure {
             tmpClosure(button.tag - baseTag, button.isSelected)
         }
     }
-    
+
     // MARK: - Private
 
     private func createView(yPoint: Int, titleAry: [String]) -> UIView {
@@ -89,7 +89,7 @@ class SCSelectTableView: UIView {
         }
         let iWidth = Int(gScreenWidth) - Int(leftSpace * 2)
         bgView.frame = CGRect(x: leftSpace, y: yPoint, width: iWidth + 1, height: cellHeight)
-        
+
         let itemWidth = Int((iWidth - selectCellWidth) / titleAry.count)
         var index = 0
         for name in titleAry {
@@ -103,7 +103,7 @@ class SCSelectTableView: UIView {
                 make.width.equalTo(1)
                 make.left.equalTo(selectCellWidth + index * itemWidth)
             }
-            
+
             let itemLable = UILabel().then {
                 $0.text = name
                 $0.textColor = .white
@@ -118,20 +118,20 @@ class SCSelectTableView: UIView {
                 make.centerY.equalToSuperview()
                 make.left.equalTo(lineView.snp.right)
             }
-            
+
             index += 1
         }
-        
+
         return bgView
     }
-    
+
     private func createItemView(yPoint: Int, tag: Int, dataAry: [String]) -> UIView {
         let bgView = UIView().then {
             $0.backgroundColor = bgColor
         }
         let iWidth = Int(gScreenWidth) - Int(leftSpace * 2)
         bgView.frame = CGRect(x: leftSpace, y: yPoint, width: iWidth + 1, height: cellHeight)
-        
+
         let selectBtn = UIButton(type: .custom).then {
             $0.backgroundColor = .white
             $0.setImage(UIImage(named: "gy_assistant_active_unselect_box"), for: .normal)
@@ -146,7 +146,7 @@ class SCSelectTableView: UIView {
             make.width.equalTo(selectCellWidth - 1)
             make.left.equalToSuperview().offset(1)
         }
-        
+
         let itemWidth = Int((iWidth - selectCellWidth) / dataAry.count)
         var index = 0
         for value in dataAry {
@@ -158,9 +158,9 @@ class SCSelectTableView: UIView {
                 $0.textAlignment = .center
             }
             bgView.addSubview(itemLable)
-            
+
             var tmpWidth = itemWidth - 1
-            if index == (dataAry.count - 1) && dataAry.count % 2 == 0 {
+            if index == (dataAry.count - 1), dataAry.count % 2 == 0 {
                 tmpWidth += 1
             }
             itemLable.snp.makeConstraints { make in
@@ -169,20 +169,20 @@ class SCSelectTableView: UIView {
                 make.width.equalTo(tmpWidth)
                 make.left.equalTo(selectCellWidth + index * itemWidth + 1)
             }
-            
+
             index += 1
         }
-        
+
         return bgView
     }
-    
+
     private func createEmptyItemView(yPoint: Int, message: String) -> UIView {
         let bgView = UIView().then {
             $0.backgroundColor = bgColor
         }
         let iWidth = Int(gScreenWidth) - Int(leftSpace * 2)
         bgView.frame = CGRect(x: leftSpace, y: yPoint, width: iWidth + 1, height: cellHeight + 10)
-        
+
         let messageLable = UILabel().then {
             $0.backgroundColor = .white
             $0.text = message
@@ -197,27 +197,27 @@ class SCSelectTableView: UIView {
             make.left.equalToSuperview().offset(1)
             make.right.equalToSuperview().offset(-1)
         }
-        
+
         return bgView
     }
-    
+
     // MARK: - UI
 
     private func setupUI() {}
-    
+
     // MARK: - Constraints
 
     private func setupConstraints() {}
-    
+
     // MARK: - Property
 
     public var gySelectTableViewClosure: ((_ row: Int, _ isSelect: Bool) -> Void)?
-    public var bgColor = UIColor.hexColor(0x00aeff)
+    public var bgColor = UIColor.hexColor(0x00AEFF)
     public var itemFontColor = UIColor.black
     public var fontSize = UIFont.systemFont(ofSize: 14)
     public var cellHeight = 40
     public var selectCellWidth = 53
     public var leftSpace: Int = 20
-    
+
     let baseTag = 8000
 }

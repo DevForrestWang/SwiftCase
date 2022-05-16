@@ -112,6 +112,8 @@ class SCUILableViewController: BaseViewController {
         yxc_debugPrint("The lable calculate height:\(String(format: "%.2f", messageRect.height))")
 
         view.addSubview(lab3)
+        // 改变行间距
+        lab3.changeLineSpace(space: 10)
 
         view.addSubview(lab4)
         useAttributedStrings()

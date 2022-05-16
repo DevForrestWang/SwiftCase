@@ -33,7 +33,7 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "UIButton", controllerName: "SCUIButtonViewController", action: nil),
             SCItemModel(title: "UILable", controllerName: "SCUILableViewController", action: nil),
             SCItemModel(title: "UICollectionView", controllerName: "SCUICollectionViewVC", action: nil),
-            SCItemModel(title: "UITextField", controllerName: "SCUITextFieldVC", action: nil),
+            SCItemModel(title: "UITextField, SelectTableView", controllerName: "SCUITextFieldVC", action: nil),
             SCItemModel(title: "UITextView", controllerName: "SCUITextViewVC", action: nil),
             SCItemModel(title: "Widget By Rx", controllerName: "SCWidgetVC", action: nil),
             SCItemModel(title: "RxSwift and RxCocoa", controllerName: "SCRxSwiftAndRxCocoaVC", action: nil),
