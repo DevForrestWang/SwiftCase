@@ -51,6 +51,9 @@ target 'SwiftCase' do
   pod 'AMapLocation'
   pod 'AMap3DMap'
   
+  # 分类切换滚动视图
+  pod 'JXSegmentedView'
+  
   #pod 'PullToRefresher'
   #pod 'SwiftyUserDefaults'
   #pod 'Whisper'

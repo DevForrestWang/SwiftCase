@@ -480,7 +480,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 40 images.
+  /// This `R.image` struct is generated, and contains static references to 42 images.
   struct image {
     /// Image `LaunchScreen`.
     static let launchScreen = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchScreen")
@@ -504,6 +504,10 @@ struct R: Rswift.Validatable {
     static let download = Rswift.ImageResource(bundle: R.hostingBundle, name: "download")
     /// Image `forrest-icon`.
     static let forrestIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "forrest-icon")
+    /// Image `gy_assistant_active_select_box`.
+    static let gy_assistant_active_select_box = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_assistant_active_select_box")
+    /// Image `gy_assistant_active_unselect_box`.
+    static let gy_assistant_active_unselect_box = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_assistant_active_unselect_box")
     /// Image `hightImage`.
     static let hightImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "hightImage")
     /// Image `home_selected`.
@@ -637,6 +641,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "forrest-icon", bundle: ..., traitCollection: ...)`
     static func forrestIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.forrestIcon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_assistant_active_select_box", bundle: ..., traitCollection: ...)`
+    static func gy_assistant_active_select_box(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_assistant_active_select_box, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_assistant_active_unselect_box", bundle: ..., traitCollection: ...)`
+    static func gy_assistant_active_unselect_box(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_assistant_active_unselect_box, compatibleWith: traitCollection)
     }
     #endif
 

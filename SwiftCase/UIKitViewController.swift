@@ -38,6 +38,7 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "Widget By Rx", controllerName: "SCWidgetVC", action: nil),
             SCItemModel(title: "RxSwift and RxCocoa", controllerName: "SCRxSwiftAndRxCocoaVC", action: nil),
             SCItemModel(title: "PickerView", controllerName: "SCUIPickerViewVC", action: nil),
+            SCItemModel(title: "JXSegmentedView: segmented view ", controllerName: "GYSegmentVC", action: nil),
             SCItemModel(title: "MapView-GaoDe Map", controllerName: "SCUIMapViewVC", action: nil),
             SCItemModel(title: "Event", controllerName: "SCUIEventViewVC", action: nil),
             SCItemModel(title: "UI Event", controllerName: "", action: #selector(uiEventAction)),

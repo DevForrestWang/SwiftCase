@@ -240,6 +240,8 @@
 		8A8ED9B8279BFC2400971DDA /* BindingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9B2279BFC2400971DDA /* BindingExtensions.swift */; };
 		8A8ED9B9279BFC2400971DDA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8ED9B3279BFC2400971DDA /* SignUpViewModel.swift */; };
 		8AAAEDE427EDB64E009ED9D7 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAAEDE327EDB64E009ED9D7 /* DictionaryExtension.swift */; };
+		8AB586DF2831DEDB00CB9B2B /* GYSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB586DE2831DEDB00CB9B2B /* GYSegmentVC.swift */; };
+		8AB586E12831E91600CB9B2B /* GYSegmentItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB586E02831E91600CB9B2B /* GYSegmentItemVC.swift */; };
 		A819C63D2723F3600023EC3D /* HashTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819C63C2723F3600023EC3D /* HashTable.swift */; };
 		A8621264272E82A9007C4556 /* BruteForceStringSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
@@ -511,6 +513,8 @@
 		8A8ED9B2279BFC2400971DDA /* BindingExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingExtensions.swift; sourceTree = "<group>"; };
 		8A8ED9B3279BFC2400971DDA /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		8AAAEDE327EDB64E009ED9D7 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		8AB586DE2831DEDB00CB9B2B /* GYSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYSegmentVC.swift; sourceTree = "<group>"; };
+		8AB586E02831E91600CB9B2B /* GYSegmentItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYSegmentItemVC.swift; sourceTree = "<group>"; };
 		9F28E3FA941807E923F79B8C /* Pods_SwiftCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A819C63C2723F3600023EC3D /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
 		A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceStringSearch.swift; sourceTree = "<group>"; };
@@ -1010,6 +1014,7 @@
 		77F6522E26F5CBB100280568 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				8AB586DD2831DEA900CB9B2B /* Segment */,
 				7756E82A26FAE48200AB139F /* Communication */,
 				C88F92F926F8D83200739819 /* Kit */,
 			);
@@ -1182,6 +1187,15 @@
 				8A8ED9B3279BFC2400971DDA /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8AB586DD2831DEA900CB9B2B /* Segment */ = {
+			isa = PBXGroup;
+			children = (
+				8AB586DE2831DEDB00CB9B2B /* GYSegmentVC.swift */,
+				8AB586E02831E91600CB9B2B /* GYSegmentItemVC.swift */,
+			);
+			path = Segment;
 			sourceTree = "<group>";
 		};
 		B289C5184CEC035CC725B247 /* Pods */ = {
@@ -1589,6 +1603,7 @@
 				77F6527A26F5D23500280568 /* UIColor+Extension.swift in Sources */,
 				777BA9BF272937390030DCB9 /* DepthFirstSearch.swift in Sources */,
 				7756E83F26FAE48200AB139F /* hello.proto in Sources */,
+				8AB586E12831E91600CB9B2B /* GYSegmentItemVC.swift in Sources */,
 				777BA9D7272B9A030030DCB9 /* Heap.swift in Sources */,
 				7756E86926FB2E9900AB139F /* Product.swift in Sources */,
 				C88F930326F8D8D300739819 /* SCUIVIewViewController.swift in Sources */,
@@ -1632,6 +1647,7 @@
 				A8621264272E82A9007C4556 /* BruteForceStringSearch.swift in Sources */,
 				777BA9B82729349A0030DCB9 /* HeapSort.swift in Sources */,
 				7756E84526FAE48200AB139F /* Moya+Response.swift in Sources */,
+				8AB586DF2831DEDB00CB9B2B /* GYSegmentVC.swift in Sources */,
 				77F652BC26F5D98900280568 /* R.generated.swift in Sources */,
 				779843952702B03F001D73AF /* KxSwift.swift in Sources */,
 				77F652C926F5EA3000280568 /* SCUIKitTableViewCell.swift in Sources */,
