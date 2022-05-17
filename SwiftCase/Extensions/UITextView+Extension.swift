@@ -14,7 +14,7 @@
 import Foundation
 import UIKit
 
-extension UITextView {
+public extension UITextView {
     /// 自动调整视图高度
     func adjustUITextViewHeight() {
         translatesAutoresizingMaskIntoConstraints = true

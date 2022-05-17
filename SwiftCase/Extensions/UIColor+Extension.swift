@@ -14,7 +14,23 @@
 import Foundation
 import UIKit
 
-extension UIColor {
+public extension UIColor {
+    convenience init(_ hexValue: Int, alphaValue: Float) {
+        self.init(red: CGFloat((hexValue & 0xFF0000) >> 16) / 255, green: CGFloat((hexValue & 0x00FF00) >> 8) / 255, blue: CGFloat(hexValue & 0x0000FF) / 255, alpha: CGFloat(alphaValue))
+    }
+
+    convenience init(_ hexValue: Int) {
+        self.init(hexValue, alphaValue: 1)
+    }
+
+    func rgbColor(_ red: Int, _ green: Int, _ blue: Int) -> UIColor {
+        return rgbColor(red, green, blue, 1)
+    }
+
+    func rgbColor(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat) -> UIColor {
+        return UIColor(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha)
+    }
+
     static func hexColor(_ hexValue: Int, alphaValue: Float) -> UIColor {
         return UIColor(red: CGFloat((hexValue & 0xFF0000) >> 16) / 255, green: CGFloat((hexValue & 0x00FF00) >> 8) / 255, blue: CGFloat(hexValue & 0x0000FF) / 255, alpha: CGFloat(alphaValue))
     }
@@ -23,12 +39,9 @@ extension UIColor {
         return hexColor(hexValue, alphaValue: 1)
     }
 
-    convenience init(_ hexValue: Int, alphaValue: Float) {
-        self.init(red: CGFloat((hexValue & 0xFF0000) >> 16) / 255, green: CGFloat((hexValue & 0x00FF00) >> 8) / 255, blue: CGFloat(hexValue & 0x0000FF) / 255, alpha: CGFloat(alphaValue))
-    }
-
-    convenience init(_ hexValue: Int) {
-        self.init(hexValue, alphaValue: 1)
+    /// 随机色
+    static var randomColor: UIColor {
+        UIColor(red: CGFloat(arc4random_uniform(255)) / 255.0, green: CGFloat(arc4random_uniform(255)) / 255.0, blue: CGFloat(arc4random_uniform(255)) / 255.0, alpha: 1.0)
     }
 
     func toImage() -> UIImage {
@@ -40,13 +53,5 @@ extension UIColor {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
-    }
-
-    /// 返回随机颜色
-    open class var randomColor: UIColor {
-        let red = CGFloat(arc4random() % 256) / 255.0
-        let green = CGFloat(arc4random() % 256) / 255.0
-        let blue = CGFloat(arc4random() % 256) / 255.0
-        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
 }

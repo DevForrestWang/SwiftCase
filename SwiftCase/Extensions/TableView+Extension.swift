@@ -13,7 +13,7 @@
 import Foundation
 import UIKit
 
-extension UITableView {
+public extension UITableView {
     static func emptyCell() -> UITableViewCell {
         let cell = UITableViewCell()
         cell.selectionStyle = .none
@@ -30,5 +30,21 @@ extension UITableView {
 
             self.setContentOffset(CGPoint(x: 0, y: yOffset), animated: animated)
         }
+    }
+
+    private func identifier<T>(cellClass: T.Type) -> String {
+        String(describing: cellClass)
+    }
+
+    func register<T: UITableViewCell>(cellClass: T.Type) {
+        register(cellClass, forCellReuseIdentifier: identifier(cellClass: cellClass))
+    }
+
+    func nibRegister<T>(cellClass: T.Type, bundle _: Bundle?) {
+        register(UINib(nibName: identifier(cellClass: cellClass), bundle: nil), forCellReuseIdentifier: identifier(cellClass: cellClass))
+    }
+
+    func dequeueReusableCell<T: UITableViewCell>(cellClass: T.Type, indexPath: IndexPath) -> T? {
+        dequeueReusableCell(withIdentifier: identifier(cellClass: cellClass), for: indexPath) as? T
     }
 }

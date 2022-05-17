@@ -9,7 +9,7 @@
 import UIKit
 
 /// 头部为蓝色背景，有选择框的表格
-class SCSelectTableView: UIView {
+public class SCSelectTableView: UIView {
     // MARK: - Lifecycle
 
     override init(frame: CGRect) {
