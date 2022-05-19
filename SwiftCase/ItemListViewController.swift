@@ -33,7 +33,9 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
 
     // 执行析构过程
-    deinit {}
+    deinit {
+        yxc_debugPrint("===========<deinit: \(type(of: self))>===========")
+    }
 
     // MARK: - Public
 
@@ -111,6 +113,8 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
     // MARK: - UI
 
     func setupUI() {
+        yxc_debugPrint("===========<loadClass: \(type(of: self))>===========")
+        
         view.backgroundColor = .white
 
         view.addSubview(tableView)
