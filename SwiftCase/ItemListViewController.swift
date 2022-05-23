@@ -114,7 +114,7 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
 
     func setupUI() {
         yxc_debugPrint("===========<loadClass: \(type(of: self))>===========")
-        
+
         view.backgroundColor = .white
 
         view.addSubview(tableView)

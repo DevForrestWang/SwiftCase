@@ -58,12 +58,8 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         return true
     }
 
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    func textViewDidBeginEditing(_: UITextView) {
         yxc_debugPrint("I've already started editing")
-        let text: String = textView.text
-        if text == placeholder {
-            textView.text = ""
-        }
     }
 
     func textViewShouldEndEditing(_: UITextView) -> Bool {
@@ -80,28 +76,16 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         yxc_debugPrint("the user changes the text ")
     }
 
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn _: NSRange, replacementText text: String) -> Bool {
         let currentText: String = textView.text
-        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
         yxc_debugPrint("text: \(currentText), lenght: \(currentText.count)")
-
-        if updatedText.isEmpty {
-            textView.text = placeholder
-            textView.textColor = .lightGray
-            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-        } else if textView.textColor == UIColor.lightGray, !text.isEmpty {
-            textView.textColor = .black
-            textView.text = text
-        } else {
-            return true
-        }
 
         // 回车时退出编辑
         if text == "\n" {
             // textView.resignFirstResponder()
         }
 
-        return false
+        return true
     }
 
     // MARK: - IBActions
@@ -137,10 +121,6 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         accessoryView.addSubview(accessoryRightBtn)
         textView.inputAccessoryView = accessoryView
 
-        // 设置Placeholder
-        textView.text = placeholder
-        textView.textColor = .lightGray
-
         // 通过通知监听变化
         NotificationCenter.default.addObserver(self, selector: #selector(textViewEditChanged(notification:)), name: UITextView.textDidChangeNotification, object: textView)
     }
@@ -157,8 +137,6 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
     }
 
     // MARK: - Property
-
-    let placeholder = "Placeholder info"
 
     let accessoryView = UIView().then {
         $0.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40)
@@ -193,5 +171,15 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         $0.returnKeyType = .done
 
         $0.layer.cornerRadius = 5
+
+        // 设置Placeholder
+        let phLabel = UILabel()
+        phLabel.text = "Placeholder info"
+        phLabel.font = UIFont.systemFont(ofSize: 16)
+        phLabel.textColor = UIColor.lightGray
+        phLabel.numberOfLines = 0
+        phLabel.sizeToFit()
+        $0.addSubview(phLabel)
+        $0.setValue(phLabel, forKey: "_placeholderLabel")
     }
 }

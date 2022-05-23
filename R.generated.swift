@@ -130,7 +130,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 43 files.
+  /// This `R.file` struct is generated, and contains static references to 42 files.
   struct file {
     /// Resource file `README.md`.
     static let readmeMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "md")
@@ -148,8 +148,6 @@ struct R: Rswift.Validatable {
     static let book2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "book@2x", pathExtension: "png")
     /// Resource file `case@2x.png`.
     static let case2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "case@2x", pathExtension: "png")
-    /// Resource file `codesnippet.tar.gz`.
-    static let codesnippetTarGz = Rswift.FileResource(bundle: R.hostingBundle, name: "codesnippet.tar", pathExtension: "gz")
     /// Resource file `defaultAvatar@2x.jpg`.
     static let defaultAvatar2xJpg = Rswift.FileResource(bundle: R.hostingBundle, name: "defaultAvatar@2x", pathExtension: "jpg")
     /// Resource file `design_pattern@2x.png`.
@@ -264,12 +262,6 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "case@2x", withExtension: "png")`
     static func case2xPng(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.case2xPng
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "codesnippet.tar", withExtension: "gz")`
-    static func codesnippetTarGz(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.codesnippetTarGz
       return fileResource.bundle.url(forResource: fileResource)
     }
 
