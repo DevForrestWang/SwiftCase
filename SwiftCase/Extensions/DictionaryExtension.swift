@@ -15,4 +15,9 @@ public extension Dictionary {
             updateValue(value, forKey: key)
         }
     }
+    
+    // 检查字典是否包含key
+    func contains(key: Key) -> Bool {
+        self[key] != nil
+    }
 }
