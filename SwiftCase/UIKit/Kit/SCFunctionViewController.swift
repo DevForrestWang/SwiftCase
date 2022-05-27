@@ -454,10 +454,10 @@ class SCFunctionViewController: BaseViewController {
         // 是否包含key
         let hasKey = capitalCity.keys.contains("Italy")
         yxc_debugPrint("Dictionary, capitalCity contains, Italy: \(hasKey)")
-        
+
         let hasKey2 = capitalCity.contains(key: "Italy")
         yxc_debugPrint("Dictionary, capitalCity contains, Italy: \(hasKey2)")
-        
+
         // Add Elements
         capitalCity["Japan"] = "Tokyo"
         yxc_debugPrint("Dictionary, Add \(capitalCity)")
