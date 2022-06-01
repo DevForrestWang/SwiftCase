@@ -64,4 +64,22 @@ public extension String {
         // 去掉空格
         return string.replacingOccurrences(of: " ", with: "")
     }
+
+    /// 字符串转字典
+    func toDictionary() -> [String: Any] {
+        var result = [String: Any]()
+
+        guard !isEmpty else {
+            return result
+        }
+
+        guard let dataSelf = data(using: .utf8) else {
+            return result
+        }
+
+        if let dic = try? JSONSerialization.jsonObject(with: dataSelf, options: .mutableContainers) as? [String: Any] {
+            result = dic
+        }
+        return result
+    }
 }

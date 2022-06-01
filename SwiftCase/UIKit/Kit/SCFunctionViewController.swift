@@ -493,6 +493,11 @@ class SCFunctionViewController: BaseViewController {
 
         // Find Number of Dictionary Elements
         yxc_debugPrint("Dictionary, Number \(studentID.count)")
+
+        let dicString = "{\"cmd\":\"CustomCmdMsg\",\"data\":{\"cmdType\":\"4\",\"msg\":{\"fileReturnId\":\"F00AgKdVBvCR1TZyBTJrD1T\",\"imgUrl\":\"https://dc.aadv.net:10443/fsServerUrl/fs/download/F00AgKdVBvCR1TZyBTJrD1T\"},\"userId\":\"0121400015000020000\",\"userInfo\":{\"groupId\":\"11202112091420160000060113\",\"userName\":\"测试二号\",\"userAvatar\":\"F00AgKdVBvCR1ThXBTVfC1T\",\"entCustId\":\"0121400015020211117\",\"custId\":\"0121400015000020000\",\"resNo\":\"01214000150\",\"operNo\":\"0002\",\"levelName\":\"店员\",\"levelImg\":\"user_icon.png\"},\"sendTime\":\"2022-05-27 17:43:57\"}}"
+
+        let dicObj = dicString.toDictionary()
+        yxc_debugPrint("string to dictionary: \(dicObj.toJsonString())")
     }
 
     // MARK: - sets
