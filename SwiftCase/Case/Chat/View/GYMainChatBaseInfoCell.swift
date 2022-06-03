@@ -64,19 +64,6 @@ class GYMainChatBaseInfoCell: UITableViewCell {
                 messageLable.isHidden = false
             }
             contentBgView.backgroundColor = UIColor.hexColor(0xFFF7EB)
-        } else if model.messageTpye == .picture {
-            if let msgDic = model.msg as? NSDictionary {
-                if let strURL = msgDic["imgUrl"] as? String {
-                    messageLable.isHidden = true
-                    messageImagView.kf.setImage(with: URL(string: strURL), placeholder: UIImage(named: "gyhs_bigDefaultImage"))
-
-                    messageImagView.snp.makeConstraints { make in
-                        make.width.equalTo(110)
-                        make.height.equalTo(150)
-                    }
-                }
-                contentBgView.backgroundColor = UIColor.hexColor(0xEEEEEE)
-            }
         } else if model.messageTpye == .voice {
             if let msgDic = model.msg as? NSDictionary {
                 if let second = msgDic["second"] as? Int64, let remoteAudioUrl = msgDic["remoteAudioUrl"] as? String {
@@ -90,8 +77,6 @@ class GYMainChatBaseInfoCell: UITableViewCell {
                 contentBgView.backgroundColor = UIColor.hexColor(0xFFF7EB)
             }
         }
-
-        messageImagView.isHidden = !messageLable.isHidden
     }
 
     // MARK: - Protocol
@@ -111,7 +96,6 @@ class GYMainChatBaseInfoCell: UITableViewCell {
         gradeBgView.addSubview(gradeLable)
         addSubview(contentBgView)
         contentBgView.addSubview(messageLable)
-        contentBgView.addSubview(messageImagView)
     }
 
     // MARK: - Constraints
@@ -177,10 +161,6 @@ class GYMainChatBaseInfoCell: UITableViewCell {
             messageLable.textAlignment = .left
         } else {
             messageLable.textAlignment = .right
-        }
-
-        messageImagView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         }
     }
 
@@ -258,10 +238,5 @@ class GYMainChatBaseInfoCell: UITableViewCell {
         $0.font = .systemFont(ofSize: 14)
         $0.textAlignment = .left
         $0.numberOfLines = 0
-    }
-
-    let messageImagView = UIImageView().then {
-        $0.layer.cornerRadius = 10
-        $0.layer.masksToBounds = true
     }
 }

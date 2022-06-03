@@ -68,18 +68,26 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatBaseInfoCell") as? GYMainChatBaseInfoCell else {
+        let key = dataSourceHeads[indexPath.section]
+        let dataAry = dataSource[key]
+        guard indexPath.row < dataAry?.count ?? 0, let model: GYMainChatModel = dataAry?[indexPath.row] else {
             return UITableViewCell()
         }
 
-        let key = dataSourceHeads[indexPath.section]
-        let dataAry = dataSource[key]
-        if indexPath.row < dataAry?.count ?? 0, let model: GYMainChatModel = dataAry?[indexPath.row] {
-            cell.update(model: model)
+        var cell: GYMainChatBaseInfoCell?
+        if model.messageTpye == .picture {
+            if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatPictureCell") as? GYMainChatPictureCell {
+                cell = tmpCell
+            }
+        } else {
+            if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatBaseInfoCell") as? GYMainChatBaseInfoCell {
+                cell = tmpCell
+            }
         }
 
-        cell.selectionStyle = .none
-        return cell
+        cell?.update(model: model)
+        cell?.selectionStyle = .none
+        return cell ?? UITableViewCell()
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
@@ -173,7 +181,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         m1.messageTpye = .text
         m1.msg = "文本字符文本字符文本字符文本字符文本字符文本字符文本字符文本字符文本字符"
         // yyyy-MM-dd HH:mm:ss
-        m1.msgTimeStamp = "2022-06-02 10:10:01".toDate()?.timeIntervalSince1970 ?? 0
+        m1.msgTimeStamp = floor("2022-06-02 10:10:01".toDate()?.timeIntervalSince1970 ?? 0)
         let u1 = GYCCharUserInfo()
         m1.userInfo = u1
         u1.userName = "张三"
@@ -185,7 +193,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         m2.sendType = .sendInfo
         m2.messageTpye = .picture
         m2.msg = ["imgUrl": imageURL]
-        m2.msgTimeStamp = "2022-06-03 10:10:01".toDate()?.timeIntervalSince1970 ?? 0
+        m2.msgTimeStamp = floor("2022-06-03 10:10:01".toDate()?.timeIntervalSince1970 ?? 0)
         let u2 = GYCCharUserInfo()
         m2.userInfo = u2
         u2.userName = "李四"
@@ -218,7 +226,11 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
                 model.sendType = .sendInfo
                 model.messageTpye = .text
                 model.msg = inputInfo
-                model.msgTimeStamp = Date().timeIntervalSince1970
+                // 只保留到分钟
+                let strDate = Date().toString(withFormat: "yyyy-MM-dd HH:mm")
+                let timpStamp = floor(strDate.toDate()?.timeIntervalSince1970 ?? 0)
+                model.msgTimeStamp = timpStamp
+
                 let infoModel = GYCCharUserInfo()
                 model.userInfo = infoModel
                 infoModel.userName = "李四"
@@ -261,6 +273,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         $0.showsVerticalScrollIndicator = false
         $0.separatorStyle = .none
         $0.register(GYMainChatBaseInfoCell.self, forCellReuseIdentifier: "GYMainChatBaseInfoCell")
+        $0.register(GYMainChatPictureCell.self, forCellReuseIdentifier: "GYMainChatPictureCell")
     }
 
     var dataSourceHeads: [String] = []

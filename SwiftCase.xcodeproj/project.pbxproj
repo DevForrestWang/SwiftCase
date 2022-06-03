@@ -250,6 +250,7 @@
 		A887BA49284A0448006842C2 /* GYChatInputCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA42284A0448006842C2 /* GYChatInputCollectionViewCell.swift */; };
 		A887BA4A284A0448006842C2 /* GYChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA43284A0448006842C2 /* GYChatInputView.swift */; };
 		A887BA4B284A0448006842C2 /* GYMainChatBaseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */; };
+		A887BA4D284A396F006842C2 /* GYMainChatPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
 		C88F930226F8D8D300739819 /* SCUICollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */; };
 		C88F930326F8D8D300739819 /* SCUIVIewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */; };
@@ -530,6 +531,7 @@
 		A887BA42284A0448006842C2 /* GYChatInputCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYChatInputCollectionViewCell.swift; sourceTree = "<group>"; };
 		A887BA43284A0448006842C2 /* GYChatInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYChatInputView.swift; sourceTree = "<group>"; };
 		A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatBaseInfoCell.swift; sourceTree = "<group>"; };
+		A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYMainChatPictureCell.swift; sourceTree = "<group>"; };
 		C822E403270EF558001C39FF /* SCUIEventViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIEventViewVC.swift; sourceTree = "<group>"; };
 		C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUICollectionViewVC.swift; sourceTree = "<group>"; };
 		C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUIVIewViewController.swift; sourceTree = "<group>"; };
@@ -1244,6 +1246,7 @@
 				A887BA42284A0448006842C2 /* GYChatInputCollectionViewCell.swift */,
 				A887BA43284A0448006842C2 /* GYChatInputView.swift */,
 				A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */,
+				A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1668,6 +1671,7 @@
 				8A01AA49282FB891001A3F9B /* SCSelectTableView.swift in Sources */,
 				777B9B09272811ED0030DCB9 /* BinaryTree.swift in Sources */,
 				7756E84926FAE48200AB139F /* Grade.swift in Sources */,
+				A887BA4D284A396F006842C2 /* GYMainChatPictureCell.swift in Sources */,
 				77201D8C2720165300F6188E /* SkipList.swift in Sources */,
 				779843962702B03F001D73AF /* MessageViewModel.swift in Sources */,
 				77B66B4727001FB1009700A2 /* SCFunctionViewController.swift in Sources */,
