@@ -166,7 +166,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     private func initData() {
-        let imageURL = "https://cdn.pixabay.com/photo/2021/08/19/12/53/bremen-6557996_960_720.jpg"
+        let imageURL = GYChatDefaultModel().imageURL
 
         let m1 = GYMainChatModel()
         m1.sendType = .acceptInfo
@@ -192,7 +192,6 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         u2.levelName = "店主"
         u2.userAvatar = imageURL
         insertChatData(key: "\(m2.msgTimeStamp)", model: m2)
-        
     }
 
     // MARK: - UI
@@ -217,6 +216,15 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
             } else if inputType == .sendText || inputType == .sendEmoji {
                 let model = GYMainChatModel()
                 model.sendType = .sendInfo
+                model.messageTpye = .text
+                model.msg = inputInfo
+                model.msgTimeStamp = Date().timeIntervalSince1970
+                let infoModel = GYCCharUserInfo()
+                model.userInfo = infoModel
+                infoModel.userName = "李四"
+                infoModel.levelName = "店主"
+                infoModel.userAvatar = GYChatDefaultModel().imageURL
+
                 self.insertChatData(key: "\(model.msgTimeStamp)", model: model)
             } else if inputType == .sendVoice {}
         }
