@@ -30,6 +30,7 @@ class CaseViewController: ItemListViewController {
             SCItemModel(title: "List", controllerName: "ListViewController", action: nil),
             SCItemModel(title: "Up down swipe", controllerName: "UpDownSwipeViewController", action: nil),
             SCItemModel(title: "Show RxSwift + MVVM", controllerName: "SCMvvmVC", action: nil),
+            SCItemModel(title: "Chat", controllerName: "GYMainChatVC", action: nil),
         ]
     }
 

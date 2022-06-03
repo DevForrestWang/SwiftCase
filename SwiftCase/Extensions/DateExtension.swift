@@ -27,4 +27,14 @@ public extension Date {
         let millisecond = CLongLong(round(timeInterval * 1000))
         return "\(millisecond)"
     }
+
+    /// 将date对象格式制定格式的字符串
+    func toString(withFormat format: String = "yyyy-MM-dd HH:mm:ss") -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
+        dateFormatter.calendar = Calendar.current
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
 }

@@ -20,6 +20,8 @@ target 'SwiftCase' do
   pod 'SwiftyJSON'
   # Parsing gigabytes of JSON per second
   pod 'ZippyJSON'
+  #OC MJExtension，Swift也可以使用
+  pod 'KakaJSON'
   
   # 编程框架
   pod 'Then'

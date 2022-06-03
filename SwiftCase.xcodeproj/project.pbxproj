@@ -244,6 +244,12 @@
 		8AFA0F44283332F00047852E /* YXCCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA0F43283332F00047852E /* YXCCellExtension.swift */; };
 		A819C63D2723F3600023EC3D /* HashTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819C63C2723F3600023EC3D /* HashTable.swift */; };
 		A8621264272E82A9007C4556 /* BruteForceStringSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */; };
+		A887BA45284A0448006842C2 /* GYMainChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA3B284A0448006842C2 /* GYMainChatVC.swift */; };
+		A887BA47284A0448006842C2 /* GYChatDefaultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA3E284A0448006842C2 /* GYChatDefaultModel.swift */; };
+		A887BA48284A0448006842C2 /* GYMainChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA40284A0448006842C2 /* GYMainChatModel.swift */; };
+		A887BA49284A0448006842C2 /* GYChatInputCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA42284A0448006842C2 /* GYChatInputCollectionViewCell.swift */; };
+		A887BA4A284A0448006842C2 /* GYChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA43284A0448006842C2 /* GYChatInputView.swift */; };
+		A887BA4B284A0448006842C2 /* GYMainChatBaseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
 		C88F930226F8D8D300739819 /* SCUICollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */; };
 		C88F930326F8D8D300739819 /* SCUIVIewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */; };
@@ -518,6 +524,12 @@
 		9F28E3FA941807E923F79B8C /* Pods_SwiftCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A819C63C2723F3600023EC3D /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
 		A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceStringSearch.swift; sourceTree = "<group>"; };
+		A887BA3B284A0448006842C2 /* GYMainChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatVC.swift; sourceTree = "<group>"; };
+		A887BA3E284A0448006842C2 /* GYChatDefaultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYChatDefaultModel.swift; sourceTree = "<group>"; };
+		A887BA40284A0448006842C2 /* GYMainChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatModel.swift; sourceTree = "<group>"; };
+		A887BA42284A0448006842C2 /* GYChatInputCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYChatInputCollectionViewCell.swift; sourceTree = "<group>"; };
+		A887BA43284A0448006842C2 /* GYChatInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYChatInputView.swift; sourceTree = "<group>"; };
+		A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatBaseInfoCell.swift; sourceTree = "<group>"; };
 		C822E403270EF558001C39FF /* SCUIEventViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIEventViewVC.swift; sourceTree = "<group>"; };
 		C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUICollectionViewVC.swift; sourceTree = "<group>"; };
 		C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUIVIewViewController.swift; sourceTree = "<group>"; };
@@ -1045,6 +1057,7 @@
 		77F6523126F5CD5200280568 /* Case */ = {
 			isa = PBXGroup;
 			children = (
+				A887BA39284A0448006842C2 /* Chat */,
 				8A8ED9A9279BFC2400971DDA /* MVVM */,
 				775F8037277075AB00D167A7 /* UpDownSwipe */,
 				772D6BD92768737700C12288 /* SwipeView */,
@@ -1196,6 +1209,43 @@
 				8AB586E02831E91600CB9B2B /* GYSegmentItemVC.swift */,
 			);
 			path = Segment;
+			sourceTree = "<group>";
+		};
+		A887BA39284A0448006842C2 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				A887BA3A284A0448006842C2 /* Controller */,
+				A887BA3C284A0448006842C2 /* Model */,
+				A887BA41284A0448006842C2 /* View */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		A887BA3A284A0448006842C2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A887BA3B284A0448006842C2 /* GYMainChatVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A887BA3C284A0448006842C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A887BA3E284A0448006842C2 /* GYChatDefaultModel.swift */,
+				A887BA40284A0448006842C2 /* GYMainChatModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A887BA41284A0448006842C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A887BA42284A0448006842C2 /* GYChatInputCollectionViewCell.swift */,
+				A887BA43284A0448006842C2 /* GYChatInputView.swift */,
+				A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B289C5184CEC035CC725B247 /* Pods */ = {
@@ -1541,6 +1591,7 @@
 				8A8ED9B9279BFC2400971DDA /* SignUpViewModel.swift in Sources */,
 				8A8ED9B7279BFC2400971DDA /* BindingDataViewModelType.swift in Sources */,
 				77F6529B26F5D25F00280568 /* ScreenMediator.swift in Sources */,
+				A887BA48284A0448006842C2 /* GYMainChatModel.swift in Sources */,
 				7756E85026FB17C800AB139F /* SCObjectClass.m in Sources */,
 				C88F930826F8D8D300739819 /* SCUILableViewController.swift in Sources */,
 				8A48626A279FDFE3004ABF6C /* ShowTableViewCell.swift in Sources */,
@@ -1560,9 +1611,11 @@
 				77F652C726F5E7F200280568 /* ItemListViewController.swift in Sources */,
 				7756E84026FAE48200AB139F /* RequestData.grpc.swift in Sources */,
 				77201D84271E9DB500F6188E /* RadixSort.swift in Sources */,
+				A887BA4B284A0448006842C2 /* GYMainChatBaseInfoCell.swift in Sources */,
 				7710057A2735299300733EF7 /* FragmentToken.swift in Sources */,
 				77F652B026F5D25F00280568 /* StepBuilder.swift in Sources */,
 				7747B4F4272CF7CB00D315FA /* GSEdge.swift in Sources */,
+				A887BA47284A0448006842C2 /* GYChatDefaultModel.swift in Sources */,
 				773967B927118DF700BF7469 /* LinkedList.swift in Sources */,
 				7756E84626FAE48200AB139F /* SCNetworkLoggerPlugin.swift in Sources */,
 				7756E86826FB2E9900AB139F /* ListViewController.swift in Sources */,
@@ -1584,6 +1637,7 @@
 				77A842AB273FB17D00D08148 /* SCGCDViewController.swift in Sources */,
 				77C1B69C2738D9A80028C5B5 /* PriorityQueue.swift in Sources */,
 				77A842A9273F62F900D08148 /* SCUIAnimationViewVC.swift in Sources */,
+				A887BA45284A0448006842C2 /* GYMainChatVC.swift in Sources */,
 				77A842AD273FB1A400D08148 /* SCOperationViewController.swift in Sources */,
 				778F4FF026FC68D900B9E08A /* SCUICollectionViewCell.swift in Sources */,
 				77F652AC26F5D25F00280568 /* ProjectorFactory.swift in Sources */,
@@ -1619,6 +1673,7 @@
 				77B66B4727001FB1009700A2 /* SCFunctionViewController.swift in Sources */,
 				7756E86D26FB2EFB00AB139F /* CommonList.swift in Sources */,
 				8A8ED9B8279BFC2400971DDA /* BindingExtensions.swift in Sources */,
+				A887BA4A284A0448006842C2 /* GYChatInputView.swift in Sources */,
 				771005722735299300733EF7 /* Interval.swift in Sources */,
 				77F652C526F5E2C500280568 /* SCUITabBarController.swift in Sources */,
 				77C25442270319470012F078 /* UITextView+Extension.swift in Sources */,
@@ -1678,6 +1733,7 @@
 				8A486268279FDC4C004ABF6C /* SCFlexBoxData.swift in Sources */,
 				7765BBEE273375E8009DF9BD /* UIEventViewController.m in Sources */,
 				8AAAEDE427EDB64E009ED9D7 /* DictionaryExtension.swift in Sources */,
+				A887BA49284A0448006842C2 /* GYChatInputCollectionViewCell.swift in Sources */,
 				77F6529E26F5D25F00280568 /* NotificationVisitor.swift in Sources */,
 				77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */,
 				8AFA0F42283332B40047852E /* UIViewExtension.swift in Sources */,
