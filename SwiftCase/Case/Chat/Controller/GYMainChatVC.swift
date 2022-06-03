@@ -215,7 +215,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         view.addSubview(chatInputView)
         chatInputView.parentVc = self
         chatInputView.gyChatInputClosure = { inputType, inputInfo in
-            print("type: \(inputType), info:\(inputInfo)")
+            yxc_debugPrint("type: \(inputType), info:\(inputInfo)")
 
             if inputType == .switchGroup {
             } else if inputType == .redPackage {
@@ -228,7 +228,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
                 model.msg = inputInfo
                 // 只保留到分钟
                 let strDate = Date().toString(withFormat: "yyyy-MM-dd HH:mm")
-                let timpStamp = floor(strDate.toDate()?.timeIntervalSince1970 ?? 0)
+                let timpStamp = floor(strDate.toDate(withFormat: "yyyy-MM-dd HH:mm")?.timeIntervalSince1970 ?? 0)
                 model.msgTimeStamp = timpStamp
 
                 let infoModel = GYCCharUserInfo()

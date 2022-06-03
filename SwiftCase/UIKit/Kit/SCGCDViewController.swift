@@ -58,14 +58,14 @@ class SCGCDViewController: BaseViewController {
         let queue = DispatchQueue(label: "com.forrest.serail2")
         // 串行队列做异步操作是顺序执行
         queue.async {
-            print(Thread.current)
+            yxc_debugPrint(Thread.current)
             for i in 0 ..< 2 {
                 yxc_debugPrint("First i: \(i)")
             }
         }
 
         queue.async {
-            print(Thread.current)
+            yxc_debugPrint(Thread.current)
             for i in 0 ..< 2 {
                 yxc_debugPrint("Second i: \(i)")
             }
@@ -86,13 +86,13 @@ class SCGCDViewController: BaseViewController {
         // 并发队列同步操作是顺序执行
         queue.sync {
             for i in 0 ..< 2 {
-                print("First sync i: \(i)")
+                yxc_debugPrint("First sync i: \(i)")
             }
         }
 
         queue.sync {
             for i in 0 ..< 2 {
-                print("Second sync i: \(i)")
+                yxc_debugPrint("Second sync i: \(i)")
             }
         }
 
@@ -109,13 +109,13 @@ class SCGCDViewController: BaseViewController {
         // 并发队列做异步操作执行顺序不固定
         queue.async {
             for i in 0 ..< 2 {
-                print("First async i: \(i)")
+                yxc_debugPrint("First async i: \(i)")
             }
         }
 
         queue.async {
             for i in 0 ..< 2 {
-                print("Second async i: \(i)")
+                yxc_debugPrint("Second async i: \(i)")
             }
         }
 
@@ -264,7 +264,7 @@ class SCGCDViewController: BaseViewController {
         // 串行队列做异步操作是顺序执行
         DispatchQueue.main.async {
             for i in 0 ..< 2 {
-                print("First main queue async i: \(i)")
+                yxc_debugPrint("First main queue async i: \(i)")
             }
         }
     }

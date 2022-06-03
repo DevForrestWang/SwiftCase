@@ -434,7 +434,7 @@ class AlgorithmViewController: ItemListViewController {
         tree.insert(value: 1)
         // yxc_debugPrint("tree: \(tree)")
         // draw binary tree
-        print(tree.printBinaryTree)
+        yxc_debugPrint(tree.printBinaryTree)
 
         let node1 = tree.search(value: 1)
         node1?.remove()
@@ -569,7 +569,7 @@ class AlgorithmViewController: ItemListViewController {
         matrixGraph.addDirectedEdge(a, to: b, withWeight: 1.0)
         matrixGraph.addDirectedEdge(b, to: c, withWeight: 2.0)
         yxc_debugPrint("Maxtrix Graph:")
-        print(matrixGraph.description)
+        yxc_debugPrint(matrixGraph.description)
 
         let listGrpah = AdjacencyListGraph<String>()
         let al = listGrpah.createVertex("a")
@@ -579,7 +579,7 @@ class AlgorithmViewController: ItemListViewController {
         listGrpah.addDirectedEdge(bl, to: cl, withWeight: 2.0)
         listGrpah.addDirectedEdge(al, to: cl, withWeight: -5.5)
         yxc_debugPrint("List Graph:")
-        print(listGrpah.description)
+        yxc_debugPrint(listGrpah.description)
 
         showLogs()
     }
@@ -610,7 +610,7 @@ class AlgorithmViewController: ItemListViewController {
         let nodeExplored = depthFirstSearch(graph, source: nodeA)
         // ["a", "b", "d", "e", "h", "f", "g", "c"]
         yxc_debugPrint("depthFirstSearch:")
-        print(nodeExplored)
+        yxc_debugPrint(nodeExplored)
 
         showLogs()
     }

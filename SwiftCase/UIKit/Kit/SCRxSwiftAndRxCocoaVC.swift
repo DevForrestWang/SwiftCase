@@ -61,24 +61,24 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
         let observer: AnyObserver<String> = AnyObserver { event in
             switch event {
             case let .next(data):
-                print("data: \(data)")
+                yxc_debugPrint("data: \(data)")
             case let .error(error):
-                print("error: \(error)")
+                yxc_debugPrint("error: \(error)")
             case .completed:
-                print("Completed")
+                yxc_debugPrint("Completed")
             }
         }
         observable.subscribe(observer).disposed(by: disposeBag)
 
         // subscribe方法, 把 event 进行分类
         observable.subscribe { element in
-            print("onNext: \(element)")
+            yxc_debugPrint("onNext: \(element)")
         } onError: { error in
-            print("error: \(error)")
+            yxc_debugPrint("error: \(error)")
         } onCompleted: {
-            print("Completed")
+            yxc_debugPrint("Completed")
         } onDisposed: {
-            print("Disposed")
+            yxc_debugPrint("Disposed")
         }.disposed(by: disposeBag)
     }
 
@@ -88,7 +88,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
 
         let relay = BehaviorRelay<String>(value: "1")
         relay.subscribe {
-            print("Event:", $0)
+            yxc_debugPrint("Event:", $0)
         }.disposed(by: disposeBag)
 
         relay.accept("2")
@@ -104,7 +104,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
         let relay = BehaviorRelay<BehaviorSubject>(value: s1)
         relay.flatMap { $0 }
             .subscribe(onNext: {
-                print($0)
+                yxc_debugPrint($0)
             }).disposed(by: disposeBag)
 
         s1.onNext("B")
@@ -117,7 +117,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
     /// 时间富文本
     private func formatTimeInterval(ms: NSInteger) -> NSMutableAttributedString {
         let string = String(format: "%0.2d:%0.2d.%0.1d", arguments: [(ms / 600) % 600, (ms % 600) / 10, ms % 10])
-        print("Time: \(string)")
+        yxc_debugPrint("Time: \(string)")
         let attString = NSMutableAttributedString(string: string)
         attString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18), range: NSMakeRange(0, 5))
         attString.addAttribute(.foregroundColor, value: UIColor.white, range: NSMakeRange(0, 5))

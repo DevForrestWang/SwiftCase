@@ -30,7 +30,7 @@ public class SCSelectTableView: UIView {
 
     public func show(dataSource: [[String]], noDataInfo: String) {
         if dataSource.count < 0 {
-            print("The dataSource is empty.")
+            yxc_debugPrint("The dataSource is empty.")
             return
         }
 

@@ -72,8 +72,8 @@ class SCFunctionViewController: BaseViewController {
         // hasSuffix()    determines if a string ends with certain characters or not
 
         // 首字母大写，
-        print("wo xiao wo ku".capitalized) // Wo Xiao Wo Ku
-        print("已选择: \("已选择".transformToPinYin())")
+        yxc_debugPrint("wo xiao wo ku".capitalized) // Wo Xiao Wo Ku
+        yxc_debugPrint("已选择: \("已选择".transformToPinYin())")
     }
 
     /// 字符基本
@@ -555,13 +555,13 @@ class SCFunctionViewController: BaseViewController {
         // Check Subset of a Set
         let setC: Set = [1, 2, 3, 5, 4]
         let setD: Set = [1, 2]
-        print("Set, D subset C: ", setD.isSubset(of: setC))
+        yxc_debugPrint("Set, D subset C: ", setD.isSubset(of: setC))
 
         let setE: Set = [2, 1]
         if setD == setE {
-            print("Set D and Set E are equal")
+            yxc_debugPrint("Set D and Set E are equal")
         } else {
-            print("Set D and Set E are different")
+            yxc_debugPrint("Set D and Set E are different")
         }
     }
 
@@ -596,6 +596,21 @@ class SCFunctionViewController: BaseViewController {
         // yxc_debugPrint("Array(unique): \(Array(unique))") // [1, 2, 3]
     }
 
+    public func changeNunber() {
+        let value1 = 4.0
+        let value2 = 4.2
+        let value3 = 4.5
+        let value4 = 4.7
+
+        yxc_debugPrint("raw   value: \(value1) \(value2) \(value3) \(value4)")
+        // floor向下取整
+        yxc_debugPrint("floor value: \(floor(value1)) \(floor(value2)) \(floor(value3)) \(floor(value4))")
+        // ceil 向上取整
+        yxc_debugPrint("ceil  value: \(ceil(value1)) \(ceil(value2)) \(ceil(value3)) \(ceil(value4))")
+        // round 四舍五入取整
+        yxc_debugPrint("round value: \(round(value1)) \(round(value2)) \(round(value3)) \(round(value4))")
+    }
+
     // MARK: - UI
 
     func setupUI() {
@@ -608,6 +623,7 @@ class SCFunctionViewController: BaseViewController {
         setAction()
         tupleAction()
         swiftAlgorithms()
+        changeNunber()
     }
 
     // MARK: - Constraints

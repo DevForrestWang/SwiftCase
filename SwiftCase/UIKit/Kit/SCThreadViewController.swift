@@ -34,7 +34,7 @@ class SCThreadViewController: BaseViewController {
     // MARK: - Thread
 
     @objc private func threadAction(_ obj: Any) {
-        print("Thread action parameter: \(obj), current thread: \(Thread.current)")
+        yxc_debugPrint("Thread action parameter: \(obj), current thread: \(Thread.current)")
     }
 
     private func saleTicket() {
@@ -57,17 +57,17 @@ class SCThreadViewController: BaseViewController {
     }
 
     @objc private func saleTicketAction(_ obj: Any) {
-        print("Thread 3 action parameter: \(obj), current thread: \(String(describing: Thread.current.name))")
+        yxc_debugPrint("Thread 3 action parameter: \(obj), current thread: \(String(describing: Thread.current.name))")
         while ticketCount > 0 {
             synchronized(self) {
                 Thread.sleep(forTimeInterval: 0.1)
                 if ticketCount > 0 {
                     ticketCount -= 1
-                    print("\(Thread.current.name!) sold 1 ticket, \(self.ticketCount) remains.")
+                    yxc_debugPrint("\(Thread.current.name!) sold 1 ticket, \(self.ticketCount) remains.")
                     // 主线程显示余票
                     self.performSelector(onMainThread: #selector(updateTicketNum), with: nil, waitUntilDone: true)
                 } else {
-                    print("Tickets have been sold out.")
+                    yxc_debugPrint("Tickets have been sold out.")
                     // 终止线程
                     thread1.cancel()
                     thread2.cancel()

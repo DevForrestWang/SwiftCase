@@ -645,7 +645,7 @@ extension RedBlackTree {
      */
     public func verify() -> Bool {
         if root.isNullLeaf {
-            print("The tree is empty")
+            yxc_debugPrint("The tree is empty")
             return true
         }
 
@@ -658,7 +658,7 @@ extension RedBlackTree {
     // Property 2: The root is black
     private func property2() -> Bool {
         if root.color == .red {
-            print("Property-Error: Root is red")
+            yxc_debugPrint("Property-Error: Root is red")
             return false
         }
 
@@ -680,11 +680,11 @@ extension RedBlackTree {
         if let leftChild = node.leftChild, let rightChild = node.rightChild {
             if node.color == .red {
                 if !leftChild.isNullLeaf, leftChild.color == .red {
-                    print("Property-Error: Red node with key \(String(describing: node.key)) has red left child")
+                    yxc_debugPrint("Property-Error: Red node with key \(String(describing: node.key)) has red left child")
                     return false
                 }
                 if !rightChild.isNullLeaf, rightChild.color == .red {
-                    print("Property-Error: Red node with key \(String(describing: node.key)) has red right child")
+                    yxc_debugPrint("Property-Error: Red node with key \(String(describing: node.key)) has red right child")
                     return false
                 }
             }
@@ -722,7 +722,7 @@ extension RedBlackTree {
             let addedHeight = node.color == .black ? 1 : 0
             return left + addedHeight
         } else {
-            print("Property-Error: Black height violated at node with key \(String(describing: node.key))")
+            yxc_debugPrint("Property-Error: Black height violated at node with key \(String(describing: node.key))")
             return -1
         }
     }

@@ -43,38 +43,38 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
     // MARK: - Protocol
 
     func textFieldShouldBeginEditing(_: UITextField) -> Bool {
-        print("I'm going to start editing")
+        yxc_debugPrint("I'm going to start editing")
         return true
     }
 
     func textFieldDidBeginEditing(_: UITextField) {
-        print("I've already started editing")
+        yxc_debugPrint("I've already started editing")
     }
 
     func textFieldShouldEndEditing(_: UITextField) -> Bool {
-        print("To finish editing")
+        yxc_debugPrint("To finish editing")
         return true
     }
 
     func textFieldDidEndEditing(_: UITextField) {
-        print("I have finished editing")
+        yxc_debugPrint("I have finished editing")
     }
 
     // UITextField.textDidChangeNotification通知可以实时获取输入的内容；shouldChangeCharactersIn只能获取上一次输入的内容
     func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString _: String) -> Bool {
-        print("The text input will change (called each time it is typed:\(String(describing: textField.text))")
+        yxc_debugPrint("The text input will change (called each time it is typed:\(String(describing: textField.text))")
 
         // limitTextLength(textField: textField)
         return true
     }
 
     func textFieldShouldClear(_: UITextField) -> Bool {
-        print("To clear the input, the return value is whether to clear the content")
+        yxc_debugPrint("To clear the input, the return value is whether to clear the content")
         return true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("To press the Return button, the Return value is whether to finish typing (lose focus)")
+        yxc_debugPrint("To press the Return button, the Return value is whether to finish typing (lose focus)")
         // 收起键盘
         textField.resignFirstResponder()
         return true
@@ -129,7 +129,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         let priceAry = ["价格", "￥100", "￥1000", "￥10000"]
         let descAry = ["描述", "aa", "bb", "cc"]
         selectTableView.gySelectTableViewClosure = { row, isSelect in
-            print("select row: \(row), state: \(isSelect)")
+            yxc_debugPrint("select row: \(row), state: \(isSelect)")
         }
         selectTableView.show(dataSource: [spaceAry, priceAry, descAry], noDataInfo: "没有可选择空间扩容数")
 

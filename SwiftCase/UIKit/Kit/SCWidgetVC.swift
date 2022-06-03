@@ -30,7 +30,7 @@ class SCWidgetVC: BaseViewController {
         super.viewWillDisappear(animated)
         // 进行内存释放
         disposeBag = nil
-        print("The free disposeBag.")
+        yxc_debugPrint("The free disposeBag.")
     }
 
     // 执行析构过程
@@ -58,7 +58,7 @@ class SCWidgetVC: BaseViewController {
         view.addSubview(mySlider)
         // 绑定事件
         mySlider.rx.value.subscribe(onNext: { value in
-            print("slider value: \(Int(value))")
+            yxc_debugPrint("slider value: \(Int(value))")
             self.sliderLable.alpha = CGFloat((self.mySlider.maximumValue - value) / self.mySlider.maximumValue)
         }).disposed(by: disposeBag)
 
