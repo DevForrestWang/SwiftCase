@@ -34,6 +34,19 @@ public func printLine() {
     debugPrint("===================================================", terminator: "\n\n")
 }
 
+func getAppName() -> String {
+    if let name = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String {
+        return name
+    }
+    if let name = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String {
+        return name
+    }
+    if let name = Bundle.main.infoDictionary?["CFBundleName"] as? String {
+        return name
+    }
+    return "App"
+}
+
 // MARK: - show info
 
 public func showToast(_ message: String) {
