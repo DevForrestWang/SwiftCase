@@ -50,7 +50,7 @@ var isFullScreen: Bool {
         guard let unwrapedWindow = UIWindow.key else {
             return false
         }
-        
+
         if unwrapedWindow.safeAreaInsets.left > 0 || unwrapedWindow.safeAreaInsets.bottom > 0 {
             // print(unwrapedWindow.safeAreaInsets)
             return true

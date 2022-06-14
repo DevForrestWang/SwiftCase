@@ -42,6 +42,16 @@ class SCWidgetVC: BaseViewController {
 
     // MARK: - IBActions
 
+    @objc private func recordTick(timer _: Timer) {
+        circleProgressView.setProgress(currentIndex)
+        if currentIndex >= 100 {
+            recordtimer?.invalidate()
+            return
+        }
+
+        currentIndex += Randoms.randomInt(1, 10)
+    }
+
     // MARK: - Private
 
     // MARK: - UI
@@ -75,6 +85,9 @@ class SCWidgetVC: BaseViewController {
             // showToast("click: x: \(point.x), y: \(point.y)")
             self?.sliderLable.text = "click: x: \(point.x), y: \(point.y)"
         }).disposed(by: disposeBag)
+
+        view.addSubview(circleProgressView)
+        recordtimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(recordTick), userInfo: nil, repeats: true)
     }
 
     // MARK: - Constraints
@@ -95,6 +108,12 @@ class SCWidgetVC: BaseViewController {
             make.top.equalTo(mySlider.snp.bottom).offset(20)
             make.width.equalToSuperview().offset(-40)
             make.height.equalTo(30)
+            make.centerX.equalToSuperview()
+        }
+
+        circleProgressView.snp.makeConstraints { make in
+            make.top.equalTo(sliderLable.snp.bottom).offset(20)
+            make.width.height.equalTo(100)
             make.centerX.equalToSuperview()
         }
     }
@@ -136,4 +155,8 @@ class SCWidgetVC: BaseViewController {
         $0.numberOfTapsRequired = 1
         $0.numberOfTouchesRequired = 1
     }
+
+    private let circleProgressView = GYCircleProgressView()
+    private var recordtimer: Timer?
+    private var currentIndex = 0
 }

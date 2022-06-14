@@ -251,6 +251,7 @@
 		A887BA4A284A0448006842C2 /* GYChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA43284A0448006842C2 /* GYChatInputView.swift */; };
 		A887BA4B284A0448006842C2 /* GYMainChatBaseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */; };
 		A887BA4D284A396F006842C2 /* GYMainChatPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */; };
+		C6BF75E528586142004116B8 /* GYCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF75E428586142004116B8 /* GYCircleProgressView.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
 		C88F930226F8D8D300739819 /* SCUICollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */; };
 		C88F930326F8D8D300739819 /* SCUIVIewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */; };
@@ -532,6 +533,7 @@
 		A887BA43284A0448006842C2 /* GYChatInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYChatInputView.swift; sourceTree = "<group>"; };
 		A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatBaseInfoCell.swift; sourceTree = "<group>"; };
 		A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYMainChatPictureCell.swift; sourceTree = "<group>"; };
+		C6BF75E428586142004116B8 /* GYCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCircleProgressView.swift; sourceTree = "<group>"; };
 		C822E403270EF558001C39FF /* SCUIEventViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIEventViewVC.swift; sourceTree = "<group>"; };
 		C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUICollectionViewVC.swift; sourceTree = "<group>"; };
 		C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUIVIewViewController.swift; sourceTree = "<group>"; };
@@ -1287,6 +1289,7 @@
 				77A842AA273FB17D00D08148 /* SCGCDViewController.swift */,
 				77A842AC273FB1A400D08148 /* SCOperationViewController.swift */,
 				77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */,
+				C6BF75E428586142004116B8 /* GYCircleProgressView.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -1609,6 +1612,7 @@
 				77F6529F26F5D25F00280568 /* TextViewMemento.swift in Sources */,
 				7710F0332771B2EB0083E067 /* SCAssistantMainViewController.swift in Sources */,
 				77753152276B229E00A80E96 /* EasyCarouseViewLayout.swift in Sources */,
+				C6BF75E528586142004116B8 /* GYCircleProgressView.swift in Sources */,
 				7756E86B26FB2E9900AB139F /* FakeData.swift in Sources */,
 				7798439C2702B03F001D73AF /* ChatDetailsTableView.swift in Sources */,
 				77F652C726F5E7F200280568 /* ItemListViewController.swift in Sources */,
