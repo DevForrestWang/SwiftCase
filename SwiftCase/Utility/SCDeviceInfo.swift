@@ -31,42 +31,63 @@ import UIKit
  */
 
 /// 机型的屏幕大小
-let device_6S_7_8 = __CGSizeEqualToSize(CGSize(width: 750 / 2, height: 1334 / 2), UIScreen.main.bounds.size)
-let device_6S_7_8P = __CGSizeEqualToSize(CGSize(width: 1242 / 3, height: 2208 / 3), UIScreen.main.bounds.size)
+public let device_6S_7_8 = __CGSizeEqualToSize(CGSize(width: 750 / 2, height: 1334 / 2), UIScreen.main.bounds.size)
+public let device_6S_7_8P = __CGSizeEqualToSize(CGSize(width: 1242 / 3, height: 2208 / 3), UIScreen.main.bounds.size)
 
-let device_iPhoneX = __CGSizeEqualToSize(CGSize(width: 1125 / 3, height: 2436 / 3), UIScreen.main.bounds.size)
-let device_iPhoneXr = __CGSizeEqualToSize(CGSize(width: 828 / 2, height: 1792 / 2), UIScreen.main.bounds.size)
-let device_iPhoneXs = __CGSizeEqualToSize(CGSize(width: 1125 / 3, height: 2436 / 3), UIScreen.main.bounds.size)
-let device_iPhoneXs_Max = __CGSizeEqualToSize(CGSize(width: 1242 / 3, height: 2688 / 3), UIScreen.main.bounds.size)
-let isIphoneX = (device_iPhoneX || device_iPhoneXr || device_iPhoneXs || device_iPhoneXs_Max)
+public let device_iPhoneX = __CGSizeEqualToSize(CGSize(width: 1125 / 3, height: 2436 / 3), UIScreen.main.bounds.size)
+public let device_iPhoneXr = __CGSizeEqualToSize(CGSize(width: 828 / 2, height: 1792 / 2), UIScreen.main.bounds.size)
+public let device_iPhoneXs = __CGSizeEqualToSize(CGSize(width: 1125 / 3, height: 2436 / 3), UIScreen.main.bounds.size)
+public let device_iPhoneXs_Max = __CGSizeEqualToSize(CGSize(width: 1242 / 3, height: 2688 / 3), UIScreen.main.bounds.size)
+public let isIphoneX = (device_iPhoneX || device_iPhoneXr || device_iPhoneXs || device_iPhoneXs_Max)
 
-let device_iPhone12_13m = __CGSizeEqualToSize(CGSize(width: 1080 / 3, height: 2340 / 3), UIScreen.main.bounds.size)
-let device_iPhone12_13 = __CGSizeEqualToSize(CGSize(width: 1170 / 3, height: 2532 / 3), UIScreen.main.bounds.size)
-let device_iPhone12_13_Max = __CGSizeEqualToSize(CGSize(width: 1284 / 3, height: 2778 / 3), UIScreen.main.bounds.size)
-let isIphone12_13 = (device_iPhone12_13m || device_iPhone12_13 || device_iPhone12_13_Max)
+public let device_iPhone12_13m = __CGSizeEqualToSize(CGSize(width: 1080 / 3, height: 2340 / 3), UIScreen.main.bounds.size)
+public let device_iPhone12_13 = __CGSizeEqualToSize(CGSize(width: 1170 / 3, height: 2532 / 3), UIScreen.main.bounds.size)
+public let device_iPhone12_13_Max = __CGSizeEqualToSize(CGSize(width: 1284 / 3, height: 2778 / 3), UIScreen.main.bounds.size)
+public let isIphone12_13 = (device_iPhone12_13m || device_iPhone12_13 || device_iPhone12_13_Max)
 
-var isFullScreen: Bool {
+public var gWindow: UIWindow? {
+    guard let window = UIApplication.shared.delegate?.window else {
+        return nil
+    }
+    return window
+}
+
+public var isSupportSafeArea: Bool {
     if #available(iOS 11, *) {
-        guard let unwrapedWindow = UIWindow.key else {
-            return false
-        }
-
-        if unwrapedWindow.safeAreaInsets.left > 0 || unwrapedWindow.safeAreaInsets.bottom > 0 {
-            // print(unwrapedWindow.safeAreaInsets)
-            return true
-        }
+        return true
     }
     return false
 }
 
+public func screenViewScale(_ zoomOutValue: CGFloat = 0.8) -> CGFloat {
+    // iphone min系列
+    if device_6S_7_8 || device_iPhone12_13m || device_iPhoneX || device_iPhoneXs {
+        return zoomOutValue
+    }
+
+    return 1
+}
+
 // 状态栏高度
-let gStateBarHigh = isFullScreen ? 44 : 20
+public let gStatusBarHeight: CGFloat = isSupportSafeArea ? (gWindow?.safeAreaInsets.top ?? 20) : 20
+
+// 底部安全区高度
+public let gBottomSafeHeight: CGFloat = isSupportSafeArea ? (gWindow?.safeAreaInsets.bottom ?? 0) : 0
+
 // 导航栏高度
-let gNaviHeight: CGFloat = isFullScreen ? 88 : 64
-// 屏幕安全区高度
-let gBottomSafeHeight: CGFloat = isFullScreen ? 34 : 0
+public let gNaviHeight: CGFloat = 44
+
+// TableBar高度
+public let gTableBarHeight: CGFloat = 49
+
+// 顶部高度
+public let gTopBarHeight: CGFloat = gStatusBarHeight + gNaviHeight
+
+// 底部高度
+public let gBottomBarHeight: CGFloat = gBottomSafeHeight + gTableBarHeight
 
 // 屏幕高度
-let gScreenHeight = isFullScreen ? UIScreen.main.bounds.height - 34 : UIScreen.main.bounds.height
+public let gScreenHeight = UIScreen.main.bounds.height
+
 // 屏幕宽度
-let gScreenWidth = UIScreen.main.bounds.width
+public let gScreenWidth = UIScreen.main.bounds.width

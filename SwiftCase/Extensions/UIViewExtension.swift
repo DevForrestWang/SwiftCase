@@ -197,4 +197,44 @@ public extension UIView {
 
         self.layer.addSublayer(layer)
     }
+
+    /// 添加上边框
+    func addTopBorder(borderWidth: CGFloat = (1 / UIScreen.main.scale), borderColor: UIColor = UIColor.hexColor(0xEBEBEB)) {
+        let topBorder = CALayer()
+        topBorder.frame = CGRect(x: 0, y: -borderWidth, width: frame.size.width, height: borderWidth)
+        topBorder.backgroundColor = borderColor.cgColor
+        layer.addSublayer(topBorder)
+    }
+
+    /// 添加左边框
+    func addLeftBorder(borderWidth: CGFloat = (1 / UIScreen.main.scale), borderColor: UIColor = UIColor.hexColor(0xEBEBEB)) {
+        let leftBorder = CALayer()
+        leftBorder.frame = CGRect(x: -borderWidth, y: 0, width: borderWidth, height: frame.size.height)
+        leftBorder.backgroundColor = borderColor.cgColor
+        layer.addSublayer(leftBorder)
+    }
+
+    /// 添加下边框
+    func addBottomBorder(borderWidth: CGFloat = (1 / UIScreen.main.scale), borderColor: UIColor = UIColor.hexColor(0xEBEBEB)) {
+        let bottomBorder = CALayer()
+        bottomBorder.frame = CGRect(x: 0, y: frame.size.height - borderWidth, width: frame.size.width, height: borderWidth)
+        bottomBorder.backgroundColor = borderColor.cgColor
+        layer.addSublayer(bottomBorder)
+    }
+
+    /// 添加右边框
+    func addRightBorder(borderWidth: CGFloat = (1 / UIScreen.main.scale), borderColor: UIColor = UIColor.hexColor(0xEBEBEB)) {
+        let rightBorder = CALayer()
+        rightBorder.frame = CGRect(x: frame.size.width - borderWidth, y: 0, width: borderWidth, height: frame.size.height)
+        rightBorder.backgroundColor = borderColor.cgColor
+        layer.addSublayer(rightBorder)
+    }
+
+    /// 添加边框
+    func addAllBoard(borderWidth: CGFloat = (1 / UIScreen.main.scale), borderColor: UIColor = UIColor.hexColor(0xEBEBEB)) {
+        addTopBorder(borderWidth: borderWidth, borderColor: borderColor)
+        addLeftBorder(borderWidth: borderWidth, borderColor: borderColor)
+        addBottomBorder(borderWidth: borderWidth, borderColor: borderColor)
+        addRightBorder(borderWidth: borderWidth, borderColor: borderColor)
+    }
 }
