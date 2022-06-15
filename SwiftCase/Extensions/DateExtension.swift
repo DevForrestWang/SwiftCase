@@ -28,6 +28,27 @@ public extension Date {
         return "\(millisecond)"
     }
 
+    var longDateString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale.current
+        return dateFormatter.string(from: self)
+    }
+
+    var shortDateString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd"
+        dateFormatter.locale = Locale.current
+        return dateFormatter.string(from: self)
+    }
+
+    var shortTimeString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.locale = Locale.current
+        return dateFormatter.string(from: self)
+    }
+
     /// 将date对象格式制定格式的字符串
     func toString(withFormat format: String = "yyyy-MM-dd HH:mm:ss") -> String {
         let dateFormatter = DateFormatter()
