@@ -236,7 +236,30 @@ class SCGCDViewController: BaseViewController {
     }
 
     // MARK: - Private
+    /// 线程异步处理数据演示
+    private func asyncDemo() {
+        // 创建并行队列，尽量用自定义队列，免得自己的代码质量不过关，影响全局队列
+        let queue = DispatchQueue(label: "com.apple.request", attributes: .concurrent)
+        // 异步执行
+        queue.async {
+            print("开始请求数据 \(Date())  thread: \(Thread.current)")
+            sleep(10) // 模拟网络请求
+            print("数据请求完成 \(Date())  thread: \(Thread.current)")
 
+            // 异步执行
+            queue.async {
+                print("开始处理数据 \(Date())  thread: \(Thread.current)")
+                sleep(5) // 模拟数据处理
+                print("数据处理完成 \(Date())  thread: \(Thread.current)")
+
+                // 切换到主队列，刷新UI
+                DispatchQueue.main.async {
+                    print("UI刷新成功  \(Date())  thread: \(Thread.current)")
+                }
+            }
+        }
+    }
+    
     // MARK: - UI
 
     func setupUI() {
@@ -249,10 +272,15 @@ class SCGCDViewController: BaseViewController {
         view.addSubview(concurrentAsyncBtn)
         view.addSubview(downImageInGroupBtn)
         view.addSubview(dispatchSemaphoreBtn)
+        serialSyncBtn.addTarget(self, action: #selector(serialSyncAction), for: .touchUpInside)
+        serialAsyncBtn.addTarget(self, action: #selector(serialAsyncAction), for: .touchUpInside)
+        concurrentSyncBtn.addTarget(self, action: #selector(concurrentSyncAction), for: .touchUpInside)
+        concurrentAsyncBtn.addTarget(self, action: #selector(concurrentAsyncAction), for: .touchUpInside)
+        downImageInGroupBtn.addTarget(self, action: #selector(downImageInGroupAction), for: .touchUpInside)
+        dispatchSemaphoreBtn.addTarget(self, action: #selector(dispatchSemaphoreAction), for: .touchUpInside)
 
         view.addSubview(imageView1)
         view.addSubview(imageView2)
-
         imageView1.addSubview(indicator1)
         imageView2.addSubview(indicator2)
 
@@ -267,6 +295,8 @@ class SCGCDViewController: BaseViewController {
                 yxc_debugPrint("First main queue async i: \(i)")
             }
         }
+        
+        asyncDemo()
     }
 
     // MARK: - Constraints
@@ -348,7 +378,6 @@ class SCGCDViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 3
-        $0.addTarget(self, action: #selector(serialSyncAction), for: .touchUpInside)
     }
 
     let serialAsyncBtn = UIButton().then {
@@ -357,7 +386,6 @@ class SCGCDViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 3
-        $0.addTarget(self, action: #selector(serialAsyncAction), for: .touchUpInside)
     }
 
     let concurrentSyncBtn = UIButton().then {
@@ -366,7 +394,6 @@ class SCGCDViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 3
-        $0.addTarget(self, action: #selector(concurrentSyncAction), for: .touchUpInside)
     }
 
     let concurrentAsyncBtn = UIButton().then {
@@ -375,7 +402,6 @@ class SCGCDViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 3
-        $0.addTarget(self, action: #selector(concurrentAsyncAction), for: .touchUpInside)
     }
 
     let downImageInGroupBtn = UIButton().then {
@@ -384,7 +410,6 @@ class SCGCDViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 3
-        $0.addTarget(self, action: #selector(downImageInGroupAction), for: .touchUpInside)
     }
 
     let dispatchSemaphoreBtn = UIButton().then {
@@ -393,7 +418,6 @@ class SCGCDViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 3
-        $0.addTarget(self, action: #selector(dispatchSemaphoreAction), for: .touchUpInside)
     }
 
     let imageView1 = UIImageView().then {
