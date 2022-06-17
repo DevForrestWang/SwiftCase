@@ -14,6 +14,12 @@
 import Foundation
 
 public extension String {
+    /// String to int
+    func toInt() -> Int? {
+        let number = NumberFormatter()
+        return number.number(from: self)?.intValue
+    }
+
     /// String to float
     func toFloat() -> Float? {
         let number = NumberFormatter()

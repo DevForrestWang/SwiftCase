@@ -236,6 +236,7 @@ class SCGCDViewController: BaseViewController {
     }
 
     // MARK: - Private
+
     /// 线程异步处理数据演示
     private func asyncDemo() {
         // 创建并行队列，尽量用自定义队列，免得自己的代码质量不过关，影响全局队列
@@ -259,7 +260,7 @@ class SCGCDViewController: BaseViewController {
             }
         }
     }
-    
+
     // MARK: - UI
 
     func setupUI() {
@@ -295,7 +296,7 @@ class SCGCDViewController: BaseViewController {
                 yxc_debugPrint("First main queue async i: \(i)")
             }
         }
-        
+
         asyncDemo()
     }
 

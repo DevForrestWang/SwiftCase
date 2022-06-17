@@ -54,6 +54,29 @@ class SCWidgetVC: BaseViewController {
 
     // MARK: - Private
 
+    private func downLoadImage() {
+        let imageURL = "https://cdn.pixabay.com/photo/2021/08/19/12/53/bremen-6557996_960_720.jpg"
+        SCUtils.downloadWith(urlStr: imageURL) { [weak self] image in
+
+            guard let saveImage = image else {
+                yxc_debugPrint("The image is nil")
+                return
+            }
+
+            self?.downLoadImagView.image = image
+            // 写入相册
+            UIImageWriteToSavedPhotosAlbum(saveImage, self, #selector(self?.saveImageResult(image:didFinishSavingWithError:contextInfo:)), nil)
+        }
+    }
+
+    @objc private func saveImageResult(image _: UIImage, didFinishSavingWithError error: NSError?, contextInfo _: AnyObject) {
+        if error != nil {
+            showToast("图片保存相册失败")
+        } else {
+            showToast("图片保存相册成功")
+        }
+    }
+
     // MARK: - UI
 
     func setupUI() {
@@ -88,6 +111,9 @@ class SCWidgetVC: BaseViewController {
 
         view.addSubview(circleProgressView)
         recordtimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(recordTick), userInfo: nil, repeats: true)
+
+        view.addSubview(downLoadImagView)
+        downLoadImage()
     }
 
     // MARK: - Constraints
@@ -113,6 +139,12 @@ class SCWidgetVC: BaseViewController {
 
         circleProgressView.snp.makeConstraints { make in
             make.top.equalTo(sliderLable.snp.bottom).offset(20)
+            make.width.height.equalTo(100)
+            make.centerX.equalToSuperview()
+        }
+
+        downLoadImagView.snp.remakeConstraints { make in
+            make.top.equalTo(circleProgressView.snp.bottom).offset(20)
             make.width.height.equalTo(100)
             make.centerX.equalToSuperview()
         }
@@ -159,4 +191,10 @@ class SCWidgetVC: BaseViewController {
     private let circleProgressView = GYCircleProgressView()
     private var recordtimer: Timer?
     private var currentIndex = 0
+
+    let downLoadImagView = UIImageView().then {
+        $0.image = UIImage(named: "gyhs_bigDefaultImage")
+        $0.layer.cornerRadius = 8
+        $0.layer.masksToBounds = true
+    }
 }

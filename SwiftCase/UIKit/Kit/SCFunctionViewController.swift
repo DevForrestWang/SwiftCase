@@ -624,6 +624,12 @@ class SCFunctionViewController: BaseViewController {
         tupleAction()
         swiftAlgorithms()
         changeNunber()
+
+        let monthDic = SCUtils.generatorMonths(baseYear: 2021, baseMonth: 9)
+        yxc_debugPrint("the monthDic:\(monthDic)")
+
+        let maxDay = SCUtils.lastDay(yearAndMonth: "2021-02", separateFlag: "-", isCurentDay: true)
+        yxc_debugPrint("2021-02 max day:\(maxDay)")
     }
 
     // MARK: - Constraints

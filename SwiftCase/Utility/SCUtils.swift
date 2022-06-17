@@ -34,19 +34,6 @@ public func printLine() {
     debugPrint("===================================================", terminator: "\n\n")
 }
 
-func getAppName() -> String {
-    if let name = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String {
-        return name
-    }
-    if let name = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String {
-        return name
-    }
-    if let name = Bundle.main.infoDictionary?["CFBundleName"] as? String {
-        return name
-    }
-    return "App"
-}
-
 // MARK: - show info
 
 public func showToast(_ message: String) {
@@ -108,6 +95,134 @@ public enum SCUtils {
         return nil
     }
 
+    /// 将开头设置为红色
+    /// SCUtils.startToRed(lable: titleLable)
+    public static func startToRed(lable: UILabel) {
+        guard let textInfo = lable.text else {
+            return
+        }
+
+        let attr = NSMutableAttributedString(string: textInfo).then {
+            $0.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: NSMakeRange(0, 1))
+        }
+        lable.attributedText = attr
+    }
+
+    /// 将指定范围的字体设置颜色
+    /// SCUtils.setLableColor(lable: titleLable, color: UIColor.red, fromIndex: strNum.count)
+    public static func setLableColor(lable: UILabel, color: UIColor, fromIndex: Int) {
+        guard let title = lable.text else {
+            return
+        }
+        if fromIndex > title.count {
+            return
+        }
+
+        let titleAttr = NSMutableAttributedString(string: title).then {
+            $0.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: NSMakeRange(fromIndex, title.count - fromIndex))
+        }
+        lable.attributedText = titleAttr
+    }
+
+    /// 字体在Lable的宽度
+    /// SCUtils.getLableWidth(labelStr: strMember,font: titleLable.font, height: titleLable.font.lineHeight)
+    public static func getLableWidth(labelStr: String, font: UIFont, height: CGFloat) -> CGFloat {
+        let statusLabelText: NSString = labelStr as NSString
+        let size = CGSize(width: 900, height: height)
+        let dic = NSDictionary(object: font, forKey: NSAttributedString.Key.font as NSCopying)
+        let strSize = statusLabelText.boundingRect(with: size,
+                                                   options: .usesLineFragmentOrigin,
+                                                   attributes: dic as? [NSAttributedString.Key: Any],
+                                                   context: nil).size
+
+        return strSize.width
+    }
+
+    /// 图片与文字的富文本
+    /// lable.attributedText = SCUtils.imageAndTitleAttribute(title: title, iconName: bizp.icon, startX: 0, height: iHeight)
+    public static func imageAndTitleAttribute(title: String,
+                                              iconName: String,
+                                              startX: CGFloat,
+                                              height: CGFloat,
+                                              color: UIColor = UIColor.black) -> NSMutableAttributedString
+    {
+        let attrImg = NSTextAttachment()
+        attrImg.image = UIImage(named: iconName)
+        // 设置图片显示的大小及位置
+        attrImg.bounds = CGRect(x: startX, y: -2, width: height, height: height)
+        let attrImageStr = NSAttributedString(attachment: attrImg)
+
+        let attrTitleStr = NSAttributedString(string: "\(title)",
+                                              attributes: [NSAttributedString.Key.foregroundColor: color])
+        let attrString = NSMutableAttributedString()
+        attrString.append(attrImageStr)
+        attrString.append(attrTitleStr)
+        return attrString
+    }
+
+    /// 生成从起始的年月到当前的字典，如value："2021-09" - "2022-06"；name： "2021年09月" - "2022年06月"
+    /// let monthDic = SCUtils.generatorMonths(baseYear: 2021, baseMonth: 9)
+    public static func generatorMonths(baseYear: Int, baseMonth: Int) -> [String: [String]] {
+        let curYearAndMonth = Date().toString(withFormat: "yyyy-MM")
+        let yearAndMonthAry = curYearAndMonth.split(separator: "-")
+        let year = String(yearAndMonthAry[0])
+        let month = String(yearAndMonthAry[1])
+
+        let iYear = year.toInt() ?? 2022
+        let iMonth = month.toInt() ?? 1
+
+        var nameArray: [String] = []
+        var valueArray: [String] = []
+
+        nameArray.append("月份")
+        valueArray.append("")
+        for year in stride(from: iYear, through: baseYear, by: -1) {
+            var maxMonth = 12
+            if iYear == year {
+                maxMonth = iMonth
+            }
+
+            for month in stride(from: maxMonth, to: 0, by: -1) {
+                if year != iYear, month < baseMonth {
+                    break
+                }
+                nameArray.append("\(year)年\(String(format: "%02d", month))月")
+                valueArray.append("\(year)-\(String(format: "%02d", month))")
+            }
+        }
+        return ["name": nameArray, "value": valueArray]
+    }
+
+    /// 返回月份的最后一天
+    public static func lastDay(yearAndMonth: String, separateFlag: Character, isCurentDay: Bool = false) -> Int {
+        let yearAry = yearAndMonth.split(separator: separateFlag)
+        if yearAndMonth.count < 2 {
+            return 0
+        }
+
+        let year = String(yearAry[0]).toInt()
+        let month = String(yearAry[1]).toInt() ?? 1
+
+        let calendar = NSCalendar.current
+        if isCurentDay {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let components = calendar.dateComponents([.year, .month, .day], from: Date())
+
+            let cMonth = components.month
+            let cYear = components.year
+            if cYear == year, cMonth == month {
+                return components.day ?? 1
+            }
+        }
+
+        var comps = DateComponents(calendar: calendar, year: year, month: month)
+        comps.setValue(month + 1, for: .month)
+        comps.setValue(0, for: .day)
+        let date = calendar.date(from: comps)!
+        return calendar.component(.day, from: date)
+    }
+
     /// 图片下载
     /// - Parameters:
     ///  - urlStr: 下载URL
@@ -126,5 +241,83 @@ public enum SCUtils {
         } else {
             complete?(nil)
         }
+    }
+
+    /// 加载GIF图片
+    /// SCUtils.showGif(fileName: gifFile, imageView: playingImagView)
+    public static func showGif(fileName: String, imageView: UIImageView) {
+        // 1.加载Gif图片, 并转成Data类型
+        guard let path = Bundle.main.path(forResource: fileName, ofType: nil) else {
+            yxc_debugPrint("The file:\(fileName) is not exist.")
+            return
+        }
+        guard let data = NSData(contentsOfFile: path) else {
+            return
+        }
+
+        // 2.从data中读取数据: 将data转成CGImageSource对象
+        guard let imageSource = CGImageSourceCreateWithData(data, nil) else {
+            yxc_debugPrint("can not data to CGImageSource.")
+            return
+        }
+        let imageCount = CGImageSourceGetCount(imageSource)
+
+        // 3.遍历所有的图片
+        var images = [UIImage]()
+        var totalDuration: TimeInterval = 0
+        for i in 0 ..< imageCount {
+            // 3.1.取出每一帧图片
+            guard let cgImage = CGImageSourceCreateImageAtIndex(imageSource, i, nil) else {
+                continue
+            }
+            let image = UIImage(cgImage: cgImage)
+            if i == 0 {
+                imageView.image = image
+            }
+            images.append(image)
+
+            // 3.2.取出持续的时间
+            guard let properties = CGImageSourceCopyPropertiesAtIndex(imageSource, i, nil) as? NSDictionary else {
+                continue
+            }
+            guard let gifDict = properties[kCGImagePropertyGIFDictionary] as? NSDictionary else {
+                continue
+            }
+
+            guard let frameDuration = gifDict[kCGImagePropertyGIFDelayTime] as? NSNumber else {
+                continue
+            }
+            totalDuration += frameDuration.doubleValue
+        }
+
+        // 4.设置imageView的属性
+        imageView.animationImages = images
+        imageView.animationDuration = totalDuration
+        // 0代表不限重复次数(无限重复)
+        imageView.animationRepeatCount = 0
+
+        // 5.开始播放
+        imageView.startAnimating()
+    }
+
+    /// 获取APP名称
+    public static func getAppName() -> String {
+        if let name = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String {
+            return name
+        }
+        if let name = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String {
+            return name
+        }
+        if let name = Bundle.main.infoDictionary?["CFBundleName"] as? String {
+            return name
+        }
+        return "App"
+    }
+
+    /// 获取Domument目录
+    public static func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
 }
