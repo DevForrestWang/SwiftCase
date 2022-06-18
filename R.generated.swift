@@ -472,7 +472,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 42 images.
+  /// This `R.image` struct is generated, and contains static references to 58 images.
   struct image {
     /// Image `LaunchScreen`.
     static let launchScreen = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchScreen")
@@ -500,6 +500,38 @@ struct R: Rswift.Validatable {
     static let gy_assistant_active_select_box = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_assistant_active_select_box")
     /// Image `gy_assistant_active_unselect_box`.
     static let gy_assistant_active_unselect_box = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_assistant_active_unselect_box")
+    /// Image `gy_chat_btn_clock`.
+    static let gy_chat_btn_clock = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_btn_clock")
+    /// Image `gy_chat_commend_goods`.
+    static let gy_chat_commend_goods = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_commend_goods")
+    /// Image `gy_chat_delivery_order`.
+    static let gy_chat_delivery_order = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_delivery_order")
+    /// Image `gy_chat_expression`.
+    static let gy_chat_expression = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_expression")
+    /// Image `gy_chat_icon_tag`.
+    static let gy_chat_icon_tag = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_icon_tag")
+    /// Image `gy_chat_more_album`.
+    static let gy_chat_more_album = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_more_album")
+    /// Image `gy_chat_more_functions`.
+    static let gy_chat_more_functions = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_more_functions")
+    /// Image `gy_chat_more_video`.
+    static let gy_chat_more_video = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_more_video")
+    /// Image `gy_chat_push_activity`.
+    static let gy_chat_push_activity = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_push_activity")
+    /// Image `gy_chat_redpackage`.
+    static let gy_chat_redpackage = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_redpackage")
+    /// Image `gy_chat_switch_group`.
+    static let gy_chat_switch_group = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_switch_group")
+    /// Image `gy_chat_switch_keyboard`.
+    static let gy_chat_switch_keyboard = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_switch_keyboard")
+    /// Image `gy_chat_switch_voice`.
+    static let gy_chat_switch_voice = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_switch_voice")
+    /// Image `gy_chat_voice_left`.
+    static let gy_chat_voice_left = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_voice_left")
+    /// Image `gy_chat_voice_right`.
+    static let gy_chat_voice_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_voice_right")
+    /// Image `gyhs_bigDefaultImage`.
+    static let gyhs_bigDefaultImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "gyhs_bigDefaultImage")
     /// Image `hightImage`.
     static let hightImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "hightImage")
     /// Image `home_selected`.
@@ -647,6 +679,118 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "gy_assistant_active_unselect_box", bundle: ..., traitCollection: ...)`
     static func gy_assistant_active_unselect_box(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.gy_assistant_active_unselect_box, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_btn_clock", bundle: ..., traitCollection: ...)`
+    static func gy_chat_btn_clock(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_btn_clock, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_commend_goods", bundle: ..., traitCollection: ...)`
+    static func gy_chat_commend_goods(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_commend_goods, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_delivery_order", bundle: ..., traitCollection: ...)`
+    static func gy_chat_delivery_order(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_delivery_order, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_expression", bundle: ..., traitCollection: ...)`
+    static func gy_chat_expression(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_expression, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_icon_tag", bundle: ..., traitCollection: ...)`
+    static func gy_chat_icon_tag(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_icon_tag, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_more_album", bundle: ..., traitCollection: ...)`
+    static func gy_chat_more_album(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_more_album, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_more_functions", bundle: ..., traitCollection: ...)`
+    static func gy_chat_more_functions(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_more_functions, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_more_video", bundle: ..., traitCollection: ...)`
+    static func gy_chat_more_video(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_more_video, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_push_activity", bundle: ..., traitCollection: ...)`
+    static func gy_chat_push_activity(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_push_activity, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_redpackage", bundle: ..., traitCollection: ...)`
+    static func gy_chat_redpackage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_redpackage, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_switch_group", bundle: ..., traitCollection: ...)`
+    static func gy_chat_switch_group(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_switch_group, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_switch_keyboard", bundle: ..., traitCollection: ...)`
+    static func gy_chat_switch_keyboard(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_switch_keyboard, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_switch_voice", bundle: ..., traitCollection: ...)`
+    static func gy_chat_switch_voice(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_switch_voice, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_voice_left", bundle: ..., traitCollection: ...)`
+    static func gy_chat_voice_left(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_voice_left, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_voice_right", bundle: ..., traitCollection: ...)`
+    static func gy_chat_voice_right(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_voice_right, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gyhs_bigDefaultImage", bundle: ..., traitCollection: ...)`
+    static func gyhs_bigDefaultImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gyhs_bigDefaultImage, compatibleWith: traitCollection)
     }
     #endif
 

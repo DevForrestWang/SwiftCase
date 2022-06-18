@@ -1,10 +1,15 @@
 //
-//  GYMainChatViewController.swift
-//  GYCompany
+//===--- GYMainChatViewController.swift - Defines the GYMainChatViewController class ----------===//
 //
-//  Created by wfd on 2022/5/19.
-//  Copyright © 2022 归一. All rights reserved.
+// This source file is part of the SwiftCase open source project
 //
+// Created by wangfd on 2021/9/26.
+// Copyright © 2021 SwiftCase. All rights reserved.
+// Licensed under Apache License v2.0 with Runtime Library Exception
+//
+// See more information
+//
+//===----------------------------------------------------------------------===//
 
 import UIKit
 
@@ -71,23 +76,32 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         let key = dataSourceHeads[indexPath.section]
         let dataAry = dataSource[key]
         guard indexPath.row < dataAry?.count ?? 0, let model: GYMainChatModel = dataAry?[indexPath.row] else {
-            return UITableViewCell()
+            return GYMainChatBaseInfoCell()
         }
 
-        var cell: GYMainChatBaseInfoCell?
+        var cell = GYMainChatBaseInfoCell()
         if model.messageTpye == .picture {
-            if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatPictureCell") as? GYMainChatPictureCell {
+            if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatPictureCell", for: indexPath) as? GYMainChatPictureCell {
+                tmpCell.update(model: model, dataSource: dataSource)
                 cell = tmpCell
             }
-        } else {
-            if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatBaseInfoCell") as? GYMainChatBaseInfoCell {
+        } else if model.messageTpye == .voice {
+            if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatVoiceCell", for: indexPath) as? GYMainChatVoiceCell {
+                tmpCell.update(model: model)
+                cell = tmpCell
+            }
+        } else if model.messageTpye == .text {
+            if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatTextCell", for: indexPath) as? GYMainChatTextCell {
+                tmpCell.update(model: model)
                 cell = tmpCell
             }
         }
 
-        cell?.update(model: model)
-        cell?.selectionStyle = .none
-        return cell ?? UITableViewCell()
+        cell.gyMainChatCellClosure = { _, _ in
+        }
+
+        cell.selectionStyle = .none
+        return cell
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
@@ -272,8 +286,9 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         $0.tableHeaderView = UIView()
         $0.showsVerticalScrollIndicator = false
         $0.separatorStyle = .none
-        $0.register(GYMainChatBaseInfoCell.self, forCellReuseIdentifier: "GYMainChatBaseInfoCell")
+        $0.register(GYMainChatTextCell.self, forCellReuseIdentifier: "GYMainChatTextCell")
         $0.register(GYMainChatPictureCell.self, forCellReuseIdentifier: "GYMainChatPictureCell")
+        $0.register(GYMainChatVoiceCell.self, forCellReuseIdentifier: "GYMainChatVoiceCell")
     }
 
     var dataSourceHeads: [String] = []

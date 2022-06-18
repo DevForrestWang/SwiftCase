@@ -1,22 +1,28 @@
 //
-//  GYChatInputView.swift
-//  GYCompany
+//===--- GYChatInputView.swift - Defines the GYChatInputView class ----------===//
 //
-//  Created by wfd on 2022/5/19.
-//  Copyright © 2022 归一. All rights reserved.
+// This source file is part of the SwiftCase open source project
 //
+// Created by wangfd on 2021/9/26.
+// Copyright © 2021 SwiftCase. All rights reserved.
+// Licensed under Apache License v2.0 with Runtime Library Exception
+//
+// See more information
+//
+//===----------------------------------------------------------------------===//
 
+import Photos
 import SnapKit
-import UIKit
+import ZLPhotoBrowser
 
-class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     enum GYChatInputType {
         case none
         case switchGroup
         case redPackage
         case pushActive
         case commendGoods
-        case deliveryOrde
+        case deliveryOrder
         case sendText
         case sendVoice
         case sendEmoji
@@ -92,6 +98,16 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
         showMoreButton(isShow: false)
     }
 
+    // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true) {
+            let image = info[.originalImage] as? UIImage
+            let url = info[.mediaURL] as? URL
+            self.saveToAlbum(image: image, videoUrl: url)
+        }
+    }
+
     // MARK: - IBActions
 
     @objc private func textViewEditChanged(notification: NSNotification) {
@@ -109,7 +125,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
     @objc private func buttonAction(button: UIButton) {
         var buttonType: GYChatInputType = .none
         if button.isEqual(deliveryOrderBtn) {
-            buttonType = .deliveryOrde
+            buttonType = .deliveryOrder
         } else if button.isEqual(redPackageBtn) {
             buttonType = .redPackage
         } else if button.isEqual(pushActiveBtn) {
@@ -136,6 +152,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
         isShowVoiceInput = !isShowVoiceInput
 
         if isShowVoiceInput {
+            hiddenMoreInput()
             sendVoiceBtn.isHidden = false
             inputTextView.isHidden = true
             switchBtn.setImage(UIImage(named: "gy_chat_switch_keyboard"), for: .normal)
@@ -158,29 +175,28 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
 
     @objc func longPressAction(recognizer: UITapGestureRecognizer) {
         if recognizer.state == .began {
-            print("start long press")
+        } else if recognizer.state == .changed {
+            let point = recognizer.location(in: nil)
+            let pintT = sendVoiceBtn.convert(sendVoiceBtn.bounds.origin, to: nil)
 
-            if let vc = parentVc {
-                vc.view.addSubview(gifImageView)
-                gifImageView.snp.makeConstraints { make in
-                    make.width.height.equalTo(150)
-                    make.centerX.equalToSuperview()
-                    make.centerY.equalToSuperview().offset(-44)
-                }
-                // GYCompanyUtils.showGif(fileName: "gy_voice_playing.gif", imageView: gifImageView)
-            }
-        } else if recognizer.state == .ended {
-            print("end long press")
-            gifImageView.removeFromSuperview()
-        }
+            if pintT.y - 50 > point.y {}
+        } else if recognizer.state == .ended {}
     }
 
     @objc private func graphicAlbumAction() {
-        print("graphicAlbumAction")
+        showSelectAlert(firstTitle: "拍照") {
+            self.showCamera(isVideo: false)
+        } albumClosure: {
+            self.selectAlbum(isVideo: false)
+        }
     }
 
     @objc private func graphicVideoAction() {
-        print("graphicVideoAction")
+        showSelectAlert(firstTitle: "拍摄") {
+            self.showCamera(isVideo: true)
+        } albumClosure: {
+            self.selectAlbum(isVideo: true)
+        }
     }
 
     // MARK: - Private
@@ -278,6 +294,114 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
         }
 
         return false
+    }
+
+    private func showSelectAlert(firstTitle: String, shootClosure: @escaping () -> Void, albumClosure: @escaping () -> Void) {
+        let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let shootAction = UIAlertAction(title: firstTitle, style: .default) { _ in
+            shootClosure()
+        }
+        let albumAction = UIAlertAction(title: "从手机相册选择", style: .default) { _ in
+            albumClosure()
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in }
+        alertVC.addAction(shootAction)
+        alertVC.addAction(albumAction)
+        alertVC.addAction(cancelAction)
+        parentVc?.present(alertVC, animated: true, completion: nil)
+    }
+
+    private func selectAlbum(isVideo: Bool = false) {
+        guard let vc = parentVc else {
+            yxc_debugPrint("没有获取到当前控制器")
+            return
+        }
+
+        let config = ZLPhotoConfiguration.default()
+        config.allowEditVideo = false
+        config.allowEditImage = false
+        config.allowSelectOriginal = true
+
+        if isVideo {
+            config.allowSelectImage = false
+            config.allowSelectVideo = true
+        } else {
+            config.allowSelectImage = true
+            config.allowSelectVideo = false
+            config.maxSelectCount = 9
+        }
+
+        let photoPicker = ZLPhotoPreviewSheet()
+        photoPicker.selectImageBlock = { [weak self] images, assets, _ in
+            if let tempClosure = self?.gySelectImageBlock {
+                let hasSelectVideo = assets.first?.mediaType == .video
+                tempClosure(images, assets, hasSelectVideo)
+            }
+        }
+        photoPicker.showPhotoLibrary(sender: vc)
+    }
+
+    private func showCamera(isVideo: Bool) {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        if status == .restricted || status == .denied {
+            let tips = String(format: "请在iPhone的\"设置 > 隐私 > 相机\"选项中，允许%@访问你的相机", arguments: [SCUtils.getAppName()])
+            let alertVC = UIAlertController(title: nil, message: tips, preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "确定", style: .cancel) { _ in }
+            alertVC.addAction(confirmAction)
+            parentVc?.present(alertVC, animated: true, completion: nil)
+            return
+        }
+
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+            yxc_debugPrint("相机不可用")
+            return
+        }
+
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = false
+        picker.videoQuality = .typeHigh
+        picker.sourceType = .camera
+        picker.cameraFlashMode = .auto
+        var mediaTypes = [String]()
+        if isVideo {
+            mediaTypes.append("public.movie")
+        } else {
+            mediaTypes.append("public.image")
+        }
+        picker.mediaTypes = mediaTypes
+        picker.videoMaximumDuration = TimeInterval(60 * 10)
+        parentVc?.showDetailViewController(picker, sender: nil)
+    }
+
+    private func saveToAlbum(image: UIImage?, videoUrl: URL?) {
+        let hud = ZLProgressHUD(style: ZLPhotoConfiguration.default().hudStyle)
+        if let image = image {
+            hud.show()
+            ZLPhotoManager.saveImageToAlbum(image: image) { [weak self] suc, asset in
+                if suc, let at = asset {
+                    if let tempClosure = self?.gySelectImageBlock {
+                        tempClosure([image], [at], false)
+                    }
+
+                } else {
+                    yxc_debugPrint("图片保存失败")
+                }
+                hud.hide()
+            }
+        } else if let videoUrl = videoUrl {
+            hud.show()
+            ZLPhotoManager.saveVideoToAlbum(url: videoUrl) { [weak self] suc, asset in
+                if suc, let at = asset {
+                    if let tempClosure = self?.gySelectImageBlock {
+                        tempClosure([], [at], true)
+                    }
+                } else {
+                    yxc_debugPrint("视频保存失败")
+                }
+                hud.hide()
+            }
+        }
     }
 
     // MARK: - UI
@@ -473,6 +597,8 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
     // MARK: - Property
 
     public var gyChatInputClosure: ((_ inputType: GYChatInputType, _ inputInfo: String) -> Void)?
+    public var gySelectImageBlock: (([UIImage], [PHAsset], Bool) -> Void)?
+
     public weak var parentVc: UIViewController?
 
     var isShowVoiceInput = false
@@ -637,8 +763,6 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
         $0.font = .systemFont(ofSize: 14)
         $0.textAlignment = .center
     }
-
-    let gifImageView = UIImageView()
 
     let emojiArray = GYChatDefaultModel().emojiArray
 }

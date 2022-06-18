@@ -1,10 +1,15 @@
 //
-//  GYMainChatBaseInfoCell.swift
-//  GYCompany
+//===--- GYMainChatBaseInfoCell.swift - Defines the GYMainChatBaseInfoCell class ----------===//
 //
-//  Created by wfd on 2022/5/26.
-//  Copyright © 2022 归一. All rights reserved.
+// This source file is part of the SwiftCase open source project
 //
+// Created by wangfd on 2021/9/26.
+// Copyright © 2021 SwiftCase. All rights reserved.
+// Licensed under Apache License v2.0 with Runtime Library Exception
+//
+// See more information
+//
+//===----------------------------------------------------------------------===//
 
 import Kingfisher
 import UIKit
@@ -15,7 +20,7 @@ class GYMainChatBaseInfoCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
-        setupConstraints()
+        reSetupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -42,41 +47,15 @@ class GYMainChatBaseInfoCell: UITableViewCell {
 
     public func update(model: GYMainChatModel) {
         sendType = model.sendType
-        if sendType == .sendInfo {
-            rightSetupConstraints()
-        }
 
-        // 设置头像
-        let userAvatar = model.userInfo?.userAvatar ?? ""
-        headImagView.kf.setImage(with: URL(string: userAvatar), placeholder: UIImage(named: "placeholder"))
-
-        userNameLable.text = model.userInfo?.userName
-
-        let grade = " \(model.userInfo?.levelName ?? "")"
-        // let iHeight = gradeLable.font.lineHeight
-        // gradeLable.attributedText = GYCompanyUtils.imageAndTitleAttribute(title: grade, iconName: "gy_tool_user", startX: 0, height: iHeight, color: UIColor.hexColor(0xE46900))
-        gradeLable.text = grade
-
+        updateHeadInfo(model: model)
         contentBgView.backgroundColor = .white
-        if model.messageTpye == .text {
-            if let message = model.msg as? String {
-                messageLable.text = message
-                messageLable.isHidden = false
-            }
-            contentBgView.backgroundColor = UIColor.hexColor(0xFFF7EB)
-        } else if model.messageTpye == .voice {
-            if let msgDic = model.msg as? NSDictionary {
-                if let second = msgDic["second"] as? Int64, let remoteAudioUrl = msgDic["remoteAudioUrl"] as? String {
-                    messageLable.text = "\(second) '' "
-                }
-                messageLable.isHidden = false
-                messageLable.snp.makeConstraints { make in
-                    make.width.equalTo(100)
-                    make.height.equalTo(30)
-                }
-                contentBgView.backgroundColor = UIColor.hexColor(0xFFF7EB)
-            }
-        }
+
+        reSetupConstraints()
+    }
+
+    @objc public func clickAction(recognizer _: UITapGestureRecognizer) {
+        yxc_debugPrint("click Class: \(type(of: self))")
     }
 
     // MARK: - Protocol
@@ -84,6 +63,25 @@ class GYMainChatBaseInfoCell: UITableViewCell {
     // MARK: - IBActions
 
     // MARK: - Private
+
+    private func updateHeadInfo(model: GYMainChatModel) {
+        gradeBgView.isHidden = true
+        headImagView.image = UIImage(named: "gy_assistant_main_default_head")
+
+        guard let userInfo = model.userInfo else {
+            return
+        }
+        gradeBgView.isHidden = false
+
+        // 设置头像
+        headImagView.image = UIImage(named: "santa")
+
+        userNameLable.text = model.userInfo?.userName
+
+        let grade = " \(userInfo.levelName ?? "")"
+        let iHeight = gradeLable.font.lineHeight
+        gradeLable.attributedText = SCUtils.imageAndTitleAttribute(title: grade, iconName: "gy_tool_user", startX: 0, height: iHeight, color: UIColor.hexColor(0xE46900))
+    }
 
     // MARK: - UI
 
@@ -95,13 +93,18 @@ class GYMainChatBaseInfoCell: UITableViewCell {
         addSubview(gradeBgView)
         gradeBgView.addSubview(gradeLable)
         addSubview(contentBgView)
-        contentBgView.addSubview(messageLable)
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickAction))
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        addGestureRecognizer(tapGesture)
     }
 
     // MARK: - Constraints
 
-    private func setupConstraints() {
-        headImagView.snp.makeConstraints { make in
+    // 页面重新布局；由于cell复用，滑动时cell需要按照实际方向布局，否则会导致前面的布局使用后面的布局
+    private func reSetupConstraints() {
+        headImagView.snp.remakeConstraints { make in
             make.top.equalTo(10)
             make.width.height.equalTo(35)
             if sendType == .acceptInfo {
@@ -111,7 +114,7 @@ class GYMainChatBaseInfoCell: UITableViewCell {
             }
         }
 
-        userNameLable.snp.makeConstraints { make in
+        userNameLable.snp.remakeConstraints { make in
             make.top.top.equalTo(10)
             make.height.equalTo(21)
             make.width.lessThanOrEqualTo(gScreenWidth / 2)
@@ -123,7 +126,7 @@ class GYMainChatBaseInfoCell: UITableViewCell {
             }
         }
 
-        gradeBgView.snp.makeConstraints { make in
+        gradeBgView.snp.remakeConstraints { make in
             make.top.equalTo(10)
             make.height.equalTo(21)
             make.width.equalTo(60)
@@ -135,14 +138,14 @@ class GYMainChatBaseInfoCell: UITableViewCell {
             }
         }
 
-        gradeLable.snp.makeConstraints { make in
+        gradeLable.snp.remakeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
             make.left.equalToSuperview().offset(3)
             make.right.equalToSuperview().offset(-3)
         }
 
-        contentBgView.snp.makeConstraints { make in
+        contentBgView.snp.remakeConstraints { make in
             make.top.equalTo(userNameLable.snp.bottom).offset(10)
             make.bottom.equalToSuperview().offset(-10)
             make.width.lessThanOrEqualTo(contentWidth)
@@ -153,73 +156,40 @@ class GYMainChatBaseInfoCell: UITableViewCell {
                 make.right.equalTo(headImagView.snp.left).offset(-10)
             }
         }
-
-        messageLable.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
-        }
-        if sendType == .acceptInfo {
-            messageLable.textAlignment = .left
-        } else {
-            messageLable.textAlignment = .right
-        }
-    }
-
-    private func rightSetupConstraints() {
-        headImagView.snp.remakeConstraints { make in
-            make.top.equalTo(10)
-            make.width.height.equalTo(35)
-            make.right.equalToSuperview().offset(-10)
-        }
-
-        userNameLable.snp.remakeConstraints { make in
-            make.top.top.equalTo(10)
-            make.height.equalTo(21)
-            make.width.lessThanOrEqualTo(gScreenWidth / 2)
-            make.right.equalTo(headImagView.snp.left).offset(-10)
-        }
-
-        gradeBgView.snp.remakeConstraints { make in
-            make.top.equalTo(10)
-            make.height.equalTo(21)
-            make.width.equalTo(60)
-            make.right.equalTo(userNameLable.snp.left).offset(-10)
-        }
-
-        contentBgView.snp.remakeConstraints { make in
-            make.top.equalTo(userNameLable.snp.bottom).offset(10)
-            make.bottom.equalToSuperview().offset(-10)
-            make.right.equalTo(headImagView.snp.left).offset(-10)
-            make.width.lessThanOrEqualTo(contentWidth)
-        }
-
-        messageLable.textAlignment = .right
     }
 
     // MARK: - Property
 
-    var sendType: GYMainChatSendType? = .acceptInfo
-    let contentWidth = gScreenWidth - (50 + 10) * 2
-    let headImagView = UIImageView().then {
+    public var gyMainChatCellClosure: ((_ messageType: GYMainChatMessageType, _ dataDic: [String: Any]) -> Void)?
+
+    public var sendType: GYMainChatSendType? = .acceptInfo {
+        didSet {
+            print("change sendType: \(String(describing: sendType))")
+        }
+    }
+
+    private let contentWidth = gScreenWidth - (50 + 10) * 2
+    private let headImagView = UIImageView().then {
         $0.image = UIImage(named: "gy_assistant_main_default_head")
         $0.layer.cornerRadius = 17
         $0.layer.masksToBounds = true
     }
 
-    let userNameLable = UILabel().then {
+    private let userNameLable = UILabel().then {
         $0.text = ""
         $0.textColor = UIColor.hexColor(0x828282)
         $0.font = .systemFont(ofSize: 14)
         $0.textAlignment = .left
     }
 
-    let gradeBgView = UIView().then {
+    private let gradeBgView = UIView().then {
         $0.backgroundColor = .clear
         $0.layer.borderColor = UIColor.hexColor(0xE46900).cgColor
         $0.layer.borderWidth = 1.0
         $0.layer.cornerRadius = 10
     }
 
-    let gradeLable = UILabel().then {
+    private let gradeLable = UILabel().then {
         $0.text = ""
         $0.textColor = UIColor.hexColor(0xE46900)
         $0.font = .systemFont(ofSize: 12)
@@ -227,16 +197,8 @@ class GYMainChatBaseInfoCell: UITableViewCell {
         $0.numberOfLines = 0
     }
 
-    let contentBgView = UIView().then {
+    public let contentBgView = UIView().then {
         $0.backgroundColor = .white
-        $0.layer.cornerRadius = 10
-    }
-
-    let messageLable = UILabel().then {
-        $0.text = ""
-        $0.textColor = .black
-        $0.font = .systemFont(ofSize: 14)
-        $0.textAlignment = .left
-        $0.numberOfLines = 0
+        $0.layer.cornerRadius = 5
     }
 }

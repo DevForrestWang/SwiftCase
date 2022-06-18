@@ -36,6 +36,8 @@ target 'SwiftCase' do
   
   # 图片库
   pod "Kingfisher"
+  # 微信样式的图片、视频选择器
+  pod 'ZLPhotoBrowser'
   
   # gRPC库
   pod 'gRPC-Swift'

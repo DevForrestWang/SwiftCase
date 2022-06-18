@@ -1,10 +1,15 @@
 //
-//  GYChatInputCollectionViewCell.swift
-//  GYCompany
+//===--- GYChatInputCollectionViewCell.swift - Defines the GYChatInputCollectionViewCell class ----------===//
 //
-//  Created by wfd on 2022/5/27.
-//  Copyright © 2022 归一. All rights reserved.
+// This source file is part of the SwiftCase open source project
 //
+// Created by wangfd on 2021/9/26.
+// Copyright © 2021 SwiftCase. All rights reserved.
+// Licensed under Apache License v2.0 with Runtime Library Exception
+//
+// See more information
+//
+//===----------------------------------------------------------------------===//
 
 import UIKit
 

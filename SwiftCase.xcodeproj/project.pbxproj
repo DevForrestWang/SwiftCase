@@ -251,6 +251,8 @@
 		A887BA4A284A0448006842C2 /* GYChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA43284A0448006842C2 /* GYChatInputView.swift */; };
 		A887BA4B284A0448006842C2 /* GYMainChatBaseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */; };
 		A887BA4D284A396F006842C2 /* GYMainChatPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */; };
+		A8C9BE1B285E069700A9A2AF /* GYMainChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */; };
+		A8C9BE1C285E069700A9A2AF /* GYMainChatVoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */; };
 		C6BF75E528586142004116B8 /* GYCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF75E428586142004116B8 /* GYCircleProgressView.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
 		C88F930226F8D8D300739819 /* SCUICollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */; };
@@ -533,6 +535,8 @@
 		A887BA43284A0448006842C2 /* GYChatInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYChatInputView.swift; sourceTree = "<group>"; };
 		A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatBaseInfoCell.swift; sourceTree = "<group>"; };
 		A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYMainChatPictureCell.swift; sourceTree = "<group>"; };
+		A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatTextCell.swift; sourceTree = "<group>"; };
+		A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatVoiceCell.swift; sourceTree = "<group>"; };
 		C6BF75E428586142004116B8 /* GYCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCircleProgressView.swift; sourceTree = "<group>"; };
 		C822E403270EF558001C39FF /* SCUIEventViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIEventViewVC.swift; sourceTree = "<group>"; };
 		C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUICollectionViewVC.swift; sourceTree = "<group>"; };
@@ -1245,6 +1249,8 @@
 		A887BA41284A0448006842C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */,
+				A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */,
 				A887BA42284A0448006842C2 /* GYChatInputCollectionViewCell.swift */,
 				A887BA43284A0448006842C2 /* GYChatInputView.swift */,
 				A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */,
@@ -1592,6 +1598,7 @@
 				77F652A526F5D25F00280568 /* ImageDecorator.swift in Sources */,
 				77201D8A272004B300F6188E /* BinarySearch.swift in Sources */,
 				772F9B3C277DA09800F4D43C /* SCWidgetVC.swift in Sources */,
+				A8C9BE1B285E069700A9A2AF /* GYMainChatTextCell.swift in Sources */,
 				7756E84226FAE48200AB139F /* RequestData.pb.swift in Sources */,
 				77201D80271E61E000F6188E /* Randoms.swift in Sources */,
 				8A8ED9B9279BFC2400971DDA /* SignUpViewModel.swift in Sources */,
@@ -1671,6 +1678,7 @@
 				7747B4F6272CF89200D315FA /* GSNode.swift in Sources */,
 				C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */,
 				775F803B277075AC00D167A7 /* UpDownSwipeViewController.swift in Sources */,
+				A8C9BE1C285E069700A9A2AF /* GYMainChatVoiceCell.swift in Sources */,
 				A819C63D2723F3600023EC3D /* HashTable.swift in Sources */,
 				8A01AA49282FB891001A3F9B /* SCSelectTableView.swift in Sources */,
 				777B9B09272811ED0030DCB9 /* BinaryTree.swift in Sources */,

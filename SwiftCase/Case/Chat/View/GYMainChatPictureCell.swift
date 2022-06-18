@@ -19,7 +19,7 @@ class GYMainChatPictureCell: GYMainChatBaseInfoCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
-        setupConstraints()
+        reSetupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -28,12 +28,10 @@ class GYMainChatPictureCell: GYMainChatBaseInfoCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
     }
 
     // 执行析构过程
@@ -43,22 +41,80 @@ class GYMainChatPictureCell: GYMainChatBaseInfoCell {
 
     // MARK: - Public
 
-    override public func update(model: GYMainChatModel) {
-        super.update(model: model)
+    public func update(model: GYMainChatModel, dataSource: [String: [GYMainChatModel]]) {
+        if model.messageTpye != .picture {
+            return
+        }
 
-        if model.messageTpye == .picture {
-            if let msgDic = model.msg as? NSDictionary {
-                if let strURL = msgDic["imgUrl"] as? String {
-                    messageImagView.kf.setImage(with: URL(string: strURL), placeholder: UIImage(named: "gyhs_bigDefaultImage"))
-                }
-                contentBgView.backgroundColor = UIColor.hexColor(0xEEEEEE)
+        super.update(model: model)
+        allDataSource = dataSource
+        currentModel = model
+
+        messageImagView.image = UIImage(named: "gyhs_bigDefaultImage")
+        contentBgView.backgroundColor = UIColor.hexColor(0xEEEEEE)
+
+        if let msgDic = model.msg as? NSDictionary {
+            if let strURL = msgDic["imgUrl"] as? String {
+                messageImagView.kf.setImage(with: URL(string: strURL), placeholder: UIImage(named: "gyhs_bigDefaultImage"))
             }
         }
+
+        reSetupConstraints()
     }
 
     // MARK: - Protocol
 
     // MARK: - IBActions
+
+    @objc override public func clickAction(recognizer _: UITapGestureRecognizer) {
+        guard let dataSouce = allDataSource, let tmpCurModel = currentModel else {
+            yxc_debugPrint("The dataSource is empty.")
+            return
+        }
+
+        guard let tmpClosure = gyMainChatCellClosure else {
+            yxc_debugPrint("The gyMainChatCellClosure is empty.")
+            return
+        }
+
+        guard tmpCurModel.msg is NSDictionary else {
+            yxc_debugPrint("The current model is not dictionary.")
+            return
+        }
+
+        var urlAry: [String] = []
+        var currentIndex = 0
+        var index = 0
+
+        for itemModels in dataSouce.values {
+            for model in itemModels {
+                if model.messageTpye != .picture {
+                    continue
+                }
+
+                guard let msgDic = model.msg as? NSDictionary else {
+                    continue
+                }
+
+                guard let strURL = msgDic["imgUrl"] as? String else {
+                    continue
+                }
+                urlAry.append(strURL)
+
+                if tmpCurModel.isEqual(model) {
+                    currentIndex = index
+                }
+
+                index += 1
+            }
+        }
+
+        let dataDic: [String: Any] = [
+            "index": currentIndex,
+            "urlAry": urlAry,
+        ]
+        tmpClosure(.picture, dataDic)
+    }
 
     // MARK: - Private
 
@@ -66,30 +122,26 @@ class GYMainChatPictureCell: GYMainChatBaseInfoCell {
 
     private func setupUI() {
         yxc_debugPrint("===========<loadClass: \(type(of: self))>===========")
-        messageLable.removeFromSuperview()
         contentBgView.addSubview(messageImagView)
     }
 
     // MARK: - Constraints
 
-    private func setupConstraints() {
-        messageImagView.snp.makeConstraints { make in
+    private func reSetupConstraints() {
+        messageImagView.snp.remakeConstraints { make in
             make.width.equalTo(110)
             make.height.equalTo(150)
-
-//            if sendType == .acceptInfo {
-//                make.left.equalToSuperview().offset(10)
-//            } else {
-//                make.right.equalToSuperview().offset(-10)
-//            }
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
         }
     }
 
     // MARK: - Property
 
-    let messageImagView = UIImageView().then {
-        $0.layer.cornerRadius = 10
+    private var currentModel: GYMainChatModel?
+    private var allDataSource: [String: [GYMainChatModel]]?
+
+    private let messageImagView = UIImageView().then {
+        $0.layer.cornerRadius = 5
         $0.layer.masksToBounds = true
     }
 }

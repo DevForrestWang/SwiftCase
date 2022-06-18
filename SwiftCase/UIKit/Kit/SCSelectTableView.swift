@@ -1,10 +1,15 @@
 //
-//  SCSelectTableView.swift
+//===--- SCSelectTableView.swift - Defines the SCSelectTableView class ----------===//
 //
+// This source file is part of the SwiftCase open source project
 //
-//  Created by wfd on 2022/5/13.
-//  Copyright © 2022 归一. All rights reserved.
+// Created by wangfd on 2021/9/26.
+// Copyright © 2021 SwiftCase. All rights reserved.
+// Licensed under Apache License v2.0 with Runtime Library Exception
 //
+// See more information
+//
+//===----------------------------------------------------------------------===//
 
 import UIKit
 
