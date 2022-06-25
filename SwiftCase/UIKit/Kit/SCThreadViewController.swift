@@ -134,6 +134,10 @@ class SCThreadViewController: BaseViewController {
         view.addSubview(threadButton)
         view.addSubview(operationBtn)
         view.addSubview(gcdButton)
+
+        threadButton.addTarget(self, action: #selector(threadBtnAction), for: .touchUpInside)
+        operationBtn.addTarget(self, action: #selector(operationBtnAction), for: .touchUpInside)
+        gcdButton.addTarget(self, action: #selector(gcgBtnAction), for: .touchUpInside)
     }
 
     // MARK: - Constraints
@@ -174,7 +178,6 @@ class SCThreadViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 20
-        $0.addTarget(self, action: #selector(threadBtnAction), for: .touchUpInside)
     }
 
     let operationBtn = UIButton().then {
@@ -183,7 +186,6 @@ class SCThreadViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 20
-        $0.addTarget(self, action: #selector(operationBtnAction), for: .touchUpInside)
     }
 
     let gcdButton = UIButton().then {
@@ -192,6 +194,5 @@ class SCThreadViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 20
-        $0.addTarget(self, action: #selector(gcgBtnAction), for: .touchUpInside)
     }
 }

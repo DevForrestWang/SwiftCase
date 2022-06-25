@@ -130,7 +130,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 42 files.
+  /// This `R.file` struct is generated, and contains static references to 41 files.
   struct file {
     /// Resource file `README.md`.
     static let readmeMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "md")
@@ -140,8 +140,6 @@ struct R: Rswift.Validatable {
     static let readme_ZHMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README_ZH", pathExtension: "md")
     /// Resource file `Shows.plist`.
     static let showsPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Shows", pathExtension: "plist")
-    /// Resource file `Swift代码规范.md`.
-    static let swift代码规范Md = Rswift.FileResource(bundle: R.hostingBundle, name: "Swift代码规范", pathExtension: "md")
     /// Resource file `algorithm@2x.png`.
     static let algorithm2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "algorithm@2x", pathExtension: "png")
     /// Resource file `book@2x.png`.
@@ -238,12 +236,6 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "Shows", withExtension: "plist")`
     static func showsPlist(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.showsPlist
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Swift代码规范", withExtension: "md")`
-    static func swift代码规范Md(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.swift代码规范Md
       return fileResource.bundle.url(forResource: fileResource)
     }
 

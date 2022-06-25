@@ -15,9 +15,6 @@ import Then
 import UIKit
 
 class SCUICollectionViewCell: UICollectionViewCell {
-    let widthCell = (UIScreen.main.bounds.size.width - 10.0 * 3) / 2
-    let heightCell: CGFloat = 80.0
-
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -38,4 +35,7 @@ class SCUICollectionViewCell: UICollectionViewCell {
         $0.numberOfLines = 0
         $0.backgroundColor = UIColor.randomColor
     }
+
+    let widthCell = (UIScreen.main.bounds.size.width - 10.0 * 3) / 2
+    let heightCell: CGFloat = 80.0
 }

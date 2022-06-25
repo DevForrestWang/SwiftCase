@@ -23,53 +23,7 @@ import UIKit
 
  [Swift中用API纯代码写autolayout](https://www.jianshu.com/p/17076f6e944b) - 适用于视图动态调整
  */
-class SCUIVIewViewController: BaseViewController {
-    // MARK: - Property
-
-    let box1 = UIView().then {
-        $0.backgroundColor = UIColor.green
-    }
-
-    let box2 = UIView().then {
-        $0.backgroundColor = UIColor.red
-    }
-
-    let box3 = UIView().then {
-        $0.backgroundColor = UIColor.green
-    }
-
-    let box4 = UIView().then {
-        $0.backgroundColor = UIColor.red
-    }
-
-    let box5 = UIView().then {
-        $0.backgroundColor = UIColor.green
-    }
-
-    let box6 = UIView().then {
-        $0.backgroundColor = UIColor.red
-    }
-
-    let box7 = UIView().then {
-        $0.backgroundColor = UIColor.green
-    }
-
-    let box8 = UIView().then {
-        $0.backgroundColor = UIColor.red
-    }
-
-    let box82 = UIView().then {
-        $0.backgroundColor = UIColor.red
-    }
-
-    var box8TopConstraint: Constraint?
-
-    let box9 = UIView().then {
-        $0.backgroundColor = .cyan
-        // 关闭autoresizing 不关闭否则程序崩溃
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-
+final class SCUIVIewViewController: BaseViewController {
     // MARK: - Lifecycle
 
     @objc func injected() {
@@ -188,5 +142,51 @@ class SCUIVIewViewController: BaseViewController {
         box9.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         box9.widthAnchor.constraint(equalToConstant: 100).isActive = true
         box9.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+
+    // MARK: - Property
+
+    let box1 = UIView().then {
+        $0.backgroundColor = UIColor.green
+    }
+
+    let box2 = UIView().then {
+        $0.backgroundColor = UIColor.red
+    }
+
+    let box3 = UIView().then {
+        $0.backgroundColor = UIColor.green
+    }
+
+    let box4 = UIView().then {
+        $0.backgroundColor = UIColor.red
+    }
+
+    let box5 = UIView().then {
+        $0.backgroundColor = UIColor.green
+    }
+
+    let box6 = UIView().then {
+        $0.backgroundColor = UIColor.red
+    }
+
+    let box7 = UIView().then {
+        $0.backgroundColor = UIColor.green
+    }
+
+    let box8 = UIView().then {
+        $0.backgroundColor = UIColor.red
+    }
+
+    let box82 = UIView().then {
+        $0.backgroundColor = UIColor.red
+    }
+
+    var box8TopConstraint: Constraint?
+
+    let box9 = UIView().then {
+        $0.backgroundColor = .cyan
+        // 关闭autoresizing 不关闭否则程序崩溃
+        $0.translatesAutoresizingMaskIntoConstraints = false
     }
 }

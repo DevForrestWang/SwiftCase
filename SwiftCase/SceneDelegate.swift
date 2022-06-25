@@ -54,9 +54,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 MAMapView.updatePrivacyShow(AMapPrivacyShowStatus.didShow, privacyInfo: AMapPrivacyInfoStatus.didContain)
             }
         }
-
         #if DEBUG
-            Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
+            do {
+                let injectionBundle = Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")
+                if let bundle = injectionBundle {
+                    try bundle.loadAndReturnError()
+                } else {
+                    debugPrint("Injection into failure, failed to detect the Injection")
+                }
+            } catch {
+                debugPrint("Injection into failure\(error)")
+            }
         #endif
     }
 

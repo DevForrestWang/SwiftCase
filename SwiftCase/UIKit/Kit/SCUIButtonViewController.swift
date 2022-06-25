@@ -82,7 +82,10 @@ class SCUIButtonViewController: BaseViewController {
         view.addSubview(btn2)
         view.addSubview(btnFlash)
         view.addSubview(saveImageBtn)
+
         saveImageBtn.addTarget(self, action: #selector(photoAlbumAction), for: .touchUpInside)
+        btn1.addTarget(self, action: #selector(btn1Action), for: .touchUpInside)
+        btn2.addTarget(self, action: #selector(btn1Action), for: .touchUpInside)
     }
 
     // MARK: - Constraints
@@ -127,7 +130,6 @@ class SCUIButtonViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 20
-        $0.addTarget(self, action: #selector(btn1Action), for: .touchUpInside)
     }
 
     let btn2 = UIButton(type: .custom).then {
@@ -143,7 +145,6 @@ class SCUIButtonViewController: BaseViewController {
         $0.setTitleShadowColor(.green, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -50)
-        $0.addTarget(self, action: #selector(btn1Action), for: .touchUpInside)
     }
 
     let btnFlash = ImageTextButton(type: .custom).then {

@@ -149,6 +149,10 @@ class SCOperationViewController: BaseViewController {
 
         view.addSubview(imageView)
         imageView.addSubview(indicator)
+
+        addExecutionBtn.addTarget(self, action: #selector(addExecutionAction), for: .touchUpInside)
+        addDependencyBtn.addTarget(self, action: #selector(addDependencyAction), for: .touchUpInside)
+        downLoadImageBtn.addTarget(self, action: #selector(downLoadImageAction), for: .touchUpInside)
     }
 
     // MARK: - Constraints
@@ -197,7 +201,6 @@ class SCOperationViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 3
-        $0.addTarget(self, action: #selector(addExecutionAction), for: .touchUpInside)
     }
 
     let addDependencyBtn = UIButton().then {
@@ -206,7 +209,6 @@ class SCOperationViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 3
-        $0.addTarget(self, action: #selector(addDependencyAction), for: .touchUpInside)
     }
 
     let downLoadImageBtn = UIButton().then {
@@ -215,7 +217,6 @@ class SCOperationViewController: BaseViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 3
-        $0.addTarget(self, action: #selector(downLoadImageAction), for: .touchUpInside)
     }
 
     let imageView = UIImageView().then {

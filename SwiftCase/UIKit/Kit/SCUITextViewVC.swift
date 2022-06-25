@@ -121,6 +121,7 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         accessoryView.addSubview(accessoryRightBtn)
         textView.inputAccessoryView = accessoryView
 
+        accessoryRightBtn.addTarget(self, action: #selector(accessoryRightAction), for: .touchUpInside)
         // 通过通知监听变化
         NotificationCenter.default.addObserver(self, selector: #selector(textViewEditChanged(notification:)), name: UITextView.textDidChangeNotification, object: textView)
     }
@@ -148,7 +149,6 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         $0.setTitle("Confirm", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.backgroundColor = .clear
-        $0.addTarget(self, action: #selector(accessoryRightAction), for: .touchUpInside)
     }
 
     let textView = UITextView().then {

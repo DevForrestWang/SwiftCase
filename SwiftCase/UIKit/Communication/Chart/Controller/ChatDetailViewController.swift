@@ -75,6 +75,8 @@ class ChatDetailViewController: BaseViewController {
 
         // 输入框根据内容自动调整高度；该视图及父视图不设置高度会自动调整大小
         txtMessage.adjustUITextViewHeight()
+
+        sendButton.addTarget(self, action: #selector(btnSendCLK), for: .touchUpInside)
     }
 
     // MARK: - Constraints
@@ -135,6 +137,5 @@ class ChatDetailViewController: BaseViewController {
     private let sendButton = UIButton(type: .custom).then {
         $0.backgroundColor = .clear
         $0.setImage(R.image.send(), for: .normal)
-        $0.addTarget(self, action: #selector(btnSendCLK), for: .touchUpInside)
     }
 }

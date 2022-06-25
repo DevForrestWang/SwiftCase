@@ -145,6 +145,11 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         accessoryView.addSubview(accessoryRightBtn)
         textField.inputAccessoryView = accessoryView
 
+        leftButton.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
+        accessoryLeftBtn.addTarget(self, action: #selector(accessoryLeftAction), for: .touchUpInside)
+        accessoryRightBtn.addTarget(self, action: #selector(accessoryRightAction), for: .touchUpInside)
+
         // 通过通知监听状态变化
         NotificationCenter.default.addObserver(self, selector: #selector(textFiledEditChanged), name: UITextField.textDidChangeNotification, object: textField)
     }
@@ -176,7 +181,6 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
 
     let leftButton = UIButton(type: .infoDark).then {
         $0.frame = CGRect(x: 5, y: 5, width: 30, height: 30)
-        $0.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
     }
 
     let rightView = UIView().then {
@@ -186,7 +190,6 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
 
     let rightButton = UIButton(type: .close).then {
         $0.frame = CGRect(x: 5, y: 5, width: 30, height: 30)
-        $0.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
     }
 
     let accessoryView = UIView().then {
@@ -199,7 +202,6 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         $0.setTitle("Cancel", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.backgroundColor = .clear
-        $0.addTarget(self, action: #selector(accessoryLeftAction), for: .touchUpInside)
     }
 
     let accessoryRightBtn = UIButton(type: .custom).then {
@@ -207,7 +209,6 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         $0.setTitle("Confirm", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.backgroundColor = .clear
-        $0.addTarget(self, action: #selector(accessoryRightAction), for: .touchUpInside)
     }
 
     let textField = UITextField().then {

@@ -82,6 +82,8 @@ class SCUIMapViewVC: BaseViewController, MAMapViewDelegate {
         mapView.delegate = self
 
         view.addSubview(homeButton)
+
+        homeButton.addTarget(self, action: #selector(homeButtonAction), for: .touchUpInside)
     }
 
     // MARK: - Constraints
@@ -141,6 +143,5 @@ class SCUIMapViewVC: BaseViewController, MAMapViewDelegate {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 5
         $0.setImage(R.image.map_home(), for: .normal)
-        $0.addTarget(self, action: #selector(homeButtonAction), for: .touchUpInside)
     }
 }
