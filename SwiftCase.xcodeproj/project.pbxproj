@@ -162,7 +162,6 @@
 		77E0ACB726F5C235000EABC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77E0ACB626F5C235000EABC1 /* Assets.xcassets */; };
 		77E0ACBA26F5C235000EABC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77E0ACB926F5C235000EABC1 /* Preview Assets.xcassets */; };
 		77E0ACBD26F5C235000EABC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77E0ACBB26F5C235000EABC1 /* LaunchScreen.storyboard */; };
-		77F6520626F5CAA100280568 /* Swift代码规范.md in Resources */ = {isa = PBXBuildFile; fileRef = 77F6520526F5CAA000280568 /* Swift代码规范.md */; };
 		77F6521B26F5CBAC00280568 /* icon_course@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77F6520826F5CBA900280568 /* icon_course@2x.png */; };
 		77F6521C26F5CBAC00280568 /* book@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77F6520926F5CBAA00280568 /* book@2x.png */; };
 		77F6521D26F5CBAC00280568 /* icon_live@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77F6520A26F5CBAA00280568 /* icon_live@2x.png */; };
@@ -444,7 +443,6 @@
 		77E0ACBC26F5C235000EABC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77E0ACBE26F5C235000EABC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77F6520326F5C7EA00280568 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		77F6520526F5CAA000280568 /* Swift代码规范.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Swift代码规范.md"; sourceTree = "<group>"; };
 		77F6520826F5CBA900280568 /* icon_course@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_course@2x.png"; sourceTree = "<group>"; };
 		77F6520926F5CBAA00280568 /* book@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book@2x.png"; sourceTree = "<group>"; };
 		77F6520A26F5CBAA00280568 /* icon_live@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_live@2x.png"; sourceTree = "<group>"; };
@@ -980,7 +978,6 @@
 		77F6520426F5CA5100280568 /* Doc */ = {
 			isa = PBXGroup;
 			children = (
-				77F6520526F5CAA000280568 /* Swift代码规范.md */,
 				8A1CB1CB281A3C27000BAA22 /* WillDo.md */,
 			);
 			path = Doc;
@@ -1446,7 +1443,6 @@
 				7756E87526FB608D00AB139F /* design_pattern@2x.png in Resources */,
 				77F6521F26F5CBAC00280568 /* icon_phone@2x.png in Resources */,
 				77F6522226F5CBAC00280568 /* detailBg@2x.png in Resources */,
-				77F6520626F5CAA100280568 /* Swift代码规范.md in Resources */,
 				7756E87326FB54DA00AB139F /* algorithm@2x.png in Resources */,
 				7756E87B26FC17A400AB139F /* nav_btn_backs@2x.png in Resources */,
 				77F6521C26F5CBAC00280568 /* book@2x.png in Resources */,
