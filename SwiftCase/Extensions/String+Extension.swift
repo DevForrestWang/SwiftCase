@@ -98,4 +98,18 @@ public extension String {
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: self)
     }
+
+    /// A Boolean value indicating whether a String is blank.
+    /// The string is blank if it is empty or only contains whitespace.
+    var isBlank: Bool {
+        return allSatisfy { $0.isWhitespace }
+    }
+}
+
+extension Optional where Wrapped == String {
+    /// A Boolean value indicating whether an Optional String is blank.
+    /// The optional string is blank if it is nil, empty or only contains whitespace.
+    var isBlank: Bool {
+        return self?.isBlank ?? true
+    }
 }
