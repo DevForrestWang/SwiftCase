@@ -63,9 +63,9 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
     // UITextField.textDidChangeNotification通知可以实时获取输入的内容；shouldChangeCharactersIn只能获取上一次输入的内容
     func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString _: String) -> Bool {
         yxc_debugPrint("The text input will change (called each time it is typed:\(String(describing: textField.text))")
-
-        // limitTextLength(textField: textField)
-        return true
+        // 只允许输入中英文，数字
+        let pattern = "[a-zA-Z\\u4E00-\\u9FA5\\u0030-\\u0039]"
+        return string.isMatchRegularExp(pattern) || string.isEmpty
     }
 
     func textFieldShouldClear(_: UITextField) -> Bool {
@@ -93,18 +93,17 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
 
     @objc private func textFiledEditChanged(notification: NSNotification) {
         let textField: UITextField = notification.object as! UITextField
-        limitTextLength(textField: textField)
-    }
-
-    private func limitTextLength(textField: UITextField) {
-        let text: String = textField.text ?? ""
-        let length = text.count
-        if length > 20 {
-            // 截取前20个字符
-            textField.text = String(text.prefix(20))
+        let maxCount = 20
+        
+        // 中英长度判断
+        if let temp = textField.text, temp.count > maxCount {
+            if textField.markedTextRange != nil {
+                return
+            }
+            textField.text = String(temp.prefix(maxCount))
         }
     }
-
+    
     @objc func accessoryLeftAction() {
         showToast("Cancel")
     }
