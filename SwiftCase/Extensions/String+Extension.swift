@@ -119,6 +119,20 @@ public extension String {
         let result = reg.matches(in: self, options: .reportProgress, range: NSMakeRange(0, count))
         return (result.count > 0)
     }
+    
+    /// 计算字符串在组件中的尺寸
+    func getBoundingRect(font: UIFont, limitSize: CGSize) -> CGSize {
+        let style = NSMutableParagraphStyle()
+        style.lineBreakMode = .byCharWrapping
+
+        let att = [NSAttributedString.Key.font: font, NSAttributedString.Key.paragraphStyle: style]
+        
+        let attContent = NSMutableAttributedString(string: self, attributes: att)
+        
+        let size = attContent.boundingRect(with: limitSize, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
+        
+        return CGSize(width: ceil(size.width), height: ceil(size.height))
+    }
 }
 
 extension Optional where Wrapped == String {
