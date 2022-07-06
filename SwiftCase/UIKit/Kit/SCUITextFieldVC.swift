@@ -94,7 +94,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
     @objc private func textFiledEditChanged(notification: NSNotification) {
         let textField: UITextField = notification.object as! UITextField
         let maxCount = 20
-        
+
         // 中英长度判断
         if let temp = textField.text, temp.count > maxCount {
             if textField.markedTextRange != nil {
@@ -103,7 +103,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
             textField.text = String(temp.prefix(maxCount))
         }
     }
-    
+
     @objc func accessoryLeftAction() {
         showToast("Cancel")
     }

@@ -104,19 +104,19 @@ public extension String {
     var isBlank: Bool {
         return allSatisfy { $0.isWhitespace }
     }
-    
+
     /// 检测中文
-    public func validateChinese() -> Bool {
+    func validateChinese() -> Bool {
         let pattern = "[\\u4e00-\\u9fa5]"
-        return self.isMatchRegularExp(pattern)
+        return isMatchRegularExp(pattern)
     }
-    
+
     /// 是否匹配正则
-    public func isMatchRegularExp(_ pattern: String) -> Bool {
+    func isMatchRegularExp(_ pattern: String) -> Bool {
         guard let reg = try? NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive) else {
             return false
         }
-        let result = reg.matches(in: self, options: .reportProgress, range: NSMakeRange(0, self.count))
+        let result = reg.matches(in: self, options: .reportProgress, range: NSMakeRange(0, count))
         return (result.count > 0)
     }
 }
