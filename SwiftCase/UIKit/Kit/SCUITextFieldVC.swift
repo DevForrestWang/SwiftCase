@@ -65,6 +65,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         yxc_debugPrint("The text input will change (called each time it is typed:\(String(describing: textField.text))")
         // 只允许输入中英文，数字
         let pattern = "[a-zA-Z\\u4E00-\\u9FA5\\u0030-\\u0039]"
+        let string = textField.text ?? ""
         return string.isMatchRegularExp(pattern) || string.isEmpty
     }
 

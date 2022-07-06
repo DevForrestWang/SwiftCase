@@ -107,6 +107,33 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         view.endEditing(true)
     }
 
+    /* 键盘弹出 */
+    @objc func keyboardWillShow(_ notification: Notification) {
+        // 获取键盘的frame
+        guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else {
+            return
+        }
+
+        // 获取动画执行的时间
+        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+
+        UIView.animate(withDuration: duration ?? 0.25, delay: 0, options: .allowAnimatedContent, animations: {
+            self.textView.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().offset(-(gBottomSafeHeight + keyboardFrame.height))
+            }
+        }, completion: nil)
+    }
+
+    /* 键盘隐藏 */
+    @objc func keyboardWillHide(_ notification: Notification) {
+        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+        UIView.animate(withDuration: duration ?? 0.25, animations: {
+            self.textView.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().offset(-(gBottomSafeHeight + 10))
+            }
+        })
+    }
+
     // MARK: - Private
 
     // MARK: - UI
@@ -115,6 +142,7 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         title = "UITextView"
         hideKeyboardWhenTapedAround()
 
+        view.addSubview(titleLable)
         view.addSubview(textView)
         textView.delegate = self
 
@@ -124,20 +152,37 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         accessoryRightBtn.addTarget(self, action: #selector(accessoryRightAction), for: .touchUpInside)
         // 通过通知监听变化
         NotificationCenter.default.addObserver(self, selector: #selector(textViewEditChanged(notification:)), name: UITextView.textDidChangeNotification, object: textView)
+
+        // 键盘监听
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     // MARK: - Constraints
 
     func setupConstraints() {
+        titleLable.snp.makeConstraints { make in
+            make.bottom.equalTo(textView.snp.top).offset(-10)
+            make.height.equalTo(21)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+        }
         textView.snp.makeConstraints { make in
-            make.height.equalTo(UIScreen.main.bounds.height / 4)
+            make.height.equalTo(150)
             make.width.equalTo(view).offset(-40)
             make.centerX.equalToSuperview()
-            make.centerY.equalTo(view).offset(-100)
+            make.bottom.equalToSuperview().offset(-(gBottomSafeHeight + 10))
         }
     }
 
     // MARK: - Property
+
+    let titleLable = UILabel().then {
+        $0.text = "演示键盘显示隐藏时textView位置调整"
+        $0.textColor = UIColor.gray
+        $0.font = .systemFont(ofSize: 14)
+        $0.textAlignment = .left
+    }
 
     let accessoryView = UIView().then {
         $0.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40)
@@ -152,7 +197,7 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
     }
 
     let textView = UITextView().then {
-        $0.backgroundColor = .cyan
+        $0.backgroundColor = .white
         $0.tintColor = .blue
 
         // 字体设置
@@ -171,6 +216,8 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         $0.returnKeyType = .done
 
         $0.layer.cornerRadius = 5
+        $0.layer.borderColor = UIColor.lightGray.cgColor
+        $0.layer.borderWidth = 1.0
 
         // 设置Placeholder
         let phLabel = UILabel()
