@@ -133,6 +133,13 @@ public extension String {
         
         return CGSize(width: ceil(size.width), height: ceil(size.height))
     }
+    
+    /// 去除字符串前后的换行和空格
+    func trim() -> String {
+        var resultString = self.trimmingCharacters(in: CharacterSet.whitespaces)
+        resultString = resultString.trimmingCharacters(in: CharacterSet.newlines)
+        return resultString
+    }
 }
 
 extension Optional where Wrapped == String {
