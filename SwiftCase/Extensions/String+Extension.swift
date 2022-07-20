@@ -152,23 +152,23 @@ extension Optional where Wrapped == String {
 
 /// 查找字符串位置，返回Int类型
 extension StringProtocol {
-    func distance(of element: Element) -> Int? {
+    public func distance(of element: Element) -> Int? {
         firstIndex(of: element)?.distance(in: self)
     }
 
-    func distance<S: StringProtocol>(of string: S) -> Int? {
+    public func distance<S: StringProtocol>(of string: S) -> Int? {
         range(of: string)?.lowerBound.distance(in: self)
     }
 }
 
 extension Collection {
-    func distance(to index: Index) -> Int {
+    public func distance(to index: Index) -> Int {
         distance(from: startIndex, to: index)
     }
 }
 
 extension String.Index {
-    func distance<S: StringProtocol>(in string: S) -> Int {
+    public func distance<S: StringProtocol>(in string: S) -> Int {
         string.distance(to: self)
     }
 }
