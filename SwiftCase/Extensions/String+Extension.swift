@@ -119,24 +119,24 @@ public extension String {
         let result = reg.matches(in: self, options: .reportProgress, range: NSMakeRange(0, count))
         return (result.count > 0)
     }
-    
+
     /// 计算字符串在组件中的尺寸
     func getBoundingRect(font: UIFont, limitSize: CGSize) -> CGSize {
         let style = NSMutableParagraphStyle()
         style.lineBreakMode = .byCharWrapping
 
         let att = [NSAttributedString.Key.font: font, NSAttributedString.Key.paragraphStyle: style]
-        
+
         let attContent = NSMutableAttributedString(string: self, attributes: att)
-        
+
         let size = attContent.boundingRect(with: limitSize, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
-        
+
         return CGSize(width: ceil(size.width), height: ceil(size.height))
     }
-    
+
     /// 去除字符串前后的换行和空格
     func trim() -> String {
-        var resultString = self.trimmingCharacters(in: CharacterSet.whitespaces)
+        var resultString = trimmingCharacters(in: CharacterSet.whitespaces)
         resultString = resultString.trimmingCharacters(in: CharacterSet.newlines)
         return resultString
     }
@@ -147,5 +147,28 @@ extension Optional where Wrapped == String {
     /// The optional string is blank if it is nil, empty or only contains whitespace.
     var isBlank: Bool {
         return self?.isBlank ?? true
+    }
+}
+
+/// 查找字符串位置，返回Int类型
+extension StringProtocol {
+    func distance(of element: Element) -> Int? {
+        firstIndex(of: element)?.distance(in: self)
+    }
+
+    func distance<S: StringProtocol>(of string: S) -> Int? {
+        range(of: string)?.lowerBound.distance(in: self)
+    }
+}
+
+extension Collection {
+    func distance(to index: Index) -> Int {
+        distance(from: startIndex, to: index)
+    }
+}
+
+extension String.Index {
+    func distance<S: StringProtocol>(in string: S) -> Int {
+        string.distance(to: self)
     }
 }

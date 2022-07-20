@@ -74,6 +74,23 @@ class SCFunctionViewController: BaseViewController {
         // 首字母大写，
         yxc_debugPrint("wo xiao wo ku".capitalized) // Wo Xiao Wo Ku
         yxc_debugPrint("已选择: \("已选择".transformToPinYin())")
+
+        // 查找字符串位置
+        let letters = "abcdefg"
+
+        let char: Character = "c"
+        if let distance = letters.distance(of: char) {
+            yxc_debugPrint("character \(char) was found at position #\(distance)") // "character c was found at position #2\n"
+        } else {
+            yxc_debugPrint("character \(char) was not found")
+        }
+
+        let string = "cde"
+        if let distance = letters.distance(of: string) {
+            yxc_debugPrint("string \(string) was found at position #\(distance)") // "string cde was found at position #2\n"
+        } else {
+            yxc_debugPrint("string \(string) was not found")
+        }
     }
 
     /// 字符基本
