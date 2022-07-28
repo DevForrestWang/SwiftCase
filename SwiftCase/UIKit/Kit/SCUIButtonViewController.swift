@@ -147,7 +147,7 @@ class SCUIButtonViewController: BaseViewController {
         $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -50)
     }
 
-    let btnFlash = ImageTextButton(type: .custom).then {
+    let btnFlash = SCImageTextButton(type: .custom).then {
         // $0.backgroundColor = .white
         $0.setImage(UIImage(named: "search"), for: .normal)
         $0.setTitle("手电筒", for: .normal)
@@ -161,40 +161,5 @@ class SCUIButtonViewController: BaseViewController {
         $0.setTitleColor(UIColor.hexColor(0x3F6D03), for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14.0)
         $0.layer.cornerRadius = 15
-    }
-}
-
-/// 图文混排，图片在上，文字在下
-// 来自：https://codeleading.com/article/30281015726/
-class ImageTextButton: UIButton {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        commonInit()
-    }
-
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func commonInit() {
-        titleLabel?.textAlignment = .center
-        imageView?.contentMode = .scaleAspectFit
-        titleLabel?.font = UIFont.systemFont(ofSize: 12)
-    }
-
-    override func titleRect(forContentRect contentRect: CGRect) -> CGRect {
-        let titleX = 0
-        let titleY = contentRect.size.height * 0.35
-        let titleW = contentRect.size.width
-        let titleH = contentRect.size.height - titleY
-        return CGRect(x: CGFloat(titleX), y: titleY, width: titleW, height: titleH)
-    }
-
-    override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
-        let imageW = contentRect.width
-        let imageH = contentRect.size.height * 0.4
-        return CGRect(x: 0, y: 5, width: imageW, height: imageH)
     }
 }

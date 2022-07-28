@@ -1,5 +1,5 @@
 //
-//===--- CircleProgressView.swift - Defines the CircleProgressView class ----------===//
+//===--- SCircleProgressView.swift - Defines the SCircleProgressView class ----------===//
 //
 // This source file is part of the SwiftCase open source project
 //
@@ -14,7 +14,7 @@
 import Foundation
 import UIKit
 
-class GYCircleProgressView: UIView {
+class SCircleProgressView: UIView {
     // MARK: - Lifecycle
 
     override init(frame: CGRect) {

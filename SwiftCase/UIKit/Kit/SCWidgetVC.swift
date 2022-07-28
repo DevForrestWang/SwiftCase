@@ -188,7 +188,7 @@ class SCWidgetVC: BaseViewController {
         $0.numberOfTouchesRequired = 1
     }
 
-    private let circleProgressView = GYCircleProgressView()
+    private let circleProgressView = SCircleProgressView()
     private var recordtimer: Timer?
     private var currentIndex = 0
 
