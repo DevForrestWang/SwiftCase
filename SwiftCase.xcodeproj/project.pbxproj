@@ -252,6 +252,11 @@
 		A887BA4D284A396F006842C2 /* GYMainChatPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */; };
 		A8C9BE1B285E069700A9A2AF /* GYMainChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */; };
 		A8C9BE1C285E069700A9A2AF /* GYMainChatVoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */; };
+		C681950D2892B453001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681950A2892B453001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */; };
+		C681950E2892B453001CCF50 /* SCalendarDateRangePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681950B2892B453001CCF50 /* SCalendarDateRangePickerCell.swift */; };
+		C681950F2892B453001CCF50 /* SCalendarDateRangePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681950C2892B453001CCF50 /* SCalendarDateRangePickerView.swift */; };
+		C68195132892B652001CCF50 /* SCPopupBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195122892B652001CCF50 /* SCPopupBaseView.swift */; };
+		C68195152892B6B5001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195142892B6B5001CCF50 /* SCSelectDayView.swift */; };
 		C6BF75E528586142004116B8 /* GYCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF75E428586142004116B8 /* GYCircleProgressView.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
 		C88F930226F8D8D300739819 /* SCUICollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */; };
@@ -535,6 +540,11 @@
 		A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYMainChatPictureCell.swift; sourceTree = "<group>"; };
 		A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatTextCell.swift; sourceTree = "<group>"; };
 		A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatVoiceCell.swift; sourceTree = "<group>"; };
+		C681950A2892B453001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCalendarDateRangePickerHeaderView.swift; sourceTree = "<group>"; };
+		C681950B2892B453001CCF50 /* SCalendarDateRangePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCalendarDateRangePickerCell.swift; sourceTree = "<group>"; };
+		C681950C2892B453001CCF50 /* SCalendarDateRangePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCalendarDateRangePickerView.swift; sourceTree = "<group>"; };
+		C68195122892B652001CCF50 /* SCPopupBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopupBaseView.swift; sourceTree = "<group>"; };
+		C68195142892B6B5001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
 		C6BF75E428586142004116B8 /* GYCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCircleProgressView.swift; sourceTree = "<group>"; };
 		C822E403270EF558001C39FF /* SCUIEventViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIEventViewVC.swift; sourceTree = "<group>"; };
 		C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUICollectionViewVC.swift; sourceTree = "<group>"; };
@@ -959,6 +969,7 @@
 				77E0ACB426F5C229000EABC1 /* ContentView.swift */,
 				77F652C626F5E7F200280568 /* ItemListViewController.swift */,
 				77F652C826F5EA3000280568 /* SCUIKitTableViewCell.swift */,
+				C68195122892B652001CCF50 /* SCPopupBaseView.swift */,
 				77E0ACB626F5C235000EABC1 /* Assets.xcassets */,
 				77E0ACBB26F5C235000EABC1 /* LaunchScreen.storyboard */,
 				77E0ACBE26F5C235000EABC1 /* Info.plist */,
@@ -1062,6 +1073,7 @@
 		77F6523126F5CD5200280568 /* Case */ = {
 			isa = PBXGroup;
 			children = (
+				C68195092892B453001CCF50 /* CalendarDate */,
 				A887BA39284A0448006842C2 /* Chat */,
 				8A8ED9A9279BFC2400971DDA /* MVVM */,
 				775F8037277075AB00D167A7 /* UpDownSwipe */,
@@ -1263,6 +1275,17 @@
 				0CD24A71E25A93DDB50325E4 /* Pods-SwiftCase.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C68195092892B453001CCF50 /* CalendarDate */ = {
+			isa = PBXGroup;
+			children = (
+				C68195142892B6B5001CCF50 /* SCSelectDayView.swift */,
+				C681950A2892B453001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */,
+				C681950B2892B453001CCF50 /* SCalendarDateRangePickerCell.swift */,
+				C681950C2892B453001CCF50 /* SCalendarDateRangePickerView.swift */,
+			);
+			path = CalendarDate;
 			sourceTree = "<group>";
 		};
 		C88F92F926F8D83200739819 /* Kit */ = {
@@ -1582,6 +1605,7 @@
 				777BA9C827293BD50030DCB9 /* Huffman.swift in Sources */,
 				779843A62702B03F001D73AF /* MessageTableViewCell.swift in Sources */,
 				77753154276B229E00A80E96 /* EasyCarouseView.swift in Sources */,
+				C68195152892B6B5001CCF50 /* SCSelectDayView.swift in Sources */,
 				7756E84826FAE48200AB139F /* SCommunicationVC.swift in Sources */,
 				779843A02702B03F001D73AF /* User.swift in Sources */,
 				77201D86271E9DE200F6188E /* CountingSort.swift in Sources */,
@@ -1688,6 +1712,7 @@
 				A887BA4A284A0448006842C2 /* GYChatInputView.swift in Sources */,
 				771005722735299300733EF7 /* Interval.swift in Sources */,
 				77F652C526F5E2C500280568 /* SCUITabBarController.swift in Sources */,
+				C681950D2892B453001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */,
 				77C25442270319470012F078 /* UITextView+Extension.swift in Sources */,
 				770B49C9273A5C7100B55FBB /* BaseViewController.swift in Sources */,
 				779843A22702B03F001D73AF /* ChatListTableViewCell.swift in Sources */,
@@ -1732,9 +1757,11 @@
 				7710F03D2771B6FD0083E067 /* SCNextCarouseCell.swift in Sources */,
 				775F803A277075AC00D167A7 /* UpDownSwipeView.swift in Sources */,
 				77F652A426F5D25F00280568 /* AdapterAuthSDK.swift in Sources */,
+				C681950E2892B453001CCF50 /* SCalendarDateRangePickerCell.swift in Sources */,
 				777B9B0B272830430030DCB9 /* BinarySearchTree.swift in Sources */,
 				779843942702B03F001D73AF /* ChatViewModel.swift in Sources */,
 				77F652A626F5D25F00280568 /* FlyweightFactory.swift in Sources */,
+				C681950F2892B453001CCF50 /* SCalendarDateRangePickerView.swift in Sources */,
 				771005752735299300733EF7 /* StringExtensions.swift in Sources */,
 				77F652A026F5D25F00280568 /* DataSourceStrategy.swift in Sources */,
 				C88F930226F8D8D300739819 /* SCUICollectionViewVC.swift in Sources */,
@@ -1759,6 +1786,7 @@
 				8A8ED9B4279BFC2400971DDA /* SCMvvmVC.swift in Sources */,
 				7710F03B2771B69B0083E067 /* SCPrevCarouseCell.swift in Sources */,
 				77C1B69A2738D7020028C5B5 /* NSData+Bits.swift in Sources */,
+				C68195132892B652001CCF50 /* SCPopupBaseView.swift in Sources */,
 				777BA9C1272937C70030DCB9 /* BreadthFirstSearch.swift in Sources */,
 				777BA9CF272943B40030DCB9 /* BitSet.swift in Sources */,
 				77F6529C26F5D25F00280568 /* PermissionAccessor.swift in Sources */,

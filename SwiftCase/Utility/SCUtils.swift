@@ -108,18 +108,31 @@ public enum SCUtils {
         lable.attributedText = attr
     }
 
-    /// 将指定范围的字体设置颜色
-    /// SCUtils.setLableColor(lable: titleLable, color: UIColor.red, fromIndex: strNum.count)
-    public static func setLableColor(lable: UILabel, color: UIColor, fromIndex: Int) {
-        guard let title = lable.text else {
-            return
-        }
-        if fromIndex > title.count {
+    /// 更改Lable字体设置颜色
+    /// numbersLable.text = "发送条数：\(number)"
+    /// GYCompanyUtils.updateLableStyle(lable: numbersLable, target: "发送条数：", font: .systemFont(ofSize: 14), color: .red)
+    ///
+    public static func updateLableStyle(lable: UILabel, target: String, font: UIFont, color: UIColor) {
+        guard let text = lable.text else {
+            yxc_debugPrint("The lable is empty.")
             return
         }
 
-        let titleAttr = NSMutableAttributedString(string: title).then {
-            $0.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: NSMakeRange(fromIndex, title.count - fromIndex))
+        if text.count <= 0 || target.count <= 0 {
+            yxc_debugPrint("The lable or target is empty.")
+            return
+        }
+
+        var startIndex = text.distance(of: target) ?? 0
+        if startIndex > text.count {
+            startIndex = text.count
+        }
+
+        let titleAttr = NSMutableAttributedString(string: text).then {
+            $0.addAttributes([
+                NSAttributedString.Key.font: font,
+                NSAttributedString.Key.foregroundColor: color,
+            ], range: NSMakeRange(startIndex, target.count))
         }
         lable.attributedText = titleAttr
     }
@@ -221,6 +234,21 @@ public enum SCUtils {
         comps.setValue(0, for: .day)
         let date = calendar.date(from: comps)!
         return calendar.component(.day, from: date)
+    }
+
+    /// 最近多少天
+    /// param: days 天数
+    /// param: format 日期格式，默认：yyyy-MM-dd
+    public static func recentDays(days: Int, format: String = "yyyy-MM-dd") -> (startDay: String, endDay: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let nowDate = Date()
+
+        let startDate = nowDate.addingTimeInterval(-Double(days * 24 * 3600))
+        let startValue = dateFormatter.string(from: startDate)
+        let endValue = dateFormatter.string(from: nowDate)
+
+        return (startDay: startValue, endDay: endValue)
     }
 
     /// 图片下载
