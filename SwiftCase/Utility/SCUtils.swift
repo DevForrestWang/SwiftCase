@@ -112,28 +112,35 @@ public enum SCUtils {
     /// numbersLable.text = "发送条数：\(number)"
     /// GYCompanyUtils.updateLableStyle(lable: numbersLable, target: "发送条数：", font: .systemFont(ofSize: 14), color: .red)
     ///
-    public static func updateLableStyle(lable: UILabel, target: String, font: UIFont, color: UIColor) {
+    public static func updateLableStyle(lable:UILabel, target:String, font: UIFont, color: UIColor, space: CGFloat = 0) {
         guard let text = lable.text else {
             yxc_debugPrint("The lable is empty.")
             return
         }
-
-        if text.count <= 0 || target.count <= 0 {
+        
+        if text.count <= 0 || target.count <= 0{
             yxc_debugPrint("The lable or target is empty.")
             return
         }
-
+        
         var startIndex = text.distance(of: target) ?? 0
         if startIndex > text.count {
             startIndex = text.count
         }
-
+        
         let titleAttr = NSMutableAttributedString(string: text).then {
             $0.addAttributes([
                 NSAttributedString.Key.font: font,
-                NSAttributedString.Key.foregroundColor: color,
-            ], range: NSMakeRange(startIndex, target.count))
+                NSAttributedString.Key.foregroundColor: color], range: NSMakeRange(startIndex, target.count))
         }
+        
+        if space > 0 {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = space
+            titleAttr.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: .init(location: 0, length: text.count))
+            lable.sizeToFit()
+        }
+
         lable.attributedText = titleAttr
     }
 
