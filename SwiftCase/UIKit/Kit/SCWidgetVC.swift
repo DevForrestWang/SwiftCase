@@ -88,6 +88,11 @@ class SCWidgetVC: BaseViewController {
             showToast("switch: \(flag)")
         }).disposed(by: disposeBag)
 
+        view.addSubview(textSwitch)
+        textSwitch.gyTextSwitchClosure = { isOn in
+            yxc_debugPrint("state:\(isOn)")
+        }
+
         view.addSubview(mySlider)
         // 绑定事件
         mySlider.rx.value.subscribe(onNext: { value in
@@ -124,8 +129,14 @@ class SCWidgetVC: BaseViewController {
             make.centerX.equalToSuperview()
         }
 
-        mySlider.snp.makeConstraints { make in
+        textSwitch.snp.makeConstraints { make in
             make.top.equalTo(switch01.snp.bottom).offset(20)
+            make.size.equalTo(textSwitch.frame.size)
+            make.centerX.equalToSuperview()
+        }
+
+        mySlider.snp.makeConstraints { make in
+            make.top.equalTo(textSwitch.snp.bottom).offset(20)
             make.width.equalToSuperview().offset(-40)
             make.centerX.equalToSuperview()
         }
@@ -158,6 +169,10 @@ class SCWidgetVC: BaseViewController {
         // on 颜色
         $0.onTintColor = .green
     }
+
+    // 自定义选择按钮
+    let textSwitch = GYTextSwitch(size: CGSize(width: 85, height: 35), isOn: true,
+                                  onColor: .red, offColor: .green, onName: "百分比", offName: "固定")
 
     private let mySlider = UISlider().then {
         // 底色

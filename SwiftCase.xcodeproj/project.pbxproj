@@ -252,6 +252,7 @@
 		A887BA4D284A396F006842C2 /* GYMainChatPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */; };
 		A8C9BE1B285E069700A9A2AF /* GYMainChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */; };
 		A8C9BE1C285E069700A9A2AF /* GYMainChatVoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */; };
+		C62328222899099900A1015E /* GYTextSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62328212899099900A1015E /* GYTextSwitch.swift */; };
 		C68195132892B652001CCF50 /* SCPopupBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195122892B652001CCF50 /* SCPopupBaseView.swift */; };
 		C68195182892BE09001CCF50 /* SCImageTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195172892BE09001CCF50 /* SCImageTextButton.swift */; };
 		C681951A2892BE1A001CCF50 /* SCTailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195192892BE1A001CCF50 /* SCTailDescriptionView.swift */; };
@@ -542,6 +543,7 @@
 		A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYMainChatPictureCell.swift; sourceTree = "<group>"; };
 		A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatTextCell.swift; sourceTree = "<group>"; };
 		A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatVoiceCell.swift; sourceTree = "<group>"; };
+		C62328212899099900A1015E /* GYTextSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTextSwitch.swift; sourceTree = "<group>"; };
 		C68195122892B652001CCF50 /* SCPopupBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopupBaseView.swift; sourceTree = "<group>"; };
 		C68195172892BE09001CCF50 /* SCImageTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCImageTextButton.swift; sourceTree = "<group>"; };
 		C68195192892BE1A001CCF50 /* SCTailDescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCTailDescriptionView.swift; sourceTree = "<group>"; };
@@ -1289,6 +1291,7 @@
 				C68195192892BE1A001CCF50 /* SCTailDescriptionView.swift */,
 				C68195172892BE09001CCF50 /* SCImageTextButton.swift */,
 				C6BF75E428586142004116B8 /* SCircleProgressView.swift */,
+				C62328212899099900A1015E /* GYTextSwitch.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1620,6 +1623,7 @@
 				779843A62702B03F001D73AF /* MessageTableViewCell.swift in Sources */,
 				77753154276B229E00A80E96 /* EasyCarouseView.swift in Sources */,
 				7756E84826FAE48200AB139F /* SCommunicationVC.swift in Sources */,
+				C62328222899099900A1015E /* GYTextSwitch.swift in Sources */,
 				779843A02702B03F001D73AF /* User.swift in Sources */,
 				77201D86271E9DE200F6188E /* CountingSort.swift in Sources */,
 				7756E84726FAE48200AB139F /* GrpcModuleAPI.swift in Sources */,
