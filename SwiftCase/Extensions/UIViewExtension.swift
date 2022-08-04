@@ -8,6 +8,25 @@
 import Foundation
 import UIKit
 
+public extension CACornerMask {
+    /// 左上
+    static let topLeft: CACornerMask = .layerMinXMinYCorner
+    /// 右上
+    static let topRight: CACornerMask = .layerMaxXMinYCorner
+    /// 左下
+    static let bottomLeft: CACornerMask = .layerMinXMaxYCorner
+    /// 右下
+    static let bottomRight: CACornerMask = .layerMaxXMaxYCorner
+    /// 所有角
+    static let all: CACornerMask = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+    /// 没有圆角
+    static let none: CACornerMask = []
+    /// 顶部两边
+    static let top: CACornerMask = [.topLeft, .topRight]
+    /// 底部两边
+    static let bottom: CACornerMask = [.bottomLeft, .bottomRight]
+}
+
 public extension UIView {
     /// View 的 X 值
     var yxc_x: CGFloat {
@@ -236,5 +255,11 @@ public extension UIView {
         addLeftBorder(borderWidth: borderWidth, borderColor: borderColor)
         addBottomBorder(borderWidth: borderWidth, borderColor: borderColor)
         addRightBorder(borderWidth: borderWidth, borderColor: borderColor)
+    }
+
+    /// 部分圆角设置
+    func layerMaskedCorner(maskedCorners: CACornerMask, radius: CGFloat) {
+        layer.cornerRadius = radius
+        layer.maskedCorners = maskedCorners
     }
 }

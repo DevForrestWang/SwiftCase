@@ -79,6 +79,9 @@ final class SCUIVIewViewController: BaseViewController {
         view.addSubview(box82)
 
         view.addSubview(box9)
+
+        // 部分圆角设置
+        box9.layerMaskedCorner(maskedCorners: [.topLeft, .topRight], radius: 5)
     }
 
     // MARK: - Constraints
