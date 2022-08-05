@@ -13,6 +13,7 @@
 
 import UIKit
 
+/// 选择按钮带有文字
 class GYTextSwitch: UIView {
     // MARK: - public
 
