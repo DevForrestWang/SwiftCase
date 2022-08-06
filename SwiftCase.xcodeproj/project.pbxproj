@@ -1096,6 +1096,7 @@
 		77F6523226F5CDD500280568 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				77DC113227423D9D002AED0C /* AttrString.swift */,
 				8AFA0F43283332F00047852E /* YXCCellExtension.swift */,
 				8AFA0F41283332B40047852E /* UIViewExtension.swift */,
 				8A01AA42282F56E6001A3F9B /* UILableExtension.swift */,
@@ -1314,7 +1315,6 @@
 				C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */,
 				C88F92FD26F8D8D300739819 /* SCUIButtonViewController.swift */,
 				C88F930026F8D8D300739819 /* SCUILableViewController.swift */,
-				77DC113227423D9D002AED0C /* AttrString.swift */,
 				C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */,
 				778F4FED26FC68D900B9E08A /* SCUICollectionViewCell.swift */,
 				778F4FEB26FC68D800B9E08A /* SCUICollectionReusableViewHeader.swift */,

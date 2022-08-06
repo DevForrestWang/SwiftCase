@@ -14,6 +14,7 @@
 
 import Foundation
 
+/// 字符串插值-AttributedStrings
 struct AttrString {
     let attributedString: NSAttributedString
 }
