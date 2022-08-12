@@ -226,6 +226,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         $0.font = .systemFont(ofSize: 16)
         // 当文字超出文本框宽度时，自动调整文字大小
         $0.adjustsFontSizeToFitWidth = true
+        // 输入内容对齐方式
         $0.textAlignment = .left
         // 垂直居中对齐
         $0.contentVerticalAlignment = .center
