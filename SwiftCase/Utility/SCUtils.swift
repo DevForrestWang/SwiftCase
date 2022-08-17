@@ -259,6 +259,27 @@ public enum SCUtils {
         return (startDay: startValue, endDay: endValue)
     }
 
+    /// 最近月数
+    /// param: months 月数
+    /// param: format 日期格式，默认：yyyy-MM-dd
+    public static func recentMonth(months: Int, format: String = "yyyy-MM-dd") -> (startDay: String, endDay: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let nowDate = Date()
+
+        // 开始月份
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.year, .month, .day], from: nowDate)
+        let cMonth = components.month ?? 0
+        components.setValue(cMonth - months, for: .month)
+        let startDate = calendar.date(from: components)!
+        let startValue = dateFormatter.string(from: startDate)
+        // 当前日期
+        let endValue = dateFormatter.string(from: nowDate)
+        
+        return (startDay: startValue, endDay: endValue)
+    }
+    
     /// 图片下载
     /// - Parameters:
     ///  - urlStr: 下载URL
