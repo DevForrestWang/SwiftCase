@@ -61,14 +61,32 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
     }
 
     // UITextField.textDidChangeNotification通知可以实时获取输入的内容；shouldChangeCharactersIn只能获取上一次输入的内容
-    func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString _: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString text: String) -> Bool {
         yxc_debugPrint("The text input will change (called each time it is typed:\(String(describing: textField.text))")
+        
+        // 禁止表情输入
+        if text.hasEmoji() || text.containsEmoji() {
+            return false
+        }
+        
         // 只允许输入中英文，数字
         let pattern = "[a-zA-Z\\u4E00-\\u9FA5\\u0030-\\u0039]"
         let string = textField.text ?? ""
         return string.isMatchRegularExp(pattern) || string.isEmpty
     }
-
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        let maxCount = 5
+        // 限制输入的长度
+        if let temp = textField.text, temp.count >= maxCount {
+            if textField.markedTextRange != nil {
+                return
+            }
+            textField.text = String(temp.prefix(maxCount))
+        }
+    }
+    
+    
     func textFieldShouldClear(_: UITextField) -> Bool {
         yxc_debugPrint("To clear the input, the return value is whether to clear the content")
         return true
