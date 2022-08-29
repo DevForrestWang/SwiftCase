@@ -13,6 +13,7 @@
 //
 //===----------------------------------------------------------------------===//
 
+import CryptoSwift
 import UIKit
 
 class SCFunctionViewController: BaseViewController {
@@ -203,11 +204,7 @@ class SCFunctionViewController: BaseViewController {
 
         // md5 使用
         let password = "your password"
-//        guard let passwordMD5 = password.md5 else {
-//            yxc_debugPrint("Can't calculate MD5 of your password")
-//            return
-//        }
-//        yxc_debugPrint("The \(password) md5: \(passwordMD5)")
+        yxc_debugPrint("The \(password) md5: \(password.md5())")
 
         yxc_debugPrint("localized: \("string_id".localized)")
     }
@@ -347,8 +344,7 @@ class SCFunctionViewController: BaseViewController {
         // 为空检查
         let spaceStr = "     "
         let newLine = "\n"
-        yxc_debugPrint("spaceStr: \(spaceStr.isBlank)-\(spaceStr.isReBlank)")
-        yxc_debugPrint("newLine: \(newLine.isBlank)-\(newLine.isReBlank)")
+        yxc_debugPrint("space: \(spaceStr.isBlank)-newLine:\(newLine.isBlank)")
     }
 
     // MARK: - Array

@@ -57,6 +57,8 @@ target 'SwiftCase' do
   
   # 分类切换滚动视图
   pod 'JXSegmentedView'
+  # 提供加密相关的方法
+  pod 'CryptoSwift'
   
   #pod 'PullToRefresher'
   #pod 'SwiftyUserDefaults'
