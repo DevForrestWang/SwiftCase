@@ -154,18 +154,18 @@ public extension String {
         let text = String(data: messageData!, encoding: .utf8) ?? ""
         return text
     }
-    
+
     /// 字符串是否有 Emoji
-    public func containsEmoji() -> Bool {
+    func containsEmoji() -> Bool {
         for scalar in unicodeScalars {
             switch scalar.value {
-            case 0x1F600...0x1F64F, // Emoticons
-                0x1F300...0x1F5FF, // Misc Symbols and Pictographs
-                0x1F680...0x1F6FF, // Transport and Map
-                0x2600...0x26FF,   // Misc symbols
-                0x2700...0x27BF,   // Dingbats
-                0xFE00...0xFE0F,   // Variation Selectors
-                0x1F900...0x1F9FF:  // Supplemental Symbols and Pictographs
+            case 0x1F600 ... 0x1F64F, // Emoticons
+                 0x1F300 ... 0x1F5FF, // Misc Symbols and Pictographs
+                 0x1F680 ... 0x1F6FF, // Transport and Map
+                 0x2600 ... 0x26FF, // Misc symbols
+                 0x2700 ... 0x27BF, // Dingbats
+                 0xFE00 ... 0xFE0F, // Variation Selectors
+                 0x1F900 ... 0x1F9FF: // Supplemental Symbols and Pictographs
                 return true
             default:
                 continue
@@ -173,15 +173,14 @@ public extension String {
         }
         return false
     }
-    
+
     /// 判断是不是Emoji
     /// - Returns: true false
-    public func hasEmoji()->Bool {
+    func hasEmoji() -> Bool {
         let pattern = "[^\\u0020-\\u007E\\u00A0-\\u00BE\\u2E80-\\uA4CF\\uF900-\\uFAFF\\uFE30-\\uFE4F\\uFF00-\\uFFEF\\u0080-\\u009F\\u2000-\\u201f\r\n]"
-        let pred = NSPredicate(format: "SELF MATCHES %@",pattern)
+        let pred = NSPredicate(format: "SELF MATCHES %@", pattern)
         return pred.evaluate(with: self)
     }
-    
 }
 
 extension Optional where Wrapped == String {

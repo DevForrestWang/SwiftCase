@@ -276,10 +276,10 @@ public enum SCUtils {
         let startValue = dateFormatter.string(from: startDate)
         // 当前日期
         let endValue = dateFormatter.string(from: nowDate)
-        
+
         return (startDay: startValue, endDay: endValue)
     }
-    
+
     /// 图片下载
     /// - Parameters:
     ///  - urlStr: 下载URL
