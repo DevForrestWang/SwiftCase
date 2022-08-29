@@ -20,7 +20,7 @@
 
 - **UIKit**
 
-  - Function - Describes the usage of strings, arrays, dictionaries, sets, and tuples
+  - Function - strings, arrays, dictionaries, sets, and tuples使用
   - UIVIew  - 使用SnapKit 进行界面布局及autolayout方式页面布局
   - Flexbox case - 使用FlexBox进行界面布局、plist文件的加载
   - UIButton - Button的常用属性；圆角按钮，文字按钮、图文按钮
@@ -31,6 +31,8 @@
   - UITextView - TextView属性及Placeholder定义
   - Widget By Rx - Rx的常用组件的使用
   - RxSwift and RxCocoa - Rx的语法及特性
+  - PickerView - PickerView 使用
+  - JXSegmentedView - 分段选择
   - MapView-GaoDe Map - 高德地图使用示例
   - Event - 点击事件、长按事件、滑动、拖动、及图片的放大缩小演示
   - UI Event - 演示Swift与OC通过闭包、代理的方式进行数据传递
@@ -38,8 +40,6 @@
   - Animation - 待实现
   - Parse JSON by simdjson(Cocoapods ZippyJSON) - 解析JSON最快的库的使用
   - Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi - 数据通信方式，当前实现了HTTP及gPRC网络请求、通过聊天室演示WebSocket的使用
-
-  
 
 - **Algorithms**
 
@@ -121,26 +121,21 @@
   - List - 列表使用
   - Up down swipe - 视图的上下切换
   - Show RxSwift + MVVM - 使用RX的MVVM架构示例, [MVVM 和 RxSwift实践](http://fd-learning.com/learner/page/course.html?couseid=2001202106130816140000006012#)
-
+  - Chat - 聊天界面
+  - Calendar - 日历组件
 
 
 ### 运行环境
 
 iOS 13.0+ 
 
-
-
 ### 使用
 
-将 SwiftCase 下载下来，需要执行  ```pod install``` 才能运行
-
-
+将 SwiftCase 下载下来，需要执行  ```pod install```
 
 ### 联系
 
 ForrestWang mail: forrestwang@aliyun.com
-
-
 
 ### 许可
 
