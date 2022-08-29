@@ -223,7 +223,7 @@
 		8A21BE8227DC9A2F0008D74B /* SCDeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21BE8127DC9A2F0008D74B /* SCDeviceInfo.swift */; };
 		8A2EDF162826751A00A43A28 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EDF152826751A00A43A28 /* DateExtension.swift */; };
 		8A2EDF1828267B0000A43A28 /* SCUIPickerViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EDF1728267B0000A43A28 /* SCUIPickerViewVC.swift */; };
-		8A3E2A5B2799699A006ECFB8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */; };
+		8A3E2A5B2799699A006ECFB8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E2A5A2799699A006ECFB8 /* StringExtension.swift */; };
 		8A486261279FD5BE004ABF6C /* SCFlexBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */; };
 		8A486264279FD865004ABF6C /* Shows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A486263279FD865004ABF6C /* Shows.plist */; };
 		8A486268279FDC4C004ABF6C /* SCFlexBoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486267279FDC4C004ABF6C /* SCFlexBoxData.swift */; };
@@ -242,6 +242,8 @@
 		8AFA0F42283332B40047852E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA0F41283332B40047852E /* UIViewExtension.swift */; };
 		8AFA0F44283332F00047852E /* YXCCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA0F43283332F00047852E /* YXCCellExtension.swift */; };
 		A819C63D2723F3600023EC3D /* HashTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819C63C2723F3600023EC3D /* HashTable.swift */; };
+		A8233C0A28BCDFED00D848C3 /* SaveDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8233C0928BCDFED00D848C3 /* SaveDataExtension.swift */; };
+		A8233C0C28BCE5A200D848C3 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8233C0B28BCE5A200D848C3 /* DataExtension.swift */; };
 		A8621264272E82A9007C4556 /* BruteForceStringSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */; };
 		A887BA45284A0448006842C2 /* GYMainChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA3B284A0448006842C2 /* GYMainChatVC.swift */; };
 		A887BA47284A0448006842C2 /* GYChatDefaultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA3E284A0448006842C2 /* GYChatDefaultModel.swift */; };
@@ -513,7 +515,7 @@
 		8A21BE8127DC9A2F0008D74B /* SCDeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDeviceInfo.swift; sourceTree = "<group>"; };
 		8A2EDF152826751A00A43A28 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		8A2EDF1728267B0000A43A28 /* SCUIPickerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIPickerViewVC.swift; sourceTree = "<group>"; };
-		8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		8A3E2A5A2799699A006ECFB8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		8A486260279FD5BE004ABF6C /* SCFlexBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCFlexBoxVC.swift; sourceTree = "<group>"; };
 		8A486263279FD865004ABF6C /* Shows.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shows.plist; sourceTree = "<group>"; };
 		8A486267279FDC4C004ABF6C /* SCFlexBoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCFlexBoxData.swift; sourceTree = "<group>"; };
@@ -533,6 +535,8 @@
 		8AFA0F43283332F00047852E /* YXCCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YXCCellExtension.swift; sourceTree = "<group>"; };
 		9F28E3FA941807E923F79B8C /* Pods_SwiftCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A819C63C2723F3600023EC3D /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
+		A8233C0928BCDFED00D848C3 /* SaveDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataExtension.swift; sourceTree = "<group>"; };
+		A8233C0B28BCE5A200D848C3 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		A8621263272E82A9007C4556 /* BruteForceStringSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceStringSearch.swift; sourceTree = "<group>"; };
 		A887BA3B284A0448006842C2 /* GYMainChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatVC.swift; sourceTree = "<group>"; };
 		A887BA3E284A0448006842C2 /* GYChatDefaultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYChatDefaultModel.swift; sourceTree = "<group>"; };
@@ -1109,8 +1113,10 @@
 				77C25441270319470012F078 /* UITextView+Extension.swift */,
 				77201D7F271E61E000F6188E /* Randoms.swift */,
 				777BA9D4272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift */,
-				8A3E2A5A2799699A006ECFB8 /* String+Extension.swift */,
+				8A3E2A5A2799699A006ECFB8 /* StringExtension.swift */,
+				A8233C0B28BCE5A200D848C3 /* DataExtension.swift */,
 				8A2EDF152826751A00A43A28 /* DateExtension.swift */,
+				A8233C0928BCDFED00D848C3 /* SaveDataExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1773,7 +1779,7 @@
 				8A21BE8227DC9A2F0008D74B /* SCDeviceInfo.swift in Sources */,
 				77062DED2739467700A7F090 /* VertexPath.swift in Sources */,
 				77F652C326F5E24E00280568 /* CaseViewController.swift in Sources */,
-				8A3E2A5B2799699A006ECFB8 /* String+Extension.swift in Sources */,
+				8A3E2A5B2799699A006ECFB8 /* StringExtension.swift in Sources */,
 				777BA9CB272941800030DCB9 /* Dijkstra.swift in Sources */,
 				7756E81326FADB2800AB139F /* UIWindow+Extension.swift in Sources */,
 				7710F03D2771B6FD0083E067 /* SCNextCarouseCell.swift in Sources */,
@@ -1797,6 +1803,8 @@
 				77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */,
 				8AFA0F42283332B40047852E /* UIViewExtension.swift in Sources */,
 				777BA9BD272936230030DCB9 /* Graph.swift in Sources */,
+				A8233C0A28BCDFED00D848C3 /* SaveDataExtension.swift in Sources */,
+				A8233C0C28BCE5A200D848C3 /* DataExtension.swift in Sources */,
 				7756E84426FAE48200AB139F /* SCNetWorkModel.swift in Sources */,
 				777BA9C3272938C90030DCB9 /* BoyerMooreHorspool.swift in Sources */,
 				8AFA0F44283332F00047852E /* YXCCellExtension.swift in Sources */,

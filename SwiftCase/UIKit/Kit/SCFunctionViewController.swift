@@ -64,6 +64,8 @@ class SCFunctionViewController: BaseViewController {
         deleteInfoByString()
         convertData()
         checkString()
+        parseJson()
+        stringSeparator()
 
         // Other Built-in Functions
         // isEmpty        determines if a string is empty or not
@@ -90,7 +92,7 @@ class SCFunctionViewController: BaseViewController {
 
         yxc_debugPrint("0.01: \("0.01".isPureFloat())")
         yxc_debugPrint("1.00: \("1.00".isPureFloat())")
-        yxc_debugPrint("2: \("2".isPureFloat())")
+        yxc_debugPrint("2a: \("2a".isPureFloat())")
 
         yxc_debugPrint("2: \("2".isPureInt())")
         yxc_debugPrint("2.1: \("2.1".isPureInt())")
@@ -351,6 +353,31 @@ class SCFunctionViewController: BaseViewController {
         yxc_debugPrint("\(strEmail) is email: \(strEmail.isValidEmail)")
     }
 
+    private func parseJson() {
+        let dict: [String: Any] = [
+            "name": "John",
+            "surname": "Doe",
+            "age": 31,
+        ]
+        yxc_debugPrint(dict) // ["surname": "Doe", "name": "John", "age": 31]
+
+        let json = String(json: dict)
+        yxc_debugPrint(json ?? "") // Optional("{\"surname\":\"Doe\",\"name\":\"John\",\"age\":31}")
+
+        let restoredDict = json?.jsonToDictionary()
+        yxc_debugPrint(restoredDict ?? []) // Optional(["name": John, "surname": Doe, "age": 31])
+    }
+
+    private func stringSeparator() {
+        var cardNumber = "1234567890123456"
+        cardNumber.insert(separator: " ", every: 4)
+        yxc_debugPrint(cardNumber) // 1234 5678 9012 3456
+
+        let pin = "7690"
+        let pinWithDashes = pin.inserting(separator: "-", every: 1)
+        yxc_debugPrint(pinWithDashes) // 7-6-9-0
+    }
+
     // MARK: - Array
 
     public func arrayAction() {
@@ -554,6 +581,25 @@ class SCFunctionViewController: BaseViewController {
         yxc_debugPrint("string to dictionary: \(dicObj.toJsonString() ?? "")")
     }
 
+    public func saveDataAction() {
+        let age = 25
+        age.store(key: "age")
+        yxc_debugPrint(Int(key: "age") ?? 0) // Optional(25)
+        yxc_debugPrint(Float(key: "age") ?? 0) // Optional(25.0)
+        yxc_debugPrint(String(key: "age") ?? 0) // Optional("25")
+        yxc_debugPrint(String(key: "age1") ?? "") // nil
+
+        let dict: [String: Any] = [
+            "name": "John",
+            "surname": "Doe",
+            "occupation": "Swift developer",
+            "experienceYears": 5,
+            "age": 32,
+        ]
+        dict.store(key: "employee")
+        yxc_debugPrint(Dictionary(key: "employee") ?? [])
+    }
+
     // MARK: - sets
 
     public func setAction() {
@@ -684,6 +730,8 @@ class SCFunctionViewController: BaseViewController {
 
         let maxDay = SCUtils.lastDay(yearAndMonth: "2021-02", separateFlag: "-", isCurentDay: true)
         yxc_debugPrint("2021-02 max day:\(maxDay)")
+
+        saveDataAction()
     }
 
     // MARK: - Constraints

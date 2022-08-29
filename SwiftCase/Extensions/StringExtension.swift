@@ -1,5 +1,5 @@
 //
-//===--- String+Extension.swift - Defines the String+Extension class ----------===//
+//===--- StringExtension.swift - Defines the StringExtension class ----------===//
 //
 // This source file is part of the SwiftCase open source project
 //
@@ -53,8 +53,7 @@ public extension String {
     /// 判断是否是数字，包括小数点
     func isPureFloat() -> Bool {
         let scan = Scanner(string: self)
-        var val: Float = 0
-        return scan.scanFloat(&val) && scan.isAtEnd
+        return (scan.scanFloat(representation: .decimal) != nil) && scan.isAtEnd
     }
 
     /// 判断是否是数字
@@ -291,5 +290,42 @@ public extension String {
         let end = index(startIndex, offsetBy: bounds.upperBound)
         if end < startIndex { return "" }
         return self[startIndex ..< end]
+    }
+}
+
+// MARK: - 解析 JSON 数据
+
+public extension String {
+    init?(json: Any) {
+        guard let data = Data(json: json) else { return nil }
+        self.init(decoding: data, as: UTF8.self)
+    }
+
+    func jsonToDictionary() -> [String: Any]? {
+        data(using: .utf8)?.jsonToDictionary()
+    }
+
+    func jsonToArray() -> [Any]? {
+        data(using: .utf8)?.jsonToArray()
+    }
+}
+
+// MARK: - 字符串分组
+
+public extension String {
+    mutating func insert(separator: String, every n: Int) {
+        self = inserting(separator: separator, every: n)
+    }
+
+    func inserting(separator: String, every n: Int) -> String {
+        var result = ""
+        let characters = Array(self)
+        stride(from: 0, to: count, by: n).forEach {
+            result += String(characters[$0 ..< min($0 + n, count)])
+            if $0 + n < count {
+                result += separator
+            }
+        }
+        return result
     }
 }
