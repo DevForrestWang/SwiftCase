@@ -4,15 +4,9 @@
 
 ![screenshot](images/scdemo.gif)
 
+### [English](./README_en.md)
 
-
-### [English](./READM_en.md)
-
-
-
-### [ 网站资料 - 力学笃行](https://fd-learning.com/learner/page/index.html)
-
-
+### [网站资料 - 力学笃行](https://fd-learning.com/learner/page/index.html)
 
 ### 特性
 
