@@ -13,7 +13,14 @@
 
 import Foundation
 
+// MARK: - Base
+
 public extension String {
+    ///  本地化字符串
+    var localized: String {
+        NSLocalizedString(self, comment: "")
+    }
+
     /// String to int
     func toInt() -> Int? {
         let number = NumberFormatter()
@@ -99,12 +106,6 @@ public extension String {
         return dateFormatter.date(from: self)
     }
 
-    /// A Boolean value indicating whether a String is blank.
-    /// The string is blank if it is empty or only contains whitespace.
-    var isBlank: Bool {
-        return allSatisfy { $0.isWhitespace }
-    }
-
     /// 检测中文
     func validateChinese() -> Bool {
         let pattern = "[\\u4e00-\\u9fa5]"
@@ -183,6 +184,8 @@ public extension String {
     }
 }
 
+// MARK: - 获取字符串位置
+
 extension Optional where Wrapped == String {
     /// A Boolean value indicating whether an Optional String is blank.
     /// The optional string is blank if it is nil, empty or only contains whitespace.
@@ -211,5 +214,77 @@ public extension Collection {
 public extension String.Index {
     func distance<S: StringProtocol>(in string: S) -> Int {
         string.distance(to: self)
+    }
+}
+
+// MARK: - check string
+
+public extension String {
+    /// 仅包含数字
+    var containsOnlyDigits: Bool {
+        let notDigits = NSCharacterSet.decimalDigits.inverted
+        return rangeOfCharacter(from: notDigits, options: String.CompareOptions.literal, range: nil) == nil
+    }
+
+    /// 仅包含字母
+    var containsOnlyLetters: Bool {
+        let notLetters = NSCharacterSet.letters.inverted
+        return rangeOfCharacter(from: notLetters, options: String.CompareOptions.literal, range: nil) == nil
+    }
+
+    /// 仅包含字母数字
+    var isAlphanumeric: Bool {
+        let notAlphanumeric = NSCharacterSet.decimalDigits.union(NSCharacterSet.letters).inverted
+        return rangeOfCharacter(from: notAlphanumeric, options: String.CompareOptions.literal, range: nil) == nil
+    }
+
+    /// 字符串是否为空串
+    var isBlank: Bool {
+        // 通过裁剪字符串中的空格和换行符检查
+        // returnreturn trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+
+        // 通过高阶函数allSatisfy检查
+        return allSatisfy { $0.isWhitespace }
+    }
+}
+
+// MARK: - 整数下标
+
+public extension String {
+    subscript(i: Int) -> Character {
+        return self[index(startIndex, offsetBy: i)]
+    }
+
+    subscript(bounds: CountableRange<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        if end < start { return "" }
+        return self[start ..< end]
+    }
+
+    subscript(bounds: CountableClosedRange<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        if end < start { return "" }
+        return self[start ... end]
+    }
+
+    subscript(bounds: CountablePartialRangeFrom<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(endIndex, offsetBy: -1)
+        if end < start { return "" }
+        return self[start ... end]
+    }
+
+    subscript(bounds: PartialRangeThrough<Int>) -> Substring {
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        if end < startIndex { return "" }
+        return self[startIndex ... end]
+    }
+
+    subscript(bounds: PartialRangeUpTo<Int>) -> Substring {
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        if end < startIndex { return "" }
+        return self[startIndex ..< end]
     }
 }

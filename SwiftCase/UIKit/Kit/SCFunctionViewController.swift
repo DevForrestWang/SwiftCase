@@ -62,6 +62,7 @@ class SCFunctionViewController: BaseViewController {
         insertString()
         deleteInfoByString()
         convertData()
+        checkString()
 
         // Other Built-in Functions
         // isEmpty        determines if a string is empty or not
@@ -199,6 +200,16 @@ class SCFunctionViewController: BaseViewController {
         } else {
             yxc_debugPrint("string \(string) was not found")
         }
+
+        // md5 使用
+        let password = "your password"
+//        guard let passwordMD5 = password.md5 else {
+//            yxc_debugPrint("Can't calculate MD5 of your password")
+//            return
+//        }
+//        yxc_debugPrint("The \(password) md5: \(passwordMD5)")
+
+        yxc_debugPrint("localized: \("string_id".localized)")
     }
 
     /// 判断字符串相等
@@ -268,6 +279,12 @@ class SCFunctionViewController: BaseViewController {
         let beginning = greeting[..<index]
         // beginning is "Hello"
         yxc_debugPrint("beginning: \(String(beginning))")
+
+        //
+        yxc_debugPrint("\(greeting), first 4:\(String(greeting[...4]))")
+        yxc_debugPrint("\(greeting), 3-4:\(String(greeting[3 ... 4]))")
+        yxc_debugPrint("\(greeting), from 7:\(String(greeting[7...]))")
+        yxc_debugPrint("\(greeting), substring 1:\(String(greeting[1]))")
     }
 
     /// 字符串替换
@@ -312,6 +329,26 @@ class SCFunctionViewController: BaseViewController {
         let iData = Int(sData)
 
         yxc_debugPrint("sValue:\(sValue), iData:\(iData ?? 0)")
+    }
+
+    private func checkString() {
+        let a1 = "12345".containsOnlyDigits // true
+        let a2 = "a12345".containsOnlyDigits // false
+        yxc_debugPrint("containsOnlyDigits: \(a1)-\(a2)")
+
+        let b1 = "abcde".containsOnlyLetters // true
+        let b2 = "abcde1".containsOnlyLetters // false
+        yxc_debugPrint("containsOnlyLetters: \(b1)-\(b2)")
+
+        let c1 = "abcde12345".isAlphanumeric // true
+        let c2 = "abcde.12345".isAlphanumeric // false
+        yxc_debugPrint("isAlphanumeric: \(c1)-\(c2)")
+
+        // 为空检查
+        let spaceStr = "     "
+        let newLine = "\n"
+        yxc_debugPrint("spaceStr: \(spaceStr.isBlank)-\(spaceStr.isReBlank)")
+        yxc_debugPrint("newLine: \(newLine.isBlank)-\(newLine.isReBlank)")
     }
 
     // MARK: - Array
