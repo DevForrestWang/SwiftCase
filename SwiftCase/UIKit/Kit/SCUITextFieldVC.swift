@@ -72,7 +72,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         // 只允许输入中英文，数字
         let pattern = "[a-zA-Z\\u4E00-\\u9FA5\\u0030-\\u0039]"
         let string = textField.text ?? ""
-        return string.isMatchRegularExp(pattern) || string.isEmpty
+        return string.matches(pattern) || string.isEmpty
     }
 
     func textFieldDidChangeSelection(_ textField: UITextField) {

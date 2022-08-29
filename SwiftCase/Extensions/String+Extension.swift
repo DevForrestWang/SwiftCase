@@ -106,14 +106,8 @@ public extension String {
         return dateFormatter.date(from: self)
     }
 
-    /// 检测中文
-    func validateChinese() -> Bool {
-        let pattern = "[\\u4e00-\\u9fa5]"
-        return isMatchRegularExp(pattern)
-    }
-
     /// 是否匹配正则
-    func isMatchRegularExp(_ pattern: String) -> Bool {
+    func matches(_ pattern: String) -> Bool {
         guard let reg = try? NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive) else {
             return false
         }
@@ -245,6 +239,17 @@ public extension String {
 
         // 通过高阶函数allSatisfy检查
         return allSatisfy { $0.isWhitespace }
+    }
+
+    /// 邮箱判断
+    var isValidEmail: Bool {
+        matches("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+    }
+
+    /// 检测中文
+    func validateChinese() -> Bool {
+        let pattern = "[\\u4e00-\\u9fa5]"
+        return matches(pattern)
     }
 }
 

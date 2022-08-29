@@ -345,6 +345,10 @@ class SCFunctionViewController: BaseViewController {
         let spaceStr = "     "
         let newLine = "\n"
         yxc_debugPrint("space: \(spaceStr.isBlank)-newLine:\(newLine.isBlank)")
+
+        // 邮箱检查
+        let strEmail = "test@test.com"
+        yxc_debugPrint("\(strEmail) is email: \(strEmail.isValidEmail)")
     }
 
     // MARK: - Array
