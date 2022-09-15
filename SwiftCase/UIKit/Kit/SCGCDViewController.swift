@@ -305,42 +305,42 @@ class SCGCDViewController: BaseViewController {
     func setupConstraints() {
         serialSyncBtn.snp.makeConstraints { make in
             make.height.equalTo(44)
-            make.width.equalTo(GlobalConfig.gScreenWidth / 2 - 25)
+            make.width.equalTo(gScreenWidth / 2 - 25)
             make.top.equalTo(20)
             make.left.equalTo(view).offset(15)
         }
 
         serialAsyncBtn.snp.makeConstraints { make in
             make.height.equalTo(44)
-            make.width.equalTo(GlobalConfig.gScreenWidth / 2 - 25)
+            make.width.equalTo(gScreenWidth / 2 - 25)
             make.top.equalTo(20)
             make.right.equalTo(view).offset(-15)
         }
 
         concurrentSyncBtn.snp.makeConstraints { make in
             make.height.equalTo(44)
-            make.width.equalTo(GlobalConfig.gScreenWidth / 2 - 25)
+            make.width.equalTo(gScreenWidth / 2 - 25)
             make.top.equalTo(serialSyncBtn.snp.bottom).offset(20)
             make.left.equalTo(view).offset(15)
         }
 
         concurrentAsyncBtn.snp.makeConstraints { make in
             make.height.equalTo(44)
-            make.width.equalTo(GlobalConfig.gScreenWidth / 2 - 25)
+            make.width.equalTo(gScreenWidth / 2 - 25)
             make.top.equalTo(serialAsyncBtn.snp.bottom).offset(20)
             make.right.equalTo(view).offset(-15)
         }
 
         downImageInGroupBtn.snp.makeConstraints { make in
             make.height.equalTo(44)
-            make.width.equalTo(GlobalConfig.gScreenWidth / 2 - 25)
+            make.width.equalTo(gScreenWidth / 2 - 25)
             make.top.equalTo(concurrentSyncBtn.snp.bottom).offset(20)
             make.left.equalTo(view).offset(15)
         }
 
         dispatchSemaphoreBtn.snp.makeConstraints { make in
             make.height.equalTo(44)
-            make.width.equalTo(GlobalConfig.gScreenWidth / 2 - 25)
+            make.width.equalTo(gScreenWidth / 2 - 25)
             make.top.equalTo(concurrentAsyncBtn.snp.bottom).offset(20)
             make.right.equalTo(view).offset(-15)
         }

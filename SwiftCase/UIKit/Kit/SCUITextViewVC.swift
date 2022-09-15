@@ -185,12 +185,12 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
     }
 
     let accessoryView = UIView().then {
-        $0.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40)
+        $0.frame = CGRect(x: 0, y: 0, width: gScreenWidth, height: 40)
         $0.backgroundColor = .lightGray
     }
 
     let accessoryRightBtn = UIButton(type: .custom).then {
-        $0.frame = CGRect(x: UIScreen.main.bounds.width - 10 - 60, y: 10, width: 60, height: 20)
+        $0.frame = CGRect(x: gScreenWidth - 10 - 60, y: 10, width: 60, height: 20)
         $0.setTitle("Confirm", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.backgroundColor = .clear

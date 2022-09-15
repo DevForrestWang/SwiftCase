@@ -60,7 +60,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
             $0.font = .systemFont(ofSize: 14)
             $0.textAlignment = .center
         }
-        lable.frame = CGRect(x: 20, y: 0, width: UIScreen.main.bounds.width, height: 21)
+        lable.frame = CGRect(x: 20, y: 0, width: gScreenWidth, height: 21)
         return lable
     }
 

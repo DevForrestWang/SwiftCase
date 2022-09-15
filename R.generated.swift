@@ -136,8 +136,8 @@ struct R: Rswift.Validatable {
     static let readmeMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "md")
     /// Resource file `README.txt`.
     static let readmeTxt = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "txt")
-    /// Resource file `README_ZH.md`.
-    static let readme_ZHMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README_ZH", pathExtension: "md")
+    /// Resource file `README_en.md`.
+    static let readme_enMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README_en", pathExtension: "md")
     /// Resource file `Shows.plist`.
     static let showsPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Shows", pathExtension: "plist")
     /// Resource file `algorithm@2x.png`.
@@ -227,9 +227,9 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
-    /// `bundle.url(forResource: "README_ZH", withExtension: "md")`
-    static func readme_ZHMd(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.readme_ZHMd
+    /// `bundle.url(forResource: "README_en", withExtension: "md")`
+    static func readme_enMd(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.readme_enMd
       return fileResource.bundle.url(forResource: fileResource)
     }
 

@@ -160,14 +160,14 @@ class SCOperationViewController: BaseViewController {
     func setupConstraints() {
         addExecutionBtn.snp.makeConstraints { make in
             make.height.equalTo(44)
-            make.width.equalTo(GlobalConfig.gScreenWidth / 2 - 25)
+            make.width.equalTo(gScreenWidth / 2 - 25)
             make.top.equalTo(20)
             make.left.equalTo(view).offset(15)
         }
 
         addDependencyBtn.snp.makeConstraints { make in
             make.height.equalTo(44)
-            make.width.equalTo(GlobalConfig.gScreenWidth / 2 - 25)
+            make.width.equalTo(gScreenWidth / 2 - 25)
             make.top.equalTo(20)
             make.right.equalTo(view).offset(-15)
         }

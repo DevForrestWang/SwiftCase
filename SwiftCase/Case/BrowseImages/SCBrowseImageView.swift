@@ -173,7 +173,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
     // MARK: - UI
 
     func setupUI() {
-        frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        frame = CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenWidth)
         backgroundColor = UIColor.black.withAlphaComponent(0.8)
         addSubview(titleLable)
 
@@ -208,14 +208,14 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
         }
 
         imageScrollView.snp.makeConstraints { make in
-            make.width.equalTo(UIScreen.main.bounds.width)
-            make.height.equalTo(UIScreen.main.bounds.height - contentViewHeight)
+            make.width.equalTo(gScreenWidth)
+            make.height.equalTo(gScreenWidth - contentViewHeight)
             // make.center.equalToSuperview()
         }
 
         shopImageView.snp.makeConstraints { make in
             make.width.equalTo(self)
-            make.height.equalTo(UIScreen.main.bounds.width)
+            make.height.equalTo(gScreenWidth)
             make.center.equalToSuperview()
         }
 
@@ -265,7 +265,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
         $0.showsVerticalScrollIndicator = false
         $0.scrollsToTop = false
         $0.isScrollEnabled = true
-        $0.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        $0.frame = CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenWidth)
     }
 
     let shopImageView = UIImageView().then {
@@ -273,7 +273,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
         $0.contentMode = .scaleAspectFit
         $0.image = UIImage(named: "placeholder")
         // 设置这个_imageView能被缩放的最大尺寸，这句话很重要，一定不能少,如果没有这句话，图片不能缩放
-        $0.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width * 2.5, height: UIScreen.main.bounds.height * 2.5)
+        $0.frame = CGRect(x: 0, y: 0, width: gScreenWidth * 2.5, height: gScreenWidth * 2.5)
     }
 
     let contentView = UIView().then {

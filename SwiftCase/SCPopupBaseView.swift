@@ -63,7 +63,7 @@ class SCPopupBaseView: UIView {
 
     public func updateContentHeight(_ contentHeight: CGFloat) {
         bgView.snp.updateConstraints { make in
-            make.height.equalTo(UIScreen.main.bounds.height - topBarHeight - contentHeight + 20)
+            make.height.equalTo(gScreenWidth - topBarHeight - contentHeight + 20)
         }
 
         contentView.snp.updateConstraints { make in
@@ -105,7 +105,7 @@ class SCPopupBaseView: UIView {
     // MARK: - UI
 
     private func setupUI() {
-        frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        frame = CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenWidth)
         backgroundColor = .clear
 
         addSubview(bgView)
@@ -130,13 +130,13 @@ class SCPopupBaseView: UIView {
         bgView.snp.makeConstraints { make in
             make.top.equalTo(0)
             make.width.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.height * viewScale / 2)
+            make.height.equalTo(gScreenWidth * viewScale / 2)
         }
 
         contentView.snp.makeConstraints { make in
             make.top.equalTo(bgView.snp.bottom)
             make.width.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.height * viewScale / 2)
+            make.height.equalTo(gScreenWidth * viewScale / 2)
         }
 
         headView.snp.makeConstraints { make in
@@ -174,18 +174,18 @@ class SCPopupBaseView: UIView {
     }
 
     private func reSetupConstraints() {
-        frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - topBarHeight)
+        frame = CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenWidth - topBarHeight)
 
         bgView.snp.remakeConstraints { make in
             make.top.equalTo(0)
             make.width.equalToSuperview()
-            make.height.equalTo((UIScreen.main.bounds.height - topBarHeight) * viewScale / 2)
+            make.height.equalTo((gScreenWidth - topBarHeight) * viewScale / 2)
         }
 
         contentView.snp.remakeConstraints { make in
             make.top.equalTo(bgView.snp.bottom)
             make.width.equalToSuperview()
-            make.height.equalTo((UIScreen.main.bounds.height - topBarHeight) * viewScale / 2)
+            make.height.equalTo((gScreenWidth - topBarHeight) * viewScale / 2)
         }
     }
 
@@ -200,7 +200,7 @@ class SCPopupBaseView: UIView {
     // 是否在当前控制器上显示
     private var topBarHeight: CGFloat = 0
 
-    private let viewScale = screenViewScale()
+    private let viewScale = gEqualScale
 
     private let bgView = UIView().then {
         $0.backgroundColor = UIColor.black.withAlphaComponent(0.7)

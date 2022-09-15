@@ -29,7 +29,7 @@ class UpDownSwipeViewController: BaseViewController {
         // navigationController?.navigationBar.isHidden = true
     }
 
-    let upDView = MiddleView(frame: CGRect(x: 20, y: 20, width: GlobalConfig.gScreenWidth - 40, height: GlobalConfig.gScreenHeight - 40 - 64), itemIndex: 1).then {
+    let upDView = MiddleView(frame: CGRect(x: 20, y: 20, width: gScreenWidth - 40, height: gScreenHeight - 40 - 64), itemIndex: 1).then {
         $0.backgroundColor = .yellow
     }
 }

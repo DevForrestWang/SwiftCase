@@ -140,7 +140,7 @@ public class SCTailDescriptionView: UIView {
 
     // MARK: - Property
 
-    let viewScale = screenViewScale()
+    let viewScale = gEqualScale
 
     let titleLable = UILabel().then {
         $0.text = ""

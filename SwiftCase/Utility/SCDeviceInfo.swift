@@ -59,15 +59,6 @@ public var isSupportSafeArea: Bool {
     return false
 }
 
-public func screenViewScale(_ zoomOutValue: CGFloat = 0.8) -> CGFloat {
-    // iphone min系列
-    if device_6S_7_8 || device_iPhone12_13m || device_iPhoneX || device_iPhoneXs {
-        return zoomOutValue
-    }
-
-    return 1
-}
-
 // 状态栏高度
 public let gStatusBarHeight: CGFloat = isSupportSafeArea ? (gWindow?.safeAreaInsets.top ?? 20) : 20
 
@@ -91,3 +82,9 @@ public let gScreenHeight = UIScreen.main.bounds.height
 
 // 屏幕宽度
 public let gScreenWidth = UIScreen.main.bounds.width
+
+// bundle id
+public let gIdentifier = Bundle.main.bundleIdentifier
+
+// 等比适配
+public let gEqualScale = gScreenWidth / 375

@@ -28,8 +28,4 @@ public enum GlobalConfig {
     public static let gGaoDeMapKey = "b00c88f69a38f58eee2a00b6ebe1abda"
 
     // MARK: -  UI
-
-    public static let gScreenWidth = UIScreen.main.bounds.width
-    public static let gScreenHeight = UIScreen.main.bounds.height
-    public static let gIdentifier = Bundle.main.bundleIdentifier
 }
