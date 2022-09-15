@@ -72,7 +72,8 @@ class GYMainChatTextCell: GYMainChatBaseInfoCell {
     // MARK: - IBActions
 
     @objc func copyAction() {
-        yxc_debugPrint(#function)
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = messageLable.text
     }
 
     @objc func revokeAction() {
