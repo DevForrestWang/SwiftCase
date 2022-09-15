@@ -56,9 +56,28 @@ class GYMainChatTextCell: GYMainChatBaseInfoCell {
         reSetupConstraints()
     }
 
+    override public func getUIMenuItems() -> [UIMenuItem] {
+        let item1 = UIMenuItem(title: "复制", action: #selector(copyAction))
+        let item2 = UIMenuItem(title: "撤回", action: #selector(revokeAction))
+        return [item1, item2]
+    }
+
+    override public func iShowMenumItems(action: Selector) -> Bool {
+        let actions = [#selector(copyAction), #selector(revokeAction)]
+        return actions.contains(action)
+    }
+
     // MARK: - Protocol
 
     // MARK: - IBActions
+
+    @objc func copyAction() {
+        yxc_debugPrint(#function)
+    }
+
+    @objc func revokeAction() {
+        yxc_debugPrint(#function)
+    }
 
     // MARK: - Private
 

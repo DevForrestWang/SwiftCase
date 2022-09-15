@@ -58,9 +58,50 @@ class GYMainChatBaseInfoCell: UITableViewCell {
         yxc_debugPrint("click Class: \(type(of: self))")
     }
 
+    /// 定制弹出菜单
+    public func getUIMenuItems() -> [UIMenuItem] {
+        return []
+    }
+
+    /// 弹出子菜单项
+    public func iShowMenumItems(action _: Selector) -> Bool {
+        return false
+    }
+
+    /// 设置成为第一响应者
+    override var canBecomeFirstResponder: Bool {
+        true
+    }
+
+    /// 弹出子菜单项
+    override func canPerformAction(_ action: Selector, withSender _: Any?) -> Bool {
+        return iShowMenumItems(action: action)
+    }
+
     // MARK: - Protocol
 
     // MARK: - IBActions
+
+    @objc private func longPressAction(recognizer _: UITapGestureRecognizer) {
+        if UIMenuController.shared.isMenuVisible {
+            yxc_debugPrint("The menu is show.")
+            return
+        }
+
+        // 要是当前cell成为第一响应者，否则菜单显示不出来
+        becomeFirstResponder()
+
+        let menu = UIMenuController.shared
+        menu.menuItems = getUIMenuItems()
+        menu.arrowDirection = .default
+
+        if #available(iOS 13.0, *) {
+            menu.showMenu(from: contentBgView, rect: contentBgView.bounds)
+        } else {
+            menu.setTargetRect(contentBgView.bounds, in: contentBgView)
+            menu.setMenuVisible(true, animated: true)
+        }
+    }
 
     // MARK: - Private
 
@@ -87,6 +128,8 @@ class GYMainChatBaseInfoCell: UITableViewCell {
 
     private func setupUI() {
         yxc_debugPrint("===========<loadClass: \(type(of: self))>===========")
+        contentView.isUserInteractionEnabled = true
+
         backgroundColor = UIColor.hexColor(0xEEEEEE)
         addSubview(headImagView)
         addSubview(userNameLable)
@@ -94,10 +137,15 @@ class GYMainChatBaseInfoCell: UITableViewCell {
         gradeBgView.addSubview(gradeLable)
         addSubview(contentBgView)
 
+        // 内容点击事件
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickAction))
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
-        addGestureRecognizer(tapGesture)
+        contentBgView.addGestureRecognizer(tapGesture)
+
+        // 内容长按弹出菜单
+        let longPressGest = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction))
+        contentBgView.addGestureRecognizer(longPressGest)
     }
 
     // MARK: - Constraints
