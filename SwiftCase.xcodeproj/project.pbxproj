@@ -263,6 +263,9 @@
 		C68195212892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */; };
 		C68195232892C08E001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195222892C08E001CCF50 /* SCSelectDayView.swift */; };
 		C6BF75E528586142004116B8 /* SCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF75E428586142004116B8 /* SCircleProgressView.swift */; };
+		C6D8BF2A28D841CA009D85D5 /* GYMainChatVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2828D841CA009D85D5 /* GYMainChatVideoCell.swift */; };
+		C6D8BF2F28D8421C009D85D5 /* GYVoiceRecordingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */; };
+		C6D8BF3028D8421C009D85D5 /* GYCPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
 		C88F930226F8D8D300739819 /* SCUICollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */; };
 		C88F930326F8D8D300739819 /* SCUIVIewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */; };
@@ -556,6 +559,9 @@
 		C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCalendarDateRangePickerHeaderView.swift; sourceTree = "<group>"; };
 		C68195222892C08E001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
 		C6BF75E428586142004116B8 /* SCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCircleProgressView.swift; sourceTree = "<group>"; };
+		C6D8BF2828D841CA009D85D5 /* GYMainChatVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatVideoCell.swift; sourceTree = "<group>"; };
+		C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYVoiceRecordingObject.swift; sourceTree = "<group>"; };
+		C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCPlayingView.swift; sourceTree = "<group>"; };
 		C822E403270EF558001C39FF /* SCUIEventViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIEventViewVC.swift; sourceTree = "<group>"; };
 		C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUICollectionViewVC.swift; sourceTree = "<group>"; };
 		C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUIVIewViewController.swift; sourceTree = "<group>"; };
@@ -1245,6 +1251,7 @@
 		A887BA39284A0448006842C2 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				C6D8BF2C28D8420F009D85D5 /* Utils */,
 				A887BA3A284A0448006842C2 /* Controller */,
 				A887BA3C284A0448006842C2 /* Model */,
 				A887BA41284A0448006842C2 /* View */,
@@ -1272,12 +1279,13 @@
 		A887BA41284A0448006842C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */,
-				A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */,
-				A887BA42284A0448006842C2 /* GYChatInputCollectionViewCell.swift */,
 				A887BA43284A0448006842C2 /* GYChatInputView.swift */,
+				A887BA42284A0448006842C2 /* GYChatInputCollectionViewCell.swift */,
 				A887BA44284A0448006842C2 /* GYMainChatBaseInfoCell.swift */,
+				A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */,
 				A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */,
+				C6D8BF2828D841CA009D85D5 /* GYMainChatVideoCell.swift */,
+				A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1311,6 +1319,15 @@
 				C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */,
 			);
 			path = CalendarDate;
+			sourceTree = "<group>";
+		};
+		C6D8BF2C28D8420F009D85D5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */,
+				C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		C88F92F926F8D83200739819 /* Kit */ = {
@@ -1612,6 +1629,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77C25440270300C10012F078 /* SCUtils.swift in Sources */,
+				C6D8BF2F28D8421C009D85D5 /* GYVoiceRecordingObject.swift in Sources */,
 				777BA9BA272935290030DCB9 /* RedBlackTree.swift in Sources */,
 				77201D7E271D9A6600F6188E /* Quicksort.swift in Sources */,
 				777BA9D5272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift in Sources */,
@@ -1655,6 +1673,7 @@
 				8A48626A279FDFE3004ABF6C /* ShowTableViewCell.swift in Sources */,
 				779EAC8927198AA40046610C /* InsertionSort.swift in Sources */,
 				C88F930426F8D8D300739819 /* SCUIMapViewVC.swift in Sources */,
+				C6D8BF2A28D841CA009D85D5 /* GYMainChatVideoCell.swift in Sources */,
 				7710F03F2771B7540083E067 /* SCUpCarouseView.swift in Sources */,
 				77A842A7273F623900D08148 /* SCThreadViewController.swift in Sources */,
 				77F652B126F5D25F00280568 /* URLBuilder.swift in Sources */,
@@ -1794,6 +1813,7 @@
 				7747B4F8272CF8F200D315FA /* GSGraph.swift in Sources */,
 				7710057F2735299300733EF7 /* ACEmit.swift in Sources */,
 				77062DEF27394B8300A7F090 /* DijkstraData.swift in Sources */,
+				C6D8BF3028D8421C009D85D5 /* GYCPlayingView.swift in Sources */,
 				778159A72714652C0046D14D /* Queue.swift in Sources */,
 				8A486268279FDC4C004ABF6C /* SCFlexBoxData.swift in Sources */,
 				7765BBEE273375E8009DF9BD /* UIEventViewController.m in Sources */,

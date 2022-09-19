@@ -135,6 +135,8 @@ class SCUIButtonViewController: BaseViewController {
     let btn2 = UIButton(type: .custom).then {
         $0.setImage(R.image.normalImage(), for: .normal)
         $0.setImage(R.image.hightImage(), for: .highlighted)
+        // 按钮对齐方式：左对齐
+        $0.contentHorizontalAlignment = .left
         $0.imageEdgeInsets = UIEdgeInsets(top: 5, left: -50, bottom: 5, right: 0)
         $0.layer.cornerRadius = 5
 

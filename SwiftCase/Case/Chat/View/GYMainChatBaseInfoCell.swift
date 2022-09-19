@@ -46,6 +46,8 @@ class GYMainChatBaseInfoCell: UITableViewCell {
     // MARK: - Public
 
     public func update(model: GYMainChatModel) {
+        currentModel = model
+        isMessageRevoke = isCanRevoke()
         sendType = model.sendType
 
         updateHeadInfo(model: model)
@@ -122,6 +124,16 @@ class GYMainChatBaseInfoCell: UITableViewCell {
         let grade = " \(userInfo.levelName ?? "")"
         let iHeight = gradeLable.font.lineHeight
         gradeLable.attributedText = SCUtils.imageAndTitleAttribute(title: grade, iconName: "gy_tool_user", startX: 0, height: iHeight, color: UIColor.hexColor(0xE46900))
+    }
+
+    /// 是否能撤回
+    private func isCanRevoke() -> Bool {
+        guard let msgTimeStamp = currentModel?.msgTimeStamp else {
+            return false
+        }
+
+        let diffTime = SCUtils.currenntDifferenceTime(timeStamp: msgTimeStamp)
+        return diffTime > 60 * 2 ? false : true
     }
 
     // MARK: - UI
@@ -215,6 +227,10 @@ class GYMainChatBaseInfoCell: UITableViewCell {
             print("change sendType: \(String(describing: sendType))")
         }
     }
+
+    public var currentModel: GYMainChatModel?
+
+    public var isMessageRevoke = false
 
     private let contentWidth = gScreenWidth - (50 + 10) * 2
     private let headImagView = UIImageView().then {

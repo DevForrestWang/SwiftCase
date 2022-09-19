@@ -46,10 +46,7 @@ public let device_iPhone12_13_Max = __CGSizeEqualToSize(CGSize(width: 1284 / 3, 
 public let isIphone12_13 = (device_iPhone12_13m || device_iPhone12_13 || device_iPhone12_13_Max)
 
 public var gWindow: UIWindow? {
-    guard let window = UIApplication.shared.delegate?.window else {
-        return nil
-    }
-    return window
+    return UIWindow.key
 }
 
 public var isSupportSafeArea: Bool {

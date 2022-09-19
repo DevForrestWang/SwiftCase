@@ -80,7 +80,12 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         }
 
         var cell = GYMainChatBaseInfoCell()
-        if model.messageTpye == .picture {
+        if model.messageTpye == .text {
+            if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatTextCell", for: indexPath) as? GYMainChatTextCell {
+                tmpCell.update(model: model)
+                cell = tmpCell
+            }
+        } else if model.messageTpye == .picture {
             if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatPictureCell", for: indexPath) as? GYMainChatPictureCell {
                 tmpCell.update(model: model, dataSource: dataSource)
                 cell = tmpCell
@@ -90,8 +95,8 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
                 tmpCell.update(model: model)
                 cell = tmpCell
             }
-        } else if model.messageTpye == .text {
-            if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatTextCell", for: indexPath) as? GYMainChatTextCell {
+        } else if model.messageTpye == .video {
+            if let tmpCell = tableView.dequeueReusableCell(withIdentifier: "GYMainChatVideoCell", for: indexPath) as? GYMainChatVideoCell {
                 tmpCell.update(model: model)
                 cell = tmpCell
             }
@@ -99,7 +104,6 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
 
         cell.gyMainChatCellClosure = { _, _ in
         }
-
         cell.selectionStyle = .none
         return cell
     }
@@ -190,30 +194,51 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
     private func initData() {
         let imageURL = GYChatDefaultModel().imageURL
 
-        let m1 = GYMainChatModel()
-        m1.sendType = .acceptInfo
-        m1.messageTpye = .text
-        m1.msg = "文本字符文本字符文本字符文本字符文本字符文本字符文本字符文本字符文本字符"
+        let textModel = GYMainChatModel()
+        textModel.sendType = .acceptInfo
+        textModel.messageTpye = .text
+        textModel.msg = "文本字符文本字符文本字符文本字符文本字符文本字符文本字符文本字符文本字符"
         // yyyy-MM-dd HH:mm:ss
-        m1.msgTimeStamp = floor("2022-06-02 10:10:01".toDate()?.timeIntervalSince1970 ?? 0)
-        let u1 = GYCCharUserInfo()
-        m1.userInfo = u1
-        u1.userName = "张三"
-        u1.levelName = "店员"
-        u1.userAvatar = imageURL
-        insertChatData(key: "\(m1.msgTimeStamp)", model: m1)
+        textModel.msgTimeStamp = floor("2022-06-02 10:10:01".toDate()?.timeIntervalSince1970 ?? 0)
+        let textUser = GYCCharUserInfo()
+        textModel.userInfo = textUser
+        textUser.userName = "张三"
+        textUser.levelName = "店员"
+        textUser.userAvatar = imageURL
+        insertChatData(key: "\(textModel.msgTimeStamp)", model: textModel)
 
-        let m2 = GYMainChatModel()
-        m2.sendType = .sendInfo
-        m2.messageTpye = .picture
-        m2.msg = ["imgUrl": imageURL]
-        m2.msgTimeStamp = floor("2022-06-03 10:10:01".toDate()?.timeIntervalSince1970 ?? 0)
-        let u2 = GYCCharUserInfo()
-        m2.userInfo = u2
-        u2.userName = "李四"
-        u2.levelName = "店主"
-        u2.userAvatar = imageURL
-        insertChatData(key: "\(m2.msgTimeStamp)", model: m2)
+        let pictureModel = GYMainChatModel()
+        pictureModel.sendType = .sendInfo
+        pictureModel.messageTpye = .picture
+        pictureModel.msg = ["imgUrl": imageURL]
+        pictureModel.msgTimeStamp = floor("2022-06-03 10:10:01".toDate()?.timeIntervalSince1970 ?? 0)
+        let picUser = GYCCharUserInfo()
+        pictureModel.userInfo = picUser
+        picUser.userName = "李四"
+        picUser.levelName = "店主"
+        picUser.userAvatar = imageURL
+        insertChatData(key: "\(pictureModel.msgTimeStamp)", model: pictureModel)
+
+        let videoModel = GYMainChatModel()
+        videoModel.sendType = .sendInfo
+        videoModel.messageTpye = .video
+
+        let strURL = "https://www.runoob.com/try/demo_source/mov_bbb.mp4"
+        if let url = URL(string: strURL), let coverImg = SCUtils.videoCover(videoUrl: url) {
+            let msg: [String: Any] = [
+                "coverImg": coverImg,
+                "remoteVideoUrl": strURL,
+            ]
+            videoModel.msg = msg
+        }
+
+        videoModel.msgTimeStamp = floor("2022-09-20 10:10:01".toDate()?.timeIntervalSince1970 ?? 0)
+        let videoUser = GYCCharUserInfo()
+        videoModel.userInfo = videoUser
+        videoUser.userName = "李四"
+        videoUser.levelName = "店主"
+        videoUser.userAvatar = imageURL
+        insertChatData(key: "\(videoModel.msgTimeStamp)", model: videoModel)
     }
 
     // MARK: - UI
@@ -289,6 +314,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         $0.register(GYMainChatTextCell.self, forCellReuseIdentifier: "GYMainChatTextCell")
         $0.register(GYMainChatPictureCell.self, forCellReuseIdentifier: "GYMainChatPictureCell")
         $0.register(GYMainChatVoiceCell.self, forCellReuseIdentifier: "GYMainChatVoiceCell")
+        $0.register(GYMainChatVideoCell.self, forCellReuseIdentifier: "GYMainChatVideoCell")
     }
 
     var dataSourceHeads: [String] = []

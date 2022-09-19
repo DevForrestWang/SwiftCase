@@ -48,7 +48,6 @@ class GYMainChatPictureCell: GYMainChatBaseInfoCell {
 
         super.update(model: model)
         allDataSource = dataSource
-        currentModel = model
 
         messageImagView.image = UIImage(named: "gyhs_bigDefaultImage")
         contentBgView.backgroundColor = UIColor.hexColor(0xEEEEEE)
@@ -137,7 +136,6 @@ class GYMainChatPictureCell: GYMainChatBaseInfoCell {
 
     // MARK: - Property
 
-    private var currentModel: GYMainChatModel?
     private var allDataSource: [String: [GYMainChatModel]]?
 
     private let messageImagView = UIImageView().then {

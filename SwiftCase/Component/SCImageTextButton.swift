@@ -28,6 +28,10 @@ public class SCImageTextButton: UIButton {
 
     func commonInit() {
         titleLabel?.textAlignment = .center
+        // 图片填充模式:
+        // scaleAspectFit 在保持长宽比的前提下，缩放图片，使得图片在容器内完整显示出来
+        // scaleAspectFill 在保持长宽比的前提下，缩放图片，使图片充满容器
+        // scaleToFill 缩放图片，使图片充满容器。图片未必保持长宽比例协调，有可能会拉伸至变形
         imageView?.contentMode = .scaleAspectFit
         titleLabel?.font = UIFont.systemFont(ofSize: 12)
     }

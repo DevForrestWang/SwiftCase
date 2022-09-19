@@ -11,6 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
+import AVFoundation
 import Foundation
 import Kingfisher
 import Toast_Swift
@@ -37,6 +38,10 @@ public func printLine() {
 // MARK: - show info
 
 public func showToast(_ message: String) {
+    UIWindow.key?.makeToast(message, duration: 2.0, position: .center)
+}
+
+public func fwShowToast(_ message: String) {
     UIWindow.key?.makeToast(message, duration: 2.0, position: .center)
 }
 
@@ -110,7 +115,7 @@ public enum SCUtils {
 
     /// 更改Lable字体设置颜色
     /// numbersLable.text = "发送条数：\(number)"
-    /// GYCompanyUtils.updateLableStyle(lable: numbersLable, target: "发送条数：", font: .systemFont(ofSize: 14), color: .red)
+    /// SCUtils.updateLableStyle(lable: numbersLable, target: "发送条数：", font: .systemFont(ofSize: 14), color: .red)
     ///
     public static func updateLableStyle(lable: UILabel, target: String, font: UIFont, color: UIColor, space: CGFloat = 0) {
         guard let text = lable.text else {
@@ -280,6 +285,15 @@ public enum SCUtils {
         return (startDay: startValue, endDay: endValue)
     }
 
+    /// 时间差
+    /// param: timeStamp 时间戳，单位秒
+    /// return：返回时间差，单位秒
+    public static func currenntDifferenceTime(timeStamp: TimeInterval) -> Int {
+        let currentTime = Date().timeIntervalSince1970
+        let reduceTime = Int(currentTime - timeStamp)
+        return reduceTime
+    }
+
     /// 图片下载
     /// - Parameters:
     ///  - urlStr: 下载URL
@@ -385,5 +399,20 @@ public enum SCUtils {
         textfield.addSubview(underLine)
         // 然后别忘了把文本框外框设置成none
         textfield.borderStyle = .none
+    }
+
+    /// 获取视频封面
+    public static func videoCover(videoUrl: URL) -> UIImage? {
+        let asset = AVURLAsset(url: videoUrl, options: nil)
+        let assetGen = AVAssetImageGenerator(asset: asset)
+        assetGen.appliesPreferredTrackTransform = true
+        let time = CMTimeMake(value: 0, timescale: 600)
+        var actualTime: CMTime = .zero
+        if let cgImage = try? assetGen.copyCGImage(at: time, actualTime: &actualTime) {
+            let image = UIImage(cgImage: cgImage)
+            return image
+        }
+
+        return nil
     }
 }
