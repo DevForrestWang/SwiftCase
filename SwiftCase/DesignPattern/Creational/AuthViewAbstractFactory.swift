@@ -139,7 +139,7 @@ protocol AuthViewFactory {
 
 class StudentAuthViewFactory: AuthViewFactory {
     static func authView(for type: AuthType) -> AuthView {
-        yxc_debugPrint("Student View has been created")
+        fwDebugPrint("Student View has been created")
         switch type {
         case .login:
             return StudentLoginView()
@@ -150,14 +150,14 @@ class StudentAuthViewFactory: AuthViewFactory {
 
     static func authController(for type: AuthType) -> AuthViewController {
         let controller = StudentAuthViewController(contentView: authView(for: type))
-        yxc_debugPrint("Student View Controller has been created")
+        fwDebugPrint("Student View Controller has been created")
         return controller
     }
 }
 
 class TeacherAuthViewFactory: AuthViewFactory {
     static func authView(for type: AuthType) -> AuthView {
-        yxc_debugPrint("Teacher View has been created")
+        fwDebugPrint("Teacher View has been created")
         switch type {
         case .login:
             return TeacherLoginView()
@@ -168,7 +168,7 @@ class TeacherAuthViewFactory: AuthViewFactory {
 
     static func authController(for type: AuthType) -> AuthViewController {
         let controller = TeacherAutherViewController(contentView: authView(for: type))
-        yxc_debugPrint("Teacher View Controller has been created")
+        fwDebugPrint("Teacher View Controller has been created")
         return controller
     }
 }

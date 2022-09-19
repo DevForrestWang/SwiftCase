@@ -48,7 +48,7 @@ class ImageDecorator: ImageEditror {
     }
 
     func applay() -> UIImage {
-        yxc_debugPrint(editor.description + " applies changes")
+        fwDebugPrint(editor.description + " applies changes")
         return editor.applay()
     }
 
@@ -164,7 +164,7 @@ class DecoratorClient {
         let image = editor.applay()
 
         /// Note. You can stop an execution in Xcode to see an image preview.
-        yxc_debugPrint("Client: all changes have been applied for \(image)")
+        fwDebugPrint("Client: all changes have been applied for \(image)")
     }
 
     func loadImage(urlString: String) -> UIImage {

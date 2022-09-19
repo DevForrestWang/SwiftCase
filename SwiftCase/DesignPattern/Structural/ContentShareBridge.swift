@@ -53,13 +53,13 @@ protocol SharingService {
 class FaceBookSharingService: SharingService {
     func share(content: Content) {
         /// Use FaceBook API to share a content
-        yxc_debugPrint("Service: \(content) was posted to the facebook")
+        fwDebugPrint("Service: \(content) was posted to the facebook")
     }
 }
 
 class InstagramSharingService: SharingService {
     func share(content: Content) {
-        yxc_debugPrint("Service: \(content) was posted to the Instagram")
+        fwDebugPrint("Service: \(content) was posted to the Instagram")
     }
 }
 
@@ -80,7 +80,7 @@ class BridgeBaseViewController: UIViewController, SharingSupportable {
         /// ...updating UI and showing a content...
         /// ...
         /// ... then, a user will choose a content and trigger an event
-        yxc_debugPrint("\(description): User selected a \(content) to share")
+        fwDebugPrint("\(description): User selected a \(content) to share")
         /// ...
         shareService?.share(content: content)
     }

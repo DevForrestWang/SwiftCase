@@ -45,23 +45,23 @@ class DesignPatternTests: XCTestCase {
     }
     
     func testDelayOperationCmd() throws {
-        printEnter(message:"Client: Start testDelayOperationCmd")
+        fwPrintEnter(message:"Client: Start testDelayOperationCmd")
         
         prepareTestEnvironment {
             let siri = SiriShortcuts.shared
             
-            yxc_debugPrint("User: Hey Siri, I am leaving my home")
+            fwDebugPrint("User: Hey Siri, I am leaving my home")
             siri.perform(.leaveHome)
             
-            yxc_debugPrint("User: Hey Siri, I am leaving my work in 3 minutes")
+            fwDebugPrint("User: Hey Siri, I am leaving my work in 3 minutes")
             /// for simplicity, we use seconds
             siri.perform(.leaveWork, delay: 3)
             
-            yxc_debugPrint("User: Hey Siri, I am still working")
+            fwDebugPrint("User: Hey Siri, I am still working")
             siri.cancel(.leaveWork)
         }
         
-        printLine()
+        fwPrintLine()
     }
     
     func testPerformanceExample() throws {

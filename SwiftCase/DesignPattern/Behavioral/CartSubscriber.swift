@@ -66,7 +66,7 @@ protocol CarSubscriber: CustomStringConvertible {
 
 extension UINavigationBar: CarSubscriber {
     func accept(changed: [DSProduct]) {
-        yxc_debugPrint("UINavigationBar: Updating an appearance of nanigation items:\(changed)")
+        fwDebugPrint("UINavigationBar: Updating an appearance of nanigation items:\(changed)")
     }
 
     override open var description: String {
@@ -76,7 +76,7 @@ extension UINavigationBar: CarSubscriber {
 
 class CartViewController: UIViewController, CarSubscriber {
     func accept(changed: [DSProduct]) {
-        yxc_debugPrint("CartViewController: Updating an appearance of a list view with products:\(changed)")
+        fwDebugPrint("CartViewController: Updating an appearance of a list view with products:\(changed)")
     }
 
     override open var description: String {
@@ -92,12 +92,12 @@ class CarManager {
     private lazy var subscribers = [CarSubscriber]()
 
     func add(subscriber: CarSubscriber) {
-        yxc_debugPrint("CartManager: I'am adding a new subscriber: \(subscriber.description)")
+        fwDebugPrint("CartManager: I'am adding a new subscriber: \(subscriber.description)")
         subscribers.append(subscriber)
     }
 
     func add(product: DSProduct) {
-        yxc_debugPrint("\nCartManager: I'am adding a new product: \(product.name)")
+        fwDebugPrint("\nCartManager: I'am adding a new product: \(product.name)")
         cars.append(product)
         notifySubscribers()
     }
@@ -115,7 +115,7 @@ class CarManager {
             return
         }
 
-        yxc_debugPrint("\nCartManager: Product '\(product.name)' is removed from a cart")
+        fwDebugPrint("\nCartManager: Product '\(product.name)' is removed from a cart")
         cars.remove(at: index)
         notifySubscribers()
     }

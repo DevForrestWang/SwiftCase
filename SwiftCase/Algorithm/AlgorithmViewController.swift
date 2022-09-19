@@ -88,9 +88,9 @@ class AlgorithmViewController: ItemListViewController {
     }
 
     @objc private func array2DAction() {
-        printEnter(message: "Array2D")
+        fwPrintEnter(message: "Array2D")
         var matrix = Array2D<Int>(columns: 3, rows: 5, initialValue: 0)
-        yxc_debugPrint(matrix)
+        fwDebugPrint(matrix)
 
         // setting numbers using subscript [x, y]
         matrix[0, 0] = 1
@@ -105,7 +105,7 @@ class AlgorithmViewController: ItemListViewController {
         matrix[0, 3] = 7
         matrix[1, 3] = 8
         matrix[2, 3] = 9
-        yxc_debugPrint(matrix)
+        fwDebugPrint(matrix)
 
         // print out the 2D array with a reference around the grid
         for i in 0 ..< matrix.rows {
@@ -124,15 +124,15 @@ class AlgorithmViewController: ItemListViewController {
     }
 
     @objc private func linkedListAction() {
-        printEnter(message: "Linked List")
+        fwPrintEnter(message: "Linked List")
         let list = LinkedList<String>()
         list.append("Hello")
         list.append("World")
-        yxc_debugPrint("list: \(list)")
+        fwDebugPrint("list: \(list)")
 
         if list.count >= 1 {
-            yxc_debugPrint("list[0]: \(list[0])")
-            yxc_debugPrint("list[1]: \(list[1])")
+            fwDebugPrint("list[0]: \(list[0])")
+            fwDebugPrint("list[1]: \(list[1])")
             // list[2]   // crash!
         }
 
@@ -144,34 +144,34 @@ class AlgorithmViewController: ItemListViewController {
         list2.removeAll()
         list.removeLast()
         list.remove(at: 2)
-        yxc_debugPrint("list remove:\(list), list2:\(list2)")
+        fwDebugPrint("list remove:\(list), list2:\(list2)")
 
         list.insert("Swift", at: 1)
-        yxc_debugPrint("list insert:\(list)")
+        fwDebugPrint("list insert:\(list)")
 
         list.reverse()
-        yxc_debugPrint("list reverse:\(list)")
+        fwDebugPrint("list reverse:\(list)")
 
         let m = list.map { s in s.count }
-        yxc_debugPrint("list map count, m:\(m)")
+        fwDebugPrint("list map count, m:\(m)")
 
         let f = list.filter { s in s.count > 5 }
-        yxc_debugPrint("list filter count>5, f:\(f)")
+        fwDebugPrint("list filter count>5, f:\(f)")
 
         // Conformance to the Collection protocol
         let collection: LinkedList<Int> = [1, 2, 3, 4, 5]
         let index2 = collection.index(collection.startIndex, offsetBy: 2)
         let value = collection[index2]
-        yxc_debugPrint("list collection 2, value:\(value)")
+        fwDebugPrint("list collection 2, value:\(value)")
 
         let result = collection.reduce(0) { $0 + $1 }
-        yxc_debugPrint("list collection reduce, result:\(result)")
+        fwDebugPrint("list collection reduce, result:\(result)")
 
         showLogs()
     }
 
     @objc private func stackAction() {
-        printEnter(message: "Stack")
+        fwPrintEnter(message: "Stack")
 
         var stackeOfName = Stack<String>()
         let nameAry = ["Carl", "Lisa", "Stephanie", "Jeff", "Wade"]
@@ -180,15 +180,15 @@ class AlgorithmViewController: ItemListViewController {
         }
 
         stackeOfName.push("Mike")
-        yxc_debugPrint("stack push Mike : \(stackeOfName)")
+        fwDebugPrint("stack push Mike : \(stackeOfName)")
         let firstName: String = stackeOfName.pop() ?? "No Data"
-        yxc_debugPrint("stack pop : \(stackeOfName), isEmpty: \(stackeOfName.isEmpty), firstName:\(String(describing: firstName))")
+        fwDebugPrint("stack pop : \(stackeOfName), isEmpty: \(stackeOfName.isEmpty), firstName:\(String(describing: firstName))")
 
         showLogs()
     }
 
     @objc private func queueAction() {
-        printEnter(message: "Stack")
+        fwPrintEnter(message: "Stack")
 
         let array = ["Carl", "Lisa", "Stephanie", "Jeff", "Wade"]
         var queue = Queue<String>()
@@ -197,83 +197,83 @@ class AlgorithmViewController: ItemListViewController {
         }
 
         queue.enqueue("Mike")
-        yxc_debugPrint("Queue, queue: \(queue)")
+        fwDebugPrint("Queue, queue: \(queue)")
 
         let v1 = queue.dequeue()
-        yxc_debugPrint("Queue, queue: \(queue), v1:\(String(describing: v1)), isEmpty: \(queue.isEmpty)")
+        fwDebugPrint("Queue, queue: \(queue), v1:\(String(describing: v1)), isEmpty: \(queue.isEmpty)")
 
         showLogs()
     }
 
     @objc private func recursionAction() {
-        printEnter(message: "Recursion")
+        fwPrintEnter(message: "Recursion")
         let sr = SCRecursion<Int>()
-        yxc_debugPrint("1 to 10: add:\(sr.add(10))")
-        yxc_debugPrint("1 to 100: addGuard:\(sr.addGuard(100))")
+        fwDebugPrint("1 to 10: add:\(sr.add(10))")
+        fwDebugPrint("1 to 100: addGuard:\(sr.addGuard(100))")
 
         showLogs()
     }
 
     @objc private func bubbleSortAction() {
-        printEnter(message: "Bubble Sort")
+        fwPrintEnter(message: "Bubble Sort")
 
         let array = [5, 4, 6, 3, 2, 1]
-        yxc_debugPrint("Sort before: \(array)")
-        yxc_debugPrint("Sort after: \(bubbleSort(array))")
-        yxc_debugPrint("Sort after < : \(bubbleSort(array, <))")
-        yxc_debugPrint("Sort after > : \(bubbleSort(array, >))")
+        fwDebugPrint("Sort before: \(array)")
+        fwDebugPrint("Sort after: \(bubbleSort(array))")
+        fwDebugPrint("Sort after < : \(bubbleSort(array, <))")
+        fwDebugPrint("Sort after > : \(bubbleSort(array, >))")
 
         showLogs()
     }
 
     @objc private func insertionSortAction() {
-        printEnter(message: "Insertion Sort")
+        fwPrintEnter(message: "Insertion Sort")
         let array = [4, 5, 6, 1, 3, 2]
-        yxc_debugPrint("Sort, insertionSort: \(insertionSort(array))")
-        yxc_debugPrint("Sort, insertionSort ascending: \(insertionSort(array, <))")
-        yxc_debugPrint("Sort, insertionSort descending: \(insertionSort(array, >))")
+        fwDebugPrint("Sort, insertionSort: \(insertionSort(array))")
+        fwDebugPrint("Sort, insertionSort ascending: \(insertionSort(array, <))")
+        fwDebugPrint("Sort, insertionSort descending: \(insertionSort(array, >))")
 
         showLogs()
     }
 
     @objc private func selectionSortAction() {
-        printEnter(message: "Selection Sort")
+        fwPrintEnter(message: "Selection Sort")
         let array = buildArray(number: 10, low: 1, high: 100)
-        yxc_debugPrint("Sort, selectionSort: \(selectionSort(array))")
-        yxc_debugPrint("Sort, selectionSort ascending: \(selectionSort(array, <))")
-        yxc_debugPrint("Sort, selectionSort descending: \(selectionSort(array, >))")
+        fwDebugPrint("Sort, selectionSort: \(selectionSort(array))")
+        fwDebugPrint("Sort, selectionSort ascending: \(selectionSort(array, <))")
+        fwDebugPrint("Sort, selectionSort descending: \(selectionSort(array, >))")
 
         showLogs()
     }
 
     @objc private func quickSortAction() {
-        printEnter(message: "Quick Sort")
+        fwPrintEnter(message: "Quick Sort")
         var array = buildArray(number: 100, low: 1, high: 1000)
-        yxc_debugPrint("Sort, array: \(array)")
-        yxc_debugPrint("Sort, quickSort: \(quickSort(array))")
+        fwDebugPrint("Sort, array: \(array)")
+        fwDebugPrint("Sort, quickSort: \(quickSort(array))")
 
         quickSortDutchFlag(&array, low: 0, high: array.count - 1)
-        yxc_debugPrint("Sort, quickSortDutchFlag: \(array)")
+        fwDebugPrint("Sort, quickSortDutchFlag: \(array)")
 
         showLogs()
     }
 
     @objc private func mergeSortAction() {
-        printEnter(message: "Merge Sort")
+        fwPrintEnter(message: "Merge Sort")
         let array = buildArray(number: 10, low: 1, high: 100)
-        yxc_debugPrint("Sort, array: \(array)")
-        yxc_debugPrint("Sort, mergeSort: \(mergeSort(array))")
+        fwDebugPrint("Sort, array: \(array)")
+        fwDebugPrint("Sort, mergeSort: \(mergeSort(array))")
 
         showLogs()
     }
 
     @objc private func bucketSortAction() {
-        printEnter(message: "Bucket Sort")
+        fwPrintEnter(message: "Bucket Sort")
 
         let largeArray = buildArray(number: 400, low: 1, high: 10000)
         let results = performBucketSort(largeArray, totalBuckets: 8)
-        yxc_debugPrint("Sort, count:\(largeArray.count), isSorted: \(isSorted(results))")
-        yxc_debugPrint("Sort, results: \(results)")
+        fwDebugPrint("Sort, count:\(largeArray.count), isSorted: \(isSorted(results))")
+        fwDebugPrint("Sort, results: \(results)")
 
         showLogs()
     }
@@ -291,31 +291,31 @@ class AlgorithmViewController: ItemListViewController {
     }
 
     @objc private func countingSortAction() {
-        printEnter(message: "Counting Sort")
+        fwPrintEnter(message: "Counting Sort")
         let array = buildArray(number: 6, low: 1, high: 10)
-        yxc_debugPrint("Sort, array: \(array)")
-        yxc_debugPrint("Sort, countingSort: \(countingSort(array))")
+        fwDebugPrint("Sort, array: \(array)")
+        fwDebugPrint("Sort, countingSort: \(countingSort(array))")
 
         showLogs()
     }
 
     @objc private func radixSortAction() {
-        printEnter(message: "Radix Sort")
+        fwPrintEnter(message: "Radix Sort")
         var array = buildArray(number: 1000, low: 1, high: 1000)
         radixSort(&array)
-        yxc_debugPrint("Sort, array count: \(array.count), isSorted:\(isSorted(array))")
-        yxc_debugPrint("Sort, radixSort: \(array)")
+        fwDebugPrint("Sort, array count: \(array.count), isSorted:\(isSorted(array))")
+        fwDebugPrint("Sort, radixSort: \(array)")
 
         showLogs()
     }
 
     @objc private func binarySearchAction() {
-        printEnter(message: "Binary Search")
+        fwPrintEnter(message: "Binary Search")
         let numbers = [11, 59, 3, 2, 53, 17, 31, 7, 19, 67, 47, 13, 37, 61, 29, 43, 5, 41, 23]
 
         // Binary search requires that the array is sorted from low to high
         let sorted = numbers.sorted()
-        yxc_debugPrint("binarySearch, sorted: \(sorted)")
+        fwDebugPrint("binarySearch, sorted: \(sorted)")
 
         let f2 = binarySearch(sorted, key: 2, range: 0 ..< sorted.count)
         let f67 = binarySearch(sorted, key: 67, range: 0 ..< sorted.count)
@@ -325,15 +325,15 @@ class AlgorithmViewController: ItemListViewController {
         let ff67 = binarySearch(sorted, key: 67)
         let ff42 = binarySearch(sorted, key: 42)
 
-        yxc_debugPrint("binarySearch f2: \(String(describing: f2)), compare: \(f2 == ff2)")
-        yxc_debugPrint("binarySearch f67: \(String(describing: f67)), compare: \(f67 == ff67)")
-        yxc_debugPrint("binarySearch f42: \(String(describing: f42)), compare: \(f42 == ff42)")
+        fwDebugPrint("binarySearch f2: \(String(describing: f2)), compare: \(f2 == ff2)")
+        fwDebugPrint("binarySearch f67: \(String(describing: f67)), compare: \(f67 == ff67)")
+        fwDebugPrint("binarySearch f42: \(String(describing: f42)), compare: \(f42 == ff42)")
 
         showLogs()
     }
 
     @objc private func skipListAction() {
-        printEnter(message: "Skip List")
+        fwPrintEnter(message: "Skip List")
 
         let dataArray = buildArray(number: 1000, low: 1, high: 1000, isUnique: true)
         let randomIndex = Int(arc4random_uniform(UInt32(dataArray.count - 1)))
@@ -352,47 +352,47 @@ class AlgorithmViewController: ItemListViewController {
     }
 
     @objc private func hashTableAction() {
-        printEnter(message: "Hash Table")
+        fwPrintEnter(message: "Hash Table")
 
         // playing with has values
-        yxc_debugPrint("firstName hashValue: \("firstName".hashValue), \("firstName".hashValue % 5)")
+        fwDebugPrint("firstName hashValue: \("firstName".hashValue), \("firstName".hashValue % 5)")
 
         var hashTable = HashTable<String, String>(capacity: 5)
         hashTable["firstName"] = "Seteve"
         hashTable["lastName"] = "Jobs"
         hashTable["hobbies"] = "Programming Sift"
-        yxc_debugPrint("hashTable: \(hashTable)")
+        fwDebugPrint("hashTable: \(hashTable)")
         showLogs(hashTable.description)
 
         let firstName = hashTable["firstName"]
-        yxc_debugPrint("Fist name: \(String(describing: firstName))")
-        yxc_debugPrint("DebugDescription: \(hashTable.debugDescription)")
+        fwDebugPrint("Fist name: \(String(describing: firstName))")
+        fwDebugPrint("DebugDescription: \(hashTable.debugDescription)")
     }
 
     @objc private func lRUCacheAction() {
-        printEnter(message: "LRU Cache")
+        fwPrintEnter(message: "LRU Cache")
 
         let cache = LRUCache<String>(2)
         cache.set("a", val: 1)
         cache.set("b", val: 2)
         var iResult = cache.get("a") // returns 1
-        yxc_debugPrint("a->1, iResult: \(String(describing: iResult))")
+        fwDebugPrint("a->1, iResult: \(String(describing: iResult))")
         cache.set("c", val: 3) // evicts key "b"
         iResult = cache.get("b") // returns nil (not found)
-        yxc_debugPrint("b-> nil, iResult: \(String(describing: iResult))")
+        fwDebugPrint("b-> nil, iResult: \(String(describing: iResult))")
         cache.set("d", val: 4) // evicts key "a"
         iResult = cache.get("a") // returns nil (not found)
-        yxc_debugPrint("a->nil, iResult: \(String(describing: iResult))")
+        fwDebugPrint("a->nil, iResult: \(String(describing: iResult))")
         iResult = cache.get("c") // returns 3
-        yxc_debugPrint("c->3, iResult: \(String(describing: iResult))")
+        fwDebugPrint("c->3, iResult: \(String(describing: iResult))")
         iResult = cache.get("d") // returns 4
-        yxc_debugPrint("d->4, iResult: \(String(describing: iResult))")
+        fwDebugPrint("d->4, iResult: \(String(describing: iResult))")
         showLogs()
     }
 
     @objc private func binaryTreeAction() {
-        printEnter(message: "Binary Tree")
-        yxc_debugPrint("show: (5 * (a - 10)) + (-4 * (3 / b))")
+        fwPrintEnter(message: "Binary Tree")
+        fwDebugPrint("show: (5 * (a - 10)) + (-4 * (3 / b))")
 
         // left nodes
         let node5 = BinaryTree.node(.empty, "5", .empty)
@@ -413,58 +413,58 @@ class AlgorithmViewController: ItemListViewController {
 
         // root node
         let tree = BinaryTree.node(timesLeft, "+", timesRight)
-        yxc_debugPrint("Tree: \(tree)")
-        yxc_debugPrint("Count: \(tree.count)")
+        fwDebugPrint("Tree: \(tree)")
+        fwDebugPrint("Count: \(tree.count)")
 
-        printEnter(message: "In-order")
-        tree.traverseInOrder { s in yxc_debugPrint(s) }
+        fwPrintEnter(message: "In-order")
+        tree.traverseInOrder { s in fwDebugPrint(s) }
 
-        printEnter(message: "Pre-order")
-        tree.traversePreOrder { s in yxc_debugPrint(s) }
+        fwPrintEnter(message: "Pre-order")
+        tree.traversePreOrder { s in fwDebugPrint(s) }
 
-        printEnter(message: "Post-order")
-        tree.traversePostOrder { s in yxc_debugPrint(s) }
+        fwPrintEnter(message: "Post-order")
+        tree.traversePostOrder { s in fwDebugPrint(s) }
 
         showLogs()
     }
 
     @objc private func binarySearchTreeAction() {
-        printEnter(message: "Binary Search Tree")
+        fwPrintEnter(message: "Binary Search Tree")
         let tree = BinarySearchTree<Int>(array: [33, 16, 50, 13, 18, 34, 58, 15, 17, 25, 51, 66, 19, 27, 55])
         tree.insert(value: 1)
         // yxc_debugPrint("tree: \(tree)")
         // draw binary tree
-        yxc_debugPrint(tree.printBinaryTree)
+        fwDebugPrint(tree.printBinaryTree)
 
         let node1 = tree.search(value: 1)
         node1?.remove()
         let node18 = tree.search(value: 18)
         node18?.remove()
-        yxc_debugPrint("tree: \(tree)")
+        fwDebugPrint("tree: \(tree)")
 
         tree.traverseInOrder { value in
-            yxc_debugPrint(value)
+            fwDebugPrint(value)
         }
 
         let treeAry = tree.toArray()
-        yxc_debugPrint("ToArray: \(treeAry)")
-        yxc_debugPrint("minimum: \(tree.minimum())")
-        yxc_debugPrint("maximum: \(tree.maximum())")
-        yxc_debugPrint("height: \(tree.height())")
-        yxc_debugPrint("predecessor: \(String(describing: tree.predecessor()))")
-        yxc_debugPrint("successor: \(String(describing: tree.successor()))")
+        fwDebugPrint("ToArray: \(treeAry)")
+        fwDebugPrint("minimum: \(tree.minimum())")
+        fwDebugPrint("maximum: \(tree.maximum())")
+        fwDebugPrint("height: \(tree.height())")
+        fwDebugPrint("predecessor: \(String(describing: tree.predecessor()))")
+        fwDebugPrint("successor: \(String(describing: tree.successor()))")
 
         if let node9 = tree.search(value: 9) {
-            yxc_debugPrint("node9 depth: \(node9.depth())")
-            yxc_debugPrint("node9 height: \(node9.height())")
+            fwDebugPrint("node9 depth: \(node9.depth())")
+            fwDebugPrint("node9 height: \(node9.height())")
 
             var bRestlt = tree.isBST(minValue: Int.min, maxValue: Int.max) // true
-            yxc_debugPrint("isBST: \(bRestlt)")
+            fwDebugPrint("isBST: \(bRestlt)")
             node9.insert(value: 100)
             let node100 = tree.search(value: 100) // nil
             bRestlt = tree.isBST(minValue: Int.min, maxValue: Int.max) // false
 
-            yxc_debugPrint("isBST 100: \(bRestlt), node100: \(String(describing: node100))")
+            fwDebugPrint("isBST 100: \(bRestlt), node100: \(String(describing: node100))")
         }
 
         // Heap Tree
@@ -476,7 +476,7 @@ class AlgorithmViewController: ItemListViewController {
     }
 
     @objc private func avlTreeAction() {
-        printEnter(message: "AVL Tree")
+        fwPrintEnter(message: "AVL Tree")
         let tree = AVLTree<Character, String>()
         tree.insert(key: "F", payload: "F")
         tree.insert(key: "D", payload: "D")
@@ -485,24 +485,24 @@ class AlgorithmViewController: ItemListViewController {
         tree.insert(key: "E", payload: "E")
         tree.insert(key: "A", payload: "A")
         tree.insert(key: "C", payload: "C")
-        yxc_debugPrint(tree)
-        yxc_debugPrint(tree.debugDescription)
+        fwDebugPrint(tree)
+        fwDebugPrint(tree.debugDescription)
 
         let nodeE = tree.search(input: "E")
-        yxc_debugPrint("nodeE: \(String(describing: nodeE))")
+        fwDebugPrint("nodeE: \(String(describing: nodeE))")
 
         tree.delete(key: "A")
         tree.delete(key: "C")
         tree.delete(key: "B")
         tree.delete(key: "E")
         tree.delete(key: "G")
-        yxc_debugPrint(tree)
+        fwDebugPrint(tree)
 
         showLogs()
     }
 
     @objc private func redBlackTreeAction() {
-        printEnter(message: "Red-Black Tree")
+        fwPrintEnter(message: "Red-Black Tree")
         let rbTree = RedBlackTree<Int>()
         var values = [Int]()
         let maxNumber = 1000
@@ -513,10 +513,10 @@ class AlgorithmViewController: ItemListViewController {
             rbTree.insert(key: value)
 
             if (i % (maxNumber / 5)) == 0 {
-                yxc_debugPrint("index: \(i) verify: \(rbTree.verify())")
+                fwDebugPrint("index: \(i) verify: \(rbTree.verify())")
             }
         }
-        yxc_debugPrint("verify: \(rbTree.verify())")
+        fwDebugPrint("verify: \(rbTree.verify())")
 
         for i in 0 ..< maxNumber {
             let rand = arc4random_uniform(UInt32(values.count))
@@ -524,52 +524,52 @@ class AlgorithmViewController: ItemListViewController {
             rbTree.delete(key: value)
 
             if i % (maxNumber / 5) == 0 {
-                yxc_debugPrint("index: \(i) verify: \(rbTree.verify())")
+                fwDebugPrint("index: \(i) verify: \(rbTree.verify())")
             }
         }
-        yxc_debugPrint("verify: \(rbTree.verify())")
+        fwDebugPrint("verify: \(rbTree.verify())")
 
         showLogs()
     }
 
     @objc private func heapAction() {
-        printEnter(message: "Heap")
+        fwPrintEnter(message: "Heap")
         let dataArray = [27, 17, 3, 16, 13, 10, 1, 5, 7, 12, 4, 8, 9, 0]
         let maxHeap = Heap(array: dataArray, sort: >)
         maxHeap.nodes.printHeapTree()
-        yxc_debugPrint("maxHeap: \(maxHeap)")
-        yxc_debugPrint("verifyMaxHeap: \(verifyMaxHeap(maxHeap)), verifyMinHeap: \(verifyMinHeap(maxHeap))")
+        fwDebugPrint("maxHeap: \(maxHeap)")
+        fwDebugPrint("verifyMaxHeap: \(verifyMaxHeap(maxHeap)), verifyMinHeap: \(verifyMinHeap(maxHeap))")
 
         let minHeap = Heap(array: dataArray, sort: <)
         minHeap.nodes.printHeapTree()
-        yxc_debugPrint("minHeap: \(minHeap)")
+        fwDebugPrint("minHeap: \(minHeap)")
         showLogs()
     }
 
     @objc private func heapSortAction() {
-        printEnter(message: "Heap Sort")
+        fwPrintEnter(message: "Heap Sort")
         let dataArray = [5, 13, 2, 25, 7, 17, 20, 8, 4]
         var maxHeap = Heap(array: dataArray, sort: >)
         maxHeap.nodes.printHeapTree()
-        yxc_debugPrint("maxHeap sort: \(maxHeap.sort())")
+        fwDebugPrint("maxHeap sort: \(maxHeap.sort())")
 
         let heapSort = heapsort(dataArray, <)
         heapSort.printHeapTree()
-        yxc_debugPrint("heapSort: \(heapSort)")
+        fwDebugPrint("heapSort: \(heapSort)")
 
         showLogs()
     }
 
     @objc private func graphAction() {
-        printEnter(message: "Graph")
+        fwPrintEnter(message: "Graph")
         let matrixGraph = AdjacencyMatrixGraph<String>()
         let a = matrixGraph.createVertex("a")
         let b = matrixGraph.createVertex("b")
         let c = matrixGraph.createVertex("c")
         matrixGraph.addDirectedEdge(a, to: b, withWeight: 1.0)
         matrixGraph.addDirectedEdge(b, to: c, withWeight: 2.0)
-        yxc_debugPrint("Maxtrix Graph:")
-        yxc_debugPrint(matrixGraph.description)
+        fwDebugPrint("Maxtrix Graph:")
+        fwDebugPrint(matrixGraph.description)
 
         let listGrpah = AdjacencyListGraph<String>()
         let al = listGrpah.createVertex("a")
@@ -578,14 +578,14 @@ class AlgorithmViewController: ItemListViewController {
         listGrpah.addDirectedEdge(al, to: bl, withWeight: 1.0)
         listGrpah.addDirectedEdge(bl, to: cl, withWeight: 2.0)
         listGrpah.addDirectedEdge(al, to: cl, withWeight: -5.5)
-        yxc_debugPrint("List Graph:")
-        yxc_debugPrint(listGrpah.description)
+        fwDebugPrint("List Graph:")
+        fwDebugPrint(listGrpah.description)
 
         showLogs()
     }
 
     @objc private func depthFirstSearchAction() {
-        printEnter(message: "Depth-Fist Search")
+        fwPrintEnter(message: "Depth-Fist Search")
 
         let graph = GSGraph()
         let nodeA = graph.addNode("a")
@@ -609,14 +609,14 @@ class AlgorithmViewController: ItemListViewController {
 
         let nodeExplored = depthFirstSearch(graph, source: nodeA)
         // ["a", "b", "d", "e", "h", "f", "g", "c"]
-        yxc_debugPrint("depthFirstSearch:")
-        yxc_debugPrint(nodeExplored)
+        fwDebugPrint("depthFirstSearch:")
+        fwDebugPrint(nodeExplored)
 
         showLogs()
     }
 
     @objc private func breadthFirstSearchAction() {
-        printEnter(message: "Breadth-First Search")
+        fwPrintEnter(message: "Breadth-First Search")
 
         let graph = GSGraph()
         let nodeA = graph.addNode("a")
@@ -640,58 +640,58 @@ class AlgorithmViewController: ItemListViewController {
 
         let nodeExplored = breadthFirstSearch(graph, source: nodeA)
         // ["a", "b", "c", "d", "e", "f", "g", "h"]
-        yxc_debugPrint("breadthFirstSearch:")
+        fwDebugPrint("breadthFirstSearch:")
         print(nodeExplored)
 
         showLogs()
     }
 
     @objc private func bruteForceAction() {
-        printEnter(message: "Brute Force String Search")
+        fwPrintEnter(message: "Brute Force String Search")
         let s = "Hello World!"
         if let wIndex = s.indexOf("World") {
-            yxc_debugPrint("World index: \(String(describing: wIndex)), \(s[..<wIndex])")
+            fwDebugPrint("World index: \(String(describing: wIndex)), \(s[..<wIndex])")
         } else {
-            yxc_debugPrint("No found")
+            fwDebugPrint("No found")
         }
 
         showLogs()
     }
 
     @objc private func rabinKarpAction() {
-        printEnter(message: "Rabin-Karp String Search")
+        fwPrintEnter(message: "Rabin-Karp String Search")
         let text = "The big dog jumped over the fox"
         let umpIndex = searchStringByRK(text: text, pattern: "ump")
         // 13
-        yxc_debugPrint("find ump in '\(text)' index: \(umpIndex)")
+        fwDebugPrint("find ump in '\(text)' index: \(umpIndex)")
 
         showLogs()
     }
 
     @objc private func boyerMooreAction() {
-        printEnter(message: "Boyer-Moore String Search")
+        fwPrintEnter(message: "Boyer-Moore String Search")
         let text = "Hello, World"
         if let fIndex = text.index(of: "World") {
-            yxc_debugPrint("find World : \(String(describing: fIndex)), in '\(text)' subString \(text[..<fIndex])")
+            fwDebugPrint("find World : \(String(describing: fIndex)), in '\(text)' subString \(text[..<fIndex])")
         } else {
-            yxc_debugPrint("no find 'Word'")
+            fwDebugPrint("no find 'Word'")
         }
         showLogs()
     }
 
     @objc private func knuthMorrisPrattAction() {
-        printEnter(message: "Knuth-Morris-Pratt String Search")
+        fwPrintEnter(message: "Knuth-Morris-Pratt String Search")
         let text = "ACCCGGTTTTAAAGAACCACCATAAGATATAGACAGATATAGGACAGATATAGAGACAAAACCCCATACCCCAATATTTTTTTGGGGAGAAAAACACCACAGATAGATACACAGACTACACGAGATACGACATACAGCAGCATAACGACAACAGCAGATAGACGATCATAACAGCAATCAGACCGAGCGCAGCAGCTTTTAAGCACCAGCCCCACAAAAAACGACAATFATCATCATATACAGACGACGACACGACATATCACACGACAGCATA"
         let indexs = text.indexesOf(ptnr: "CATA")
 
         // [20, 64, 130, 140, 166, 234, 255, 270]
-        yxc_debugPrint("indexs: \(String(describing: indexs))")
+        fwDebugPrint("indexs: \(String(describing: indexs))")
 
         showLogs()
     }
 
     @objc private func trieAction() {
-        printEnter(message: "Trie")
+        fwPrintEnter(message: "Trie")
         buidTrieTree()
 
         if let tmpTrie = trie {
@@ -699,7 +699,7 @@ class AlgorithmViewController: ItemListViewController {
             tmpTrie.remove(word: "foobar")
 
             let words = tmpTrie.words
-            yxc_debugPrint("words: \(words.count)")
+            fwDebugPrint("words: \(words.count)")
             let purr = tmpTrie.findWordsWithPrefix(prefix: "purr")
             print("Prefix purr:")
             print(purr.joined(separator: "\n"))
@@ -709,7 +709,7 @@ class AlgorithmViewController: ItemListViewController {
     }
 
     @objc private func ahoCorasickAction() {
-        printEnter(message: "Aho-Corasick")
+        fwPrintEnter(message: "Aho-Corasick")
 
         // tokenize
         let speech = "The Answer to the Great Question... Of Life, " +
@@ -737,7 +737,7 @@ class AlgorithmViewController: ItemListViewController {
             }
         }
         tokenHtml.append("</p></body></html>")
-        yxc_debugPrint("Tokens:")
+        fwDebugPrint("Tokens:")
         print(tokenHtml)
 
         // parse
@@ -749,7 +749,7 @@ class AlgorithmViewController: ItemListViewController {
             .build()
         let emits = pTrie.parse(text: "ushers")
         // she @ 3, he @ 3, hers @ 5
-        yxc_debugPrint("Parse: \(emits)")
+        fwDebugPrint("Parse: \(emits)")
 
         // containsMatch
         let cTrie = ACTrie.builder().removeOverlaps()
@@ -758,27 +758,27 @@ class AlgorithmViewController: ItemListViewController {
             .add(keyword: "ababc")
             .build()
 
-        yxc_debugPrint(cTrie.containsMatch(text: "ababcbab"))
+        fwDebugPrint(cTrie.containsMatch(text: "ababcbab"))
 
         showLogs()
     }
 
     @objc private func huffmanCodingAction() {
-        printEnter(message: "Huffman Coding")
+        fwPrintEnter(message: "Huffman Coding")
         let s1 = "zh:霍夫曼编; en：so much word wow many compression; number:1234567890"
         if let orginalData = s1.data(using: .utf8) {
-            yxc_debugPrint("s1:\(s1) count: \(orginalData.count)")
+            fwDebugPrint("s1:\(s1) count: \(orginalData.count)")
 
             let huffman1 = Huffman()
             let compressedData = huffman1.compressData(data: orginalData as NSData)
-            yxc_debugPrint("compressedData length: \(compressedData.length)")
+            fwDebugPrint("compressedData length: \(compressedData.length)")
 
             let freequencyTable = huffman1.frequencyTable()
             let huffman2 = Huffman()
             let decompressedData = huffman2.decompressData(data: compressedData, frequencyTable: freequencyTable)
-            yxc_debugPrint("decompressedData length: \(decompressedData.length)")
+            fwDebugPrint("decompressedData length: \(decompressedData.length)")
             let s2 = String(data: decompressedData as Data, encoding: .utf8)!
-            yxc_debugPrint("s1 and s2: \(s1 == s2)")
+            fwDebugPrint("s1 and s2: \(s1 == s2)")
         } else {
             showLogs("Failed string to data.")
         }
@@ -787,7 +787,7 @@ class AlgorithmViewController: ItemListViewController {
     }
 
     @objc private func dijkstraShortestPathAction() {
-        printEnter(message: "Dijkstra's shortest path algorithm")
+        fwPrintEnter(message: "Dijkstra's shortest path algorithm")
 
         // Initialize random graph
         let djData = DijkstraData()
@@ -820,7 +820,7 @@ class AlgorithmViewController: ItemListViewController {
     }
 
     @objc private func bitSetAction() {
-        printEnter(message: "Bit Set")
+        fwPrintEnter(message: "Bit Set")
 
         var b4 = BitSet(size: 4)
         print("BitSet 4: \(b4)")
@@ -838,41 +838,41 @@ class AlgorithmViewController: ItemListViewController {
     }
 
     @objc private func bloomFilterAction() {
-        printEnter(message: "Bloom Filter")
+        fwPrintEnter(message: "Bloom Filter")
         let bloom = BloomFilter<String>(size: 17, hashFunctions: [djb2, sdbm])
-        yxc_debugPrint("BloomFilter: \(bloom)")
+        fwDebugPrint("BloomFilter: \(bloom)")
 
         bloom.insert("Hello world!")
-        yxc_debugPrint("insert Hello world!: \(bloom)")
+        fwDebugPrint("insert Hello world!: \(bloom)")
         // true
-        yxc_debugPrint("query Hello world!, result: \(bloom.query("Hello world!"))")
+        fwDebugPrint("query Hello world!, result: \(bloom.query("Hello world!"))")
         // false
-        yxc_debugPrint("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
+        fwDebugPrint("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
 
         // false
         bloom.insert("Bloom Filterz")
-        yxc_debugPrint("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
-        yxc_debugPrint("insert Bloom Filterz: \(bloom)")
+        fwDebugPrint("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
+        fwDebugPrint("insert Bloom Filterz: \(bloom)")
 
         showLogs()
     }
 
     @objc private func bTreeAction() {
-        printEnter(message: "B-Tree")
+        fwPrintEnter(message: "B-Tree")
         let bTree = BTree<Int, Int>(order: 1)!
         bTree.insert(1, for: 1)
         bTree.insert(2, for: 2)
         bTree.insert(3, for: 3)
         bTree.insert(4, for: 4)
         bTree.insert(5, for: 5)
-        yxc_debugPrint("value for 3: \(String(describing: bTree.value(for: 3))), bTree[3]: \(String(describing: bTree[3]))")
+        fwDebugPrint("value for 3: \(String(describing: bTree.value(for: 3))), bTree[3]: \(String(describing: bTree[3]))")
 
         bTree.traverseKeysInOrder { key in
             print(key)
         }
 
-        yxc_debugPrint("numberOfKeys: \(bTree.numberOfKeys)")
-        yxc_debugPrint("inorderArrayFromKeys: \(bTree.inorderArrayFromKeys)")
+        fwDebugPrint("numberOfKeys: \(bTree.numberOfKeys)")
+        fwDebugPrint("inorderArrayFromKeys: \(bTree.inorderArrayFromKeys)")
 
         showLogs()
     }
@@ -956,13 +956,13 @@ class AlgorithmViewController: ItemListViewController {
         do {
             data = try String(contentsOfFile: filePath, encoding: String.Encoding.utf8)
         } catch let error as NSError {
-            yxc_debugPrint("\(error.description)")
+            fwDebugPrint("\(error.description)")
         }
 
         var wordArray: [String]?
         if let tmpData = data {
             wordArray = tmpData.components(separatedBy: "\n")
-            yxc_debugPrint("wordArray count: \(String(describing: wordArray?.count))")
+            fwDebugPrint("wordArray count: \(String(describing: wordArray?.count))")
         }
 
         if let tmpArray = wordArray {

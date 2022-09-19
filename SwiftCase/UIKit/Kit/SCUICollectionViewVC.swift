@@ -26,7 +26,7 @@ class SCUICollectionViewVC: BaseViewController, UICollectionViewDataSource,
 
     @objc func injected() {
         #if DEBUG
-            yxc_debugPrint("I've been injected: \(self)")
+            fwDebugPrint("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -108,7 +108,7 @@ class SCUICollectionViewVC: BaseViewController, UICollectionViewDataSource,
 
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let text = String(format: "clicked %d-%d cell", arguments: [indexPath.section + 1, indexPath.row + 1])
-        showToast(text)
+        fwShowToast(text)
     }
 
     // MARK: - IBActions

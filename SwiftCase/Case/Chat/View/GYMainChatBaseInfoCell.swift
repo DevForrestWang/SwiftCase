@@ -40,7 +40,7 @@ class GYMainChatBaseInfoCell: UITableViewCell {
 
     // 执行析构过程
     deinit {
-        yxc_debugPrint("===========<deinit: \(type(of: self))>===========")
+        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
@@ -57,7 +57,7 @@ class GYMainChatBaseInfoCell: UITableViewCell {
     }
 
     @objc public func clickAction(recognizer _: UITapGestureRecognizer) {
-        yxc_debugPrint("click Class: \(type(of: self))")
+        fwDebugPrint("click Class: \(type(of: self))")
     }
 
     /// 定制弹出菜单
@@ -86,7 +86,7 @@ class GYMainChatBaseInfoCell: UITableViewCell {
 
     @objc private func longPressAction(recognizer _: UITapGestureRecognizer) {
         if UIMenuController.shared.isMenuVisible {
-            yxc_debugPrint("The menu is show.")
+            fwDebugPrint("The menu is show.")
             return
         }
 
@@ -139,7 +139,7 @@ class GYMainChatBaseInfoCell: UITableViewCell {
     // MARK: - UI
 
     private func setupUI() {
-        yxc_debugPrint("===========<loadClass: \(type(of: self))>===========")
+        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
         contentView.isUserInteractionEnabled = true
 
         backgroundColor = UIColor.hexColor(0xEEEEEE)

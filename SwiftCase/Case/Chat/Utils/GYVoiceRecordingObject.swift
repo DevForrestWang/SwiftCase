@@ -12,7 +12,7 @@ import UIKit
 class GYVoiceRecordingObject: NSObject {
     // 执行析构过程
     deinit {
-        yxc_debugPrint("===========<deinit: \(type(of: self))>===========")
+        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
@@ -49,7 +49,7 @@ class GYVoiceRecordingObject: NSObject {
         if (recorder?.isRecording) != nil {
             interval = Int(recorder?.currentTime ?? 0)
         }
-        yxc_debugPrint("stop current interval: \(interval)")
+        fwDebugPrint("stop current interval: \(interval)")
 
         let path = stopRecord()
         if interval < 1 {
@@ -73,7 +73,7 @@ class GYVoiceRecordingObject: NSObject {
 
     @objc private func recordTick(timer _: Timer) {
         if !(recorder?.isRecording ?? false) {
-            yxc_debugPrint("It is not recroding.")
+            fwDebugPrint("It is not recroding.")
             return
         }
 
@@ -147,7 +147,7 @@ class GYVoiceRecordingObject: NSObject {
 
             recordtimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(recordTick), userInfo: nil, repeats: true)
         } catch {
-            yxc_debugPrint("error: \(error.localizedDescription)")
+            fwDebugPrint("error: \(error.localizedDescription)")
         }
     }
 
@@ -159,7 +159,7 @@ class GYVoiceRecordingObject: NSObject {
             do {
                 try FileManager.default.createDirectory(atPath: voiceDataPath.path, withIntermediateDirectories: true, attributes: nil)
             } catch {
-                yxc_debugPrint("Failed to create file, error: \(error.localizedDescription)")
+                fwDebugPrint("Failed to create file, error: \(error.localizedDescription)")
             }
         }
 
@@ -192,7 +192,7 @@ class GYVoiceRecordingObject: NSObject {
             do {
                 try FileManager.default.removeItem(atPath: path)
             } catch {
-                yxc_debugPrint("error: \(error.localizedDescription)")
+                fwDebugPrint("error: \(error.localizedDescription)")
             }
         }
     }

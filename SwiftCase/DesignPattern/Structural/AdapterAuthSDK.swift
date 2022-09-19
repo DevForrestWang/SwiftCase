@@ -31,14 +31,14 @@ protocol AuthService {
 class FaceBookAuthSDK {
     func presentAuthFlow(form _: UIViewController) {
         // Call SDK methods and pass a view controller
-        yxc_debugPrint("Facebook WebView has been shown.")
+        fwDebugPrint("Facebook WebView has been shown.")
     }
 }
 
 class TwitterAuthSDK {
     func startAuthorization(with _: UIViewController) {
         // Call SDK methods and pass a view controller
-        yxc_debugPrint("Twitter WebView has been shown. Users will be happy :)")
+        fwDebugPrint("Twitter WebView has been shown. Users will be happy :)")
     }
 }
 
@@ -52,7 +52,7 @@ extension TwitterAuthSDK: AuthService {
     /// existing one
 
     func presentAuthFlow(form viewController: UIViewController) {
-        yxc_debugPrint("The Adapter is called! Redirecting to the original method...")
+        fwDebugPrint("The Adapter is called! Redirecting to the original method...")
         startAuthorization(with: viewController)
     }
 }

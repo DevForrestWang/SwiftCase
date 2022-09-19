@@ -29,11 +29,11 @@ final class SingletonPattern {
     static let shared = SingletonPattern()
 
     private init() {
-        yxc_debugPrint("init SingletonPattern")
+        fwDebugPrint("init SingletonPattern")
     }
 
     public func publicFunction() {
-        yxc_debugPrint("Run publicFunction")
+        fwDebugPrint("Run publicFunction")
     }
 }
 

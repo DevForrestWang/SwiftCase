@@ -68,32 +68,32 @@ class EnabledTrackingState: TrackingState {
     }
 
     func startTracking() {
-        yxc_debugPrint("EnabledTrackingState: startTracking is invoked")
-        yxc_debugPrint("EnabledTrackingState: tracking location....1")
-        yxc_debugPrint("EnabledTrackingState: tracking location....2")
-        yxc_debugPrint("EnabledTrackingState: tracking location....3")
+        fwDebugPrint("EnabledTrackingState: startTracking is invoked")
+        fwDebugPrint("EnabledTrackingState: tracking location....1")
+        fwDebugPrint("EnabledTrackingState: tracking location....2")
+        fwDebugPrint("EnabledTrackingState: tracking location....3")
     }
 
     func stopTracking() {
-        yxc_debugPrint("EnabledTrackingState: Received 'stop tracking'")
-        yxc_debugPrint("EnabledTrackingState: Changing state to 'disabled'...")
+        fwDebugPrint("EnabledTrackingState: Received 'stop tracking'")
+        fwDebugPrint("EnabledTrackingState: Changing state to 'disabled'...")
         tracker?.update(state: DisabledTrackingState(tracker: tracker))
         tracker?.stopTracking()
     }
 
     func pauseTracking(for time: TimeInterval) {
-        yxc_debugPrint("EnabledTrackingState: Received 'pause tracking' for \(time) seconds")
-        yxc_debugPrint("EnabledTrackingState: Changing state to 'disabled'...")
+        fwDebugPrint("EnabledTrackingState: Received 'pause tracking' for \(time) seconds")
+        fwDebugPrint("EnabledTrackingState: Changing state to 'disabled'...")
         tracker?.update(state: DisabledTrackingState(tracker: tracker))
         tracker?.pauseTracking(for: time)
     }
 
     func makeCheckIn() {
-        yxc_debugPrint("EnabledTrackingState: performing check-in at the current location")
+        fwDebugPrint("EnabledTrackingState: performing check-in at the current location")
     }
 
     func findMyChildren() {
-        yxc_debugPrint("EnabledTrackingState: searching for children...")
+        fwDebugPrint("EnabledTrackingState: searching for children...")
     }
 }
 
@@ -105,39 +105,39 @@ class DisabledTrackingState: TrackingState {
     }
 
     func startTracking() {
-        yxc_debugPrint("DisabledTrackingState: Received 'start tracking'")
-        yxc_debugPrint("DisabledTrackingState: Changing state to 'enabled'...")
+        fwDebugPrint("DisabledTrackingState: Received 'start tracking'")
+        fwDebugPrint("DisabledTrackingState: Changing state to 'enabled'...")
         tracker?.update(state: EnabledTrackingState(tracker: tracker))
     }
 
     func stopTracking() {
-        yxc_debugPrint("DisabledTrackingState: Received 'stop tracking'")
-        yxc_debugPrint("DisabledTrackingState: Do nothing...")
+        fwDebugPrint("DisabledTrackingState: Received 'stop tracking'")
+        fwDebugPrint("DisabledTrackingState: Do nothing...")
     }
 
     func pauseTracking(for time: TimeInterval) {
-        yxc_debugPrint("DisabledTrackingState: Pause tracking for \(time) seconds")
+        fwDebugPrint("DisabledTrackingState: Pause tracking for \(time) seconds")
 
         for i in 0 ... Int(time) {
-            yxc_debugPrint("DisabledTrackingState: pause...\(i)")
+            fwDebugPrint("DisabledTrackingState: pause...\(i)")
         }
 
-        yxc_debugPrint("DisabledTrackingState: Time is over")
-        yxc_debugPrint("DisabledTrackingState: Returing to 'enabled state'...\n")
+        fwDebugPrint("DisabledTrackingState: Time is over")
+        fwDebugPrint("DisabledTrackingState: Returing to 'enabled state'...\n")
         tracker?.update(state: EnabledTrackingState(tracker: tracker))
         tracker?.startTracking()
     }
 
     func makeCheckIn() {
-        yxc_debugPrint("DisabledTrackingState: Received 'make check-in'")
-        yxc_debugPrint("DisabledTrackingState: Changing state to 'enabled'...")
+        fwDebugPrint("DisabledTrackingState: Received 'make check-in'")
+        fwDebugPrint("DisabledTrackingState: Changing state to 'enabled'...")
         tracker?.update(state: EnabledTrackingState(tracker: tracker))
         tracker?.makeCheckIn()
     }
 
     func findMyChildren() {
-        yxc_debugPrint("DisabledTrackingState: Received 'find my children'")
-        yxc_debugPrint("DisabledTrackingState: Changing state to 'enabled'...")
+        fwDebugPrint("DisabledTrackingState: Received 'find my children'")
+        fwDebugPrint("DisabledTrackingState: Changing state to 'enabled'...")
         tracker?.update(state: EnabledTrackingState(tracker: tracker))
         tracker?.findMyChildren()
     }

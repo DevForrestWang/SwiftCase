@@ -88,7 +88,7 @@ class SCommunicationVC: ItemListViewController {
 
     @objc func sayHelloRPCAction() {
         if isRunSayHello {
-            yxc_debugPrint("The SayHello is runing.")
+            fwDebugPrint("The SayHello is runing.")
             return
         }
 
@@ -96,7 +96,7 @@ class SCommunicationVC: ItemListViewController {
         DispatchQueue.global().async {
             self.runSayHelloRPC()
             DispatchQueue.main.async {
-                yxc_debugPrint("Come back to main thread\(Thread.current)")
+                fwDebugPrint("Come back to main thread\(Thread.current)")
                 self.isRunSayHello = false
             }
         }
@@ -104,21 +104,21 @@ class SCommunicationVC: ItemListViewController {
 
     @objc func requestDataAction() {
         if isRunRequestData {
-            yxc_debugPrint("The requestDataAction is runing.")
+            fwDebugPrint("The requestDataAction is runing.")
             return
         }
 
         DispatchQueue.global().async {
             self.requestDataRPC()
             DispatchQueue.main.async {
-                yxc_debugPrint("Come back to main thread\(Thread.current)")
+                fwDebugPrint("Come back to main thread\(Thread.current)")
                 self.isRunRequestData = false
             }
         }
     }
 
     @objc func restRequestAction() {
-        yxc_debugPrint("Run restRequestAction")
+        fwDebugPrint("Run restRequestAction")
         let startTime = CFAbsoluteTimeGetCurrent()
         // sayHelloRest()
         for index in 1 ... runTimes {
@@ -126,13 +126,13 @@ class SCommunicationVC: ItemListViewController {
         }
 
         let endTime = CFAbsoluteTimeGetCurrent()
-        yxc_debugPrint("End restRequestAction, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
+        fwDebugPrint("End restRequestAction, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
     }
 
     // MARK: - Private
 
     private func runSayHelloRPC() {
-        yxc_debugPrint("Start GRPC Client.")
+        fwDebugPrint("Start GRPC Client.")
         isRunSayHello = true
 
         // See: https://github.com/apple/swift-nio#eventloops-and-eventloopgroups
@@ -157,7 +157,7 @@ class SCommunicationVC: ItemListViewController {
         }
 
         let endTime = CFAbsoluteTimeGetCurrent()
-        yxc_debugPrint("End runSayHelloRPC, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
+        fwDebugPrint("End runSayHelloRPC, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
         /*
          End runSayHelloRPC, runTimes: 10000, 执行时长： 97133.64005088806 毫秒 1
          End runSayHelloRPC, runTimes: 10000, 执行时长： 78360.21292209625 毫秒 10
@@ -176,14 +176,14 @@ class SCommunicationVC: ItemListViewController {
         do {
             // wait() on the response to stop the program from exiting before the response is received.
             let response = try sayHello.response.wait()
-            yxc_debugPrint("Index:\(index), Greeter received: \(response.message)")
+            fwDebugPrint("Index:\(index), Greeter received: \(response.message)")
         } catch {
-            yxc_debugPrint("Greeter failed: \(error)")
+            fwDebugPrint("Greeter failed: \(error)")
         }
     }
 
     private func requestDataRPC() {
-        yxc_debugPrint("Start requestDataRPC")
+        fwDebugPrint("Start requestDataRPC")
         isRunRequestData = true
 
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
@@ -204,7 +204,7 @@ class SCommunicationVC: ItemListViewController {
         }
 
         let endTime = CFAbsoluteTimeGetCurrent()
-        yxc_debugPrint("End requestDataRPC, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
+        fwDebugPrint("End requestDataRPC, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
 
         /*
          End requestDataRPC, runTimes: 10000, 执行时长： 78737.40696907043 毫秒 1
@@ -215,7 +215,7 @@ class SCommunicationVC: ItemListViewController {
     }
 
     private func requestData(client: Grpc_RequestBodyClient, index: Int) {
-        yxc_debugPrint("Run requestData")
+        fwDebugPrint("Run requestData")
         var header = Grpc_Header()
         header.appName = "hsAPP"
         header.token = "aaabbbccccccdddddddd"
@@ -232,22 +232,22 @@ class SCommunicationVC: ItemListViewController {
 
         do {
             let response: Grpc_Response? = try requestData.response.wait()
-            yxc_debugPrint("Index:\(index), Greeter received: \(response!)")
+            fwDebugPrint("Index:\(index), Greeter received: \(response!)")
 
             if let tResponse = response {
                 if tResponse.retCode != 200 {
-                    yxc_debugPrint("The retCode is not 200.")
+                    fwDebugPrint("The retCode is not 200.")
                     return
                 }
 
                 // Json 字符串转对象
                 let jsonStr = tResponse.data
                 let grade = Grade.deserialize(from: jsonStr)
-                yxc_debugPrint("gradeObj = \(grade!)")
+                fwDebugPrint("gradeObj = \(grade!)")
             }
 
         } catch {
-            yxc_debugPrint("requestData failed: \(error)")
+            fwDebugPrint("requestData failed: \(error)")
         }
     }
 
@@ -269,11 +269,11 @@ class SCommunicationVC: ItemListViewController {
                 let jsonString = try? response.mapString()
                 let message = jsonString ?? "Couldn't access API"
                 // self.showAlert("restTest: ", message:message)
-                yxc_debugPrint("Response: \(message)")
+                fwDebugPrint("Response: \(message)")
             case let .failure(error):
                 let message = error.localizedDescription
                 // self.showAlert("restTest: ", message: message)
-                yxc_debugPrint("Error: \(message)")
+                fwDebugPrint("Error: \(message)")
             }
         }.disposed(by: disposeBag)
     }
@@ -284,11 +284,11 @@ class SCommunicationVC: ItemListViewController {
             .subscribe { event in
                 switch event {
                 case let .success(response):
-                    yxc_debugPrint("index:\(index), gradeObj: \(response)")
+                    fwDebugPrint("index:\(index), gradeObj: \(response)")
                 case let .failure(error):
                     let message = error.localizedDescription
                     // self.showAlert("restTest: ", message: message)
-                    yxc_debugPrint("index:\(index), Error: \(message)")
+                    fwDebugPrint("index:\(index), Error: \(message)")
                 }
             }.disposed(by: disposeBag)
     }

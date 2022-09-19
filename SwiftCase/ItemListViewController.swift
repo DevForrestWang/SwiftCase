@@ -26,7 +26,7 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
 
     @objc func injected() {
         #if DEBUG
-            yxc_debugPrint("I've been injected: \(self)")
+            fwDebugPrint("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -34,17 +34,17 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
 
     // 执行析构过程
     deinit {
-        yxc_debugPrint("===========<deinit: \(type(of: self))>===========")
+        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
 
     @objc public func expectAction() {
-        showToast("Coming soon")
+        fwShowToast("Coming soon")
     }
 
     public func showLogs(_ msg: String = "console logs") {
-        showToast(msg)
+        fwShowToast(msg)
     }
 
     func itemDataSource() -> [SCItemModel]? {
@@ -76,12 +76,12 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
 
         guard let nameSpace = Bundle.main.infoDictionary!["CFBundleExecutable"] as? String else {
-            yxc_debugPrint("No found namespace")
+            fwDebugPrint("No found namespace")
             return
         }
 
         guard let model: SCItemModel = itemDataSource()?[indexPath.row] else {
-            yxc_debugPrint("The model is empty")
+            fwDebugPrint("The model is empty")
             return
         }
 
@@ -92,12 +92,12 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
         }
 
         guard let conroller: AnyObject.Type = NSClassFromString("\(nameSpace).\(model.controllerName)") else {
-            yxc_debugPrint("No found class")
+            fwDebugPrint("No found class")
             return
         }
 
         guard let vc = conroller as? UIViewController.Type else {
-            yxc_debugPrint("not UIViewController")
+            fwDebugPrint("not UIViewController")
             return
         }
 
@@ -113,7 +113,7 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
     // MARK: - UI
 
     func setupUI() {
-        yxc_debugPrint("===========<loadClass: \(type(of: self))>===========")
+        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
 
         view.backgroundColor = .white
 

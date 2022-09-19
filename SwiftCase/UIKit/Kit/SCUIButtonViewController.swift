@@ -26,7 +26,7 @@ class SCUIButtonViewController: BaseViewController {
 
     @objc func injected() {
         #if DEBUG
-            yxc_debugPrint("I've been injected: \(self)")
+            fwDebugPrint("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -42,13 +42,13 @@ class SCUIButtonViewController: BaseViewController {
     // MARK: - IBActions
 
     @objc private func btn1Action(button: UIButton) {
-        yxc_debugPrint("Run Btn: \(button)")
+        fwDebugPrint("Run Btn: \(button)")
         if button == btn1 {
-            showToast("Run button one")
+            fwShowToast("Run button one")
         } else if button == btn2 {
-            showToast("Run button two")
+            fwShowToast("Run button two")
         } else {
-            showToast("Run button others")
+            fwShowToast("Run button others")
         }
     }
 
@@ -58,7 +58,7 @@ class SCUIButtonViewController: BaseViewController {
         let imageURL = "https://t7.baidu.com/it/u=3655946603,4193416998&fm=193&f=GIF"
         SCUtils.downloadWith(urlStr: imageURL) { [weak self] image in
             guard let saveImage = image else {
-                showToast("图片下载失败")
+                fwShowToast("图片下载失败")
                 return
             }
             // 图片写入相册
@@ -68,9 +68,9 @@ class SCUIButtonViewController: BaseViewController {
 
     @objc private func saveImageResult(image _: UIImage, didFinishSavingWithError error: NSError?, contextInfo _: AnyObject) {
         if error != nil {
-            showToast("图片保存失败")
+            fwShowToast("图片保存失败")
         } else {
-            showToast("图片保存成功")
+            fwShowToast("图片保存成功")
         }
     }
 

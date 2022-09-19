@@ -22,10 +22,10 @@ class SCOperationViewController: BaseViewController {
         override func main() {
             for _ in 0 ..< 2 {
                 if isCancelled {
-                    yxc_debugPrint("Cunstom operation is cancelled.")
+                    fwDebugPrint("Cunstom operation is cancelled.")
                     break
                 } else {
-                    yxc_debugPrint("Cunstom operation in thread: \(Thread.current)")
+                    fwDebugPrint("Cunstom operation in thread: \(Thread.current)")
                 }
             }
         }
@@ -39,7 +39,7 @@ class SCOperationViewController: BaseViewController {
 
     @objc func injected() {
         #if DEBUG
-            yxc_debugPrint("I've been injected: \(self)")
+            fwDebugPrint("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -55,44 +55,44 @@ class SCOperationViewController: BaseViewController {
     // MARK: - IBActions
 
     @objc private func addExecutionAction() {
-        yxc_debugPrint("addExecutionAction")
+        fwDebugPrint("addExecutionAction")
         let operation = BlockOperation {
-            yxc_debugPrint("Create a block operation in \(Thread.current).")
+            fwDebugPrint("Create a block operation in \(Thread.current).")
         }
         operation.addExecutionBlock {
-            yxc_debugPrint("The block operation has add an execution block in \(Thread.current).")
+            fwDebugPrint("The block operation has add an execution block in \(Thread.current).")
         }
         operation.addExecutionBlock {
-            yxc_debugPrint("The block operation has add an execution block in \(Thread.current).")
+            fwDebugPrint("The block operation has add an execution block in \(Thread.current).")
         }
         operation.start()
 
         // 自定义子类
         CustomOperation().start()
 
-        showToast("console logs")
+        fwShowToast("console logs")
     }
 
     @objc private func addDependencyAction() {
-        yxc_debugPrint("addDependencyAction")
+        fwDebugPrint("addDependencyAction")
 
         let queue = OperationQueue()
         var flag = false
         let op1 = BlockOperation {
             flag = true
-            yxc_debugPrint("Operation 1 in \(Thread.current).")
+            fwDebugPrint("Operation 1 in \(Thread.current).")
             Thread.sleep(forTimeInterval: 2)
         }
 
         op1.completionBlock = {
-            yxc_debugPrint("Operation 1 is completed.")
+            fwDebugPrint("Operation 1 is completed.")
         }
 
         let op2 = BlockOperation {
             if flag {
-                yxc_debugPrint("Operation 2 in \(Thread.current)")
+                fwDebugPrint("Operation 2 in \(Thread.current)")
             } else {
-                yxc_debugPrint("Something went wrong.")
+                fwDebugPrint("Something went wrong.")
             }
         }
 
@@ -103,11 +103,11 @@ class SCOperationViewController: BaseViewController {
         queue.addOperation(op2)
         queue.addOperation(customOp)
 
-        showToast("console logs")
+        fwShowToast("console logs")
     }
 
     @objc private func downLoadImageAction() {
-        yxc_debugPrint("downLoadImageAction")
+        fwDebugPrint("downLoadImageAction")
         imageView.image = UIImage(named: "placeholder")
         indicator.startAnimating()
 
@@ -121,7 +121,7 @@ class SCOperationViewController: BaseViewController {
                 OperationQueue.main.addOperation {
                     self.indicator.stopAnimating()
                 }
-                yxc_debugPrint("Download failed.")
+                fwDebugPrint("Download failed.")
                 return
             }
 

@@ -27,7 +27,7 @@ class SCFunctionViewController: BaseViewController {
 
     @objc func injected() {
         #if DEBUG
-            yxc_debugPrint("I've been injected: \(self)")
+            fwDebugPrint("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -78,7 +78,7 @@ class SCFunctionViewController: BaseViewController {
 
     /// 字符基本
     private func baseString() {
-        printEnter(message: "String")
+        fwPrintEnter(message: "String")
 
         // 多行字符串字面量
         let quotation = """
@@ -88,14 +88,14 @@ class SCFunctionViewController: BaseViewController {
         "Begin at the beginning," the King said gravely, "and go on
         till you come to the end; then stop."
         """
-        yxc_debugPrint(quotation)
+        fwDebugPrint(quotation)
 
-        yxc_debugPrint("0.01: \("0.01".isPureFloat())")
-        yxc_debugPrint("1.00: \("1.00".isPureFloat())")
-        yxc_debugPrint("2a: \("2a".isPureFloat())")
+        fwDebugPrint("0.01: \("0.01".isPureFloat())")
+        fwDebugPrint("1.00: \("1.00".isPureFloat())")
+        fwDebugPrint("2a: \("2a".isPureFloat())")
 
-        yxc_debugPrint("2: \("2".isPureInt())")
-        yxc_debugPrint("2.1: \("2.1".isPureInt())")
+        fwDebugPrint("2: \("2".isPureInt())")
+        fwDebugPrint("2.1: \("2.1".isPureInt())")
     }
 
     /// 字符串拼接
@@ -103,11 +103,11 @@ class SCFunctionViewController: BaseViewController {
         let str1 = "Hello"
         let str2 = "Hello"
         let str3 = str1 + " " + str2
-        yxc_debugPrint(str3)
+        fwDebugPrint(str3)
 
         var str4 = "Hello"
         str4.append(" Word")
-        yxc_debugPrint(str4)
+        fwDebugPrint(str4)
     }
 
     ///  字符串格式化
@@ -115,39 +115,39 @@ class SCFunctionViewController: BaseViewController {
         let str1 = String(2)
         let str2 = String(5.0)
         let str3 = str1 + str2
-        yxc_debugPrint(str3)
+        fwDebugPrint(str3)
 
         let str4 = String(format: "The course %d, price: %.2f", 1, 5.6876)
-        yxc_debugPrint(str4)
+        fwDebugPrint(str4)
 
         // [String Format Specifiers](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html)
         let s1 = "lazy"
-        yxc_debugPrint(String(format: "%@ boy %.2f", s1, 12.344))
+        fwDebugPrint(String(format: "%@ boy %.2f", s1, 12.344))
 
         // 不足两位前面补0
-        yxc_debugPrint(String(format: "%02d", 1))
-        yxc_debugPrint(String(format: "%02d", 11))
+        fwDebugPrint(String(format: "%02d", 1))
+        fwDebugPrint(String(format: "%02d", 11))
     }
 
     /// 获取字符串长度
     private func lengthString() {
         let str1 = String(format: "The course %d, price: %.2f", 1, 5.6876)
-        yxc_debugPrint(str1.count)
+        fwDebugPrint(str1.count)
     }
 
     private func emptyString() {
         let str1 = "Swift"
         let str2 = ""
 
-        yxc_debugPrint(str1.isEmpty)
-        yxc_debugPrint(str2.isEmpty)
+        fwDebugPrint(str1.isEmpty)
+        fwDebugPrint(str2.isEmpty)
     }
 
     /// 遍历字符串
     private func iterationString() {
         let str1 = String(format: "The course %d, price: %.2f", 1, 5.6876)
         for char in str1 {
-            yxc_debugPrint(char)
+            fwDebugPrint(char)
         }
     }
 
@@ -155,23 +155,23 @@ class SCFunctionViewController: BaseViewController {
     private func operationString() {
         //  获取首字符
         let str1 = "Swift"
-        yxc_debugPrint(str1[str1.startIndex])
+        fwDebugPrint(str1[str1.startIndex])
 
         // 删除首字符
         var str2 = "ABC"
         str2.removeFirst() // str2.remove(at: str2.startIndex)
-        yxc_debugPrint(str2)
+        fwDebugPrint(str2)
 
         // 删除指定位置
         var str3 = "ABCDEFGH"
         str3.remove(at: str3.index(str3.startIndex, offsetBy: 2)) // delete: C
-        yxc_debugPrint(str3)
+        fwDebugPrint(str3)
 
         // 删除最后一个字符
         var str4 = "ABC"
         str4.removeLast()
         // str4.remove(at: str4.index(str4.endIndex, offsetBy: -1))
-        yxc_debugPrint(str4)
+        fwDebugPrint(str4)
 
         // 删除所有内容
         var str5 = "ABCDEFGH"
@@ -181,34 +181,34 @@ class SCFunctionViewController: BaseViewController {
         var str6 = "ABCDEFGH"
         str6.removeFirst(2)
         str6.removeLast(2)
-        yxc_debugPrint(str6) // CDEF
+        fwDebugPrint(str6) // CDEF
 
         // 首字母大写，
-        yxc_debugPrint("wo xiao wo ku".capitalized) // Wo Xiao Wo Ku
-        yxc_debugPrint("已选择: \("已选择".transformToPinYin())")
+        fwDebugPrint("wo xiao wo ku".capitalized) // Wo Xiao Wo Ku
+        fwDebugPrint("已选择: \("已选择".transformToPinYin())")
 
         // 查找字符串位置
         let letters = "abcdefg"
 
         let char: Character = "c"
         if let distance = letters.distance(of: char) {
-            yxc_debugPrint("character \(char) was found at position #\(distance)") // "character c was found at position #2\n"
+            fwDebugPrint("character \(char) was found at position #\(distance)") // "character c was found at position #2\n"
         } else {
-            yxc_debugPrint("character \(char) was not found")
+            fwDebugPrint("character \(char) was not found")
         }
 
         let string = "cde"
         if let distance = letters.distance(of: string) {
-            yxc_debugPrint("string \(string) was found at position #\(distance)") // "string cde was found at position #2\n"
+            fwDebugPrint("string \(string) was found at position #\(distance)") // "string cde was found at position #2\n"
         } else {
-            yxc_debugPrint("string \(string) was not found")
+            fwDebugPrint("string \(string) was not found")
         }
 
         // md5 使用
         let password = "your password"
-        yxc_debugPrint("The \(password) md5: \(password.md5())")
+        fwDebugPrint("The \(password) md5: \(password.md5())")
 
-        yxc_debugPrint("localized: \("string_id".localized)")
+        fwDebugPrint("localized: \("string_id".localized)")
     }
 
     /// 判断字符串相等
@@ -219,11 +219,11 @@ class SCFunctionViewController: BaseViewController {
 
         // 需要知道大小, 枚举 ComparisonResult -1 0 1
         let isSame = str1.compare(str3)
-        yxc_debugPrint(isSame.rawValue) // -1
-        yxc_debugPrint(str1.compare(str2).rawValue) // 0
+        fwDebugPrint(isSame.rawValue) // -1
+        fwDebugPrint(str1.compare(str2).rawValue) // 0
 
         // 只需要知道内容是否相等
-        yxc_debugPrint(str1 == str2)
+        fwDebugPrint(str1 == str2)
     }
 
     /// 判断字符串包含另一个字符串
@@ -231,24 +231,24 @@ class SCFunctionViewController: BaseViewController {
         let str1 = "Hello"
         let str2 = "Hello World"
         let result = str2.contains(str1)
-        yxc_debugPrint(result)
+        fwDebugPrint(result)
     }
 
     /// 字符串分割
     private func splitString() {
         let str1 = "Hello World"
         let strAry = str1.split(separator: " ")
-        yxc_debugPrint(strAry)
+        fwDebugPrint(strAry)
     }
 
     /// 数组拼接字符串
     private func joinString() {
         let tArry = ["Hello", "World"]
         let str1 = tArry.joined()
-        yxc_debugPrint(str1)
+        fwDebugPrint(str1)
 
         let str2 = tArry.joined(separator: " : ")
-        yxc_debugPrint(str2)
+        fwDebugPrint(str2)
     }
 
     /// 字符串截取
@@ -256,41 +256,41 @@ class SCFunctionViewController: BaseViewController {
         // 头部截取
         let str1 = "asdfghjkl;"
         let str2 = str1.prefix(2)
-        yxc_debugPrint(str2) // as
+        fwDebugPrint(str2) // as
 
         // 尾部截取
         let str3 = str1.suffix(3)
-        yxc_debugPrint(str3) // kl;
+        fwDebugPrint(str3) // kl;
 
         // range 截取
         let indexStart4 = str1.index(str1.startIndex, offsetBy: 3)
         let indexEnd4 = str1.index(str1.startIndex, offsetBy: 5)
         let str4 = str1[indexStart4 ... indexEnd4]
-        yxc_debugPrint(str4) // fgh
+        fwDebugPrint(str4) // fgh
 
         // 获取指定位置字符串
         let range = str1.range(of: "jk")
-        yxc_debugPrint(str1[str1.startIndex ..< range!.lowerBound]) // asdfgh
-        yxc_debugPrint(str1[str1.startIndex ..< range!.upperBound]) // asdfghjk
+        fwDebugPrint(str1[str1.startIndex ..< range!.lowerBound]) // asdfgh
+        fwDebugPrint(str1[str1.startIndex ..< range!.upperBound]) // asdfghjk
 
         let greeting = "Hello, world!"
         let index = greeting.firstIndex(of: ",") ?? greeting.endIndex
         let beginning = greeting[..<index]
         // beginning is "Hello"
-        yxc_debugPrint("beginning: \(String(beginning))")
+        fwDebugPrint("beginning: \(String(beginning))")
 
         //
-        yxc_debugPrint("\(greeting), first 4:\(String(greeting[...4]))")
-        yxc_debugPrint("\(greeting), 3-4:\(String(greeting[3 ... 4]))")
-        yxc_debugPrint("\(greeting), from 7:\(String(greeting[7...]))")
-        yxc_debugPrint("\(greeting), substring 1:\(String(greeting[1]))")
+        fwDebugPrint("\(greeting), first 4:\(String(greeting[...4]))")
+        fwDebugPrint("\(greeting), 3-4:\(String(greeting[3 ... 4]))")
+        fwDebugPrint("\(greeting), from 7:\(String(greeting[7...]))")
+        fwDebugPrint("\(greeting), substring 1:\(String(greeting[1]))")
     }
 
     /// 字符串替换
     private func replateString() {
         let str1 = "all the world"
         let str2 = str1.replacingOccurrences(of: "all", with: "haha")
-        yxc_debugPrint(str2)
+        fwDebugPrint(str2)
     }
 
     /// 字符串插入
@@ -298,15 +298,15 @@ class SCFunctionViewController: BaseViewController {
         var str1 = "ABCDEFGH"
         // 单个字符
         str1.insert("X", at: str1.index(str1.startIndex, offsetBy: 6))
-        yxc_debugPrint(str1)
+        fwDebugPrint(str1)
 
         // 多个字符
         str1.insert(contentsOf: "888", at: str1.index(before: str1.endIndex))
-        yxc_debugPrint(str1)
+        fwDebugPrint(str1)
 
         let multiplier = 3
         let str2 = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
-        yxc_debugPrint(str2)
+        fwDebugPrint(str2)
     }
 
     /// 字符串删除某段内容
@@ -315,7 +315,7 @@ class SCFunctionViewController: BaseViewController {
         let startIndex = str1.index(str1.startIndex, offsetBy: 2)
         let endIndex = str1.index(str1.endIndex, offsetBy: -2)
         str1.removeSubrange(startIndex ... endIndex)
-        yxc_debugPrint(str1) // ABH
+        fwDebugPrint(str1) // ABH
     }
 
     private func convertData() {
@@ -327,30 +327,30 @@ class SCFunctionViewController: BaseViewController {
         let sData = "10"
         let iData = Int(sData)
 
-        yxc_debugPrint("sValue:\(sValue), iData:\(iData ?? 0)")
+        fwDebugPrint("sValue:\(sValue), iData:\(iData ?? 0)")
     }
 
     private func checkString() {
         let a1 = "12345".containsOnlyDigits // true
         let a2 = "a12345".containsOnlyDigits // false
-        yxc_debugPrint("containsOnlyDigits: \(a1)-\(a2)")
+        fwDebugPrint("containsOnlyDigits: \(a1)-\(a2)")
 
         let b1 = "abcde".containsOnlyLetters // true
         let b2 = "abcde1".containsOnlyLetters // false
-        yxc_debugPrint("containsOnlyLetters: \(b1)-\(b2)")
+        fwDebugPrint("containsOnlyLetters: \(b1)-\(b2)")
 
         let c1 = "abcde12345".isAlphanumeric // true
         let c2 = "abcde.12345".isAlphanumeric // false
-        yxc_debugPrint("isAlphanumeric: \(c1)-\(c2)")
+        fwDebugPrint("isAlphanumeric: \(c1)-\(c2)")
 
         // 为空检查
         let spaceStr = "     "
         let newLine = "\n"
-        yxc_debugPrint("space: \(spaceStr.isBlank)-newLine:\(newLine.isBlank)")
+        fwDebugPrint("space: \(spaceStr.isBlank)-newLine:\(newLine.isBlank)")
 
         // 邮箱检查
         let strEmail = "test@test.com"
-        yxc_debugPrint("\(strEmail) is email: \(strEmail.isValidEmail)")
+        fwDebugPrint("\(strEmail) is email: \(strEmail.isValidEmail)")
     }
 
     private func parseJson() {
@@ -359,29 +359,29 @@ class SCFunctionViewController: BaseViewController {
             "surname": "Doe",
             "age": 31,
         ]
-        yxc_debugPrint(dict) // ["surname": "Doe", "name": "John", "age": 31]
+        fwDebugPrint(dict) // ["surname": "Doe", "name": "John", "age": 31]
 
         let json = String(json: dict)
-        yxc_debugPrint(json ?? "") // Optional("{\"surname\":\"Doe\",\"name\":\"John\",\"age\":31}")
+        fwDebugPrint(json ?? "") // Optional("{\"surname\":\"Doe\",\"name\":\"John\",\"age\":31}")
 
         let restoredDict = json?.jsonToDictionary()
-        yxc_debugPrint(restoredDict ?? []) // Optional(["name": John, "surname": Doe, "age": 31])
+        fwDebugPrint(restoredDict ?? []) // Optional(["name": John, "surname": Doe, "age": 31])
     }
 
     private func stringSeparator() {
         var cardNumber = "1234567890123456"
         cardNumber.insert(separator: " ", every: 4)
-        yxc_debugPrint(cardNumber) // 1234 5678 9012 3456
+        fwDebugPrint(cardNumber) // 1234 5678 9012 3456
 
         let pin = "7690"
         let pinWithDashes = pin.inserting(separator: "-", every: 1)
-        yxc_debugPrint(pinWithDashes) // 7-6-9-0
+        fwDebugPrint(pinWithDashes) // 7-6-9-0
     }
 
     // MARK: - Array
 
     public func arrayAction() {
-        printEnter(message: "Array")
+        fwPrintEnter(message: "Array")
 
         // Create an Empty Array
         let someInts = [Int]()
@@ -390,29 +390,29 @@ class SCFunctionViewController: BaseViewController {
         // 数组的初始
         var numbers = [21, 34, 54, 12]
         var evenNumbers = [4, 6, 8]
-        yxc_debugPrint("Array, someInts:\(someInts), threeDouble:\(threeDouble)")
+        fwDebugPrint("Array, someInts:\(someInts), threeDouble:\(threeDouble)")
 
         let initArray = Array(0 ... 20)
-        yxc_debugPrint("initArray: \(initArray)")
+        fwDebugPrint("initArray: \(initArray)")
 
         // Add Elements to an Array
         numbers.append(32)
         numbers.append(contentsOf: evenNumbers)
         numbers += [1, 2, 3]
         numbers.insert(32, at: 1)
-        yxc_debugPrint("Array, Add numbers:\(numbers)")
-        yxc_debugPrint("find 5, result: \(numbers.contains(5))")
+        fwDebugPrint("Array, Add numbers:\(numbers)")
+        fwDebugPrint("find 5, result: \(numbers.contains(5))")
 
         // Modify the Elements of an Array
         numbers[1] = 16
 
-        yxc_debugPrint("Array, Modify numbers:\(numbers)")
+        fwDebugPrint("Array, Modify numbers:\(numbers)")
 
         // Remove an Element
         numbers.removeLast()
         evenNumbers.removeAll()
         numbers.remove(at: 1)
-        yxc_debugPrint("Array, Remove numbers:\(numbers), evenNumbers:\(evenNumbers)")
+        fwDebugPrint("Array, Remove numbers:\(numbers), evenNumbers:\(evenNumbers)")
 
         /// Other Array Methods
         // sort()     sorts array elements
@@ -426,137 +426,137 @@ class SCFunctionViewController: BaseViewController {
 
         // 0到9
         for i in 0 ..< 10 {
-            yxc_debugPrint(i)
+            fwDebugPrint(i)
         }
 
         // 0到10
         for i in 0 ... 10 {
-            yxc_debugPrint(i)
+            fwDebugPrint(i)
         }
 
         // 反向遍历
         for i in (0 ..< 10).reversed() {
-            yxc_debugPrint(i)
+            fwDebugPrint(i)
         }
 
         for num in numbers {
-            yxc_debugPrint(num)
+            fwDebugPrint(num)
         }
 
         // 同时遍历索引和元素
         for (index, num) in numbers.enumerated() {
-            yxc_debugPrint("\(index): \(num)")
+            fwDebugPrint("\(index): \(num)")
         }
 
         numbers.forEach { num in
-            yxc_debugPrint(num)
+            fwDebugPrint(num)
         }
 
         // 倒叙循环
         for year in stride(from: 2022, through: 2019, by: -1) {
-            yxc_debugPrint("year: \(year)")
+            fwDebugPrint("year: \(year)")
         }
 
         // Find Number of Array Elements
-        yxc_debugPrint("Array, Number: \(numbers.count)")
+        fwDebugPrint("Array, Number: \(numbers.count)")
 
         // Check if an Array is Empty
-        yxc_debugPrint("Array, Empty: \(evenNumbers.isEmpty)")
+        fwDebugPrint("Array, Empty: \(evenNumbers.isEmpty)")
 
         // Array With Mixed Data Types
         let address: [Any] = ["Scranton", 570]
-        yxc_debugPrint("Array, address: \(address)")
+        fwDebugPrint("Array, address: \(address)")
 
         // 数组的索引
-        yxc_debugPrint("startIndex and EndIndex: \(numbers[numbers.startIndex ..< numbers.endIndex])")
+        fwDebugPrint("startIndex and EndIndex: \(numbers[numbers.startIndex ..< numbers.endIndex])")
 
         // filter
         let numAry = numbers.filter { $0 > 10 }
-        yxc_debugPrint("filter more 10: \(numAry)")
+        fwDebugPrint("filter more 10: \(numAry)")
 
         let arry = ["123Z", "456Z", "789"]
         let num2Ary = arry.filter { str -> Bool in
             str.contains("Z")
         }
-        yxc_debugPrint("filter contain Z: \(num2Ary)")
+        fwDebugPrint("filter contain Z: \(num2Ary)")
 
         // map 将原来数组元素映射到新数组中；映射数组、转换元素
         let mapAry1 = numbers.map { num -> String in
             "\(num)Z"
         }
-        yxc_debugPrint("Map add Z: \(mapAry1)")
+        fwDebugPrint("Map add Z: \(mapAry1)")
 
         let mapAry2 = (1 ... 5).map { $0 * 3 }
-        yxc_debugPrint("map multiplicat 3: \(mapAry2)")
+        fwDebugPrint("map multiplicat 3: \(mapAry2)")
 
         // compactMap 空值过滤，去掉数组中nil元素
         let latMapAry = ["1", "2", "3", nil].compactMap { $0 }
-        yxc_debugPrint("Filter nil: \(latMapAry)")
+        fwDebugPrint("Filter nil: \(latMapAry)")
 
         // compactMap 强制解包
         let baseFlat: [String?] = ["123", "456", "789"]
-        yxc_debugPrint("map: \(baseFlat.map { $0 })")
-        yxc_debugPrint("flatMap: \(baseFlat.compactMap { $0 })")
+        fwDebugPrint("map: \(baseFlat.map { $0 })")
+        fwDebugPrint("flatMap: \(baseFlat.compactMap { $0 })")
 
         // 嵌套数组的压平
         let baseFlat2 = [[1], [2], [3, 4], [5, 6]]
-        yxc_debugPrint("\(baseFlat2.compactMap { $0 })")
+        fwDebugPrint("\(baseFlat2.compactMap { $0 })")
 
         // reduce 把数组变成一个元素， 初始化值、闭包规则
-        yxc_debugPrint("1...5 = \((1 ... 5).reduce(0, +))")
+        fwDebugPrint("1...5 = \((1 ... 5).reduce(0, +))")
 
         let reduceAry2 = numbers.reduce("strengthen") { a1, a2 -> String in
             "\(a1)" + "\(a2)"
         }
-        yxc_debugPrint("number + strengthen:  \(reduceAry2)")
+        fwDebugPrint("number + strengthen:  \(reduceAry2)")
 
-        yxc_debugPrint("numbers first 3:  \(numbers.prefix(upTo: 3))")
-        yxc_debugPrint("numbers from 3:  \(numbers.suffix(from: 3))")
+        fwDebugPrint("numbers first 3:  \(numbers.prefix(upTo: 3))")
+        fwDebugPrint("numbers from 3:  \(numbers.suffix(from: 3))")
 
         // 从头部开始的3个元素
-        yxc_debugPrint("delete first 3 nums:  \(numbers.dropFirst(3))")
+        fwDebugPrint("delete first 3 nums:  \(numbers.dropFirst(3))")
 
-        yxc_debugPrint("delete last 3 nums:  \(numbers.dropLast(3))")
+        fwDebugPrint("delete last 3 nums:  \(numbers.dropLast(3))")
     }
 
     // MARK: - Dictionaries
 
     public func dictionaryAction() {
-        printEnter(message: "Dictionary")
+        fwPrintEnter(message: "Dictionary")
 
         // Create a dictionary
         var capitalCity = ["Nepal": "Kathmandu", "Italy": "Rome", "England": "London"]
         var studentID = [111: "Eric", 112: "Kyle", 113: "Butters"]
         let emptyDictionary = [Int: String]()
-        yxc_debugPrint("Dictionary, capitalCity: \(capitalCity)")
-        yxc_debugPrint("Dictionary, studentID: \(studentID)")
-        yxc_debugPrint("Dictionary, emptyDictionary: \(emptyDictionary)")
+        fwDebugPrint("Dictionary, capitalCity: \(capitalCity)")
+        fwDebugPrint("Dictionary, studentID: \(studentID)")
+        fwDebugPrint("Dictionary, emptyDictionary: \(emptyDictionary)")
 
         // 是否包含key
         let hasKey = capitalCity.keys.contains("Italy")
-        yxc_debugPrint("Dictionary, capitalCity contains, Italy: \(hasKey)")
+        fwDebugPrint("Dictionary, capitalCity contains, Italy: \(hasKey)")
 
         let hasKey2 = capitalCity.contains(key: "Italy")
-        yxc_debugPrint("Dictionary, capitalCity contains, Italy: \(hasKey2)")
+        fwDebugPrint("Dictionary, capitalCity contains, Italy: \(hasKey2)")
 
         // 字典取值
-        yxc_debugPrint("Dictionary read, Key:Italy, value: \(capitalCity["Italy"] ?? "")")
+        fwDebugPrint("Dictionary read, Key:Italy, value: \(capitalCity["Italy"] ?? "")")
 
         // Add Elements
         capitalCity["Japan"] = "Tokyo"
-        yxc_debugPrint("Dictionary, Add \(capitalCity)")
+        fwDebugPrint("Dictionary, Add \(capitalCity)")
 
         // Change Value of Dictionary
         studentID[112] = "Stan"
-        yxc_debugPrint("Dictionary, Change \(studentID)")
+        fwDebugPrint("Dictionary, Change \(studentID)")
 
         // Access Elements
-        yxc_debugPrint("Dictionary, Access keys: \(Array(capitalCity.keys))")
-        yxc_debugPrint("Dictionary, Access values: \(Array(capitalCity.values))")
+        fwDebugPrint("Dictionary, Access keys: \(Array(capitalCity.keys))")
+        fwDebugPrint("Dictionary, Access values: \(Array(capitalCity.values))")
 
         // Remove an Element
         let removedValue = studentID.removeValue(forKey: 112)
-        yxc_debugPrint("Dictionary, Remove \(String(describing: removedValue))")
+        fwDebugPrint("Dictionary, Remove \(String(describing: removedValue))")
 
         /// Other Dictionary Methods
         // sorted()         sorts dictionary elements
@@ -569,25 +569,25 @@ class SCFunctionViewController: BaseViewController {
         let ariPorts: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
         for (key, value) in ariPorts {
-            yxc_debugPrint("\(key): \(value)")
+            fwDebugPrint("\(key): \(value)")
         }
 
         // Find Number of Dictionary Elements
-        yxc_debugPrint("Dictionary, Number \(studentID.count)")
+        fwDebugPrint("Dictionary, Number \(studentID.count)")
 
         let dicString = "{\"cmd\":\"CustomCmdMsg\",\"data\":{\"cmdType\":\"4\",\"msg\":{\"fileReturnId\":\"F00AgKdVBvCR1TZyBTJrD1T\",\"imgUrl\":\"https://dc.aadv.net:10443/fsServerUrl/fs/download/F00AgKdVBvCR1TZyBTJrD1T\"},\"userId\":\"0121400015000020000\",\"userInfo\":{\"groupId\":\"11202112091420160000060113\",\"userName\":\"测试二号\",\"userAvatar\":\"F00AgKdVBvCR1ThXBTVfC1T\",\"entCustId\":\"0121400015020211117\",\"custId\":\"0121400015000020000\",\"resNo\":\"01214000150\",\"operNo\":\"0002\",\"levelName\":\"店员\",\"levelImg\":\"user_icon.png\"},\"sendTime\":\"2022-05-27 17:43:57\"}}"
 
         let dicObj = dicString.toDictionary()
-        yxc_debugPrint("string to dictionary: \(dicObj.toJsonString() ?? "")")
+        fwDebugPrint("string to dictionary: \(dicObj.toJsonString() ?? "")")
     }
 
     public func saveDataAction() {
         let age = 25
         age.store(key: "age")
-        yxc_debugPrint(Int(key: "age") ?? 0) // Optional(25)
-        yxc_debugPrint(Float(key: "age") ?? 0) // Optional(25.0)
-        yxc_debugPrint(String(key: "age") ?? 0) // Optional("25")
-        yxc_debugPrint(String(key: "age1") ?? "") // nil
+        fwDebugPrint(Int(key: "age") ?? 0) // Optional(25)
+        fwDebugPrint(Float(key: "age") ?? 0) // Optional(25.0)
+        fwDebugPrint(String(key: "age") ?? 0) // Optional("25")
+        fwDebugPrint(String(key: "age1") ?? "") // nil
 
         let dict: [String: Any] = [
             "name": "John",
@@ -597,28 +597,28 @@ class SCFunctionViewController: BaseViewController {
             "age": 32,
         ]
         dict.store(key: "employee")
-        yxc_debugPrint(Dictionary(key: "employee") ?? [])
+        fwDebugPrint(Dictionary(key: "employee") ?? [])
     }
 
     // MARK: - sets
 
     public func setAction() {
-        printEnter(message: "Set")
+        fwPrintEnter(message: "Set")
 
         // Create a Set
         var studentID: Set<Int> = [112, 114, 116, 118, 115]
         let emptySet = Set<Int>()
-        yxc_debugPrint("Set, emptySet: \(emptySet)")
+        fwDebugPrint("Set, emptySet: \(emptySet)")
 
         // Add Elements
         studentID.insert(113)
-        yxc_debugPrint("Set, insert: \(studentID)")
+        fwDebugPrint("Set, insert: \(studentID)")
 
         // Remove an Element
         let removedValue = studentID.remove(115)
         var languages: Set = ["Swift", "Java", "Python"]
         languages.removeAll()
-        yxc_debugPrint("Set, remove: \(String(describing: removedValue)), languages:\(languages)")
+        fwDebugPrint("Set, remove: \(String(describing: removedValue)), languages:\(languages)")
 
         // Other Set Methods
         // sorted()          sorts set elements
@@ -630,66 +630,66 @@ class SCFunctionViewController: BaseViewController {
         // Iterate Over a Set
         let fruits: Set = ["Apple", "Peach", "Mango"]
         for fruit in fruits {
-            yxc_debugPrint("Set, fruit: \(fruit)")
+            fwDebugPrint("Set, fruit: \(fruit)")
         }
 
         // Find Number of Set Elements
-        yxc_debugPrint("Set, count: \(fruits.count)")
+        fwDebugPrint("Set, count: \(fruits.count)")
 
         // Union of Two Sets
         let setA: Set = [1, 3, 5]
         let setB: Set = [0, 1, 2, 3, 4]
-        yxc_debugPrint("Set, setA: \(setA)")
-        yxc_debugPrint("Set, setB: \(setB)")
-        yxc_debugPrint("Set, A union B: \(Array(setA.union(setB)).sorted())")
+        fwDebugPrint("Set, setA: \(setA)")
+        fwDebugPrint("Set, setB: \(setB)")
+        fwDebugPrint("Set, A union B: \(Array(setA.union(setB)).sorted())")
 
         // Intersection between Two Sets
-        yxc_debugPrint("Set, A intersection B: \(setA.intersection(setB))")
+        fwDebugPrint("Set, A intersection B: \(setA.intersection(setB))")
 
         // The difference between two sets A and B include elements of set A that are not present on set B.
-        yxc_debugPrint("Set, B subtracting A: \(setB.subtracting(setA))")
+        fwDebugPrint("Set, B subtracting A: \(setB.subtracting(setA))")
 
         // The symmetric difference between two sets A and B includes all elements of A and B without the common elements.
-        yxc_debugPrint("Set, A symmetric difference B: \(setA.symmetricDifference(setB))")
+        fwDebugPrint("Set, A symmetric difference B: \(setA.symmetricDifference(setB))")
 
         // Check Subset of a Set
         let setC: Set = [1, 2, 3, 5, 4]
         let setD: Set = [1, 2]
-        yxc_debugPrint("Set, D subset C: ", setD.isSubset(of: setC))
+        fwDebugPrint("Set, D subset C: ", setD.isSubset(of: setC))
 
         let setE: Set = [2, 1]
         if setD == setE {
-            yxc_debugPrint("Set D and Set E are equal")
+            fwDebugPrint("Set D and Set E are equal")
         } else {
-            yxc_debugPrint("Set D and Set E are different")
+            fwDebugPrint("Set D and Set E are different")
         }
     }
 
     // MARK: - Tuple
 
     public func tupleAction() {
-        printEnter(message: "Tuple")
+        fwPrintEnter(message: "Tuple")
         // Create A Tuple
         var product = ("MacBook", 1099.99)
-        yxc_debugPrint("Tuple, product: \(product)")
+        fwDebugPrint("Tuple, product: \(product)")
 
         // Access Tuple
-        yxc_debugPrint("Tuple, access, Name: \(product.0), Price:\(product.1)")
+        fwDebugPrint("Tuple, access, Name: \(product.0), Price:\(product.1)")
 
         // Modify Tuple
         product.1 = 1299.99
-        yxc_debugPrint("Tuple, modify, Name: \(product.0), Price:\(product.1)")
+        fwDebugPrint("Tuple, modify, Name: \(product.0), Price:\(product.1)")
 
         // Named Tuples
         let company = (product: "Programiz App", version: 2.1)
-        yxc_debugPrint("Tuple, name, company: \(company.product), version:\(company.version)")
+        fwDebugPrint("Tuple, name, company: \(company.product), version:\(company.version)")
     }
 
     // MARK: - swift-algorithms
 
     // 用法参考：[apple/swift-algorithms](https://github.com/apple/swift-algorithms)
     public func swiftAlgorithms() {
-        printEnter(message: "swift-algorithms")
+        fwPrintEnter(message: "swift-algorithms")
 
         // let numbers = [1, 2, 3, 3, 2, 3, 3, 2, 2, 2, 1]
         // let unique = numbers.uniqued()
@@ -702,20 +702,20 @@ class SCFunctionViewController: BaseViewController {
         let value3 = 4.5
         let value4 = 4.7
 
-        yxc_debugPrint("raw   value: \(value1) \(value2) \(value3) \(value4)")
+        fwDebugPrint("raw   value: \(value1) \(value2) \(value3) \(value4)")
         // floor向下取整
-        yxc_debugPrint("floor value: \(floor(value1)) \(floor(value2)) \(floor(value3)) \(floor(value4))")
+        fwDebugPrint("floor value: \(floor(value1)) \(floor(value2)) \(floor(value3)) \(floor(value4))")
         // ceil 向上取整
-        yxc_debugPrint("ceil  value: \(ceil(value1)) \(ceil(value2)) \(ceil(value3)) \(ceil(value4))")
+        fwDebugPrint("ceil  value: \(ceil(value1)) \(ceil(value2)) \(ceil(value3)) \(ceil(value4))")
         // round 四舍五入取整
-        yxc_debugPrint("round value: \(round(value1)) \(round(value2)) \(round(value3)) \(round(value4))")
+        fwDebugPrint("round value: \(round(value1)) \(round(value2)) \(round(value3)) \(round(value4))")
     }
 
     // MARK: - UI
 
     func setupUI() {
         title = "Function"
-        showToast("console logs")
+        fwShowToast("console logs")
 
         stringFunction()
         arrayAction()
@@ -726,10 +726,10 @@ class SCFunctionViewController: BaseViewController {
         changeNunber()
 
         let monthDic = SCUtils.generatorMonths(baseYear: 2021, baseMonth: 9)
-        yxc_debugPrint("the monthDic:\(monthDic)")
+        fwDebugPrint("the monthDic:\(monthDic)")
 
         let maxDay = SCUtils.lastDay(yearAndMonth: "2021-02", separateFlag: "-", isCurentDay: true)
-        yxc_debugPrint("2021-02 max day:\(maxDay)")
+        fwDebugPrint("2021-02 max day:\(maxDay)")
 
         saveDataAction()
     }

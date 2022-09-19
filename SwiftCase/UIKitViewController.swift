@@ -63,7 +63,7 @@ class UIKitViewController: ItemListViewController {
     /// [simdjson/simdjson: Parsing gigabytes of JSON per second (github.com)](https://github.com/simdjson/simdjson)
     /// [michaeleisel/ZippyJSON: A much faster version of JSONDecoder (github.com)](https://github.com/michaeleisel/zippyjson)
     @objc private func zippyParseJSON() {
-        printEnter(message: "ZippyJSON")
+        fwPrintEnter(message: "ZippyJSON")
 
         let json = """
         {
@@ -89,8 +89,8 @@ class UIKitViewController: ItemListViewController {
         #else
             let user = try! ZippyJSONDecoder().decode(User.self, from: json)
 
-            yxc_debugPrint("User data: ")
-            yxc_debugPrint("id:\(user.id), \nusername: \(user.username), \nrole: \(user.role), \nawesome: \(user.awesome), \nsuperAwesome: \(user.superAwesome)")
+            fwDebugPrint("User data: ")
+            fwDebugPrint("id:\(user.id), \nusername: \(user.username), \nrole: \(user.role), \nawesome: \(user.awesome), \nsuperAwesome: \(user.superAwesome)")
             showLogs()
         #endif
     }

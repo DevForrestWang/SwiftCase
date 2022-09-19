@@ -48,7 +48,7 @@ class ChatDetailViewController: BaseViewController {
               let message = txtMessage.text,
               let name = nickName
         else {
-            yxc_debugPrint("Please type your message.")
+            fwDebugPrint("Please type your message.")
             return
         }
 

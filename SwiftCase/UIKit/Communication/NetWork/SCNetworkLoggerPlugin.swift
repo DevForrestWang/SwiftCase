@@ -19,7 +19,7 @@ public final class SCNetworkLoggerPlugin: PluginType {
 
     public func willSend(_ request: RequestType, target: TargetType) {
         guard let httpRequest = request.request else {
-            yxc_debugPrint("[HTTP Request] invalid request")
+            fwDebugPrint("[HTTP Request] invalid request")
             return
         }
 
@@ -47,7 +47,7 @@ public final class SCNetworkLoggerPlugin: PluginType {
         }
         httpLog.append("[HTTP Request End]")
 
-        yxc_debugPrint(httpLog)
+        fwDebugPrint(httpLog)
     }
 
     public func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
@@ -95,7 +95,7 @@ public final class SCNetworkLoggerPlugin: PluginType {
 
         httpLog.append("[HTTP Response End]")
 
-        yxc_debugPrint(httpLog)
+        fwDebugPrint(httpLog)
     }
 
     private func onFail(_ error: MoyaError, target: TargetType) {
@@ -113,6 +113,6 @@ public final class SCNetworkLoggerPlugin: PluginType {
         httpLog.append("MESSAGE: \(error.failureReason ?? error.errorDescription ?? "unknown error")\n")
         httpLog.append("[HTTP Error End]")
 
-        yxc_debugPrint(httpLog)
+        fwDebugPrint(httpLog)
     }
 }

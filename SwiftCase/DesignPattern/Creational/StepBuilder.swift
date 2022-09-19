@@ -81,21 +81,21 @@ class RealmQueryBuilder<Model: DomainModel>: BaseQueryBuilder<Model> {
     }
 
     override func fetch() -> [Model] {
-        yxc_debugPrint("RealmQueryBuilder: Initializing CoreDataProvider with \(operations.count) operations:")
+        fwDebugPrint("RealmQueryBuilder: Initializing CoreDataProvider with \(operations.count) operations:")
         return RealmProvider().fetch(operations)
     }
 }
 
 class RealmProvider {
     func fetch<Model: DomainModel>(_ operations: [RealmQueryBuilder<Model>.Query]) -> [Model] {
-        yxc_debugPrint("RealmProvider: Retrieving data from Realm...")
+        fwDebugPrint("RealmProvider: Retrieving data from Realm...")
         for item in operations {
             switch item {
             case .filter:
-                yxc_debugPrint("RealmProvider: executing the 'filter' operation.")
+                fwDebugPrint("RealmProvider: executing the 'filter' operation.")
             /// Use Realm instance to filter results.
             case .limit:
-                yxc_debugPrint("RealmProvider: executing the 'limit' operation.")
+                fwDebugPrint("RealmProvider: executing the 'limit' operation.")
                 /// Use Realm instance to limit results.
             }
         }
@@ -131,7 +131,7 @@ class CoreDataQueryBuilder<Model: DomainModel>: BaseQueryBuilder<Model> {
     }
 
     override func fetch() -> [Model] {
-        yxc_debugPrint("CoreDataQueryBuilder: Initializing CoreDataProvider with \(operations.count) operations.")
+        fwDebugPrint("CoreDataQueryBuilder: Initializing CoreDataProvider with \(operations.count) operations.")
         return CoreDataProvider().fetch(operations)
     }
 }
@@ -140,18 +140,18 @@ class CoreDataProvider {
     func fetch<Model: DomainModel>(_ operations: [CoreDataQueryBuilder<Model>.Query]) -> [Model] {
         /// Create a NSFetchRequest
 
-        yxc_debugPrint("CoreDataProvider: Retrieving data from CoreData...")
+        fwDebugPrint("CoreDataProvider: Retrieving data from CoreData...")
 
         for item in operations {
             switch item {
             case .filter:
-                yxc_debugPrint("CoreDataProvider: executing the 'filter' operation.")
+                fwDebugPrint("CoreDataProvider: executing the 'filter' operation.")
             /// Set a 'predicate' for a NSFetchRequest.
             case .limit:
-                yxc_debugPrint("CoreDataProvider: executing the 'limit' operation.")
+                fwDebugPrint("CoreDataProvider: executing the 'limit' operation.")
             /// Set a 'fetchLimit' for a NSFetchRequest.
             case .includesPropertyValues:
-                yxc_debugPrint("CoreDataProvider: executing the 'includesPropertyValues' operation.")
+                fwDebugPrint("CoreDataProvider: executing the 'includesPropertyValues' operation.")
                 /// Set an 'includesPropertyValues' for a NSFetchRequest.
             }
         }
@@ -170,6 +170,6 @@ class BuilderClient {
             .limit(1)
             .fetch()
 
-        yxc_debugPrint("Client: I have fetched: " + String(results.count) + " records.")
+        fwDebugPrint("Client: I have fetched: " + String(results.count) + " records.")
     }
 }

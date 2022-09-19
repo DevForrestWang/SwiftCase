@@ -96,16 +96,16 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        showToast("Selected row \(indexPath.row)")
+        fwShowToast("Selected row \(indexPath.row)")
     }
 
     // MARK: - IBActions
 
     @objc private func buttonAction(_ button: UIButton) {
         if button.tag == 100 {
-            showToast("My List action")
+            fwShowToast("My List action")
         } else if button.tag == 101 {
-            showToast("Share action")
+            fwShowToast("Share action")
         }
     }
 

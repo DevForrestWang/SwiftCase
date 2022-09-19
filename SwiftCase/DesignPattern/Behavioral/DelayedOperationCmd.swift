@@ -74,7 +74,7 @@ class DelayedOperation: Operation {
 
     private func _start() {
         guard !isCancelled else {
-            yxc_debugPrint("\(self): operation is canceled")
+            fwDebugPrint("\(self): operation is canceled")
             isFinished = true
             return
         }
@@ -88,7 +88,7 @@ class DelayedOperation: Operation {
 
 class WindowOperation: DelayedOperation {
     override func main() {
-        yxc_debugPrint("\(self): Windows are closed via HomeKit.")
+        fwDebugPrint("\(self): Windows are closed via HomeKit.")
     }
 
     override var description: String {
@@ -98,7 +98,7 @@ class WindowOperation: DelayedOperation {
 
 class DoorOperation: DelayedOperation {
     override func main() {
-        yxc_debugPrint("\(self): Doors are closed via HomeKit.")
+        fwDebugPrint("\(self): Doors are closed via HomeKit.")
     }
 
     override var description: String {
@@ -108,7 +108,7 @@ class DoorOperation: DelayedOperation {
 
 class TaxiOperation: DelayedOperation {
     override func main() {
-        yxc_debugPrint("\(self): Taxi is ordered via Uber")
+        fwDebugPrint("\(self): Taxi is ordered via Uber")
     }
 
     override var description: String {
@@ -131,7 +131,7 @@ class SiriShortcuts {
     }
 
     func perform(_ action: Action, delay: TimeInterval = 0) {
-        yxc_debugPrint("Siri: performing \(action)-action\n")
+        fwDebugPrint("Siri: performing \(action)-action\n")
         switch action {
         case .leaveHome:
             add(operation: WindowOperation(delay))
@@ -142,7 +142,7 @@ class SiriShortcuts {
     }
 
     func cancel(_ action: Action) {
-        yxc_debugPrint("Siri: canceling \(action)-action\n")
+        fwDebugPrint("Siri: canceling \(action)-action\n")
         switch action {
         case .leaveHome:
             cancelOperation(with: WindowOperation.self)

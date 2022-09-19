@@ -30,7 +30,7 @@ class SCWidgetVC: BaseViewController {
         super.viewWillDisappear(animated)
         // 进行内存释放
         disposeBag = nil
-        yxc_debugPrint("The free disposeBag.")
+        fwDebugPrint("The free disposeBag.")
     }
 
     // 执行析构过程
@@ -59,7 +59,7 @@ class SCWidgetVC: BaseViewController {
         SCUtils.downloadWith(urlStr: imageURL) { [weak self] image in
 
             guard let saveImage = image else {
-                yxc_debugPrint("The image is nil")
+                fwDebugPrint("The image is nil")
                 return
             }
 
@@ -71,9 +71,9 @@ class SCWidgetVC: BaseViewController {
 
     @objc private func saveImageResult(image _: UIImage, didFinishSavingWithError error: NSError?, contextInfo _: AnyObject) {
         if error != nil {
-            showToast("图片保存相册失败")
+            fwShowToast("图片保存相册失败")
         } else {
-            showToast("图片保存相册成功")
+            fwShowToast("图片保存相册成功")
         }
     }
 
@@ -85,18 +85,18 @@ class SCWidgetVC: BaseViewController {
 
         view.addSubview(switch01)
         switch01.rx.isOn.subscribe(onNext: { flag in
-            showToast("switch: \(flag)")
+            fwShowToast("switch: \(flag)")
         }).disposed(by: disposeBag)
 
         view.addSubview(textSwitch)
         textSwitch.gyTextSwitchClosure = { isOn in
-            yxc_debugPrint("state:\(isOn)")
+            fwDebugPrint("state:\(isOn)")
         }
 
         view.addSubview(mySlider)
         // 绑定事件
         mySlider.rx.value.subscribe(onNext: { value in
-            yxc_debugPrint("slider value: \(Int(value))")
+            fwDebugPrint("slider value: \(Int(value))")
             self.sliderLable.alpha = CGFloat((self.mySlider.maximumValue - value) / self.mySlider.maximumValue)
         }).disposed(by: disposeBag)
 
@@ -110,7 +110,7 @@ class SCWidgetVC: BaseViewController {
         view.addGestureRecognizer(tap)
         tap.rx.event.subscribe(onNext: { [weak self] recognizer in
             let point = recognizer.location(in: recognizer.view)
-            // showToast("click: x: \(point.x), y: \(point.y)")
+            // fwShowToast("click: x: \(point.x), y: \(point.y)")
             self?.sliderLable.text = "click: x: \(point.x), y: \(point.y)"
         }).disposed(by: disposeBag)
 

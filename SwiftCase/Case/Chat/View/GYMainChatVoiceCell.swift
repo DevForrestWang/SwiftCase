@@ -35,7 +35,7 @@ class GYMainChatVoiceCell: GYMainChatBaseInfoCell {
 
     // 执行析构过程
     deinit {
-        yxc_debugPrint("===========<deinit: \(type(of: self))>===========")
+        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
@@ -87,7 +87,7 @@ class GYMainChatVoiceCell: GYMainChatBaseInfoCell {
     // MARK: - UI
 
     private func setupUI() {
-        yxc_debugPrint("===========<loadClass: \(type(of: self))>===========")
+        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
 
         contentBgView.addSubview(bgView)
         bgView.addSubview(durationLable)

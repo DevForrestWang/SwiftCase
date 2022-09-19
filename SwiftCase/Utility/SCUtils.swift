@@ -17,35 +17,31 @@ import Kingfisher
 import Toast_Swift
 
 // MARK: - Print info
-
-public func yxc_debugPrint(_ message: Any...) {
+/// 全局函数添加前缀，避免冲突
+public func fwDebugPrint(_ message: Any...) {
     debugPrint("\(#file):\(#line): \(message)")
 }
 
 /// 错误信息
-public func scError(_ error: String, location: String = "\(#file):\(#line)") -> NSError {
+public func fwError(_ error: String, location: String = "\(#file):\(#line)") -> NSError {
     return NSError(domain: "SwiftCaseError", code: -1, userInfo: [NSLocalizedDescriptionKey: "\(location): \(error)"])
 }
 
-public func printEnter(message: String) {
+public func fwPrintEnter(message: String) {
     debugPrint("================ \(message)====================")
 }
 
-public func printLine() {
+public func fwPrintLine() {
     debugPrint("===================================================", terminator: "\n\n")
 }
 
 // MARK: - show info
 
-public func showToast(_ message: String) {
-    UIWindow.key?.makeToast(message, duration: 2.0, position: .center)
-}
-
 public func fwShowToast(_ message: String) {
     UIWindow.key?.makeToast(message, duration: 2.0, position: .center)
 }
 
-public func showAlert(_ vc: UIViewController, _ title: String, message: String) {
+public func fwShowAlert(_ vc: UIViewController, _ title: String, message: String) {
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
     alertController.addAction(okAction)
@@ -82,7 +78,7 @@ public enum SCUtils {
         guard let archiveData = try? NSKeyedArchiver.archivedData(withRootObject: value,
                                                                   requiringSecureCoding: false)
         else {
-            yxc_debugPrint("Failed to archive, key: \(key)")
+            fwDebugPrint("Failed to archive, key: \(key)")
             return
         }
 
@@ -119,12 +115,12 @@ public enum SCUtils {
     ///
     public static func updateLableStyle(lable: UILabel, target: String, font: UIFont, color: UIColor, space: CGFloat = 0) {
         guard let text = lable.text else {
-            yxc_debugPrint("The lable is empty.")
+            fwDebugPrint("The lable is empty.")
             return
         }
 
         if text.count <= 0 || target.count <= 0 {
-            yxc_debugPrint("The lable or target is empty.")
+            fwDebugPrint("The lable or target is empty.")
             return
         }
 
@@ -319,7 +315,7 @@ public enum SCUtils {
     public static func showGif(fileName: String, imageView: UIImageView) {
         // 1.加载Gif图片, 并转成Data类型
         guard let path = Bundle.main.path(forResource: fileName, ofType: nil) else {
-            yxc_debugPrint("The file:\(fileName) is not exist.")
+            fwDebugPrint("The file:\(fileName) is not exist.")
             return
         }
         guard let data = NSData(contentsOfFile: path) else {
@@ -328,7 +324,7 @@ public enum SCUtils {
 
         // 2.从data中读取数据: 将data转成CGImageSource对象
         guard let imageSource = CGImageSourceCreateWithData(data, nil) else {
-            yxc_debugPrint("can not data to CGImageSource.")
+            fwDebugPrint("can not data to CGImageSource.")
             return
         }
         let imageCount = CGImageSourceGetCount(imageSource)

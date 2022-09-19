@@ -56,12 +56,12 @@ class ScreenMediator: ScreenUpdatable {
     }
 
     func likedAdded(to news: SMNews) {
-        yxc_debugPrint("Screen Mediator: Received a liked news model with id \(news.id)")
+        fwDebugPrint("Screen Mediator: Received a liked news model with id \(news.id)")
         screens?.forEach { $0.likedAdded(to: news) }
     }
 
     func likeRemoved(from news: SMNews) {
-        yxc_debugPrint("ScreenMediator: Received a disliked news model with id \(news.id)")
+        fwDebugPrint("ScreenMediator: Received a disliked news model with id \(news.id)")
         screens?.forEach { $0.likeRemoved(from: news) }
     }
 }
@@ -80,7 +80,7 @@ class NewFeedViewController: ScreenUpdatable {
     }
 
     func likedAdded(to news: SMNews) {
-        yxc_debugPrint("News Feed: Received a liked news model with id \(news.id)")
+        fwDebugPrint("News Feed: Received a liked news model with id \(news.id)")
 
         for var item in newArray {
             if item == news {
@@ -90,7 +90,7 @@ class NewFeedViewController: ScreenUpdatable {
     }
 
     func likeRemoved(from news: SMNews) {
-        yxc_debugPrint("News Feed: Received a disliked news model with id \(news.id)")
+        fwDebugPrint("News Feed: Received a disliked news model with id \(news.id)")
 
         for var item in newArray {
             if item == news {
@@ -100,16 +100,16 @@ class NewFeedViewController: ScreenUpdatable {
     }
 
     func userLikedAllNews() {
-        yxc_debugPrint("\n\nNews Feed: User LIKED all news models")
-        yxc_debugPrint("News Feed: I am telling to mediator about it...\n")
+        fwDebugPrint("\n\nNews Feed: User LIKED all news models")
+        fwDebugPrint("News Feed: I am telling to mediator about it...\n")
         newArray.forEach { item in
             mediator?.likedAdded(to: item)
         }
     }
 
     func userDislikedAllNews() {
-        yxc_debugPrint("\n\nNews Feed: User DISLIKED all news models")
-        yxc_debugPrint("News Feed: I am telling to mediator about it...\n")
+        fwDebugPrint("\n\nNews Feed: User DISLIKED all news models")
+        fwDebugPrint("News Feed: I am telling to mediator about it...\n")
         newArray.forEach { item in
             mediator?.likeRemoved(from: item)
         }
@@ -126,14 +126,14 @@ class NewDetailViewController: ScreenUpdatable {
     }
 
     func likedAdded(to news: SMNews) {
-        yxc_debugPrint("News Detail: Received a liked news model with id \(news.id)")
+        fwDebugPrint("News Detail: Received a liked news model with id \(news.id)")
         if self.news == news {
             self.news.likeCount += 1
         }
     }
 
     func likeRemoved(from news: SMNews) {
-        yxc_debugPrint("News Detail: Received a disliked news model with id \(news.id)")
+        fwDebugPrint("News Detail: Received a disliked news model with id \(news.id)")
         if self.news == news {
             self.news.likeCount -= 1
         }
@@ -150,12 +150,12 @@ class ProfileViewController: ScreenUpdatable {
     }
 
     func likedAdded(to news: SMNews) {
-        yxc_debugPrint("Profile: Received a liked news model with id \(news.id)")
+        fwDebugPrint("Profile: Received a liked news model with id \(news.id)")
         numberOfGivenLikes += 1
     }
 
     func likeRemoved(from news: SMNews) {
-        yxc_debugPrint("Profile: Received a disliked news model with id \(news.id)")
+        fwDebugPrint("Profile: Received a disliked news model with id \(news.id)")
         numberOfGivenLikes -= 1
     }
 }

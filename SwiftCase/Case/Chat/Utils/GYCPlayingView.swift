@@ -25,7 +25,7 @@ class GYCPlayingView: UIView {
 
     // 执行析构过程
     deinit {
-        yxc_debugPrint("===========<deinit: \(type(of: self))>===========")
+        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -37,7 +37,7 @@ class GYCPlayingView: UIView {
 
     public func playVedio(url: URL, coverImg: UIImage?, completeClosure: @escaping () -> Void) {
         guard let keyWindow = gWindow else {
-            yxc_debugPrint("The keyWindow is nil.")
+            fwDebugPrint("The keyWindow is nil.")
             return
         }
 
@@ -111,7 +111,7 @@ class GYCPlayingView: UIView {
 
     @objc private func onSliderValueChanged(slider: UISlider) {
         guard let duration = player?.currentItem?.duration else {
-            yxc_debugPrint("The video duration is nil.")
+            fwDebugPrint("The video duration is nil.")
             return
         }
 
@@ -235,7 +235,7 @@ class GYCPlayingView: UIView {
     // MARK: - UI
 
     private func setupUI() {
-        yxc_debugPrint("===========<init: \(type(of: self))>===========")
+        fwDebugPrint("===========<init: \(type(of: self))>===========")
         addSubview(showVedioView)
         addSubview(coverBgView)
         coverBgView.addSubview(coverImagView)

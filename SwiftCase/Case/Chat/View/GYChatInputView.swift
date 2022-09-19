@@ -43,7 +43,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
 
     // 执行析构过程
     deinit {
-        yxc_debugPrint("===========<deinit: \(type(of: self))>===========")
+        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -313,7 +313,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
 
     private func selectAlbum(isVideo: Bool = false) {
         guard let vc = parentVc else {
-            yxc_debugPrint("没有获取到当前控制器")
+            fwDebugPrint("没有获取到当前控制器")
             return
         }
 
@@ -353,7 +353,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
         }
 
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
-            yxc_debugPrint("相机不可用")
+            fwDebugPrint("相机不可用")
             return
         }
 
@@ -385,7 +385,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
                     }
 
                 } else {
-                    yxc_debugPrint("图片保存失败")
+                    fwDebugPrint("图片保存失败")
                 }
                 hud.hide()
             }
@@ -397,7 +397,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
                         tempClosure([], [at], true)
                     }
                 } else {
-                    yxc_debugPrint("视频保存失败")
+                    fwDebugPrint("视频保存失败")
                 }
                 hud.hide()
             }
@@ -407,7 +407,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
     // MARK: - UI
 
     private func setupUI() {
-        yxc_debugPrint("===========<loadClass: \(type(of: self))>===========")
+        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
         backgroundColor = UIColor.hexColor(0xF4F5F6)
 
         addSubview(lineView)

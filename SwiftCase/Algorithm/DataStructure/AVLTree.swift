@@ -301,7 +301,7 @@ public extension AVLTree {
     fileprivate func display(node: Node?, level: Int) {
         if let node = node {
             display(node: node.rightChild, level: level + 1)
-            yxc_debugPrint("")
+            fwDebugPrint("")
 
             if node.isRoot {
                 print("Root -> ", terminator: "")
@@ -316,7 +316,7 @@ public extension AVLTree {
 
     func display(node: Node) {
         display(node: node, level: 0)
-        yxc_debugPrint("")
+        fwDebugPrint("")
     }
 
     func inorder(node: Node?) -> String {

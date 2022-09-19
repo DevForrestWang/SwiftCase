@@ -30,7 +30,7 @@ public class SCalendarDateRangePickerView: UIView {
 
     // 执行析构过程
     deinit {
-        yxc_debugPrint("===========<deinit: \(type(of: self))>===========")
+        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
@@ -49,7 +49,7 @@ public class SCalendarDateRangePickerView: UIView {
     // MARK: - UI
 
     private func setupUI() {
-        yxc_debugPrint("===========<loadClass: \(type(of: self))>===========")
+        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
         addSubview(collectionView)
 
         if minimumDate == nil {

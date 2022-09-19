@@ -54,7 +54,7 @@ class WifiProjector: Projector {
     var currentPage: Int = 0
 
     func present(info: String) {
-        yxc_debugPrint("Info is presented over Wifi: \(info)")
+        fwDebugPrint("Info is presented over Wifi: \(info)")
     }
 
     func update(with page: Int) {
@@ -70,7 +70,7 @@ class BluetoothProjector: Projector {
     var currentPage: Int = 0
 
     func present(info: String) {
-        yxc_debugPrint("Info is presented over Bluetooth: \(info)")
+        fwDebugPrint("Info is presented over Bluetooth: \(info)")
     }
 
     func update(with page: Int) {

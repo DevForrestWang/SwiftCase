@@ -36,7 +36,7 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
 
     @objc func injected() {
         #if DEBUG
-            yxc_debugPrint("I've been injected: \(self)")
+            fwDebugPrint("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -54,31 +54,31 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
     // MARK: - UITextViewDelegate
 
     func textViewShouldBeginEditing(_: UITextView) -> Bool {
-        yxc_debugPrint("I'm going to start editing")
+        fwDebugPrint("I'm going to start editing")
         return true
     }
 
     func textViewDidBeginEditing(_: UITextView) {
-        yxc_debugPrint("I've already started editing")
+        fwDebugPrint("I've already started editing")
     }
 
     func textViewShouldEndEditing(_: UITextView) -> Bool {
-        yxc_debugPrint("To finish editing")
+        fwDebugPrint("To finish editing")
 
         return true
     }
 
     func textViewDidEndEditing(_: UITextView) {
-        yxc_debugPrint("I have finished editing")
+        fwDebugPrint("I have finished editing")
     }
 
     func textViewDidChange(_: UITextView) {
-        yxc_debugPrint("the user changes the text ")
+        fwDebugPrint("the user changes the text ")
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn _: NSRange, replacementText text: String) -> Bool {
         let currentText: String = textView.text
-        yxc_debugPrint("text: \(currentText), lenght: \(currentText.count)")
+        fwDebugPrint("text: \(currentText), lenght: \(currentText.count)")
 
         // 回车时退出编辑
         if text == "\n" {
@@ -97,13 +97,13 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
             let length = text.count
             if length > 100 {
                 textView.text = String(text.prefix(100))
-                showToast("Reach maximum length")
+                fwShowToast("Reach maximum length")
             }
         }
     }
 
     @objc func accessoryRightAction() {
-        showToast("Confirm")
+        fwShowToast("Confirm")
         view.endEditing(true)
     }
 

@@ -157,18 +157,18 @@ class VisitorClient {
         let blackList = BlackListVisitor(emails: ["banned@email.com"],
                                          phones: ["000000000", "1234325232"],
                                          userNames: ["Spammer"])
-        yxc_debugPrint("\nClient: Using \(policy.description) and \(blackList.description)")
+        fwDebugPrint("\nClient: Using \(policy.description) and \(blackList.description)")
 
         notifications.forEach { item in
             guard !item.accept(visitor: blackList) else {
-                yxc_debugPrint("\tWARNING: " + item.description + " is in a black list")
+                fwDebugPrint("\tWARNING: " + item.description + " is in a black list")
                 return
             }
 
             if item.accept(visitor: policy) {
-                yxc_debugPrint("\t" + item.description + " notification will be shown")
+                fwDebugPrint("\t" + item.description + " notification will be shown")
             } else {
-                yxc_debugPrint("\t" + item.description + " notification will be silenced")
+                fwDebugPrint("\t" + item.description + " notification will be silenced")
             }
         }
     }

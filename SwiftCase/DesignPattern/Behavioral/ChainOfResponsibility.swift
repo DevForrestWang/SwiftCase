@@ -207,21 +207,21 @@ class BaseAuthViewController: UIViewController, AuthHandlerSupportable {
 
 class LoginViewController: BaseAuthViewController {
     func loginButtonSelected() {
-        yxc_debugPrint("Login View Controller: User selected Login button")
+        fwDebugPrint("Login View Controller: User selected Login button")
         let request = LoginRequest(email: "smth@gmail.com", password: "123HardPass")
 
         if let error = handler?.handle(request) {
-            yxc_debugPrint("Login View Controller: something went wrong")
-            yxc_debugPrint("Login View Controller: Error -> " + (error.errorDescription ?? ""))
+            fwDebugPrint("Login View Controller: something went wrong")
+            fwDebugPrint("Login View Controller: Error -> " + (error.errorDescription ?? ""))
         } else {
-            yxc_debugPrint("Login View Controller: Preconditions are successfully validated")
+            fwDebugPrint("Login View Controller: Preconditions are successfully validated")
         }
     }
 }
 
 class SignUpViewController: BaseAuthViewController {
     func signUpButtonSelected() {
-        yxc_debugPrint("SignUp View Controller: User selected SignUp button")
+        fwDebugPrint("SignUp View Controller: User selected SignUp button")
 
         let request = SignUpRequest(firstName: "Vasya",
                                     lastName: "Pupkin",
@@ -230,10 +230,10 @@ class SignUpViewController: BaseAuthViewController {
                                     repeatedPassword: "123HardPass")
 
         if let error = handler?.handle(request) {
-            yxc_debugPrint("SignUp View Controller: something went wrong")
-            yxc_debugPrint("SignUp View Controller: Error -> " + (error.errorDescription ?? ""))
+            fwDebugPrint("SignUp View Controller: something went wrong")
+            fwDebugPrint("SignUp View Controller: Error -> " + (error.errorDescription ?? ""))
         } else {
-            yxc_debugPrint("SignUp View Controller: Preconditions are successfully validated")
+            fwDebugPrint("SignUp View Controller: Preconditions are successfully validated")
         }
     }
 }

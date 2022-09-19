@@ -29,7 +29,7 @@ class GYChatInputCollectionViewCell: UICollectionViewCell {
 
     // 执行析构过程
     deinit {
-        yxc_debugPrint("===========<deinit: \(type(of: self))>===========")
+        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
@@ -53,7 +53,7 @@ class GYChatInputCollectionViewCell: UICollectionViewCell {
     // MARK: - UI
 
     private func setupUI() {
-        yxc_debugPrint("===========<loadClass: \(type(of: self))>===========")
+        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
         addSubview(emojiLable)
     }
 

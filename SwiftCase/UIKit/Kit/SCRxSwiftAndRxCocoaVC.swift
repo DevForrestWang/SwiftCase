@@ -46,7 +46,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
 
     /// 可观察序列Observable的创建方法
     private func obserableFun() {
-        printEnter(message: "Observable")
+        fwPrintEnter(message: "Observable")
 
         let observable = Observable<String>.create { observer -> Disposable in
             // 对订阅者发出了.next事件
@@ -61,34 +61,34 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
         let observer: AnyObserver<String> = AnyObserver { event in
             switch event {
             case let .next(data):
-                yxc_debugPrint("data: \(data)")
+                fwDebugPrint("data: \(data)")
             case let .error(error):
-                yxc_debugPrint("error: \(error)")
+                fwDebugPrint("error: \(error)")
             case .completed:
-                yxc_debugPrint("Completed")
+                fwDebugPrint("Completed")
             }
         }
         observable.subscribe(observer).disposed(by: disposeBag)
 
         // subscribe方法, 把 event 进行分类
         observable.subscribe { element in
-            yxc_debugPrint("onNext: \(element)")
+            fwDebugPrint("onNext: \(element)")
         } onError: { error in
-            yxc_debugPrint("error: \(error)")
+            fwDebugPrint("error: \(error)")
         } onCompleted: {
-            yxc_debugPrint("Completed")
+            fwDebugPrint("Completed")
         } onDisposed: {
-            yxc_debugPrint("Disposed")
+            fwDebugPrint("Disposed")
         }.disposed(by: disposeBag)
     }
 
     /// BehaviorRelay 使用
     private func behaviorRelayTest() {
-        printEnter(message: "BehaviorRelay")
+        fwPrintEnter(message: "BehaviorRelay")
 
         let relay = BehaviorRelay<String>(value: "1")
         relay.subscribe {
-            yxc_debugPrint("Event:", $0)
+            fwDebugPrint("Event:", $0)
         }.disposed(by: disposeBag)
 
         relay.accept("2")
@@ -96,7 +96,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
     }
 
     private func transformingObservables() {
-        printEnter(message: "Transforming Observables")
+        fwPrintEnter(message: "Transforming Observables")
 
         let s1 = BehaviorSubject(value: "A")
         let s2 = BehaviorSubject(value: "1")
@@ -104,7 +104,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
         let relay = BehaviorRelay<BehaviorSubject>(value: s1)
         relay.flatMap { $0 }
             .subscribe(onNext: {
-                yxc_debugPrint($0)
+                fwDebugPrint($0)
             }).disposed(by: disposeBag)
 
         s1.onNext("B")
@@ -117,7 +117,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
     /// 时间富文本
     private func formatTimeInterval(ms: NSInteger) -> NSMutableAttributedString {
         let string = String(format: "%0.2d:%0.2d.%0.1d", arguments: [(ms / 600) % 600, (ms % 600) / 10, ms % 10])
-        yxc_debugPrint("Time: \(string)")
+        fwDebugPrint("Time: \(string)")
         let attString = NSMutableAttributedString(string: string)
         attString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18), range: NSMakeRange(0, 5))
         attString.addAttribute(.foregroundColor, value: UIColor.white, range: NSMakeRange(0, 5))

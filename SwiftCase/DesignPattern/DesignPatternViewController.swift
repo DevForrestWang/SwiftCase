@@ -63,32 +63,32 @@ class DesignPatternViewController: ItemListViewController {
     // MARK: - Creational
 
     @objc func testSingleton() throws {
-        printEnter(message: "Run testSingleton")
+        fwPrintEnter(message: "Run testSingleton")
         let slgp = SingletonPattern.shared
         slgp.publicFunction()
-        showToast("Successed run publicFunction")
+        fwShowToast("Successed run publicFunction")
 
         // methods2：
         let instance1 = Singleton.shared
         let instance2 = Singleton.shared
-        yxc_debugPrint(instance1.someBusinessLogic())
-        yxc_debugPrint(instance1 === instance2)
+        fwDebugPrint(instance1.someBusinessLogic())
+        fwDebugPrint(instance1 === instance2)
     }
 
     @objc func testFactoryPattern() throws {
-        printEnter(message: "Run testFactoryPattern")
+        fwPrintEnter(message: "Run testFactoryPattern")
         let noCurrencyCode = "No Currency Code Available"
 
-        yxc_debugPrint(CurrencyFactory.currency(for: .greece)?.code ?? noCurrencyCode)
-        yxc_debugPrint(CurrencyFactory.currency(for: .spain)?.code ?? noCurrencyCode)
-        yxc_debugPrint(CurrencyFactory.currency(for: .unitedStates)?.code ?? noCurrencyCode)
+        fwDebugPrint(CurrencyFactory.currency(for: .greece)?.code ?? noCurrencyCode)
+        fwDebugPrint(CurrencyFactory.currency(for: .spain)?.code ?? noCurrencyCode)
+        fwDebugPrint(CurrencyFactory.currency(for: .unitedStates)?.code ?? noCurrencyCode)
 
         let uk = CurrencyFactory.currency(for: .uk)?.code ?? noCurrencyCode
-        yxc_debugPrint(uk)
+        fwDebugPrint(uk)
     }
 
     @objc func testProjectorFactory() {
-        printEnter(message: "Run testProjectorFactory")
+        fwPrintEnter(message: "Run testProjectorFactory")
 
         let info = "Very important info of the presentation"
         let clientCode = ProjectorFactoryClientCode()
@@ -101,16 +101,16 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testAbstractFactory() throws {
-        printEnter(message: "Run testAbstractFactory")
+        fwPrintEnter(message: "Run testAbstractFactory")
         let bigKahuna = BurgerFactoryType.bigKahuna.make()
-        yxc_debugPrint(bigKahuna)
+        fwDebugPrint(bigKahuna)
 
         let jackInTheBox = BurgerFactoryType.jackInTheBox.make()
-        yxc_debugPrint(jackInTheBox)
+        fwDebugPrint(jackInTheBox)
     }
 
     @objc func testAuthViewAbstractFactory() throws {
-        printEnter(message: "Run testAuthViewAbstractFactory")
+        fwPrintEnter(message: "Run testAuthViewAbstractFactory")
 
         let teacherMode = false
         let clientCode: AuthViewClientCode
@@ -123,15 +123,15 @@ class DesignPatternViewController: ItemListViewController {
 
         /// Present LogIn flow
         clientCode.presentLogin()
-        yxc_debugPrint("Login screen has been presented")
+        fwDebugPrint("Login screen has been presented")
 
         /// Present SignUp flow
         clientCode.presentSignUp()
-        yxc_debugPrint("Sign up screen has been presented")
+        fwDebugPrint("Sign up screen has been presented")
     }
 
     @objc func testBuilder() throws {
-        printEnter(message: "Run testBuilder")
+        fwPrintEnter(message: "Run testBuilder")
         let url = URLBuilder()
             .set(scheme: "https")
             .set(host: "localhost")
@@ -139,81 +139,81 @@ class DesignPatternViewController: ItemListViewController {
             .addQueryItem(name: "sort", value: "name")
             .addQueryItem(name: "order", value: "asc")
             .build()
-        yxc_debugPrint(url ?? "URL is nil")
-        printLine()
+        fwDebugPrint(url ?? "URL is nil")
+        fwPrintLine()
     }
 
     @objc func testStepBuilder() throws {
-        printEnter(message: "Client: Start testStepBuilder")
+        fwPrintEnter(message: "Client: Start testStepBuilder")
         let client = BuilderClient()
         client.clientCode(builder: RealmQueryBuilder<SBUser>())
 
-        yxc_debugPrint()
+        fwDebugPrint()
 
-        printEnter(message: "Client: Start fetching data from CoreData")
+        fwPrintEnter(message: "Client: Start fetching data from CoreData")
         client.clientCode(builder: CoreDataQueryBuilder<SBUser>())
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testPagePrototype() throws {
-        printEnter(message: "Client: Start testPagePrototype")
+        fwPrintEnter(message: "Client: Start testPagePrototype")
         let author = PPAuthor(id: 10, username: "Ivan_83")
         let page = PPPage(title: "My First Page", contents: "Hello world", author: author)
         page.add(comment: PPComment(message: "Keep is up!"))
 
         guard let anotherPage = page.copy() as? PPPage else {
-            yxc_debugPrint("Page was not copyied")
+            fwDebugPrint("Page was not copyied")
             return
         }
 
         /// Comments should be empty as it is a new page.
-        yxc_debugPrint(author.pageCount == 2)
+        fwDebugPrint(author.pageCount == 2)
 
-        yxc_debugPrint("Original title: " + page.title)
-        yxc_debugPrint("Copied title: " + anotherPage.title)
-        yxc_debugPrint("Count of pages: " + String(author.pageCount))
+        fwDebugPrint("Original title: " + page.title)
+        fwDebugPrint("Copied title: " + anotherPage.title)
+        fwDebugPrint("Count of pages: " + String(author.pageCount))
 
-        printLine()
+        fwPrintLine()
     }
 
     // MARK: - Structural
 
     @objc func testProfileProxy() throws {
-        printEnter(message: "Client: Start testProfileProxy")
+        fwPrintEnter(message: "Client: Start testProfileProxy")
 
-        yxc_debugPrint("Client: Loading a profile WITHOUT proxy")
+        fwDebugPrint("Client: Loading a profile WITHOUT proxy")
         let profile = ProxyClient()
         profile.loadBasicProfile(with: PPKeychain())
         profile.loadProfileWithBankAccount(with: PPKeychain())
 
-        yxc_debugPrint("\nClient: Let's load a profile WITH proxy")
+        fwDebugPrint("\nClient: Let's load a profile WITH proxy")
         profile.loadBasicProfile(with: ProfileProxy())
         profile.loadProfileWithBankAccount(with: ProfileProxy())
 
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testContentShareBridge() throws {
-        printEnter(message: "Client: Start testProfileProxy")
+        fwPrintEnter(message: "Client: Start testProfileProxy")
 
         let bridge = BridgeClient()
-        yxc_debugPrint("Client: Pushing Photo View Controller...")
+        fwDebugPrint("Client: Pushing Photo View Controller...")
         bridge.push(PhotoViewController())
 
-        yxc_debugPrint()
+        fwDebugPrint()
 
-        yxc_debugPrint("Client: Pushing Feed View Controller...")
+        fwDebugPrint("Client: Pushing Feed View Controller...")
         bridge.push(FeedViewController())
 
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testImageDecorator() {
-        printEnter(message: "Client: Start testImageDecorator")
+        fwPrintEnter(message: "Client: Start testImageDecorator")
         let client = DecoratorClient()
         var image = client.loadImage(urlString: "https://refactoring.guru/images/content-public/logos/logo-new-3x.png")
 
-        yxc_debugPrint("Client: set up an editors stack")
+        fwDebugPrint("Client: set up an editors stack")
         let resizer = Resizer(image, xScale: 0.2, yScale: 0.2)
         image = resizer.applay()
 
@@ -228,22 +228,22 @@ class DesignPatternViewController: ItemListViewController {
         image = colorFilter.applay()
 
         client.clientCode(editor: colorFilter)
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testAdapteAuth() throws {
-        printEnter(message: "Client: Start testAdapteAuth")
+        fwPrintEnter(message: "Client: Start testAdapteAuth")
         let topViewController = UIViewController()
         let faceBookSDK = FaceBookAuthSDK()
         faceBookSDK.presentAuthFlow(form: topViewController)
 
         let twitterSDK = TwitterAuthSDK()
         twitterSDK.presentAuthFlow(form: topViewController)
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testFlyweight() throws {
-        printEnter(message: "Client: Start testDPInterpreter")
+        fwPrintEnter(message: "Client: Start testDPInterpreter")
 
         /// The client code usually creates a bunch of pre-populated flyweights
         /// in the initialization stage of the application.
@@ -274,14 +274,14 @@ class DesignPatternViewController: ItemListViewController {
 
         factory.printFlyweights()
 
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testDPComposite() throws {
-        printEnter(message: "Client: Start testDPInterpreter")
+        fwPrintEnter(message: "Client: Start testDPInterpreter")
 
         /// This way the client code can support the simple leaf components...
-        yxc_debugPrint("Client: I've got a simple component:")
+        fwDebugPrint("Client: I've got a simple component:")
         ComponentClient.clientCode(component: DPLeaf())
 
         /// ...as well as the complex composites.
@@ -298,19 +298,19 @@ class DesignPatternViewController: ItemListViewController {
         tree.add(component: branch1)
         tree.add(component: branch2)
 
-        yxc_debugPrint("\nClient: Now I've got a composite tree:")
+        fwDebugPrint("\nClient: Now I've got a composite tree:")
         ComponentClient.clientCode(component: tree)
 
-        yxc_debugPrint("\nClient: I don't need to check the components classes even when managing the tree:")
+        fwDebugPrint("\nClient: I don't need to check the components classes even when managing the tree:")
         ComponentClient.moreComplexClient(leftComponent: tree, rightComponent: DPLeaf())
 
-        printLine()
+        fwPrintLine()
     }
 
     // MARK: - Behavioral
 
     @objc func testCartSubscriber() {
-        printEnter(message: "Client: Start testCartSubscriber")
+        fwPrintEnter(message: "Client: Start testCartSubscriber")
 
         let cartManager = CarManager()
         cartManager.add(subscriber: UINavigationBar())
@@ -323,24 +323,24 @@ class DesignPatternViewController: ItemListViewController {
         cartManager.add(product: tShirt)
 
         cartManager.remove(product: apple)
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testAccessorTemplate() throws {
-        printEnter(message: "Client: Start testAccessorTemplate")
+        fwPrintEnter(message: "Client: Start testAccessorTemplate")
         let accessors = [CameraAccessor(), MicrophoneAccessor(), PhotoLibraryAccessor()]
         accessors.forEach { item in
             item.requestAccessIfNeeded { status in
                 let message = status ? "You have access to " : "You do not have access to "
-                yxc_debugPrint(message + item.description + "\n")
+                fwDebugPrint(message + item.description + "\n")
             }
         }
 
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testDataSouceStrategy() throws {
-        printEnter(message: "Client: Start testDataSouceStrategy")
+        fwPrintEnter(message: "Client: Start testDataSouceStrategy")
         let client = StrategyClient()
         let strategy = DataSourceStrategy()
         let memoyrStorage = MemoryStorage<DSUser>()
@@ -350,67 +350,67 @@ class DesignPatternViewController: ItemListViewController {
         client.clientCode(use: strategy, with: CoreDataStorage())
         client.clientCode(use: strategy, with: RealmStorage())
 
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testChainResponsibility() throws {
-        printEnter(message: "Client: Start testChainResponsibility")
-        yxc_debugPrint("Client: Let's test Login flow!")
+        fwPrintEnter(message: "Client: Start testChainResponsibility")
+        fwDebugPrint("Client: Let's test Login flow!")
         let loginHandler = LoginHandler(with: LocationHandler())
         let loginController = LoginViewController(handler: loginHandler)
         loginController.loginButtonSelected()
 
-        yxc_debugPrint("\nClient: Let's test SignUp flow!")
+        fwDebugPrint("\nClient: Let's test SignUp flow!")
         let signUpHandler = SignUpHandler(with: LocationHandler(with: NotificationHandler()))
         let signUpController = SignUpViewController(handler: signUpHandler)
         signUpController.signUpButtonSelected()
 
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testTreeIterator() throws {
-        printEnter(message: "Client: Start testTreeIterator")
+        fwPrintEnter(message: "Client: Start testTreeIterator")
         let tree = TreeIterator(1)
         tree.left = TreeIterator(2)
         tree.right = TreeIterator(3)
 
         let client = IteratorClient()
-        yxc_debugPrint("Tree traversal: Inorder")
+        fwDebugPrint("Tree traversal: Inorder")
         client.clientCode(iterator: tree.iterator(.inOrder))
 
-        yxc_debugPrint("Tree traversal: Preorder")
+        fwDebugPrint("Tree traversal: Preorder")
         client.clientCode(iterator: tree.iterator(.preOrder))
 
-        yxc_debugPrint("Tree traversal: Postorder")
+        fwDebugPrint("Tree traversal: Postorder")
         client.clientCode(iterator: tree.iterator(.postOrder))
 
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testTrackingState() throws {
-        printEnter(message: "Client: Start testTrackingState")
-        yxc_debugPrint("Client: I'm starting working with a location tracker")
+        fwPrintEnter(message: "Client: Start testTrackingState")
+        fwDebugPrint("Client: I'm starting working with a location tracker")
         let tracker = LocationTracker()
 
-        yxc_debugPrint()
+        fwDebugPrint()
         tracker.startTracking()
 
-        yxc_debugPrint()
+        fwDebugPrint()
         tracker.pauseTracking(for: 2)
 
-        yxc_debugPrint()
+        fwDebugPrint()
         tracker.makeCheckIn()
 
-        yxc_debugPrint()
+        fwDebugPrint()
         tracker.findMyChildren()
 
-        yxc_debugPrint()
+        fwDebugPrint()
         tracker.stopTracking()
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testNotificationVisitor() throws {
-        printEnter(message: "Client: Start testNotificationVisitor")
+        fwPrintEnter(message: "Client: Start testNotificationVisitor")
 
         let email = NVEmail(emailOfSender: "some@email.com")
         let sms = NVSMS(phoneNumberOfSender: "+3806700000")
@@ -421,11 +421,11 @@ class DesignPatternViewController: ItemListViewController {
 
         client.clientCode(handle: notifications, with: DefaultPolicyVisitor())
         client.clientCode(handle: notifications, with: NightPolicyVistor())
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testTextViewMemento() throws {
-        printEnter(message: "Client: Start testTextViewMemento")
+        fwPrintEnter(message: "Client: Start testTextViewMemento")
         let textView = UITextView()
         let undoStack = TMUndoStack(textView)
 
@@ -439,18 +439,18 @@ class DesignPatternViewController: ItemListViewController {
         textView.textColor = .red
         undoStack.save()
 
-        yxc_debugPrint(undoStack)
+        fwDebugPrint(undoStack)
 
-        yxc_debugPrint("Client: Perform Undo operation 2 times\n")
+        fwDebugPrint("Client: Perform Undo operation 2 times\n")
         undoStack.undo()
         undoStack.undo()
-        yxc_debugPrint(undoStack)
+        fwDebugPrint(undoStack)
 
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testScreenMediator() throws {
-        printEnter(message: "Client: Start testScreenMediator")
+        fwPrintEnter(message: "Client: Start testScreenMediator")
 
         let newsArray = [SMNews(id: 1, title: "News1", likeCount: 1),
                          SMNews(id: 2, title: "News2", likeCount: 2)]
@@ -468,11 +468,11 @@ class DesignPatternViewController: ItemListViewController {
         feedVC.userLikedAllNews()
         feedVC.userDislikedAllNews()
 
-        printLine()
+        fwPrintLine()
     }
 
     @objc func testDPInterpreter() throws {
-        printEnter(message: "Client: Start testDPInterpreter")
+        fwPrintEnter(message: "Client: Start testDPInterpreter")
 
         let aV = 5
         let bV = 1
@@ -488,12 +488,12 @@ class DesignPatternViewController: ItemListViewController {
 
         let addExpression = AddExpression(op1: a, op2: AddExpression(op1: b, op2: c)) // a + (b + c)
         var result = addExpression.evaluate(context)
-        yxc_debugPrint("A + (B + C) = \(aV) + (\(bV) + \(cV)) = \(result)")
+        fwDebugPrint("A + (B + C) = \(aV) + (\(bV) + \(cV)) = \(result)")
 
         let subExpression = SubtractionExpresion(op1: a, op2: AddExpression(op1: b, op2: c))
         result = subExpression.evaluate(context)
-        yxc_debugPrint("A - (B + C) = \(aV) - (\(bV) + \(cV)) = \(result)")
-        printLine()
+        fwDebugPrint("A - (B + C) = \(aV) - (\(bV) + \(cV)) = \(result)")
+        fwPrintLine()
     }
 
     // MARK: - UI

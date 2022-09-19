@@ -25,7 +25,7 @@ class SCUILableViewController: BaseViewController {
 
     @objc func injected() {
         #if DEBUG
-            yxc_debugPrint("I've been injected: \(self)")
+            fwDebugPrint("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -49,7 +49,7 @@ class SCUILableViewController: BaseViewController {
             let fontNames = UIFont.fontNames(forFamilyName: familyName)
             for font in fontNames {
                 index += 1
-                yxc_debugPrint("\(index). font name:\(font)")
+                fwDebugPrint("\(index). font name:\(font)")
                 systemFontName.append(font)
             }
         }
@@ -77,7 +77,7 @@ class SCUILableViewController: BaseViewController {
             // 文本高亮
             lab1.isHighlighted = true
             lab1.highlightedTextColor = .orange
-            showToast("Reach the maximum number")
+            fwShowToast("Reach the maximum number")
             return
         }
         lab1.text! += ", \(lab1.text!)"
@@ -109,7 +109,7 @@ class SCUILableViewController: BaseViewController {
         lab2.attributedText = attributeString
 
         let messageRect: CGSize = calculateSizeFor(label: lab3, attributedText: attributeString)
-        yxc_debugPrint("The lable calculate height:\(String(format: "%.2f", messageRect.height))")
+        fwDebugPrint("The lable calculate height:\(String(format: "%.2f", messageRect.height))")
 
         view.addSubview(lab3)
         // 改变行间距
