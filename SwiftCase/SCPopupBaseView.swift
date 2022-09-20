@@ -208,7 +208,7 @@ class SCPopupBaseView: UIView {
 
     private let headView = UIView().then {
         $0.backgroundColor = UIColor.hexColor(0xFEFFFF)
-        $0.layer.cornerRadius = device_6S_7_8 ? 25 * 0.8 : 25
+        $0.layer.cornerRadius = gEqualScale * 25
     }
 
     private let headIconImage = UIImageView().then {

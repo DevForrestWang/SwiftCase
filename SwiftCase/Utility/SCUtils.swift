@@ -17,6 +17,7 @@ import Kingfisher
 import Toast_Swift
 
 // MARK: - Print info
+
 /// 全局函数添加前缀，避免冲突
 public func fwDebugPrint(_ message: Any...) {
     debugPrint("\(#file):\(#line): \(message)")

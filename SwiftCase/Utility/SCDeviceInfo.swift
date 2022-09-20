@@ -30,21 +30,6 @@ import UIKit
  iPhone       13 Pro Max         6.7吋   428x926     @3x            1284x2778      19.5:9
  */
 
-/// 机型的屏幕大小
-public let device_6S_7_8 = __CGSizeEqualToSize(CGSize(width: 750 / 2, height: 1334 / 2), UIScreen.main.bounds.size)
-public let device_6S_7_8P = __CGSizeEqualToSize(CGSize(width: 1242 / 3, height: 2208 / 3), UIScreen.main.bounds.size)
-
-public let device_iPhoneX = __CGSizeEqualToSize(CGSize(width: 1125 / 3, height: 2436 / 3), UIScreen.main.bounds.size)
-public let device_iPhoneXr = __CGSizeEqualToSize(CGSize(width: 828 / 2, height: 1792 / 2), UIScreen.main.bounds.size)
-public let device_iPhoneXs = __CGSizeEqualToSize(CGSize(width: 1125 / 3, height: 2436 / 3), UIScreen.main.bounds.size)
-public let device_iPhoneXs_Max = __CGSizeEqualToSize(CGSize(width: 1242 / 3, height: 2688 / 3), UIScreen.main.bounds.size)
-public let isIphoneX = (device_iPhoneX || device_iPhoneXr || device_iPhoneXs || device_iPhoneXs_Max)
-
-public let device_iPhone12_13m = __CGSizeEqualToSize(CGSize(width: 1080 / 3, height: 2340 / 3), UIScreen.main.bounds.size)
-public let device_iPhone12_13 = __CGSizeEqualToSize(CGSize(width: 1170 / 3, height: 2532 / 3), UIScreen.main.bounds.size)
-public let device_iPhone12_13_Max = __CGSizeEqualToSize(CGSize(width: 1284 / 3, height: 2778 / 3), UIScreen.main.bounds.size)
-public let isIphone12_13 = (device_iPhone12_13m || device_iPhone12_13 || device_iPhone12_13_Max)
-
 public var gWindow: UIWindow? {
     return UIWindow.key
 }
