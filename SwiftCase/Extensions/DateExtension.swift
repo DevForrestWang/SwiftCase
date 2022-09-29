@@ -49,6 +49,24 @@ public extension Date {
         return dateFormatter.string(from: self)
     }
 
+    /// 这周开始日期
+    var startOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else {
+            return nil
+        }
+        return gregorian.date(byAdding: .day, value: 1, to: sunday)
+    }
+    
+    /// 这周结束日期
+    var endOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else {
+            return nil
+        }
+        return gregorian.date(byAdding: .day, value: 7, to: sunday)
+    }
+    
     /// 将date对象格式制定格式的字符串
     func toString(withFormat format: String = "yyyy-MM-dd HH:mm:ss") -> String {
         let dateFormatter = DateFormatter()
