@@ -464,7 +464,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 58 images.
+  /// This `R.image` struct is generated, and contains static references to 63 images.
   struct image {
     /// Image `LaunchScreen`.
     static let launchScreen = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchScreen")
@@ -492,6 +492,12 @@ struct R: Rswift.Validatable {
     static let gy_assistant_active_select_box = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_assistant_active_select_box")
     /// Image `gy_assistant_active_unselect_box`.
     static let gy_assistant_active_unselect_box = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_assistant_active_unselect_box")
+    /// Image `gy_chat_bar_close_video`.
+    static let gy_chat_bar_close_video = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_bar_close_video")
+    /// Image `gy_chat_bar_play_video`.
+    static let gy_chat_bar_play_video = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_bar_play_video")
+    /// Image `gy_chat_bar_stop_video`.
+    static let gy_chat_bar_stop_video = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_bar_stop_video")
     /// Image `gy_chat_btn_clock`.
     static let gy_chat_btn_clock = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_btn_clock")
     /// Image `gy_chat_commend_goods`.
@@ -508,6 +514,8 @@ struct R: Rswift.Validatable {
     static let gy_chat_more_functions = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_more_functions")
     /// Image `gy_chat_more_video`.
     static let gy_chat_more_video = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_more_video")
+    /// Image `gy_chat_play_video`.
+    static let gy_chat_play_video = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_play_video")
     /// Image `gy_chat_push_activity`.
     static let gy_chat_push_activity = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_push_activity")
     /// Image `gy_chat_redpackage`.
@@ -522,6 +530,8 @@ struct R: Rswift.Validatable {
     static let gy_chat_voice_left = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_voice_left")
     /// Image `gy_chat_voice_right`.
     static let gy_chat_voice_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_chat_voice_right")
+    /// Image `gy_tool_user`.
+    static let gy_tool_user = Rswift.ImageResource(bundle: R.hostingBundle, name: "gy_tool_user")
     /// Image `gyhs_bigDefaultImage`.
     static let gyhs_bigDefaultImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "gyhs_bigDefaultImage")
     /// Image `hightImage`.
@@ -675,6 +685,27 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_bar_close_video", bundle: ..., traitCollection: ...)`
+    static func gy_chat_bar_close_video(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_bar_close_video, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_bar_play_video", bundle: ..., traitCollection: ...)`
+    static func gy_chat_bar_play_video(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_bar_play_video, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_bar_stop_video", bundle: ..., traitCollection: ...)`
+    static func gy_chat_bar_stop_video(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_bar_stop_video, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "gy_chat_btn_clock", bundle: ..., traitCollection: ...)`
     static func gy_chat_btn_clock(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.gy_chat_btn_clock, compatibleWith: traitCollection)
@@ -731,6 +762,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_chat_play_video", bundle: ..., traitCollection: ...)`
+    static func gy_chat_play_video(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_chat_play_video, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "gy_chat_push_activity", bundle: ..., traitCollection: ...)`
     static func gy_chat_push_activity(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.gy_chat_push_activity, compatibleWith: traitCollection)
@@ -776,6 +814,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "gy_chat_voice_right", bundle: ..., traitCollection: ...)`
     static func gy_chat_voice_right(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.gy_chat_voice_right, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gy_tool_user", bundle: ..., traitCollection: ...)`
+    static func gy_tool_user(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gy_tool_user, compatibleWith: traitCollection)
     }
     #endif
 

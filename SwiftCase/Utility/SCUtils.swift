@@ -291,6 +291,32 @@ public enum SCUtils {
         return reduceTime
     }
 
+    /// 本周开始日期（星期天）
+    public static func startOfThisWeek() -> Date {
+        let date = Date()
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents(
+            Set<Calendar.Component>([.yearForWeekOfYear, .weekOfYear]), from: date
+        )
+        let startOfWeek = calendar.date(from: components)!
+        return startOfWeek
+    }
+
+    /// 本周结束日期（星期六）
+    public static func endOfThisWeek(returnEndTime: Bool = false) -> Date {
+        let calendar = NSCalendar.current
+        var components = DateComponents()
+        if returnEndTime {
+            components.day = 7
+            components.second = -1
+        } else {
+            components.day = 6
+        }
+
+        let endOfMonth = calendar.date(byAdding: components, to: startOfThisWeek())!
+        return endOfMonth
+    }
+
     /// 图片下载
     /// - Parameters:
     ///  - urlStr: 下载URL
