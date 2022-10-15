@@ -75,6 +75,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         return string.matches(pattern) || string.isEmpty
     }
 
+    /// 限制输入长度，只在iOS13后生效，之前的使用，UITextField.textDidChangeNotification 通知方式
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let maxCount = 5
         // 限制输入的长度
