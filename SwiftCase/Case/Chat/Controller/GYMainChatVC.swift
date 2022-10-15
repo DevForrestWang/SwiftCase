@@ -308,6 +308,9 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
     let chatTableView = UITableView(frame: .zero, style: .grouped).then {
         $0.backgroundColor = UIColor.hexColor(0xEEEEEE)
         $0.tableFooterView = UIView()
+        // 问题：grouped 的方式创建的 tableView, 每组有 sectionHeader 和 sectionFooter, 设置 tableHeaderView, 由于 header 的高度不确定, 所以初始化 frame 为 .zero, 在数据请求回来后更新 header 的高度. 但是 bug 就这么出现了, 第0组的 sectionHeader 的 y 值默认为 35 空白；
+        // 解决方法：设置headView高度为: CGFloat.leastNormalMagnitude
+        // [UITableView 的 type 为 grouped 时内容起点向下偏移](https://juejin.cn/post/7011395585618133029)
         $0.tableHeaderView = UIView()
         $0.showsVerticalScrollIndicator = false
         $0.separatorStyle = .none
