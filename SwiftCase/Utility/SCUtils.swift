@@ -147,6 +147,21 @@ public enum SCUtils {
         lable.attributedText = titleAttr
     }
 
+    /// 更新Lable 多段颜色
+    public static  func updateLableColor(lable: UILabel?, targets:[String], color: UIColor) {
+        guard let msg = lable?.text else {
+            return
+        }
+        
+        let attr = NSMutableAttributedString(string: msg)
+        for item in targets {
+            let tarIndex = msg.distance(of:item) ?? 0
+            attr.addAttribute(NSAttributedString.Key.foregroundColor, value:color, range: NSMakeRange(tarIndex, item.count))
+        }
+        
+        lable?.attributedText = attr
+    }
+    
     /// 字体在Lable的宽度
     /// SCUtils.getLableWidth(labelStr: strMember,font: titleLable.font, height: titleLable.font.lineHeight)
     public static func getLableWidth(labelStr: String, font: UIFont, height: CGFloat) -> CGFloat {
