@@ -328,4 +328,12 @@ public extension String {
         }
         return result
     }
+
+    /// 截取字符串，从index到结束处
+    ///  - Parameter index: 开始搜索
+    ///  - Return: 子字符串
+    func subStringFrom(_ index: Int) -> String {
+        let theIndex = self.index(endIndex, offsetBy: index - count)
+        return String(self[theIndex ..< endIndex])
+    }
 }

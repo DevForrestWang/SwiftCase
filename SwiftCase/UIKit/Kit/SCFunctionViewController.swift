@@ -293,6 +293,10 @@ class SCFunctionViewController: BaseViewController {
         fwDebugPrint(str[start]) // 输出 1 第1个字符
         fwDebugPrint(str[startOffset]) // 输出 3 第3个字符
         fwDebugPrint(str[endOffset]) // 输出 8 第8个字符（10-2）
+
+        let mainStr = "Strengthen"
+        let findIndex = (mainStr.distance(of: "eng") ?? 0) + "eng".count
+        fwDebugPrint("\(mainStr.subStringFrom(findIndex))")
     }
 
     /// 字符串替换
