@@ -284,6 +284,15 @@ class SCFunctionViewController: BaseViewController {
         fwDebugPrint("\(greeting), 3-4:\(String(greeting[3 ... 4]))")
         fwDebugPrint("\(greeting), from 7:\(String(greeting[7...]))")
         fwDebugPrint("\(greeting), substring 1:\(String(greeting[1]))")
+
+        // 字符串截取
+        let str = "123456789"
+        let start = str.startIndex // 表示str的开始位置
+        let startOffset = str.index(start, offsetBy: 2) // 表示str的开始位置 + 2
+        let endOffset = str.index(str.endIndex, offsetBy: -2) // 表示str的结束位置 - 2
+        fwDebugPrint(str[start]) // 输出 1 第1个字符
+        fwDebugPrint(str[startOffset]) // 输出 3 第3个字符
+        fwDebugPrint(str[endOffset]) // 输出 8 第8个字符（10-2）
     }
 
     /// 字符串替换

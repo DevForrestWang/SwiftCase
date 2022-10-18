@@ -117,6 +117,11 @@ class SCUILableViewController: BaseViewController {
 
         view.addSubview(lab4)
         useAttributedStrings()
+
+        view.addSubview(multiSegmentStyleLable)
+        multiSegmentStyleLable.text = "段10，段20， 段3，其他信息，最后段40"
+        let targets: [String] = ["10", "20", "30", "40", "50"]
+        SCUtils.updateLableColor(lable: multiSegmentStyleLable, targets: targets, color: .red)
     }
 
     // MARK: - Constraints
@@ -146,6 +151,13 @@ class SCUILableViewController: BaseViewController {
             make.width.lessThanOrEqualTo(view).offset(-50)
             make.top.equalTo(lab3.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
+        }
+
+        multiSegmentStyleLable.snp.makeConstraints { make in
+            make.top.equalTo(lab4.snp.bottom).offset(10)
+            make.height.equalTo(21)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
         }
     }
 
@@ -195,6 +207,13 @@ class SCUILableViewController: BaseViewController {
     let lab4 = UILabel().then {
         $0.backgroundColor = .cyan
         $0.numberOfLines = 0
+    }
+
+    let multiSegmentStyleLable = UILabel().then {
+        $0.text = ""
+        $0.textColor = .black
+        $0.font = .systemFont(ofSize: 14)
+        $0.textAlignment = .center
     }
 
     /// 定义文字到边框距离

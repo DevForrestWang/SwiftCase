@@ -148,20 +148,34 @@ public enum SCUtils {
     }
 
     /// 更新Lable 多段颜色
-    public static  func updateLableColor(lable: UILabel?, targets:[String], color: UIColor) {
+    public static func updateLableColor(lable: UILabel?, targets: [String], color: UIColor) {
         guard let msg = lable?.text else {
             return
         }
-        
+
         let attr = NSMutableAttributedString(string: msg)
+
+        var lastIndex = 0
+        var mainString = msg
         for item in targets {
-            let tarIndex = msg.distance(of:item) ?? 0
-            attr.addAttribute(NSAttributedString.Key.foregroundColor, value:color, range: NSMakeRange(tarIndex, item.count))
+            let tarIndex = mainString.distance(of: item) ?? 0
+            // 没有找到时进入下一个查找
+            if tarIndex == 0, !mainString.starts(with: item) {
+                continue
+            }
+            // 删除首次出现之前的字符
+            lastIndex += tarIndex + 1
+            if (msg.count - lastIndex) <= 0 {
+                break
+            }
+            mainString = String(mainString.suffix(msg.count - lastIndex))
+
+            attr.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: NSMakeRange(lastIndex - 1, item.count))
         }
-        
+
         lable?.attributedText = attr
     }
-    
+
     /// 字体在Lable的宽度
     /// SCUtils.getLableWidth(labelStr: strMember,font: titleLable.font, height: titleLable.font.lineHeight)
     public static func getLableWidth(labelStr: String, font: UIFont, height: CGFloat) -> CGFloat {
