@@ -60,7 +60,7 @@ class Singleton {
     /// executed on its instance.
     func someBusinessLogic() -> String {
         // ...
-        return "Result of the 'someBusinessLogic' call"
+        return "call someBusinessLogic result."
     }
 }
 
