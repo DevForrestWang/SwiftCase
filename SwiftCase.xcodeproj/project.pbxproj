@@ -968,9 +968,7 @@
 		77E0ACAF26F5C228000EABC1 /* SwiftCase */ = {
 			isa = PBXGroup;
 			children = (
-				7756C25926FDBD7E00C43EFD /* SwiftCase.entitlements */,
 				77F6522E26F5CBB100280568 /* UIKit */,
-				77F6527326F5D06B00280568 /* UIKitViewController.swift */,
 				77F6522F26F5CD3900280568 /* Algorithm */,
 				77F6523026F5CD4400280568 /* DesignPattern */,
 				77F6523126F5CD5200280568 /* Case */,
@@ -978,6 +976,7 @@
 				77F6523326F5CDE900280568 /* Utility */,
 				77F6523226F5CDD500280568 /* Extensions */,
 				77F6520726F5CB2000280568 /* Resouce */,
+				7756C25926FDBD7E00C43EFD /* SwiftCase.entitlements */,
 				77E0ACB026F5C228000EABC1 /* AppDelegate.swift */,
 				77E0ACB226F5C229000EABC1 /* SceneDelegate.swift */,
 				77F652C426F5E2C500280568 /* SCUITabBarController.swift */,
@@ -1058,9 +1057,10 @@
 		77F6522E26F5CBB100280568 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C88F92F926F8D83200739819 /* Kit */,
 				8AB586DD2831DEA900CB9B2B /* Segment */,
 				7756E82A26FAE48200AB139F /* Communication */,
-				C88F92F926F8D83200739819 /* Kit */,
+				77F6527326F5D06B00280568 /* UIKitViewController.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1078,11 +1078,11 @@
 		77F6523026F5CD4400280568 /* DesignPattern */ = {
 			isa = PBXGroup;
 			children = (
-				77F6527B26F5D25E00280568 /* README.txt */,
-				77F652C026F5E1F500280568 /* DesignPatternViewController.swift */,
 				77F6528F26F5D25F00280568 /* Creational */,
 				77F6528826F5D25F00280568 /* Structural */,
 				77F6527C26F5D25E00280568 /* Behavioral */,
+				77F6527B26F5D25E00280568 /* README.txt */,
+				77F652C026F5E1F500280568 /* DesignPatternViewController.swift */,
 			);
 			path = DesignPattern;
 			sourceTree = "<group>";
