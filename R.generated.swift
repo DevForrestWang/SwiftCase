@@ -130,12 +130,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 41 files.
+  /// This `R.file` struct is generated, and contains static references to 40 files.
   struct file {
     /// Resource file `README.md`.
     static let readmeMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "md")
-    /// Resource file `README.txt`.
-    static let readmeTxt = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "txt")
     /// Resource file `README_en.md`.
     static let readme_enMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README_en", pathExtension: "md")
     /// Resource file `Shows.plist`.
@@ -218,12 +216,6 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "README", withExtension: "md")`
     static func readmeMd(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.readmeMd
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "README", withExtension: "txt")`
-    static func readmeTxt(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.readmeTxt
       return fileResource.bundle.url(forResource: fileResource)
     }
 

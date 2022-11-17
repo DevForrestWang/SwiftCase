@@ -16,7 +16,6 @@
 		771005752735299300733EF7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771005662735299300733EF7 /* StringExtensions.swift */; };
 		771005762735299300733EF7 /* CharacterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771005672735299300733EF7 /* CharacterExtensions.swift */; };
 		771005772735299300733EF7 /* IntervalArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771005682735299300733EF7 /* IntervalArrayExtensions.swift */; };
-		771005782735299300733EF7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 771005692735299300733EF7 /* README.md */; };
 		771005792735299300733EF7 /* ACState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710056B2735299300733EF7 /* ACState.swift */; };
 		7710057A2735299300733EF7 /* FragmentToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710056C2735299300733EF7 /* FragmentToken.swift */; };
 		7710057B2735299300733EF7 /* MatchToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710056D2735299300733EF7 /* MatchToken.swift */; };
@@ -558,6 +557,7 @@
 		C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCalendarDateRangePickerHeaderView.swift; sourceTree = "<group>"; };
 		C68195222892C08E001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
 		C6BF75E428586142004116B8 /* SCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCircleProgressView.swift; sourceTree = "<group>"; };
+		C6C8BCC729262897006147B4 /* LeetCode.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LeetCode.playground; sourceTree = "<group>"; };
 		C6D8BF2828D841CA009D85D5 /* GYMainChatVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatVideoCell.swift; sourceTree = "<group>"; };
 		C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYVoiceRecordingObject.swift; sourceTree = "<group>"; };
 		C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCPlayingView.swift; sourceTree = "<group>"; };
@@ -1068,6 +1068,7 @@
 		77F6522F26F5CD3900280568 /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				C6C8BCC729262897006147B4 /* LeetCode.playground */,
 				773967AD2710497000BF7469 /* DataStructure */,
 				773967AE2710497C00BF7469 /* AlgorithmCase */,
 				77F652BE26F5E1C900280568 /* AlgorithmViewController.swift */,
@@ -1510,7 +1511,6 @@
 				7756E87326FB54DA00AB139F /* algorithm@2x.png in Resources */,
 				7756E87B26FC17A400AB139F /* nav_btn_backs@2x.png in Resources */,
 				77F6521C26F5CBAC00280568 /* book@2x.png in Resources */,
-				771005782735299300733EF7 /* README.md in Resources */,
 				8A84E13927D06B4200E98830 /* search@2x.png in Resources */,
 				77F6522026F5CBAC00280568 /* icon_pwd@2x.png in Resources */,
 			);
