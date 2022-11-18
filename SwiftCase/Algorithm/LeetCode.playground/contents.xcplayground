@@ -4,5 +4,6 @@
         <page name='Plan'/>
         <page name='CQueue'/>
         <page name='MinStack'/>
+        <page name='SolutionList'/>
     </pages>
 </playground>
