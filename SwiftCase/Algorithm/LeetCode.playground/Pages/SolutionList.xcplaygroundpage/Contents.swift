@@ -23,16 +23,39 @@ class Solution {
         }
     }
     
-    public func append(_ node: Node) {
-        
+    public func append(_ value: Int) {
+        let newNode = Node(value)
+        append(newNode)
     }
     
     public func reversePrint(_ head: ListNode?) -> [Int] {
-
+        return []
     }
     
+    private func append(_ node: Node) {
+        let newNode = node
+        if let lastNode = last {
+            lastNode.next = newNode
+        } else {
+            head = newNode
+        }
+    }
     
     public typealias Node = ListNode
     
+    private var head: Node?
+    
+    public var last: Node? {
+        guard var node = head else {
+            return nil
+        }
+        
+        while let next = node.next {
+            node = next
+        }
+        return node
+    }
 }
+
+
 
