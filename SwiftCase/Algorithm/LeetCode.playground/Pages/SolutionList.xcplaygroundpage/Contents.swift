@@ -11,28 +11,23 @@ import Foundation
 //
 //===----------------------------------------------------------------------===/
 
-class Solution {
-    
-    /// Definition for singly-linked list.
-    public class ListNode {
-        public var val: Int
-        public var next: ListNode?
-        public init(_ val: Int) {
-            self.val = val
-            self.next = nil
-        }
+/// 定义列表结构
+public class ListNode {
+    public var val: Int
+    public var next: ListNode?
+    public init(_ val: Int) {
+        self.val = val
+        self.next = nil
     }
-    
+}
+
+class LinkedList {
     public func append(_ value: Int) {
-        let newNode = Node(value)
+        let newNode = ListNode(value)
         append(newNode)
     }
     
-    public func reversePrint(_ head: ListNode?) -> [Int] {
-        return []
-    }
-    
-    private func append(_ node: Node) {
+    private func append(_ node: ListNode) {
         let newNode = node
         if let lastNode = last {
             lastNode.next = newNode
@@ -41,11 +36,9 @@ class Solution {
         }
     }
     
-    public typealias Node = ListNode
+    public var head: ListNode?
     
-    private var head: Node?
-    
-    public var last: Node? {
+    public var last: ListNode? {
         guard var node = head else {
             return nil
         }
@@ -56,6 +49,29 @@ class Solution {
         return node
     }
 }
+
+class Solution {
+    public func reversePrint(_ head: ListNode?) -> [Int] {
+        var result: [Int] = []
+        guard var node = head else {
+            return result
+        }
+        
+        result.append(node.val)
+        while let next = node.next {
+            result.append(next.val)
+            node = next
+        }
+        
+        return result.reversed()
+    }
+}
+
+let list = LinkedList()
+list.append(1)
+list.append(3)
+list.append(2)
+print(Solution().reversePrint(list.head))
 
 
 
