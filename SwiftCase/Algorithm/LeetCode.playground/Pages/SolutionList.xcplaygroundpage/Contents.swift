@@ -17,7 +17,7 @@ public class ListNode {
     public var next: ListNode?
     public init(_ val: Int) {
         self.val = val
-        self.next = nil
+        next = nil
     }
 }
 
@@ -26,7 +26,7 @@ class LinkedList {
         let newNode = ListNode(value)
         append(newNode)
     }
-    
+
     private func append(_ node: ListNode) {
         let newNode = node
         if let lastNode = last {
@@ -35,14 +35,14 @@ class LinkedList {
             head = newNode
         }
     }
-    
+
     public var head: ListNode?
-    
+
     public var last: ListNode? {
         guard var node = head else {
             return nil
         }
-        
+
         while let next = node.next {
             node = next
         }
@@ -56,47 +56,47 @@ class Solution {
         guard var node = head else {
             return result
         }
-        
+
         result.append(node.val)
         while let next = node.next {
             result.append(next.val)
             node = next
         }
-        
+
         return result.reversed()
     }
-    
+
     // 剑指 Offer 24. 反转链表
     // 定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头节点。
-    //输入: 1->2->3->4->5->NULL
-    //输出: 5->4->3->2->1->NULL
+    // 输入: 1->2->3->4->5->NULL
+    // 输出: 5->4->3->2->1->NULL
     func reverseList(_ head: ListNode?) -> ListNode? {
-        var prev: ListNode? = nil
+        var prev: ListNode?
         var curr: ListNode? = head
-        
-        while (curr != nil) {
+
+        while curr != nil {
             let tmp = curr?.next // 暂存后继节点 cur.next
-            curr?.next = prev    // 修改 next 引用指向
-            prev = curr          // pre 暂存 cur
-            curr = tmp           // cur 访问下一节点
+            curr?.next = prev // 修改 next 引用指向
+            prev = curr // pre 暂存 cur
+            curr = tmp // cur 访问下一节点
         }
-        
+
         return prev
     }
-    
+
     func printList(_ head: ListNode?) {
         guard var node = head else {
             print("Na")
             return
         }
-        
+
         var result: [Int] = []
         result.append(node.val)
         while let next = node.next {
             result.append(next.val)
             node = next
         }
-        
+
         print(result)
     }
 }
@@ -111,7 +111,3 @@ print(Solution().reversePrint(list.head))
 
 let sl = Solution()
 sl.printList(sl.reverseList(list.head))
-
-
-
-

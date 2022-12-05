@@ -30,7 +30,7 @@ class MinStack {
         } else {
             minStackAry.insert(value, at: 0)
         }
-        
+
         stackAry.insert(value, at: 0)
     }
 
@@ -39,7 +39,7 @@ class MinStack {
         if stackAry.count <= 0 || minStackAry.count <= 0 {
             return
         }
-        
+
         stackAry.remove(at: 0)
         minStackAry.remove(at: 0)
     }
@@ -53,7 +53,7 @@ class MinStack {
     func min() -> Int {
         minStackAry.first ?? Int.min
     }
-    
+
     var stackAry: [Int] = []
     var minStackAry: [Int] = []
 }
