@@ -262,7 +262,7 @@
 		C68195232892C08E001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195222892C08E001CCF50 /* SCSelectDayView.swift */; };
 		C6BF75E528586142004116B8 /* SCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF75E428586142004116B8 /* SCircleProgressView.swift */; };
 		C6D68214293E206300EA7925 /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D68213293E206200EA7925 /* AttributedString.swift */; };
-		C6D68219293E21E500EA7925 /* SCAttributedStringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D68218293E21E500EA7925 /* SCAttributedStringVC.swift */; };
+		C6D6821B293ED00600EA7925 /* SCAttributedStringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6821A293ED00600EA7925 /* SCAttributedStringVC.swift */; };
 		C6D8BF2A28D841CA009D85D5 /* GYMainChatVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2828D841CA009D85D5 /* GYMainChatVideoCell.swift */; };
 		C6D8BF2F28D8421C009D85D5 /* GYVoiceRecordingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */; };
 		C6D8BF3028D8421C009D85D5 /* GYCPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */; };
@@ -561,7 +561,7 @@
 		C6BF75E428586142004116B8 /* SCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCircleProgressView.swift; sourceTree = "<group>"; };
 		C6C8BCC729262897006147B4 /* LeetCode.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LeetCode.playground; sourceTree = "<group>"; };
 		C6D68213293E206200EA7925 /* AttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
-		C6D68218293E21E500EA7925 /* SCAttributedStringVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCAttributedStringVC.swift; sourceTree = "<group>"; };
+		C6D6821A293ED00600EA7925 /* SCAttributedStringVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCAttributedStringVC.swift; sourceTree = "<group>"; };
 		C6D8BF2828D841CA009D85D5 /* GYMainChatVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatVideoCell.swift; sourceTree = "<group>"; };
 		C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYVoiceRecordingObject.swift; sourceTree = "<group>"; };
 		C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCPlayingView.swift; sourceTree = "<group>"; };
@@ -1344,6 +1344,7 @@
 				C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */,
 				C88F92FD26F8D8D300739819 /* SCUIButtonViewController.swift */,
 				C88F930026F8D8D300739819 /* SCUILableViewController.swift */,
+				C6D6821A293ED00600EA7925 /* SCAttributedStringVC.swift */,
 				C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */,
 				778F4FED26FC68D900B9E08A /* SCUICollectionViewCell.swift */,
 				778F4FEB26FC68D800B9E08A /* SCUICollectionReusableViewHeader.swift */,
@@ -1362,7 +1363,6 @@
 				77A842AA273FB17D00D08148 /* SCGCDViewController.swift */,
 				77A842AC273FB1A400D08148 /* SCOperationViewController.swift */,
 				77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */,
-				C6D68218293E21E500EA7925 /* SCAttributedStringVC.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -1827,7 +1827,7 @@
 				8AAAEDE427EDB64E009ED9D7 /* DictionaryExtension.swift in Sources */,
 				A887BA49284A0448006842C2 /* GYChatInputCollectionViewCell.swift in Sources */,
 				77F6529E26F5D25F00280568 /* NotificationVisitor.swift in Sources */,
-				C6D68219293E21E500EA7925 /* SCAttributedStringVC.swift in Sources */,
+				C6D6821B293ED00600EA7925 /* SCAttributedStringVC.swift in Sources */,
 				77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */,
 				8AFA0F42283332B40047852E /* UIViewExtension.swift in Sources */,
 				777BA9BD272936230030DCB9 /* Graph.swift in Sources */,

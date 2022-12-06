@@ -32,6 +32,7 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "Flexbox case", controllerName: "SCFlexBoxVC", action: nil),
             SCItemModel(title: "UIButton", controllerName: "SCUIButtonViewController", action: nil),
             SCItemModel(title: "UILable", controllerName: "SCUILableViewController", action: nil),
+            SCItemModel(title: "AttributedString ", controllerName: "SCAttributedStringVC", action: nil),
             SCItemModel(title: "UICollectionView", controllerName: "SCUICollectionViewVC", action: nil),
             SCItemModel(title: "UITextField, SelectTableView", controllerName: "SCUITextFieldVC", action: nil),
             SCItemModel(title: "UITextView", controllerName: "SCUITextViewVC", action: nil),
