@@ -252,6 +252,8 @@
 		A887BA4D284A396F006842C2 /* GYMainChatPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */; };
 		A8C9BE1B285E069700A9A2AF /* GYMainChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */; };
 		A8C9BE1C285E069700A9A2AF /* GYMainChatVoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */; };
+		C61C4830296BBB01005EA8F4 /* SCPopMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */; };
+		C61C4832296BBB09005EA8F4 /* SwiftPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */; };
 		C62328222899099900A1015E /* GYTextSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62328212899099900A1015E /* GYTextSwitch.swift */; };
 		C68195132892B652001CCF50 /* SCPopupBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195122892B652001CCF50 /* SCPopupBaseView.swift */; };
 		C68195182892BE09001CCF50 /* SCImageTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195172892BE09001CCF50 /* SCImageTextButton.swift */; };
@@ -550,6 +552,8 @@
 		A887BA4C284A396F006842C2 /* GYMainChatPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYMainChatPictureCell.swift; sourceTree = "<group>"; };
 		A8C9BE19285E069600A9A2AF /* GYMainChatTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatTextCell.swift; sourceTree = "<group>"; };
 		A8C9BE1A285E069600A9A2AF /* GYMainChatVoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatVoiceCell.swift; sourceTree = "<group>"; };
+		C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopMenuVC.swift; sourceTree = "<group>"; };
+		C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPopMenu.swift; sourceTree = "<group>"; };
 		C62328212899099900A1015E /* GYTextSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTextSwitch.swift; sourceTree = "<group>"; };
 		C68195122892B652001CCF50 /* SCPopupBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopupBaseView.swift; sourceTree = "<group>"; };
 		C68195172892BE09001CCF50 /* SCImageTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCImageTextButton.swift; sourceTree = "<group>"; };
@@ -1095,6 +1099,7 @@
 		77F6523126F5CD5200280568 /* Case */ = {
 			isa = PBXGroup;
 			children = (
+				C61C482E296BBACD005EA8F4 /* PopMenu */,
 				A887BA39284A0448006842C2 /* Chat */,
 				8A8ED9A9279BFC2400971DDA /* MVVM */,
 				775F8037277075AB00D167A7 /* UpDownSwipe */,
@@ -1303,6 +1308,31 @@
 				0CD24A71E25A93DDB50325E4 /* Pods-SwiftCase.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C61C482E296BBACD005EA8F4 /* PopMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C61C4834296BBB6F005EA8F4 /* lib */,
+				C61C4833296BBB66005EA8F4 /* Controller */,
+			);
+			path = PopMenu;
+			sourceTree = "<group>";
+		};
+		C61C4833296BBB66005EA8F4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C61C4834296BBB6F005EA8F4 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 		C68195162892BDDB001CCF50 /* Component */ = {
@@ -1824,6 +1854,7 @@
 				778159A72714652C0046D14D /* Queue.swift in Sources */,
 				8A486268279FDC4C004ABF6C /* SCFlexBoxData.swift in Sources */,
 				7765BBEE273375E8009DF9BD /* UIEventViewController.m in Sources */,
+				C61C4832296BBB09005EA8F4 /* SwiftPopMenu.swift in Sources */,
 				8AAAEDE427EDB64E009ED9D7 /* DictionaryExtension.swift in Sources */,
 				A887BA49284A0448006842C2 /* GYChatInputCollectionViewCell.swift in Sources */,
 				77F6529E26F5D25F00280568 /* NotificationVisitor.swift in Sources */,
@@ -1847,6 +1878,7 @@
 				777BA9CF272943B40030DCB9 /* BitSet.swift in Sources */,
 				77F6529C26F5D25F00280568 /* PermissionAccessor.swift in Sources */,
 				8A2EDF1828267B0000A43A28 /* SCUIPickerViewVC.swift in Sources */,
+				C61C4830296BBB01005EA8F4 /* SCPopMenuVC.swift in Sources */,
 				77F652A826F5D25F00280568 /* ContentShareBridge.swift in Sources */,
 				778159A5271439950046D14D /* Stack.swift in Sources */,
 				77F6527426F5D06B00280568 /* UIKitViewController.swift in Sources */,
