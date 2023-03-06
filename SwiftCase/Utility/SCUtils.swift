@@ -423,20 +423,6 @@ public enum SCUtils {
         imageView.startAnimating()
     }
 
-    /// 获取APP名称
-    public static func getAppName() -> String {
-        if let name = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String {
-            return name
-        }
-        if let name = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String {
-            return name
-        }
-        if let name = Bundle.main.infoDictionary?["CFBundleName"] as? String {
-            return name
-        }
-        return "App"
-    }
-
     /// 获取Domument目录
     public static func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

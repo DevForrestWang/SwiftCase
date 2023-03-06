@@ -745,6 +745,9 @@ class SCFunctionViewController: BaseViewController {
         fwDebugPrint("2021-02 max day:\(maxDay)")
 
         saveDataAction()
+
+        // APP 系统信息
+        fwDebugPrint("deviceInfo:  \(SCDeviceInfo.deviceInfo())")
     }
 
     // MARK: - Constraints

@@ -19,7 +19,7 @@ class GYVoiceRecordingObject: NSObject {
 
     public func startAudio() {
         if !isCanAudio() {
-            let tips = String(format: "请在iPhone的\"设置 > 隐私 > 相机\"选项中，允许%@访问你的相机和麦克风", arguments: [SCUtils.getAppName()])
+            let tips = String(format: "请在iPhone的\"设置 > 隐私 > 相机\"选项中，允许%@访问你的相机和麦克风", arguments: [SCDeviceInfo.getAppName()])
             let alertVC = UIAlertController(title: nil, message: tips, preferredStyle: .alert)
             let confirmAction = UIAlertAction(title: "确定", style: .cancel) { _ in }
             alertVC.addAction(confirmAction)

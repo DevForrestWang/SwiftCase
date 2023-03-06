@@ -344,7 +344,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
     private func showCamera(isVideo: Bool) {
         let status = AVCaptureDevice.authorizationStatus(for: .video)
         if status == .restricted || status == .denied {
-            let tips = String(format: "请在iPhone的\"设置 > 隐私 > 相机\"选项中，允许%@访问你的相机", arguments: [SCUtils.getAppName()])
+            let tips = String(format: "请在iPhone的\"设置 > 隐私 > 相机\"选项中，允许%@访问你的相机", arguments: [SCDeviceInfo.getAppName()])
             let alertVC = UIAlertController(title: nil, message: tips, preferredStyle: .alert)
             let confirmAction = UIAlertAction(title: "确定", style: .cancel) { _ in }
             alertVC.addAction(confirmAction)
