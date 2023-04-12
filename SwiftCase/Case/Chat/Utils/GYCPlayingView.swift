@@ -9,6 +9,7 @@
 import AVKit
 import UIKit
 
+/// 视频播放器，支持缓存功能
 class GYCPlayingView: UIView {
     // MARK: - Lifecycle
 
@@ -115,9 +116,29 @@ class GYCPlayingView: UIView {
             return
         }
 
-        let curTime = CMTimeGetSeconds(duration) * Double(slider.value)
-        player?.seek(to: CMTimeMakeWithSeconds(curTime, preferredTimescale: 30))
-        play()
+        var curTime = CMTimeGetSeconds(duration) * Double(slider.value)
+
+        if curTime < 0 {
+            curTime = 0
+        }
+        if totalTime > 0, curTime > totalTime {
+            curTime = totalTime
+        }
+
+        let curPlay = isPlay
+        pause()
+
+        player?.seek(to: CMTimeMakeWithSeconds(curTime, preferredTimescale: 300), completionHandler: { [weak self] finish in
+
+            if !finish {
+                fwShowToast("快进未加载完")
+                return
+            }
+
+            if curPlay {
+                self?.play()
+            }
+        })
     }
 
     @objc public func clickScreenAction() {
@@ -139,18 +160,21 @@ class GYCPlayingView: UIView {
             coverImagView.image = image
         }
 
-        let asset = AVAsset(url: url)
         // 检测文件是否可播放
-        guard asset.isPlayable else {
+        guard AVAsset(url: url).isPlayable else {
             fwShowToast("检测文件播放失败")
             return
         }
 
         gyPlayCompleteClosure = completeClosure
-        currentItemRemoveObserver()
+        removeObserver(from: playerItem)
+        totalTime = 0
 
-        let playerItem = AVPlayerItem(asset: asset)
+        playerItem = CachingPlayerItem(url: url)
+        playerItem?.download()
+
         player = AVPlayer(playerItem: playerItem)
+        player?.automaticallyWaitsToMinimizeStalling = false
         // 播放速度
         player?.rate = 1.0
         // 默认音量
@@ -201,18 +225,7 @@ class GYCPlayingView: UIView {
 
         play()
         clickScreenAction()
-        currentItemAddObserver()
-    }
-
-    // 播放前增加配置 监测
-    private func currentItemAddObserver() {
-        // 监控播放结束通知
-        NotificationCenter.default.addObserver(self, selector: #selector(playEndTime), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-    }
-
-    /// 播放后,删除监测
-    private func currentItemRemoveObserver() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        addObserver(to: playerItem)
     }
 
     private func showToolBar() {
@@ -232,6 +245,72 @@ class GYCPlayingView: UIView {
         isShowToolBar = false
     }
 
+    /// AVPlayerItem添加监控
+    private func addObserver(to playerItem: AVPlayerItem?) {
+        if playerItem != nil {
+            // 监控播放状态
+            playerItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
+            // 监控网络加载情况
+            playerItem?.addObserver(self, forKeyPath: "loadedTimeRanges", options: .new, context: nil)
+            // 正在缓冲
+            playerItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
+            // 缓冲结束
+            playerItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
+        }
+
+        // 监控播放结束通知
+        NotificationCenter.default.addObserver(self, selector: #selector(playEndTime), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+    }
+
+    /// 移除监控
+    private func removeObserver(from playerItem: AVPlayerItem?) {
+        if playerItem != nil {
+            playerItem?.removeObserver(self, forKeyPath: "status")
+            playerItem?.removeObserver(self, forKeyPath: "loadedTimeRanges")
+            playerItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
+            playerItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+        }
+
+        // 移除结束通知
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+    }
+
+    /**
+     *  通过KVO监控播放器状态
+     *
+     *  @param keyPath 监控属性
+     *  @param object  监视器
+     *  @param change  状态改变
+     *  @param context 上下文
+     */
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
+        guard let playerItem = object as? AVPlayerItem else {
+            return
+        }
+
+        if keyPath == "status" {
+            switch playerItem.status {
+            case .unknown:
+                fwDebugPrint("Loading status: Unknown status")
+            case .readyToPlay:
+                totalTime = playerItem.asset.duration.seconds
+                fwDebugPrint("Loading status: Play time: \(String(describing: totalTime))")
+            case .failed:
+                fwDebugPrint("Loading status: Failed to load, error: \(String(describing: playerItem.error))")
+            default:
+                break
+            }
+
+        } else if keyPath == "loadedTimeRanges" {
+        } else if keyPath == "playbackBufferEmpty" {
+            fwDebugPrint("is loading")
+            activityIndicatorView.startAnimating()
+        } else if keyPath == "playbackLikelyToKeepUp" {
+            fwDebugPrint("end loading")
+            activityIndicatorView.stopAnimating()
+        }
+    }
+
     // MARK: - UI
 
     private func setupUI() {
@@ -239,7 +318,7 @@ class GYCPlayingView: UIView {
         addSubview(showVedioView)
         addSubview(coverBgView)
         coverBgView.addSubview(coverImagView)
-        coverBgView.addSubview(activityIndicatorView)
+        addSubview(activityIndicatorView)
         coverBgView.isHidden = true
 
         addSubview(mainPlayBtn)
@@ -322,8 +401,11 @@ class GYCPlayingView: UIView {
 
     private var gyPlayCompleteClosure: (() -> Void)?
 
-    private var player: AVPlayer?
-    private var playerLayer: AVPlayerLayer?
+    private var player: AVPlayer? // 播放器实例
+    private var playerLayer: AVPlayerLayer? // 视频渲染图层
+    private var playerItem: CachingPlayerItem?
+    private var totalTime: Double = 0 // 总时长
+
     private var isPlay: Bool = false
     private var isShowToolBar = false
     private var isMonitorToolBar = false
@@ -341,7 +423,7 @@ class GYCPlayingView: UIView {
         $0.contentMode = .scaleAspectFit
     }
 
-    let activityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
 
     let mainPlayBtn = UIButton(type: .custom).then {
         $0.setImage(UIImage(named: "gy_chat_play_video"), for: .normal)

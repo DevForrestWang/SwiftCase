@@ -56,7 +56,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
         collectionView.reloadData()
         collectionView.selectItem(at: NSIndexPath(row: 0, section: 0) as IndexPath, animated: true, scrollPosition: .top)
 
-        UIWindow.key?.addSubview(self)
+        gWindow?.addSubview(self)
     }
 
     func dismiss() {

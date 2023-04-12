@@ -263,6 +263,7 @@
 		C68195212892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */; };
 		C68195232892C08E001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195222892C08E001CCF50 /* SCSelectDayView.swift */; };
 		C6BF75E528586142004116B8 /* SCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF75E428586142004116B8 /* SCircleProgressView.swift */; };
+		C6C0CC2629E685D300C7C2C2 /* CachingPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CC2529E685D300C7C2C2 /* CachingPlayerItem.swift */; };
 		C6D68214293E206300EA7925 /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D68213293E206200EA7925 /* AttributedString.swift */; };
 		C6D6821B293ED00600EA7925 /* SCAttributedStringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6821A293ED00600EA7925 /* SCAttributedStringVC.swift */; };
 		C6D8BF2A28D841CA009D85D5 /* GYMainChatVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2828D841CA009D85D5 /* GYMainChatVideoCell.swift */; };
@@ -563,6 +564,7 @@
 		C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCalendarDateRangePickerHeaderView.swift; sourceTree = "<group>"; };
 		C68195222892C08E001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
 		C6BF75E428586142004116B8 /* SCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCircleProgressView.swift; sourceTree = "<group>"; };
+		C6C0CC2529E685D300C7C2C2 /* CachingPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingPlayerItem.swift; sourceTree = "<group>"; };
 		C6C8BCC729262897006147B4 /* LeetCode.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LeetCode.playground; sourceTree = "<group>"; };
 		C6D68213293E206200EA7925 /* AttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
 		C6D6821A293ED00600EA7925 /* SCAttributedStringVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCAttributedStringVC.swift; sourceTree = "<group>"; };
@@ -1360,6 +1362,7 @@
 		C6D8BF2C28D8420F009D85D5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C6C0CC2529E685D300C7C2C2 /* CachingPlayerItem.swift */,
 				C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */,
 				C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */,
 			);
@@ -1674,6 +1677,7 @@
 				77201D88271E9E0500F6188E /* BucketSort.swift in Sources */,
 				77F652AB26F5D25F00280568 /* Singleton.swift in Sources */,
 				77F6529A26F5D25F00280568 /* CartSubscriber.swift in Sources */,
+				C6C0CC2629E685D300C7C2C2 /* CachingPlayerItem.swift in Sources */,
 				77F652A326F5D25F00280568 /* ChainOfResponsibility.swift in Sources */,
 				77F6529926F5D25F00280568 /* TreeIterator.swift in Sources */,
 				77F652AE26F5D25F00280568 /* BurgerAbstractFactory.swift in Sources */,

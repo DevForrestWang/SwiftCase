@@ -39,7 +39,7 @@ public func fwPrintLine() {
 // MARK: - show info
 
 public func fwShowToast(_ message: String) {
-    UIWindow.key?.makeToast(message, duration: 2.0, position: .center)
+    gWindow?.makeToast(message, duration: 2.0, position: .center)
 }
 
 public func fwShowAlert(_ vc: UIViewController, _ title: String, message: String) {

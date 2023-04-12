@@ -219,7 +219,7 @@ public extension SwiftPopMenu {
             return
         }
         initViews()
-        UIApplication.shared.keyWindow?.addSubview(self)
+        gWindow?.addSubview(self)
     }
 
     func dismiss() {

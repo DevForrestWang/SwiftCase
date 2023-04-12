@@ -31,7 +31,7 @@ import UIKit
  */
 
 public var gWindow: UIWindow? {
-    return UIWindow.key
+    return UIWindow.keyWindow
 }
 
 public var isSupportSafeArea: Bool {

@@ -15,11 +15,21 @@ import Foundation
 import UIKit
 
 extension UIWindow {
-    static var key: UIWindow? {
-        if #available(iOS 13, *) {
-            return UIApplication.shared.windows.first { $0.isKeyWindow }
-        } else {
-            return UIApplication.shared.keyWindow
-        }
+    static var keyWindow: UIWindow? {
+        var originalKeyWindow: UIWindow?
+
+        #if swift(>=5.1)
+            if #available(iOS 13, *) {
+                originalKeyWindow = UIApplication.shared.connectedScenes
+                    .compactMap { $0 as? UIWindowScene }
+                    .flatMap { $0.windows }
+                    .first(where: { $0.isKeyWindow })
+            } else {
+                originalKeyWindow = UIApplication.shared.keyWindow
+            }
+        #else
+            originalKeyWindow = UIApplication.shared.keyWindow
+        #endif
+        return originalKeyWindow
     }
 }

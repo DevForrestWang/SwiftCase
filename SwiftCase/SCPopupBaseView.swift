@@ -55,7 +55,7 @@ class SCPopupBaseView: UIView {
             reSetupConstraints()
         } else {
             // 解决 IQKeyboard 添加到 keyWindow 视图失效问题
-            UIWindow.key?.rootViewController?.view.addSubview(self)
+            gWindow?.rootViewController?.view.addSubview(self)
         }
 
         updateContentHeight(contentHeight)
