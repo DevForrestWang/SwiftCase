@@ -34,7 +34,7 @@ class AFNetRequest: NSObject {
     public func requestData(URLString: String,
                             type: AFMethodType,
                             parameters _: [String: Any]? = nil,
-                            finishedCallback _: @escaping (_ result: Any) -> Void)
+                            respondCallback _: @escaping (_ responseObject: [String: Any], _ error: NSError) -> Void)
     {
         request = getRequest(URLString: URLString, type: type)
 

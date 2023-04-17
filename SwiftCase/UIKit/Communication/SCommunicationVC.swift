@@ -136,7 +136,7 @@ class SCommunicationVC: ItemListViewController {
 //            print("result: \(result)")
 //        }
 
-        AFNetRequest().requestData(URLString: url, type: .get) { _ in
+        AFNetRequest().requestData(URLString: url, type: .get) { _, _ in
         }
     }
 
