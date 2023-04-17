@@ -18,6 +18,7 @@ import UIKit
 // https://github.com/Alamofire/Alamofire
 // https://juejin.cn/post/6844903924864909319
 // https://www.cnblogs.com/lfri/p/14067146.html
+// https://github.com/kakaopensource/KakaJSON
 
 class AlamofireUtil: NSObject {
     // MARK: - Lifecycle
@@ -76,4 +77,39 @@ class AlamofireUtil: NSObject {
         case get
         case post
     }
+
+    /*
+      1、打印日志格式：
+      ===========<request-id:140 tag:>===========
+      https://dc.aadv.net:10443/mobile/reconsitution//customerPoints/createPointInvest
+      httpBody:{
+        "channel" : "41",
+        "userType" : "2",
+        "investAmount" : "100",
+        "hsResNo" : "06016230005",
+        "custName" : "黄伟",
+        "transPwd" : "d1ca3aaf52b41acd68ebb3bf69079bd1",
+        "custType" : "1",
+        "custId" : "0601623000520171130"
+      }
+      ===========<response-id:140 tag:>===========
+      {
+        "data" : null,
+        "retCode" : 200,
+        "currentPageIndex" : 0,
+        "msg" : null,
+        "rows" : null,
+        "totalPage" : 0
+      }
+
+      2、超时时间
+      3、请求头设置
+      4、响应数据：NSDictionary *responseObject, NSError *error
+
+     [[GYNetRequest alloc] initWithBlock:url
+      parameters:parameters requestMethod:requestMethod
+      requestSerializer:GYNetRequestSerializerJSON
+      respondBlock:^(NSDictionary *responseObject, NSError *error)
+
+      */
 }

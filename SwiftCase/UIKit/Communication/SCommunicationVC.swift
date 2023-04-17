@@ -132,9 +132,11 @@ class SCommunicationVC: ItemListViewController {
 
     @objc func alamofireDemo() {
         let url = "https://suggest.taobao.com/sug?code=utf-8&q=%E5%8D%AB%E8%A1%A3&callback=cb"
-        AlamofireUtil.getRequest(url, nil) { result in
+//        AlamofireUtil.getRequest(url, nil) { result in
+//            print("result: \(result)")
+//        }
 
-            print("result: \(result)")
+        AFNetRequest().requestData(URLString: url, type: .get) { _ in
         }
     }
 
