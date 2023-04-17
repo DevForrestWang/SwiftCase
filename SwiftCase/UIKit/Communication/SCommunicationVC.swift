@@ -46,6 +46,7 @@ class SCommunicationVC: ItemListViewController {
             SCItemModel(title: "gRPC - requestDataAction", controllerName: "requestDataRPC", action: #selector(requestDataAction)),
             SCItemModel(title: "Rest - restRequestAction", controllerName: "gradeInfoRest", action: #selector(restRequestAction)),
             SCItemModel(title: "WebSocket", controllerName: "gradeInfoRest", action: #selector(joinChatRoom)),
+            SCItemModel(title: "AlamofireUtil", controllerName: "", action: #selector(alamofireDemo)),
         ]
     }
 
@@ -127,6 +128,14 @@ class SCommunicationVC: ItemListViewController {
 
         let endTime = CFAbsoluteTimeGetCurrent()
         fwDebugPrint("End restRequestAction, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
+    }
+
+    @objc func alamofireDemo() {
+        let url = "https://suggest.taobao.com/sug?code=utf-8&q=%E5%8D%AB%E8%A1%A3&callback=cb"
+        AlamofireUtil.getRequest(url, nil) { result in
+
+            print("result: \(result)")
+        }
     }
 
     // MARK: - Private
