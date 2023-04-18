@@ -150,6 +150,11 @@ class SCommunicationVC: ItemListViewController {
             if let _ = responseObject {}
         }
 
+        // 接口返回json数字字符串
+        AFNetRequest().requestData(URLString: "https://jsonplaceholder.typicode.com/posts", type: .get) { responseObject, _ in
+            if let _ = responseObject {}
+        }
+
         // 文件下载
         AFNetRequest().download(URLString: "https://www.runoob.com/try/demo_source/mov_bbb.mp4",
                                 fileName: "mov_bbb.mp4",
