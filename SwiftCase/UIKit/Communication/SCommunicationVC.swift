@@ -148,6 +148,22 @@ class SCommunicationVC: ItemListViewController {
 
             if let _ = responseObject {}
         }
+
+        AFNetRequest().download(URLString: "https://www.runoob.com/try/demo_source/mov_bbb.mp4",
+                                fileName: "mov_bbb.mp4",
+                                directory: .cachesDirectory)
+        { progress, fileURL, error in
+
+            debugPrint("progress: \(String(format: "%.2fs", progress))")
+            if error != nil {
+                print("Error: \(error?.description ?? "")")
+                return
+            }
+
+            if let path = fileURL?.path {
+                debugPrint("file path:\(path)")
+            }
+        }
     }
 
     // MARK: - Private

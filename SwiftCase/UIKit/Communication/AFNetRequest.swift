@@ -53,11 +53,12 @@ class AFNetRequest: NSObject {
 
     // 执行析构过程
     deinit {
-        print("===========<deinit: \(type(of: self))>===========")
+        debugPrint("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
 
+    /// GET、POST网络请求
     public func requestData(URLString: String,
                             type: AFMethodType,
                             parameters: [String: Any]? = nil,
@@ -95,16 +96,15 @@ class AFNetRequest: NSObject {
                     }
 
                 case let .failure(error):
-                    let tmpError = NSError(domain: "\(String(describing: error.url))",
+                    let tmpError = NSError(domain: "\(URLString)",
                                            code: error.responseCode ?? -1,
                                            userInfo: [NSLocalizedDescriptionKey: "\(error)"])
                     respondCallback(nil, tmpError)
                 }
-            case .download:
-                let downInfo = self.downloadedBodyString()
-                print("\(downInfo)")
             case .upload:
-                print("upload")
+                debugPrint("upload")
+            default:
+                debugPrint("default")
             }
         }
 
@@ -112,10 +112,36 @@ class AFNetRequest: NSObject {
             request.responseString { response in
                 requestComplete(response.response, response.result)
             }
-        } else if let request = request as? DownloadRequest {
-            request.responseString { response in
-                requestComplete(response.response, response.result)
+        }
+    }
+
+    /// 文件下载
+    public func download(URLString: String,
+                         parameters: [String: Any]? = nil,
+                         fileName: String,
+                         directory: FileManager.SearchPathDirectory,
+                         respondCallback: @escaping (_ progress: Double, _ fileURL: URL?, _ error: NSError?) -> Void)
+    {
+        printRequestLog(URLString: URLString, type: .download, parameters: parameters)
+
+        let destination: DownloadRequest.Destination = { _, _ in
+            let documentsURL = FileManager.default.urls(for: directory, in: .userDomainMask)[0]
+            let fileURL = documentsURL.appendingPathComponent(fileName)
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+        }
+
+        AF.download(URLString, to: destination).downloadProgress { progress in
+            respondCallback(progress.fractionCompleted, nil, nil)
+        }.response { response in
+
+            if let error = response.error {
+                let tmpError = NSError(domain: "\(URLString)",
+                                       code: error.responseCode ?? -1,
+                                       userInfo: [NSLocalizedDescriptionKey: "\(error)"])
+                respondCallback(0, nil, tmpError)
+                return
             }
+            respondCallback(1, response.fileURL, nil)
         }
     }
 
@@ -136,9 +162,6 @@ class AFNetRequest: NSObject {
                 urlRequest.timeoutInterval = self.timeout
                 urlRequest.allowsConstrainedNetworkAccess = true
             }
-        case .download:
-            let destination = DownloadRequest.suggestedDownloadDestination(for: .cachesDirectory, in: .userDomainMask)
-            return AF.download(URLString, to: destination)
         default:
             return nil
         }
@@ -146,34 +169,34 @@ class AFNetRequest: NSObject {
 
     /// 打印请求日志
     private func printRequestLog(URLString: String, type _: AFMethodType, parameters: [String: Any]? = nil) {
-        print("===========<request-id:\(requestId) tag:>===========")
-        print("\(URLString)")
+        debugPrint("===========<request-id:\(requestId) tag:>===========")
+        debugPrint("\(URLString)")
 
         if let parameters = parameters {
-            print("httpBody:{")
+            debugPrint("httpBody:{")
             for item in parameters {
-                print("    \(item.key):\(item.value)")
+                debugPrint("    \(item.key):\(item.value)")
             }
-            print("}")
+            debugPrint("}")
         }
 
-        print("Request Header:{")
+        debugPrint("Request Header:{")
         for item in headers {
-            print("    \(item.name):\(item.value)")
+            debugPrint("    \(item.name):\(item.value)")
         }
-        print("}")
+        debugPrint("}")
     }
 
     /// 打印响应日志
     private func printResponseLog(json: String) {
-        print("===========<response-id:\(requestId) tag:>===========")
+        debugPrint("===========<response-id:\(requestId) tag:>===========")
         let time = String(format: "%.2fs", elapsedTime ?? 0)
-        print("Response Time:\(time)")
+        debugPrint("Response Time:\(time)")
 
         if let data = json.data(using: .utf8) {
-            print(data.prettyPrintedJSONString ?? json)
+            debugPrint(data.prettyPrintedJSONString ?? json)
         } else {
-            print("\(json)")
+            debugPrint("\(json)")
         }
     }
 
@@ -184,35 +207,10 @@ class AFNetRequest: NSObject {
                 let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject]
                 return json
             } catch let error as NSError {
-                print("Failed to dictionary: \(error)")
+                debugPrint("Failed to dictionary: \(error)")
             }
         }
         return nil
-    }
-
-    private func downloadedBodyString() -> String {
-        let fileManager = FileManager.default
-        let cachesDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-
-        do {
-            let contents = try fileManager.contentsOfDirectory(at: cachesDirectory,
-                                                               includingPropertiesForKeys: nil,
-                                                               options: .skipsHiddenFiles)
-
-            if let fileURL = contents.first, let data = try? Data(contentsOf: fileURL) {
-                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions())
-                let prettyData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
-
-                if let prettyString = String(data: prettyData, encoding: String.Encoding.utf8) {
-                    try fileManager.removeItem(at: fileURL)
-                    return prettyString
-                }
-            }
-        } catch {
-            // No-op
-        }
-
-        return ""
     }
 
     // MARK: - Property
