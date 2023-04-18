@@ -33,29 +33,31 @@ class AFNetRequest: NSObject {
 
     public func requestData(URLString: String,
                             type: AFMethodType,
-                            parameters _: [String: Any]? = nil,
-                            respondCallback _: @escaping (_ responseObject: [String: Any], _ error: NSError) -> Void)
+                            parameters: [String: Any]? = nil,
+                            respondCallback: @escaping (_ responseObject: [String: AnyObject]?, _ error: NSError?) -> Void)
     {
-        request = getRequest(URLString: URLString, type: type)
+        AFNetRequest.requestId += 1
+        request = getRequest(URLString: URLString, type: type, parameters: parameters)
+        printRequestLog(URLString: URLString, type: type, parameters: parameters)
 
         let start = CACurrentMediaTime()
-        let requestComplete: (HTTPURLResponse?, Result<String, AFError>) -> Void = { response, result in
+        let requestComplete: (HTTPURLResponse?, Result<String, AFError>) -> Void = { _, result in
             let end = CACurrentMediaTime()
             self.elapsedTime = end - start
-
-            if let response = response {
-                for (field, value) in response.allHeaderFields {
-                    self.headers["\(field)"] = "\(value)"
-                }
-            }
 
             switch type {
             case .get, .post:
                 switch result {
                 case let .success(value):
-                    print("\(value)")
+                    self.printResponseLog(json: value)
+                    let dataDic = self.convertStringToDictionary(text: value)
+                    respondCallback(dataDic, nil)
+
                 case let .failure(error):
-                    print("error:\(error)")
+                    let tmpError = NSError(domain: "\(String(describing: error.url))",
+                                           code: error.responseCode ?? -1,
+                                           userInfo: [NSLocalizedDescriptionKey: "\(error)"])
+                    respondCallback(nil, tmpError)
                 }
             case .download:
                 let downInfo = self.downloadedBodyString()
@@ -79,18 +81,56 @@ class AFNetRequest: NSObject {
 
     // MARK: - Private
 
-    private func getRequest(URLString: String, type: AFMethodType) -> Request? {
+    private func getRequest(URLString: String, type: AFMethodType, parameters: [String: Any]? = nil) -> Request? {
         switch type {
         case .get:
-            return AF.request(URLString, method: .get)
+            return AF.request(URLString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers)
         case .post:
-            return AF.request(URLString, method: .post)
+            return AF.request(URLString, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
         case .download:
             let destination = DownloadRequest.suggestedDownloadDestination(for: .cachesDirectory, in: .userDomainMask)
             return AF.download(URLString, to: destination)
         default:
             return nil
         }
+    }
+
+    private func printRequestLog(URLString: String, type _: AFMethodType, parameters: [String: Any]? = nil) {
+        print("===========<request-id:\(AFNetRequest.requestId) tag:>===========")
+        print("\(URLString)")
+
+        if let parameters = parameters {
+            print("httpBody:{")
+            for item in parameters {
+                print("    \(item.key):\(item.value)")
+            }
+            print("}")
+        }
+
+        print("Request Header:{")
+        for item in headers {
+            print("    \(item.name):\(item.value)")
+        }
+        print("}")
+    }
+
+    private func printResponseLog(json: String) {
+        print("===========<response-id:\(AFNetRequest.requestId) tag:>===========")
+        let time = String(format: "%.2fs", elapsedTime ?? 0)
+        print("Response Time:\(time)")
+        print("\(json)")
+    }
+
+    private func convertStringToDictionary(text: String) -> [String: AnyObject]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject]
+                return json
+            } catch let error as NSError {
+                print("Failed to dictionary: \(error)")
+            }
+        }
+        return nil
     }
 
     private func downloadedBodyString() -> String {
@@ -120,6 +160,8 @@ class AFNetRequest: NSObject {
 
     // MARK: - Property
 
+    static var requestId: Int = 0
+
     private var request: Request? {
         didSet {
             oldValue?.cancel()
@@ -129,5 +171,11 @@ class AFNetRequest: NSObject {
 
     private var elapsedTime: TimeInterval?
 
-    private var headers: [String: String] = ["Accept": "application/json"]
+    private var headers: HTTPHeaders = [
+        "Accept": "application/json",
+        "appName": SCDeviceInfo.getAppName(),
+        "version": SCDeviceInfo.appVersion,
+        "custId": "",
+        "token": "",
+    ]
 }

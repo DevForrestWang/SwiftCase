@@ -80,18 +80,36 @@ class AlamofireUtil: NSObject {
 
     /*
       1、打印日志格式：
-      ===========<request-id:140 tag:>===========
-      https://dc.aadv.net:10443/mobile/reconsitution//customerPoints/createPointInvest
-      httpBody:{
-        "channel" : "41",
-        "userType" : "2",
-        "investAmount" : "100",
-        "hsResNo" : "06016230005",
-        "custName" : "黄伟",
-        "transPwd" : "d1ca3aaf52b41acd68ebb3bf69079bd1",
-        "custType" : "1",
-        "custId" : "0601623000520171130"
+
+      ===========<request-id:3 tag:>===========
+      https://dc.aadv.net:10443/mobile/reconsitution//common/custGlobalData
+      2023-04-18 10:02:05.310680+0800 HMCommunity[77949:8328911] Request Header:{
+          appName = hmsq;
+          channelType = 41;
+          custId = 0601912002520161029;
+          token = ab7db3d28fe81c29f403431985963ce5fcb3ad07aeab3174c08ad3d7a470ef3d;
+          version = 5.0.0;
       }
+
+      ===========<request-id:4 tag:>===========
+      https://dp.aaij.net:8443/hsim-bservice/friend/queryFriendList
+      httpBody:{
+        "loginToken" : "ab7db3d28fe81c29f403431985963ce5fcb3ad07aeab3174c08ad3d7a470ef3d",
+        "data" : {
+          "accountId" : "c_0601912002520161029"
+        },
+        "channelType" : "41",
+        "custId" : "0601912002520161029"
+      }
+      2023-04-18 10:02:05.320777+0800 HMCommunity[77949:8328911] Request Header:{
+          channelType = 41;
+          appName = hmsq;
+          GToken = ab7db3d28fe81c29f403431985963ce5fcb3ad07aeab3174c08ad3d7a470ef3d;
+          custId = 0601912002520161029;
+          token = ab7db3d28fe81c29f403431985963ce5fcb3ad07aeab3174c08ad3d7a470ef3d;
+          version = 5.0.0;
+      }
+
       ===========<response-id:140 tag:>===========
       {
         "data" : null,
