@@ -131,12 +131,29 @@ class SCommunicationVC: ItemListViewController {
     }
 
     @objc func alamofireDemo() {
-        let url = "https://suggest.taobao.com/sug?code=utf-8&q=%E5%8D%AB%E8%A1%A3&callback=cb"
-//        AlamofireUtil.getRequest(url, nil) { result in
-//            print("result: \(result)")
-//        }
+        let strURL = "https://mobi.hsxt.cn:9446/refactor/lcs/queryProvinceTree"
+        let parameter: [String: Any] = [
+            "countryNo": " 156",
+        ]
 
-        AFNetRequest().requestData(URLString: url, type: .get) { _, _ in
+        AFNetRequest().requestData(URLString: strURL, type: .get, parameters: parameter) { responseObject, _ in
+            if let _ = responseObject {}
+        }
+
+        AFNetRequest(isParse: true, retCode: "retCode", msg: "msg", timeout: 30).requestData(URLString: strURL, type: .get, parameters: parameter) { responseObject, error in
+            if error != nil {
+                print("Error: \(error?.description ?? "")")
+                return
+            }
+
+            if let _ = responseObject {}
+        }
+
+        let parameter2: [String: Any] = [
+            "hsResNo": "0601912002520161029",
+            "sdkAPPId": 1_400_620_151,
+        ]
+        AFNetRequest().requestData(URLString: "https://dc.aadv.net/wxmember-access-test//txim/user/getUserSign", type: .post, parameters: parameter2) { _, _ in
         }
     }
 

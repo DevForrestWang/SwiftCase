@@ -21,8 +21,20 @@ enum AFMethodType {
     case download
 }
 
+var gAFRequestId: Int = 0
+
 class AFNetRequest: NSObject {
     // MARK: - Lifecycle
+
+    public init(isParse: Bool = true, retCode: String = "retCode", msg: String = "msg", timeout: TimeInterval = 30) {
+        self.isParse = isParse
+        self.retCode = retCode
+        self.msg = msg
+        self.timeout = timeout
+
+        gAFRequestId += 1
+        requestId = gAFRequestId
+    }
 
     // 执行析构过程
     deinit {
@@ -36,7 +48,6 @@ class AFNetRequest: NSObject {
                             parameters: [String: Any]? = nil,
                             respondCallback: @escaping (_ responseObject: [String: AnyObject]?, _ error: NSError?) -> Void)
     {
-        AFNetRequest.requestId += 1
         request = getRequest(URLString: URLString, type: type, parameters: parameters)
         printRequestLog(URLString: URLString, type: type, parameters: parameters)
 
@@ -48,19 +59,43 @@ class AFNetRequest: NSObject {
             switch type {
             case .get, .post:
                 switch result {
-                case let .success(value):
-                    self.printResponseLog(json: value)
-                    let dataDic = self.convertStringToDictionary(text: value)
-                    respondCallback(dataDic, nil)
+                case let .success(strJson):
+                    self.printResponseLog(json: strJson)
+                    let dataDic = self.convertStringToDictionary(text: strJson)
+
+                    if self.isParse, let tmpDic = dataDic {
+                        let retcode = tmpDic[self.retCode] as? Int ?? 0
+                        if retcode != 200 {
+                            let msg = tmpDic[self.msg] as? String ?? ""
+                            let tmpError = NSError(domain: "\(URLString)",
+                                                   code: retcode,
+                                                   userInfo: [NSLocalizedDescriptionKey: "\(msg)"])
+                            DispatchQueue.main.async {
+                                respondCallback(nil, tmpError)
+                            }
+                            return
+                        }
+
+                        DispatchQueue.main.async {
+                            respondCallback(dataDic, nil)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            respondCallback(dataDic, nil)
+                        }
+                    }
 
                 case let .failure(error):
                     let tmpError = NSError(domain: "\(String(describing: error.url))",
                                            code: error.responseCode ?? -1,
                                            userInfo: [NSLocalizedDescriptionKey: "\(error)"])
-                    respondCallback(nil, tmpError)
+                    DispatchQueue.main.async {
+                        respondCallback(nil, tmpError)
+                    }
                 }
             case .download:
                 let downInfo = self.downloadedBodyString()
+                print("\(downInfo)")
             case .upload:
                 print("upload")
             }
@@ -84,9 +119,15 @@ class AFNetRequest: NSObject {
     private func getRequest(URLString: String, type: AFMethodType, parameters: [String: Any]? = nil) -> Request? {
         switch type {
         case .get:
-            return AF.request(URLString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+            return AF.request(URLString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers) { urlRequest in
+                urlRequest.timeoutInterval = self.timeout
+                urlRequest.allowsConstrainedNetworkAccess = true
+            }
         case .post:
-            return AF.request(URLString, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            return AF.request(URLString, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers) { urlRequest in
+                urlRequest.timeoutInterval = self.timeout
+                urlRequest.allowsConstrainedNetworkAccess = true
+            }
         case .download:
             let destination = DownloadRequest.suggestedDownloadDestination(for: .cachesDirectory, in: .userDomainMask)
             return AF.download(URLString, to: destination)
@@ -96,7 +137,7 @@ class AFNetRequest: NSObject {
     }
 
     private func printRequestLog(URLString: String, type _: AFMethodType, parameters: [String: Any]? = nil) {
-        print("===========<request-id:\(AFNetRequest.requestId) tag:>===========")
+        print("===========<request-id:\(requestId) tag:>===========")
         print("\(URLString)")
 
         if let parameters = parameters {
@@ -115,10 +156,15 @@ class AFNetRequest: NSObject {
     }
 
     private func printResponseLog(json: String) {
-        print("===========<response-id:\(AFNetRequest.requestId) tag:>===========")
+        print("===========<response-id:\(requestId) tag:>===========")
         let time = String(format: "%.2fs", elapsedTime ?? 0)
         print("Response Time:\(time)")
-        print("\(json)")
+
+        if let data = json.data(using: .utf8) {
+            print(data.prettyPrintedJSONString ?? json)
+        } else {
+            print("\(json)")
+        }
     }
 
     private func convertStringToDictionary(text: String) -> [String: AnyObject]? {
@@ -160,8 +206,6 @@ class AFNetRequest: NSObject {
 
     // MARK: - Property
 
-    static var requestId: Int = 0
-
     private var request: Request? {
         didSet {
             oldValue?.cancel()
@@ -169,13 +213,23 @@ class AFNetRequest: NSObject {
         }
     }
 
+    private var isParse: Bool = true
+
+    private var retCode: String = "retCode"
+
+    private var msg: String = "msg"
+
+    private var timeout: TimeInterval = 30
+
+    private var requestId: Int = 0
+
     private var elapsedTime: TimeInterval?
 
     private var headers: HTTPHeaders = [
         "Accept": "application/json",
         "appName": SCDeviceInfo.getAppName(),
         "version": SCDeviceInfo.appVersion,
-        "custId": "init CustId",
+        "custId": "init custId",
         "token": "init token",
     ]
 }
