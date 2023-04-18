@@ -57,8 +57,8 @@ class AFNetRequest: NSObject {
     public func requestData(URLString: String,
                             type: AFMethodType,
                             parameters: [String: Any]? = nil,
-                            respondCallback: @escaping (_ responseObject: [String: AnyObject]?, _ error: NSError?) -> Void) {
-        
+                            respondCallback: @escaping (_ responseObject: [String: AnyObject]?, _ error: NSError?) -> Void)
+    {
         request = getRequest(URLString: URLString, type: type, parameters: parameters)
         printRequestLog(URLString: URLString, type: type, parameters: parameters)
 
@@ -127,6 +127,7 @@ class AFNetRequest: NSObject {
 
     // MARK: - Private
 
+    /// 获得请求对象
     private func getRequest(URLString: String, type: AFMethodType, parameters: [String: Any]? = nil) -> Request? {
         switch type {
         case .get:
@@ -147,6 +148,7 @@ class AFNetRequest: NSObject {
         }
     }
 
+    /// 打印请求日志
     private func printRequestLog(URLString: String, type _: AFMethodType, parameters: [String: Any]? = nil) {
         print("===========<request-id:\(requestId) tag:>===========")
         print("\(URLString)")
@@ -166,6 +168,7 @@ class AFNetRequest: NSObject {
         print("}")
     }
 
+    /// 打印响应日志
     private func printResponseLog(json: String) {
         print("===========<response-id:\(requestId) tag:>===========")
         let time = String(format: "%.2fs", elapsedTime ?? 0)
@@ -178,6 +181,7 @@ class AFNetRequest: NSObject {
         }
     }
 
+    /// json字符串转换成字典
     private func convertStringToDictionary(text: String) -> [String: AnyObject]? {
         if let data = text.data(using: .utf8) {
             do {
@@ -236,6 +240,7 @@ class AFNetRequest: NSObject {
 
     private var elapsedTime: TimeInterval?
 
+    // 请求头信息
     private var headers: HTTPHeaders = [
         "Accept": "application/json",
         "appName": SCDeviceInfo.getAppName(),

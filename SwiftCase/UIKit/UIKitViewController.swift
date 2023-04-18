@@ -46,7 +46,7 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "Thread, OperationQueue, GCD", controllerName: "SCThreadViewController", action: nil),
             SCItemModel(title: "Animation", controllerName: "SCUIAnimationViewVC", action: nil),
             SCItemModel(title: "Parse JSON by simdjson(Cocoapods ZippyJSON)", controllerName: "", action: #selector(zippyParseJSON)),
-            SCItemModel(title: "Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi", controllerName: "SCommunicationVC", action: nil),
+            SCItemModel(title: "Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi、Alamofire request", controllerName: "SCommunicationVC", action: nil),
         ]
     }
 
