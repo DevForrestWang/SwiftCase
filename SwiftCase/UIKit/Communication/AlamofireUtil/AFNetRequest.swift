@@ -175,7 +175,7 @@ class AFNetRequest: NSObject {
         "Accept": "application/json",
         "appName": SCDeviceInfo.getAppName(),
         "version": SCDeviceInfo.appVersion,
-        "custId": "",
-        "token": "",
+        "custId": "init CustId",
+        "token": "init token",
     ]
 }
