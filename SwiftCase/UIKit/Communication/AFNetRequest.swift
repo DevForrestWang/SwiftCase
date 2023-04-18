@@ -130,7 +130,7 @@ class AFNetRequest: NSObject {
             return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
         }
 
-        AF.download(URLString, to: destination).downloadProgress { progress in
+        AF.download(URLString, parameters: parameters, headers: headers, to: destination).downloadProgress { progress in
             respondCallback(progress.fractionCompleted, nil, nil)
         }.response { response in
 
