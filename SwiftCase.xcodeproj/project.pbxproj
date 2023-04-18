@@ -263,6 +263,7 @@
 		C68195212892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */; };
 		C68195232892C08E001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195222892C08E001CCF50 /* SCSelectDayView.swift */; };
 		C6BCB6AC29ED36D300DC8A03 /* AFNetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCB6AB29ED36D300DC8A03 /* AFNetRequest.swift */; };
+		C6BCB6B429EEBF3E00DC8A03 /* pig.png in Resources */ = {isa = PBXBuildFile; fileRef = C6BCB6B329EEBF3E00DC8A03 /* pig.png */; };
 		C6BF75E528586142004116B8 /* SCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF75E428586142004116B8 /* SCircleProgressView.swift */; };
 		C6C0CC2629E685D300C7C2C2 /* CachingPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CC2529E685D300C7C2C2 /* CachingPlayerItem.swift */; };
 		C6D68214293E206300EA7925 /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D68213293E206200EA7925 /* AttributedString.swift */; };
@@ -565,6 +566,7 @@
 		C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCalendarDateRangePickerHeaderView.swift; sourceTree = "<group>"; };
 		C68195222892C08E001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
 		C6BCB6AB29ED36D300DC8A03 /* AFNetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFNetRequest.swift; sourceTree = "<group>"; };
+		C6BCB6B329EEBF3E00DC8A03 /* pig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pig.png; sourceTree = "<group>"; };
 		C6BF75E428586142004116B8 /* SCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCircleProgressView.swift; sourceTree = "<group>"; };
 		C6C0CC2529E685D300C7C2C2 /* CachingPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingPlayerItem.swift; sourceTree = "<group>"; };
 		C6C8BCC729262897006147B4 /* LeetCode.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LeetCode.playground; sourceTree = "<group>"; };
@@ -1026,6 +1028,7 @@
 		77F6520726F5CB2000280568 /* Resouce */ = {
 			isa = PBXGroup;
 			children = (
+				C6BCB6B329EEBF3E00DC8A03 /* pig.png */,
 				8A84E13827D06B4200E98830 /* search@2x.png */,
 				8A48626D27A0EE48004ABF6C /* sherlock@3x.png */,
 				77DC1134274241F9002AED0C /* santa.png */,
@@ -1539,6 +1542,7 @@
 				7756E88326FC28FB00AB139F /* normalImage@2x.png in Resources */,
 				7756C25B26FDD33400C43EFD /* map_home@2x.png in Resources */,
 				77DC1135274241F9002AED0C /* santa.png in Resources */,
+				C6BCB6B429EEBF3E00DC8A03 /* pig.png in Resources */,
 				77E0ACB726F5C235000EABC1 /* Assets.xcassets in Resources */,
 				77F6521B26F5CBAC00280568 /* icon_course@2x.png in Resources */,
 				779843A12702B03F001D73AF /* ChatListTableViewCell.xib in Resources */,

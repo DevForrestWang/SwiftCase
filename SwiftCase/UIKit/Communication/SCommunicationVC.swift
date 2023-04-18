@@ -131,6 +131,7 @@ class SCommunicationVC: ItemListViewController {
     }
 
     @objc func alamofireDemo() {
+        // GET 请求
         let strURL = "https://mobi.hsxt.cn:9446/refactor/lcs/queryProvinceTree"
         let parameter: [String: Any] = [
             "countryNo": " 156",
@@ -149,6 +150,7 @@ class SCommunicationVC: ItemListViewController {
             if let _ = responseObject {}
         }
 
+        // 文件下载
         AFNetRequest().download(URLString: "https://www.runoob.com/try/demo_source/mov_bbb.mp4",
                                 fileName: "mov_bbb.mp4",
                                 directory: .cachesDirectory)
@@ -162,6 +164,21 @@ class SCommunicationVC: ItemListViewController {
 
             if let path = fileURL?.path {
                 debugPrint("file path:\(path)")
+            }
+        }
+
+        // 文件上传
+        let fileURL = Bundle.main.url(forResource: "pig", withExtension: "png")
+        AFNetRequest().upload(fileURL: fileURL, URLString: "https://httpbin.org/post") { progress, responseObject, error in
+
+            debugPrint("progress: \(String(format: "%.2fs", progress))")
+            if error != nil {
+                print("Error: \(error?.description ?? "")")
+                return
+            }
+
+            if let responseObject = responseObject {
+                debugPrint("responseObject count:\(responseObject.count)")
             }
         }
     }

@@ -37,11 +37,7 @@ class AFNetRequest: NSObject {
      *  @param msg 错误信息key
      *  @param timeout 超时时间，默认30秒
      */
-    public init(isParse: Bool = true,
-                retCode: String = "retCode",
-                msg: String = "msg",
-                timeout: TimeInterval = 30)
-    {
+    public init(isParse: Bool = true, retCode: String = "retCode", msg: String = "msg", timeout: TimeInterval = 30) {
         self.isParse = isParse
         self.retCode = retCode
         self.msg = msg
@@ -52,9 +48,7 @@ class AFNetRequest: NSObject {
     }
 
     // 执行析构过程
-    deinit {
-        debugPrint("===========<deinit: \(type(of: self))>===========")
-    }
+    deinit {}
 
     // MARK: - Public
 
@@ -68,7 +62,8 @@ class AFNetRequest: NSObject {
         printRequestLog(URLString: URLString, type: type, parameters: parameters)
 
         let start = CACurrentMediaTime()
-        let requestComplete: (HTTPURLResponse?, Result<String, AFError>) -> Void = { _, result in
+
+        let requestComplete: (Result<String, AFError>) -> Void = { result in
             let end = CACurrentMediaTime()
             self.elapsedTime = end - start
 
@@ -101,8 +96,6 @@ class AFNetRequest: NSObject {
                                            userInfo: [NSLocalizedDescriptionKey: "\(error)"])
                     respondCallback(nil, tmpError)
                 }
-            case .upload:
-                debugPrint("upload")
             default:
                 debugPrint("default")
             }
@@ -110,7 +103,7 @@ class AFNetRequest: NSObject {
 
         if let request = request as? DataRequest {
             request.responseString { response in
-                requestComplete(response.response, response.result)
+                requestComplete(response.result)
             }
         }
     }
@@ -134,6 +127,7 @@ class AFNetRequest: NSObject {
             respondCallback(progress.fractionCompleted, nil, nil)
         }.response { response in
 
+            debugPrint("===========<response-id:\(self.requestId) tag:>===========")
             if let error = response.error {
                 let tmpError = NSError(domain: "\(URLString)",
                                        code: error.responseCode ?? -1,
@@ -143,6 +137,34 @@ class AFNetRequest: NSObject {
             }
             respondCallback(1, response.fileURL, nil)
         }
+    }
+
+    /// 文件上传
+    public func upload(fileURL: URL?,
+                       URLString: String,
+                       respondCallback: @escaping (_ progress: Double, _ responseObject: [String: AnyObject]?, _ error: NSError?) -> Void)
+    {
+        guard let fileURL = fileURL else {
+            return
+        }
+        printRequestLog(URLString: URLString, type: .upload, parameters: nil)
+
+        AF.upload(fileURL, to: URLString, headers: headers).uploadProgress { progress in
+            respondCallback(progress.fractionCompleted, nil, nil)
+        }
+        .responseString(completionHandler: { response in
+
+            debugPrint("===========<response-id:\(self.requestId) tag:>===========")
+            switch response.result {
+            case let .success(strJson):
+                respondCallback(1, self.convertStringToDictionary(text: strJson), nil)
+            case let .failure(error):
+                let tmpError = NSError(domain: "\(URLString)",
+                                       code: error.responseCode ?? -1,
+                                       userInfo: [NSLocalizedDescriptionKey: "\(error)"])
+                respondCallback(0, nil, tmpError)
+            }
+        })
     }
 
     // MARK: - Protocol
