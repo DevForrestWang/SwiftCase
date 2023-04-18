@@ -148,13 +148,6 @@ class SCommunicationVC: ItemListViewController {
 
             if let _ = responseObject {}
         }
-
-        let parameter2: [String: Any] = [
-            "hsResNo": "0601912002520161029",
-            "sdkAPPId": 1_400_620_151,
-        ]
-        AFNetRequest().requestData(URLString: "https://dc.aadv.net/wxmember-access-test//txim/user/getUserSign", type: .post, parameters: parameter2) { _, _ in
-        }
     }
 
     // MARK: - Private

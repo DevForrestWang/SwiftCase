@@ -262,9 +262,7 @@
 		C68195202892C062001CCF50 /* SCalendarDateRangePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951D2892C062001CCF50 /* SCalendarDateRangePickerCell.swift */; };
 		C68195212892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */; };
 		C68195232892C08E001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195222892C08E001CCF50 /* SCSelectDayView.swift */; };
-		C6BCB6AA29ECF7C800DC8A03 /* AlamofireUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCB6A929ECF7C800DC8A03 /* AlamofireUtil.swift */; };
 		C6BCB6AC29ED36D300DC8A03 /* AFNetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCB6AB29ED36D300DC8A03 /* AFNetRequest.swift */; };
-		C6BCB6AE29ED36EE00DC8A03 /* AFNetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCB6AD29ED36EE00DC8A03 /* AFNetManager.swift */; };
 		C6BF75E528586142004116B8 /* SCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF75E428586142004116B8 /* SCircleProgressView.swift */; };
 		C6C0CC2629E685D300C7C2C2 /* CachingPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CC2529E685D300C7C2C2 /* CachingPlayerItem.swift */; };
 		C6D68214293E206300EA7925 /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D68213293E206200EA7925 /* AttributedString.swift */; };
@@ -566,9 +564,7 @@
 		C681951D2892C062001CCF50 /* SCalendarDateRangePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCalendarDateRangePickerCell.swift; sourceTree = "<group>"; };
 		C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCalendarDateRangePickerHeaderView.swift; sourceTree = "<group>"; };
 		C68195222892C08E001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
-		C6BCB6A929ECF7C800DC8A03 /* AlamofireUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireUtil.swift; sourceTree = "<group>"; };
 		C6BCB6AB29ED36D300DC8A03 /* AFNetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFNetRequest.swift; sourceTree = "<group>"; };
-		C6BCB6AD29ED36EE00DC8A03 /* AFNetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFNetManager.swift; sourceTree = "<group>"; };
 		C6BF75E428586142004116B8 /* SCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCircleProgressView.swift; sourceTree = "<group>"; };
 		C6C0CC2529E685D300C7C2C2 /* CachingPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingPlayerItem.swift; sourceTree = "<group>"; };
 		C6C8BCC729262897006147B4 /* LeetCode.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LeetCode.playground; sourceTree = "<group>"; };
@@ -758,12 +754,12 @@
 		7756E82A26FAE48200AB139F /* Communication */ = {
 			isa = PBXGroup;
 			children = (
-				C6BCB6A829ECF7A300DC8A03 /* AlamofireUtil */,
 				7798437B2702B03F001D73AF /* Chart */,
 				7756E82B26FAE48200AB139F /* gRPC */,
 				7756E83426FAE48200AB139F /* NetWork */,
 				7756E83A26FAE48200AB139F /* Model */,
 				7756E83926FAE48200AB139F /* SCommunicationVC.swift */,
+				C6BCB6AB29ED36D300DC8A03 /* AFNetRequest.swift */,
 			);
 			path = Communication;
 			sourceTree = "<group>";
@@ -1366,16 +1362,6 @@
 			path = CalendarDate;
 			sourceTree = "<group>";
 		};
-		C6BCB6A829ECF7A300DC8A03 /* AlamofireUtil */ = {
-			isa = PBXGroup;
-			children = (
-				C6BCB6A929ECF7C800DC8A03 /* AlamofireUtil.swift */,
-				C6BCB6AB29ED36D300DC8A03 /* AFNetRequest.swift */,
-				C6BCB6AD29ED36EE00DC8A03 /* AFNetManager.swift */,
-			);
-			path = AlamofireUtil;
-			sourceTree = "<group>";
-		};
 		C6D8BF2C28D8420F009D85D5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1727,7 +1713,6 @@
 				C68195212892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */,
 				A887BA48284A0448006842C2 /* GYMainChatModel.swift in Sources */,
 				7756E85026FB17C800AB139F /* SCObjectClass.m in Sources */,
-				C6BCB6AA29ECF7C800DC8A03 /* AlamofireUtil.swift in Sources */,
 				C88F930826F8D8D300739819 /* SCUILableViewController.swift in Sources */,
 				8A48626A279FDFE3004ABF6C /* ShowTableViewCell.swift in Sources */,
 				779EAC8927198AA40046610C /* InsertionSort.swift in Sources */,
@@ -1870,7 +1855,6 @@
 				771005752735299300733EF7 /* StringExtensions.swift in Sources */,
 				77F652A026F5D25F00280568 /* DataSourceStrategy.swift in Sources */,
 				C88F930226F8D8D300739819 /* SCUICollectionViewVC.swift in Sources */,
-				C6BCB6AE29ED36EE00DC8A03 /* AFNetManager.swift in Sources */,
 				7747B4F8272CF8F200D315FA /* GSGraph.swift in Sources */,
 				7710057F2735299300733EF7 /* ACEmit.swift in Sources */,
 				77062DEF27394B8300A7F090 /* DijkstraData.swift in Sources */,

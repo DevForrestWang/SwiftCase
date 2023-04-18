@@ -14,6 +14,7 @@
 import Alamofire
 import UIKit
 
+/// 网络请求类型
 enum AFMethodType {
     case get
     case post
@@ -21,11 +22,21 @@ enum AFMethodType {
     case download
 }
 
+/// 全局变量记录APP启动请求Id
 var gAFRequestId: Int = 0
 
+/// Alamofire 网络信息封装
 class AFNetRequest: NSObject {
     // MARK: - Lifecycle
 
+    /**
+     *  初始化参数
+     *
+     *  @param isParse 是否检查返回成功，返回码200
+     *  @param retCode 返回码的key
+     *  @param msg 错误信息key
+     *  @param timeout 超时时间，默认30秒
+     */
     public init(isParse: Bool = true, retCode: String = "retCode", msg: String = "msg", timeout: TimeInterval = 30) {
         self.isParse = isParse
         self.retCode = retCode
@@ -46,8 +57,8 @@ class AFNetRequest: NSObject {
     public func requestData(URLString: String,
                             type: AFMethodType,
                             parameters: [String: Any]? = nil,
-                            respondCallback: @escaping (_ responseObject: [String: AnyObject]?, _ error: NSError?) -> Void)
-    {
+                            respondCallback: @escaping (_ responseObject: [String: AnyObject]?, _ error: NSError?) -> Void) {
+        
         request = getRequest(URLString: URLString, type: type, parameters: parameters)
         printRequestLog(URLString: URLString, type: type, parameters: parameters)
 
