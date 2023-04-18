@@ -37,7 +37,11 @@ class AFNetRequest: NSObject {
      *  @param msg 错误信息key
      *  @param timeout 超时时间，默认30秒
      */
-    public init(isParse: Bool = true, retCode: String = "retCode", msg: String = "msg", timeout: TimeInterval = 30) {
+    public init(isParse: Bool = true,
+                retCode: String = "retCode",
+                msg: String = "msg",
+                timeout: TimeInterval = 30)
+    {
         self.isParse = isParse
         self.retCode = retCode
         self.msg = msg
@@ -81,28 +85,20 @@ class AFNetRequest: NSObject {
                             let tmpError = NSError(domain: "\(URLString)",
                                                    code: retcode,
                                                    userInfo: [NSLocalizedDescriptionKey: "\(msg)"])
-                            DispatchQueue.main.async {
-                                respondCallback(nil, tmpError)
-                            }
+                            respondCallback(nil, tmpError)
                             return
                         }
 
-                        DispatchQueue.main.async {
-                            respondCallback(dataDic, nil)
-                        }
+                        respondCallback(dataDic, nil)
                     } else {
-                        DispatchQueue.main.async {
-                            respondCallback(dataDic, nil)
-                        }
+                        respondCallback(dataDic, nil)
                     }
 
                 case let .failure(error):
                     let tmpError = NSError(domain: "\(String(describing: error.url))",
                                            code: error.responseCode ?? -1,
                                            userInfo: [NSLocalizedDescriptionKey: "\(error)"])
-                    DispatchQueue.main.async {
-                        respondCallback(nil, tmpError)
-                    }
+                    respondCallback(nil, tmpError)
                 }
             case .download:
                 let downInfo = self.downloadedBodyString()
