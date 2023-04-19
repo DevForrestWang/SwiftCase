@@ -134,7 +134,7 @@ class SCommunicationVC: ItemListViewController {
         // GET 请求
         let strURL = "https://mobi.hsxt.cn:9446/refactor/lcs/queryProvinceTree"
         let parameter: [String: Any] = [
-            "countryNo": " 156",
+            "countryNo": "156",
         ]
 
         AFNetRequest().requestData(URLString: strURL, type: .get, parameters: parameter) { responseObject, _ in
@@ -150,8 +150,8 @@ class SCommunicationVC: ItemListViewController {
             if let _ = responseObject {}
         }
 
-        // 接口返回json数字字符串
-        AFNetRequest().requestData(URLString: "https://jsonplaceholder.typicode.com/posts", type: .get) { responseObject, _ in
+        // 接口返回json数组字符串
+        AFNetRequest(isParse: false).requestData(URLString: "https://jsonplaceholder.typicode.com/posts", type: .get) { responseObject, _ in
             if let _ = responseObject {}
         }
 

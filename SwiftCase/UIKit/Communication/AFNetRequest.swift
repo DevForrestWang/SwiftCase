@@ -222,16 +222,25 @@ class AFNetRequest: NSObject {
         }
     }
 
-    /// json字符串转换成字典
+    /// json字符串转换成字典；json如果是数组，会用 array最为key的字典
     private func convertStringToDictionary(text: String) -> [String: AnyObject]? {
         if let data = text.data(using: .utf8) {
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject]
-                return json
+                let jsonObj = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                if let json = jsonObj as? [String: AnyObject] {
+                    return json
+                } else if let array = jsonObj as? NSArray {
+                    let json: [String: AnyObject] = [
+                        "array": array,
+                    ]
+                    return json
+                }
+
             } catch let error as NSError {
                 debugPrint("Failed to dictionary: \(error)")
             }
         }
+
         return nil
     }
 
