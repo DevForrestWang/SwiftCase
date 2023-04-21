@@ -137,9 +137,11 @@ class SCommunicationVC: ItemListViewController {
             "countryNo": "156",
         ]
 
-        AFNetRequest().requestData(URLString: strURL, type: .get, parameters: parameter) { responseObject, _ in
-            if let _ = responseObject {}
-        }
+        AFNetRequest()
+            .updateHead(headInfo: ["custId": "init custId", "token": "init token"])
+            .requestData(URLString: strURL, type: .get, parameters: parameter) { responseObject, _ in
+                if let _ = responseObject {}
+            }
 
         AFNetRequest(isParse: true, retCode: "retCode", msg: "msg", timeout: 30).requestData(URLString: strURL, type: .get, parameters: parameter) { responseObject, error in
             if error != nil {

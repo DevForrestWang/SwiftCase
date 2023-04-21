@@ -130,7 +130,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 40 files.
+  /// This `R.file` struct is generated, and contains static references to 41 files.
   struct file {
     /// Resource file `README.md`.
     static let readmeMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "md")
@@ -198,6 +198,8 @@ struct R: Rswift.Validatable {
     static let normalImage2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "normalImage@2x", pathExtension: "png")
     /// Resource file `normalImage@3x.png`.
     static let normalImage3xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "normalImage@3x", pathExtension: "png")
+    /// Resource file `pig.png`.
+    static let pigPng = Rswift.FileResource(bundle: R.hostingBundle, name: "pig", pathExtension: "png")
     /// Resource file `placeholder@2x.png`.
     static let placeholder2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "placeholder@2x", pathExtension: "png")
     /// Resource file `santa.png`.
@@ -411,6 +413,12 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
+    /// `bundle.url(forResource: "pig", withExtension: "png")`
+    static func pigPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.pigPng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
     /// `bundle.url(forResource: "placeholder@2x", withExtension: "png")`
     static func placeholder2xPng(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.placeholder2xPng
@@ -456,7 +464,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 63 images.
+  /// This `R.image` struct is generated, and contains static references to 64 images.
   struct image {
     /// Image `LaunchScreen`.
     static let launchScreen = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchScreen")
@@ -566,6 +574,8 @@ struct R: Rswift.Validatable {
     static let nav_btn_closed = Rswift.ImageResource(bundle: R.hostingBundle, name: "nav_btn_closed")
     /// Image `normalImage`.
     static let normalImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "normalImage")
+    /// Image `pig`.
+    static let pig = Rswift.ImageResource(bundle: R.hostingBundle, name: "pig")
     /// Image `placeholder`.
     static let placeholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholder")
     /// Image `santa`.
@@ -960,6 +970,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "normalImage", bundle: ..., traitCollection: ...)`
     static func normalImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.normalImage, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "pig", bundle: ..., traitCollection: ...)`
+    static func pig(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.pig, compatibleWith: traitCollection)
     }
     #endif
 

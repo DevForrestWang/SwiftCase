@@ -15,7 +15,7 @@ import Alamofire
 import UIKit
 
 /// 网络请求类型
-enum AFMethodType {
+public enum AFMethodType {
     case get
     case post
     case upload
@@ -26,7 +26,7 @@ enum AFMethodType {
 var gAFRequestId: Int = 0
 
 /// Alamofire 网络信息封装
-class AFNetRequest: NSObject {
+public class AFNetRequest: NSObject {
     // MARK: - Lifecycle
 
     /**
@@ -51,6 +51,15 @@ class AFNetRequest: NSObject {
     deinit {}
 
     // MARK: - Public
+
+    /// 更新请求头信息
+    public func updateHead(headInfo: [String: String]) -> AFNetRequest {
+        for (key, value) in headInfo {
+            headers.add(name: key, value: value)
+        }
+
+        return self
+    }
 
     /// GET、POST网络请求
     public func requestData(URLString: String,
