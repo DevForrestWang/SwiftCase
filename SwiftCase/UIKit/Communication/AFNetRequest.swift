@@ -118,11 +118,11 @@ public class AFNetRequest: NSObject {
     }
 
     /// GET、POST网络请求, 返回指定Module
-    public func requestDecodable<T: Decodable>(of _: T.Type = T.self,
-                                               URLString: String,
-                                               type: AFMethodType,
-                                               parameters: [String: Any]? = nil,
-                                               respondCallback: @escaping (_ models: T?, _ error: NSError?) -> Void)
+    public func requestDecodable<T: Codable>(of _: T.Type = T.self,
+                                             URLString: String,
+                                             type: AFMethodType,
+                                             parameters: [String: Any]? = nil,
+                                             respondCallback: @escaping (_ models: T?, _ error: NSError?) -> Void)
     {
         requestData(URLString: URLString, type: type, parameters: parameters, respondCallback: { responseObject, error in
 

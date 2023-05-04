@@ -13,6 +13,7 @@
 
 /*
  请求返回的JSON格式
+ // json 工具： https://app.quicktype.io/ 
  "data" : [
    {
      "citys" : [
@@ -46,7 +47,7 @@
 import UIKit
 
 /// 城市的数据模型
-struct CityItemModel: Decodable {
+struct CityItemModel: Codable {
     let cityNameCn: String?
     let cityNo: String?
     let cityFullName: String?
@@ -61,7 +62,7 @@ struct CityItemModel: Decodable {
 }
 
 /// 省份数据模型
-struct ProvinceItemModel: Decodable {
+struct ProvinceItemModel: Codable {
     let delFlag: String?
     let provinceNameCn: String?
     let countryNo: String?
@@ -72,7 +73,7 @@ struct ProvinceItemModel: Decodable {
 }
 
 /// 省份、城市数据模型
-struct ProvincesModel: Decodable {
+struct ProvincesModel: Codable {
     let province: ProvinceItemModel?
 
     let citys: [CityItemModel]?
