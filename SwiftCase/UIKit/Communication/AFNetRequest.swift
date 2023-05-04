@@ -117,6 +117,44 @@ public class AFNetRequest: NSObject {
         }
     }
 
+    /// GET、POST网络请求, 返回指定Module
+    public func requestDecodable<T: Decodable>(of _: T.Type = T.self,
+                                               URLString: String,
+                                               type: AFMethodType,
+                                               parameters: [String: Any]? = nil,
+                                               respondCallback: @escaping (_ models: T?, _ error: NSError?) -> Void)
+    {
+        requestData(URLString: URLString, type: type, parameters: parameters, respondCallback: { responseObject, error in
+
+            if error != nil {
+                respondCallback(nil, error)
+                return
+            }
+
+            guard let tmpDic = responseObject else {
+                let tmpError = NSError(domain: "\(URLString)",
+                                       code: 9000,
+                                       userInfo: [NSLocalizedDescriptionKey: "responseObject is nil."])
+                respondCallback(nil, tmpError)
+                return
+            }
+
+            let retcode = tmpDic[self.retCode] as? Int ?? 0
+            if retcode != 200 {
+                let msg = tmpDic[self.msg] as? String ?? ""
+                let tmpError = NSError(domain: "\(URLString)",
+                                       code: retcode,
+                                       userInfo: [NSLocalizedDescriptionKey: "\(msg)"])
+                respondCallback(nil, tmpError)
+                return
+            }
+
+            let dataObj = tmpDic["data"]
+            // dic 转 model
+            respondCallback(nil, nil)
+        })
+    }
+
     /// 文件下载
     public func download(URLString: String,
                          parameters: [String: Any]? = nil,

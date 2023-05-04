@@ -152,6 +152,10 @@ class SCommunicationVC: ItemListViewController {
             if let _ = responseObject {}
         }
 
+        // 返回指定的Model格式
+        AFNetRequest().requestDecodable(of: ProvincesModel.self, URLString: strURL, type: .get, parameters: parameter) { _, _ in
+        }
+
         // 接口返回json数组字符串
         AFNetRequest(isParse: false).requestData(URLString: "https://jsonplaceholder.typicode.com/posts", type: .get) { responseObject, _ in
             if let _ = responseObject {}
