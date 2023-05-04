@@ -37,4 +37,11 @@ public extension Dictionary {
         }
         return str
     }
+
+    /// 打印
+    func jsonPrint() {
+        guard let data = try? JSONSerialization.data(withJSONObject: self, options: [.prettyPrinted]) else { return }
+        guard let str = String(data: data, encoding: .utf8) else { return }
+        print(str)
+    }
 }

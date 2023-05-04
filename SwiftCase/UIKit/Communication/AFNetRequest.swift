@@ -186,12 +186,16 @@ public class AFNetRequest: NSObject {
         case .get:
             return AF.request(URLString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers) { urlRequest in
                 urlRequest.timeoutInterval = self.timeout
-                urlRequest.allowsConstrainedNetworkAccess = true
+                if #available(iOS 13.0, *) {
+                    urlRequest.allowsConstrainedNetworkAccess = true
+                }
             }
         case .post:
             return AF.request(URLString, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers) { urlRequest in
                 urlRequest.timeoutInterval = self.timeout
-                urlRequest.allowsConstrainedNetworkAccess = true
+                if #available(iOS 13.0, *) {
+                    urlRequest.allowsConstrainedNetworkAccess = true
+                }
             }
         default:
             return nil
@@ -200,35 +204,38 @@ public class AFNetRequest: NSObject {
 
     /// 打印请求日志
     private func printRequestLog(URLString: String, type _: AFMethodType, parameters: [String: Any]? = nil) {
-        debugPrint("===========<request-id:\(requestId) tag:>===========")
-        debugPrint("\(URLString)")
-
-        if let parameters = parameters {
-            debugPrint("httpBody:{")
-            for item in parameters {
-                debugPrint("    \(item.key):\(item.value)")
+        #if DEBUG
+            print(currentTime())
+            print("===========<request-id:\(requestId) tag:>===========")
+            print(URLString)
+            if let param = parameters, param.count > 0 {
+                print("httpBody:")
+                print(param.jsonPrint())
             }
-            debugPrint("}")
-        }
 
-        debugPrint("Request Header:{")
-        for item in headers {
-            debugPrint("    \(item.name):\(item.value)")
-        }
-        debugPrint("}")
+            var headDict = [String: Any]()
+            for item in headers {
+                headDict[item.name] = item.value
+            }
+            print("Request Header:")
+            headDict.jsonPrint()
+        #endif
     }
 
     /// 打印响应日志
     private func printResponseLog(json: String) {
-        debugPrint("===========<response-id:\(requestId) tag:>===========")
-        let time = String(format: "%.2fs", elapsedTime ?? 0)
-        debugPrint("Response Time:\(time)")
+        #if DEBUG
+            print(currentTime())
+            print("===========<response-id:\(requestId) tag:>===========")
+            let time = String(format: "%.2fs", elapsedTime ?? 0)
+            print("Response Time:\(time)")
 
-        if let data = json.data(using: .utf8) {
-            debugPrint(data.prettyPrintedJSONString ?? json)
-        } else {
-            debugPrint("\(json)")
-        }
+            if let data = json.data(using: .utf8) {
+                print(data.prettyPrintedJSONString ?? json)
+            } else {
+                print(json)
+            }
+        #endif
     }
 
     /// json字符串转换成字典；json如果是数组，会用 array最为key的字典
@@ -251,6 +258,13 @@ public class AFNetRequest: NSObject {
         }
 
         return nil
+    }
+
+    private func currentTime() -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss:SSS" // 自定义时间格式
+        // GMT时间 转字符串，直接是系统当前时间
+        return dateformatter.string(from: Date())
     }
 
     // MARK: - Property
