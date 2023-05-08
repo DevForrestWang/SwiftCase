@@ -64,12 +64,13 @@ public class AFNetRequest: NSObject {
      */
     public init(isParse: Bool = true,
                 retCode: String = "retCode",
-                data _: String = "data",
+                data: String = "data",
                 msg: String = "msg",
                 timeout: TimeInterval = 30)
     {
         self.isParse = isParse
         self.retCode = retCode
+        self.data = data
         self.msg = msg
         self.timeout = timeout
 
