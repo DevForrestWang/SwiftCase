@@ -152,8 +152,17 @@ class SCommunicationVC: ItemListViewController {
             if let _ = responseObject {}
         }
 
-        // 返回指定的Model格式
-        AFNetRequest().requestDecodable(of: ProvincesModel.self, URLString: strURL, type: .get, parameters: parameter) { _, _ in
+        // 返回数据解析成指定的Model
+        AFNetRequest().requestDecodableArray(of: ProvincesModel.self, URLString: strURL, type: .get, parameters: parameter) { items, error in
+
+            if error != nil {
+                print("Error: \(error?.description ?? "")")
+                return
+            }
+
+            if let model = items?.first as? ProvincesModel {
+                model.prettyPrint()
+            }
         }
 
         // 接口返回json数组字符串

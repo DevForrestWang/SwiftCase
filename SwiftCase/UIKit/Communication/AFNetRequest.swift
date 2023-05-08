@@ -12,7 +12,31 @@
 //===----------------------------------------------------------------------===//
 
 import Alamofire
+import HandyJSON
 import UIKit
+
+/// 网络解析的基础类
+public protocol AFBaseModel: HandyJSON {}
+
+/// AFBaseModel 扩展
+public extension AFBaseModel {
+    /// model转字典
+    func toJson() -> [String: Any]? {
+        return toJSON()
+    }
+
+    /// 转JSON字符串
+    func toJsonString() -> String? {
+        return toJSONString()
+    }
+
+    /// Json格式打印
+    func prettyPrint() {
+        if let json = toJSONString(prettyPrint: true) {
+            print(json)
+        }
+    }
+}
 
 /// 网络请求类型
 public enum AFMethodType {
@@ -34,10 +58,16 @@ public class AFNetRequest: NSObject {
      *
      *  @param isParse 是否检查返回成功，返回码200
      *  @param retCode 返回码的key
+     *  @param data 返回数据key为data
      *  @param msg 错误信息key
      *  @param timeout 超时时间，默认30秒
      */
-    public init(isParse: Bool = true, retCode: String = "retCode", msg: String = "msg", timeout: TimeInterval = 30) {
+    public init(isParse: Bool = true,
+                retCode: String = "retCode",
+                data _: String = "data",
+                msg: String = "msg",
+                timeout: TimeInterval = 30)
+    {
         self.isParse = isParse
         self.retCode = retCode
         self.msg = msg
@@ -87,10 +117,7 @@ public class AFNetRequest: NSObject {
                         let retcode = tmpDic[self.retCode] as? Int ?? 0
                         if retcode != 200 {
                             let msg = tmpDic[self.msg] as? String ?? ""
-                            let tmpError = NSError(domain: "\(URLString)",
-                                                   code: retcode,
-                                                   userInfo: [NSLocalizedDescriptionKey: "\(msg)"])
-                            respondCallback(nil, tmpError)
+                            respondCallback(nil, self.makeError(url: URLString, code: retcode, msg: msg))
                             return
                         }
 
@@ -100,10 +127,7 @@ public class AFNetRequest: NSObject {
                     }
 
                 case let .failure(error):
-                    let tmpError = NSError(domain: "\(URLString)",
-                                           code: error.responseCode ?? -1,
-                                           userInfo: [NSLocalizedDescriptionKey: "\(error)"])
-                    respondCallback(nil, tmpError)
+                    respondCallback(nil, self.makeError(url: URLString, code: error.responseCode ?? -1, msg: "\(error)"))
                 }
             default:
                 debugPrint("default")
@@ -117,14 +141,40 @@ public class AFNetRequest: NSObject {
         }
     }
 
-    /// GET、POST网络请求, 返回指定Module
-    public func requestDecodable<T: Codable>(of _: T.Type = T.self,
-                                             URLString: String,
-                                             type: AFMethodType,
-                                             parameters: [String: Any]? = nil,
-                                             respondCallback: @escaping (_ models: T?, _ error: NSError?) -> Void)
+    /// GET、POST网络请求, 返回指定Module为字典
+    public func requestDecodable<T: AFBaseModel>(of model: T.Type = T.self,
+                                                 URLString: String,
+                                                 type: AFMethodType,
+                                                 parameters: [String: Any]? = nil,
+                                                 respondCallback: @escaping (_ item: T?, _ error: NSError?) -> Void)
     {
-        requestData(URLString: URLString, type: type, parameters: parameters, respondCallback: { responseObject, error in
+        requestDecodableArray(of: model, URLString: URLString, type: type, parameters: parameters) { [weak self] items, error in
+            if error != nil {
+                respondCallback(nil, error)
+                return
+            }
+
+            guard let dataAry = items as? NSArray else {
+                respondCallback(nil, self?.makeError(url: URLString, code: self!.errorCode, msg: "返回数据不是数组类型"))
+                return
+            }
+
+            if dataAry.count > 0, let tModel = dataAry.firstObject as? T {
+                respondCallback(tModel, nil)
+            } else {
+                respondCallback(nil, self?.makeError(url: URLString, code: self!.errorCode, msg: "返回数据为空"))
+            }
+        }
+    }
+
+    /// GET、POST网络请求, 返回指定Module为数组
+    public func requestDecodableArray<T: AFBaseModel>(of _: T.Type = T.self,
+                                                      URLString: String,
+                                                      type: AFMethodType,
+                                                      parameters: [String: Any]? = nil,
+                                                      respondCallback: @escaping (_ items: [T?]?, _ error: NSError?) -> Void)
+    {
+        requestData(URLString: URLString, type: type, parameters: parameters, respondCallback: { [weak self] responseObject, error in
 
             if error != nil {
                 respondCallback(nil, error)
@@ -132,26 +182,31 @@ public class AFNetRequest: NSObject {
             }
 
             guard let tmpDic = responseObject else {
-                let tmpError = NSError(domain: "\(URLString)",
-                                       code: 9000,
-                                       userInfo: [NSLocalizedDescriptionKey: "responseObject is nil."])
-                respondCallback(nil, tmpError)
+                respondCallback(nil, self?.makeError(url: URLString, code: self!.errorCode, msg: "响应的数据为空"))
                 return
             }
 
-            let retcode = tmpDic[self.retCode] as? Int ?? 0
+            guard JSONSerialization.isValidJSONObject(tmpDic) else {
+                respondCallback(nil, self?.makeError(url: URLString, code: self!.errorCode, msg: "JSON格式非法"))
+                return
+            }
+
+            let retcode = tmpDic[self!.retCode] as? Int ?? 0
             if retcode != 200 {
-                let msg = tmpDic[self.msg] as? String ?? ""
-                let tmpError = NSError(domain: "\(URLString)",
-                                       code: retcode,
-                                       userInfo: [NSLocalizedDescriptionKey: "\(msg)"])
-                respondCallback(nil, tmpError)
+                let msg = tmpDic[self!.msg] as? String ?? ""
+                respondCallback(nil, self?.makeError(url: URLString, code: retcode, msg: msg))
                 return
             }
 
-            let dataObj = tmpDic["data"]
-            // dic 转 model
-            respondCallback(nil, nil)
+            if let dataDic = tmpDic[self!.data] as? [String: Any], let object = T.deserialize(from: dataDic) {
+                respondCallback([object], nil)
+            } else if let dataAry = tmpDic[self!.data] as? NSArray, let object = [T].deserialize(from: dataAry) {
+                respondCallback(object, nil)
+            } else if let model = tmpDic[self!.data] as? T {
+                respondCallback([model], nil)
+            } else {
+                respondCallback(nil, nil)
+            }
         })
     }
 
@@ -176,10 +231,7 @@ public class AFNetRequest: NSObject {
 
             debugPrint("===========<response-id:\(self.requestId) tag:>===========")
             if let error = response.error {
-                let tmpError = NSError(domain: "\(URLString)",
-                                       code: error.responseCode ?? -1,
-                                       userInfo: [NSLocalizedDescriptionKey: "\(error)"])
-                respondCallback(0, nil, tmpError)
+                respondCallback(0, nil, self.makeError(url: URLString, code: error.responseCode ?? -1, msg: "\(error)"))
                 return
             }
             respondCallback(1, response.fileURL, nil)
@@ -206,10 +258,7 @@ public class AFNetRequest: NSObject {
             case let .success(strJson):
                 respondCallback(1, self.convertStringToDictionary(text: strJson), nil)
             case let .failure(error):
-                let tmpError = NSError(domain: "\(URLString)",
-                                       code: error.responseCode ?? -1,
-                                       userInfo: [NSLocalizedDescriptionKey: "\(error)"])
-                respondCallback(0, nil, tmpError)
+                respondCallback(0, nil, self.makeError(url: URLString, code: error.responseCode ?? -1, msg: "\(error)"))
             }
         })
     }
@@ -305,6 +354,11 @@ public class AFNetRequest: NSObject {
         return dateformatter.string(from: Date())
     }
 
+    /// 构造错误对象
+    private func makeError(url: String, code: Int, msg: String) -> NSError {
+        return NSError(domain: "\(url)", code: code, userInfo: [NSLocalizedDescriptionKey: msg])
+    }
+
     // MARK: - Property
 
     private var request: Request? {
@@ -318,7 +372,11 @@ public class AFNetRequest: NSObject {
 
     private var retCode: String = "retCode"
 
+    private var data: String = "data"
+
     private var msg: String = "msg"
+
+    private let errorCode = 9000
 
     private var timeout: TimeInterval = 30
 

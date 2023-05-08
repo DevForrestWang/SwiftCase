@@ -13,7 +13,9 @@
 
 /*
  请求返回的JSON格式
- // json 工具： https://app.quicktype.io/ 
+ // json 工具： https://app.quicktype.io/
+ // https://www.vfun.fun/pages/tools-page/JsonToFile/index.html
+
  "data" : [
    {
      "citys" : [
@@ -47,34 +49,34 @@
 import UIKit
 
 /// 城市的数据模型
-struct CityItemModel: Codable {
-    let cityNameCn: String?
-    let cityNo: String?
-    let cityFullName: String?
-    let delFlag: String?
-    let population: String?
-    let postCode: String?
-    let countryNo: String?
-    let version: String?
-    let phonePrefix: String?
-    let provinceNo: String?
-    let cityName: String?
+struct CityItemModel: AFBaseModel {
+    var cityNameCn: String?
+    var cityNo: String?
+    var cityFullName: String?
+    var delFlag: String?
+    var population: String?
+    var postCode: String?
+    var countryNo: String?
+    var version: String?
+    var phonePrefix: String?
+    var provinceNo: String?
+    var cityName: String?
 }
 
 /// 省份数据模型
-struct ProvinceItemModel: Codable {
-    let delFlag: String?
-    let provinceNameCn: String?
-    let countryNo: String?
-    let version: String?
-    let directedCity: String?
-    let provinceName: String?
-    let provinceNo: String?
+struct ProvinceItemModel: AFBaseModel {
+    var delFlag: String?
+    var provinceNameCn: String?
+    var countryNo: String?
+    var version: String?
+    var directedCity: String?
+    var provinceName: String?
+    var provinceNo: String?
 }
 
 /// 省份、城市数据模型
-struct ProvincesModel: Codable {
-    let province: ProvinceItemModel?
+struct ProvincesModel: AFBaseModel {
+    var province: ProvinceItemModel?
 
-    let citys: [CityItemModel]?
+    var citys: [CityItemModel]?
 }
