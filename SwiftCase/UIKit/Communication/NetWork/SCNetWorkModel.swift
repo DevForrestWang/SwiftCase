@@ -12,7 +12,6 @@
 //===----------------------------------------------------------------------===//
 
 import Foundation
-import HandyJSON
 
 public struct SCResponseName {
     var retCode: String
@@ -62,6 +61,5 @@ public enum SCImageType {
     }
 }
 
-/// import ObjectMapper
-/// struct GlobalDataModel: Mappable
-public protocol SCJsonModel: HandyJSON {}
+/// 基础数据类型
+public protocol SCJsonModel: AFBaseModel {}

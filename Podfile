@@ -13,15 +13,11 @@ end
 target 'SwiftCase' do
   use_frameworks!
 
-  # 网络库
+  # 网络库及Module解析
   pod 'Moya/RxSwift'
-  #pod 'ObjectMapper'
-  pod 'HandyJSON'
-  pod 'SwiftyJSON'
   # Parsing gigabytes of JSON per second
   pod 'ZippyJSON'
-  #OC MJExtension，Swift也可以使用
-  pod 'KakaJSON'
+  pod 'BetterCodable'
   
   # 编程框架
   pod 'Then'

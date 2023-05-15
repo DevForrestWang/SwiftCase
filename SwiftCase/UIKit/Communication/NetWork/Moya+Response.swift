@@ -64,24 +64,23 @@ public extension Response {
             throw SCServiceError(retCode: retCode, msg: msgStr)
         }
 
-        if let dataObj = jsonObject[dataName.data] as? String {
-            guard let object = T.deserialize(from: dataObj) else {
+        if let dataObj = jsonObject[dataName.data] as? String,
+           let jsonData = try? JSONSerialization.data(withJSONObject: dataObj, options: [])
+        {
+            do {
+                return try JSONDecoder().decode(T.self, from: jsonData)
+            } catch {
                 throw SCServiceError(retCode: retCode, msg: msgStr)
             }
-            return object
-        } else if let dataObj = jsonObject[dataName.data] as? [String: Any] {
-            guard let object = T.deserialize(from: dataObj) else {
+
+        } else if let dataObj = jsonObject[dataName.data] as? [String: Any],
+                  let jsonData = try? JSONSerialization.data(withJSONObject: dataObj, options: [])
+        {
+            do {
+                return try JSONDecoder().decode(T.self, from: jsonData)
+            } catch {
                 throw SCServiceError(retCode: retCode, msg: msgStr)
             }
-            return object
-        } else if let dataObj = jsonObject[dataName.data] as? [String: Any] {
-            // func mapObject<T: BaseMappable>(_ type: T.Type, dataName: SCResponseName) throws -> T {
-            //  return Mapper<T>().map(JSONObject: dataObj)!
-            // let jsonString = String.init(data: dataObj as! Data, encoding: .utf8)
-            guard let object = T.deserialize(from: dataObj) else {
-                throw SCServiceError(retCode: retCode, msg: msgStr)
-            }
-            return object
         }
 
         var errorInfo = msgStr
@@ -110,12 +109,22 @@ public extension Response {
             throw SCServiceError(retCode: retCode, msg: msgStr)
         }
 
-        if let strData = jsonObject[dataName.data] as? String {
-            return [T].deserialize(from: strData)
-        } else if let dataArray = jsonObject[dataName.data] as? NSArray {
-            // func mapArray<T: BaseMappable>(_ type: T.Type, dataName: SCResponseName) throws -> [T]
-            // return Mapper<T>().mapArray(JSONObject: dataArray)!
-            return [T].deserialize(from: dataArray)
+        if let strData = jsonObject[dataName.data] as? String,
+           let jsonData = try? JSONSerialization.data(withJSONObject: strData, options: [])
+        {
+            do {
+                return try JSONDecoder().decode([T].self, from: jsonData)
+            } catch {
+                throw SCServiceError(retCode: retCode, msg: msgStr)
+            }
+        } else if let dataArray = jsonObject[dataName.data] as? NSArray,
+                  let jsonData = try? JSONSerialization.data(withJSONObject: dataArray, options: [])
+        {
+            do {
+                return try JSONDecoder().decode([T].self, from: jsonData)
+            } catch {
+                throw SCServiceError(retCode: retCode, msg: msgStr)
+            }
         }
 
         var errorInfo = msgStr

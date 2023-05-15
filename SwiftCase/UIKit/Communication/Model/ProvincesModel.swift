@@ -46,32 +46,33 @@
  ]
  */
 
+import BetterCodable
 import UIKit
 
 /// 城市的数据模型
 struct CityItemModel: AFBaseModel {
-    var cityNameCn: String?
-    var cityNo: String?
-    var cityFullName: String?
-    var delFlag: String?
-    var population: String?
-    var postCode: String?
-    var countryNo: String?
-    var version: String?
-    var phonePrefix: String?
-    var provinceNo: String?
-    var cityName: String?
+    @AFBString var cityNameCn: String?
+    @AFBString var cityNo: String?
+    @AFBString var cityFullName: String?
+    @AFBString var delFlag: String?
+    @AFBString var population: String?
+    @AFBString var postCode: String?
+    @AFBString var countryNo: String?
+    @AFBString var version: String?
+    @AFBString var phonePrefix: String?
+    @AFBString var provinceNo: String?
+    @AFBString var cityName: String?
 }
 
 /// 省份数据模型
 struct ProvinceItemModel: AFBaseModel {
-    var delFlag: String?
-    var provinceNameCn: String?
-    var countryNo: String?
-    var version: String?
-    var directedCity: String?
-    var provinceName: String?
-    var provinceNo: String?
+    @AFBString var delFlag: String?
+    @AFBString var provinceNameCn: String?
+    @AFBString var countryNo: String?
+    @AFBString var directedCity: String?
+    @AFBString var provinceName: String?
+    @AFBString var provinceNo: String?
+    @LosslessValue var version: String
 }
 
 /// 省份、城市数据模型
@@ -79,4 +80,12 @@ struct ProvincesModel: AFBaseModel {
     var province: ProvinceItemModel?
 
     var citys: [CityItemModel]?
+
+    var localProperity: Bool = false
+
+    /// 字段匹配及两端不匹配场景
+    private enum CodingKeys: String, CodingKey {
+        case province
+        case citys
+    }
 }

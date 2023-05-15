@@ -12,28 +12,83 @@
 //===----------------------------------------------------------------------===//
 
 import Alamofire
-import HandyJSON
 import UIKit
 
+/// 将任意基本类型转换为字符串，其他类型为nil
+@propertyWrapper public struct AFBString: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        var string: String?
+
+        if container.decodeNil() {
+            string = nil
+        } else {
+            if let result = try? container.decode(String.self) {
+                string = result
+            } else if let result = try? container.decode(Double.self) {
+                string = String(result)
+            } else if let result = try? container.decode(Float.self) {
+                string = String(result)
+            } else if let result = try? container.decode(Bool.self) {
+                string = String(result)
+            } else if let result = try? container.decode(Int.self) {
+                string = String(result)
+            } else if let result = try? container.decode(Int8.self) {
+                string = String(result)
+            } else if let result = try? container.decode(Int16.self) {
+                string = String(result)
+            } else if let result = try? container.decode(Int64.self) {
+                string = String(result)
+            } else if let result = try? container.decode(UInt.self) {
+                string = String(result)
+            } else if let result = try? container.decode(UInt8.self) {
+                string = String(result)
+            } else if let result = try? container.decode(UInt16.self) {
+                string = String(result)
+            } else if let result = try? container.decode(UInt64.self) {
+                string = String(result)
+            } else {
+                string = nil
+            }
+        }
+
+        wrappedValue = string
+    }
+
+    public var wrappedValue: String?
+}
+
 /// 网络解析的基础类
-public protocol AFBaseModel: HandyJSON {}
+public protocol AFBaseModel: Codable {}
 
 /// AFBaseModel 扩展
 public extension AFBaseModel {
     /// model转字典
     func toJson() -> [String: Any]? {
-        return toJSON()
+        guard let jsonData = try? JSONEncoder().encode(self) else {
+            return nil
+        }
+
+        do {
+            return try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any]
+        } catch {
+            return nil
+        }
     }
 
     /// 转JSON字符串
     func toJsonString() -> String? {
-        return toJSONString()
+        if let json = toJson() {
+            return json.toJsonString()
+        }
+
+        return nil
     }
 
     /// Json格式打印
     func prettyPrint() {
-        if let json = toJSONString(prettyPrint: true) {
-            print(json)
+        if let json = toJson() {
+            print(json.jsonPrint())
         }
     }
 }
@@ -199,10 +254,25 @@ public class AFNetRequest: NSObject {
                 return
             }
 
-            if let dataDic = tmpDic[self!.data] as? [String: Any], let object = T.deserialize(from: dataDic) {
-                respondCallback([object], nil)
-            } else if let dataAry = tmpDic[self!.data] as? NSArray, let object = [T].deserialize(from: dataAry) {
-                respondCallback(object, nil)
+            if let dataDic = tmpDic[self!.data] as? [String: Any],
+               let jsonData = try? JSONSerialization.data(withJSONObject: dataDic, options: [])
+            {
+                do {
+                    let object = try self?.decoder.decode(T.self, from: jsonData)
+                    respondCallback([object], nil)
+                } catch {
+                    respondCallback(nil, nil)
+                }
+
+            } else if let dataAry = tmpDic[self!.data] as? NSArray,
+                      let jsonData = try? JSONSerialization.data(withJSONObject: dataAry, options: [])
+            {
+                do {
+                    let object = try self?.decoder.decode([T].self, from: jsonData)
+                    respondCallback(object, nil)
+                } catch {
+                    respondCallback(nil, nil)
+                }
             } else if let model = tmpDic[self!.data] as? T {
                 respondCallback([model], nil)
             } else {
@@ -384,6 +454,12 @@ public class AFNetRequest: NSObject {
     private var requestId: Int = 0
 
     private var elapsedTime: TimeInterval?
+
+    private lazy var decoder: JSONDecoder = {
+        let _decoder = JSONDecoder()
+        _decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return _decoder
+    }()
 
     // 请求头信息
     private var headers: HTTPHeaders = [

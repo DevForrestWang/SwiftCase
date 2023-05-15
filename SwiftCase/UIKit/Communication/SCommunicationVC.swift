@@ -316,10 +316,15 @@ class SCommunicationVC: ItemListViewController {
 
                 // Json 字符串转对象
                 let jsonStr = tResponse.data
-                let grade = Grade.deserialize(from: jsonStr)
-                fwDebugPrint("gradeObj = \(grade!)")
+                if let jsonData = try? JSONSerialization.data(withJSONObject: jsonStr, options: []) {
+                    do {
+                        let grade = try JSONDecoder().decode(Grade.self, from: jsonData)
+                        fwDebugPrint("gradeObj = \(grade)")
+                    } catch {
+                        fwDebugPrint("gradeObj nil")
+                    }
+                }
             }
-
         } catch {
             fwDebugPrint("requestData failed: \(error)")
         }
@@ -328,7 +333,7 @@ class SCommunicationVC: ItemListViewController {
     private func getParams(index: Int) -> String {
         // 对象转JSON字符串
         let params = Params(id: 100 + index, name: "Forrest", sex: "Man")
-        let jsonStr = params.toJSONString()
+        let jsonStr = params.toJsonString()
         if let tmpObj = jsonStr {
             return tmpObj
         }
