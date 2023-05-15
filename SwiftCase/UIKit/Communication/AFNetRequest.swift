@@ -20,6 +20,7 @@ import UIKit
         let container = try decoder.singleValueContainer()
         var string: String?
 
+        // 字段为空时
         if container.decodeNil() {
             string = nil
         } else {
@@ -71,7 +72,8 @@ public extension AFBaseModel {
 
         do {
             return try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any]
-        } catch {
+        } catch let error as NSError {
+            fwDebugPrint("\(error.description)")
             return nil
         }
     }
@@ -170,7 +172,7 @@ public class AFNetRequest: NSObject {
                     let dataDic = self.convertStringToDictionary(text: strJson)
 
                     if self.isParse, let tmpDic = dataDic {
-                        let retcode = tmpDic[self.retCode] as? Int ?? 0
+                        let retcode = self.parseRetCode(dataDic: tmpDic)
                         if retcode != 200 {
                             let msg = tmpDic[self.msg] as? String ?? ""
                             respondCallback(nil, self.makeError(url: URLString, code: retcode, msg: msg))
@@ -249,7 +251,7 @@ public class AFNetRequest: NSObject {
                 return
             }
 
-            let retcode = tmpDic[self!.retCode] as? Int ?? 0
+            let retcode = self?.parseRetCode(dataDic: tmpDic) ?? 0
             if retcode != 200 {
                 let msg = tmpDic[self!.msg] as? String ?? ""
                 respondCallback(nil, self?.makeError(url: URLString, code: retcode, msg: msg))
@@ -262,7 +264,8 @@ public class AFNetRequest: NSObject {
                 do {
                     let object = try decoder.decode(T.self, from: jsonData)
                     respondCallback([object], nil)
-                } catch {
+                } catch let error as NSError {
+                    fwDebugPrint("\(error.description)")
                     respondCallback(nil, nil)
                 }
 
@@ -272,7 +275,8 @@ public class AFNetRequest: NSObject {
                 do {
                     let object = try decoder.decode([T].self, from: jsonData)
                     respondCallback(object, nil)
-                } catch {
+                } catch let error as NSError {
+                    fwDebugPrint("\(error.description)")
                     respondCallback(nil, nil)
                 }
             } else if let model = tmpDic[self!.data] as? T {
@@ -430,6 +434,18 @@ public class AFNetRequest: NSObject {
     /// 构造错误对象
     private func makeError(url: String, code: Int, msg: String) -> NSError {
         return NSError(domain: "\(url)", code: code, userInfo: [NSLocalizedDescriptionKey: msg])
+    }
+
+    /// 返回码解析
+    private func parseRetCode(dataDic: [String: Any]) -> Int {
+        var retcode = 0
+        if let tmpCode = dataDic[retCode] as? Int {
+            retcode = tmpCode
+        } else if let tmpCode = dataDic[retCode] as? String {
+            retcode = tmpCode.toInt() ?? 0
+        }
+
+        return retcode
     }
 
     // MARK: - Property
