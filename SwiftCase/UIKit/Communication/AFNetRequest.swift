@@ -25,13 +25,13 @@ import UIKit
         } else {
             if let result = try? container.decode(String.self) {
                 string = result
+            } else if let result = try? container.decode(Int.self) {
+                string = String(result)
             } else if let result = try? container.decode(Double.self) {
                 string = String(result)
             } else if let result = try? container.decode(Float.self) {
                 string = String(result)
             } else if let result = try? container.decode(Bool.self) {
-                string = String(result)
-            } else if let result = try? container.decode(Int.self) {
                 string = String(result)
             } else if let result = try? container.decode(Int8.self) {
                 string = String(result)
@@ -149,7 +149,7 @@ public class AFNetRequest: NSObject {
 
     /// GET、POST网络请求
     public func requestData(URLString: String,
-                            type: AFMethodType,
+                            type: AFMethodType = .get,
                             parameters: [String: Any]? = nil,
                             respondCallback: @escaping (_ responseObject: [String: AnyObject]?, _ error: NSError?) -> Void)
     {
@@ -200,11 +200,12 @@ public class AFNetRequest: NSObject {
     /// GET、POST网络请求, 返回指定Module为字典
     public func requestDecodable<T: AFBaseModel>(of model: T.Type = T.self,
                                                  URLString: String,
-                                                 type: AFMethodType,
+                                                 type: AFMethodType = .get,
                                                  parameters: [String: Any]? = nil,
+                                                 decoder: JSONDecoder = JSONDecoder(),
                                                  respondCallback: @escaping (_ item: T?, _ error: NSError?) -> Void)
     {
-        requestDecodableArray(of: model, URLString: URLString, type: type, parameters: parameters) { [weak self] items, error in
+        requestDecodableArray(of: model, URLString: URLString, type: type, parameters: parameters, decoder: decoder) { [weak self] items, error in
             if error != nil {
                 respondCallback(nil, error)
                 return
@@ -226,8 +227,9 @@ public class AFNetRequest: NSObject {
     /// GET、POST网络请求, 返回指定Module为数组
     public func requestDecodableArray<T: AFBaseModel>(of _: T.Type = T.self,
                                                       URLString: String,
-                                                      type: AFMethodType,
+                                                      type: AFMethodType = .get,
                                                       parameters: [String: Any]? = nil,
+                                                      decoder: JSONDecoder = JSONDecoder(),
                                                       respondCallback: @escaping (_ items: [T?]?, _ error: NSError?) -> Void)
     {
         requestData(URLString: URLString, type: type, parameters: parameters, respondCallback: { [weak self] responseObject, error in
@@ -258,7 +260,7 @@ public class AFNetRequest: NSObject {
                let jsonData = try? JSONSerialization.data(withJSONObject: dataDic, options: [])
             {
                 do {
-                    let object = try self?.decoder.decode(T.self, from: jsonData)
+                    let object = try decoder.decode(T.self, from: jsonData)
                     respondCallback([object], nil)
                 } catch {
                     respondCallback(nil, nil)
@@ -268,7 +270,7 @@ public class AFNetRequest: NSObject {
                       let jsonData = try? JSONSerialization.data(withJSONObject: dataAry, options: [])
             {
                 do {
-                    let object = try self?.decoder.decode([T].self, from: jsonData)
+                    let object = try decoder.decode([T].self, from: jsonData)
                     respondCallback(object, nil)
                 } catch {
                     respondCallback(nil, nil)
@@ -454,12 +456,6 @@ public class AFNetRequest: NSObject {
     private var requestId: Int = 0
 
     private var elapsedTime: TimeInterval?
-
-    private lazy var decoder: JSONDecoder = {
-        let _decoder = JSONDecoder()
-        _decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return _decoder
-    }()
 
     // 请求头信息
     private var headers: HTTPHeaders = [

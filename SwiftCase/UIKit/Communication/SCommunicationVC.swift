@@ -139,11 +139,11 @@ class SCommunicationVC: ItemListViewController {
 
         AFNetRequest()
             .updateHead(headInfo: ["custId": "init custId", "token": "init token"])
-            .requestData(URLString: strURL, type: .get, parameters: parameter) { responseObject, _ in
+            .requestData(URLString: strURL, parameters: parameter) { responseObject, _ in
                 if let _ = responseObject {}
             }
 
-        AFNetRequest(isParse: true, retCode: "retCode", msg: "msg", timeout: 30).requestData(URLString: strURL, type: .get, parameters: parameter) { responseObject, error in
+        AFNetRequest(isParse: true, retCode: "retCode", msg: "msg", timeout: 30).requestData(URLString: strURL, parameters: parameter) { responseObject, error in
             if error != nil {
                 print("Error: \(error?.description ?? "")")
                 return
@@ -152,8 +152,10 @@ class SCommunicationVC: ItemListViewController {
             if let _ = responseObject {}
         }
 
-        // 返回数据解析成指定的Model
-        AFNetRequest().requestDecodableArray(of: ProvincesModel.self, URLString: strURL, type: .get, parameters: parameter) { items, error in
+        // 返回数据解析成指定的Model, 指定解码规则
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        AFNetRequest().requestDecodableArray(of: ProvincesModel.self, URLString: strURL, parameters: parameter, decoder: decoder) { items, error in
 
             if error != nil {
                 print("Error: \(error?.description ?? "")")
@@ -166,7 +168,7 @@ class SCommunicationVC: ItemListViewController {
         }
 
         // 接口返回json数组字符串
-        AFNetRequest(isParse: false).requestData(URLString: "https://jsonplaceholder.typicode.com/posts", type: .get) { responseObject, _ in
+        AFNetRequest(isParse: false).requestData(URLString: "https://jsonplaceholder.typicode.com/posts") { responseObject, _ in
             if let _ = responseObject {}
         }
 
