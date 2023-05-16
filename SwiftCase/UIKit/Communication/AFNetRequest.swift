@@ -367,14 +367,14 @@ public class AFNetRequest: NSObject {
     }
 
     /// 打印请求日志
-    private func printRequestLog(URLString: String, type _: AFMethodType, parameters: [String: Any]? = nil) {
+    private func printRequestLog(URLString: String, type: AFMethodType, parameters: [String: Any]? = nil) {
         #if DEBUG
             print(currentTime())
             print("===========<request-id:\(requestId) tag:>===========")
             print(URLString)
-            if let param = parameters, param.count > 0 {
+            if type == .post {
                 print("httpBody:")
-                print(param.jsonPrint())
+                parameters?.jsonPrint()
             }
 
             var headDict = [String: Any]()
