@@ -255,6 +255,7 @@
 		C61C4830296BBB01005EA8F4 /* SCPopMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */; };
 		C61C4832296BBB09005EA8F4 /* SwiftPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */; };
 		C62328222899099900A1015E /* GYTextSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62328212899099900A1015E /* GYTextSwitch.swift */; };
+		C650D28E2A204A6C008C52E3 /* SCPermenantThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650D28D2A204A6C008C52E3 /* SCPermenantThread.swift */; };
 		C68032A82A03ACDC00910E71 /* ProvincesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68032A72A03ACDC00910E71 /* ProvincesModel.swift */; };
 		C68195132892B652001CCF50 /* SCPopupBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195122892B652001CCF50 /* SCPopupBaseView.swift */; };
 		C68195182892BE09001CCF50 /* SCImageTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195172892BE09001CCF50 /* SCImageTextButton.swift */; };
@@ -559,6 +560,7 @@
 		C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopMenuVC.swift; sourceTree = "<group>"; };
 		C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPopMenu.swift; sourceTree = "<group>"; };
 		C62328212899099900A1015E /* GYTextSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTextSwitch.swift; sourceTree = "<group>"; };
+		C650D28D2A204A6C008C52E3 /* SCPermenantThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPermenantThread.swift; sourceTree = "<group>"; };
 		C68032A72A03ACDC00910E71 /* ProvincesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvincesModel.swift; sourceTree = "<group>"; };
 		C68195122892B652001CCF50 /* SCPopupBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopupBaseView.swift; sourceTree = "<group>"; };
 		C68195172892BE09001CCF50 /* SCImageTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCImageTextButton.swift; sourceTree = "<group>"; };
@@ -1354,6 +1356,7 @@
 				C68195172892BE09001CCF50 /* SCImageTextButton.swift */,
 				C6BF75E428586142004116B8 /* SCircleProgressView.swift */,
 				C62328212899099900A1015E /* GYTextSwitch.swift */,
+				C650D28D2A204A6C008C52E3 /* SCPermenantThread.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1763,6 +1766,7 @@
 				778F4FEF26FC68D900B9E08A /* SCUICollectionReusableViewFooter.swift in Sources */,
 				7798439E2702B03F001D73AF /* ChatDetailViewController.swift in Sources */,
 				7710F0372771B5480083E067 /* SCAssimtantCarouseView.swift in Sources */,
+				C650D28E2A204A6C008C52E3 /* SCPermenantThread.swift in Sources */,
 				C88F930526F8D8D300739819 /* SCUIButtonViewController.swift in Sources */,
 				C88F930726F8D8D300739819 /* SCUITextViewVC.swift in Sources */,
 				8A2EDF162826751A00A43A28 /* DateExtension.swift in Sources */,

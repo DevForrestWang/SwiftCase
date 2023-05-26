@@ -31,6 +31,12 @@ class SCThreadViewController: BaseViewController {
 
     // MARK: - Public
 
+    override public func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
+        perThread?.executeTask(task: {
+            print("执行任务 --- \(Thread.current)")
+        })
+    }
+
     // MARK: - Thread
 
     @objc private func threadAction(_ obj: Any) {
@@ -123,6 +129,10 @@ class SCThreadViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
 
+    @objc private func stopThreadAction() {
+        perThread?.stop()
+    }
+
     // MARK: - Private
 
     // MARK: - UI
@@ -134,10 +144,15 @@ class SCThreadViewController: BaseViewController {
         view.addSubview(threadButton)
         view.addSubview(operationBtn)
         view.addSubview(gcdButton)
+        view.addSubview(perThredButton)
 
         threadButton.addTarget(self, action: #selector(threadBtnAction), for: .touchUpInside)
         operationBtn.addTarget(self, action: #selector(operationBtnAction), for: .touchUpInside)
         gcdButton.addTarget(self, action: #selector(gcgBtnAction), for: .touchUpInside)
+        perThredButton.addTarget(self, action: #selector(stopThreadAction), for: .touchUpInside)
+
+        perThread = SCPermenantThread()
+        perThread?.run()
     }
 
     // MARK: - Constraints
@@ -162,6 +177,11 @@ class SCThreadViewController: BaseViewController {
             make.width.equalToSuperview().offset(-50)
             make.top.equalTo(operationBtn.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
+        }
+
+        perThredButton.snp.makeConstraints { make in
+            make.top.equalTo(gcdButton.snp.bottom).offset(40)
+            make.height.width.centerX.equalTo(gcdButton)
         }
     }
 
@@ -195,4 +215,14 @@ class SCThreadViewController: BaseViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 20
     }
+
+    let perThredButton = UIButton().then {
+        $0.backgroundColor = .orange
+        $0.setTitle("Stop Permenant Thread", for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 16)
+        $0.setTitleColor(.white, for: .normal)
+        $0.layer.cornerRadius = 20
+    }
+
+    var perThread: SCPermenantThread?
 }
