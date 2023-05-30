@@ -453,17 +453,4 @@ public enum SCUtils {
 
         return nil
     }
-
-    /// 格式化两位，末尾.00 去掉；末尾0去掉
-    public static func formatTwoDigits(value: String) -> String {
-        var dValue = String(format: "%.2f", arguments: [value.toDouble() ?? 0])
-        dValue = dValue.replacingOccurrences(of: ".00", with: "")
-
-        // 末尾是0的去掉
-        if dValue.contains("."), dValue.hasSuffix("0") {
-            dValue = String(dValue.prefix(dValue.count - 1))
-        }
-
-        return dValue
-    }
 }

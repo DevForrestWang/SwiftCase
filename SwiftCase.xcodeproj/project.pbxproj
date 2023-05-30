@@ -274,6 +274,7 @@
 		C6D8BF2F28D8421C009D85D5 /* GYVoiceRecordingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */; };
 		C6D8BF3028D8421C009D85D5 /* GYCPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */; };
 		C6F41919291D05AB00D7A153 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C6F41918291D05AB00D7A153 /* README.md */; };
+		C6F9FBFA2A25995400074F33 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F9FBF92A25995400074F33 /* Double+Extension.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
 		C88F930226F8D8D300739819 /* SCUICollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */; };
 		C88F930326F8D8D300739819 /* SCUIVIewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */; };
@@ -580,6 +581,7 @@
 		C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYVoiceRecordingObject.swift; sourceTree = "<group>"; };
 		C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCPlayingView.swift; sourceTree = "<group>"; };
 		C6F41918291D05AB00D7A153 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C6F9FBF92A25995400074F33 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		C822E403270EF558001C39FF /* SCUIEventViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIEventViewVC.swift; sourceTree = "<group>"; };
 		C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUICollectionViewVC.swift; sourceTree = "<group>"; };
 		C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUIVIewViewController.swift; sourceTree = "<group>"; };
@@ -1147,6 +1149,7 @@
 				A8233C0B28BCE5A200D848C3 /* DataExtension.swift */,
 				8A2EDF152826751A00A43A28 /* DateExtension.swift */,
 				A8233C0928BCDFED00D848C3 /* SaveDataExtension.swift */,
+				C6F9FBF92A25995400074F33 /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1788,6 +1791,7 @@
 				7756E84126FAE48200AB139F /* hello.pb.swift in Sources */,
 				7747B4EE272BF2DF00D315FA /* AdjacencyMatrixGraph.swift in Sources */,
 				77F652C126F5E1F500280568 /* DesignPatternViewController.swift in Sources */,
+				C6F9FBFA2A25995400074F33 /* Double+Extension.swift in Sources */,
 				77201D7C271D831D00F6188E /* SelectionSort.swift in Sources */,
 				77F6527A26F5D23500280568 /* UIColor+Extension.swift in Sources */,
 				777BA9BF272937390030DCB9 /* DepthFirstSearch.swift in Sources */,

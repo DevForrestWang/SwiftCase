@@ -175,6 +175,74 @@ public extension String {
         let pred = NSPredicate(format: "SELF MATCHES %@", pattern)
         return pred.evaluate(with: self)
     }
+    
+    /// 去掉小数点后多余的0
+    /// - Returns: 返回小数点后没有 0 的金额
+    func cutLastZeroAfterDot() -> String {
+        var rst = self
+        var i = 1
+        if self.contains(".") {
+            while i < self.count {
+                if rst.hasSuffix("0") {
+                    rst.removeLast()
+                    i = i + 1
+                } else {
+                    break
+                }
+            }
+            if rst.hasSuffix(".") {
+                rst.removeLast()
+            }
+            return rst
+        } else {
+            return self
+        }
+    }
+    
+    /// 将数字的字符串处理成  几位 位小数的情况
+    /// - Parameters:
+    ///   - numberDecimal: 保留几位小数
+    ///   - mode: 模式, 默认四舍五入
+    /// - Returns: 返回保留后的小数，如果是非字符，则根据numberDecimal 返回0 或 0.00等等
+    /// - 模式参考资料：https://juejin.cn/post/6844903760183951367
+    func saveNumberDecimal(numberDecimal: Int = 2, mode: NumberFormatter.RoundingMode = .halfUp) -> String {
+        var n = NSDecimalNumber(string: self)
+        if n.doubleValue.isNaN {
+            n = NSDecimalNumber.zero
+        }
+
+        let formatter = NumberFormatter()
+        formatter.roundingMode = mode
+
+        // 小数位最多位数
+        formatter.maximumFractionDigits = numberDecimal
+        // 小数位最少位数
+        formatter.minimumFractionDigits = numberDecimal
+        // 整数位最少位数
+        formatter.minimumIntegerDigits = 1
+        // 整数位最多位数
+        formatter.maximumIntegerDigits = 100
+        // 获取结果
+        guard let result = formatter.string(from: n) else {
+            // 异常处理
+            if numberDecimal == 0 {
+                return "0"
+            } else {
+                var zero = ""
+                for _ in 0 ..< numberDecimal {
+                    zero += zero
+                }
+                return "0." + zero
+            }
+        }
+        return result
+    }
+    
+    /// 将数据格式为指定位数，末尾为0的清理掉
+    func formatNumberCutZero(numberDecimal: Int = 2, mode: NumberFormatter.RoundingMode = .halfUp) -> String {
+        let result = saveNumberDecimal(numberDecimal: numberDecimal, mode: mode)
+        return result.cutLastZeroAfterDot()
+    }
 }
 
 // MARK: - 获取字符串位置

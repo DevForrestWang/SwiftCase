@@ -724,6 +724,36 @@ class SCFunctionViewController: BaseViewController {
         fwDebugPrint("round value: \(round(value1)) \(round(value2)) \(round(value3)) \(round(value4))")
     }
 
+    // MARK: - 基础数据类型
+
+    public func baskNumber() {
+        let n1 = 12.4540
+        let n2 = 12.004
+        let n3 = 0.30
+        let n4 = 0.305
+
+        // Double类型清理0
+        fwDebugPrint("cleanZero")
+        fwDebugPrint("\(n1): \(n1.cleanZero)")
+        fwDebugPrint("\(n2): \(n2.cleanZero)")
+        fwDebugPrint("\(n3): \(n3.cleanZero)")
+        fwDebugPrint("\(n4): \(n4.cleanZero)")
+
+        // 字符串数字保留位数
+        fwDebugPrint("saveNumberDecimal")
+        fwDebugPrint("\(n1): \(String(n1).saveNumberDecimal())")
+        fwDebugPrint("\(n2): \(String(n2).saveNumberDecimal())")
+        fwDebugPrint("\(n3): \(String(n3).saveNumberDecimal())")
+        fwDebugPrint("\(n4): \(String(n4).saveNumberDecimal())")
+
+        // 字符串数字保留位数，清理0
+        fwDebugPrint("formatNumberCutZero")
+        fwDebugPrint("\(n1): \(String(n1).formatNumberCutZero())")
+        fwDebugPrint("\(n2): \(String(n2).formatNumberCutZero())")
+        fwDebugPrint("\(n3): \(String(n3).formatNumberCutZero())")
+        fwDebugPrint("\(n4): \(String(n4).formatNumberCutZero())")
+    }
+
     // MARK: - UI
 
     func setupUI() {
@@ -748,6 +778,8 @@ class SCFunctionViewController: BaseViewController {
 
         // APP 系统信息
         fwDebugPrint("deviceInfo:  \(SCDeviceInfo.deviceInfo())")
+
+        baskNumber()
     }
 
     // MARK: - Constraints
