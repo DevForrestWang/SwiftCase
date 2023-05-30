@@ -27,15 +27,11 @@ class SCThreadViewController: BaseViewController {
     }
 
     // 执行析构过程
-    deinit {}
+    deinit {
+        stopThreadAction()
+    }
 
     // MARK: - Public
-
-    override public func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
-        perThread?.executeTask(task: {
-            print("执行任务 --- \(Thread.current)")
-        })
-    }
 
     // MARK: - Thread
 
@@ -131,6 +127,12 @@ class SCThreadViewController: BaseViewController {
 
     @objc private func stopThreadAction() {
         perThread?.stop()
+    }
+
+    override public func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
+        perThread?.executeTask(task: {
+            print("执行任务 --- \(Thread.current)")
+        })
     }
 
     // MARK: - Private

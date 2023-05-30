@@ -20,6 +20,7 @@ public class SCPermenantThread: NSObject {
     override init() {
         super.init()
 
+        isStoped = true
         innerThread = SCThread(block: { [weak self] in
             guard let self = self else {
                 return
@@ -72,6 +73,8 @@ public class SCPermenantThread: NSObject {
             return
         }
 
+        // 闭包作为Objective-C方法参数方法，使用参见：https://swift.gg/2016/05/18/swift-qa-2016-05-18/
+        let task: @convention(block) () -> Void = task
         perform(#selector(p_executeTask), on: thread, with: task, waitUntilDone: false)
     }
 
@@ -82,7 +85,7 @@ public class SCPermenantThread: NSObject {
         isStoped = true
 
         // 2.再停止RunLoop，否则可能标识都还没改就已经新循环的判断
-        RunLoop.current.run(mode: .default, before: Date())
+        CFRunLoopStop(CFRunLoopGetCurrent())
 
         // 3.不再使用线程就置为nil
         innerThread = nil
@@ -99,12 +102,6 @@ public class SCPermenantThread: NSObject {
     private var isStoped: Bool = true
 
     fileprivate class SCThread: Thread {
-        deinit {
-            print("===========<deinit: \(type(of: self))>===========")
-        }
-    }
-
-    fileprivate class SCPort：Port {
         deinit {
             print("===========<deinit: \(type(of: self))>===========")
         }
