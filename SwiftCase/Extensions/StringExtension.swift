@@ -175,14 +175,47 @@ public extension String {
         let pred = NSPredicate(format: "SELF MATCHES %@", pattern)
         return pred.evaluate(with: self)
     }
-    
+
+    /// 去除字符串中的表情
+    func disable_emoji(text: NSString) -> String {
+        do {
+            let regex = try NSRegularExpression(pattern: "[^\\u0020-\\u007E\\u00A0-\\u00BE\\u2E80-\\uA4CF\\uF900-\\uFAFF\\uFE30-\\uFE4F\\uFF00-\\uFFEF\\u0080-\\u009F\\u2000-\\u201f\r\n]", options: NSRegularExpression.Options.caseInsensitive)
+
+            let modifiedString = regex.stringByReplacingMatches(in: text as String, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text.length), withTemplate: "")
+
+            return modifiedString
+        } catch {
+            print(error)
+        }
+        return ""
+    }
+
+    /// 给字体添加描边效果 : strokeWidth为正数为空心文字描边 strokeWidth为负数为实心文字描边
+    func drawOutline(
+        fontSize: CGFloat,
+        fontWeight: UIFont.Weight = .bold,
+        textColor: UIColor,
+        strokeWidth: CGFloat,
+        widthColor: UIColor
+    ) -> NSAttributedString {
+        let dic: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize, weight: fontWeight),
+            NSAttributedString.Key.foregroundColor: textColor,
+            NSAttributedString.Key.strokeWidth: strokeWidth,
+            NSAttributedString.Key.strokeColor: widthColor,
+        ]
+        var attributedText: NSMutableAttributedString!
+        attributedText = NSMutableAttributedString(string: self, attributes: dic)
+        return attributedText
+    }
+
     /// 去掉小数点后多余的0
     /// - Returns: 返回小数点后没有 0 的金额
     func cutLastZeroAfterDot() -> String {
         var rst = self
         var i = 1
-        if self.contains(".") {
-            while i < self.count {
+        if contains(".") {
+            while i < count {
                 if rst.hasSuffix("0") {
                     rst.removeLast()
                     i = i + 1
@@ -198,7 +231,7 @@ public extension String {
             return self
         }
     }
-    
+
     /// 将数字的字符串处理成  几位 位小数的情况
     /// - Parameters:
     ///   - numberDecimal: 保留几位小数
@@ -237,7 +270,7 @@ public extension String {
         }
         return result
     }
-    
+
     /// 将数据格式为指定位数，末尾为0的清理掉
     func formatNumberCutZero(numberDecimal: Int = 2, mode: NumberFormatter.RoundingMode = .halfUp) -> String {
         let result = saveNumberDecimal(numberDecimal: numberDecimal, mode: mode)
