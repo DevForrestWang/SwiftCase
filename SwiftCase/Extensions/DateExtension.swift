@@ -21,13 +21,6 @@ public extension Date {
         return "\(timeStamp)"
     }
 
-    /// 获取当前 毫秒级 时间戳 - 13位
-    var milliStamp: String {
-        let timeInterval: TimeInterval = timeIntervalSince1970
-        let millisecond = CLongLong(round(timeInterval * 1000))
-        return "\(millisecond)"
-    }
-
     var longDateString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -49,13 +42,99 @@ public extension Date {
         return dateFormatter.string(from: self)
     }
 
-    /// 将date对象格式制定格式的字符串
-    func toString(withFormat format: String = "yyyy-MM-dd HH:mm:ss") -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone.current
-        dateFormatter.locale = Locale.current
-        dateFormatter.calendar = Calendar.current
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: self)
+    /// 日期 -> 字符串
+    func toString(dateFormat: String = "yyyy-MM-dd HH:mm:ss") -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateFormat = dateFormat
+        let date = formatter.string(from: self)
+        return date
+    }
+
+    /// 获取当前 毫秒级 时间戳 - 13位
+    var milliStamp: String {
+        let timeInterval: TimeInterval = timeIntervalSince1970
+        let millisecond = CLongLong(round(timeInterval * 1000))
+        return "\(millisecond)"
+    }
+
+    /// 根据date获取当前月一共有多少天
+    func daysOfMonth() -> Int {
+        let calendar = Calendar.current
+        let dateComponents = DateComponents(year: calendar.component(.year, from: self), month: calendar.component(.month, from: self))
+        let date = calendar.date(from: dateComponents)!
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        let numDays = range.count
+        return numDays
+    }
+
+    /// 获得当前月的所有日期
+    func datesOfMonth() -> [Date] {
+        var rs: [Date] = []
+        let numDays = daysOfMonth()
+        let year = Calendar.current.component(.year, from: self)
+        let month = Calendar.current.component(.month, from: self)
+        for item in 1 ... numDays {
+            let newdate = Calendar.current.date(from: DateComponents(year: year, month: month, day: item))
+            rs.append(newdate!)
+        }
+        return rs
+    }
+
+    /// 日期当天的起始
+    func todayAtStart() -> Date {
+        let year = Calendar.current.component(.year, from: self)
+        let month = Calendar.current.component(.month, from: self)
+        let day = Calendar.current.component(.day, from: self)
+        let newdate = Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: 0, minute: 0, second: 0))
+        return newdate!
+    }
+
+    /// 日期当天的结束
+    func todayAtEnd() -> Date {
+        let year = Calendar.current.component(.year, from: self)
+        let month = Calendar.current.component(.month, from: self)
+        let day = Calendar.current.component(.day, from: self)
+        let newdate = Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: 23, minute: 59, second: 59))
+        return newdate!
+    }
+
+    func day() -> String {
+        let x = NSCalendar.current.component(.day, from: self)
+        return "\(x)"
+    }
+
+    func month() -> String {
+        let x = NSCalendar.current.component(.month, from: self)
+        return "\(x)"
+    }
+
+    func year() -> String {
+        let x = NSCalendar.current.component(.year, from: self)
+        return "\(x)"
+    }
+
+    /// 增加几周
+    mutating func addWeek(n: Int = 1) {
+        let cal = NSCalendar.current
+        self = cal.date(byAdding: .day, value: n * 7, to: self)!
+    }
+
+    /// 增加几个月
+    mutating func addMonth(n: Int = 1) {
+        let cal = NSCalendar.current
+        self = cal.date(byAdding: .month, value: n, to: self)!
+    }
+
+    /// 增加几年
+    mutating func addYear(n: Int = 1) {
+        let cal = NSCalendar.current
+        self = cal.date(byAdding: .year, value: n, to: self)!
+    }
+
+    /// 增加几天
+    mutating func addDay(n: Int = 1) {
+        let cal = NSCalendar.current
+        self = cal.date(byAdding: .day, value: n, to: self)!
     }
 }

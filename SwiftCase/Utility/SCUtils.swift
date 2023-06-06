@@ -215,7 +215,7 @@ public enum SCUtils {
     /// 生成从起始的年月到当前的字典，如value："2021-09" - "2022-06"；name： "2021年09月" - "2022年06月"
     /// let monthDic = SCUtils.generatorMonths(baseYear: 2021, baseMonth: 9)
     public static func generatorMonths(baseYear: Int, baseMonth: Int) -> [String: [String]] {
-        let curYearAndMonth = Date().toString(withFormat: "yyyy-MM")
+        let curYearAndMonth = Date().toString(dateFormat: "yyyy-MM")
         let yearAndMonthAry = curYearAndMonth.split(separator: "-")
         let year = String(yearAndMonthAry[0])
         let month = String(yearAndMonthAry[1])

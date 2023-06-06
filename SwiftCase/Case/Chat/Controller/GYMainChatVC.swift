@@ -162,7 +162,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
     private func timeStampToRead(timeStamp: String) -> String {
         let timeStamp = timeStamp.toDouble() ?? 0
         let date = NSDate(timeIntervalSince1970: timeStamp) as Date
-        let strHour = date.toString(withFormat: "HH:mm")
+        let strHour = date.toString(dateFormat: "HH:mm")
 
         if Calendar.current.isDateInToday(date) {
             return "今天\(strHour)"
@@ -170,7 +170,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
             return "昨天\(strHour)"
         }
 
-        return date.toString(withFormat: "yyyy-MM-dd HH:mm")
+        return date.toString(dateFormat: "yyyy-MM-dd HH:mm")
     }
 
     private func insertChatData(key: String, model: GYMainChatModel) {
@@ -266,7 +266,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
                 model.messageTpye = .text
                 model.msg = inputInfo
                 // 只保留到分钟
-                let strDate = Date().toString(withFormat: "yyyy-MM-dd HH:mm")
+                let strDate = Date().toString(dateFormat: "yyyy-MM-dd HH:mm")
                 let timpStamp = floor(strDate.toDate(withFormat: "yyyy-MM-dd HH:mm")?.timeIntervalSince1970 ?? 0)
                 model.msgTimeStamp = timpStamp
 

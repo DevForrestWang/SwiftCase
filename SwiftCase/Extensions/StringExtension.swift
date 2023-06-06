@@ -95,6 +95,12 @@ public extension String {
         return result
     }
 
+    /// 检测中文
+    func validateChinese() -> Bool {
+        let pattern = "[\\u4e00-\\u9fa5]"
+        return matches(pattern)
+    }
+
     /// 将字符串转换为Date
     func toDate(withFormat format: String = "yyyy-MM-dd HH:mm:ss") -> Date? {
         let dateFormatter = DateFormatter()
@@ -149,20 +155,37 @@ public extension String {
         return text
     }
 
+    // 判断是不是九宫格键盘
+    /// 判断是不是九宫格键盘
+    func isNineKeyBoard() -> Bool {
+        let other: NSString = "➋➌➍➎➏➐➑➒"
+        let len = count
+        for _ in 0 ..< len {
+            if !(other.range(of: self).location != NSNotFound) {
+                return false
+            }
+        }
+        return true
+    }
+
     /// 字符串是否有 Emoji
     func containsEmoji() -> Bool {
         for scalar in unicodeScalars {
             switch scalar.value {
-            case 0x1F600 ... 0x1F64F, // Emoticons
-                 0x1F300 ... 0x1F5FF, // Misc Symbols and Pictographs
-                 0x1F680 ... 0x1F6FF, // Transport and Map
-                 0x2600 ... 0x26FF, // Misc symbols
-                 0x2700 ... 0x27BF, // Dingbats
-                 0xFE00 ... 0xFE0F, // Variation Selectors
-                 0x1F900 ... 0x1F9FF: // Supplemental Symbols and Pictographs
-                return true
-            default:
-                continue
+            case 0x1F600 ... 0x1F64F: return true // Emoticons
+            case 0x1F300 ... 0x1F5FF: return true // Misc Symbols and Pictographs
+            case 0x1F680 ... 0x1F6FF: return true // Transport and Map
+            case 0x1F1E6 ... 0x1F1FF: return true // Regional country flags
+            case 0x2600 ... 0x26FF: return true // Misc symbols
+            case 0x2700 ... 0x27BF: return true // Dingbats
+            case 0xE0020 ... 0xE007F: return true // Tags
+            case 0xFE00 ... 0xFE0F: return true // Variation Selectors
+            case 0x1F900 ... 0x1F9FF: return true // Supplemental Symbols and Pictographs
+            case 127_000 ... 127_600: return true // Various asian characters
+            case 65024 ... 65039: return true // Variation selector
+            case 9100 ... 9300: return true // Misc items
+            case 8400 ... 8447: return true //
+            default: return false
             }
         }
         return false
@@ -344,12 +367,6 @@ public extension String {
     /// 邮箱判断
     var isValidEmail: Bool {
         matches("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
-    }
-
-    /// 检测中文
-    func validateChinese() -> Bool {
-        let pattern = "[\\u4e00-\\u9fa5]"
-        return matches(pattern)
     }
 }
 
