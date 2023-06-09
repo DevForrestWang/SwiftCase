@@ -56,10 +56,7 @@ target 'SwiftCase' do
   # 提供加密相关的方法
   pod 'CryptoSwift'
   
-  #pod 'PullToRefresher'
-  #pod 'SwiftyUserDefaults'
-  #pod 'Whisper'
-  #pod 'Hue'
-  #pod 'Dollar'
+  # 基础工具库
+  pod 'SpeedySwift'
 
 end

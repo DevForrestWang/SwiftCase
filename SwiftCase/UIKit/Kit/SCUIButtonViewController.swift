@@ -82,6 +82,7 @@ class SCUIButtonViewController: BaseViewController {
         view.addSubview(btn2)
         view.addSubview(btnFlash)
         view.addSubview(saveImageBtn)
+        view.addSubview(textImgBtn)
 
         saveImageBtn.addTarget(self, action: #selector(photoAlbumAction), for: .touchUpInside)
         btn1.addTarget(self, action: #selector(btn1Action), for: .touchUpInside)
@@ -119,6 +120,11 @@ class SCUIButtonViewController: BaseViewController {
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.centerX.equalToSuperview()
+        }
+
+        textImgBtn.snp.makeConstraints { make in
+            make.top.equalTo(saveImageBtn.snp.bottom).offset(20)
+            make.height.left.right.centerX.equalTo(saveImageBtn)
         }
     }
 
@@ -162,6 +168,18 @@ class SCUIButtonViewController: BaseViewController {
         $0.setTitle("图片下载及相册保存", for: .normal)
         $0.setTitleColor(UIColor.hexColor(0x3F6D03), for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14.0)
+        $0.layer.cornerRadius = 15
+    }
+
+    // 指定图片位置
+    let textImgBtn = UIButton(type: .custom).then {
+        $0.backgroundColor = .orange
+        $0.setTitle("分享 ", for: .normal)
+        $0.setTitleColor(UIColor.hexColor(0x3F6D03), for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 13.0)
+        $0.setImage(UIImage(named: "search"), for: .normal)
+        // 按钮图标在右侧
+        $0.semanticContentAttribute = .forceRightToLeft
         $0.layer.cornerRadius = 15
     }
 }
