@@ -264,6 +264,8 @@
 		C68195202892C062001CCF50 /* SCalendarDateRangePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951D2892C062001CCF50 /* SCalendarDateRangePickerCell.swift */; };
 		C68195212892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */; };
 		C68195232892C08E001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195222892C08E001CCF50 /* SCSelectDayView.swift */; };
+		C6B0AEF32A3AAD5E002A5719 /* SCPopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */; };
+		C6B0AEF52A3AAE2B002A5719 /* SCPopListViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */; };
 		C6BCB6AC29ED36D300DC8A03 /* AFNetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCB6AB29ED36D300DC8A03 /* AFNetRequest.swift */; };
 		C6BCB6B429EEBF3E00DC8A03 /* pig.png in Resources */ = {isa = PBXBuildFile; fileRef = C6BCB6B329EEBF3E00DC8A03 /* pig.png */; };
 		C6BF75E528586142004116B8 /* SCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF75E428586142004116B8 /* SCircleProgressView.swift */; };
@@ -570,6 +572,8 @@
 		C681951D2892C062001CCF50 /* SCalendarDateRangePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCalendarDateRangePickerCell.swift; sourceTree = "<group>"; };
 		C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCalendarDateRangePickerHeaderView.swift; sourceTree = "<group>"; };
 		C68195222892C08E001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
+		C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopListView.swift; sourceTree = "<group>"; };
+		C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPopListViewVC.swift; sourceTree = "<group>"; };
 		C6BCB6AB29ED36D300DC8A03 /* AFNetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFNetRequest.swift; sourceTree = "<group>"; };
 		C6BCB6B329EEBF3E00DC8A03 /* pig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pig.png; sourceTree = "<group>"; };
 		C6BF75E428586142004116B8 /* SCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCircleProgressView.swift; sourceTree = "<group>"; };
@@ -1339,6 +1343,7 @@
 			isa = PBXGroup;
 			children = (
 				C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */,
+				C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1360,6 +1365,7 @@
 				C6BF75E428586142004116B8 /* SCircleProgressView.swift */,
 				C62328212899099900A1015E /* GYTextSwitch.swift */,
 				C650D28D2A204A6C008C52E3 /* SCPermenantThread.swift */,
+				C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1731,6 +1737,7 @@
 				8A48626A279FDFE3004ABF6C /* ShowTableViewCell.swift in Sources */,
 				779EAC8927198AA40046610C /* InsertionSort.swift in Sources */,
 				C88F930426F8D8D300739819 /* SCUIMapViewVC.swift in Sources */,
+				C6B0AEF52A3AAE2B002A5719 /* SCPopListViewVC.swift in Sources */,
 				C6D8BF2A28D841CA009D85D5 /* GYMainChatVideoCell.swift in Sources */,
 				7710F03F2771B7540083E067 /* SCUpCarouseView.swift in Sources */,
 				77A842A7273F623900D08148 /* SCThreadViewController.swift in Sources */,
@@ -1831,6 +1838,7 @@
 				773967B0271049B600BF7469 /* Array2D.swift in Sources */,
 				77E0ACB526F5C229000EABC1 /* ContentView.swift in Sources */,
 				C6D68214293E206300EA7925 /* AttributedString.swift in Sources */,
+				C6B0AEF32A3AAD5E002A5719 /* SCPopListView.swift in Sources */,
 				7756E84B26FAE48200AB139F /* Student.swift in Sources */,
 				7710057B2735299300733EF7 /* MatchToken.swift in Sources */,
 				8A486261279FD5BE004ABF6C /* SCFlexBoxVC.swift in Sources */,

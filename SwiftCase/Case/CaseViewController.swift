@@ -32,7 +32,8 @@ class CaseViewController: ItemListViewController {
             SCItemModel(title: "Show RxSwift + MVVM", controllerName: "SCMvvmVC", action: nil),
             SCItemModel(title: "Chat", controllerName: "GYMainChatVC", action: nil),
             SCItemModel(title: "Calendar", controllerName: "", action: #selector(showCalendarAction)),
-            SCItemModel(title: "Pop Menu", controllerName: "SCPopMenuVC", action: nil),
+            SCItemModel(title: "Long Press Pop Menu", controllerName: "SCPopMenuVC", action: nil),
+            SCItemModel(title: "Pop Menu", controllerName: "SCPopListViewVC", action: nil),
         ]
     }
 

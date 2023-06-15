@@ -19,7 +19,10 @@ class BaseViewController: UIViewController {
 
         view.backgroundColor = UIColor.hexColor(0xF2F4F7)
         edgesForExtendedLayout = UIRectEdge.bottom
+        initNav()
+    }
 
+    public func initNav() {
         if #available(iOS 15.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
