@@ -104,7 +104,7 @@ extension Grpc_HelloReply: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
             // allocates stack space for every case branch when no optimizations are
             // enabled. https://github.com/apple/swift-protobuf/issues/1034
             switch fieldNumber {
-            case 1: try try decoder.decodeSingularStringField(value: &message)
+            case 1: try decoder.decodeSingularStringField(value: &message)
             default: break
             }
         }

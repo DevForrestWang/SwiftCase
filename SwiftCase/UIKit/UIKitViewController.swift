@@ -21,6 +21,8 @@ class UIKitViewController: ItemListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "UIKit"
+
+        SCScreenFPS.show()
     }
 
     // MARK: - Public
@@ -47,6 +49,7 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "Animation", controllerName: "SCUIAnimationViewVC", action: nil),
             SCItemModel(title: "Parse JSON by simdjson(Cocoapods ZippyJSON)", controllerName: "", action: #selector(zippyParseJSON)),
             SCItemModel(title: "Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi、Alamofire request", controllerName: "SCommunicationVC", action: nil),
+            SCItemModel(title: "Click dismiss Screen FPS", controllerName: "", action: #selector(dismissScreenFPS)),
         ]
     }
 
@@ -94,6 +97,10 @@ class UIKitViewController: ItemListViewController {
             fwDebugPrint("id:\(user.id), \nusername: \(user.username), \nrole: \(user.role), \nawesome: \(user.awesome), \nsuperAwesome: \(user.superAwesome)")
             showLogs()
         #endif
+    }
+
+    @objc private func dismissScreenFPS() {
+        SCScreenFPS.dismiss()
     }
 
     // MARK: - Private
