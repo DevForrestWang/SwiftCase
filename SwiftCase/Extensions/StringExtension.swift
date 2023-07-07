@@ -12,6 +12,7 @@
 //===----------------------------------------------------------------------===//
 
 import Foundation
+import UIKit
 
 // MARK: - Base
 
@@ -453,5 +454,52 @@ public extension String {
     func subStringFrom(_ index: Int) -> String {
         let theIndex = self.index(endIndex, offsetBy: index - count)
         return String(self[theIndex ..< endIndex])
+    }
+}
+
+// MARK: - 字符截取
+
+public extension String {
+    var length: Int {
+        return count
+    }
+
+    /// right is the first encountered string after left
+    func between(_ left: String, _ right: String) -> String? {
+        guard
+            let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards),
+            leftRange.upperBound <= rightRange.lowerBound
+        else { return nil }
+
+        let sub = self[leftRange.upperBound...]
+        let closestToLeftRange = sub.range(of: right)!
+        return String(sub[..<closestToLeftRange.lowerBound])
+    }
+
+    func substring(to: Int) -> String {
+        let toIndex = index(startIndex, offsetBy: to)
+        return String(self[...toIndex])
+    }
+
+    func substring(from: Int) -> String {
+        let fromIndex = index(startIndex, offsetBy: from)
+        return String(self[fromIndex...])
+    }
+
+    func substring(_ r: Range<Int>) -> String {
+        let fromIndex = index(startIndex, offsetBy: r.lowerBound)
+        let toIndex = index(startIndex, offsetBy: r.upperBound)
+        let indexRange = Range<String.Index>(uncheckedBounds: (lower: fromIndex, upper: toIndex))
+        return String(self[indexRange])
+    }
+
+    func character(_ at: Int) -> Character {
+        return self[index(startIndex, offsetBy: at)]
+    }
+
+    func lastIndexOfCharacter(_ c: Character) -> Int? {
+        guard let index = range(of: String(c), options: .backwards)?.lowerBound
+        else { return nil }
+        return distance(from: startIndex, to: index)
     }
 }

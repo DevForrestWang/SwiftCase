@@ -297,6 +297,16 @@ class SCFunctionViewController: BaseViewController {
         let mainStr = "Strengthen"
         let findIndex = (mainStr.distance(of: "eng") ?? 0) + "eng".count
         fwDebugPrint("\(mainStr.subStringFrom(findIndex))")
+
+        // 字符串截取
+        let stText = "www.stackoverflow.com/questions/28182441/swift-how-to-get-substring-from-start-to-last-index-of-character"
+        fwDebugPrint("subStirng:\(stText)")
+        fwDebugPrint(stText.character(3)) // .
+        fwDebugPrint(stText.substring(0 ..< 3)) // www
+        fwDebugPrint(stText.substring(from: 4)) // stackoverflow.com...
+        fwDebugPrint(stText.substring(to: 16)) // www.stackoverflow
+        fwDebugPrint(stText.between(".", ".") ?? "") // stackoverflow
+        fwDebugPrint(stText.lastIndexOfCharacter(".") ?? "") // 17
     }
 
     /// 字符串替换
