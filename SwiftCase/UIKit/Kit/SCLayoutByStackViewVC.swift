@@ -91,14 +91,12 @@ class SCLayoutByStackViewVC: BaseViewController {
     // MARK: - Property
 
     let horStackView = UIStackView().then {
-        $0.backgroundColor = .orange
         $0.axis = .horizontal // 水平方向
         $0.spacing = 10.0 // 最小间距
         $0.distribution = .fillEqually // 分布方式, 等宽
     }
 
     let verStackView = UIStackView().then {
-        $0.backgroundColor = .cyan
         $0.axis = .vertical // 垂直方向
         $0.spacing = 10.0
         $0.distribution = .fillEqually
