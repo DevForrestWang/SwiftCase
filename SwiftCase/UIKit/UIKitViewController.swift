@@ -50,7 +50,8 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "Parse JSON by simdjson(Cocoapods ZippyJSON)", controllerName: "", action: #selector(zippyParseJSON)),
             SCItemModel(title: "Communication：HTTP、gPRC、WebSocket、Bluetooth、Wifi、Alamofire request", controllerName: "SCommunicationVC", action: nil),
             SCItemModel(title: "Click dismiss Screen FPS", controllerName: "", action: #selector(dismissScreenFPS)),
-            SCItemModel(title: "Page Layout", controllerName: "SCLayoutViewVC", action: nil),
+            SCItemModel(title: "Page Layout by ScrollView", controllerName: "SCLayoutByScrollViewVC", action: nil),
+            SCItemModel(title: "Page Layout by StackView", controllerName: "SCLayoutByStackViewVC", action: nil),
         ]
     }
 

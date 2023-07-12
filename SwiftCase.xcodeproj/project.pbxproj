@@ -265,7 +265,7 @@
 		C68195202892C062001CCF50 /* SCalendarDateRangePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951D2892C062001CCF50 /* SCalendarDateRangePickerCell.swift */; };
 		C68195212892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */; };
 		C68195232892C08E001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195222892C08E001CCF50 /* SCSelectDayView.swift */; };
-		C6ACB61C2A5E41920009CF31 /* SCLayoutViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACB61B2A5E41920009CF31 /* SCLayoutViewVC.swift */; };
+		C6ACB61C2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */; };
 		C6B0AEF32A3AAD5E002A5719 /* SCPopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */; };
 		C6B0AEF52A3AAE2B002A5719 /* SCPopListViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */; };
 		C6BCB6AC29ED36D300DC8A03 /* AFNetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCB6AB29ED36D300DC8A03 /* AFNetRequest.swift */; };
@@ -277,6 +277,7 @@
 		C6D8BF2A28D841CA009D85D5 /* GYMainChatVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2828D841CA009D85D5 /* GYMainChatVideoCell.swift */; };
 		C6D8BF2F28D8421C009D85D5 /* GYVoiceRecordingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */; };
 		C6D8BF3028D8421C009D85D5 /* GYCPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */; };
+		C6E590AD2A5E840F00948463 /* SCLayoutByStackViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E590AC2A5E840F00948463 /* SCLayoutByStackViewVC.swift */; };
 		C6F41919291D05AB00D7A153 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C6F41918291D05AB00D7A153 /* README.md */; };
 		C6F9FBFA2A25995400074F33 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F9FBF92A25995400074F33 /* Double+Extension.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
@@ -575,7 +576,7 @@
 		C681951D2892C062001CCF50 /* SCalendarDateRangePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCalendarDateRangePickerCell.swift; sourceTree = "<group>"; };
 		C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCalendarDateRangePickerHeaderView.swift; sourceTree = "<group>"; };
 		C68195222892C08E001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
-		C6ACB61B2A5E41920009CF31 /* SCLayoutViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLayoutViewVC.swift; sourceTree = "<group>"; };
+		C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLayoutByScrollViewVC.swift; sourceTree = "<group>"; };
 		C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopListView.swift; sourceTree = "<group>"; };
 		C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPopListViewVC.swift; sourceTree = "<group>"; };
 		C6BCB6AB29ED36D300DC8A03 /* AFNetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFNetRequest.swift; sourceTree = "<group>"; };
@@ -588,6 +589,7 @@
 		C6D8BF2828D841CA009D85D5 /* GYMainChatVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYMainChatVideoCell.swift; sourceTree = "<group>"; };
 		C6D8BF2D28D8421C009D85D5 /* GYVoiceRecordingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYVoiceRecordingObject.swift; sourceTree = "<group>"; };
 		C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCPlayingView.swift; sourceTree = "<group>"; };
+		C6E590AC2A5E840F00948463 /* SCLayoutByStackViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLayoutByStackViewVC.swift; sourceTree = "<group>"; };
 		C6F41918291D05AB00D7A153 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C6F9FBF92A25995400074F33 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		C822E403270EF558001C39FF /* SCUIEventViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIEventViewVC.swift; sourceTree = "<group>"; };
@@ -1422,7 +1424,8 @@
 				77A842AA273FB17D00D08148 /* SCGCDViewController.swift */,
 				77A842AC273FB1A400D08148 /* SCOperationViewController.swift */,
 				77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */,
-				C6ACB61B2A5E41920009CF31 /* SCLayoutViewVC.swift */,
+				C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */,
+				C6E590AC2A5E840F00948463 /* SCLayoutByStackViewVC.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -1860,6 +1863,7 @@
 				77F652AA26F5D25F00280568 /* PagePrototype.swift in Sources */,
 				A8621264272E82A9007C4556 /* BruteForceStringSearch.swift in Sources */,
 				777BA9B82729349A0030DCB9 /* HeapSort.swift in Sources */,
+				C6E590AD2A5E840F00948463 /* SCLayoutByStackViewVC.swift in Sources */,
 				7756E84526FAE48200AB139F /* Moya+Response.swift in Sources */,
 				8AB586DF2831DEDB00CB9B2B /* GYSegmentVC.swift in Sources */,
 				77F652BC26F5D98900280568 /* R.generated.swift in Sources */,
@@ -1916,7 +1920,7 @@
 				777BA9C1272937C70030DCB9 /* BreadthFirstSearch.swift in Sources */,
 				777BA9CF272943B40030DCB9 /* BitSet.swift in Sources */,
 				77F6529C26F5D25F00280568 /* PermissionAccessor.swift in Sources */,
-				C6ACB61C2A5E41920009CF31 /* SCLayoutViewVC.swift in Sources */,
+				C6ACB61C2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift in Sources */,
 				8A2EDF1828267B0000A43A28 /* SCUIPickerViewVC.swift in Sources */,
 				C61C4830296BBB01005EA8F4 /* SCPopMenuVC.swift in Sources */,
 				77F652A826F5D25F00280568 /* ContentShareBridge.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//===--- SCLayoutViewVC.swift - Defines the SCLayoutViewVC class ----------===//
+//===--- SCLayoutByScrollViewVC.swift - Defines the SCLayoutByScrollViewVC class ----------===//
 //
 // This source file is part of the SwiftCase open source project
 //
@@ -16,7 +16,7 @@ import Then
 import UIKit
 
 /// 页面布局示例
-class SCLayoutViewVC: BaseViewController {
+class SCLayoutByScrollViewVC: BaseViewController {
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class SCLayoutViewVC: BaseViewController {
     // MARK: - UI
 
     private func setupUI() {
-        title = "页面布局"
+        title = "UIScrollView页面布局"
         scrollViewLayout()
 
         let tapGest = UITapGestureRecognizer(target: self, action: #selector(changeLableAction))
