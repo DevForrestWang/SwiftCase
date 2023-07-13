@@ -764,6 +764,36 @@ class SCFunctionViewController: BaseViewController {
         fwDebugPrint("\(n4): \(String(n4).formatNumberCutZero())")
     }
 
+    // MARK: - map、filter、reduce
+
+    // map、filter、reduce 函数的使用
+    // https://github.com/pro648/tips/blob/master/sources/map%E3%80%81filter%E3%80%81reduce%E7%9A%84%E7%94%A8%E6%B3%95.md
+    public func higherOrderFun() {
+        // map 数组、字典相通操作
+        let values = [2.0, 4.0, 5.0, 7.0]
+        let squares2 = values.map { $0 * $0 }
+        fwDebugPrint("squares2:\(squares2)")
+
+        // 数据类型转换, 数字 转换为 英文
+        let scores = [0, 28, 648]
+        let words = scores.map { NumberFormatter.localizedString(from: $0 as NSNumber, number: .spellOut) }
+        // ["zero", "twenty-eight", "six hundred forty-eight"]
+        fwDebugPrint("words:\(words)")
+
+        // 字典操作
+        let milesToPoint = ["point1": 120.0, "point2": 50.0, "point3": 70.0]
+        let kmToPoint = milesToPoint.map { $1 * 1.6093 }
+        fwDebugPrint("kmToPoint:\(kmToPoint)")
+
+        // filter, 返回符合指定条件的有序数组
+        let digits = [1, 4, 10, 15]
+        let even = digits.filter { $0 % 2 == 0 }
+        // 获取偶数
+        fwDebugPrint("even:\(even)")
+
+        // reduce
+    }
+
     // MARK: - UI
 
     func setupUI() {
@@ -790,6 +820,7 @@ class SCFunctionViewController: BaseViewController {
         fwDebugPrint("deviceInfo:  \(SCDeviceInfo.deviceInfo())")
 
         baskNumber()
+        higherOrderFun()
     }
 
     // MARK: - Constraints
