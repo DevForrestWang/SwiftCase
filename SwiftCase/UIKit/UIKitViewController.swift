@@ -95,8 +95,8 @@ class UIKitViewController: ItemListViewController {
         #else
             let user = try! ZippyJSONDecoder().decode(User.self, from: json)
 
-            fwDebugPrint("User data: ")
-            fwDebugPrint("id:\(user.id), \nusername: \(user.username), \nrole: \(user.role), \nawesome: \(user.awesome), \nsuperAwesome: \(user.superAwesome)")
+            SC.log("User data: ")
+            SC.log("id:\(user.id), \nusername: \(user.username), \nrole: \(user.role), \nawesome: \(user.awesome), \nsuperAwesome: \(user.superAwesome)")
             showLogs()
         #endif
     }

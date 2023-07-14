@@ -33,7 +33,7 @@ class SCUIEventViewVC: BaseViewController {
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -77,7 +77,7 @@ class SCUIEventViewVC: BaseViewController {
     @objc func swipeAction(recognizer: UISwipeGestureRecognizer) {
         let point = swipeView.center
         if recognizer.direction == .up {
-            fwDebugPrint("Go Up")
+            SC.log("Go Up")
             if point.y >= 150 {
                 swipeView.center = CGPoint(
                     x: swipeView.center.x,
@@ -87,7 +87,7 @@ class SCUIEventViewVC: BaseViewController {
                 swipeView.center = CGPoint(x: swipeView.center.x, y: 50)
             }
         } else if recognizer.direction == .left {
-            fwDebugPrint("Go Left")
+            SC.log("Go Left")
             if point.x >= 150 {
                 swipeView.center = CGPoint(
                     x: swipeView.center.x - 100,
@@ -97,7 +97,7 @@ class SCUIEventViewVC: BaseViewController {
                 swipeView.center = CGPoint(x: 50, y: swipeView.center.y)
             }
         } else if recognizer.direction == .down {
-            fwDebugPrint("Go Down")
+            SC.log("Go Down")
             if point.y <= fullSize.height - 150 {
                 swipeView.center = CGPoint(
                     x: swipeView.center.x,
@@ -107,7 +107,7 @@ class SCUIEventViewVC: BaseViewController {
                 swipeView.center = CGPoint(x: swipeView.center.x, y: fullSize.height - 50)
             }
         } else if recognizer.direction == .right {
-            fwDebugPrint("Go Right")
+            SC.log("Go Right")
             if point.x <= fullSize.width - 150 {
                 swipeView.center = CGPoint(
                     x: swipeView.center.x + 100,
@@ -126,7 +126,7 @@ class SCUIEventViewVC: BaseViewController {
 
     @objc func pinchAction(recognizer: UIPinchGestureRecognizer) {
         if recognizer.state == .began {
-            fwDebugPrint("Began to zoom")
+            SC.log("Began to zoom")
         } else if recognizer.state == .changed {
             let frm = pinchImageView.frame
             let w = frm.width
@@ -147,10 +147,10 @@ class SCUIEventViewVC: BaseViewController {
                 pinchImageView.frame = CGRect(x: (gScreenWidth - tWidth) / 2,
                                               y: (gScreenHeight - tWidth) / 2,
                                               width: tWidth, height: tWidth)
-                fwDebugPrint("pinchImage:\(pinchImageView.frame), tWidth:\(tWidth)")
+                SC.log("pinchImage:\(pinchImageView.frame), tWidth:\(tWidth)")
             }
         } else if recognizer.state == .ended {
-            fwDebugPrint("End to zoom")
+            SC.log("End to zoom")
         }
     }
 
@@ -161,7 +161,7 @@ class SCUIEventViewVC: BaseViewController {
         let angle = radian * (180 / CGFloat(Float.pi))
 
         pinchImageView.transform = CGAffineTransform(rotationAngle: radian)
-        fwDebugPrint("Rotation angle： \(angle)")
+        SC.log("Rotation angle： \(angle)")
     }
 
     // MARK: - Private
@@ -170,7 +170,7 @@ class SCUIEventViewVC: BaseViewController {
         let number = recognizer.numberOfTouches
         for i in 0 ..< number {
             let point = recognizer.location(ofTouch: i, in: recognizer.view)
-            fwDebugPrint("The position of the \(i + 1) finger：\(NSCoder.string(for: point))")
+            SC.log("The position of the \(i + 1) finger：\(NSCoder.string(for: point))")
         }
     }
 
@@ -205,7 +205,7 @@ class SCUIEventViewVC: BaseViewController {
                 view.backgroundColor = .cyan
             }
 
-            fwDebugPrint("Event begin")
+            SC.log("Event begin")
         }
     }
 
@@ -231,19 +231,19 @@ class SCUIEventViewVC: BaseViewController {
             let deltaX = secondPoint.x - firstPoint.x
             let deltaY = secondPoint.y - firstPoint.y
             let distance = sqrt(deltaX * deltaX + deltaY * deltaY)
-            fwDebugPrint("distance: \(String(format: "%.2f", distance))")
+            SC.log("distance: \(String(format: "%.2f", distance))")
 
             // 计算两点间的角度
             let height = secondPoint.y - firstPoint.y
             let width = firstPoint.x - secondPoint.x
             let rads = atan(height / width)
             let degrees = 180.0 * Double(rads) / .pi
-            fwDebugPrint("Degress: \(String(format: "%.2f", degrees))")
+            SC.log("Degress: \(String(format: "%.2f", degrees))")
         }
     }
 
     override func touchesCancelled(_: Set<UITouch>, with _: UIEvent?) {
-        fwDebugPrint("Event canceled!")
+        SC.log("Event canceled!")
     }
 
     // MARK: - UI

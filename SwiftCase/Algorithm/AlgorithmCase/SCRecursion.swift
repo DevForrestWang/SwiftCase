@@ -37,7 +37,7 @@ class SCRecursion<T: Numeric> {
         }
 
         if num == 1 {
-            fwDebugPrint("depth: \(depth)")
+            SC.log("depth: \(depth)")
             return 1
         }
         if num == 2 {

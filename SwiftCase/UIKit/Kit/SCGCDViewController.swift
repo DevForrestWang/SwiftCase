@@ -26,7 +26,7 @@ class SCGCDViewController: BaseViewController {
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -42,32 +42,32 @@ class SCGCDViewController: BaseViewController {
     // MARK: - IBActions
 
     @objc private func serialSyncAction() {
-        fwDebugPrint("serialSyncAction")
+        SC.log("serialSyncAction")
         let queue = DispatchQueue(label: "com.forrest.serial")
 
         // 串行队列做同步操作, 容易造成死锁
         queue.sync {
-            fwDebugPrint("Sync operation in as serial queue.")
+            SC.log("Sync operation in as serial queue.")
         }
 
         fwShowToast("console logs")
     }
 
     @objc private func serialAsyncAction() {
-        fwDebugPrint("serialAsyncAction")
+        SC.log("serialAsyncAction")
         let queue = DispatchQueue(label: "com.forrest.serail2")
         // 串行队列做异步操作是顺序执行
         queue.async {
-            fwDebugPrint(Thread.current)
+            SC.log(Thread.current)
             for i in 0 ..< 2 {
-                fwDebugPrint("First i: \(i)")
+                SC.log("First i: \(i)")
             }
         }
 
         queue.async {
-            fwDebugPrint(Thread.current)
+            SC.log(Thread.current)
             for i in 0 ..< 2 {
-                fwDebugPrint("Second i: \(i)")
+                SC.log("Second i: \(i)")
             }
         }
 
@@ -75,7 +75,7 @@ class SCGCDViewController: BaseViewController {
     }
 
     @objc private func concurrentSyncAction() {
-        fwDebugPrint("concurrentSyncAction")
+        SC.log("concurrentSyncAction")
 
         let lable = "com.forrest.concurrent1"
         let qos = DispatchQoS.default
@@ -86,13 +86,13 @@ class SCGCDViewController: BaseViewController {
         // 并发队列同步操作是顺序执行
         queue.sync {
             for i in 0 ..< 2 {
-                fwDebugPrint("First sync i: \(i)")
+                SC.log("First sync i: \(i)")
             }
         }
 
         queue.sync {
             for i in 0 ..< 2 {
-                fwDebugPrint("Second sync i: \(i)")
+                SC.log("Second sync i: \(i)")
             }
         }
 
@@ -100,7 +100,7 @@ class SCGCDViewController: BaseViewController {
     }
 
     @objc private func concurrentAsyncAction() {
-        fwDebugPrint("concurrentAsyncAction")
+        SC.log("concurrentAsyncAction")
 
         let lable = "com.forrest.concurrent2"
         let attributes = DispatchQueue.Attributes.concurrent
@@ -109,13 +109,13 @@ class SCGCDViewController: BaseViewController {
         // 并发队列做异步操作执行顺序不固定
         queue.async {
             for i in 0 ..< 2 {
-                fwDebugPrint("First async i: \(i)")
+                SC.log("First async i: \(i)")
             }
         }
 
         queue.async {
             for i in 0 ..< 2 {
-                fwDebugPrint("Second async i: \(i)")
+                SC.log("Second async i: \(i)")
             }
         }
 
@@ -123,7 +123,7 @@ class SCGCDViewController: BaseViewController {
     }
 
     @objc private func downImageInGroupAction() {
-        fwDebugPrint("downImageInGroupAction")
+        SC.log("downImageInGroupAction")
 
         imageView1.image = UIImage(named: "placeholder")
         imageView2.image = UIImage(named: "placeholder")
@@ -142,7 +142,7 @@ class SCGCDViewController: BaseViewController {
         let group = DispatchGroup()
         group.enter()
         DispatchQueue.global().async {
-            fwDebugPrint("Begin to download image 1.")
+            SC.log("Begin to download image 1.")
             let imageURL = URL(string: self.strImageURL)
             let data = try? Data(contentsOf: imageURL!)
 
@@ -150,19 +150,19 @@ class SCGCDViewController: BaseViewController {
                 DispatchQueue.main.async {
                     self.indicator1.stopAnimating()
                 }
-                fwDebugPrint("Failed to download image 1.")
+                SC.log("Failed to download image 1.")
                 return
             }
 
             try! tmpData.write(to: fileURL1, options: .atomic)
-            fwDebugPrint("image 1 download")
+            SC.log("image 1 download")
             sleep(1)
             group.leave()
         }
 
         group.enter()
         DispatchQueue.global().async {
-            fwDebugPrint("Begin to down image 2.")
+            SC.log("Begin to down image 2.")
 
             let imageURL = URL(string: self.strImageURL2)
             let data = try? Data(contentsOf: imageURL!)
@@ -171,13 +171,13 @@ class SCGCDViewController: BaseViewController {
                 DispatchQueue.main.async {
                     self.indicator2.stopAnimating()
                 }
-                fwDebugPrint("Failed to download image 2.")
+                SC.log("Failed to download image 2.")
                 return
             }
 
             try! tmpData.write(to: fileURL2, options: .atomic)
             sleep(1)
-            fwDebugPrint("image 2 download.")
+            SC.log("image 2 download.")
             group.leave()
         }
 
@@ -186,12 +186,12 @@ class SCGCDViewController: BaseViewController {
             let imageData2 = try? Data(contentsOf: fileURL2)
 
             guard let tmpData1 = imageData1 else {
-                fwDebugPrint("The imageData1 is nil")
+                SC.log("The imageData1 is nil")
                 return
             }
 
             guard let tmpData2 = imageData2 else {
-                fwDebugPrint("The imageData2 is nil")
+                SC.log("The imageData2 is nil")
                 return
             }
 
@@ -203,32 +203,32 @@ class SCGCDViewController: BaseViewController {
     }
 
     @objc private func dispatchSemaphoreAction() {
-        fwDebugPrint("dispatchSemaphoreAction")
+        SC.log("dispatchSemaphoreAction")
         let semaphore = DispatchSemaphore(value: 2)
         // semaphore 在串行队列需要注意死锁问题
         let queue = DispatchQueue(label: "com.forrest.concurrent", qos: .default, attributes: .concurrent)
 
         queue.async {
             semaphore.wait()
-            fwDebugPrint("First car in")
+            SC.log("First car in")
             sleep(3)
-            fwDebugPrint("First car out.")
+            SC.log("First car out.")
             semaphore.signal()
         }
 
         queue.async {
             semaphore.wait()
-            fwDebugPrint("Second car in")
+            SC.log("Second car in")
             sleep(2)
-            fwDebugPrint("Second car out.")
+            SC.log("Second car out.")
             semaphore.signal()
         }
 
         queue.async {
             semaphore.wait()
-            fwDebugPrint("Third car in")
+            SC.log("Third car in")
             sleep(4)
-            fwDebugPrint("Third car out.")
+            SC.log("Third car out.")
             semaphore.signal()
         }
 
@@ -287,13 +287,13 @@ class SCGCDViewController: BaseViewController {
 
         let dispatchTime = DispatchTime.now() + 0.5
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-            fwDebugPrint("After 0.5 second.")
+            SC.log("After 0.5 second.")
         }
 
         // 串行队列做异步操作是顺序执行
         DispatchQueue.main.async {
             for i in 0 ..< 2 {
-                fwDebugPrint("First main queue async i: \(i)")
+                SC.log("First main queue async i: \(i)")
             }
         }
 

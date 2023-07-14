@@ -71,20 +71,20 @@ class DesignPatternViewController: ItemListViewController {
         // methods2：
         let instance1 = Singleton.shared
         let instance2 = Singleton.shared
-        fwDebugPrint(instance1.someBusinessLogic())
-        fwDebugPrint(instance1 === instance2)
+        SC.log(instance1.someBusinessLogic())
+        SC.log(instance1 === instance2)
     }
 
     @objc func testFactoryPattern() throws {
         fwPrintEnter(message: "Run testFactoryPattern")
         let noCurrencyCode = "No Currency Code Available"
 
-        fwDebugPrint(CurrencyFactory.currency(for: .greece)?.code ?? noCurrencyCode)
-        fwDebugPrint(CurrencyFactory.currency(for: .spain)?.code ?? noCurrencyCode)
-        fwDebugPrint(CurrencyFactory.currency(for: .unitedStates)?.code ?? noCurrencyCode)
+        SC.log(CurrencyFactory.currency(for: .greece)?.code ?? noCurrencyCode)
+        SC.log(CurrencyFactory.currency(for: .spain)?.code ?? noCurrencyCode)
+        SC.log(CurrencyFactory.currency(for: .unitedStates)?.code ?? noCurrencyCode)
 
         let uk = CurrencyFactory.currency(for: .uk)?.code ?? noCurrencyCode
-        fwDebugPrint(uk)
+        SC.log(uk)
     }
 
     @objc func testProjectorFactory() {
@@ -103,10 +103,10 @@ class DesignPatternViewController: ItemListViewController {
     @objc func testAbstractFactory() throws {
         fwPrintEnter(message: "Run testAbstractFactory")
         let bigKahuna = BurgerFactoryType.bigKahuna.make()
-        fwDebugPrint(bigKahuna)
+        SC.log(bigKahuna)
 
         let jackInTheBox = BurgerFactoryType.jackInTheBox.make()
-        fwDebugPrint(jackInTheBox)
+        SC.log(jackInTheBox)
     }
 
     @objc func testAuthViewAbstractFactory() throws {
@@ -123,11 +123,11 @@ class DesignPatternViewController: ItemListViewController {
 
         /// Present LogIn flow
         clientCode.presentLogin()
-        fwDebugPrint("Login screen has been presented")
+        SC.log("Login screen has been presented")
 
         /// Present SignUp flow
         clientCode.presentSignUp()
-        fwDebugPrint("Sign up screen has been presented")
+        SC.log("Sign up screen has been presented")
     }
 
     @objc func testBuilder() throws {
@@ -139,7 +139,7 @@ class DesignPatternViewController: ItemListViewController {
             .addQueryItem(name: "sort", value: "name")
             .addQueryItem(name: "order", value: "asc")
             .build()
-        fwDebugPrint(url ?? "URL is nil")
+        SC.log(url ?? "URL is nil")
         fwPrintLine()
     }
 
@@ -148,7 +148,7 @@ class DesignPatternViewController: ItemListViewController {
         let client = BuilderClient()
         client.clientCode(builder: RealmQueryBuilder<SBUser>())
 
-        fwDebugPrint()
+        SC.log()
 
         fwPrintEnter(message: "Client: Start fetching data from CoreData")
         client.clientCode(builder: CoreDataQueryBuilder<SBUser>())
@@ -162,16 +162,16 @@ class DesignPatternViewController: ItemListViewController {
         page.add(comment: PPComment(message: "Keep is up!"))
 
         guard let anotherPage = page.copy() as? PPPage else {
-            fwDebugPrint("Page was not copyied")
+            SC.log("Page was not copyied")
             return
         }
 
         /// Comments should be empty as it is a new page.
-        fwDebugPrint(author.pageCount == 2)
+        SC.log(author.pageCount == 2)
 
-        fwDebugPrint("Original title: " + page.title)
-        fwDebugPrint("Copied title: " + anotherPage.title)
-        fwDebugPrint("Count of pages: " + String(author.pageCount))
+        SC.log("Original title: " + page.title)
+        SC.log("Copied title: " + anotherPage.title)
+        SC.log("Count of pages: " + String(author.pageCount))
 
         fwPrintLine()
     }
@@ -181,12 +181,12 @@ class DesignPatternViewController: ItemListViewController {
     @objc func testProfileProxy() throws {
         fwPrintEnter(message: "Client: Start testProfileProxy")
 
-        fwDebugPrint("Client: Loading a profile WITHOUT proxy")
+        SC.log("Client: Loading a profile WITHOUT proxy")
         let profile = ProxyClient()
         profile.loadBasicProfile(with: PPKeychain())
         profile.loadProfileWithBankAccount(with: PPKeychain())
 
-        fwDebugPrint("\nClient: Let's load a profile WITH proxy")
+        SC.log("\nClient: Let's load a profile WITH proxy")
         profile.loadBasicProfile(with: ProfileProxy())
         profile.loadProfileWithBankAccount(with: ProfileProxy())
 
@@ -197,12 +197,12 @@ class DesignPatternViewController: ItemListViewController {
         fwPrintEnter(message: "Client: Start testProfileProxy")
 
         let bridge = BridgeClient()
-        fwDebugPrint("Client: Pushing Photo View Controller...")
+        SC.log("Client: Pushing Photo View Controller...")
         bridge.push(PhotoViewController())
 
-        fwDebugPrint()
+        SC.log()
 
-        fwDebugPrint("Client: Pushing Feed View Controller...")
+        SC.log("Client: Pushing Feed View Controller...")
         bridge.push(FeedViewController())
 
         fwPrintLine()
@@ -213,7 +213,7 @@ class DesignPatternViewController: ItemListViewController {
         let client = DecoratorClient()
         var image = client.loadImage(urlString: "https://refactoring.guru/images/content-public/logos/logo-new-3x.png")
 
-        fwDebugPrint("Client: set up an editors stack")
+        SC.log("Client: set up an editors stack")
         let resizer = Resizer(image, xScale: 0.2, yScale: 0.2)
         image = resizer.applay()
 
@@ -281,7 +281,7 @@ class DesignPatternViewController: ItemListViewController {
         fwPrintEnter(message: "Client: Start testDPInterpreter")
 
         /// This way the client code can support the simple leaf components...
-        fwDebugPrint("Client: I've got a simple component:")
+        SC.log("Client: I've got a simple component:")
         ComponentClient.clientCode(component: DPLeaf())
 
         /// ...as well as the complex composites.
@@ -298,10 +298,10 @@ class DesignPatternViewController: ItemListViewController {
         tree.add(component: branch1)
         tree.add(component: branch2)
 
-        fwDebugPrint("\nClient: Now I've got a composite tree:")
+        SC.log("\nClient: Now I've got a composite tree:")
         ComponentClient.clientCode(component: tree)
 
-        fwDebugPrint("\nClient: I don't need to check the components classes even when managing the tree:")
+        SC.log("\nClient: I don't need to check the components classes even when managing the tree:")
         ComponentClient.moreComplexClient(leftComponent: tree, rightComponent: DPLeaf())
 
         fwPrintLine()
@@ -332,7 +332,7 @@ class DesignPatternViewController: ItemListViewController {
         accessors.forEach { item in
             item.requestAccessIfNeeded { status in
                 let message = status ? "You have access to " : "You do not have access to "
-                fwDebugPrint(message + item.description + "\n")
+                SC.log(message + item.description + "\n")
             }
         }
 
@@ -355,12 +355,12 @@ class DesignPatternViewController: ItemListViewController {
 
     @objc func testChainResponsibility() throws {
         fwPrintEnter(message: "Client: Start testChainResponsibility")
-        fwDebugPrint("Client: Let's test Login flow!")
+        SC.log("Client: Let's test Login flow!")
         let loginHandler = LoginHandler(with: LocationHandler())
         let loginController = LoginViewController(handler: loginHandler)
         loginController.loginButtonSelected()
 
-        fwDebugPrint("\nClient: Let's test SignUp flow!")
+        SC.log("\nClient: Let's test SignUp flow!")
         let signUpHandler = SignUpHandler(with: LocationHandler(with: NotificationHandler()))
         let signUpController = SignUpViewController(handler: signUpHandler)
         signUpController.signUpButtonSelected()
@@ -375,13 +375,13 @@ class DesignPatternViewController: ItemListViewController {
         tree.right = TreeIterator(3)
 
         let client = IteratorClient()
-        fwDebugPrint("Tree traversal: Inorder")
+        SC.log("Tree traversal: Inorder")
         client.clientCode(iterator: tree.iterator(.inOrder))
 
-        fwDebugPrint("Tree traversal: Preorder")
+        SC.log("Tree traversal: Preorder")
         client.clientCode(iterator: tree.iterator(.preOrder))
 
-        fwDebugPrint("Tree traversal: Postorder")
+        SC.log("Tree traversal: Postorder")
         client.clientCode(iterator: tree.iterator(.postOrder))
 
         fwPrintLine()
@@ -389,22 +389,22 @@ class DesignPatternViewController: ItemListViewController {
 
     @objc func testTrackingState() throws {
         fwPrintEnter(message: "Client: Start testTrackingState")
-        fwDebugPrint("Client: I'm starting working with a location tracker")
+        SC.log("Client: I'm starting working with a location tracker")
         let tracker = LocationTracker()
 
-        fwDebugPrint()
+        SC.log()
         tracker.startTracking()
 
-        fwDebugPrint()
+        SC.log()
         tracker.pauseTracking(for: 2)
 
-        fwDebugPrint()
+        SC.log()
         tracker.makeCheckIn()
 
-        fwDebugPrint()
+        SC.log()
         tracker.findMyChildren()
 
-        fwDebugPrint()
+        SC.log()
         tracker.stopTracking()
         fwPrintLine()
     }
@@ -439,12 +439,12 @@ class DesignPatternViewController: ItemListViewController {
         textView.textColor = .red
         undoStack.save()
 
-        fwDebugPrint(undoStack)
+        SC.log(undoStack)
 
-        fwDebugPrint("Client: Perform Undo operation 2 times\n")
+        SC.log("Client: Perform Undo operation 2 times\n")
         undoStack.undo()
         undoStack.undo()
-        fwDebugPrint(undoStack)
+        SC.log(undoStack)
 
         fwPrintLine()
     }
@@ -488,11 +488,11 @@ class DesignPatternViewController: ItemListViewController {
 
         let addExpression = AddExpression(op1: a, op2: AddExpression(op1: b, op2: c)) // a + (b + c)
         var result = addExpression.evaluate(context)
-        fwDebugPrint("A + (B + C) = \(aV) + (\(bV) + \(cV)) = \(result)")
+        SC.log("A + (B + C) = \(aV) + (\(bV) + \(cV)) = \(result)")
 
         let subExpression = SubtractionExpresion(op1: a, op2: AddExpression(op1: b, op2: c))
         result = subExpression.evaluate(context)
-        fwDebugPrint("A - (B + C) = \(aV) - (\(bV) + \(cV)) = \(result)")
+        SC.log("A - (B + C) = \(aV) - (\(bV) + \(cV)) = \(result)")
         fwPrintLine()
     }
 

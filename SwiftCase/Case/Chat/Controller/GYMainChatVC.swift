@@ -29,7 +29,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
 
     // 执行析构过程
     deinit {
-        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
+        SC.log("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
@@ -120,7 +120,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         let key = dataSourceHeads[indexPath.section]
         let dataAry = dataSource[key]
         if indexPath.row < dataAry?.count ?? 0, let model: GYMainChatModel = dataAry?[indexPath.row] {
-            fwDebugPrint("item select: \(String(describing: model))")
+            SC.log("item select: \(String(describing: model))")
         }
     }
 
@@ -144,14 +144,14 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
 
     private func scrollToBottom() {
         if dataSourceHeads.count < 1 {
-            fwDebugPrint("The dataSourceHeads less 1.")
+            SC.log("The dataSourceHeads less 1.")
             return
         }
         let section = dataSourceHeads.count - 1
         let dataAry = dataSource[dataSourceHeads[section]]
         let dataCount = dataAry?.count ?? 0
         if dataCount < 1 {
-            fwDebugPrint("The dataAry less 1.")
+            SC.log("The dataAry less 1.")
             return
         }
 
@@ -244,7 +244,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - UI
 
     private func setupUI() {
-        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
+        SC.log("===========<loadClass: \(type(of: self))>===========")
         title = "会员福利群"
 
         view.addSubview(chatTableView)
@@ -254,7 +254,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         view.addSubview(chatInputView)
         chatInputView.parentVc = self
         chatInputView.gyChatInputClosure = { inputType, inputInfo in
-            fwDebugPrint("type: \(inputType), info:\(inputInfo)")
+            SC.log("type: \(inputType), info:\(inputInfo)")
 
             if inputType == .switchGroup {
             } else if inputType == .redPackage {

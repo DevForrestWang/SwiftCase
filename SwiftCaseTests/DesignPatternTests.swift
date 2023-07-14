@@ -50,14 +50,14 @@ class DesignPatternTests: XCTestCase {
         prepareTestEnvironment {
             let siri = SiriShortcuts.shared
             
-            fwDebugPrint("User: Hey Siri, I am leaving my home")
+            SC.log("User: Hey Siri, I am leaving my home")
             siri.perform(.leaveHome)
             
-            fwDebugPrint("User: Hey Siri, I am leaving my work in 3 minutes")
+            SC.log("User: Hey Siri, I am leaving my work in 3 minutes")
             /// for simplicity, we use seconds
             siri.perform(.leaveWork, delay: 3)
             
-            fwDebugPrint("User: Hey Siri, I am still working")
+            SC.log("User: Hey Siri, I am still working")
             siri.cancel(.leaveWork)
         }
         

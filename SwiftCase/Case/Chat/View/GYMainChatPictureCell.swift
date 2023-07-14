@@ -36,7 +36,7 @@ class GYMainChatPictureCell: GYMainChatBaseInfoCell {
 
     // 执行析构过程
     deinit {
-        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
+        SC.log("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
@@ -67,17 +67,17 @@ class GYMainChatPictureCell: GYMainChatBaseInfoCell {
 
     @objc override public func clickAction(recognizer _: UITapGestureRecognizer) {
         guard let dataSouce = allDataSource, let tmpCurModel = currentModel else {
-            fwDebugPrint("The dataSource is empty.")
+            SC.log("The dataSource is empty.")
             return
         }
 
         guard let tmpClosure = gyMainChatCellClosure else {
-            fwDebugPrint("The gyMainChatCellClosure is empty.")
+            SC.log("The gyMainChatCellClosure is empty.")
             return
         }
 
         guard tmpCurModel.msg is NSDictionary else {
-            fwDebugPrint("The current model is not dictionary.")
+            SC.log("The current model is not dictionary.")
             return
         }
 
@@ -120,7 +120,7 @@ class GYMainChatPictureCell: GYMainChatBaseInfoCell {
     // MARK: - UI
 
     private func setupUI() {
-        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
+        SC.log("===========<loadClass: \(type(of: self))>===========")
         contentBgView.addSubview(messageImagView)
     }
 

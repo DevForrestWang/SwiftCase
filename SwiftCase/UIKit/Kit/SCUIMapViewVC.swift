@@ -33,7 +33,7 @@ class SCUIMapViewVC: BaseViewController, MAMapViewDelegate {
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -53,7 +53,7 @@ class SCUIMapViewVC: BaseViewController, MAMapViewDelegate {
 
     func mapView(_: MAMapView!, didUpdate userLocation: MAUserLocation!, updatingLocation _: Bool) {
         if userLocation != nil {
-            fwDebugPrint("userLocation: \(userLocation.location?.description ?? "")")
+            SC.log("userLocation: \(userLocation.location?.description ?? "")")
         }
     }
 

@@ -84,7 +84,7 @@ class TreeIterator<T> {
 class IteratorClient {
     func clientCode<T>(iterator: AnyIterator<T>) {
         while case let item? = iterator.next() {
-            fwDebugPrint(item)
+            SC.log(item)
         }
     }
 }

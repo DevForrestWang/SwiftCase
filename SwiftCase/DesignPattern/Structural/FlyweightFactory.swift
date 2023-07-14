@@ -34,7 +34,7 @@ class Flyweight {
     }
 
     func operation(uniqueState: [String]) {
-        fwDebugPrint("Flyweight: Displaying shared (\(sharedState)) and unique (\(uniqueState) state.\n")
+        SC.log("Flyweight: Displaying shared (\(sharedState)) and unique (\(uniqueState) state.\n")
     }
 }
 
@@ -61,19 +61,19 @@ class FlyweightFactory {
         let key = state.key
 
         guard let foundFlyweight = flyweights[key] else {
-            fwDebugPrint("FlyweightFactory: Can't find a flyweight, creating new one.\n")
+            SC.log("FlyweightFactory: Can't find a flyweight, creating new one.\n")
             let flyweight = Flyweight(sharedState: state)
             flyweights.updateValue(flyweight, forKey: key)
             return flyweight
         }
-        fwDebugPrint("FlyweightFactory: Reusing existing flyweight.\n")
+        SC.log("FlyweightFactory: Reusing existing flyweight.\n")
         return foundFlyweight
     }
 
     func printFlyweights() {
-        fwDebugPrint("FlyweightFactory: I have \(flyweights.count) flyweights:\n")
+        SC.log("FlyweightFactory: I have \(flyweights.count) flyweights:\n")
         for item in flyweights {
-            fwDebugPrint(item.key)
+            SC.log(item.key)
         }
     }
 }
@@ -97,7 +97,7 @@ class FlyweightClient {
         _ model: String,
         _ color: String
     ) {
-        fwDebugPrint("Client: Adding a car to database.\n")
+        SC.log("Client: Adding a car to database.\n")
 
         let flyweight = factory.flyweight(for: [brand, model, color])
 

@@ -26,7 +26,7 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -34,7 +34,7 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
 
     // 执行析构过程
     deinit {
-        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
+        SC.log("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
@@ -76,12 +76,12 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
 
         guard let nameSpace = Bundle.main.infoDictionary!["CFBundleExecutable"] as? String else {
-            fwDebugPrint("No found namespace")
+            SC.log("No found namespace")
             return
         }
 
         guard let model: SCItemModel = itemDataSource()?[indexPath.row] else {
-            fwDebugPrint("The model is empty")
+            SC.log("The model is empty")
             return
         }
 
@@ -92,12 +92,12 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
         }
 
         guard let conroller: AnyObject.Type = NSClassFromString("\(nameSpace).\(model.controllerName)") else {
-            fwDebugPrint("No found class")
+            SC.log("No found class")
             return
         }
 
         guard let vc = conroller as? UIViewController.Type else {
-            fwDebugPrint("not UIViewController")
+            SC.log("not UIViewController")
             return
         }
 
@@ -113,7 +113,7 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
     // MARK: - UI
 
     func setupUI() {
-        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
+        SC.log("===========<loadClass: \(type(of: self))>===========")
 
         view.backgroundColor = .white
 

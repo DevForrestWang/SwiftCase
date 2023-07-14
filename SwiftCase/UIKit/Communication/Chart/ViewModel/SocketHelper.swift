@@ -49,9 +49,9 @@ final class SocketHelper: NSObject {
         socket = manager.defaultSocket
 
         socket?.on("testEvent", callback: { data, _ in
-            fwDebugPrint(data)
+            SC.log(data)
             let resp = data[0]
-            fwDebugPrint(resp)
+            SC.log(resp)
         })
     }
 
@@ -130,18 +130,18 @@ final class SocketHelper: NSObject {
                     let userModel = try JSONDecoder().decode([User].self, from: data)
                     completion(userModel)
                 } catch {
-                    fwDebugPrint("Something happen wrong here...\(error)")
+                    SC.log("Something happen wrong here...\(error)")
                     completion(nil)
                 }
             } else {
                 do {
                     if let dataFromString = String(describing: dataInfo).data(using: .utf8, allowLossyConversion: false) {
                         let userModel = try JSONDecoder().decode([User].self, from: dataFromString)
-                        fwDebugPrint("userModel:\(userModel)")
+                        SC.log("userModel:\(userModel)")
                         completion(userModel)
                     }
                 } catch {
-                    fwDebugPrint("Something happen wrong here...\(error)")
+                    SC.log("Something happen wrong here...\(error)")
                 }
             }
         }
@@ -176,7 +176,7 @@ final class SocketHelper: NSObject {
                 completion(messageModel)
 
             } catch {
-                fwDebugPrint("Something happen wrong here...\(error)")
+                SC.log("Something happen wrong here...\(error)")
                 completion(nil)
             }
         }

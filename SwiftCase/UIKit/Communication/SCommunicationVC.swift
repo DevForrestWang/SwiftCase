@@ -89,7 +89,7 @@ class SCommunicationVC: ItemListViewController {
 
     @objc func sayHelloRPCAction() {
         if isRunSayHello {
-            fwDebugPrint("The SayHello is runing.")
+            SC.log("The SayHello is runing.")
             return
         }
 
@@ -97,7 +97,7 @@ class SCommunicationVC: ItemListViewController {
         DispatchQueue.global().async {
             self.runSayHelloRPC()
             DispatchQueue.main.async {
-                fwDebugPrint("Come back to main thread\(Thread.current)")
+                SC.log("Come back to main thread\(Thread.current)")
                 self.isRunSayHello = false
             }
         }
@@ -105,21 +105,21 @@ class SCommunicationVC: ItemListViewController {
 
     @objc func requestDataAction() {
         if isRunRequestData {
-            fwDebugPrint("The requestDataAction is runing.")
+            SC.log("The requestDataAction is runing.")
             return
         }
 
         DispatchQueue.global().async {
             self.requestDataRPC()
             DispatchQueue.main.async {
-                fwDebugPrint("Come back to main thread\(Thread.current)")
+                SC.log("Come back to main thread\(Thread.current)")
                 self.isRunRequestData = false
             }
         }
     }
 
     @objc func restRequestAction() {
-        fwDebugPrint("Run restRequestAction")
+        SC.log("Run restRequestAction")
         let startTime = CFAbsoluteTimeGetCurrent()
         // sayHelloRest()
         for index in 1 ... runTimes {
@@ -127,7 +127,7 @@ class SCommunicationVC: ItemListViewController {
         }
 
         let endTime = CFAbsoluteTimeGetCurrent()
-        fwDebugPrint("End restRequestAction, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
+        SC.log("End restRequestAction, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
     }
 
     @objc func alamofireDemo() {
@@ -208,7 +208,7 @@ class SCommunicationVC: ItemListViewController {
     // MARK: - Private
 
     private func runSayHelloRPC() {
-        fwDebugPrint("Start GRPC Client.")
+        SC.log("Start GRPC Client.")
         isRunSayHello = true
 
         // See: https://github.com/apple/swift-nio#eventloops-and-eventloopgroups
@@ -233,7 +233,7 @@ class SCommunicationVC: ItemListViewController {
         }
 
         let endTime = CFAbsoluteTimeGetCurrent()
-        fwDebugPrint("End runSayHelloRPC, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
+        SC.log("End runSayHelloRPC, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
         /*
          End runSayHelloRPC, runTimes: 10000, 执行时长： 97133.64005088806 毫秒 1
          End runSayHelloRPC, runTimes: 10000, 执行时长： 78360.21292209625 毫秒 10
@@ -252,14 +252,14 @@ class SCommunicationVC: ItemListViewController {
         do {
             // wait() on the response to stop the program from exiting before the response is received.
             let response = try sayHello.response.wait()
-            fwDebugPrint("Index:\(index), Greeter received: \(response.message)")
+            SC.log("Index:\(index), Greeter received: \(response.message)")
         } catch {
-            fwDebugPrint("Greeter failed: \(error)")
+            SC.log("Greeter failed: \(error)")
         }
     }
 
     private func requestDataRPC() {
-        fwDebugPrint("Start requestDataRPC")
+        SC.log("Start requestDataRPC")
         isRunRequestData = true
 
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
@@ -280,7 +280,7 @@ class SCommunicationVC: ItemListViewController {
         }
 
         let endTime = CFAbsoluteTimeGetCurrent()
-        fwDebugPrint("End requestDataRPC, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
+        SC.log("End requestDataRPC, runTimes: \(runTimes), 执行时长： \((endTime - startTime) * 1000) 毫秒")
 
         /*
          End requestDataRPC, runTimes: 10000, 执行时长： 78737.40696907043 毫秒 1
@@ -291,7 +291,7 @@ class SCommunicationVC: ItemListViewController {
     }
 
     private func requestData(client: Grpc_RequestBodyClient, index: Int) {
-        fwDebugPrint("Run requestData")
+        SC.log("Run requestData")
         var header = Grpc_Header()
         header.appName = "hsAPP"
         header.token = "aaabbbccccccdddddddd"
@@ -308,11 +308,11 @@ class SCommunicationVC: ItemListViewController {
 
         do {
             let response: Grpc_Response? = try requestData.response.wait()
-            fwDebugPrint("Index:\(index), Greeter received: \(response!)")
+            SC.log("Index:\(index), Greeter received: \(response!)")
 
             if let tResponse = response {
                 if tResponse.retCode != 200 {
-                    fwDebugPrint("The retCode is not 200.")
+                    SC.log("The retCode is not 200.")
                     return
                 }
 
@@ -321,14 +321,14 @@ class SCommunicationVC: ItemListViewController {
                 if let jsonData = try? JSONSerialization.data(withJSONObject: jsonStr, options: []) {
                     do {
                         let grade = try JSONDecoder().decode(Grade.self, from: jsonData)
-                        fwDebugPrint("gradeObj = \(grade)")
+                        SC.log("gradeObj = \(grade)")
                     } catch {
-                        fwDebugPrint("gradeObj nil")
+                        SC.log("gradeObj nil")
                     }
                 }
             }
         } catch {
-            fwDebugPrint("requestData failed: \(error)")
+            SC.log("requestData failed: \(error)")
         }
     }
 
@@ -350,11 +350,11 @@ class SCommunicationVC: ItemListViewController {
                 let jsonString = try? response.mapString()
                 let message = jsonString ?? "Couldn't access API"
                 // self.showAlert("restTest: ", message:message)
-                fwDebugPrint("Response: \(message)")
+                SC.log("Response: \(message)")
             case let .failure(error):
                 let message = error.localizedDescription
                 // self.showAlert("restTest: ", message: message)
-                fwDebugPrint("Error: \(message)")
+                SC.log("Error: \(message)")
             }
         }.disposed(by: disposeBag)
     }
@@ -365,11 +365,11 @@ class SCommunicationVC: ItemListViewController {
             .subscribe { event in
                 switch event {
                 case let .success(response):
-                    fwDebugPrint("index:\(index), gradeObj: \(response)")
+                    SC.log("index:\(index), gradeObj: \(response)")
                 case let .failure(error):
                     let message = error.localizedDescription
                     // self.showAlert("restTest: ", message: message)
-                    fwDebugPrint("index:\(index), Error: \(message)")
+                    SC.log("index:\(index), Error: \(message)")
                 }
             }.disposed(by: disposeBag)
     }

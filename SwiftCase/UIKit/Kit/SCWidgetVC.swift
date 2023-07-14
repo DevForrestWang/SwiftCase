@@ -30,7 +30,7 @@ class SCWidgetVC: BaseViewController {
         super.viewWillDisappear(animated)
         // 进行内存释放
         disposeBag = nil
-        fwDebugPrint("The free disposeBag.")
+        SC.log("The free disposeBag.")
     }
 
     // 执行析构过程
@@ -59,7 +59,7 @@ class SCWidgetVC: BaseViewController {
         SCUtils.downloadWith(urlStr: imageURL) { [weak self] image in
 
             guard let saveImage = image else {
-                fwDebugPrint("The image is nil")
+                SC.log("The image is nil")
                 return
             }
 
@@ -90,13 +90,13 @@ class SCWidgetVC: BaseViewController {
 
         view.addSubview(textSwitch)
         textSwitch.gyTextSwitchClosure = { isOn in
-            fwDebugPrint("state:\(isOn)")
+            SC.log("state:\(isOn)")
         }
 
         view.addSubview(mySlider)
         // 绑定事件
         mySlider.rx.value.subscribe(onNext: { value in
-            fwDebugPrint("slider value: \(Int(value))")
+            SC.log("slider value: \(Int(value))")
             self.sliderLable.alpha = CGFloat((self.mySlider.maximumValue - value) / self.mySlider.maximumValue)
         }).disposed(by: disposeBag)
 

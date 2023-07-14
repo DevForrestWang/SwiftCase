@@ -171,19 +171,19 @@ class ProfileProxy: ProfileService {
 class ProxyClient {
     func loadBasicProfile(with service: ProfileService) {
         service.loadProfile(with: [.basic]) { _ in
-            fwDebugPrint("Client: Basic profile is loaded")
+            SC.log("Client: Basic profile is loaded")
         } failure: { error in
-            fwDebugPrint("Client: Cannot load a basic profile")
-            fwDebugPrint("Client: Error: " + error.localizedSummary)
+            SC.log("Client: Cannot load a basic profile")
+            SC.log("Client: Error: " + error.localizedSummary)
         }
     }
 
     func loadProfileWithBankAccount(with service: ProfileService) {
         service.loadProfile(with: [.basic, .bankAccount]) { _ in
-            fwDebugPrint("Client: Basic profile with a bank account is loaded")
+            SC.log("Client: Basic profile with a bank account is loaded")
         } failure: { error in
-            fwDebugPrint("Client: Cannot load a profile with a bank account")
-            fwDebugPrint("Client: Error: " + error.localizedSummary)
+            SC.log("Client: Cannot load a profile with a bank account")
+            SC.log("Client: Error: " + error.localizedSummary)
         }
     }
 }

@@ -18,11 +18,6 @@ import Toast_Swift
 
 // MARK: - Print info
 
-/// 全局函数添加前缀，避免冲突
-public func fwDebugPrint(_ message: Any...) {
-    debugPrint("\(#file):\(#line): \(message)")
-}
-
 /// 错误信息
 public func fwError(_ error: String, location: String = "\(#file):\(#line)") -> NSError {
     return NSError(domain: "SwiftCaseError", code: -1, userInfo: [NSLocalizedDescriptionKey: "\(location): \(error)"])
@@ -79,7 +74,7 @@ public enum SCUtils {
         guard let archiveData = try? NSKeyedArchiver.archivedData(withRootObject: value,
                                                                   requiringSecureCoding: false)
         else {
-            fwDebugPrint("Failed to archive, key: \(key)")
+            SC.log("Failed to archive, key: \(key)")
             return
         }
 
@@ -116,12 +111,12 @@ public enum SCUtils {
     ///
     public static func updateLableStyle(lable: UILabel, target: String, font: UIFont, color: UIColor, space: CGFloat = 0) {
         guard let text = lable.text else {
-            fwDebugPrint("The lable is empty.")
+            SC.log("The lable is empty.")
             return
         }
 
         if text.count <= 0 || target.count <= 0 {
-            fwDebugPrint("The lable or target is empty.")
+            SC.log("The lable or target is empty.")
             return
         }
 
@@ -371,7 +366,7 @@ public enum SCUtils {
     public static func showGif(fileName: String, imageView: UIImageView) {
         // 1.加载Gif图片, 并转成Data类型
         guard let path = Bundle.main.path(forResource: fileName, ofType: nil) else {
-            fwDebugPrint("The file:\(fileName) is not exist.")
+            SC.log("The file:\(fileName) is not exist.")
             return
         }
         guard let data = NSData(contentsOfFile: path) else {
@@ -380,7 +375,7 @@ public enum SCUtils {
 
         // 2.从data中读取数据: 将data转成CGImageSource对象
         guard let imageSource = CGImageSourceCreateWithData(data, nil) else {
-            fwDebugPrint("can not data to CGImageSource.")
+            SC.log("can not data to CGImageSource.")
             return
         }
         let imageCount = CGImageSourceGetCount(imageSource)

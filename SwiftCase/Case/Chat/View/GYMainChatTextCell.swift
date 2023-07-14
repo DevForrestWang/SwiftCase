@@ -36,7 +36,7 @@ class GYMainChatTextCell: GYMainChatBaseInfoCell {
 
     // 执行析构过程
     deinit {
-        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
+        SC.log("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
@@ -77,7 +77,7 @@ class GYMainChatTextCell: GYMainChatBaseInfoCell {
     }
 
     @objc func revokeAction() {
-        fwDebugPrint(#function)
+        SC.log(#function)
     }
 
     // MARK: - Private
@@ -85,7 +85,7 @@ class GYMainChatTextCell: GYMainChatBaseInfoCell {
     // MARK: - UI
 
     private func setupUI() {
-        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
+        SC.log("===========<loadClass: \(type(of: self))>===========")
         contentBgView.addSubview(messageLable)
     }
 

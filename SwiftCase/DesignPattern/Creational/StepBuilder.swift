@@ -81,21 +81,21 @@ class RealmQueryBuilder<Model: DomainModel>: BaseQueryBuilder<Model> {
     }
 
     override func fetch() -> [Model] {
-        fwDebugPrint("RealmQueryBuilder: Initializing CoreDataProvider with \(operations.count) operations:")
+        SC.log("RealmQueryBuilder: Initializing CoreDataProvider with \(operations.count) operations:")
         return RealmProvider().fetch(operations)
     }
 }
 
 class RealmProvider {
     func fetch<Model: DomainModel>(_ operations: [RealmQueryBuilder<Model>.Query]) -> [Model] {
-        fwDebugPrint("RealmProvider: Retrieving data from Realm...")
+        SC.log("RealmProvider: Retrieving data from Realm...")
         for item in operations {
             switch item {
             case .filter:
-                fwDebugPrint("RealmProvider: executing the 'filter' operation.")
+                SC.log("RealmProvider: executing the 'filter' operation.")
             /// Use Realm instance to filter results.
             case .limit:
-                fwDebugPrint("RealmProvider: executing the 'limit' operation.")
+                SC.log("RealmProvider: executing the 'limit' operation.")
                 /// Use Realm instance to limit results.
             }
         }
@@ -131,7 +131,7 @@ class CoreDataQueryBuilder<Model: DomainModel>: BaseQueryBuilder<Model> {
     }
 
     override func fetch() -> [Model] {
-        fwDebugPrint("CoreDataQueryBuilder: Initializing CoreDataProvider with \(operations.count) operations.")
+        SC.log("CoreDataQueryBuilder: Initializing CoreDataProvider with \(operations.count) operations.")
         return CoreDataProvider().fetch(operations)
     }
 }
@@ -140,18 +140,18 @@ class CoreDataProvider {
     func fetch<Model: DomainModel>(_ operations: [CoreDataQueryBuilder<Model>.Query]) -> [Model] {
         /// Create a NSFetchRequest
 
-        fwDebugPrint("CoreDataProvider: Retrieving data from CoreData...")
+        SC.log("CoreDataProvider: Retrieving data from CoreData...")
 
         for item in operations {
             switch item {
             case .filter:
-                fwDebugPrint("CoreDataProvider: executing the 'filter' operation.")
+                SC.log("CoreDataProvider: executing the 'filter' operation.")
             /// Set a 'predicate' for a NSFetchRequest.
             case .limit:
-                fwDebugPrint("CoreDataProvider: executing the 'limit' operation.")
+                SC.log("CoreDataProvider: executing the 'limit' operation.")
             /// Set a 'fetchLimit' for a NSFetchRequest.
             case .includesPropertyValues:
-                fwDebugPrint("CoreDataProvider: executing the 'includesPropertyValues' operation.")
+                SC.log("CoreDataProvider: executing the 'includesPropertyValues' operation.")
                 /// Set an 'includesPropertyValues' for a NSFetchRequest.
             }
         }
@@ -170,6 +170,6 @@ class BuilderClient {
             .limit(1)
             .fetch()
 
-        fwDebugPrint("Client: I have fetched: " + String(results.count) + " records.")
+        SC.log("Client: I have fetched: " + String(results.count) + " records.")
     }
 }

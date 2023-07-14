@@ -25,7 +25,7 @@ class SCUILableViewController: BaseViewController {
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -49,7 +49,7 @@ class SCUILableViewController: BaseViewController {
             let fontNames = UIFont.fontNames(forFamilyName: familyName)
             for font in fontNames {
                 index += 1
-                fwDebugPrint("\(index). font name:\(font)")
+                SC.log("\(index). font name:\(font)")
                 systemFontName.append(font)
             }
         }
@@ -109,7 +109,7 @@ class SCUILableViewController: BaseViewController {
         lab2.attributedText = attributeString
 
         let messageRect: CGSize = calculateSizeFor(label: lab3, attributedText: attributeString)
-        fwDebugPrint("The lable calculate height:\(String(format: "%.2f", messageRect.height))")
+        SC.log("The lable calculate height:\(String(format: "%.2f", messageRect.height))")
 
         view.addSubview(lab3)
         // 改变行间距
@@ -120,7 +120,7 @@ class SCUILableViewController: BaseViewController {
 
         // 计算Lable文本实际高度
         let sizeFits = lab4.sizeThatFits(CGSize(width: gScreenWidth - 50, height: gScreenHeight))
-        fwDebugPrint("计算Lable高度：\(String(format: "%.2f", sizeFits.height))")
+        SC.log("计算Lable高度：\(String(format: "%.2f", sizeFits.height))")
 
         view.addSubview(multiSegmentStyleLable)
         multiSegmentStyleLable.text = "段10，段20， 段3，其他信息，最后段40"

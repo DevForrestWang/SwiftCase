@@ -35,7 +35,7 @@ public class SCSelectTableView: UIView {
 
     public func show(dataSource: [[String]], noDataInfo: String) {
         if dataSource.count < 0 {
-            fwDebugPrint("The dataSource is empty.")
+            SC.log("The dataSource is empty.")
             return
         }
 

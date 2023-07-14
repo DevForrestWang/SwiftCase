@@ -207,21 +207,21 @@ class BaseAuthViewController: UIViewController, AuthHandlerSupportable {
 
 class LoginViewController: BaseAuthViewController {
     func loginButtonSelected() {
-        fwDebugPrint("Login View Controller: User selected Login button")
+        SC.log("Login View Controller: User selected Login button")
         let request = LoginRequest(email: "smth@gmail.com", password: "123HardPass")
 
         if let error = handler?.handle(request) {
-            fwDebugPrint("Login View Controller: something went wrong")
-            fwDebugPrint("Login View Controller: Error -> " + (error.errorDescription ?? ""))
+            SC.log("Login View Controller: something went wrong")
+            SC.log("Login View Controller: Error -> " + (error.errorDescription ?? ""))
         } else {
-            fwDebugPrint("Login View Controller: Preconditions are successfully validated")
+            SC.log("Login View Controller: Preconditions are successfully validated")
         }
     }
 }
 
 class SignUpViewController: BaseAuthViewController {
     func signUpButtonSelected() {
-        fwDebugPrint("SignUp View Controller: User selected SignUp button")
+        SC.log("SignUp View Controller: User selected SignUp button")
 
         let request = SignUpRequest(firstName: "Vasya",
                                     lastName: "Pupkin",
@@ -230,10 +230,10 @@ class SignUpViewController: BaseAuthViewController {
                                     repeatedPassword: "123HardPass")
 
         if let error = handler?.handle(request) {
-            fwDebugPrint("SignUp View Controller: something went wrong")
-            fwDebugPrint("SignUp View Controller: Error -> " + (error.errorDescription ?? ""))
+            SC.log("SignUp View Controller: something went wrong")
+            SC.log("SignUp View Controller: Error -> " + (error.errorDescription ?? ""))
         } else {
-            fwDebugPrint("SignUp View Controller: Preconditions are successfully validated")
+            SC.log("SignUp View Controller: Preconditions are successfully validated")
         }
     }
 }

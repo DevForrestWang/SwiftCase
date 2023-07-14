@@ -122,11 +122,11 @@ class PhotoLibraryAccessor: PermissionAccessor {
 
     override func didReciveAccess() {
         /// We want to track how many people give access to the PhotoLibrary.
-        fwDebugPrint("PhotoLibrary Accessor: Receive access. Updating analytics...")
+        SC.log("PhotoLibrary Accessor: Receive access. Updating analytics...")
     }
 
     override func didRejectAccess() {
         /// ... and also we want to track how many people rejected access.
-        fwDebugPrint("PhotoLibrary Accessor: Rejected with access. Updating analytics...")
+        SC.log("PhotoLibrary Accessor: Rejected with access. Updating analytics...")
     }
 }

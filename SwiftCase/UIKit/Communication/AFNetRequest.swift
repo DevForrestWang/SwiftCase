@@ -73,7 +73,7 @@ public extension AFBaseModel {
         do {
             return try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any]
         } catch let error as NSError {
-            fwDebugPrint("\(error.description)")
+            SC.log("\(error.description)")
             return nil
         }
     }
@@ -265,7 +265,7 @@ public class AFNetRequest: NSObject {
                     let object = try decoder.decode(T.self, from: jsonData)
                     respondCallback([object], nil)
                 } catch let error as NSError {
-                    fwDebugPrint("\(error.description)")
+                    SC.log("\(error.description)")
                     respondCallback(nil, nil)
                 }
 
@@ -276,7 +276,7 @@ public class AFNetRequest: NSObject {
                     let object = try decoder.decode([T].self, from: jsonData)
                     respondCallback(object, nil)
                 } catch let error as NSError {
-                    fwDebugPrint("\(error.description)")
+                    SC.log("\(error.description)")
                     respondCallback(nil, nil)
                 }
             } else if let model = tmpDic[self!.data] as? T {

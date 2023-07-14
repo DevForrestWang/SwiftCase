@@ -32,7 +32,7 @@ class GYMainChatVideoCell: GYMainChatBaseInfoCell {
 
     // 执行析构过程
     deinit {
-        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
+        SC.log("===========<deinit: \(type(of: self))>===========")
     }
 
     // MARK: - Public
@@ -66,22 +66,22 @@ class GYMainChatVideoCell: GYMainChatBaseInfoCell {
 
     @objc override public func clickAction(recognizer _: UITapGestureRecognizer) {
         guard let model = currentModel, let msgDic = model.msg as? NSDictionary else {
-            fwDebugPrint("The model:\(String(describing: currentModel)) is nill or msg is not dictionary")
+            SC.log("The model:\(String(describing: currentModel)) is nill or msg is not dictionary")
             return
         }
 
         guard let videoUrl = msgDic["remoteVideoUrl"] as? String else {
-            fwDebugPrint("The remoteVideoUrl is nil.")
+            SC.log("The remoteVideoUrl is nil.")
             return
         }
 
         guard let url = URL(string: videoUrl) else {
-            fwDebugPrint("The url is nil.")
+            SC.log("The url is nil.")
             return
         }
 
         guard let image = SCUtils.videoCover(videoUrl: url) else {
-            fwDebugPrint("The video cover is nil.")
+            SC.log("The video cover is nil.")
             return
         }
 
@@ -129,7 +129,7 @@ class GYMainChatVideoCell: GYMainChatBaseInfoCell {
     }
 
     @objc private func revokeAction() {
-        fwDebugPrint(#function)
+        SC.log(#function)
     }
 
     // MARK: - Private
@@ -141,18 +141,18 @@ class GYMainChatVideoCell: GYMainChatBaseInfoCell {
 
     private func downloadVideo() {
         guard let model = currentModel, let msgDic = model.msg as? NSDictionary else {
-            fwDebugPrint("The currentModel or msg is empty.")
+            SC.log("The currentModel or msg is empty.")
             return
         }
 
         guard let videoUrl = msgDic["remoteVideoUrl"] as? String else {
-            fwDebugPrint("The remoteVideoUrl is nil.")
+            SC.log("The remoteVideoUrl is nil.")
             return
         }
 
         DispatchQueue.global(qos: .background).async {
             guard let url = URL(string: videoUrl), let urlData = NSData(contentsOf: url) else {
-                fwDebugPrint("Failed to download vedio, videoUrl:\(videoUrl)")
+                SC.log("Failed to download vedio, videoUrl:\(videoUrl)")
                 return
             }
 
@@ -171,7 +171,7 @@ class GYMainChatVideoCell: GYMainChatBaseInfoCell {
                         if success {
                             fwShowToast("视频保存成功")
                         } else {
-                            fwDebugPrint(error?.localizedDescription ?? "")
+                            SC.log(error?.localizedDescription ?? "")
                             fwShowToast("视频保存失败")
                         }
                     }
@@ -183,7 +183,7 @@ class GYMainChatVideoCell: GYMainChatBaseInfoCell {
     // MARK: - UI
 
     private func setupUI() {
-        fwDebugPrint("===========<loadClass: \(type(of: self))>===========")
+        SC.log("===========<loadClass: \(type(of: self))>===========")
 
         contentBgView.addSubview(bgView)
         bgView.addSubview(vedioCoverImagView)

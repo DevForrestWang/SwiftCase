@@ -117,13 +117,13 @@ class DPComposite: DPComponent {
 //===----------------------------------------------------------------------===//
 enum ComponentClient {
     static func clientCode(component: DPComponent) {
-        fwDebugPrint("Result: " + component.operation())
+        SC.log("Result: " + component.operation())
     }
 
     static func moreComplexClient(leftComponent: DPComponent, rightComponent: DPComponent) {
         if leftComponent.isComposite() {
             leftComponent.add(component: rightComponent)
         }
-        fwDebugPrint("Result: " + leftComponent.operation())
+        SC.log("Result: " + leftComponent.operation())
     }
 }

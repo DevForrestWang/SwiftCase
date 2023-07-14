@@ -68,32 +68,32 @@ class EnabledTrackingState: TrackingState {
     }
 
     func startTracking() {
-        fwDebugPrint("EnabledTrackingState: startTracking is invoked")
-        fwDebugPrint("EnabledTrackingState: tracking location....1")
-        fwDebugPrint("EnabledTrackingState: tracking location....2")
-        fwDebugPrint("EnabledTrackingState: tracking location....3")
+        SC.log("EnabledTrackingState: startTracking is invoked")
+        SC.log("EnabledTrackingState: tracking location....1")
+        SC.log("EnabledTrackingState: tracking location....2")
+        SC.log("EnabledTrackingState: tracking location....3")
     }
 
     func stopTracking() {
-        fwDebugPrint("EnabledTrackingState: Received 'stop tracking'")
-        fwDebugPrint("EnabledTrackingState: Changing state to 'disabled'...")
+        SC.log("EnabledTrackingState: Received 'stop tracking'")
+        SC.log("EnabledTrackingState: Changing state to 'disabled'...")
         tracker?.update(state: DisabledTrackingState(tracker: tracker))
         tracker?.stopTracking()
     }
 
     func pauseTracking(for time: TimeInterval) {
-        fwDebugPrint("EnabledTrackingState: Received 'pause tracking' for \(time) seconds")
-        fwDebugPrint("EnabledTrackingState: Changing state to 'disabled'...")
+        SC.log("EnabledTrackingState: Received 'pause tracking' for \(time) seconds")
+        SC.log("EnabledTrackingState: Changing state to 'disabled'...")
         tracker?.update(state: DisabledTrackingState(tracker: tracker))
         tracker?.pauseTracking(for: time)
     }
 
     func makeCheckIn() {
-        fwDebugPrint("EnabledTrackingState: performing check-in at the current location")
+        SC.log("EnabledTrackingState: performing check-in at the current location")
     }
 
     func findMyChildren() {
-        fwDebugPrint("EnabledTrackingState: searching for children...")
+        SC.log("EnabledTrackingState: searching for children...")
     }
 }
 
@@ -105,39 +105,39 @@ class DisabledTrackingState: TrackingState {
     }
 
     func startTracking() {
-        fwDebugPrint("DisabledTrackingState: Received 'start tracking'")
-        fwDebugPrint("DisabledTrackingState: Changing state to 'enabled'...")
+        SC.log("DisabledTrackingState: Received 'start tracking'")
+        SC.log("DisabledTrackingState: Changing state to 'enabled'...")
         tracker?.update(state: EnabledTrackingState(tracker: tracker))
     }
 
     func stopTracking() {
-        fwDebugPrint("DisabledTrackingState: Received 'stop tracking'")
-        fwDebugPrint("DisabledTrackingState: Do nothing...")
+        SC.log("DisabledTrackingState: Received 'stop tracking'")
+        SC.log("DisabledTrackingState: Do nothing...")
     }
 
     func pauseTracking(for time: TimeInterval) {
-        fwDebugPrint("DisabledTrackingState: Pause tracking for \(time) seconds")
+        SC.log("DisabledTrackingState: Pause tracking for \(time) seconds")
 
         for i in 0 ... Int(time) {
-            fwDebugPrint("DisabledTrackingState: pause...\(i)")
+            SC.log("DisabledTrackingState: pause...\(i)")
         }
 
-        fwDebugPrint("DisabledTrackingState: Time is over")
-        fwDebugPrint("DisabledTrackingState: Returing to 'enabled state'...\n")
+        SC.log("DisabledTrackingState: Time is over")
+        SC.log("DisabledTrackingState: Returing to 'enabled state'...\n")
         tracker?.update(state: EnabledTrackingState(tracker: tracker))
         tracker?.startTracking()
     }
 
     func makeCheckIn() {
-        fwDebugPrint("DisabledTrackingState: Received 'make check-in'")
-        fwDebugPrint("DisabledTrackingState: Changing state to 'enabled'...")
+        SC.log("DisabledTrackingState: Received 'make check-in'")
+        SC.log("DisabledTrackingState: Changing state to 'enabled'...")
         tracker?.update(state: EnabledTrackingState(tracker: tracker))
         tracker?.makeCheckIn()
     }
 
     func findMyChildren() {
-        fwDebugPrint("DisabledTrackingState: Received 'find my children'")
-        fwDebugPrint("DisabledTrackingState: Changing state to 'enabled'...")
+        SC.log("DisabledTrackingState: Received 'find my children'")
+        SC.log("DisabledTrackingState: Changing state to 'enabled'...")
         tracker?.update(state: EnabledTrackingState(tracker: tracker))
         tracker?.findMyChildren()
     }

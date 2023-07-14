@@ -22,10 +22,10 @@ class SCOperationViewController: BaseViewController {
         override func main() {
             for _ in 0 ..< 2 {
                 if isCancelled {
-                    fwDebugPrint("Cunstom operation is cancelled.")
+                    SC.log("Cunstom operation is cancelled.")
                     break
                 } else {
-                    fwDebugPrint("Cunstom operation in thread: \(Thread.current)")
+                    SC.log("Cunstom operation in thread: \(Thread.current)")
                 }
             }
         }
@@ -39,7 +39,7 @@ class SCOperationViewController: BaseViewController {
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -55,15 +55,15 @@ class SCOperationViewController: BaseViewController {
     // MARK: - IBActions
 
     @objc private func addExecutionAction() {
-        fwDebugPrint("addExecutionAction")
+        SC.log("addExecutionAction")
         let operation = BlockOperation {
-            fwDebugPrint("Create a block operation in \(Thread.current).")
+            SC.log("Create a block operation in \(Thread.current).")
         }
         operation.addExecutionBlock {
-            fwDebugPrint("The block operation has add an execution block in \(Thread.current).")
+            SC.log("The block operation has add an execution block in \(Thread.current).")
         }
         operation.addExecutionBlock {
-            fwDebugPrint("The block operation has add an execution block in \(Thread.current).")
+            SC.log("The block operation has add an execution block in \(Thread.current).")
         }
         operation.start()
 
@@ -74,25 +74,25 @@ class SCOperationViewController: BaseViewController {
     }
 
     @objc private func addDependencyAction() {
-        fwDebugPrint("addDependencyAction")
+        SC.log("addDependencyAction")
 
         let queue = OperationQueue()
         var flag = false
         let op1 = BlockOperation {
             flag = true
-            fwDebugPrint("Operation 1 in \(Thread.current).")
+            SC.log("Operation 1 in \(Thread.current).")
             Thread.sleep(forTimeInterval: 2)
         }
 
         op1.completionBlock = {
-            fwDebugPrint("Operation 1 is completed.")
+            SC.log("Operation 1 is completed.")
         }
 
         let op2 = BlockOperation {
             if flag {
-                fwDebugPrint("Operation 2 in \(Thread.current)")
+                SC.log("Operation 2 in \(Thread.current)")
             } else {
-                fwDebugPrint("Something went wrong.")
+                SC.log("Something went wrong.")
             }
         }
 
@@ -107,7 +107,7 @@ class SCOperationViewController: BaseViewController {
     }
 
     @objc private func downLoadImageAction() {
-        fwDebugPrint("downLoadImageAction")
+        SC.log("downLoadImageAction")
         imageView.image = UIImage(named: "placeholder")
         indicator.startAnimating()
 
@@ -121,7 +121,7 @@ class SCOperationViewController: BaseViewController {
                 OperationQueue.main.addOperation {
                     self.indicator.stopAnimating()
                 }
-                fwDebugPrint("Download failed.")
+                SC.log("Download failed.")
                 return
             }
 

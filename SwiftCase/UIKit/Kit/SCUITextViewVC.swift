@@ -36,7 +36,7 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -54,31 +54,31 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
     // MARK: - UITextViewDelegate
 
     func textViewShouldBeginEditing(_: UITextView) -> Bool {
-        fwDebugPrint("I'm going to start editing")
+        SC.log("I'm going to start editing")
         return true
     }
 
     func textViewDidBeginEditing(_: UITextView) {
-        fwDebugPrint("I've already started editing")
+        SC.log("I've already started editing")
     }
 
     func textViewShouldEndEditing(_: UITextView) -> Bool {
-        fwDebugPrint("To finish editing")
+        SC.log("To finish editing")
 
         return true
     }
 
     func textViewDidEndEditing(_: UITextView) {
-        fwDebugPrint("I have finished editing")
+        SC.log("I have finished editing")
     }
 
     func textViewDidChange(_: UITextView) {
-        fwDebugPrint("the user changes the text ")
+        SC.log("the user changes the text ")
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn _: NSRange, replacementText text: String) -> Bool {
         let currentText: String = textView.text
-        fwDebugPrint("text: \(currentText), lenght: \(currentText.count)")
+        SC.log("text: \(currentText), lenght: \(currentText.count)")
 
         // 回车时退出编辑
         if text == "\n" {

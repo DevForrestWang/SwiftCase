@@ -23,7 +23,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -46,7 +46,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
 
     @objc public func show(_ imageAry: NSArray) {
         if imageAry.count <= 0 {
-            fwDebugPrint("The imageAry is empty")
+            SC.log("The imageAry is empty")
             return
         }
 
@@ -151,7 +151,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
 
     private func updateImage(index: Int) {
         guard index < dataSource?.count ?? 0 else {
-            fwDebugPrint("the index out dataSource count")
+            SC.log("the index out dataSource count")
             return
         }
 

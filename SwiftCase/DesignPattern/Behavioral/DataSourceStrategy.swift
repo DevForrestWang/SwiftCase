@@ -54,8 +54,8 @@ class DataSourceStrategy {
 
         let models = dataSource.loadModels() as [DSUser]
         /// Bind models to cells of a list view...
-        fwDebugPrint("\nDataSourceStrategy: Displaying models...")
-        models.forEach { fwDebugPrint($0) }
+        SC.log("\nDataSourceStrategy: Displaying models...")
+        models.forEach { SC.log($0) }
     }
 }
 

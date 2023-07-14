@@ -199,7 +199,7 @@ extension BTreeNode {
                     fix(childWithTooFewKeys: leftChild, atIndex: index)
                 }
             } else {
-                fwDebugPrint("The key: \(key) is not in the tree.")
+                SC.log("The key: \(key) is not in the tree.")
             }
         } else {
             // We should go to right child...
@@ -209,7 +209,7 @@ extension BTreeNode {
                     fix(childWithTooFewKeys: rightChild, atIndex: index + 1)
                 }
             } else {
-                fwDebugPrint("The key: \(key) is not in the tree")
+                SC.log("The key: \(key) is not in the tree")
             }
         }
     }
@@ -360,7 +360,7 @@ public class BTree<Key: Comparable, Value> {
 
     public init?(order: Int) {
         guard order > 0 else {
-            fwDebugPrint("Order has to be greater than 0.")
+            SC.log("Order has to be greater than 0.")
             return nil
         }
 

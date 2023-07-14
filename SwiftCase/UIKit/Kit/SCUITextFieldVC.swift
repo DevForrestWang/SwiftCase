@@ -26,7 +26,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -43,26 +43,26 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
     // MARK: - Protocol
 
     func textFieldShouldBeginEditing(_: UITextField) -> Bool {
-        fwDebugPrint("I'm going to start editing")
+        SC.log("I'm going to start editing")
         return true
     }
 
     func textFieldDidBeginEditing(_: UITextField) {
-        fwDebugPrint("I've already started editing")
+        SC.log("I've already started editing")
     }
 
     func textFieldShouldEndEditing(_: UITextField) -> Bool {
-        fwDebugPrint("To finish editing")
+        SC.log("To finish editing")
         return true
     }
 
     func textFieldDidEndEditing(_: UITextField) {
-        fwDebugPrint("I have finished editing")
+        SC.log("I have finished editing")
     }
 
     // UITextField.textDidChangeNotification通知可以实时获取输入的内容；shouldChangeCharactersIn只能获取上一次输入的内容
     func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString text: String) -> Bool {
-        fwDebugPrint("The text input will change (called each time it is typed:\(String(describing: textField.text))")
+        SC.log("The text input will change (called each time it is typed:\(String(describing: textField.text))")
 
         // 禁止表情输入
         if text.hasEmoji() || text.containsEmoji() {
@@ -88,12 +88,12 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
     }
 
     func textFieldShouldClear(_: UITextField) -> Bool {
-        fwDebugPrint("To clear the input, the return value is whether to clear the content")
+        SC.log("To clear the input, the return value is whether to clear the content")
         return true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        fwDebugPrint("To press the Return button, the Return value is whether to finish typing (lose focus)")
+        SC.log("To press the Return button, the Return value is whether to finish typing (lose focus)")
         // 收起键盘
         textField.resignFirstResponder()
         return true
@@ -147,7 +147,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         let priceAry = ["价格", "￥100", "￥1000", "￥10000"]
         let descAry = ["描述", "aa", "bb", "cc"]
         selectTableView.gySelectTableViewClosure = { row, isSelect in
-            fwDebugPrint("select row: \(row), state: \(isSelect)")
+            SC.log("select row: \(row), state: \(isSelect)")
         }
         selectTableView.show(dataSource: [spaceAry, priceAry, descAry], noDataInfo: "没有可选择空间扩容数")
 

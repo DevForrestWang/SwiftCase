@@ -26,7 +26,7 @@ class GYCPlayingView: UIView {
 
     // 执行析构过程
     deinit {
-        fwDebugPrint("===========<deinit: \(type(of: self))>===========")
+        SC.log("===========<deinit: \(type(of: self))>===========")
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -38,7 +38,7 @@ class GYCPlayingView: UIView {
 
     public func playVedio(url: URL, coverImg: UIImage?, completeClosure: @escaping () -> Void) {
         guard let keyWindow = gWindow else {
-            fwDebugPrint("The keyWindow is nil.")
+            SC.log("The keyWindow is nil.")
             return
         }
 
@@ -112,7 +112,7 @@ class GYCPlayingView: UIView {
 
     @objc private func onSliderValueChanged(slider: UISlider) {
         guard let duration = player?.currentItem?.duration else {
-            fwDebugPrint("The video duration is nil.")
+            SC.log("The video duration is nil.")
             return
         }
 
@@ -291,22 +291,22 @@ class GYCPlayingView: UIView {
         if keyPath == "status" {
             switch playerItem.status {
             case .unknown:
-                fwDebugPrint("Loading status: Unknown status")
+                SC.log("Loading status: Unknown status")
             case .readyToPlay:
                 totalTime = playerItem.asset.duration.seconds
-                fwDebugPrint("Loading status: Play time: \(String(describing: totalTime))")
+                SC.log("Loading status: Play time: \(String(describing: totalTime))")
             case .failed:
-                fwDebugPrint("Loading status: Failed to load, error: \(String(describing: playerItem.error))")
+                SC.log("Loading status: Failed to load, error: \(String(describing: playerItem.error))")
             default:
                 break
             }
 
         } else if keyPath == "loadedTimeRanges" {
         } else if keyPath == "playbackBufferEmpty" {
-            fwDebugPrint("is loading")
+            SC.log("is loading")
             activityIndicatorView.startAnimating()
         } else if keyPath == "playbackLikelyToKeepUp" {
-            fwDebugPrint("end loading")
+            SC.log("end loading")
             activityIndicatorView.stopAnimating()
         }
     }
@@ -314,7 +314,7 @@ class GYCPlayingView: UIView {
     // MARK: - UI
 
     private func setupUI() {
-        fwDebugPrint("===========<init: \(type(of: self))>===========")
+        SC.log("===========<init: \(type(of: self))>===========")
         addSubview(showVedioView)
         addSubview(coverBgView)
         coverBgView.addSubview(coverImagView)

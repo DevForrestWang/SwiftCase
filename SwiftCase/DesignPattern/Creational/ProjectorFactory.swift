@@ -54,7 +54,7 @@ class WifiProjector: Projector {
     var currentPage: Int = 0
 
     func present(info: String) {
-        fwDebugPrint("Info is presented over Wifi: \(info)")
+        SC.log("Info is presented over Wifi: \(info)")
     }
 
     func update(with page: Int) {
@@ -70,7 +70,7 @@ class BluetoothProjector: Projector {
     var currentPage: Int = 0
 
     func present(info: String) {
-        fwDebugPrint("Info is presented over Bluetooth: \(info)")
+        SC.log("Info is presented over Bluetooth: \(info)")
     }
 
     func update(with page: Int) {

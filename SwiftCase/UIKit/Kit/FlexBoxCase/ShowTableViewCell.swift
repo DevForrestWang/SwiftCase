@@ -59,6 +59,6 @@ class ShowTableViewCell: UITableViewCell {
     }
 
     @objc private func accessoryBtnAction() {
-        fwDebugPrint("click: \(show.title)")
+        SC.log("click: \(show.title)")
     }
 }

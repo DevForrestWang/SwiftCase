@@ -26,7 +26,7 @@ class SCUICollectionViewVC: BaseViewController, UICollectionViewDataSource,
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif

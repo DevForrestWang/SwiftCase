@@ -90,7 +90,7 @@ class AlgorithmViewController: ItemListViewController {
     @objc private func array2DAction() {
         fwPrintEnter(message: "Array2D")
         var matrix = Array2D<Int>(columns: 3, rows: 5, initialValue: 0)
-        fwDebugPrint(matrix)
+        SC.log(matrix)
 
         // setting numbers using subscript [x, y]
         matrix[0, 0] = 1
@@ -105,7 +105,7 @@ class AlgorithmViewController: ItemListViewController {
         matrix[0, 3] = 7
         matrix[1, 3] = 8
         matrix[2, 3] = 9
-        fwDebugPrint(matrix)
+        SC.log(matrix)
 
         // print out the 2D array with a reference around the grid
         for i in 0 ..< matrix.rows {
@@ -128,11 +128,11 @@ class AlgorithmViewController: ItemListViewController {
         let list = LinkedList<String>()
         list.append("Hello")
         list.append("World")
-        fwDebugPrint("list: \(list)")
+        SC.log("list: \(list)")
 
         if list.count >= 1 {
-            fwDebugPrint("list[0]: \(list[0])")
-            fwDebugPrint("list[1]: \(list[1])")
+            SC.log("list[0]: \(list[0])")
+            SC.log("list[1]: \(list[1])")
             // list[2]   // crash!
         }
 
@@ -144,28 +144,28 @@ class AlgorithmViewController: ItemListViewController {
         list2.removeAll()
         list.removeLast()
         list.remove(at: 2)
-        fwDebugPrint("list remove:\(list), list2:\(list2)")
+        SC.log("list remove:\(list), list2:\(list2)")
 
         list.insert("Swift", at: 1)
-        fwDebugPrint("list insert:\(list)")
+        SC.log("list insert:\(list)")
 
         list.reverse()
-        fwDebugPrint("list reverse:\(list)")
+        SC.log("list reverse:\(list)")
 
         let m = list.map { s in s.count }
-        fwDebugPrint("list map count, m:\(m)")
+        SC.log("list map count, m:\(m)")
 
         let f = list.filter { s in s.count > 5 }
-        fwDebugPrint("list filter count>5, f:\(f)")
+        SC.log("list filter count>5, f:\(f)")
 
         // Conformance to the Collection protocol
         let collection: LinkedList<Int> = [1, 2, 3, 4, 5]
         let index2 = collection.index(collection.startIndex, offsetBy: 2)
         let value = collection[index2]
-        fwDebugPrint("list collection 2, value:\(value)")
+        SC.log("list collection 2, value:\(value)")
 
         let result = collection.reduce(0) { $0 + $1 }
-        fwDebugPrint("list collection reduce, result:\(result)")
+        SC.log("list collection reduce, result:\(result)")
 
         showLogs()
     }
@@ -180,9 +180,9 @@ class AlgorithmViewController: ItemListViewController {
         }
 
         stackeOfName.push("Mike")
-        fwDebugPrint("stack push Mike : \(stackeOfName)")
+        SC.log("stack push Mike : \(stackeOfName)")
         let firstName: String = stackeOfName.pop() ?? "No Data"
-        fwDebugPrint("stack pop : \(stackeOfName), isEmpty: \(stackeOfName.isEmpty), firstName:\(String(describing: firstName))")
+        SC.log("stack pop : \(stackeOfName), isEmpty: \(stackeOfName.isEmpty), firstName:\(String(describing: firstName))")
 
         showLogs()
     }
@@ -197,10 +197,10 @@ class AlgorithmViewController: ItemListViewController {
         }
 
         queue.enqueue("Mike")
-        fwDebugPrint("Queue, queue: \(queue)")
+        SC.log("Queue, queue: \(queue)")
 
         let v1 = queue.dequeue()
-        fwDebugPrint("Queue, queue: \(queue), v1:\(String(describing: v1)), isEmpty: \(queue.isEmpty)")
+        SC.log("Queue, queue: \(queue), v1:\(String(describing: v1)), isEmpty: \(queue.isEmpty)")
 
         showLogs()
     }
@@ -208,8 +208,8 @@ class AlgorithmViewController: ItemListViewController {
     @objc private func recursionAction() {
         fwPrintEnter(message: "Recursion")
         let sr = SCRecursion<Int>()
-        fwDebugPrint("1 to 10: add:\(sr.add(10))")
-        fwDebugPrint("1 to 100: addGuard:\(sr.addGuard(100))")
+        SC.log("1 to 10: add:\(sr.add(10))")
+        SC.log("1 to 100: addGuard:\(sr.addGuard(100))")
 
         showLogs()
     }
@@ -218,10 +218,10 @@ class AlgorithmViewController: ItemListViewController {
         fwPrintEnter(message: "Bubble Sort")
 
         let array = [5, 4, 6, 3, 2, 1]
-        fwDebugPrint("Sort before: \(array)")
-        fwDebugPrint("Sort after: \(bubbleSort(array))")
-        fwDebugPrint("Sort after < : \(bubbleSort(array, <))")
-        fwDebugPrint("Sort after > : \(bubbleSort(array, >))")
+        SC.log("Sort before: \(array)")
+        SC.log("Sort after: \(bubbleSort(array))")
+        SC.log("Sort after < : \(bubbleSort(array, <))")
+        SC.log("Sort after > : \(bubbleSort(array, >))")
 
         showLogs()
     }
@@ -229,9 +229,9 @@ class AlgorithmViewController: ItemListViewController {
     @objc private func insertionSortAction() {
         fwPrintEnter(message: "Insertion Sort")
         let array = [4, 5, 6, 1, 3, 2]
-        fwDebugPrint("Sort, insertionSort: \(insertionSort(array))")
-        fwDebugPrint("Sort, insertionSort ascending: \(insertionSort(array, <))")
-        fwDebugPrint("Sort, insertionSort descending: \(insertionSort(array, >))")
+        SC.log("Sort, insertionSort: \(insertionSort(array))")
+        SC.log("Sort, insertionSort ascending: \(insertionSort(array, <))")
+        SC.log("Sort, insertionSort descending: \(insertionSort(array, >))")
 
         showLogs()
     }
@@ -239,9 +239,9 @@ class AlgorithmViewController: ItemListViewController {
     @objc private func selectionSortAction() {
         fwPrintEnter(message: "Selection Sort")
         let array = buildArray(number: 10, low: 1, high: 100)
-        fwDebugPrint("Sort, selectionSort: \(selectionSort(array))")
-        fwDebugPrint("Sort, selectionSort ascending: \(selectionSort(array, <))")
-        fwDebugPrint("Sort, selectionSort descending: \(selectionSort(array, >))")
+        SC.log("Sort, selectionSort: \(selectionSort(array))")
+        SC.log("Sort, selectionSort ascending: \(selectionSort(array, <))")
+        SC.log("Sort, selectionSort descending: \(selectionSort(array, >))")
 
         showLogs()
     }
@@ -249,11 +249,11 @@ class AlgorithmViewController: ItemListViewController {
     @objc private func quickSortAction() {
         fwPrintEnter(message: "Quick Sort")
         var array = buildArray(number: 100, low: 1, high: 1000)
-        fwDebugPrint("Sort, array: \(array)")
-        fwDebugPrint("Sort, quickSort: \(quickSort(array))")
+        SC.log("Sort, array: \(array)")
+        SC.log("Sort, quickSort: \(quickSort(array))")
 
         quickSortDutchFlag(&array, low: 0, high: array.count - 1)
-        fwDebugPrint("Sort, quickSortDutchFlag: \(array)")
+        SC.log("Sort, quickSortDutchFlag: \(array)")
 
         showLogs()
     }
@@ -261,8 +261,8 @@ class AlgorithmViewController: ItemListViewController {
     @objc private func mergeSortAction() {
         fwPrintEnter(message: "Merge Sort")
         let array = buildArray(number: 10, low: 1, high: 100)
-        fwDebugPrint("Sort, array: \(array)")
-        fwDebugPrint("Sort, mergeSort: \(mergeSort(array))")
+        SC.log("Sort, array: \(array)")
+        SC.log("Sort, mergeSort: \(mergeSort(array))")
 
         showLogs()
     }
@@ -272,8 +272,8 @@ class AlgorithmViewController: ItemListViewController {
 
         let largeArray = buildArray(number: 400, low: 1, high: 10000)
         let results = performBucketSort(largeArray, totalBuckets: 8)
-        fwDebugPrint("Sort, count:\(largeArray.count), isSorted: \(isSorted(results))")
-        fwDebugPrint("Sort, results: \(results)")
+        SC.log("Sort, count:\(largeArray.count), isSorted: \(isSorted(results))")
+        SC.log("Sort, results: \(results)")
 
         showLogs()
     }
@@ -293,8 +293,8 @@ class AlgorithmViewController: ItemListViewController {
     @objc private func countingSortAction() {
         fwPrintEnter(message: "Counting Sort")
         let array = buildArray(number: 6, low: 1, high: 10)
-        fwDebugPrint("Sort, array: \(array)")
-        fwDebugPrint("Sort, countingSort: \(countingSort(array))")
+        SC.log("Sort, array: \(array)")
+        SC.log("Sort, countingSort: \(countingSort(array))")
 
         showLogs()
     }
@@ -303,8 +303,8 @@ class AlgorithmViewController: ItemListViewController {
         fwPrintEnter(message: "Radix Sort")
         var array = buildArray(number: 1000, low: 1, high: 1000)
         radixSort(&array)
-        fwDebugPrint("Sort, array count: \(array.count), isSorted:\(isSorted(array))")
-        fwDebugPrint("Sort, radixSort: \(array)")
+        SC.log("Sort, array count: \(array.count), isSorted:\(isSorted(array))")
+        SC.log("Sort, radixSort: \(array)")
 
         showLogs()
     }
@@ -315,7 +315,7 @@ class AlgorithmViewController: ItemListViewController {
 
         // Binary search requires that the array is sorted from low to high
         let sorted = numbers.sorted()
-        fwDebugPrint("binarySearch, sorted: \(sorted)")
+        SC.log("binarySearch, sorted: \(sorted)")
 
         let f2 = binarySearch(sorted, key: 2, range: 0 ..< sorted.count)
         let f67 = binarySearch(sorted, key: 67, range: 0 ..< sorted.count)
@@ -325,9 +325,9 @@ class AlgorithmViewController: ItemListViewController {
         let ff67 = binarySearch(sorted, key: 67)
         let ff42 = binarySearch(sorted, key: 42)
 
-        fwDebugPrint("binarySearch f2: \(String(describing: f2)), compare: \(f2 == ff2)")
-        fwDebugPrint("binarySearch f67: \(String(describing: f67)), compare: \(f67 == ff67)")
-        fwDebugPrint("binarySearch f42: \(String(describing: f42)), compare: \(f42 == ff42)")
+        SC.log("binarySearch f2: \(String(describing: f2)), compare: \(f2 == ff2)")
+        SC.log("binarySearch f67: \(String(describing: f67)), compare: \(f67 == ff67)")
+        SC.log("binarySearch f42: \(String(describing: f42)), compare: \(f42 == ff42)")
 
         showLogs()
     }
@@ -355,18 +355,18 @@ class AlgorithmViewController: ItemListViewController {
         fwPrintEnter(message: "Hash Table")
 
         // playing with has values
-        fwDebugPrint("firstName hashValue: \("firstName".hashValue), \("firstName".hashValue % 5)")
+        SC.log("firstName hashValue: \("firstName".hashValue), \("firstName".hashValue % 5)")
 
         var hashTable = HashTable<String, String>(capacity: 5)
         hashTable["firstName"] = "Seteve"
         hashTable["lastName"] = "Jobs"
         hashTable["hobbies"] = "Programming Sift"
-        fwDebugPrint("hashTable: \(hashTable)")
+        SC.log("hashTable: \(hashTable)")
         showLogs(hashTable.description)
 
         let firstName = hashTable["firstName"]
-        fwDebugPrint("Fist name: \(String(describing: firstName))")
-        fwDebugPrint("DebugDescription: \(hashTable.debugDescription)")
+        SC.log("Fist name: \(String(describing: firstName))")
+        SC.log("DebugDescription: \(hashTable.debugDescription)")
     }
 
     @objc private func lRUCacheAction() {
@@ -376,23 +376,23 @@ class AlgorithmViewController: ItemListViewController {
         cache.set("a", val: 1)
         cache.set("b", val: 2)
         var iResult = cache.get("a") // returns 1
-        fwDebugPrint("a->1, iResult: \(String(describing: iResult))")
+        SC.log("a->1, iResult: \(String(describing: iResult))")
         cache.set("c", val: 3) // evicts key "b"
         iResult = cache.get("b") // returns nil (not found)
-        fwDebugPrint("b-> nil, iResult: \(String(describing: iResult))")
+        SC.log("b-> nil, iResult: \(String(describing: iResult))")
         cache.set("d", val: 4) // evicts key "a"
         iResult = cache.get("a") // returns nil (not found)
-        fwDebugPrint("a->nil, iResult: \(String(describing: iResult))")
+        SC.log("a->nil, iResult: \(String(describing: iResult))")
         iResult = cache.get("c") // returns 3
-        fwDebugPrint("c->3, iResult: \(String(describing: iResult))")
+        SC.log("c->3, iResult: \(String(describing: iResult))")
         iResult = cache.get("d") // returns 4
-        fwDebugPrint("d->4, iResult: \(String(describing: iResult))")
+        SC.log("d->4, iResult: \(String(describing: iResult))")
         showLogs()
     }
 
     @objc private func binaryTreeAction() {
         fwPrintEnter(message: "Binary Tree")
-        fwDebugPrint("show: (5 * (a - 10)) + (-4 * (3 / b))")
+        SC.log("show: (5 * (a - 10)) + (-4 * (3 / b))")
 
         // left nodes
         let node5 = BinaryTree.node(.empty, "5", .empty)
@@ -413,17 +413,17 @@ class AlgorithmViewController: ItemListViewController {
 
         // root node
         let tree = BinaryTree.node(timesLeft, "+", timesRight)
-        fwDebugPrint("Tree: \(tree)")
-        fwDebugPrint("Count: \(tree.count)")
+        SC.log("Tree: \(tree)")
+        SC.log("Count: \(tree.count)")
 
         fwPrintEnter(message: "In-order")
-        tree.traverseInOrder { s in fwDebugPrint(s) }
+        tree.traverseInOrder { s in SC.log(s) }
 
         fwPrintEnter(message: "Pre-order")
-        tree.traversePreOrder { s in fwDebugPrint(s) }
+        tree.traversePreOrder { s in SC.log(s) }
 
         fwPrintEnter(message: "Post-order")
-        tree.traversePostOrder { s in fwDebugPrint(s) }
+        tree.traversePostOrder { s in SC.log(s) }
 
         showLogs()
     }
@@ -434,37 +434,37 @@ class AlgorithmViewController: ItemListViewController {
         tree.insert(value: 1)
         // yxc_debugPrint("tree: \(tree)")
         // draw binary tree
-        fwDebugPrint(tree.printBinaryTree)
+        SC.log(tree.printBinaryTree)
 
         let node1 = tree.search(value: 1)
         node1?.remove()
         let node18 = tree.search(value: 18)
         node18?.remove()
-        fwDebugPrint("tree: \(tree)")
+        SC.log("tree: \(tree)")
 
         tree.traverseInOrder { value in
-            fwDebugPrint(value)
+            SC.log(value)
         }
 
         let treeAry = tree.toArray()
-        fwDebugPrint("ToArray: \(treeAry)")
-        fwDebugPrint("minimum: \(tree.minimum())")
-        fwDebugPrint("maximum: \(tree.maximum())")
-        fwDebugPrint("height: \(tree.height())")
-        fwDebugPrint("predecessor: \(String(describing: tree.predecessor()))")
-        fwDebugPrint("successor: \(String(describing: tree.successor()))")
+        SC.log("ToArray: \(treeAry)")
+        SC.log("minimum: \(tree.minimum())")
+        SC.log("maximum: \(tree.maximum())")
+        SC.log("height: \(tree.height())")
+        SC.log("predecessor: \(String(describing: tree.predecessor()))")
+        SC.log("successor: \(String(describing: tree.successor()))")
 
         if let node9 = tree.search(value: 9) {
-            fwDebugPrint("node9 depth: \(node9.depth())")
-            fwDebugPrint("node9 height: \(node9.height())")
+            SC.log("node9 depth: \(node9.depth())")
+            SC.log("node9 height: \(node9.height())")
 
             var bRestlt = tree.isBST(minValue: Int.min, maxValue: Int.max) // true
-            fwDebugPrint("isBST: \(bRestlt)")
+            SC.log("isBST: \(bRestlt)")
             node9.insert(value: 100)
             let node100 = tree.search(value: 100) // nil
             bRestlt = tree.isBST(minValue: Int.min, maxValue: Int.max) // false
 
-            fwDebugPrint("isBST 100: \(bRestlt), node100: \(String(describing: node100))")
+            SC.log("isBST 100: \(bRestlt), node100: \(String(describing: node100))")
         }
 
         // Heap Tree
@@ -485,18 +485,18 @@ class AlgorithmViewController: ItemListViewController {
         tree.insert(key: "E", payload: "E")
         tree.insert(key: "A", payload: "A")
         tree.insert(key: "C", payload: "C")
-        fwDebugPrint(tree)
-        fwDebugPrint(tree.debugDescription)
+        SC.log(tree)
+        SC.log(tree.debugDescription)
 
         let nodeE = tree.search(input: "E")
-        fwDebugPrint("nodeE: \(String(describing: nodeE))")
+        SC.log("nodeE: \(String(describing: nodeE))")
 
         tree.delete(key: "A")
         tree.delete(key: "C")
         tree.delete(key: "B")
         tree.delete(key: "E")
         tree.delete(key: "G")
-        fwDebugPrint(tree)
+        SC.log(tree)
 
         showLogs()
     }
@@ -513,10 +513,10 @@ class AlgorithmViewController: ItemListViewController {
             rbTree.insert(key: value)
 
             if (i % (maxNumber / 5)) == 0 {
-                fwDebugPrint("index: \(i) verify: \(rbTree.verify())")
+                SC.log("index: \(i) verify: \(rbTree.verify())")
             }
         }
-        fwDebugPrint("verify: \(rbTree.verify())")
+        SC.log("verify: \(rbTree.verify())")
 
         for i in 0 ..< maxNumber {
             let rand = arc4random_uniform(UInt32(values.count))
@@ -524,10 +524,10 @@ class AlgorithmViewController: ItemListViewController {
             rbTree.delete(key: value)
 
             if i % (maxNumber / 5) == 0 {
-                fwDebugPrint("index: \(i) verify: \(rbTree.verify())")
+                SC.log("index: \(i) verify: \(rbTree.verify())")
             }
         }
-        fwDebugPrint("verify: \(rbTree.verify())")
+        SC.log("verify: \(rbTree.verify())")
 
         showLogs()
     }
@@ -537,12 +537,12 @@ class AlgorithmViewController: ItemListViewController {
         let dataArray = [27, 17, 3, 16, 13, 10, 1, 5, 7, 12, 4, 8, 9, 0]
         let maxHeap = Heap(array: dataArray, sort: >)
         maxHeap.nodes.printHeapTree()
-        fwDebugPrint("maxHeap: \(maxHeap)")
-        fwDebugPrint("verifyMaxHeap: \(verifyMaxHeap(maxHeap)), verifyMinHeap: \(verifyMinHeap(maxHeap))")
+        SC.log("maxHeap: \(maxHeap)")
+        SC.log("verifyMaxHeap: \(verifyMaxHeap(maxHeap)), verifyMinHeap: \(verifyMinHeap(maxHeap))")
 
         let minHeap = Heap(array: dataArray, sort: <)
         minHeap.nodes.printHeapTree()
-        fwDebugPrint("minHeap: \(minHeap)")
+        SC.log("minHeap: \(minHeap)")
         showLogs()
     }
 
@@ -551,11 +551,11 @@ class AlgorithmViewController: ItemListViewController {
         let dataArray = [5, 13, 2, 25, 7, 17, 20, 8, 4]
         var maxHeap = Heap(array: dataArray, sort: >)
         maxHeap.nodes.printHeapTree()
-        fwDebugPrint("maxHeap sort: \(maxHeap.sort())")
+        SC.log("maxHeap sort: \(maxHeap.sort())")
 
         let heapSort = heapsort(dataArray, <)
         heapSort.printHeapTree()
-        fwDebugPrint("heapSort: \(heapSort)")
+        SC.log("heapSort: \(heapSort)")
 
         showLogs()
     }
@@ -568,8 +568,8 @@ class AlgorithmViewController: ItemListViewController {
         let c = matrixGraph.createVertex("c")
         matrixGraph.addDirectedEdge(a, to: b, withWeight: 1.0)
         matrixGraph.addDirectedEdge(b, to: c, withWeight: 2.0)
-        fwDebugPrint("Maxtrix Graph:")
-        fwDebugPrint(matrixGraph.description)
+        SC.log("Maxtrix Graph:")
+        SC.log(matrixGraph.description)
 
         let listGrpah = AdjacencyListGraph<String>()
         let al = listGrpah.createVertex("a")
@@ -578,8 +578,8 @@ class AlgorithmViewController: ItemListViewController {
         listGrpah.addDirectedEdge(al, to: bl, withWeight: 1.0)
         listGrpah.addDirectedEdge(bl, to: cl, withWeight: 2.0)
         listGrpah.addDirectedEdge(al, to: cl, withWeight: -5.5)
-        fwDebugPrint("List Graph:")
-        fwDebugPrint(listGrpah.description)
+        SC.log("List Graph:")
+        SC.log(listGrpah.description)
 
         showLogs()
     }
@@ -609,8 +609,8 @@ class AlgorithmViewController: ItemListViewController {
 
         let nodeExplored = depthFirstSearch(graph, source: nodeA)
         // ["a", "b", "d", "e", "h", "f", "g", "c"]
-        fwDebugPrint("depthFirstSearch:")
-        fwDebugPrint(nodeExplored)
+        SC.log("depthFirstSearch:")
+        SC.log(nodeExplored)
 
         showLogs()
     }
@@ -640,7 +640,7 @@ class AlgorithmViewController: ItemListViewController {
 
         let nodeExplored = breadthFirstSearch(graph, source: nodeA)
         // ["a", "b", "c", "d", "e", "f", "g", "h"]
-        fwDebugPrint("breadthFirstSearch:")
+        SC.log("breadthFirstSearch:")
         print(nodeExplored)
 
         showLogs()
@@ -650,9 +650,9 @@ class AlgorithmViewController: ItemListViewController {
         fwPrintEnter(message: "Brute Force String Search")
         let s = "Hello World!"
         if let wIndex = s.indexOf("World") {
-            fwDebugPrint("World index: \(String(describing: wIndex)), \(s[..<wIndex])")
+            SC.log("World index: \(String(describing: wIndex)), \(s[..<wIndex])")
         } else {
-            fwDebugPrint("No found")
+            SC.log("No found")
         }
 
         showLogs()
@@ -663,7 +663,7 @@ class AlgorithmViewController: ItemListViewController {
         let text = "The big dog jumped over the fox"
         let umpIndex = searchStringByRK(text: text, pattern: "ump")
         // 13
-        fwDebugPrint("find ump in '\(text)' index: \(umpIndex)")
+        SC.log("find ump in '\(text)' index: \(umpIndex)")
 
         showLogs()
     }
@@ -672,9 +672,9 @@ class AlgorithmViewController: ItemListViewController {
         fwPrintEnter(message: "Boyer-Moore String Search")
         let text = "Hello, World"
         if let fIndex = text.index(of: "World") {
-            fwDebugPrint("find World : \(String(describing: fIndex)), in '\(text)' subString \(text[..<fIndex])")
+            SC.log("find World : \(String(describing: fIndex)), in '\(text)' subString \(text[..<fIndex])")
         } else {
-            fwDebugPrint("no find 'Word'")
+            SC.log("no find 'Word'")
         }
         showLogs()
     }
@@ -685,7 +685,7 @@ class AlgorithmViewController: ItemListViewController {
         let indexs = text.indexesOf(ptnr: "CATA")
 
         // [20, 64, 130, 140, 166, 234, 255, 270]
-        fwDebugPrint("indexs: \(String(describing: indexs))")
+        SC.log("indexs: \(String(describing: indexs))")
 
         showLogs()
     }
@@ -699,7 +699,7 @@ class AlgorithmViewController: ItemListViewController {
             tmpTrie.remove(word: "foobar")
 
             let words = tmpTrie.words
-            fwDebugPrint("words: \(words.count)")
+            SC.log("words: \(words.count)")
             let purr = tmpTrie.findWordsWithPrefix(prefix: "purr")
             print("Prefix purr:")
             print(purr.joined(separator: "\n"))
@@ -737,7 +737,7 @@ class AlgorithmViewController: ItemListViewController {
             }
         }
         tokenHtml.append("</p></body></html>")
-        fwDebugPrint("Tokens:")
+        SC.log("Tokens:")
         print(tokenHtml)
 
         // parse
@@ -749,7 +749,7 @@ class AlgorithmViewController: ItemListViewController {
             .build()
         let emits = pTrie.parse(text: "ushers")
         // she @ 3, he @ 3, hers @ 5
-        fwDebugPrint("Parse: \(emits)")
+        SC.log("Parse: \(emits)")
 
         // containsMatch
         let cTrie = ACTrie.builder().removeOverlaps()
@@ -758,7 +758,7 @@ class AlgorithmViewController: ItemListViewController {
             .add(keyword: "ababc")
             .build()
 
-        fwDebugPrint(cTrie.containsMatch(text: "ababcbab"))
+        SC.log(cTrie.containsMatch(text: "ababcbab"))
 
         showLogs()
     }
@@ -767,18 +767,18 @@ class AlgorithmViewController: ItemListViewController {
         fwPrintEnter(message: "Huffman Coding")
         let s1 = "zh:霍夫曼编; en：so much word wow many compression; number:1234567890"
         if let orginalData = s1.data(using: .utf8) {
-            fwDebugPrint("s1:\(s1) count: \(orginalData.count)")
+            SC.log("s1:\(s1) count: \(orginalData.count)")
 
             let huffman1 = Huffman()
             let compressedData = huffman1.compressData(data: orginalData as NSData)
-            fwDebugPrint("compressedData length: \(compressedData.length)")
+            SC.log("compressedData length: \(compressedData.length)")
 
             let freequencyTable = huffman1.frequencyTable()
             let huffman2 = Huffman()
             let decompressedData = huffman2.decompressData(data: compressedData, frequencyTable: freequencyTable)
-            fwDebugPrint("decompressedData length: \(decompressedData.length)")
+            SC.log("decompressedData length: \(decompressedData.length)")
             let s2 = String(data: decompressedData as Data, encoding: .utf8)!
-            fwDebugPrint("s1 and s2: \(s1 == s2)")
+            SC.log("s1 and s2: \(s1 == s2)")
         } else {
             showLogs("Failed string to data.")
         }
@@ -840,19 +840,19 @@ class AlgorithmViewController: ItemListViewController {
     @objc private func bloomFilterAction() {
         fwPrintEnter(message: "Bloom Filter")
         let bloom = BloomFilter<String>(size: 17, hashFunctions: [djb2, sdbm])
-        fwDebugPrint("BloomFilter: \(bloom)")
+        SC.log("BloomFilter: \(bloom)")
 
         bloom.insert("Hello world!")
-        fwDebugPrint("insert Hello world!: \(bloom)")
+        SC.log("insert Hello world!: \(bloom)")
         // true
-        fwDebugPrint("query Hello world!, result: \(bloom.query("Hello world!"))")
+        SC.log("query Hello world!, result: \(bloom.query("Hello world!"))")
         // false
-        fwDebugPrint("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
+        SC.log("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
 
         // false
         bloom.insert("Bloom Filterz")
-        fwDebugPrint("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
-        fwDebugPrint("insert Bloom Filterz: \(bloom)")
+        SC.log("query Hello WORLD, result: \(bloom.query("Hello WORLD"))")
+        SC.log("insert Bloom Filterz: \(bloom)")
 
         showLogs()
     }
@@ -865,14 +865,14 @@ class AlgorithmViewController: ItemListViewController {
         bTree.insert(3, for: 3)
         bTree.insert(4, for: 4)
         bTree.insert(5, for: 5)
-        fwDebugPrint("value for 3: \(String(describing: bTree.value(for: 3))), bTree[3]: \(String(describing: bTree[3]))")
+        SC.log("value for 3: \(String(describing: bTree.value(for: 3))), bTree[3]: \(String(describing: bTree[3]))")
 
         bTree.traverseKeysInOrder { key in
             print(key)
         }
 
-        fwDebugPrint("numberOfKeys: \(bTree.numberOfKeys)")
-        fwDebugPrint("inorderArrayFromKeys: \(bTree.inorderArrayFromKeys)")
+        SC.log("numberOfKeys: \(bTree.numberOfKeys)")
+        SC.log("inorderArrayFromKeys: \(bTree.inorderArrayFromKeys)")
 
         showLogs()
     }
@@ -956,13 +956,13 @@ class AlgorithmViewController: ItemListViewController {
         do {
             data = try String(contentsOfFile: filePath, encoding: String.Encoding.utf8)
         } catch let error as NSError {
-            fwDebugPrint("\(error.description)")
+            SC.log("\(error.description)")
         }
 
         var wordArray: [String]?
         if let tmpData = data {
             wordArray = tmpData.components(separatedBy: "\n")
-            fwDebugPrint("wordArray count: \(String(describing: wordArray?.count))")
+            SC.log("wordArray count: \(String(describing: wordArray?.count))")
         }
 
         if let tmpArray = wordArray {

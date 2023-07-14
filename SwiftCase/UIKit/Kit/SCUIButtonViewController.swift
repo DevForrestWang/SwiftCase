@@ -26,7 +26,7 @@ class SCUIButtonViewController: BaseViewController {
 
     @objc func injected() {
         #if DEBUG
-            fwDebugPrint("I've been injected: \(self)")
+            SC.log("I've been injected: \(self)")
             setupUI()
             setupConstraints()
         #endif
@@ -42,7 +42,7 @@ class SCUIButtonViewController: BaseViewController {
     // MARK: - IBActions
 
     @objc private func btn1Action(button: UIButton) {
-        fwDebugPrint("Run Btn: \(button)")
+        SC.log("Run Btn: \(button)")
         if button == btn1 {
             fwShowToast("Run button one")
         } else if button == btn2 {
