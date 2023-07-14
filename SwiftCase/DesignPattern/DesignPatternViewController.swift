@@ -63,7 +63,7 @@ class DesignPatternViewController: ItemListViewController {
     // MARK: - Creational
 
     @objc func testSingleton() throws {
-        fwPrintEnter(message: "Run testSingleton")
+        SC.printEnter(message: "Run testSingleton")
         let slgp = SingletonPattern.shared
         slgp.publicFunction()
         fwShowToast("Successed run publicFunction")
@@ -76,7 +76,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testFactoryPattern() throws {
-        fwPrintEnter(message: "Run testFactoryPattern")
+        SC.printEnter(message: "Run testFactoryPattern")
         let noCurrencyCode = "No Currency Code Available"
 
         SC.log(CurrencyFactory.currency(for: .greece)?.code ?? noCurrencyCode)
@@ -88,7 +88,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testProjectorFactory() {
-        fwPrintEnter(message: "Run testProjectorFactory")
+        SC.printEnter(message: "Run testProjectorFactory")
 
         let info = "Very important info of the presentation"
         let clientCode = ProjectorFactoryClientCode()
@@ -101,7 +101,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testAbstractFactory() throws {
-        fwPrintEnter(message: "Run testAbstractFactory")
+        SC.printEnter(message: "Run testAbstractFactory")
         let bigKahuna = BurgerFactoryType.bigKahuna.make()
         SC.log(bigKahuna)
 
@@ -110,7 +110,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testAuthViewAbstractFactory() throws {
-        fwPrintEnter(message: "Run testAuthViewAbstractFactory")
+        SC.printEnter(message: "Run testAuthViewAbstractFactory")
 
         let teacherMode = false
         let clientCode: AuthViewClientCode
@@ -131,7 +131,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testBuilder() throws {
-        fwPrintEnter(message: "Run testBuilder")
+        SC.printEnter(message: "Run testBuilder")
         let url = URLBuilder()
             .set(scheme: "https")
             .set(host: "localhost")
@@ -144,19 +144,19 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testStepBuilder() throws {
-        fwPrintEnter(message: "Client: Start testStepBuilder")
+        SC.printEnter(message: "Client: Start testStepBuilder")
         let client = BuilderClient()
         client.clientCode(builder: RealmQueryBuilder<SBUser>())
 
         SC.log()
 
-        fwPrintEnter(message: "Client: Start fetching data from CoreData")
+        SC.printEnter(message: "Client: Start fetching data from CoreData")
         client.clientCode(builder: CoreDataQueryBuilder<SBUser>())
         SC.printLine()
     }
 
     @objc func testPagePrototype() throws {
-        fwPrintEnter(message: "Client: Start testPagePrototype")
+        SC.printEnter(message: "Client: Start testPagePrototype")
         let author = PPAuthor(id: 10, username: "Ivan_83")
         let page = PPPage(title: "My First Page", contents: "Hello world", author: author)
         page.add(comment: PPComment(message: "Keep is up!"))
@@ -179,7 +179,7 @@ class DesignPatternViewController: ItemListViewController {
     // MARK: - Structural
 
     @objc func testProfileProxy() throws {
-        fwPrintEnter(message: "Client: Start testProfileProxy")
+        SC.printEnter(message: "Client: Start testProfileProxy")
 
         SC.log("Client: Loading a profile WITHOUT proxy")
         let profile = ProxyClient()
@@ -194,7 +194,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testContentShareBridge() throws {
-        fwPrintEnter(message: "Client: Start testProfileProxy")
+        SC.printEnter(message: "Client: Start testProfileProxy")
 
         let bridge = BridgeClient()
         SC.log("Client: Pushing Photo View Controller...")
@@ -209,7 +209,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testImageDecorator() {
-        fwPrintEnter(message: "Client: Start testImageDecorator")
+        SC.printEnter(message: "Client: Start testImageDecorator")
         let client = DecoratorClient()
         var image = client.loadImage(urlString: "https://refactoring.guru/images/content-public/logos/logo-new-3x.png")
 
@@ -232,7 +232,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testAdapteAuth() throws {
-        fwPrintEnter(message: "Client: Start testAdapteAuth")
+        SC.printEnter(message: "Client: Start testAdapteAuth")
         let topViewController = UIViewController()
         let faceBookSDK = FaceBookAuthSDK()
         faceBookSDK.presentAuthFlow(form: topViewController)
@@ -243,7 +243,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testFlyweight() throws {
-        fwPrintEnter(message: "Client: Start testDPInterpreter")
+        SC.printEnter(message: "Client: Start testDPInterpreter")
 
         /// The client code usually creates a bunch of pre-populated flyweights
         /// in the initialization stage of the application.
@@ -278,7 +278,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testDPComposite() throws {
-        fwPrintEnter(message: "Client: Start testDPInterpreter")
+        SC.printEnter(message: "Client: Start testDPInterpreter")
 
         /// This way the client code can support the simple leaf components...
         SC.log("Client: I've got a simple component:")
@@ -310,7 +310,7 @@ class DesignPatternViewController: ItemListViewController {
     // MARK: - Behavioral
 
     @objc func testCartSubscriber() {
-        fwPrintEnter(message: "Client: Start testCartSubscriber")
+        SC.printEnter(message: "Client: Start testCartSubscriber")
 
         let cartManager = CarManager()
         cartManager.add(subscriber: UINavigationBar())
@@ -327,7 +327,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testAccessorTemplate() throws {
-        fwPrintEnter(message: "Client: Start testAccessorTemplate")
+        SC.printEnter(message: "Client: Start testAccessorTemplate")
         let accessors = [CameraAccessor(), MicrophoneAccessor(), PhotoLibraryAccessor()]
         accessors.forEach { item in
             item.requestAccessIfNeeded { status in
@@ -340,7 +340,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testDataSouceStrategy() throws {
-        fwPrintEnter(message: "Client: Start testDataSouceStrategy")
+        SC.printEnter(message: "Client: Start testDataSouceStrategy")
         let client = StrategyClient()
         let strategy = DataSourceStrategy()
         let memoyrStorage = MemoryStorage<DSUser>()
@@ -354,7 +354,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testChainResponsibility() throws {
-        fwPrintEnter(message: "Client: Start testChainResponsibility")
+        SC.printEnter(message: "Client: Start testChainResponsibility")
         SC.log("Client: Let's test Login flow!")
         let loginHandler = LoginHandler(with: LocationHandler())
         let loginController = LoginViewController(handler: loginHandler)
@@ -369,7 +369,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testTreeIterator() throws {
-        fwPrintEnter(message: "Client: Start testTreeIterator")
+        SC.printEnter(message: "Client: Start testTreeIterator")
         let tree = TreeIterator(1)
         tree.left = TreeIterator(2)
         tree.right = TreeIterator(3)
@@ -388,7 +388,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testTrackingState() throws {
-        fwPrintEnter(message: "Client: Start testTrackingState")
+        SC.printEnter(message: "Client: Start testTrackingState")
         SC.log("Client: I'm starting working with a location tracker")
         let tracker = LocationTracker()
 
@@ -410,7 +410,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testNotificationVisitor() throws {
-        fwPrintEnter(message: "Client: Start testNotificationVisitor")
+        SC.printEnter(message: "Client: Start testNotificationVisitor")
 
         let email = NVEmail(emailOfSender: "some@email.com")
         let sms = NVSMS(phoneNumberOfSender: "+3806700000")
@@ -425,7 +425,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testTextViewMemento() throws {
-        fwPrintEnter(message: "Client: Start testTextViewMemento")
+        SC.printEnter(message: "Client: Start testTextViewMemento")
         let textView = UITextView()
         let undoStack = TMUndoStack(textView)
 
@@ -450,7 +450,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testScreenMediator() throws {
-        fwPrintEnter(message: "Client: Start testScreenMediator")
+        SC.printEnter(message: "Client: Start testScreenMediator")
 
         let newsArray = [SMNews(id: 1, title: "News1", likeCount: 1),
                          SMNews(id: 2, title: "News2", likeCount: 2)]
@@ -472,7 +472,7 @@ class DesignPatternViewController: ItemListViewController {
     }
 
     @objc func testDPInterpreter() throws {
-        fwPrintEnter(message: "Client: Start testDPInterpreter")
+        SC.printEnter(message: "Client: Start testDPInterpreter")
 
         let aV = 5
         let bV = 1

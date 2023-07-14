@@ -78,6 +78,10 @@ public class SwiftCase: NSObject {
         log("===================================================", terminator: "\n\n")
     }
 
+    public static func printEnter(message: String) {
+        log("================ \(message)====================")
+    }
+
     /// 打印日志
     static func log(_ items: Any...,
                     separator: String = " ",

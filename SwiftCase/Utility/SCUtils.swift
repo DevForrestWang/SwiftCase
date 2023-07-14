@@ -16,12 +16,6 @@ import Foundation
 import Kingfisher
 import Toast_Swift
 
-// MARK: - Print info
-
-public func fwPrintEnter(message: String) {
-    debugPrint("================ \(message)====================")
-}
-
 // MARK: - show info
 
 public func fwShowToast(_ message: String) {

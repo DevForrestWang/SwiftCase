@@ -46,7 +46,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
 
     /// 可观察序列Observable的创建方法
     private func obserableFun() {
-        fwPrintEnter(message: "Observable")
+        SC.printEnter(message: "Observable")
 
         let observable = Observable<String>.create { observer -> Disposable in
             // 对订阅者发出了.next事件
@@ -84,7 +84,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
 
     /// BehaviorRelay 使用
     private func behaviorRelayTest() {
-        fwPrintEnter(message: "BehaviorRelay")
+        SC.printEnter(message: "BehaviorRelay")
 
         let relay = BehaviorRelay<String>(value: "1")
         relay.subscribe {
@@ -96,7 +96,7 @@ class SCRxSwiftAndRxCocoaVC: BaseViewController {
     }
 
     private func transformingObservables() {
-        fwPrintEnter(message: "Transforming Observables")
+        SC.printEnter(message: "Transforming Observables")
 
         let s1 = BehaviorSubject(value: "A")
         let s2 = BehaviorSubject(value: "1")

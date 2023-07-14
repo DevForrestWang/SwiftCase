@@ -45,7 +45,7 @@ class DesignPatternTests: XCTestCase {
     }
     
     func testDelayOperationCmd() throws {
-        fwPrintEnter(message:"Client: Start testDelayOperationCmd")
+        SC.printEnter(message:"Client: Start testDelayOperationCmd")
         
         prepareTestEnvironment {
             let siri = SiriShortcuts.shared

@@ -102,7 +102,7 @@ class SCThreadViewController: BaseViewController {
     // MARK: - IBActions
 
     @objc private func threadBtnAction() {
-        fwPrintEnter(message: "Thread")
+        SC.printEnter(message: "Thread")
         // 方式1
         Thread.detachNewThreadSelector(#selector(threadAction(_:)), toTarget: self, with: "ThreadName1")
 
@@ -114,13 +114,13 @@ class SCThreadViewController: BaseViewController {
     }
 
     @objc private func operationBtnAction() {
-        fwPrintEnter(message: "Cocoa Operation")
+        SC.printEnter(message: "Cocoa Operation")
         let vc = SCOperationViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc private func gcgBtnAction() {
-        fwPrintEnter(message: "Grand Central Dispath(GCD)")
+        SC.printEnter(message: "Grand Central Dispath(GCD)")
         let vc = SCGCDViewController()
         navigationController?.pushViewController(vc, animated: true)
     }

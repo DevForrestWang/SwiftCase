@@ -69,7 +69,7 @@ class UIKitViewController: ItemListViewController {
     /// [simdjson/simdjson: Parsing gigabytes of JSON per second (github.com)](https://github.com/simdjson/simdjson)
     /// [michaeleisel/ZippyJSON: A much faster version of JSONDecoder (github.com)](https://github.com/michaeleisel/zippyjson)
     @objc private func zippyParseJSON() {
-        fwPrintEnter(message: "ZippyJSON")
+        SC.printEnter(message: "ZippyJSON")
 
         let json = """
         {

@@ -78,7 +78,7 @@ class SCFunctionViewController: BaseViewController {
 
     /// 字符基本
     private func baseString() {
-        fwPrintEnter(message: "String")
+        SC.printEnter(message: "String")
 
         // 多行字符串字面量
         let quotation = """
@@ -404,7 +404,7 @@ class SCFunctionViewController: BaseViewController {
     // MARK: - Array
 
     public func arrayAction() {
-        fwPrintEnter(message: "Array")
+        SC.printEnter(message: "Array")
 
         // Create an Empty Array
         let someInts = [Int]()
@@ -545,7 +545,7 @@ class SCFunctionViewController: BaseViewController {
     // MARK: - Dictionaries
 
     public func dictionaryAction() {
-        fwPrintEnter(message: "Dictionary")
+        SC.printEnter(message: "Dictionary")
 
         // Create a dictionary
         var capitalCity = ["Nepal": "Kathmandu", "Italy": "Rome", "England": "London"]
@@ -626,7 +626,7 @@ class SCFunctionViewController: BaseViewController {
     // MARK: - sets
 
     public func setAction() {
-        fwPrintEnter(message: "Set")
+        SC.printEnter(message: "Set")
 
         // Create a Set
         var studentID: Set<Int> = [112, 114, 116, 118, 115]
@@ -691,7 +691,7 @@ class SCFunctionViewController: BaseViewController {
     // MARK: - Tuple
 
     public func tupleAction() {
-        fwPrintEnter(message: "Tuple")
+        SC.printEnter(message: "Tuple")
         // Create A Tuple
         var product = ("MacBook", 1099.99)
         SC.log("Tuple, product: \(product)")
@@ -712,7 +712,7 @@ class SCFunctionViewController: BaseViewController {
 
     // 用法参考：[apple/swift-algorithms](https://github.com/apple/swift-algorithms)
     public func swiftAlgorithms() {
-        fwPrintEnter(message: "swift-algorithms")
+        SC.printEnter(message: "swift-algorithms")
 
         // let numbers = [1, 2, 3, 3, 2, 3, 3, 2, 2, 2, 1]
         // let unique = numbers.uniqued()
