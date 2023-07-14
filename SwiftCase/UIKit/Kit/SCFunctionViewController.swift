@@ -14,7 +14,6 @@
 //===----------------------------------------------------------------------===//
 
 import CryptoSwift
-import SpeedySwift
 import UIKit
 
 class SCFunctionViewController: BaseViewController {
@@ -826,10 +825,8 @@ class SCFunctionViewController: BaseViewController {
             fwDebugPrint("validNames:\(validNames)") // ["Tom", "Peter", "Harry"]
 
             let counts = keys.compactMap { $0?.count }
-            fwDebugPrint("counts:\(counts)") // [3, 5, 5]
+            SC.log("counts:\(counts)") // [3, 5, 5]
         }
-
-        SS.log("创建文件夹失败！error[----]")
     }
 
     // MARK: - UI

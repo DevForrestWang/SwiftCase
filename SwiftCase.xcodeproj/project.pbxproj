@@ -279,6 +279,7 @@
 		C6D8BF3028D8421C009D85D5 /* GYCPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */; };
 		C6E590AD2A5E840F00948463 /* SCLayoutByStackViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E590AC2A5E840F00948463 /* SCLayoutByStackViewVC.swift */; };
 		C6F41919291D05AB00D7A153 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C6F41918291D05AB00D7A153 /* README.md */; };
+		C6F68C142A615663003F0B04 /* SC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F68C132A615663003F0B04 /* SC.swift */; };
 		C6F9FBFA2A25995400074F33 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F9FBF92A25995400074F33 /* Double+Extension.swift */; };
 		C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822E403270EF558001C39FF /* SCUIEventViewVC.swift */; };
 		C88F930226F8D8D300739819 /* SCUICollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */; };
@@ -591,6 +592,7 @@
 		C6D8BF2E28D8421C009D85D5 /* GYCPlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCPlayingView.swift; sourceTree = "<group>"; };
 		C6E590AC2A5E840F00948463 /* SCLayoutByStackViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLayoutByStackViewVC.swift; sourceTree = "<group>"; };
 		C6F41918291D05AB00D7A153 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C6F68C132A615663003F0B04 /* SC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SC.swift; sourceTree = "<group>"; };
 		C6F9FBF92A25995400074F33 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		C822E403270EF558001C39FF /* SCUIEventViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIEventViewVC.swift; sourceTree = "<group>"; };
 		C88F92FA26F8D8D300739819 /* SCUICollectionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCUICollectionViewVC.swift; sourceTree = "<group>"; };
@@ -1170,6 +1172,7 @@
 				77F6527726F5D20300280568 /* GlobalConfig.swift */,
 				77C2543F270300C10012F078 /* SCUtils.swift */,
 				8A21BE8127DC9A2F0008D74B /* SCDeviceInfo.swift */,
+				C6F68C132A615663003F0B04 /* SC.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1921,6 +1924,7 @@
 				777BA9CF272943B40030DCB9 /* BitSet.swift in Sources */,
 				77F6529C26F5D25F00280568 /* PermissionAccessor.swift in Sources */,
 				C6ACB61C2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift in Sources */,
+				C6F68C142A615663003F0B04 /* SC.swift in Sources */,
 				8A2EDF1828267B0000A43A28 /* SCUIPickerViewVC.swift in Sources */,
 				C61C4830296BBB01005EA8F4 /* SCPopMenuVC.swift in Sources */,
 				77F652A826F5D25F00280568 /* ContentShareBridge.swift in Sources */,
