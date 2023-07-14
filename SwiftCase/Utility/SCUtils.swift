@@ -18,17 +18,8 @@ import Toast_Swift
 
 // MARK: - Print info
 
-/// 错误信息
-public func fwError(_ error: String, location: String = "\(#file):\(#line)") -> NSError {
-    return NSError(domain: "SwiftCaseError", code: -1, userInfo: [NSLocalizedDescriptionKey: "\(location): \(error)"])
-}
-
 public func fwPrintEnter(message: String) {
     debugPrint("================ \(message)====================")
-}
-
-public func fwPrintLine() {
-    debugPrint("===================================================", terminator: "\n\n")
 }
 
 // MARK: - show info

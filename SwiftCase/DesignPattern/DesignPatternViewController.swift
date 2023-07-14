@@ -140,7 +140,7 @@ class DesignPatternViewController: ItemListViewController {
             .addQueryItem(name: "order", value: "asc")
             .build()
         SC.log(url ?? "URL is nil")
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testStepBuilder() throws {
@@ -152,7 +152,7 @@ class DesignPatternViewController: ItemListViewController {
 
         fwPrintEnter(message: "Client: Start fetching data from CoreData")
         client.clientCode(builder: CoreDataQueryBuilder<SBUser>())
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testPagePrototype() throws {
@@ -173,7 +173,7 @@ class DesignPatternViewController: ItemListViewController {
         SC.log("Copied title: " + anotherPage.title)
         SC.log("Count of pages: " + String(author.pageCount))
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     // MARK: - Structural
@@ -190,7 +190,7 @@ class DesignPatternViewController: ItemListViewController {
         profile.loadBasicProfile(with: ProfileProxy())
         profile.loadProfileWithBankAccount(with: ProfileProxy())
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testContentShareBridge() throws {
@@ -205,7 +205,7 @@ class DesignPatternViewController: ItemListViewController {
         SC.log("Client: Pushing Feed View Controller...")
         bridge.push(FeedViewController())
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testImageDecorator() {
@@ -228,7 +228,7 @@ class DesignPatternViewController: ItemListViewController {
         image = colorFilter.applay()
 
         client.clientCode(editor: colorFilter)
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testAdapteAuth() throws {
@@ -239,7 +239,7 @@ class DesignPatternViewController: ItemListViewController {
 
         let twitterSDK = TwitterAuthSDK()
         twitterSDK.presentAuthFlow(form: topViewController)
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testFlyweight() throws {
@@ -274,7 +274,7 @@ class DesignPatternViewController: ItemListViewController {
 
         factory.printFlyweights()
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testDPComposite() throws {
@@ -304,7 +304,7 @@ class DesignPatternViewController: ItemListViewController {
         SC.log("\nClient: I don't need to check the components classes even when managing the tree:")
         ComponentClient.moreComplexClient(leftComponent: tree, rightComponent: DPLeaf())
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     // MARK: - Behavioral
@@ -323,7 +323,7 @@ class DesignPatternViewController: ItemListViewController {
         cartManager.add(product: tShirt)
 
         cartManager.remove(product: apple)
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testAccessorTemplate() throws {
@@ -336,7 +336,7 @@ class DesignPatternViewController: ItemListViewController {
             }
         }
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testDataSouceStrategy() throws {
@@ -350,7 +350,7 @@ class DesignPatternViewController: ItemListViewController {
         client.clientCode(use: strategy, with: CoreDataStorage())
         client.clientCode(use: strategy, with: RealmStorage())
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testChainResponsibility() throws {
@@ -365,7 +365,7 @@ class DesignPatternViewController: ItemListViewController {
         let signUpController = SignUpViewController(handler: signUpHandler)
         signUpController.signUpButtonSelected()
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testTreeIterator() throws {
@@ -384,7 +384,7 @@ class DesignPatternViewController: ItemListViewController {
         SC.log("Tree traversal: Postorder")
         client.clientCode(iterator: tree.iterator(.postOrder))
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testTrackingState() throws {
@@ -406,7 +406,7 @@ class DesignPatternViewController: ItemListViewController {
 
         SC.log()
         tracker.stopTracking()
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testNotificationVisitor() throws {
@@ -421,7 +421,7 @@ class DesignPatternViewController: ItemListViewController {
 
         client.clientCode(handle: notifications, with: DefaultPolicyVisitor())
         client.clientCode(handle: notifications, with: NightPolicyVistor())
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testTextViewMemento() throws {
@@ -446,7 +446,7 @@ class DesignPatternViewController: ItemListViewController {
         undoStack.undo()
         SC.log(undoStack)
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testScreenMediator() throws {
@@ -468,7 +468,7 @@ class DesignPatternViewController: ItemListViewController {
         feedVC.userLikedAllNews()
         feedVC.userDislikedAllNews()
 
-        fwPrintLine()
+        SC.printLine()
     }
 
     @objc func testDPInterpreter() throws {
@@ -493,7 +493,7 @@ class DesignPatternViewController: ItemListViewController {
         let subExpression = SubtractionExpresion(op1: a, op2: AddExpression(op1: b, op2: c))
         result = subExpression.evaluate(context)
         SC.log("A - (B + C) = \(aV) - (\(bV) + \(cV)) = \(result)")
-        fwPrintLine()
+        SC.printLine()
     }
 
     // MARK: - UI

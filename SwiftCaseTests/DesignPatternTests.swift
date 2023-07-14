@@ -61,7 +61,7 @@ class DesignPatternTests: XCTestCase {
             siri.cancel(.leaveWork)
         }
         
-        fwPrintLine()
+        SC.printLine()
     }
     
     func testPerformanceExample() throws {

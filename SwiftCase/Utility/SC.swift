@@ -74,6 +74,10 @@ public class SwiftCase: NSObject {
         }
     }
 
+    public static func printLine() {
+        log("===================================================", terminator: "\n\n")
+    }
+
     /// 打印日志
     static func log(_ items: Any...,
                     separator: String = " ",
