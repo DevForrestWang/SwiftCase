@@ -14,6 +14,7 @@
 //===----------------------------------------------------------------------===//
 
 import CryptoSwift
+import SpeedySwift
 import UIKit
 
 class SCFunctionViewController: BaseViewController {
@@ -791,7 +792,44 @@ class SCFunctionViewController: BaseViewController {
         // 获取偶数
         fwDebugPrint("even:\(even)")
 
-        // reduce
+        // reduce,将集合中的所有元素合并为一个新的值
+        do {
+            // 下面将数组元素值与初始值10相加：
+            let items = [2.0, 4.0, 5.0, 7.0]
+            let total = items.reduce(10.0) { partialResult, value in
+                partialResult + value
+            }
+            let reduceTotal = items.reduce(10.0, +)
+            fwDebugPrint("totle:\(total), reduceTotal:\(reduceTotal)")
+
+            // 用于拼接数组中的字符串：
+            let codes = ["abc", "def", "ghi"]
+            let text = codes.reduce("1", +)
+            fwDebugPrint("text:\(text)") // 1abcdefghi
+        }
+
+        // flatMap用于处理序列，并返回序列
+        do {
+            // 序列调用flatMap后，每个元素都会执行闭包逻辑，并返回 flatten 结果：
+            let results = [[5, 2, 7], [4, 8], [9, 1, 3]]
+            let allResults = results.flatMap { $0 }
+            fwDebugPrint("allResults:\(allResults)") // [5, 2, 7, 4, 8, 9, 1, 3]
+
+            let passMarks = results.flatMap { $0.filter { $0 > 5 } }
+            fwDebugPrint("passMarks:\(passMarks)") // [7, 8, 9]
+        }
+
+        // compactMap处理序列，返回可选类型, 为移除数组中的nil元素提供了一种简便操作
+        do {
+            let keys: [String?] = ["Tom", nil, "Peter", nil, "Harry"]
+            let validNames = keys.compactMap { $0 }
+            fwDebugPrint("validNames:\(validNames)") // ["Tom", "Peter", "Harry"]
+
+            let counts = keys.compactMap { $0?.count }
+            fwDebugPrint("counts:\(counts)") // [3, 5, 5]
+        }
+
+        SS.log("创建文件夹失败！error[----]")
     }
 
     // MARK: - UI
