@@ -58,7 +58,7 @@ class SCPopMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let title = dataSource[indexPath.row]
-        fwShowToast("click cell title: \(title)")
+        SC.toast("click cell title: \(title)")
     }
 
     // MARK: - IBActions
@@ -83,7 +83,7 @@ class SCPopMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     // MARK: - Private
 
     private func showPopMenu(point: CGPoint, row: Int) {
-        fwShowToast("point:\(point), row: \(row)")
+        SC.toast("point:\(point), row: \(row)")
 
         let popData = [(icon: "", title: "解除禁言")]
 

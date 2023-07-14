@@ -66,7 +66,7 @@ class CaseViewController: ItemListViewController {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let startDay = dateFormatter.string(from: startDay)
             let endDay = dateFormatter.string(from: endDay)
-            fwShowToast("startDay:\(startDay) - endDay:\(endDay)")
+            SC.toast("startDay:\(startDay) - endDay:\(endDay)")
         }
 
         pView.show(iHeight, headIcon: false, titleName: "日期选择")

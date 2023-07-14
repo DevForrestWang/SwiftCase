@@ -53,7 +53,7 @@ class SCUIEventViewVC: BaseViewController {
     // MARK: - IBActions
 
     @objc func singleTap(recognizer: UITapGestureRecognizer) {
-        fwShowToast("single tap")
+        SC.toast("single tap")
         findFingerPositon(recognizer: recognizer)
 
         // 回调执行
@@ -68,9 +68,9 @@ class SCUIEventViewVC: BaseViewController {
 
     @objc func longPress(recognizer: UITapGestureRecognizer) {
         if recognizer.state == .began {
-            fwShowToast("start long press")
+            SC.toast("start long press")
         } else if recognizer.state == .ended {
-            fwShowToast("end long press")
+            SC.toast("end long press")
         }
     }
 

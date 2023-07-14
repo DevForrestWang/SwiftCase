@@ -102,11 +102,11 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
     // MARK: - IBActions
 
     @objc private func leftButtonAction() {
-        fwShowToast("Left button action")
+        SC.toast("Left button action")
     }
 
     @objc private func rightButtonAction() {
-        fwShowToast("Right button action")
+        SC.toast("Right button action")
         textField.text = ""
     }
 
@@ -124,11 +124,11 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
     }
 
     @objc func accessoryLeftAction() {
-        fwShowToast("Cancel")
+        SC.toast("Cancel")
     }
 
     @objc func accessoryRightAction() {
-        fwShowToast("Confirm")
+        SC.toast("Confirm")
         view.endEditing(true)
     }
 

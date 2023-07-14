@@ -120,7 +120,7 @@ class GYMainChatVideoCell: GYMainChatBaseInfoCell {
         PHPhotoLibrary.requestAuthorization { status in
             DispatchQueue.main.async {
                 if status == PHAuthorizationStatus.denied {
-                    fwShowToast("没有保存到相册的权限")
+                    SC.toast("没有保存到相册的权限")
                 } else {
                     self.downloadVideo()
                 }
@@ -169,10 +169,10 @@ class GYMainChatVideoCell: GYMainChatBaseInfoCell {
 
                     DispatchQueue.main.async {
                         if success {
-                            fwShowToast("视频保存成功")
+                            SC.toast("视频保存成功")
                         } else {
                             SC.log(error?.localizedDescription ?? "")
-                            fwShowToast("视频保存失败")
+                            SC.toast("视频保存失败")
                         }
                     }
                 }

@@ -71,9 +71,9 @@ class SCWidgetVC: BaseViewController {
 
     @objc private func saveImageResult(image _: UIImage, didFinishSavingWithError error: NSError?, contextInfo _: AnyObject) {
         if error != nil {
-            fwShowToast("图片保存相册失败")
+            SC.toast("图片保存相册失败")
         } else {
-            fwShowToast("图片保存相册成功")
+            SC.toast("图片保存相册成功")
         }
     }
 
@@ -85,7 +85,7 @@ class SCWidgetVC: BaseViewController {
 
         view.addSubview(switch01)
         switch01.rx.isOn.subscribe(onNext: { flag in
-            fwShowToast("switch: \(flag)")
+            SC.toast("switch: \(flag)")
         }).disposed(by: disposeBag)
 
         view.addSubview(textSwitch)
@@ -110,7 +110,7 @@ class SCWidgetVC: BaseViewController {
         view.addGestureRecognizer(tap)
         tap.rx.event.subscribe(onNext: { [weak self] recognizer in
             let point = recognizer.location(in: recognizer.view)
-            // fwShowToast("click: x: \(point.x), y: \(point.y)")
+            // SC.toast("click: x: \(point.x), y: \(point.y)")
             self?.sliderLable.text = "click: x: \(point.x), y: \(point.y)"
         }).disposed(by: disposeBag)
 

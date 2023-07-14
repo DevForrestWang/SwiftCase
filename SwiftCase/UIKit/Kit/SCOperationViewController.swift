@@ -70,7 +70,7 @@ class SCOperationViewController: BaseViewController {
         // 自定义子类
         CustomOperation().start()
 
-        fwShowToast("console logs")
+        SC.toast("console logs")
     }
 
     @objc private func addDependencyAction() {
@@ -103,7 +103,7 @@ class SCOperationViewController: BaseViewController {
         queue.addOperation(op2)
         queue.addOperation(customOp)
 
-        fwShowToast("console logs")
+        SC.toast("console logs")
     }
 
     @objc private func downLoadImageAction() {

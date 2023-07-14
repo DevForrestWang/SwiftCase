@@ -53,7 +53,7 @@ class GYVoiceRecordingObject: NSObject {
 
         let path = stopRecord()
         if interval < 1 {
-            fwShowToast("录音时间太短")
+            SC.toast("录音时间太短")
             return
         }
 
@@ -64,7 +64,7 @@ class GYVoiceRecordingObject: NSObject {
 
     public func cancleAudio() {
         cancelRecord()
-        fwShowToast("取消发送")
+        SC.toast("取消发送")
     }
 
     // MARK: - Protocol
@@ -80,7 +80,7 @@ class GYVoiceRecordingObject: NSObject {
         recorder?.updateMeters()
         let interval = recorder?.currentTime ?? 0
         if interval > 60 {
-            fwShowToast("录音时间太长")
+            SC.toast("录音时间太长")
             let path = stopRecord()
             if let tmpClosure = gyVoiceRecordingClosure {
                 tmpClosure(Int(interval), path)
@@ -112,7 +112,7 @@ class GYVoiceRecordingObject: NSObject {
         }
 
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
-            fwShowToast("相机不可用")
+            SC.toast("相机不可用")
             return false
         }
 

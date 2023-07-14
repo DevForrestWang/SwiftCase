@@ -108,7 +108,7 @@ class SCUICollectionViewVC: BaseViewController, UICollectionViewDataSource,
 
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let text = String(format: "clicked %d-%d cell", arguments: [indexPath.section + 1, indexPath.row + 1])
-        fwShowToast(text)
+        SC.toast(text)
     }
 
     // MARK: - IBActions

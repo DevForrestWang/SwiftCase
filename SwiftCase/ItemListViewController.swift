@@ -40,11 +40,11 @@ class ItemListViewController: BaseViewController, UITableViewDelegate, UITableVi
     // MARK: - Public
 
     @objc public func expectAction() {
-        fwShowToast("Coming soon")
+        SC.toast("Coming soon")
     }
 
     public func showLogs(_ msg: String = "console logs") {
-        fwShowToast(msg)
+        SC.toast(msg)
     }
 
     func itemDataSource() -> [SCItemModel]? {

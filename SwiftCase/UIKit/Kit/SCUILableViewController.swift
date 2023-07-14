@@ -77,7 +77,7 @@ class SCUILableViewController: BaseViewController {
             // 文本高亮
             lab1.isHighlighted = true
             lab1.highlightedTextColor = .orange
-            fwShowToast("Reach the maximum number")
+            SC.toast("Reach the maximum number")
             return
         }
         lab1.text! += ", \(lab1.text!)"

@@ -131,7 +131,7 @@ class GYCPlayingView: UIView {
         player?.seek(to: CMTimeMakeWithSeconds(curTime, preferredTimescale: 300), completionHandler: { [weak self] finish in
 
             if !finish {
-                fwShowToast("快进未加载完")
+                SC.toast("快进未加载完")
                 return
             }
 
@@ -162,7 +162,7 @@ class GYCPlayingView: UIView {
 
         // 检测文件是否可播放
         guard AVAsset(url: url).isPlayable else {
-            fwShowToast("检测文件播放失败")
+            SC.toast("检测文件播放失败")
             return
         }
 

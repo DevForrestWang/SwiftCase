@@ -833,7 +833,7 @@ class SCFunctionViewController: BaseViewController {
 
     func setupUI() {
         title = "Function"
-        fwShowToast("console logs")
+        SC.toast("console logs")
 
         stringFunction()
         arrayAction()

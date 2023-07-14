@@ -44,11 +44,11 @@ class SCUIButtonViewController: BaseViewController {
     @objc private func btn1Action(button: UIButton) {
         SC.log("Run Btn: \(button)")
         if button == btn1 {
-            fwShowToast("Run button one")
+            SC.toast("Run button one")
         } else if button == btn2 {
-            fwShowToast("Run button two")
+            SC.toast("Run button two")
         } else {
-            fwShowToast("Run button others")
+            SC.toast("Run button others")
         }
     }
 
@@ -58,7 +58,7 @@ class SCUIButtonViewController: BaseViewController {
         let imageURL = "https://t7.baidu.com/it/u=3655946603,4193416998&fm=193&f=GIF"
         SCUtils.downloadWith(urlStr: imageURL) { [weak self] image in
             guard let saveImage = image else {
-                fwShowToast("图片下载失败")
+                SC.toast("图片下载失败")
                 return
             }
             // 图片写入相册
@@ -68,9 +68,9 @@ class SCUIButtonViewController: BaseViewController {
 
     @objc private func saveImageResult(image _: UIImage, didFinishSavingWithError error: NSError?, contextInfo _: AnyObject) {
         if error != nil {
-            fwShowToast("图片保存失败")
+            SC.toast("图片保存失败")
         } else {
-            fwShowToast("图片保存成功")
+            SC.toast("图片保存成功")
         }
     }
 

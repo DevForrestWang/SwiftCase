@@ -66,7 +66,7 @@ class DesignPatternViewController: ItemListViewController {
         SC.printEnter(message: "Run testSingleton")
         let slgp = SingletonPattern.shared
         slgp.publicFunction()
-        fwShowToast("Successed run publicFunction")
+        SC.toast("Successed run publicFunction")
 
         // methods2：
         let instance1 = Singleton.shared

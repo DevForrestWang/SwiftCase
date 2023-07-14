@@ -1169,10 +1169,10 @@
 		77F6523326F5CDE900280568 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				C6F68C132A615663003F0B04 /* SC.swift */,
 				77F6527726F5D20300280568 /* GlobalConfig.swift */,
 				77C2543F270300C10012F078 /* SCUtils.swift */,
 				8A21BE8127DC9A2F0008D74B /* SCDeviceInfo.swift */,
-				C6F68C132A615663003F0B04 /* SC.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";

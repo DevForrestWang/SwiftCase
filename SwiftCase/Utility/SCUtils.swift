@@ -14,23 +14,8 @@
 import AVFoundation
 import Foundation
 import Kingfisher
-import Toast_Swift
 
-// MARK: - show info
-
-public func fwShowToast(_ message: String) {
-    gWindow?.makeToast(message, duration: 2.0, position: .center)
-}
-
-public func fwShowAlert(_ vc: UIViewController, _ title: String, message: String) {
-    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-    alertController.addAction(okAction)
-    vc.present(alertController, animated: true, completion: nil)
-}
-
-// MARK: - Function
-
+/// 工具方法
 public enum SCUtils {
     public static func formatDate(_ date: String, format: String = "yyyy-MM-dd HH:mm:ss") -> String {
         if date.isEmpty {

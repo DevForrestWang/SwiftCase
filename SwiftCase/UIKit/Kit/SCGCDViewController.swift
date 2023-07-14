@@ -50,7 +50,7 @@ class SCGCDViewController: BaseViewController {
             SC.log("Sync operation in as serial queue.")
         }
 
-        fwShowToast("console logs")
+        SC.toast("console logs")
     }
 
     @objc private func serialAsyncAction() {
@@ -71,7 +71,7 @@ class SCGCDViewController: BaseViewController {
             }
         }
 
-        fwShowToast("console logs")
+        SC.toast("console logs")
     }
 
     @objc private func concurrentSyncAction() {
@@ -96,7 +96,7 @@ class SCGCDViewController: BaseViewController {
             }
         }
 
-        fwShowToast("console logs")
+        SC.toast("console logs")
     }
 
     @objc private func concurrentAsyncAction() {
@@ -119,7 +119,7 @@ class SCGCDViewController: BaseViewController {
             }
         }
 
-        fwShowToast("console logs")
+        SC.toast("console logs")
     }
 
     @objc private func downImageInGroupAction() {
@@ -232,7 +232,7 @@ class SCGCDViewController: BaseViewController {
             semaphore.signal()
         }
 
-        fwShowToast("console logs")
+        SC.toast("console logs")
     }
 
     // MARK: - Private

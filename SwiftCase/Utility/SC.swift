@@ -12,6 +12,7 @@
 //===----------------------------------------------------------------------===//
 
 import SpeedySwift
+import Toast_Swift
 import UIKit
 
 public typealias SC = SwiftCase
@@ -68,10 +69,9 @@ public class SwiftCase: NSObject {
     }
 
     /// 全场toast
-    public static func toast(message: String) {
-        if let view = UIWindow.keyWindow {
-            view.toast(message: message)
-        }
+    public static func toast(_ message: String, position: ToastPosition = .center) {
+        // UIWindow.keyWindow?.view.toast(message: message)
+        gWindow?.makeToast(message, duration: 2.0, position: position)
     }
 
     public static func printLine() {

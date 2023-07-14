@@ -97,13 +97,13 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
             let length = text.count
             if length > 100 {
                 textView.text = String(text.prefix(100))
-                fwShowToast("Reach maximum length")
+                SC.toast("Reach maximum length")
             }
         }
     }
 
     @objc func accessoryRightAction() {
-        fwShowToast("Confirm")
+        SC.toast("Confirm")
         view.endEditing(true)
     }
 
