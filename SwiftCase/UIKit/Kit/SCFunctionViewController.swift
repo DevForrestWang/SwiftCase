@@ -852,7 +852,7 @@ class SCFunctionViewController: BaseViewController {
         saveDataAction()
 
         // APP 系统信息
-        SC.log("deviceInfo:  \(SCDeviceInfo.deviceInfo())")
+        SC.log("deviceInfo:  \(SC.deviceInfo())")
 
         baskNumber()
         higherOrderFun()

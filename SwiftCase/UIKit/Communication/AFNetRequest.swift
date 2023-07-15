@@ -476,8 +476,8 @@ public class AFNetRequest: NSObject {
     // 请求头信息
     private var headers: HTTPHeaders = [
         "Accept": "application/json",
-        "appName": SCDeviceInfo.getAppName(),
-        "version": SCDeviceInfo.appVersion,
+        "appName": SC.getAppName(),
+        "version": SC.appVersion,
         "custId": "init custId",
         "token": "init token",
     ]
