@@ -37,7 +37,7 @@ class GYCPlayingView: UIView {
     }
 
     public func playVedio(url: URL, coverImg: UIImage?, completeClosure: @escaping () -> Void) {
-        guard let keyWindow = gWindow else {
+        guard let keyWindow = SC.window else {
             SC.log("The keyWindow is nil.")
             return
         }
@@ -361,7 +361,7 @@ class GYCPlayingView: UIView {
         }
 
         toobarBgView.snp.makeConstraints { make in
-            make.bottom.equalTo(-(gBottomSafeHeight + 10))
+            make.bottom.equalTo(-(SC.bottomSafeHeight + 10))
             make.height.equalTo(25 + 30 + 20)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
@@ -410,7 +410,7 @@ class GYCPlayingView: UIView {
     private var isShowToolBar = false
     private var isMonitorToolBar = false
 
-    let showVedioView = UIView(frame: CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenHeight)).then {
+    let showVedioView = UIView(frame: CGRect(x: 0, y: 0, width: SC.w, height: SC.h)).then {
         $0.backgroundColor = .black
     }
 

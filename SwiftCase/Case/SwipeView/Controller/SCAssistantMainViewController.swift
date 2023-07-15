@@ -161,19 +161,19 @@ class SCAssistantMainViewController: UIViewController, SCAssimtantCarouseViewPro
         upView.snp.makeConstraints { make in
             make.top.equalTo(64)
             make.left.right.equalToSuperview()
-            make.height.equalTo(gScreenWidth - 74)
+            make.height.equalTo(SC.w - 74)
         }
 
         bottomView.snp.makeConstraints { make in
             make.top.equalTo(64)
             make.left.right.equalToSuperview()
-            make.height.equalTo(gScreenWidth - 74)
+            make.height.equalTo(SC.w - 74)
         }
 
         astCarouseView.snp.makeConstraints { maker in
             maker.top.equalTo(64)
             maker.left.right.equalTo(0)
-            maker.height.equalTo(gScreenWidth - 74)
+            maker.height.equalTo(SC.w - 74)
         }
     }
 

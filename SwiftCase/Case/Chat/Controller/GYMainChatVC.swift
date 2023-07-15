@@ -60,7 +60,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
             $0.font = .systemFont(ofSize: 14)
             $0.textAlignment = .center
         }
-        lable.frame = CGRect(x: 20, y: 0, width: gScreenWidth, height: 21)
+        lable.frame = CGRect(x: 20, y: 0, width: SC.w, height: 21)
         return lable
     }
 
@@ -298,7 +298,7 @@ class GYMainChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSour
         }
 
         chatInputView.snp.makeConstraints { make in
-            make.bottom.equalTo(view.snp.bottom).offset(-gBottomSafeHeight)
+            make.bottom.equalTo(view.snp.bottom).offset(-SC.bottomSafeHeight)
             make.width.equalToSuperview()
         }
     }

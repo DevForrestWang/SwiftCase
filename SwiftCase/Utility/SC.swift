@@ -17,13 +17,41 @@ import UIKit
 
 public typealias SC = SwiftCase
 
+/// 常用系统信息相关方法
 @objcMembers
 public class SwiftCase: NSObject {
+    // 屏幕宽度
     public static let w = UIScreen.main.bounds.width
 
+    // 屏幕高度
     public static let h = UIScreen.main.bounds.height
 
+    public static var window: UIWindow? {
+        return UIWindow.keyWindow
+    }
+
     public static let bounds = UIScreen.main.bounds
+
+    // 等比适配
+    public static let equalScale = w / 375
+
+    // 状态栏高度
+    public static let statusBarHeight: CGFloat = isSupportSafeArea ? (window?.safeAreaInsets.top ?? 20) : 20
+
+    // 底部安全区高度
+    public static let bottomSafeHeight: CGFloat = isSupportSafeArea ? (window?.safeAreaInsets.bottom ?? 0) : 0
+
+    // 导航栏高度
+    public static let naviHeight: CGFloat = 44
+
+    // TableBar高度
+    public static let tableBarHeight: CGFloat = 49
+
+    // 顶部高度
+    public static let topBarHeight: CGFloat = statusBarHeight + naviHeight
+
+    // 底部高度
+    public static let bottomBarHeight: CGFloat = bottomSafeHeight + tableBarHeight
 
     // 设备udid
     static let identifierNumber = UIDevice.current.identifierForVendor?.uuidString ?? ""
@@ -37,6 +65,8 @@ public class SwiftCase: NSObject {
     // iOS版本
     static let iOSVersion: String = UIDevice.current.systemVersion
 
+    // MARK: - Device Info
+
     /// build号
     public static var build: String {
         return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String ?? "1"
@@ -46,6 +76,9 @@ public class SwiftCase: NSObject {
     public static var versionS: String {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     }
+
+    // bundle id
+    public static let identifier = Bundle.main.bundleIdentifier
 
     /// 设备名称
     public static var deviceName: String {
@@ -57,56 +90,8 @@ public class SwiftCase: NSObject {
         return UIDevice.current.systemVersion
     }
 
-    public static func scaleW(_ width: CGFloat, fit: CGFloat = 375.0) -> CGFloat {
-        return w / fit * width
-    }
-
-    public static func scaleH(_ height: CGFloat, fit: CGFloat = 812.0) -> CGFloat {
-        return h / fit * height
-    }
-
-    public static func scale(_ value: CGFloat) -> CGFloat {
-        return scaleW(value)
-    }
-
-    /// 全场toast
-    public static func toast(_ message: String, position: ToastPosition = .center) {
-        // UIWindow.keyWindow?.view.toast(message: message)
-        gWindow?.makeToast(message, duration: 2.0, position: position)
-    }
-
-    public static func printLine() {
-        log("===================================================", terminator: "\n\n")
-    }
-
-    public static func printEnter(message: String) {
-        log("================ \(message)====================")
-    }
-
-    /// 打印日志
-    static func log(_ items: Any...,
-                    separator: String = " ",
-                    terminator: String = "\n",
-                    file: String = #file,
-                    line: Int = #line,
-                    method: String = #function)
-    {
-        #if DEBUG
-            let date = Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss.SSSZ")
-            print("\(date) \((file as NSString).lastPathComponent)[\(line)], \(method)", terminator: separator)
-            var i = 0
-            let j = items.count
-            for a in items {
-                i += 1
-                print(" ", a, terminator: i == j ? terminator : separator)
-            }
-        #endif
-    }
-
-    // MARK: - Device Info
-
     /// APP汇总信息
-    static func deviceInfo() -> [String: String] {
+    public static func deviceInfo() -> [String: String] {
         return [
             "OSVersion": appVersion,
             "OSName": osName(),
@@ -117,7 +102,7 @@ public class SwiftCase: NSObject {
     }
 
     /// 获取APP名称
-    static func getAppName() -> String {
+    public static func getAppName() -> String {
         if let name = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String {
             return name
         }
@@ -133,7 +118,7 @@ public class SwiftCase: NSObject {
     }
 
     /// 设备具体详细的型号
-    static func osName() -> String {
+    public static func osName() -> String {
         var systemInfo = utsname()
         uname(&systemInfo)
 
@@ -161,6 +146,63 @@ public class SwiftCase: NSObject {
         }
 
         return "Unknown"
+    }
+
+    // MARK: - UI
+
+    public static var isSupportSafeArea: Bool {
+        if #available(iOS 11, *) {
+            return true
+        }
+        return false
+    }
+
+    public static func scaleW(_ width: CGFloat, fit: CGFloat = 375.0) -> CGFloat {
+        return w / fit * width
+    }
+
+    public static func scaleH(_ height: CGFloat, fit: CGFloat = 812.0) -> CGFloat {
+        return h / fit * height
+    }
+
+    public static func scale(_ value: CGFloat) -> CGFloat {
+        return scaleW(value)
+    }
+
+    // MARK: - General Info
+
+    /// 全场toast
+    public static func toast(_ message: String, position: ToastPosition = .center) {
+        // UIWindow.keyWindow?.view.toast(message: message)
+        window?.makeToast(message, duration: 2.0, position: position)
+    }
+
+    public static func printLine() {
+        log("===================================================", terminator: "\n\n")
+    }
+
+    public static func printEnter(message: String) {
+        log("================ \(message)====================")
+    }
+
+    /// 打印日志
+    public static func log(_ items: Any...,
+                           separator: String = " ",
+                           terminator: String = "\n",
+                           file: String = #file,
+                           line: Int = #line,
+                           method: String = #function)
+    {
+        #if DEBUG
+            let date = Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss.SSSZ")
+            print("\(date) \((file as NSString).lastPathComponent)[\(line)], \(method)", terminator: separator)
+            var i = 0
+            let j = items.count
+            for a in items {
+                i += 1
+                print(" ", a, terminator: i == j ? terminator : separator)
+            }
+        #endif
     }
 
     // MARK: - Private

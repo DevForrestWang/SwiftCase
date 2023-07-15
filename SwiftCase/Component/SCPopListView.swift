@@ -105,7 +105,7 @@ public class SCPopListView: UIView, UICollectionViewDataSource, UICollectionView
 
         let title = indexPath.row < titleNames.count ? titleNames[indexPath.row] : ""
         let imageName = indexPath.row < imageNames.count ? imageNames[indexPath.row] : ""
-        let cellWidth = (gScreenWidth - kMarginWidth * 2 - lineNumber) / lineNumber
+        let cellWidth = (SC.w - kMarginWidth * 2 - lineNumber) / lineNumber
         cell.update(name: title, imageName: imageName, width: cellWidth, height: cellHeight, iconLeft: iconLeft)
         return cell
     }
@@ -131,11 +131,11 @@ public class SCPopListView: UIView, UICollectionViewDataSource, UICollectionView
 
         // 屏幕宽度
         var xPoint = kMarginWidth
-        var iWidth = gScreenWidth - kMarginWidth * 2
+        var iWidth = SC.w - kMarginWidth * 2
 
         if titleCount < Int(lineNumber) {
-            iWidth = CGFloat(titleCount) * (gScreenWidth / lineNumber)
-            xPoint = (gScreenWidth - iWidth) / 2
+            iWidth = CGFloat(titleCount) * (SC.w / lineNumber)
+            xPoint = (SC.w - iWidth) / 2
         }
 
         let popHeight = ceil(Double(titleNames.count) / lineNumber) * cellHeight
@@ -148,13 +148,13 @@ public class SCPopListView: UIView, UICollectionViewDataSource, UICollectionView
             connentBgView.frame.origin.x = kMarginWidth
         }
         // X 坐标超过屏幕右边
-        if (originX + popViewSize.width + kMarginWidth) > gScreenWidth {
-            connentBgView.frame.origin.x = gScreenWidth - popViewSize.width - kMarginWidth
+        if (originX + popViewSize.width + kMarginWidth) > SC.w {
+            connentBgView.frame.origin.x = SC.w - popViewSize.width - kMarginWidth
         }
 
         // Y 坐标超过屏幕底部
         let originY = connentBgView.frame.origin.y
-        if (originY + popViewSize.height + kMarginWidth) > gScreenHeight {
+        if (originY + popViewSize.height + kMarginWidth) > SC.h {
             connentBgView.frame.origin.y = targetRect.origin.y - popViewSize.height - kArrowSpace
             self.arrowPoint.y = connentBgView.frame.origin.y + popViewSize.height + arrowSize.height
             isDownArrow = true
@@ -221,7 +221,7 @@ public class SCPopListView: UIView, UICollectionViewDataSource, UICollectionView
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
-        let cellWidth = (gScreenWidth - kMarginWidth * 2 - lineNumber) / lineNumber
+        let cellWidth = (SC.w - kMarginWidth * 2 - lineNumber) / lineNumber
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
 
         let _collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -269,7 +269,7 @@ class SCPopListViewCell: UICollectionViewCell {
             imagView.image = UIImage(named: imageName)
         }
 
-        let nameSize = name.getBoundingRect(font: nameLable.font, limitSize: CGSize(width: gScreenWidth, height: height))
+        let nameSize = name.getBoundingRect(font: nameLable.font, limitSize: CGSize(width: SC.w, height: height))
         let isOutMaxWidth = (nameSize.width + 14 + 4) > width ? true : false
 
         if iconLeft {

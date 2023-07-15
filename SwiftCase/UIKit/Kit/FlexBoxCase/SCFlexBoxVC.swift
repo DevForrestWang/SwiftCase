@@ -344,7 +344,7 @@ class SCFlexBoxVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         let tableViewSpace = UIView(frame: .zero)
         tableViewSpace.configureLayout { layout in
             layout.isEnabled = true
-            layout.height = YGValue(integerLiteral: self.datasource.count * 100 + Int(gNaviHeight))
+            layout.height = YGValue(integerLiteral: self.datasource.count * 100 + Int(SC.naviHeight))
         }
 
         let showTableView = UITableView(frame: .zero, style: .plain)

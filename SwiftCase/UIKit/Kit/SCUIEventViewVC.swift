@@ -144,8 +144,8 @@ class SCUIEventViewVC: BaseViewController {
                 if w * scale < h * scale {
                     tWidth = h * scale
                 }
-                pinchImageView.frame = CGRect(x: (gScreenWidth - tWidth) / 2,
-                                              y: (gScreenHeight - tWidth) / 2,
+                pinchImageView.frame = CGRect(x: (SC.w - tWidth) / 2,
+                                              y: (SC.h - tWidth) / 2,
                                               width: tWidth, height: tWidth)
                 SC.log("pinchImage:\(pinchImageView.frame), tWidth:\(tWidth)")
             }
@@ -290,7 +290,7 @@ class SCUIEventViewVC: BaseViewController {
         let rotation = UIRotationGestureRecognizer(target: self, action: #selector(rotationAction))
         view.addGestureRecognizer(rotation)
 
-        pinchImageView.frame = CGRect(x: (gScreenWidth - 200) / 2, y: (gScreenHeight - 200) / 2,
+        pinchImageView.frame = CGRect(x: (SC.w - 200) / 2, y: (SC.h - 200) / 2,
                                       width: 200, height: 200)
         view.addSubview(pinchImageView)
         // 缩放

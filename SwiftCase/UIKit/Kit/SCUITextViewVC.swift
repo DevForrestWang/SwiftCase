@@ -119,7 +119,7 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
 
         UIView.animate(withDuration: duration ?? 0.25, delay: 0, options: .allowAnimatedContent, animations: {
             self.textView.snp.updateConstraints { make in
-                make.bottom.equalToSuperview().offset(-(gBottomSafeHeight + keyboardFrame.height))
+                make.bottom.equalToSuperview().offset(-(SC.bottomSafeHeight + keyboardFrame.height))
             }
         }, completion: nil)
     }
@@ -129,7 +129,7 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
         let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         UIView.animate(withDuration: duration ?? 0.25, animations: {
             self.textView.snp.updateConstraints { make in
-                make.bottom.equalToSuperview().offset(-(gBottomSafeHeight + 10))
+                make.bottom.equalToSuperview().offset(-(SC.bottomSafeHeight + 10))
             }
         })
     }
@@ -171,7 +171,7 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
             make.height.equalTo(150)
             make.width.equalTo(view).offset(-40)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-(gBottomSafeHeight + 10))
+            make.bottom.equalToSuperview().offset(-(SC.bottomSafeHeight + 10))
         }
     }
 
@@ -185,12 +185,12 @@ class SCUITextViewVC: BaseViewController, UITextViewDelegate {
     }
 
     let accessoryView = UIView().then {
-        $0.frame = CGRect(x: 0, y: 0, width: gScreenWidth, height: 40)
+        $0.frame = CGRect(x: 0, y: 0, width: SC.w, height: 40)
         $0.backgroundColor = .lightGray
     }
 
     let accessoryRightBtn = UIButton(type: .custom).then {
-        $0.frame = CGRect(x: gScreenWidth - 10 - 60, y: 10, width: 60, height: 20)
+        $0.frame = CGRect(x: SC.w - 10 - 60, y: 10, width: 60, height: 20)
         $0.setTitle("Confirm", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.backgroundColor = .clear

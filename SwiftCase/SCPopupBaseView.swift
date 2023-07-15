@@ -50,12 +50,12 @@ class SCPopupBaseView: UIView {
 
         topBarHeight = 0
         if let tmpVC = vc {
-            topBarHeight = CGFloat(gTopBarHeight)
+            topBarHeight = CGFloat(topBarHeight)
             tmpVC.view.addSubview(self)
             reSetupConstraints()
         } else {
             // 解决 IQKeyboard 添加到 keyWindow 视图失效问题
-            gWindow?.rootViewController?.view.addSubview(self)
+            SC.window?.rootViewController?.view.addSubview(self)
         }
 
         updateContentHeight(contentHeight)
@@ -63,7 +63,7 @@ class SCPopupBaseView: UIView {
 
     public func updateContentHeight(_ contentHeight: CGFloat) {
         bgView.snp.updateConstraints { make in
-            make.height.equalTo(gScreenWidth - topBarHeight - contentHeight + 20)
+            make.height.equalTo(SC.w - topBarHeight - contentHeight + 20)
         }
 
         contentView.snp.updateConstraints { make in
@@ -105,7 +105,7 @@ class SCPopupBaseView: UIView {
     // MARK: - UI
 
     private func setupUI() {
-        frame = CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenWidth)
+        frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.w)
         backgroundColor = .clear
 
         addSubview(bgView)
@@ -130,13 +130,13 @@ class SCPopupBaseView: UIView {
         bgView.snp.makeConstraints { make in
             make.top.equalTo(0)
             make.width.equalToSuperview()
-            make.height.equalTo(gScreenWidth * viewScale / 2)
+            make.height.equalTo(SC.w * viewScale / 2)
         }
 
         contentView.snp.makeConstraints { make in
             make.top.equalTo(bgView.snp.bottom)
             make.width.equalToSuperview()
-            make.height.equalTo(gScreenWidth * viewScale / 2)
+            make.height.equalTo(SC.w * viewScale / 2)
         }
 
         headView.snp.makeConstraints { make in
@@ -174,18 +174,18 @@ class SCPopupBaseView: UIView {
     }
 
     private func reSetupConstraints() {
-        frame = CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenWidth - topBarHeight)
+        frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.w - topBarHeight)
 
         bgView.snp.remakeConstraints { make in
             make.top.equalTo(0)
             make.width.equalToSuperview()
-            make.height.equalTo((gScreenWidth - topBarHeight) * viewScale / 2)
+            make.height.equalTo((SC.w - topBarHeight) * viewScale / 2)
         }
 
         contentView.snp.remakeConstraints { make in
             make.top.equalTo(bgView.snp.bottom)
             make.width.equalToSuperview()
-            make.height.equalTo((gScreenWidth - topBarHeight) * viewScale / 2)
+            make.height.equalTo((SC.w - topBarHeight) * viewScale / 2)
         }
     }
 
@@ -200,7 +200,7 @@ class SCPopupBaseView: UIView {
     // 是否在当前控制器上显示
     private var topBarHeight: CGFloat = 0
 
-    private let viewScale = gEqualScale
+    private let viewScale = SC.equalScale
 
     private let bgView = UIView().then {
         $0.backgroundColor = UIColor.black.withAlphaComponent(0.7)
@@ -208,7 +208,7 @@ class SCPopupBaseView: UIView {
 
     private let headView = UIView().then {
         $0.backgroundColor = UIColor.hexColor(0xFEFFFF)
-        $0.layer.cornerRadius = gEqualScale * 25
+        $0.layer.cornerRadius = SC.equalScale * 25
     }
 
     private let headIconImage = UIImageView().then {

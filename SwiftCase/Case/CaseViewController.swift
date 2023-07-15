@@ -60,7 +60,7 @@ class CaseViewController: ItemListViewController {
 
     @objc private func showCalendarAction() {
         let pView = SCSelectDayView()
-        let iHeight = gScreenHeight * 0.8
+        let iHeight = SC.h * 0.8
         pView.gyActivitySelectDayClosure = { [weak self] startDay, endDay in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"

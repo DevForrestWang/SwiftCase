@@ -177,7 +177,7 @@ class GYMainChatBaseInfoCell: UITableViewCell {
         userNameLable.snp.remakeConstraints { make in
             make.top.top.equalTo(10)
             make.height.equalTo(21)
-            make.width.lessThanOrEqualTo(gScreenWidth / 2)
+            make.width.lessThanOrEqualTo(SC.w / 2)
 
             if sendType == .acceptInfo {
                 make.left.equalTo(headImagView.snp.right).offset(10)
@@ -232,7 +232,7 @@ class GYMainChatBaseInfoCell: UITableViewCell {
 
     public var isMessageRevoke = false
 
-    private let contentWidth = gScreenWidth - (50 + 10) * 2
+    private let contentWidth = SC.w - (50 + 10) * 2
     private let headImagView = UIImageView().then {
         $0.image = UIImage(named: "gy_assistant_main_default_head")
         $0.layer.cornerRadius = 17

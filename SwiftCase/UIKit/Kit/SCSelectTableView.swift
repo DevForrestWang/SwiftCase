@@ -92,7 +92,7 @@ public class SCSelectTableView: UIView {
         let bgView = UIView().then {
             $0.backgroundColor = bgColor
         }
-        let iWidth = Int(gScreenWidth) - Int(leftSpace * 2)
+        let iWidth = Int(SC.w) - Int(leftSpace * 2)
         bgView.frame = CGRect(x: leftSpace, y: yPoint, width: iWidth + 1, height: cellHeight)
 
         let itemWidth = Int((iWidth - selectCellWidth) / titleAry.count)
@@ -134,7 +134,7 @@ public class SCSelectTableView: UIView {
         let bgView = UIView().then {
             $0.backgroundColor = bgColor
         }
-        let iWidth = Int(gScreenWidth) - Int(leftSpace * 2)
+        let iWidth = Int(SC.w) - Int(leftSpace * 2)
         bgView.frame = CGRect(x: leftSpace, y: yPoint, width: iWidth + 1, height: cellHeight)
 
         let selectBtn = UIButton(type: .custom).then {
@@ -185,7 +185,7 @@ public class SCSelectTableView: UIView {
         let bgView = UIView().then {
             $0.backgroundColor = bgColor
         }
-        let iWidth = Int(gScreenWidth) - Int(leftSpace * 2)
+        let iWidth = Int(SC.w) - Int(leftSpace * 2)
         bgView.frame = CGRect(x: leftSpace, y: yPoint, width: iWidth + 1, height: cellHeight + 10)
 
         let messageLable = UILabel().then {

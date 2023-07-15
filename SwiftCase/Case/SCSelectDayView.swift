@@ -89,7 +89,7 @@ class SCSelectDayView: SCPopupBaseView {
         }
 
         confirmBtn.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-(10 + gBottomSafeHeight))
+            make.bottom.equalToSuperview().offset(-(10 + SC.bottomSafeHeight))
             make.height.equalTo(44)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)

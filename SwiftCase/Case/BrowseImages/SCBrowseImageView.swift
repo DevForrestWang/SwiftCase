@@ -56,7 +56,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
         collectionView.reloadData()
         collectionView.selectItem(at: NSIndexPath(row: 0, section: 0) as IndexPath, animated: true, scrollPosition: .top)
 
-        gWindow?.addSubview(self)
+        SC.window?.addSubview(self)
     }
 
     func dismiss() {
@@ -173,7 +173,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
     // MARK: - UI
 
     func setupUI() {
-        frame = CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenWidth)
+        frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.w)
         backgroundColor = UIColor.black.withAlphaComponent(0.8)
         addSubview(titleLable)
 
@@ -208,14 +208,14 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
         }
 
         imageScrollView.snp.makeConstraints { make in
-            make.width.equalTo(gScreenWidth)
-            make.height.equalTo(gScreenWidth - contentViewHeight)
+            make.width.equalTo(SC.w)
+            make.height.equalTo(SC.w - contentViewHeight)
             // make.center.equalToSuperview()
         }
 
         shopImageView.snp.makeConstraints { make in
             make.width.equalTo(self)
-            make.height.equalTo(gScreenWidth)
+            make.height.equalTo(SC.w)
             make.center.equalToSuperview()
         }
 
@@ -265,7 +265,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
         $0.showsVerticalScrollIndicator = false
         $0.scrollsToTop = false
         $0.isScrollEnabled = true
-        $0.frame = CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenWidth)
+        $0.frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.w)
     }
 
     let shopImageView = UIImageView().then {
@@ -273,7 +273,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
         $0.contentMode = .scaleAspectFit
         $0.image = UIImage(named: "placeholder")
         // 设置这个_imageView能被缩放的最大尺寸，这句话很重要，一定不能少,如果没有这句话，图片不能缩放
-        $0.frame = CGRect(x: 0, y: 0, width: gScreenWidth * 2.5, height: gScreenWidth * 2.5)
+        $0.frame = CGRect(x: 0, y: 0, width: SC.w * 2.5, height: SC.w * 2.5)
     }
 
     let contentView = UIView().then {

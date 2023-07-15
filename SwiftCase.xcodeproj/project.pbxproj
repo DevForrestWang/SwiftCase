@@ -218,7 +218,6 @@
 		8A01AA43282F56E6001A3F9B /* UILableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01AA42282F56E6001A3F9B /* UILableExtension.swift */; };
 		8A01AA49282FB891001A3F9B /* SCSelectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01AA48282FB891001A3F9B /* SCSelectTableView.swift */; };
 		8A21BE8027DC8DF10008D74B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */; };
-		8A21BE8227DC9A2F0008D74B /* SCDeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21BE8127DC9A2F0008D74B /* SCDeviceInfo.swift */; };
 		8A2EDF162826751A00A43A28 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EDF152826751A00A43A28 /* DateExtension.swift */; };
 		8A2EDF1828267B0000A43A28 /* SCUIPickerViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EDF1728267B0000A43A28 /* SCUIPickerViewVC.swift */; };
 		8A3E2A5B2799699A006ECFB8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E2A5A2799699A006ECFB8 /* StringExtension.swift */; };
@@ -529,7 +528,6 @@
 		8A01AA48282FB891001A3F9B /* SCSelectTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectTableView.swift; sourceTree = "<group>"; };
 		8A1CB1CB281A3C27000BAA22 /* WillDo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = WillDo.md; sourceTree = "<group>"; };
 		8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-		8A21BE8127DC9A2F0008D74B /* SCDeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDeviceInfo.swift; sourceTree = "<group>"; };
 		8A2EDF152826751A00A43A28 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		8A2EDF1728267B0000A43A28 /* SCUIPickerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUIPickerViewVC.swift; sourceTree = "<group>"; };
 		8A3E2A5A2799699A006ECFB8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -1172,7 +1170,6 @@
 				C6F68C132A615663003F0B04 /* SC.swift */,
 				77F6527726F5D20300280568 /* GlobalConfig.swift */,
 				77C2543F270300C10012F078 /* SCUtils.swift */,
-				8A21BE8127DC9A2F0008D74B /* SCDeviceInfo.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1878,7 +1875,6 @@
 				77F652BF26F5E1C900280568 /* AlgorithmViewController.swift in Sources */,
 				C88F934426F8DEAD00739819 /* SCBrowsImageCell.swift in Sources */,
 				8A8ED9B6279BFC2400971DDA /* LoginView.swift in Sources */,
-				8A21BE8227DC9A2F0008D74B /* SCDeviceInfo.swift in Sources */,
 				77062DED2739467700A7F090 /* VertexPath.swift in Sources */,
 				77F652C326F5E24E00280568 /* CaseViewController.swift in Sources */,
 				8A3E2A5B2799699A006ECFB8 /* StringExtension.swift in Sources */,

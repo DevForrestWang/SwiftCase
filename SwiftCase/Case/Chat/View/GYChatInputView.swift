@@ -704,7 +704,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
         $0.textColor = .black
         $0.font = .systemFont(ofSize: 14)
         // 去掉键盘上的工具栏
-        $0.inputAccessoryView = UIToolbar(frame: CGRect(x: 0, y: 0, width: gScreenWidth, height: 0.01))
+        $0.inputAccessoryView = UIToolbar(frame: CGRect(x: 0, y: 0, width: SC.w, height: 0.01))
 
         // 修改键盘的确定为发送
         $0.returnKeyType = .send

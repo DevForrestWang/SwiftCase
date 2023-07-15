@@ -93,16 +93,16 @@ class SCScreenFPS: NSObject {
                 let xPoint = panView.frame.origin.x
                 if xPoint < 10 {
                     panView.frame.origin.x = 10
-                } else if (xPoint + 60 + 10) > gScreenWidth {
-                    panView.frame.origin.x = gScreenWidth - 60 - 10
+                } else if (xPoint + 60 + 10) > SC.w {
+                    panView.frame.origin.x = SC.w - 60 - 10
                 }
 
                 // 检测Y方向不要超出屏幕
                 let yPoint = panView.frame.origin.y
-                if yPoint < gTopBarHeight {
-                    panView.frame.origin.y = gTopBarHeight + 10
-                } else if (yPoint + 30 + 10 + gBottomSafeHeight) > gScreenHeight {
-                    panView.frame.origin.y = gScreenHeight - 30 - 10 - gBottomSafeHeight
+                if yPoint < SC.topBarHeight {
+                    panView.frame.origin.y = SC.topBarHeight + 10
+                } else if (yPoint + 30 + 10 + SC.bottomSafeHeight) > SC.h {
+                    panView.frame.origin.y = SC.h - 30 - 10 - SC.bottomSafeHeight
                 }
             }
         }
@@ -134,7 +134,7 @@ class SCScreenFPS: NSObject {
         tipsLable.snp.makeConstraints { make in
             make.width.equalTo(60)
             make.height.equalTo(30)
-            make.top.equalToSuperview().offset(gTopBarHeight)
+            make.top.equalToSuperview().offset(SC.topBarHeight)
             make.right.equalToSuperview().offset(-10)
         }
     }

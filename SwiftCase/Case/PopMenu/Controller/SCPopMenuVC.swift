@@ -66,7 +66,7 @@ class SCPopMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     @objc private func longPressAction(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             // 获取屏幕位置
-            let screenPoint = gesture.location(in: gWindow)
+            let screenPoint = gesture.location(in: SC.window)
 
             // 获取长按的行号
             let tvPoint = gesture.location(in: tableView)
@@ -96,7 +96,7 @@ class SCPopMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         ]
 
         popMenu = SwiftPopMenu(menuWidth: 120,
-                               arrow: CGPoint(x: gScreenWidth - 20, y: point.y),
+                               arrow: CGPoint(x: SC.w - 20, y: point.y),
                                datas: popData, configures: parameters)
 
         popMenu?.didSelectMenuBlock = { index in
@@ -142,16 +142,6 @@ class SCPopMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
 
     var dataSource: [String] = ["row1", "row2", "row3", "row4", "row5", "row6", "row7", "row8",
                                 "row9", "row10", "row11", "row12", "row13", "row14", "row15", "row16"]
-
-    public let gScreenHeight = UIScreen.main.bounds.height
-    public let gScreenWidth = UIScreen.main.bounds.width
-
-    public var gWindow: UIWindow? {
-        guard let window = UIApplication.shared.delegate?.window else {
-            return nil
-        }
-        return window
-    }
 }
 
 class SCPopMenuCell: UITableViewCell {

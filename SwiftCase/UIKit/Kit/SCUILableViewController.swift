@@ -119,7 +119,7 @@ class SCUILableViewController: BaseViewController {
         useAttributedStrings()
 
         // 计算Lable文本实际高度
-        let sizeFits = lab4.sizeThatFits(CGSize(width: gScreenWidth - 50, height: gScreenHeight))
+        let sizeFits = lab4.sizeThatFits(CGSize(width: SC.w - 50, height: SC.h))
         SC.log("计算Lable高度：\(String(format: "%.2f", sizeFits.height))")
 
         view.addSubview(multiSegmentStyleLable)
