@@ -1004,9 +1004,7 @@
 				77F6522F26F5CD3900280568 /* Algorithm */,
 				77F6523026F5CD4400280568 /* DesignPattern */,
 				77F6523126F5CD5200280568 /* Case */,
-				C68195162892BDDB001CCF50 /* Component */,
-				77F6523326F5CDE900280568 /* Utility */,
-				77F6523226F5CDD500280568 /* Extensions */,
+				C60598BA2A65368800CD1AE1 /* GLib */,
 				77F6520726F5CB2000280568 /* Resouce */,
 				7756C25926FDBD7E00C43EFD /* SwiftCase.entitlements */,
 				77E0ACB026F5C228000EABC1 /* AppDelegate.swift */,
@@ -1136,42 +1134,6 @@
 				C68195222892C08E001CCF50 /* SCSelectDayView.swift */,
 			);
 			path = Case;
-			sourceTree = "<group>";
-		};
-		77F6523226F5CDD500280568 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				C6D68213293E206200EA7925 /* AttributedString.swift */,
-				77DC113227423D9D002AED0C /* AttrString.swift */,
-				8AFA0F43283332F00047852E /* YXCCellExtension.swift */,
-				8AFA0F41283332B40047852E /* UIViewExtension.swift */,
-				8A01AA42282F56E6001A3F9B /* UILableExtension.swift */,
-				8AAAEDE327EDB64E009ED9D7 /* DictionaryExtension.swift */,
-				8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */,
-				779843792702AFD7001D73AF /* Application+Extension.swift */,
-				7756E81226FADB2800AB139F /* UIWindow+Extension.swift */,
-				77F6527926F5D23500280568 /* UIColor+Extension.swift */,
-				7798438F2702B03F001D73AF /* TableView+Extension.swift */,
-				77C25441270319470012F078 /* UITextView+Extension.swift */,
-				77201D7F271E61E000F6188E /* Randoms.swift */,
-				777BA9D4272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift */,
-				8A3E2A5A2799699A006ECFB8 /* StringExtension.swift */,
-				A8233C0B28BCE5A200D848C3 /* DataExtension.swift */,
-				8A2EDF152826751A00A43A28 /* DateExtension.swift */,
-				A8233C0928BCDFED00D848C3 /* SaveDataExtension.swift */,
-				C6F9FBF92A25995400074F33 /* Double+Extension.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		77F6523326F5CDE900280568 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				C6F68C132A615663003F0B04 /* SC.swift */,
-				77F6527726F5D20300280568 /* GlobalConfig.swift */,
-				77C2543F270300C10012F078 /* SCUtils.swift */,
-			);
-			path = Utility;
 			sourceTree = "<group>";
 		};
 		77F6527C26F5D25E00280568 /* Behavioral */ = {
@@ -1334,6 +1296,68 @@
 				0CD24A71E25A93DDB50325E4 /* Pods-SwiftCase.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C60598BA2A65368800CD1AE1 /* GLib */ = {
+			isa = PBXGroup;
+			children = (
+				C60598BB2A65369100CD1AE1 /* Core */,
+				C60598BD2A6536B400CD1AE1 /* UIKit */,
+				C60598BC2A6536A700CD1AE1 /* Foundation */,
+				C68195162892BDDB001CCF50 /* Component */,
+				C60598BE2A6536E300CD1AE1 /* Util */,
+			);
+			path = GLib;
+			sourceTree = "<group>";
+		};
+		C60598BB2A65369100CD1AE1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C6F68C132A615663003F0B04 /* SC.swift */,
+				77F6527726F5D20300280568 /* GlobalConfig.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C60598BC2A6536A700CD1AE1 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				779843792702AFD7001D73AF /* Application+Extension.swift */,
+				8A3E2A5A2799699A006ECFB8 /* StringExtension.swift */,
+				8AAAEDE327EDB64E009ED9D7 /* DictionaryExtension.swift */,
+				A8233C0B28BCE5A200D848C3 /* DataExtension.swift */,
+				8A2EDF152826751A00A43A28 /* DateExtension.swift */,
+				A8233C0928BCDFED00D848C3 /* SaveDataExtension.swift */,
+				C6F9FBF92A25995400074F33 /* Double+Extension.swift */,
+				777BA9D4272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift */,
+				77201D7F271E61E000F6188E /* Randoms.swift */,
+				8A21BE7F27DC8DF10008D74B /* ArrayExtension.swift */,
+				C6D68213293E206200EA7925 /* AttributedString.swift */,
+				77DC113227423D9D002AED0C /* AttrString.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		C60598BD2A6536B400CD1AE1 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				7756E81226FADB2800AB139F /* UIWindow+Extension.swift */,
+				8AFA0F41283332B40047852E /* UIViewExtension.swift */,
+				8A01AA42282F56E6001A3F9B /* UILableExtension.swift */,
+				77F6527926F5D23500280568 /* UIColor+Extension.swift */,
+				7798438F2702B03F001D73AF /* TableView+Extension.swift */,
+				77C25441270319470012F078 /* UITextView+Extension.swift */,
+				8AFA0F43283332F00047852E /* YXCCellExtension.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		C60598BE2A6536E300CD1AE1 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				77C2543F270300C10012F078 /* SCUtils.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		C61C482E296BBACD005EA8F4 /* PopMenu */ = {
