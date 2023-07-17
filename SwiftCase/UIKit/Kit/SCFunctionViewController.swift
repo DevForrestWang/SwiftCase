@@ -716,7 +716,7 @@ class SCFunctionViewController: BaseViewController {
 
         // let numbers = [1, 2, 3, 3, 2, 3, 3, 2, 2, 2, 1]
         // let unique = numbers.uniqued()
-        // yxc_debugPrint("Array(unique): \(Array(unique))") // [1, 2, 3]
+        // SC.log("Array(unique): \(Array(unique))") // [1, 2, 3]
     }
 
     public func changeNunber() {

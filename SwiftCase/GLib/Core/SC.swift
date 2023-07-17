@@ -169,6 +169,55 @@ public class SwiftCase: NSObject {
         return scaleW(value)
     }
 
+    /// 根据控制器获取 顶层控制器
+    public static func topVC(_ viewController: UIViewController?) -> UIViewController? {
+        guard let currentVC = viewController else {
+            return nil
+        }
+
+        if let nav = currentVC as? UINavigationController {
+            // 控制器是nav
+            return topVC(nav.visibleViewController)
+        } else if let tabC = currentVC as? UITabBarController {
+            // tabBar 的跟控制器
+            return topVC(tabC.selectedViewController)
+        } else if let presentVC = currentVC.presentedViewController {
+            // modal出来的 控制器
+            return topVC(presentVC)
+        } else {
+            // 返回顶控制器
+            return currentVC
+        }
+    }
+
+    /// 获取顶层控制器 根据window
+    public static func topVC() -> UIViewController? {
+        var window = window
+        // 是否为当前显示的window
+        if window?.windowLevel != UIWindow.Level.normal {
+            let windows = UIApplication.shared.windows
+            for windowTemp in windows {
+                if windowTemp.windowLevel == UIWindow.Level.normal {
+                    window = windowTemp
+                    break
+                }
+            }
+        }
+        let vc = window?.rootViewController
+        return topVC(vc)
+    }
+
+    /// 当用户截屏时的监听
+    public static func didTakeScreenShot(_ action: @escaping (_ notification: Notification) -> Void) {
+        // http://stackoverflow.com/questions/13484516/ios-detection-of-screenshot
+        _ = NotificationCenter.default.addObserver(forName: UIApplication.userDidTakeScreenshotNotification,
+                                                   object: nil,
+                                                   queue: OperationQueue.main)
+        { notification in
+            action(notification)
+        }
+    }
+
     // MARK: - General Info
 
     /// 全场toast

@@ -432,7 +432,7 @@ class AlgorithmViewController: ItemListViewController {
         SC.printEnter(message: "Binary Search Tree")
         let tree = BinarySearchTree<Int>(array: [33, 16, 50, 13, 18, 34, 58, 15, 17, 25, 51, 66, 19, 27, 55])
         tree.insert(value: 1)
-        // yxc_debugPrint("tree: \(tree)")
+        //  SC.log("tree: \(tree)")
         // draw binary tree
         SC.log(tree.printBinaryTree)
 

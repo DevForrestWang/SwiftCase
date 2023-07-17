@@ -93,7 +93,7 @@ class ListViewController: BaseViewController, CommonListDelegate {
      let jsonStr = String(data: data, encoding: .utf8)!
      return jsonStr
  } catch {
-     yxc_debugPrint("getParams failed: \(error)")
+ SC.log("getParams failed: \(error)")
  }
 
   // 2.Json 字符串转对象
@@ -103,6 +103,6 @@ class ListViewController: BaseViewController, CommonListDelegate {
   do {
        let grade = try decoder.decode(Grade.self, from: jsonData)
   } catch {
-      yxc_debugPrint("JSONDecoder failed: \(error)")
+ SC.log("JSONDecoder failed: \(error)")
   }
  */

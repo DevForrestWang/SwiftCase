@@ -44,7 +44,35 @@ public extension UITableView {
         register(UINib(nibName: identifier(cellClass: cellClass), bundle: nil), forCellReuseIdentifier: identifier(cellClass: cellClass))
     }
 
-    func dequeueReusableCell<T: UITableViewCell>(cellClass: T.Type, indexPath: IndexPath) -> T? {
-        dequeueReusableCell(withIdentifier: identifier(cellClass: cellClass), for: indexPath) as? T
+    /// 根据View 获取对应Cell的indexpath
+    func indexPath(by child: UIView) -> IndexPath? {
+        let point = child.convert(CGPoint.zero, to: self)
+        return indexPathForRow(at: point)
+    }
+
+    /// 根据 child view  获取对应Cell
+    func cell(by child: UIView) -> UITableViewCell? {
+        let point = child.convert(CGPoint.zero, to: self)
+        if let indexPath = indexPathForRow(at: point) {
+            return cellForRow(at: indexPath)
+        }
+        return nil
+    }
+}
+
+public extension UICollectionView {
+    /// 根据View 获取对应Cell的indexpath
+    func indexPath(by child: UIView) -> IndexPath? {
+        let point = child.convert(CGPoint.zero, to: self)
+        return indexPathForItem(at: point)
+    }
+
+    /// 根据 child view  获取对应Cell
+    func cell(by child: UIView) -> UICollectionViewCell? {
+        let point = child.convert(CGPoint.zero, to: self)
+        if let indexPath = indexPathForItem(at: point) {
+            return cellForItem(at: indexPath)
+        }
+        return nil
     }
 }

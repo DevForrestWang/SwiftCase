@@ -14,7 +14,7 @@
 import Foundation
 import UIKit
 
-extension UIWindow {
+public extension UIWindow {
     static var keyWindow: UIWindow? {
         var originalKeyWindow: UIWindow?
 

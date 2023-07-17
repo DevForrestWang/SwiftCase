@@ -212,7 +212,7 @@ class SCUIEventViewVC: BaseViewController {
     override func touchesMoved(_ touches: Set<UITouch>, with _: UIEvent?) {
         for touch: AnyObject in touches {
             let _: UITouch = touch as! UITouch
-            // yxc_debugPrint(t.location(in: view))
+            //  SC.log(t.location(in: view))
         }
     }
 

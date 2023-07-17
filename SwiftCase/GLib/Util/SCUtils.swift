@@ -397,7 +397,7 @@ public enum SCUtils {
 
     /// UITextField 添加下划线
     public static func underline(textfield: UITextField, color: UIColor) {
-        let underLine = UIView(frame: CGRect(x: 0, y: textfield.yxc_height - 1, width: textfield.yxc_width, height: 0.5))
+        let underLine = UIView(frame: CGRect(x: 0, y: textfield.frame.size.height - 1, width: textfield.frame.size.width, height: 0.5))
         underLine.backgroundColor = color
         textfield.addSubview(underLine)
         // 然后别忘了把文本框外框设置成none
