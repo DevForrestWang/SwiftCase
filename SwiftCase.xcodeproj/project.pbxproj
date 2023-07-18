@@ -583,6 +583,7 @@
 		C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopMenuVC.swift; sourceTree = "<group>"; };
 		C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPopMenu.swift; sourceTree = "<group>"; };
 		C62328212899099900A1015E /* GYTextSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTextSwitch.swift; sourceTree = "<group>"; };
+		C64653E72A669E9400940FF5 /* SwiftCaseTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftCaseTestPlan.xctestplan; sourceTree = "<group>"; };
 		C650D28D2A204A6C008C52E3 /* SCPermenantThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPermenantThread.swift; sourceTree = "<group>"; };
 		C68032A72A03ACDC00910E71 /* ProvincesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvincesModel.swift; sourceTree = "<group>"; };
 		C68195122892B652001CCF50 /* SCPopupBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopupBaseView.swift; sourceTree = "<group>"; };
@@ -865,6 +866,7 @@
 		7756E85826FB1A7400AB139F /* SwiftCaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				C64653E72A669E9400940FF5 /* SwiftCaseTestPlan.xctestplan */,
 				7756E86126FB1CD000AB139F /* DesignPatternTests.swift */,
 				7756E85926FB1A7400AB139F /* SwiftCaseTests.swift */,
 				7756E85B26FB1A7400AB139F /* Info.plist */,

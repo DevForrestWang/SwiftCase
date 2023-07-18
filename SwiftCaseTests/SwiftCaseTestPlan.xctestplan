@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "E9351566-E46F-40FC-8449-BAFC5D30F565",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:SwiftCase.xcodeproj",
+      "identifier" : "77E0ACAC26F5C228000EABC1",
+      "name" : "SwiftCase"
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SwiftCase.xcodeproj",
+        "identifier" : "7756E85626FB1A7400AB139F",
+        "name" : "SwiftCaseTests"
+      }
+    }
+  ],
+  "version" : 1
+}
