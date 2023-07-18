@@ -1,5 +1,5 @@
 //
-//===--- DateExtension.swift - Defines the DateExtension class ----------===//
+//===--- Date+Extension.swift - Defines the Date+Extension class ----------===//
 //
 // This source file is part of the SwiftCase open source project
 //

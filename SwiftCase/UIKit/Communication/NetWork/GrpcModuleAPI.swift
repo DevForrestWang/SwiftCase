@@ -82,15 +82,3 @@ extension GrpcModuleAPI: TargetType {
 public func url(_ route: TargetType) -> String {
     return route.baseURL.appendingPathComponent(route.path).absoluteString
 }
-
-// MARK: - Provider support
-
-private extension String {
-    var urlEscaped: String {
-        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-    }
-
-    var utf8Encoded: Data {
-        return data(using: .utf8)!
-    }
-}

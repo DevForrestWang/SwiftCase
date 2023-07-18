@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension NSMutableAttributedString {
+public extension NSMutableAttributedString {
     class func getAttributedString(fromString string: String) -> NSMutableAttributedString {
         return NSMutableAttributedString(string: string)
     }

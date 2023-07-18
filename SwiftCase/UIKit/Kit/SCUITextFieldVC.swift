@@ -65,7 +65,7 @@ class SCUITextFieldVC: BaseViewController, UITextFieldDelegate {
         SC.log("The text input will change (called each time it is typed:\(String(describing: textField.text))")
 
         // 禁止表情输入
-        if text.hasEmoji() || text.containsEmoji() {
+        if text.containsEmoji() {
             return false
         }
 

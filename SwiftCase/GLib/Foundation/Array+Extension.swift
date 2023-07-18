@@ -1,5 +1,5 @@
 //
-//===--- ArrayExtention.swift - Defines the ArrayExtention class ----------===//
+//===--- Array+Extension.swift - Defines the Array+Extension class ----------===//
 //
 // This source file is part of the SwiftCase open source project
 //

@@ -1,5 +1,5 @@
 //
-//===--- SaveDataExtension.swift - Defines the SaveDataExtension class ----------===//
+//===--- SaveData+Extension.swift - Defines the SaveData+Extension class ----------===//
 //
 // This source file is part of the SwiftCase open source project
 //
@@ -114,5 +114,36 @@ public extension Dictionary where Key == String, Value == Any {
     func store(key: String) {
         UserDefaults.standard.set(self, forKey: key)
         UserDefaults.standard.synchronize()
+    }
+
+    /// key是否存在在字典中
+    func has(key: Key) -> Bool {
+        return index(forKey: key) != nil
+    }
+
+    /// 移除key对应的value
+    mutating func removeAll<S: Sequence>(keys: S) where S.Element == Key {
+        keys.forEach { removeValue(forKey: $0) }
+    }
+
+    /// 字典转Data
+    func toData(prettify: Bool = false) -> Data? {
+        guard JSONSerialization.isValidJSONObject(self) else {
+            return nil
+        }
+        let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
+        return try? JSONSerialization.data(withJSONObject: self, options: options)
+    }
+
+    /// 字典转json
+    func toJson(prettify: Bool = false) -> String? {
+        guard JSONSerialization.isValidJSONObject(self) else { return nil }
+        let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: self, options: options) else { return nil }
+        return String(data: jsonData, encoding: .utf8)
+    }
+
+    func toModel<T>(_: T.Type) -> T? where T: Decodable {
+        return toData()?.toModel(T.self)
     }
 }
