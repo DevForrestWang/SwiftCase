@@ -189,25 +189,40 @@ public extension String {
         return (result.count > 0)
     }
 
+    /// 是否包含emoji
+    var isContainEmoji: Bool {
+        for scalar in unicodeScalars {
+            return containEmoji(scalar)
+        }
+        return false
+    }
+
+    /// 是否包含表情
+    /// - Parameter scalar: unicode 字符
+    /// - Returns: 是表情返回true
+    func containEmoji(_ scalar: Unicode.Scalar) -> Bool {
+        switch Int(scalar.value) {
+        case 0x1F600 ... 0x1F64F: return true // Emoticons
+        case 0x1F300 ... 0x1F5FF: return true // Misc Symbols and Pictographs
+        case 0x1F680 ... 0x1F6FF: return true // Transport and Map
+        case 0x1F1E6 ... 0x1F1FF: return true // Regional country flags
+        case 0x2600 ... 0x26FF: return true // Misc symbols
+        case 0x2700 ... 0x27BF: return true // Dingbats
+        case 0xE0020 ... 0xE007F: return true // Tags
+        case 0xFE00 ... 0xFE0F: return true // Variation Selectors
+        case 0x1F900 ... 0x1F9FF: return true // Supplemental Symbols and Pictographs
+        case 127_000 ... 127_600: return true // Various asian characters
+        case 65024 ... 65039: return true // Variation selector
+        case 9100 ... 9300: return true // Misc items
+        case 8400 ... 8447: return true //
+        default: return false
+        }
+    }
+
     /// 字符串是否有 Emoji
     func containsEmoji() -> Bool {
         for scalar in unicodeScalars {
-            switch scalar.value {
-            case 0x1F600 ... 0x1F64F: return true // Emoticons
-            case 0x1F300 ... 0x1F5FF: return true // Misc Symbols and Pictographs
-            case 0x1F680 ... 0x1F6FF: return true // Transport and Map
-            case 0x1F1E6 ... 0x1F1FF: return true // Regional country flags
-            case 0x2600 ... 0x26FF: return true // Misc symbols
-            case 0x2700 ... 0x27BF: return true // Dingbats
-            case 0xE0020 ... 0xE007F: return true // Tags
-            case 0xFE00 ... 0xFE0F: return true // Variation Selectors
-            case 0x1F900 ... 0x1F9FF: return true // Supplemental Symbols and Pictographs
-            case 127_000 ... 127_600: return true // Various asian characters
-            case 65024 ... 65039: return true // Variation selector
-            case 9100 ... 9300: return true // Misc items
-            case 8400 ... 8447: return true //
-            default: return false
-            }
+            return containEmoji(scalar)
         }
         return false
     }

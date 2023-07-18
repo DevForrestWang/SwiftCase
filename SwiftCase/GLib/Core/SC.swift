@@ -10,8 +10,6 @@
 // See more information
 //
 //===----------------------------------------------------------------------===//
-
-import SpeedySwift
 import Toast_Swift
 import UIKit
 
@@ -20,6 +18,8 @@ public typealias SC = SwiftCase
 /// 常用系统信息相关方法
 @objcMembers
 public class SwiftCase: NSObject {
+    public static let lock = DispatchSemaphore(value: 1)
+
     // 屏幕宽度
     public static let w = UIScreen.main.bounds.width
 

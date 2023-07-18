@@ -1,9 +1,15 @@
 //
-//  SCTextView.swift
-//  SpeedySwift
+//===--- SCTextView.swift - Defines the SCTextView class ----------===//
 //
-//  Created by 2020 on 2021/9/30.
+// This source file is part of the SwiftCase open source project
 //
+// Created by applem1 on 2023/7/14.
+// Copyright © 2023 SwiftCase. All rights reserved.
+// Licensed under Apache License v2.0 with Runtime Library Exception
+//
+// See more information
+//
+//===----------------------------------------------------------------------===//
 
 import Foundation
 import UIKit

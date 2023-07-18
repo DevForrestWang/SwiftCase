@@ -258,6 +258,8 @@
 		C60598C72A66305D00CD1AE1 /* SCTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60598C62A66305D00CD1AE1 /* SCTextView.swift */; };
 		C60598C92A6631C700CD1AE1 /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60598C82A6631C700CD1AE1 /* AttributedString+Extension.swift */; };
 		C60598CB2A66370800CD1AE1 /* Object+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60598CA2A66370800CD1AE1 /* Object+Extension.swift */; };
+		C60598CD2A6646B500CD1AE1 /* SSSandBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60598CC2A6646B500CD1AE1 /* SSSandBox.swift */; };
+		C60598CF2A6646FD00CD1AE1 /* SCAPICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60598CE2A6646FD00CD1AE1 /* SCAPICache.swift */; };
 		C61C4830296BBB01005EA8F4 /* SCPopMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */; };
 		C61C4832296BBB09005EA8F4 /* SwiftPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */; };
 		C62328222899099900A1015E /* GYTextSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62328212899099900A1015E /* GYTextSwitch.swift */; };
@@ -575,6 +577,8 @@
 		C60598C62A66305D00CD1AE1 /* SCTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCTextView.swift; sourceTree = "<group>"; };
 		C60598C82A6631C700CD1AE1 /* AttributedString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedString+Extension.swift"; sourceTree = "<group>"; };
 		C60598CA2A66370800CD1AE1 /* Object+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+Extension.swift"; sourceTree = "<group>"; };
+		C60598CC2A6646B500CD1AE1 /* SSSandBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSandBox.swift; sourceTree = "<group>"; };
+		C60598CE2A6646FD00CD1AE1 /* SCAPICache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCAPICache.swift; sourceTree = "<group>"; };
 		C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopMenuVC.swift; sourceTree = "<group>"; };
 		C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPopMenu.swift; sourceTree = "<group>"; };
 		C62328212899099900A1015E /* GYTextSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTextSwitch.swift; sourceTree = "<group>"; };
@@ -1327,6 +1331,7 @@
 			isa = PBXGroup;
 			children = (
 				C6F68C132A615663003F0B04 /* SC.swift */,
+				C60598CE2A6646FD00CD1AE1 /* SCAPICache.swift */,
 				77F6527726F5D20300280568 /* GlobalConfig.swift */,
 			);
 			path = Core;
@@ -1349,6 +1354,7 @@
 				C6D68213293E206200EA7925 /* NSMutableAttributedString+Extension.swift */,
 				77DC113227423D9D002AED0C /* AttrString.swift */,
 				777BA9D4272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift */,
+				C60598CC2A6646B500CD1AE1 /* SSSandBox.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1761,6 +1767,7 @@
 				77F6529A26F5D25F00280568 /* CartSubscriber.swift in Sources */,
 				C6C0CC2629E685D300C7C2C2 /* CachingPlayerItem.swift in Sources */,
 				77F652A326F5D25F00280568 /* ChainOfResponsibility.swift in Sources */,
+				C60598CF2A6646FD00CD1AE1 /* SCAPICache.swift in Sources */,
 				77F6529926F5D25F00280568 /* TreeIterator.swift in Sources */,
 				77F652AE26F5D25F00280568 /* BurgerAbstractFactory.swift in Sources */,
 				C6BCB6AC29ED36D300DC8A03 /* AFNetRequest.swift in Sources */,
@@ -1888,6 +1895,7 @@
 				771005722735299300733EF7 /* Interval.swift in Sources */,
 				77F652C526F5E2C500280568 /* SCUITabBarController.swift in Sources */,
 				77C25442270319470012F078 /* UITextView+Extension.swift in Sources */,
+				C60598CD2A6646B500CD1AE1 /* SSSandBox.swift in Sources */,
 				770B49C9273A5C7100B55FBB /* BaseViewController.swift in Sources */,
 				779843A22702B03F001D73AF /* ChatListTableViewCell.swift in Sources */,
 				77F652A126F5D25F00280568 /* TrackingState.swift in Sources */,

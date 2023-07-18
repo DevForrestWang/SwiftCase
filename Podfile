@@ -57,6 +57,6 @@ target 'SwiftCase' do
   pod 'CryptoSwift'
   
   # 基础工具库
-  pod 'SpeedySwift'
+  # pod 'SpeedySwift'
 
 end
