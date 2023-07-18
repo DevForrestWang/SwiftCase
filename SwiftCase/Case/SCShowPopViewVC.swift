@@ -45,6 +45,19 @@ class SCShowPopViewVC: BaseViewController {
         pView.show(SC.h * 0.8, headIcon: false, titleName: "日期选择")
     }
 
+    @objc private func showImageView() {
+        let imageView = SCBrowseImageView()
+        let baseURL = "https://cdn.pixabay.com/photo"
+        let imageURL: NSArray = [baseURL + "/2021/08/19/12/53/bremen-6557996_960_720.jpg",
+                                 baseURL + "/2020/09/01/21/03/sunset-5536777_960_720.jpg",
+                                 baseURL + "/2020/07/21/16/24/landscape-5426755_960_720.jpg",
+                                 baseURL + "/2021/09/07/11/53/car-6603726_960_720.jpg",
+                                 baseURL + "/2021/07/30/17/58/dragonfly-6510395_960_720.jpg",
+                                 baseURL + "/2021/09/12/15/18/sunflowers-6618618_960_720.jpg"]
+
+        imageView.show(imageURL)
+    }
+
     // MARK: - Private
 
     // MARK: - UI
@@ -53,7 +66,9 @@ class SCShowPopViewVC: BaseViewController {
         title = "弹出菜单"
 
         view.addSubview(calendarBtn)
+        view.addSubview(showImageBtn)
         calendarBtn.addTarget(self, action: #selector(showCalendarAction), for: .touchUpInside)
+        showImageBtn.addTarget(self, action: #selector(showImageView), for: .touchUpInside)
     }
 
     // MARK: - Constraints
@@ -65,6 +80,12 @@ class SCShowPopViewVC: BaseViewController {
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-44)
         }
+
+        showImageBtn.snp.makeConstraints { make in
+            make.width.height.equalTo(calendarBtn)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(calendarBtn.snp.bottom).offset(40)
+        }
     }
 
     // MARK: - Property
@@ -72,6 +93,14 @@ class SCShowPopViewVC: BaseViewController {
     let calendarBtn = UIButton(type: .custom).then {
         $0.backgroundColor = .white
         $0.setTitle("选择日期", for: .normal)
+        $0.setTitleColor(UIColor.hexColor(0x3F6D03), for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 14.0)
+        $0.layer.cornerRadius = 5
+    }
+
+    let showImageBtn = UIButton(type: .custom).then {
+        $0.backgroundColor = .white
+        $0.setTitle("浏览图片", for: .normal)
         $0.setTitleColor(UIColor.hexColor(0x3F6D03), for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14.0)
         $0.layer.cornerRadius = 5

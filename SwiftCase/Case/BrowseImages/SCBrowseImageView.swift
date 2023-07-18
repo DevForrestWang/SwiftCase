@@ -173,7 +173,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
     // MARK: - UI
 
     func setupUI() {
-        frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.w)
+        frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.h)
         backgroundColor = UIColor.black.withAlphaComponent(0.8)
         addSubview(titleLable)
 
@@ -209,7 +209,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
 
         imageScrollView.snp.makeConstraints { make in
             make.width.equalTo(SC.w)
-            make.height.equalTo(SC.w - contentViewHeight)
+            make.height.equalTo(SC.h - contentViewHeight)
             // make.center.equalToSuperview()
         }
 
@@ -265,7 +265,7 @@ class SCBrowseImageView: UIView, UIScrollViewDelegate, UICollectionViewDelegate,
         $0.showsVerticalScrollIndicator = false
         $0.scrollsToTop = false
         $0.isScrollEnabled = true
-        $0.frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.w)
+        $0.frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.h)
     }
 
     let shopImageView = UIImageView().then {
