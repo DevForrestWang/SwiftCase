@@ -39,6 +39,7 @@ class SCSelectDayView: SCPopupBaseView {
     // MARK: - IBActions
 
     @objc private func confirmAction() {
+        SC.log("Enter ......")
         if let tmpStart = startDay, let tmpEnd = endDay, let tempClourse = gyActivitySelectDayClosure {
             tempClourse(tmpStart, tmpEnd)
             closeAction()

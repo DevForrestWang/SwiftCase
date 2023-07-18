@@ -35,10 +35,17 @@ class SCPopupBaseView: UIView {
 
     // MARK: - Public
 
-    public func show(_ contentHeight: CGFloat, headIcon: Bool, titleName: String, vc: UIViewController? = nil) {
+    public func show(_ contentHeight: CGFloat, headIcon _: Bool = false, titleName: String, vc: UIViewController? = nil) {
+        backgroundColor = UIColor.black.withAlphaComponent(0.5)
+
+        // 隐藏横线图标
         headIconImage.isHidden = true
-        if headIcon {
-            headIconImage.isHidden = false
+        if headIconImage.isHidden {
+            headView.snp.updateConstraints { make in
+                make.top.equalTo(-10)
+                make.height.equalTo(20)
+            }
+            headView.layer.cornerRadius = 10
         }
 
         if titleName.isEmpty {
@@ -50,7 +57,13 @@ class SCPopupBaseView: UIView {
 
         topBarHeight = 0
         if let tmpVC = vc {
-            topBarHeight = CGFloat(topBarHeight)
+            topBarHeight = CGFloat(SC.topBarHeight)
+            // 如果隐藏导航栏
+            if let barState = tmpVC.navigationController?.navigationBar.isHidden {
+                if barState {
+                    topBarHeight = 0
+                }
+            }
             tmpVC.view.addSubview(self)
             reSetupConstraints()
         } else {
@@ -59,20 +72,40 @@ class SCPopupBaseView: UIView {
         }
 
         updateContentHeight(contentHeight)
+
+        if isAnimate {
+            // 弹出动画
+            contentView.frame = CGRectMake(0, SC.h, SC.w, contentHeight - 20)
+            UIView.animate(withDuration: 0.25) { [weak self] in
+                self?.contentView.frame.origin.y = SC.h - contentHeight - 20
+            }
+        }
     }
 
     public func updateContentHeight(_ contentHeight: CGFloat) {
-        bgView.snp.updateConstraints { make in
-            make.height.equalTo(SC.w - topBarHeight - contentHeight + 20)
-        }
-
         contentView.snp.updateConstraints { make in
             make.height.equalTo(contentHeight - 20)
         }
     }
 
     public func clearBgView() {
-        bgView.backgroundColor = .clear
+        backgroundColor = .clear
+    }
+
+    public func addContentiew(_ view: UIView) {
+        contentView.addSubview(view)
+    }
+
+    public func expandTitle() {
+        leftTitleButton.isHidden = true
+        rightTitleButton.isHidden = true
+        titleLable.font = .systemFont(ofSize: 20)
+        titleLable.snp.remakeConstraints { make in
+            make.top.equalTo(headView.snp.bottom)
+            make.height.equalTo(30)
+            make.left.equalToSuperview().offset(5)
+            make.right.equalToSuperview().offset(-5)
+        }
     }
 
     // MARK: - Protocol
@@ -80,11 +113,21 @@ class SCPopupBaseView: UIView {
     // MARK: - IBActions
 
     @objc public func closeAction() {
-        removeFromSuperview()
+        if isAnimate {
+            UIView.animate(withDuration: 0.25, animations: { [weak self] in
+                self?.contentView.frame.origin.y = SC.h
+            }, completion: { [weak self] _ in
+                self?.removeFromSuperview()
+            })
+        } else {
+            removeFromSuperview()
+        }
     }
 
-    @objc private func bgTabAction() {
-        if closeBGView {
+    override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
+        let touch = (touches as NSSet).anyObject() as! UITouch
+        guard let result = touch.view?.isDescendant(of: contentView) else { return }
+        if !result, closeBGView {
             closeAction()
         }
     }
@@ -105,10 +148,8 @@ class SCPopupBaseView: UIView {
     // MARK: - UI
 
     private func setupUI() {
-        frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.w)
-        backgroundColor = .clear
+        frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.h)
 
-        addSubview(bgView)
         addSubview(contentView)
         contentView.addSubview(headView)
         headView.addSubview(headIconImage)
@@ -116,82 +157,67 @@ class SCPopupBaseView: UIView {
         contentView.addSubview(titleLable)
         contentView.addSubview(rightTitleButton)
 
-        let closeGesture = UITapGestureRecognizer(target: self, action: #selector(bgTabAction))
-        closeGesture.numberOfTapsRequired = 1
-        closeGesture.numberOfTouchesRequired = 1
-        bgView.addGestureRecognizer(closeGesture)
-
         hideKeyboardWhenTapedAround()
     }
 
     // MARK: - Constraints
 
     private func setupConstraints() {
-        bgView.snp.makeConstraints { make in
-            make.top.equalTo(0)
-            make.width.equalToSuperview()
-            make.height.equalTo(SC.w * viewScale / 2)
-        }
-
         contentView.snp.makeConstraints { make in
-            make.top.equalTo(bgView.snp.bottom)
+            make.bottom.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(SC.w * viewScale / 2)
+            make.height.equalTo(SC.h / 2)
         }
 
         headView.snp.makeConstraints { make in
-            make.top.equalTo(-20 * viewScale)
+            make.top.equalTo(-20)
             make.width.equalToSuperview()
-            make.height.equalTo(40 * viewScale)
+            make.height.equalTo(40)
         }
 
         headIconImage.snp.makeConstraints { make in
-            make.width.equalTo(50 * viewScale)
-            make.height.equalTo(20 * viewScale)
+            make.width.equalTo(50)
+            make.height.equalTo(20)
             make.center.equalToSuperview()
         }
 
         leftTitleButton.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom)
-            make.height.equalTo(21 * viewScale)
-            make.width.equalTo(100 * viewScale)
+            make.height.equalTo(30)
+            make.width.equalTo(100)
             make.left.equalToSuperview().offset(15)
         }
 
         rightTitleButton.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom)
-            make.height.equalTo(21 * viewScale)
-            make.width.equalTo(100 * viewScale)
+            make.height.equalTo(30)
+            make.width.equalTo(100)
             make.right.equalToSuperview().offset(-15)
         }
 
         titleLable.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom)
-            make.height.equalTo(21 * viewScale)
+            make.height.equalTo(30)
             make.left.equalTo(leftTitleButton.snp.right)
             make.right.equalTo(rightTitleButton.snp.left)
         }
     }
 
     private func reSetupConstraints() {
-        frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.w - topBarHeight)
-
-        bgView.snp.remakeConstraints { make in
-            make.top.equalTo(0)
-            make.width.equalToSuperview()
-            make.height.equalTo((SC.w - topBarHeight) * viewScale / 2)
-        }
+        frame = CGRect(x: 0, y: 0, width: SC.w, height: SC.h - topBarHeight)
 
         contentView.snp.remakeConstraints { make in
-            make.top.equalTo(bgView.snp.bottom)
+            make.bottom.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo((SC.w - topBarHeight) * viewScale / 2)
+            make.height.equalTo((SC.h - topBarHeight) / 2)
         }
     }
 
     // MARK: - Property
 
-    public var closeBGView = true
+    @objc public var closeBGView = true
+
+    @objc public var isAnimate = false
 
     public let contentView = UIView().then {
         $0.backgroundColor = UIColor.hexColor(0xFEFFFF)
@@ -200,22 +226,16 @@ class SCPopupBaseView: UIView {
     // 是否在当前控制器上显示
     private var topBarHeight: CGFloat = 0
 
-    private let viewScale = SC.equalScale
-
-    private let bgView = UIView().then {
-        $0.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-    }
-
     private let headView = UIView().then {
         $0.backgroundColor = UIColor.hexColor(0xFEFFFF)
-        $0.layer.cornerRadius = SC.equalScale * 25
+        $0.layer.cornerRadius = 20
     }
 
     private let headIconImage = UIImageView().then {
         $0.image = UIImage(named: "gy_assistant_head_icon")
     }
 
-    public let titleLable = UILabel().then {
+    @objc public let titleLable = UILabel().then {
         $0.text = ""
         $0.textColor = .black
         $0.font = .systemFont(ofSize: 20)

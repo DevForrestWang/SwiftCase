@@ -272,6 +272,7 @@
 		C68195202892C062001CCF50 /* SCalendarDateRangePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951D2892C062001CCF50 /* SCalendarDateRangePickerCell.swift */; };
 		C68195212892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */; };
 		C68195232892C08E001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195222892C08E001CCF50 /* SCSelectDayView.swift */; };
+		C68CB78D2A666EA100F02C10 /* SCShowPopViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68CB78C2A666EA100F02C10 /* SCShowPopViewVC.swift */; };
 		C6ACB61C2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */; };
 		C6B0AEF32A3AAD5E002A5719 /* SCPopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */; };
 		C6B0AEF52A3AAE2B002A5719 /* SCPopListViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */; };
@@ -591,6 +592,7 @@
 		C681951D2892C062001CCF50 /* SCalendarDateRangePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCalendarDateRangePickerCell.swift; sourceTree = "<group>"; };
 		C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCalendarDateRangePickerHeaderView.swift; sourceTree = "<group>"; };
 		C68195222892C08E001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
+		C68CB78C2A666EA100F02C10 /* SCShowPopViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCShowPopViewVC.swift; sourceTree = "<group>"; };
 		C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLayoutByScrollViewVC.swift; sourceTree = "<group>"; };
 		C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopListView.swift; sourceTree = "<group>"; };
 		C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPopListViewVC.swift; sourceTree = "<group>"; };
@@ -1146,8 +1148,9 @@
 				7756E86326FB2E9800AB139F /* Mine */,
 				7756E84C26FB173700AB139F /* OC */,
 				C88F934026F8DEAD00739819 /* BrowseImages */,
-				77F652C226F5E24E00280568 /* CaseViewController.swift */,
 				C68195222892C08E001CCF50 /* SCSelectDayView.swift */,
+				C68CB78C2A666EA100F02C10 /* SCShowPopViewVC.swift */,
+				77F652C226F5E24E00280568 /* CaseViewController.swift */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -1936,6 +1939,7 @@
 				C88F934426F8DEAD00739819 /* SCBrowsImageCell.swift in Sources */,
 				8A8ED9B6279BFC2400971DDA /* LoginView.swift in Sources */,
 				77062DED2739467700A7F090 /* VertexPath.swift in Sources */,
+				C68CB78D2A666EA100F02C10 /* SCShowPopViewVC.swift in Sources */,
 				77F652C326F5E24E00280568 /* CaseViewController.swift in Sources */,
 				8A3E2A5B2799699A006ECFB8 /* StringExtension.swift in Sources */,
 				777BA9CB272941800030DCB9 /* Dijkstra.swift in Sources */,

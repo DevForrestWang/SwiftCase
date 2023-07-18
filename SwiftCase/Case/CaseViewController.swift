@@ -31,7 +31,7 @@ class CaseViewController: ItemListViewController {
             SCItemModel(title: "Up down swipe", controllerName: "UpDownSwipeViewController", action: nil),
             SCItemModel(title: "Show RxSwift + MVVM", controllerName: "SCMvvmVC", action: nil),
             SCItemModel(title: "Chat", controllerName: "GYMainChatVC", action: nil),
-            SCItemModel(title: "Calendar", controllerName: "", action: #selector(showCalendarAction)),
+            SCItemModel(title: "Calendar", controllerName: "SCShowPopViewVC", action: nil),
             SCItemModel(title: "Long Press Pop Menu", controllerName: "SCPopMenuVC", action: nil),
             SCItemModel(title: "Pop Menu", controllerName: "SCPopListViewVC", action: nil),
         ]
@@ -56,20 +56,6 @@ class CaseViewController: ItemListViewController {
     @objc private func callOCFunction() {
         let oc = SCObjectClass()
         oc.sayHello()
-    }
-
-    @objc private func showCalendarAction() {
-        let pView = SCSelectDayView()
-        let iHeight = SC.h * 0.8
-        pView.gyActivitySelectDayClosure = { [weak self] startDay, endDay in
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let startDay = dateFormatter.string(from: startDay)
-            let endDay = dateFormatter.string(from: endDay)
-            SC.toast("startDay:\(startDay) - endDay:\(endDay)")
-        }
-
-        pView.show(iHeight, headIcon: false, titleName: "日期选择")
     }
 
     // MARK: - Private
