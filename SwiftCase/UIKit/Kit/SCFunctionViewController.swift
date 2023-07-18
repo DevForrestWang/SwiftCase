@@ -13,7 +13,6 @@
 //
 //===----------------------------------------------------------------------===//
 
-import CryptoSwift
 import UIKit
 
 class SCFunctionViewController: BaseViewController {
@@ -206,7 +205,7 @@ class SCFunctionViewController: BaseViewController {
 
         // md5 使用
         let password = "your password"
-        SC.log("The \(password) md5: \(password.md5())")
+        SC.log("The \(password) md5: \(password.md5)")
 
         SC.log("localized: \("string_id".localized)")
     }
