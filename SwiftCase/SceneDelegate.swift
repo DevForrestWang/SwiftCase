@@ -39,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // 添加高德地图key
             AMapServices.shared().apiKey = GlobalConfig.gGaoDeMapKey
             AMapServices.shared().enableHTTPS = true
-            SCMapPrivacyUtility.showPrivacyInfoInWindow()
+            SCMapPrivacyUtility.handlePrivacyAgreeStatus()
         }
 
         #if DEBUG
