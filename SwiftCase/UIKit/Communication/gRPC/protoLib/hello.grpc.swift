@@ -27,7 +27,7 @@ import SwiftProtobuf
 /// 服务端接口类
 ///
 /// Usage: instantiate `Grpc_GreeterClient`, then call methods of this protocol to make API calls.
-internal protocol Grpc_GreeterClientProtocol: GRPCClient {
+protocol Grpc_GreeterClientProtocol: GRPCClient {
     var serviceName: String { get }
     var interceptors: Grpc_GreeterClientInterceptorFactoryProtocol? { get }
 
@@ -61,15 +61,15 @@ extension Grpc_GreeterClientProtocol {
     }
 }
 
-internal protocol Grpc_GreeterClientInterceptorFactoryProtocol {
+protocol Grpc_GreeterClientInterceptorFactoryProtocol {
     /// - Returns: Interceptors to use when invoking 'sayHello'.
     func makeSayHelloInterceptors() -> [ClientInterceptor<Grpc_HelloRequest, Grpc_HelloReply>]
 }
 
-internal final class Grpc_GreeterClient: Grpc_GreeterClientProtocol {
-    internal let channel: GRPCChannel
-    internal var defaultCallOptions: CallOptions
-    internal var interceptors: Grpc_GreeterClientInterceptorFactoryProtocol?
+final class Grpc_GreeterClient: Grpc_GreeterClientProtocol {
+    let channel: GRPCChannel
+    var defaultCallOptions: CallOptions
+    var interceptors: Grpc_GreeterClientInterceptorFactoryProtocol?
 
     /// Creates a client for the grpc.Greeter service.
     ///
@@ -77,7 +77,7 @@ internal final class Grpc_GreeterClient: Grpc_GreeterClientProtocol {
     ///   - channel: `GRPCChannel` to the service host.
     ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
     ///   - interceptors: A factory providing interceptors for each RPC.
-    internal init(
+    init(
         channel: GRPCChannel,
         defaultCallOptions: CallOptions = CallOptions(),
         interceptors: Grpc_GreeterClientInterceptorFactoryProtocol? = nil

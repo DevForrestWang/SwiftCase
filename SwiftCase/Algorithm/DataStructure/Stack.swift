@@ -44,7 +44,7 @@ extension Stack: Sequence {
     public func makeIterator() -> AnyIterator<T> {
         var curr = self
         return AnyIterator {
-            return curr.pop()
+            curr.pop()
         }
     }
 }

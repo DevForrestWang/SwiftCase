@@ -69,7 +69,7 @@ public struct Heap<T> {
      * Returns the index of the parent of the element at index i.
      * The element at index 0 is the root of the tree and has no parent.
      */
-    @inline(__always) internal func parentIndex(ofIndex i: Int) -> Int {
+    @inline(__always) func parentIndex(ofIndex i: Int) -> Int {
         return (i - 1) / 2
     }
 
@@ -78,7 +78,7 @@ public struct Heap<T> {
      * Note that this index can be greater than the heap size, in which case
      * there is no left child.
      */
-    @inline(__always) internal func leftChildIndex(ofIndex i: Int) -> Int {
+    @inline(__always) func leftChildIndex(ofIndex i: Int) -> Int {
         return 2 * i + 1
     }
 
@@ -87,7 +87,7 @@ public struct Heap<T> {
      * Note that this index can be greater than the heap size, in which case
      * there is no right child.
      */
-    @inline(__always) internal func rightChildIndex(ofIndex i: Int) -> Int {
+    @inline(__always) func rightChildIndex(ofIndex i: Int) -> Int {
         return 2 * i + 2
     }
 
@@ -175,7 +175,7 @@ public struct Heap<T> {
      * Takes a child node and looks at its parents; if a parent is not larger
      * (max-heap) or not smaller (min-heap) than the child, we exchange them.
      */
-    internal mutating func shiftUp(_ index: Int) {
+    mutating func shiftUp(_ index: Int) {
         var childIndex = index
         let child = nodes[childIndex]
         var parentIndex = self.parentIndex(ofIndex: childIndex)
@@ -193,7 +193,7 @@ public struct Heap<T> {
      * Looks at a parent node and makes sure it is still larger (max-heap) or
      * smaller (min-heap) than its childeren.
      */
-    internal mutating func shiftDown(from index: Int, until endIndex: Int) {
+    mutating func shiftDown(from index: Int, until endIndex: Int) {
         let leftChildIndex = self.leftChildIndex(ofIndex: index)
         let rightChildIndex = leftChildIndex + 1
 
@@ -219,7 +219,7 @@ public struct Heap<T> {
         shiftDown(from: first, until: endIndex)
     }
 
-    internal mutating func shiftDown(_ index: Int) {
+    mutating func shiftDown(_ index: Int) {
         shiftDown(from: index, until: nodes.count)
     }
 }

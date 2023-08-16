@@ -332,12 +332,14 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
         }
 
         let photoPicker = ZLPhotoPreviewSheet()
-        photoPicker.selectImageBlock = { [weak self] images, assets, _ in
+        photoPicker.selectImageBlock = { [weak self] results, isOriginal in
             if let tempClosure = self?.gySelectImageBlock {
-                let hasSelectVideo = assets.first?.mediaType == .video
-                tempClosure(images, assets, hasSelectVideo)
+                let images = results.map { $0.image }
+                let assets = results.map { $0.asset }
+                tempClosure(images, assets, isOriginal)
             }
         }
+
         photoPicker.showPhotoLibrary(sender: vc)
     }
 
@@ -375,7 +377,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
     }
 
     private func saveToAlbum(image: UIImage?, videoUrl: URL?) {
-        let hud = ZLProgressHUD(style: ZLPhotoConfiguration.default().hudStyle)
+        let hud = ZLProgressHUD(style: ZLPhotoUIConfiguration.default().hudStyle)
         if let image = image {
             hud.show()
             ZLPhotoManager.saveImageToAlbum(image: image) { [weak self] suc, asset in

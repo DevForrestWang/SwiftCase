@@ -21,8 +21,8 @@ public class TreeNode<Key: Comparable, Payload> {
     var payload: Payload?
     // Node's name
     fileprivate var key: Key
-    internal var leftChild: Node?
-    internal var rightChild: Node?
+    var leftChild: Node?
+    var rightChild: Node?
     fileprivate var height: Int
     fileprivate weak var parent: Node?
 

@@ -53,7 +53,7 @@ public class SwiftPopMenu: UIView {
     // 文字颜色
     private var popMenuTextColor: UIColor = .black
     // 字体大小等
-    private var popMenuTextFont: UIFont = UIFont.systemFont(ofSize: 17)
+    private var popMenuTextFont: UIFont = .systemFont(ofSize: 17)
     // 菜单高度
     private var popMenuItemHeight: CGFloat = 44.0
     // 菜单分割线颜色
@@ -280,7 +280,7 @@ class SwiftPopMenuCell: UITableViewCell {
     // 自定义属性
     var lineColor: UIColor = .init(red: 222 / 255.0, green: 222 / 255.0, blue: 222 / 255.0, alpha: 0.5)
     var txtColor: UIColor = .black
-    var txtFont: UIFont = UIFont.systemFont(ofSize: 17)
+    var txtFont: UIFont = .systemFont(ofSize: 17)
     var iconLeft: CGFloat = 15
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

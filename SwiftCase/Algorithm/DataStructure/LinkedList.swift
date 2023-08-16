@@ -347,10 +347,10 @@ public struct LinkedListIndex<T>: Comparable {
     fileprivate let tag: Int
 
     public static func== <T>(lhs: LinkedListIndex<T>, rhs: LinkedListIndex<T>) -> Bool {
-        return (lhs.tag == rhs.tag)
+        return lhs.tag == rhs.tag
     }
 
     public static func< <T>(lhs: LinkedListIndex<T>, rhs: LinkedListIndex<T>) -> Bool {
-        return (lhs.tag < rhs.tag)
+        return lhs.tag < rhs.tag
     }
 }

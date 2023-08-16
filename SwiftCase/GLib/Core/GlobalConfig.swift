@@ -25,7 +25,7 @@ public enum GlobalConfig {
     public static let gCharHost = "http://\(gBaseUrl):9100"
 
     // 高德地图key
-    public static let gGaoDeMapKey = "b00c88f69a38f58eee2a00b6ebe1abda"
+    public static let gGaoDeMapKey = "d47f60402dd010cb57f6bad3b2b735d1"
 
     // MARK: -  UI
 }

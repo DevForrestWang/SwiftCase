@@ -187,7 +187,7 @@ public extension String {
             return false
         }
         let result = reg.matches(in: self, options: .reportProgress, range: NSMakeRange(0, count))
-        return (result.count > 0)
+        return result.count > 0
     }
 
     /// 是否包含emoji

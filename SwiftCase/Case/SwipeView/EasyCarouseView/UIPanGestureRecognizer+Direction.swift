@@ -1,5 +1,5 @@
 //
-//  PanExUtil.swift
+//  UIPanGestureRecognizer+Direction.swift
 //  MMPullSwipeDismiss
 //
 //  Created by Mukesh on 04/11/17.

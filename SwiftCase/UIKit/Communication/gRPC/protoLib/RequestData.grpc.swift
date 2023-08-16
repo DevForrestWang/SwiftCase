@@ -27,7 +27,7 @@ import SwiftProtobuf
 /// 服务端接口类
 ///
 /// Usage: instantiate `Grpc_RequestBodyClient`, then call methods of this protocol to make API calls.
-internal protocol Grpc_RequestBodyClientProtocol: GRPCClient {
+protocol Grpc_RequestBodyClientProtocol: GRPCClient {
     var serviceName: String { get }
     var interceptors: Grpc_RequestBodyClientInterceptorFactoryProtocol? { get }
 
@@ -61,15 +61,15 @@ extension Grpc_RequestBodyClientProtocol {
     }
 }
 
-internal protocol Grpc_RequestBodyClientInterceptorFactoryProtocol {
+protocol Grpc_RequestBodyClientInterceptorFactoryProtocol {
     /// - Returns: Interceptors to use when invoking 'requestData'.
     func makeRequestDataInterceptors() -> [ClientInterceptor<Grpc_Request, Grpc_Response>]
 }
 
-internal final class Grpc_RequestBodyClient: Grpc_RequestBodyClientProtocol {
-    internal let channel: GRPCChannel
-    internal var defaultCallOptions: CallOptions
-    internal var interceptors: Grpc_RequestBodyClientInterceptorFactoryProtocol?
+final class Grpc_RequestBodyClient: Grpc_RequestBodyClientProtocol {
+    let channel: GRPCChannel
+    var defaultCallOptions: CallOptions
+    var interceptors: Grpc_RequestBodyClientInterceptorFactoryProtocol?
 
     /// Creates a client for the grpc.RequestBody service.
     ///
@@ -77,7 +77,7 @@ internal final class Grpc_RequestBodyClient: Grpc_RequestBodyClientProtocol {
     ///   - channel: `GRPCChannel` to the service host.
     ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
     ///   - interceptors: A factory providing interceptors for each RPC.
-    internal init(
+    init(
         channel: GRPCChannel,
         defaultCallOptions: CallOptions = CallOptions(),
         interceptors: Grpc_RequestBodyClientInterceptorFactoryProtocol? = nil
