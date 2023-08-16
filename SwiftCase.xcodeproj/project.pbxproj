@@ -273,6 +273,7 @@
 		C68195212892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */; };
 		C68195232892C08E001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195222892C08E001CCF50 /* SCSelectDayView.swift */; };
 		C68CB78D2A666EA100F02C10 /* SCShowPopViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68CB78C2A666EA100F02C10 /* SCShowPopViewVC.swift */; };
+		C68DE6162A8C80660085576D /* SCMapPrivacyUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DE6152A8C80660085576D /* SCMapPrivacyUtility.swift */; };
 		C6ACB61C2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */; };
 		C6B0AEF32A3AAD5E002A5719 /* SCPopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */; };
 		C6B0AEF52A3AAE2B002A5719 /* SCPopListViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */; };
@@ -594,6 +595,7 @@
 		C681951E2892C062001CCF50 /* SCCalendarDateRangePickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCalendarDateRangePickerHeaderView.swift; sourceTree = "<group>"; };
 		C68195222892C08E001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
 		C68CB78C2A666EA100F02C10 /* SCShowPopViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCShowPopViewVC.swift; sourceTree = "<group>"; };
+		C68DE6152A8C80660085576D /* SCMapPrivacyUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCMapPrivacyUtility.swift; sourceTree = "<group>"; };
 		C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLayoutByScrollViewVC.swift; sourceTree = "<group>"; };
 		C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopListView.swift; sourceTree = "<group>"; };
 		C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPopListViewVC.swift; sourceTree = "<group>"; };
@@ -1448,6 +1450,15 @@
 			path = CalendarDate;
 			sourceTree = "<group>";
 		};
+		C68DE6142A8C80260085576D /* AMap */ = {
+			isa = PBXGroup;
+			children = (
+				C88F92FC26F8D8D300739819 /* SCUIMapViewVC.swift */,
+				C68DE6152A8C80660085576D /* SCMapPrivacyUtility.swift */,
+			);
+			path = AMap;
+			sourceTree = "<group>";
+		};
 		C6D8BF2C28D8420F009D85D5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1461,6 +1472,7 @@
 		C88F92F926F8D83200739819 /* Kit */ = {
 			isa = PBXGroup;
 			children = (
+				C68DE6142A8C80260085576D /* AMap */,
 				8A486262279FD7C4004ABF6C /* FlexBoxCase */,
 				77B66B4627001FB1009700A2 /* SCFunctionViewController.swift */,
 				C88F92FB26F8D8D300739819 /* SCUIVIewViewController.swift */,
@@ -1477,7 +1489,6 @@
 				772F9B3B277DA09800F4D43C /* SCWidgetVC.swift */,
 				77A586DF277327A6008C0A7C /* SCRxSwiftAndRxCocoaVC.swift */,
 				8A2EDF1728267B0000A43A28 /* SCUIPickerViewVC.swift */,
-				C88F92FC26F8D8D300739819 /* SCUIMapViewVC.swift */,
 				C822E403270EF558001C39FF /* SCUIEventViewVC.swift */,
 				7765BBEC273375E7009DF9BD /* UIEventViewController.h */,
 				7765BBED273375E8009DF9BD /* UIEventViewController.m */,
@@ -1901,6 +1912,7 @@
 				77F652C526F5E2C500280568 /* SCUITabBarController.swift in Sources */,
 				77C25442270319470012F078 /* UITextView+Extension.swift in Sources */,
 				C60598CD2A6646B500CD1AE1 /* SSSandBox.swift in Sources */,
+				C68DE6162A8C80660085576D /* SCMapPrivacyUtility.swift in Sources */,
 				770B49C9273A5C7100B55FBB /* BaseViewController.swift in Sources */,
 				779843A22702B03F001D73AF /* ChatListTableViewCell.swift in Sources */,
 				77F652A126F5D25F00280568 /* TrackingState.swift in Sources */,

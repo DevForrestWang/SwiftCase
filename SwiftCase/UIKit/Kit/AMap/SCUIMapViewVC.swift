@@ -89,10 +89,6 @@ class SCUIMapViewVC: BaseViewController, MAMapViewDelegate {
     // MARK: - Constraints
 
     func setupConstraints() {
-        mapView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-
         homeButton.snp.makeConstraints { make in
             make.width.height.equalTo(40)
             make.right.equalTo(view).offset(-10)
@@ -102,17 +98,19 @@ class SCUIMapViewVC: BaseViewController, MAMapViewDelegate {
 
     // MARK: - Property
 
-    let mapView = MAMapView().then {
-        $0.mapType = .standard
+    lazy var mapView: MAMapView = {
+        let _mapView = MAMapView(frame: view.bounds)
+        _mapView.mapType = .standard
         // 比例尺控件
-        $0.showsScale = true
+        _mapView.showsScale = true
         // 指南针控件
-        $0.showsCompass = true
+        _mapView.showsCompass = true
         // 地图缩放功能拓展
-        $0.setZoomLevel(17.5, animated: true)
+        _mapView.setZoomLevel(17.5, animated: true)
         // 旋转手势
-        $0.isRotateEnabled = true
-    }
+        _mapView.isRotateEnabled = true
+        return _mapView
+    }()
 
     // 自定义定位小蓝点
     let userLocationRep = MAUserLocationRepresentation().then {
