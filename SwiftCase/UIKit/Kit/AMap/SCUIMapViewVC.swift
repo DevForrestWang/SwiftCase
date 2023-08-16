@@ -65,8 +65,12 @@ class SCUIMapViewVC: BaseViewController, MAMapViewDelegate {
     // MARK: - IBActions
 
     @objc func homeButtonAction() {
-        if mapView.userLocation.isUpdating, mapView.userLocation.location != nil {
-            mapView.setCenter(mapView.userLocation.location.coordinate, animated: true)
+        guard let userLocation = mapView.userLocation else {
+            return
+        }
+
+        if userLocation.isUpdating, userLocation.location != nil {
+            mapView.setCenter(userLocation.location.coordinate, animated: true)
             homeButton.isSelected = true
         }
     }
