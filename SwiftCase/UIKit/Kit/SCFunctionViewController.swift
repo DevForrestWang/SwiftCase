@@ -461,8 +461,40 @@ class SCFunctionViewController: BaseViewController {
             SC.log(i)
         }
 
+        // 迭代数组
         for num in numbers {
             SC.log(num)
+        }
+
+        // 除了第一个元素以外的数组其余部分
+        SC.log("dropFirst before, number:\(numbers)")
+        for num in numbers.dropFirst() {
+            SC.log("dropFirst:\(num)")
+        }
+
+        // 返回从头部开始的3个元素
+        SC.log("dropFirst(3) before, number:\(numbers)")
+        SC.log("dropFirst(3) nums:  \(numbers.dropFirst(3))")
+        SC.log("dropFirst(3) after, number:\(numbers)")
+
+        // 返回从尾部开始的除3个元素外的元素
+        SC.log("numbers.dropLast(3) before, number:\(numbers)")
+        SC.log("numbers.dropLast(3) nums:  \(numbers.dropLast(3))")
+        SC.log("numbers.dropLast(3) before, number:\(numbers)")
+
+        // 想要为数组中的所有元素编号
+        for (num, element) in numbers.enumerated() {
+            SC.log("enumerated: num:\(num), element:\(element)")
+        }
+
+        // 想要列举下标和元素？
+        for (index, element) in zip(numbers.indices, numbers) {
+            SC.log("indices: num:\(index), element:\(element)")
+        }
+
+        // 想要寻找一个指定元素的位置？
+        if let idx = numbers.firstIndex(where: { $0 == 54 }) {
+            SC.log("idx:\(idx)")
         }
 
         // 同时遍历索引和元素
@@ -534,11 +566,6 @@ class SCFunctionViewController: BaseViewController {
 
         SC.log("numbers first 3:  \(numbers.prefix(upTo: 3))")
         SC.log("numbers from 3:  \(numbers.suffix(from: 3))")
-
-        // 从头部开始的3个元素
-        SC.log("delete first 3 nums:  \(numbers.dropFirst(3))")
-
-        SC.log("delete last 3 nums:  \(numbers.dropLast(3))")
     }
 
     // MARK: - Dictionaries
