@@ -844,6 +844,16 @@ class SCFunctionViewController: BaseViewController {
             SC.log("passMarks:\(passMarks)") // [7, 8, 9]
         }
 
+        // latMap 一个常见使用情景是将不同数组里的元素进行合并
+        let suits = ["♠︎", "♥︎", "♣︎", "♦︎"]
+        let ranks = ["J", "Q", "K", "A"]
+        let result = suits.flatMap { suit in
+            ranks.map { rank in
+                (suit, rank)
+            }
+        }
+        SC.log("result:\(result)")
+
         // compactMap处理序列，返回可选类型, 为移除数组中的nil元素提供了一种简便操作
         do {
             let keys: [String?] = ["Tom", nil, "Peter", nil, "Harry"]
