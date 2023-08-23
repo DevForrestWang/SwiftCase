@@ -573,61 +573,196 @@ class SCFunctionViewController: BaseViewController {
     public func dictionaryAction() {
         SC.printEnter(message: "Dictionary")
 
-        // Create a dictionary
-        var capitalCity = ["Nepal": "Kathmandu", "Italy": "Rome", "England": "London"]
-        var studentID = [111: "Eric", 112: "Kyle", 113: "Butters"]
-        let emptyDictionary = [Int: String]()
-        SC.log("Dictionary, capitalCity: \(capitalCity)")
-        SC.log("Dictionary, studentID: \(studentID)")
-        SC.log("Dictionary, emptyDictionary: \(emptyDictionary)")
+        do {
+            // Create a dictionary
+            // 初始一个索引为String，值为Int的字典
+            let someDict = [String: Int]()
+            let someDict2: [String: Int] = [:]
+            // 使用Dictionary，初始化索引为String，值为Int的字典
+            let someDict3 = [String: Int]()
+            let someDict4: [String: Int] = [:]
+            // 给定值创建字典
+            let someDict5: [String: Int] = ["One": 1, "Two": 2, "Three": 3]
+            SC.log("\(someDict), \(someDict2), \(someDict3), \(someDict4), \(someDict5)")
 
-        // 是否包含key
-        let hasKey = capitalCity.keys.contains("Italy")
-        SC.log("Dictionary, capitalCity contains, Italy: \(hasKey)")
+            // 基于序列的初始化
+            let cities = ["Delhi", "Bangalore", "Hyderabad"]
+            let Distance = [2000, 10, 620]
+            // 给定值创建字典的示例, 将创建一个字典，其中城市作为键，距离作为值
+            let cityDistanceDict = Dictionary(uniqueKeysWithValues: zip(cities, Distance))
+            SC.log("cityDistanceDict: \(cityDistanceDict)")
+            // ["Hyderabad": 620, "Bangalore": 10, "Delhi": 2000]
 
-        let hasKey2 = capitalCity.contains(key: "Italy")
-        SC.log("Dictionary, capitalCity contains, Italy: \(hasKey2)")
-
-        // 字典取值
-        SC.log("Dictionary read, Key:Italy, value: \(capitalCity["Italy"] ?? "")")
-
-        // Add Elements
-        capitalCity["Japan"] = "Tokyo"
-        SC.log("Dictionary, Add \(capitalCity)")
-
-        // Change Value of Dictionary
-        studentID[112] = "Stan"
-        SC.log("Dictionary, Change \(studentID)")
-
-        // Access Elements
-        SC.log("Dictionary, Access keys: \(Array(capitalCity.keys))")
-        SC.log("Dictionary, Access values: \(Array(capitalCity.values))")
-
-        // Remove an Element
-        let removedValue = studentID.removeValue(forKey: 112)
-        SC.log("Dictionary, Remove \(String(describing: removedValue))")
-
-        /// Other Dictionary Methods
-        // sorted()         sorts dictionary elements
-        // shuffled()       changes the order of dictionary elements
-        // contains()       checks if the specified element is present
-        // randomElement()  returns a random element from the dictionary
-        // firstIndex()     returns the index of the specified element
-
-        // Iterate Over a Dictionary
-        let ariPorts: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
-
-        for (key, value) in ariPorts {
-            SC.log("\(key): \(value)")
+            // 字典过滤
+            let closeCities = cityDistanceDict.filter { $0.value < 1000 }
+            SC.log("closeCities: \(closeCities)")
+            // ["Bangalore": 10, "Hyderabad": 620]
         }
 
-        // Find Number of Dictionary Elements
-        SC.log("Dictionary, Number \(studentID.count)")
+        // 字典分组
+        do {
+            let cities = ["Delhi", "Bangalore", "Hyderabad", "Dehradun", "Bihar"]
+            // 根据第一个字母对字典的值进行分组
+            let groupedCities = Dictionary(grouping: cities) { $0.first! }
+            SC.log("groupedCities: \(groupedCities)")
+            // ["B": ["Bangalore", "Bihar"], "D": ["Delhi", "Dehradun"], "H": ["Hyderabad"]]
+        }
 
-        let dicString = "{\"cmd\":\"CustomCmdMsg\",\"data\":{\"cmdType\":\"4\",\"msg\":{\"fileReturnId\":\"F00AgKdVBvCR1TZyBTJrD1T\",\"imgUrl\":\"https://dc.aadv.net:10443/fsServerUrl/fs/download/F00AgKdVBvCR1TZyBTJrD1T\"},\"userId\":\"0121400015000020000\",\"userInfo\":{\"groupId\":\"11202112091420160000060113\",\"userName\":\"测试二号\",\"userAvatar\":\"F00AgKdVBvCR1ThXBTVfC1T\",\"entCustId\":\"0121400015020211117\",\"custId\":\"0121400015000020000\",\"resNo\":\"01214000150\",\"operNo\":\"0002\",\"levelName\":\"店员\",\"levelImg\":\"user_icon.png\"},\"sendTime\":\"2022-05-27 17:43:57\"}}"
+        // 访问字典
+        do {
+            let someDict: [Int: String] = [1: "One", 2: "Two", 3: "Three"]
+            let someVar = someDict[1]
+            SC.log("Value of key = 1 is \(someVar ?? "")")
+            SC.log("Value of key = 2 is \(someDict[2] ?? "")")
+        }
 
-        let dicObj = dicString.jsonToDictionary()
-        SC.log("string to dictionary: \(dicObj?.toJsonString() ?? "")")
+        // 添加、修改词典
+        do {
+            var someDict: [Int: String] = [1: "One", 2: "Two", 3: "Three"]
+            let oldVal = someDict.updateValue("New value of one", forKey: 1)
+            let newVal = someDict[1]
+
+            // 通过在给定键处分配新值来修改字典的现有元素，
+            someDict[2] = "New value of one"
+
+            // 添加数据
+            someDict[4] = "Four"
+            SC.log("Old value of key = 1 is \(oldVal ?? "")")
+            SC.log("Value of key = 1 is \(newVal ?? "")")
+            SC.log("Value of key = 2 is \(someDict[2] ?? "")")
+            SC.log("Value of key = 4 is \(someDict[4] ?? "")")
+        }
+
+        // 删除键值对
+        do {
+            var someDict: [Int: String] = [1: "One", 2: "Two", 3: "Three"]
+            // 使用 removeValueForKey（）删除键值对，如果存在并返回已删除的值，不存在值，则返回nil
+            let removedValue = someDict.removeValue(forKey: 2)
+            // 使用下标语法从字典中删除键值对，方法是为该键分配值 nil
+            someDict[3] = nil
+
+            SC.log("removedValue is \(removedValue ?? "")")
+            SC.log("Value of key = 1 is \(someDict[1] ?? "nil")")
+            SC.log("Value of key = 2 is \(someDict[2] ?? "nil")")
+            SC.log("Value of key = 3 is \(someDict[3] ?? "nil")")
+        }
+
+        // 遍历字典
+        do {
+            let someDict: [Int: String] = [1: "One", 2: "Two", 3: "Three"]
+
+            // 使用 for-in 循环遍历字典中的整个键值对集
+            for (index, keyValue) in someDict {
+                SC.log("Dictionary key \(index) - Dictionary value \(keyValue)")
+            }
+
+            // 使用 enumerate（）函数，该函数返回项目的索引及其（键、值）对
+            for (key, value) in someDict.enumerated() {
+                SC.log("Dictionary, enumerated key \(key) - Dictionary value \(value)")
+            }
+
+            // 只要健名不要值
+            for key in someDict.keys {
+                SC.log("Dictionary key \(key)")
+            }
+
+            // 只要值，不要键名
+            for value in someDict.values {
+                SC.log("Dictionary value \(value)")
+            }
+        }
+
+        // 转换为数组
+        do {
+            let someDict: [Int: String] = [1: "One", 2: "Two", 3: "Three"]
+
+            let dictKeys = [Int](someDict.keys)
+            let dictValues = [String](someDict.values)
+
+            SC.log("Dictionary Keys: \(dictKeys)")
+            SC.log("Dictionary Values: \(dictValues)")
+            // Dictionary Keys: [3, 2, 1]
+            // Dictionary Values: ["Three", "Two", "One"]
+        }
+
+        // 计数属性
+        do {
+            let someDict1: [Int: String] = [1: "One", 2: "Two", 3: "Three"]
+            SC.log("Total items in someDict1 = \(someDict1.count)")
+            // Total items in someDict1 = 3
+        }
+
+        // 空属性
+        do {
+            let someDict1: [Int: String] = [1: "One", 2: "Two", 3: "Three"]
+            let someDict2: [Int: String] = .init()
+            SC.log("someDict1 = \(someDict1.isEmpty)")
+            SC.log("someDict2 = \(someDict2.isEmpty)")
+            // someDict1 = false
+            // omeDict2 = true
+        }
+
+        // key或value是否包含某个值
+        do {
+            let someDict = ["Nepal": "Kathmandu", "Italy": "Rome", "England": "London"]
+
+            let hasKey = someDict.keys.contains("Italy")
+            let hasKey2 = someDict.contains(key: "Italy2")
+            let hasValue = someDict.values.contains("Kathmandu")
+
+            SC.log("Dictionary, contains, hasKey: \(hasKey)")
+            SC.log("Dictionary, contains, hasKey2: \(hasKey2)")
+            SC.log("Dictionary, contains, hasValue: \(hasValue)")
+            // Dictionary, contains, hasKey: true
+            // Dictionary, contains, hasKey2: false
+            // Dictionary, contains, hasValue: true
+        }
+
+        // 使用merge进行合并的键值对
+        do {
+            var settingDic: [String: String] = [
+                "Age": "20",
+                "Name": "My iPhone",
+            ]
+
+            let overriddenSetDic = ["Name": "Jane's iPhone"]
+            // 合并策略 $1，使用overriddenSetDic值覆盖
+            settingDic.merge(overriddenSetDic, uniquingKeysWith: { $1 })
+            SC.log("settingDic:\(settingDic)")
+        }
+
+        // 使用mapValues，保持字典的结构，只对其中的值进行变换
+        do {
+            enum Setting {
+                case text(String)
+                case int(Int)
+                case bool(Bool)
+            }
+            let defaultSettings: [String: Setting] = [
+                "Airplane Mode": .bool(false),
+                "Name": .text("My iPhone"),
+                "Age": .int(20),
+            ]
+
+            let settingsAsStrings = defaultSettings.mapValues { value -> String in
+                // 值进行转换
+                switch value {
+                case let .text(text): return text
+                case let .int(number): return String(number)
+                case let .bool(value): return String(value)
+                }
+            }
+            SC.log("settingsAsStrings:\(settingsAsStrings)")
+            // ["Airplane Mode": "false", "Name": "My iPhone", "Age": "20"]
+        }
+
+        // 字符串json转字典，及字典转字符串
+        do {
+            let dicString = "{\"cmd\":\"CustomCmdMsg\",\"data\":{\"cmdType\":\"4\",\"msg\":{\"fileReturnId\":\"F00AgKdVBvCR1TZyBTJrD1T\",\"imgUrl\":\"https://dc.aadv.net:10443/fsServerUrl/fs/download/F00AgKdVBvCR1TZyBTJrD1T\"},\"userId\":\"0121400015000020000\",\"userInfo\":{\"groupId\":\"11202112091420160000060113\",\"userName\":\"测试二号\",\"userAvatar\":\"F00AgKdVBvCR1ThXBTVfC1T\",\"entCustId\":\"0121400015020211117\",\"custId\":\"0121400015000020000\",\"resNo\":\"01214000150\",\"operNo\":\"0002\",\"levelName\":\"店员\",\"levelImg\":\"user_icon.png\"},\"sendTime\":\"2022-05-27 17:43:57\"}}"
+
+            let dicObj = dicString.jsonToDictionary()
+            SC.log("string to dictionary: \(dicObj?.toJsonString() ?? "")")
+        }
     }
 
     public func saveDataAction() {
