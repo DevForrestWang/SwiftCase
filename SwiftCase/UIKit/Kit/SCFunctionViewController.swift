@@ -789,64 +789,106 @@ class SCFunctionViewController: BaseViewController {
     public func setAction() {
         SC.printEnter(message: "Set")
 
-        // Create a Set
-        var studentID: Set<Int> = [112, 114, 116, 118, 115]
-        let emptySet = Set<Int>()
-        SC.log("Set, emptySet: \(emptySet)")
+        // Set 遵守 ExpressibleByArrayLiteral 协议，可以用数组字面量的方式初始化一个集合
+        do {
+            let naturals: Set = [1, 2, 3, 2]
+            SC.log("naturals:\(naturals)")
+            SC.log("contains(3):\(naturals.contains(3))")
+            SC.log("contains(0):\(naturals.contains(0))")
+            // naturals:[2, 1, 3]
+            // contains(3):true
+            // contains(0):false
 
-        // Add Elements
-        studentID.insert(113)
-        SC.log("Set, insert: \(studentID)")
-
-        // Remove an Element
-        let removedValue = studentID.remove(115)
-        var languages: Set = ["Swift", "Java", "Python"]
-        languages.removeAll()
-        SC.log("Set, remove: \(String(describing: removedValue)), languages:\(languages)")
-
-        // Other Set Methods
-        // sorted()          sorts set elements
-        // forEach()         performs the specified actions on each element
-        // contains()        searches the specified element in a set
-        // randomElement()   returns a random element from the set
-        // firstIndex()      returns the index of the given element
-
-        // Iterate Over a Set
-        let fruits: Set = ["Apple", "Peach", "Mango"]
-        for fruit in fruits {
-            SC.log("Set, fruit: \(fruit)")
+            let emptySet = Set<Int>()
+            SC.log("Set, emptySet: \(emptySet)")
         }
 
-        // Find Number of Set Elements
-        SC.log("Set, count: \(fruits.count)")
+        // 集合插入、删除
+        do {
+            var languages: Set = ["Swift", "Java", "Python"]
+            // 插入元素
+            languages.insert("C++")
+            SC.log("Set insert: \(languages)")
+            // Set insert: ["Java", "Python", "Swift", "C++"]
 
-        // Union of Two Sets
-        let setA: Set = [1, 3, 5]
-        let setB: Set = [0, 1, 2, 3, 4]
-        SC.log("Set, setA: \(setA)")
-        SC.log("Set, setB: \(setB)")
-        SC.log("Set, A union B: \(Array(setA.union(setB)).sorted())")
+            // 删除原生
+            let removedValue = languages.remove("Java") ?? ""
+            SC.log("Set remove: \(removedValue)")
+            // Set remove: Java
 
-        // Intersection between Two Sets
-        SC.log("Set, A intersection B: \(setA.intersection(setB))")
-
-        // The difference between two sets A and B include elements of set A that are not present on set B.
-        SC.log("Set, B subtracting A: \(setB.subtracting(setA))")
-
-        // The symmetric difference between two sets A and B includes all elements of A and B without the common elements.
-        SC.log("Set, A symmetric difference B: \(setA.symmetricDifference(setB))")
-
-        // Check Subset of a Set
-        let setC: Set = [1, 2, 3, 5, 4]
-        let setD: Set = [1, 2]
-        SC.log("Set, D subset C: ", setD.isSubset(of: setC))
-
-        let setE: Set = [2, 1]
-        if setD == setE {
-            SC.log("Set D and Set E are equal")
-        } else {
-            SC.log("Set D and Set E are different")
+            languages.removeAll()
+            SC.log("Set removeAll:\(languages)")
+            // Set removeAll:[]
         }
+
+        // 遍历集合、个数
+        do {
+            let languages: Set = ["Swift", "Java", "Python", "go", "C++"]
+            for lang in languages {
+                SC.log("Set language: \(lang)")
+            }
+            // Set language: Swift
+            // Set language: Java
+            // ...
+
+            SC.log("Set count: \(languages.count)")
+            // Set count: 5
+        }
+
+        // 在一个集合中求另一个集合的补集(A 集合减去B集合)
+        do {
+            let iPods: Set = ["iPod touch", "iPod nano", "iPod mini", "iPod shuffle", "iPod Classic"]
+            let discontinuedIPods: Set = ["iPod mini", "iPod Classic", "iPod nano", "iPod shuffle"]
+            let currentIPods = iPods.subtracting(discontinuedIPods)
+            SC.log("currentIPods: \(currentIPods)")
+            // currentIPods: ["iPod touch"]
+        }
+
+        // 求两个集合的交集，找出两个集合中都含有的元素
+        do {
+            let iPods: Set = ["iPod touch", "iPod nano", "iPod mini", "iPod shuffle", "iPod Classic"]
+            let touchscreen: Set = ["iPhone", "iPad", "iPod touch", "iPod nano"]
+            let iPodsWithTouch = iPods.intersection(touchscreen)
+            SC.log("iPodsWithTouch: \(iPodsWithTouch)")
+            // iPodsWithTouch: ["iPod nano", "iPod touch"]
+        }
+
+        // 两个集合的并集，将两个集合合并为一个集合，使用formUnion改变原来的集合；union返回合并集合
+        do {
+            var discontinued: Set = ["iBook", "Powerbook", "Power Mac"]
+            let discontinuedIPods: Set = ["iPod mini", "iPod Classic", "iPod nano", "iPod shuffle"]
+
+            let allAiscontinued = discontinued.union(discontinuedIPods)
+            SC.log("allAiscontinued: \(allAiscontinued)")
+            // allAiscontinued: ["iPod shuffle", "Power Mac", "iPod nano", "iPod mini", "Powerbook", "iPod Classic", "iBook"]
+
+            discontinued.formUnion(discontinuedIPods)
+            SC.log("discontinued:\(discontinued)")
+            // iscontinued:["iPod Classic", "Powerbook", "Power Mac", "iPod shuffle", "iPod mini", "iBook", "iPod nano"]
+        }
+
+        // 不包含公共的两个集合的所有元素
+        do {
+            let iPods: Set = ["iPod touch", "iPod nano", "iPod mini", "iPod shuffle", "iPod Classic"]
+            let touchscreen: Set = ["iPhone", "iPad", "iPod touch", "iPod nano"]
+            SC.log("Set symmetricDifference: \(iPods.symmetricDifference(touchscreen))")
+            // Set symmetricDifference: ["iPod Classic", "iPod mini", "iPod shuffle", "iPad", "iPhone"]
+        }
+
+        // 检查是否是子集
+        do {
+            let iPods: Set = ["iPod touch", "iPod nano", "iPod mini", "iPod shuffle", "iPod Classic"]
+            let subiPods: Set = ["iPod mini", "iPod shuffle", "iPod Classic"]
+            SC.log("Set isSubset:", subiPods.isSubset(of: iPods))
+            //Set isSubset: true
+        }
+
+        // 保证序列中所有的元素唯一且顺序保存不变
+        do {
+            SC.log("unique: \([1, 2, 3, 12, 1, 3, 4, 5, 6, 4, 6].unique())")
+            // unique: [1, 2, 3, 12, 4, 5, 6]
+        }
+        
     }
 
     // MARK: - Tuple
