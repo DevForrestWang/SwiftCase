@@ -880,7 +880,7 @@ class SCFunctionViewController: BaseViewController {
             let iPods: Set = ["iPod touch", "iPod nano", "iPod mini", "iPod shuffle", "iPod Classic"]
             let subiPods: Set = ["iPod mini", "iPod shuffle", "iPod Classic"]
             SC.log("Set isSubset:", subiPods.isSubset(of: iPods))
-            //Set isSubset: true
+            // Set isSubset: true
         }
 
         // 保证序列中所有的元素唯一且顺序保存不变
@@ -888,7 +888,29 @@ class SCFunctionViewController: BaseViewController {
             SC.log("unique: \([1, 2, 3, 12, 1, 3, 4, 5, 6, 4, 6].unique())")
             // unique: [1, 2, 3, 12, 4, 5, 6]
         }
-        
+    }
+
+    // MARK: - Range
+
+    public func rangAction() {
+        SC.printEnter(message: "Range")
+
+        do {
+            // 0 到 9, 不包含 10
+            let digitNumbers = 0 ..< 10
+            SC.log("digitNumbers: \(Array(digitNumbers))")
+            // digitNumbers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+            // 包含 "z"
+            let lowerLetters = Character("a") ... Character("z")
+            SC.log("lowerLetters: \(lowerLetters)")
+            // lowerLetters: a...z
+
+            SC.log("\(digitNumbers.contains(9))")
+            // true
+            SC.log("\(lowerLetters.overlaps("c" ..< "f"))")
+            // true”
+        }
     }
 
     // MARK: - Tuple
@@ -1052,6 +1074,7 @@ class SCFunctionViewController: BaseViewController {
         arrayAction()
         dictionaryAction()
         setAction()
+        rangAction()
         tupleAction()
         swiftAlgorithms()
         changeNunber()
