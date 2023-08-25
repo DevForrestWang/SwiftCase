@@ -914,28 +914,52 @@ class SCFunctionViewController: BaseViewController {
             let startOffset = str.index(start, offsetBy: 2)
             let endOffset = str.index(end, offsetBy: -2)
 
-            print(str[start]) // 输出 1 第1个字符
-            print(str[startOffset]) // 输出 3 第3个字符
-            print(str[endOffset]) // 输出 8 第8个字符（10-2）
-            // print(str[end) 报错！因为实endIndex指向第10个字符是不存在的
-            SC.log("------String.Index end--------")
+            SC.log("startIndex: \(str[start])")
+            SC.log("startOffset:\(str[startOffset])")
+            SC.log("endOffset: \(str[endOffset])")
+            // SC.log(str[end]) 索引越界
+            // startIndex: a
+            // startOffset:b
+            // endOffset: m
         }
 
+        // Range<T>
         do {
-            // 0 到 9, 不包含 10
-            let digitNumbers = 0 ..< 10
-            SC.log("digitNumbers: \(Array(digitNumbers))")
-            // digitNumbers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            let array = ["a", "b", "c", "d", "e", "f"]
+            let range1: ClosedRange = 1 ... 4
+            let range2: CountableClosedRange = 1 ... 4
 
-            // 包含 "z"
-            let lowerLetters = Character("a") ... Character("z")
-            SC.log("lowerLetters: \(lowerLetters)")
-            // lowerLetters: a...z
+            let range3: Range = 1 ..< 4
+            let range4: CountableRange = 1 ..< 4
 
-            SC.log("\(digitNumbers.contains(9))")
-            // true
-            SC.log("\(lowerLetters.overlaps("c" ..< "f"))")
-            // true”
+            SC.log("Range: \(array[range1])")
+            SC.log("Count Range: \(array[range2])")
+            SC.log("Half Range: \(array[range3])")
+            SC.log("Count Half Range: \(array[range4])")
+            // Range: ["b", "c", "d", "e"]
+            // Count Range: ["b", "c", "d", "e"]
+            // Half Range: ["b", "c", "d"]
+            // Count Half Range: ["b", "c", "d"]
+        }
+
+        // lowerBound、upperBound访问Range的起始位置和结束位置
+        do {
+            let array = ["a", "b", "c", "d", "e", "f"]
+            let range1: ClosedRange = 1 ... 4
+            let range3: Range = 1 ..< 4
+
+            SC.log("lowerBound: \(range1.lowerBound)")
+            SC.log("array[lowerBound]: \(array[range1.lowerBound])")
+            SC.log("upperBound: \(range1.upperBound)")
+            SC.log("array[upperBound]: \(array[range1.upperBound])")
+            SC.log("half upperBound: \(range3.upperBound)")
+            SC.log("half array[upperBound]: \(array[range3.upperBound])")
+            // lowerBound: 1
+            // array[lowerBound]: b
+            // upperBound: 4
+            // array[upperBound]: e
+            // half upperBound: 4
+            // half array[upperBound]: e
         }
 
         // Closed Ranges: a...b
@@ -954,6 +978,11 @@ class SCFunctionViewController: BaseViewController {
             // b
             // c
             // d
+
+            // 检查是否包含
+            SC.log("\(closeRange.contains(9))")
+            let lowerLetters = Character("a") ... Character("z")
+            SC.log("\(lowerLetters.overlaps("c" ..< "f"))")
         }
 
         // Half-Open Range:a..<b
@@ -973,15 +1002,58 @@ class SCFunctionViewController: BaseViewController {
             // c
         }
 
+        // 单侧区间
+        do {
+            // 部分范围有三种类型
+            let range1: PartialRangeThrough = ...4
+            let range2: PartialRangeFrom = 1...
+            let range3: PartialRangeUpTo = ..<4
+
+            let array = ["a", "b", "c", "d", "e", "f"]
+            SC.log("PartialRangeThrough: \(array[range1])")
+            SC.log("PartialRangeFrom: \(array[range2])")
+            SC.log("PartialRangeUpTo: \(array[range3])")
+            // PartialRangeThrough: ["a", "b", "c", "d", "e"]
+            // PartialRangeFrom: ["b", "c", "d", "e", "f"]
+            // PartialRangeUpTo: ["a", "b", "c", "d"]
+        }
+
         // Ranges with String
         do {
             // Range
-            let letter = "abcde"
+            let letter = "abcdefghigklmn"
             let start = letter.index(letter.startIndex, offsetBy: 1)
             let end = letter.index(letter.startIndex, offsetBy: 4)
             let range = start ..< end
             SC.log("Rande index: \(letter[range])")
             // Rande index: bcd
+
+            // Range<Int>不能用来获取String的某一部分的值，需要用Range<String.Index>获取
+            let index1 = String.Index(utf16Offset: 1, in: letter)
+            let index5 = String.Index(utf16Offset: 5, in: letter)
+            let index7 = String.Index(utf16Offset: 7, in: letter)
+
+            let range1: ClosedRange = index1 ... index5
+            let range2: Range = index5 ..< index7
+            let range3: PartialRangeThrough = ...index5
+            let range4: PartialRangeFrom = index1...
+            let range5: PartialRangeUpTo = ..<index7
+
+            // String.SubSequence 类型
+            let subRange1 = letter[range1]
+            SC.log("index1 ... index5: \(subRange1)")
+            // String类型
+            SC.log("String, index1 ... index5: \(String(subRange1))")
+            SC.log("index5 ..< index7: \(letter[range2])")
+            SC.log("...index5: \(letter[range3])")
+            SC.log("index1...: \(letter[range4])")
+            SC.log("..<index7: \(letter[range5])")
+            // index1 ... index5: bcdef
+            // String, index1 ... index5: bcdef
+            // index5 ..< index7: fg
+            // ...index5: abcdef
+            // index1...: bcdefghigklmn
+            // ..<index7: abcdefg
 
             // NSRange
             let nsRange = NSRange(location: 1, length: 3)
@@ -1001,12 +1073,28 @@ class SCFunctionViewController: BaseViewController {
             // Rande emoji index: 😀cd
 
             // NSRange
-
             let nsLetter: NSString = "a😀cde"
             let nsRange = NSRange(location: 1, length: 3)
             // emoji笑脸占用了两个UTF-16单元去存储
             SC.log("NSRande emoji: \(nsLetter.substring(with: nsRange))")
             // NSRande emoji: 😀c
+        }
+
+        // String中查找或者截取字符串
+        do {
+            let str = "123456789"
+            guard let range = str.range(of: "4567") else {
+                return
+            }
+
+            SC.log("range lowerBound: \(str[..<range.lowerBound])")
+            SC.log("range upperBound: \(str[range.upperBound...])")
+            SC.log("prefix lowerBound: \(str.prefix(upTo: range.lowerBound))")
+            SC.log("suffix upperBound: \(str.suffix(from: range.upperBound))")
+            // range lowerBound: 123
+            // range upperBound: 89
+            // prefix lowerBound: 123
+            // suffix upperBound: 89
         }
 
         // subscript 下标访问
