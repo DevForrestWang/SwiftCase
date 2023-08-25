@@ -895,6 +895,32 @@ class SCFunctionViewController: BaseViewController {
     public func rangAction() {
         SC.printEnter(message: "Range")
 
+        // String.Index
+        do {
+            let str = "a😀bcdefghigklmn"
+            let zero = String.Index(utf16Offset: 0, in: str)
+            let second = String.Index(utf16Offset: 2, in: str)
+            let five = String.Index(utf16Offset: 5, in: str)
+
+            SC.log("String.Index zero: \(str[zero])")
+            SC.log("String.Index second: \(str[second])")
+            SC.log("String.Index five: \(str[five])")
+            // String.Index zero: a
+            // String.Index second: 😀
+            // String.Index five: d
+
+            let start = str.startIndex
+            let end = str.endIndex
+            let startOffset = str.index(start, offsetBy: 2)
+            let endOffset = str.index(end, offsetBy: -2)
+
+            print(str[start]) // 输出 1 第1个字符
+            print(str[startOffset]) // 输出 3 第3个字符
+            print(str[endOffset]) // 输出 8 第8个字符（10-2）
+            // print(str[end) 报错！因为实endIndex指向第10个字符是不存在的
+            SC.log("------String.Index end--------")
+        }
+
         do {
             // 0 到 9, 不包含 10
             let digitNumbers = 0 ..< 10
@@ -910,6 +936,85 @@ class SCFunctionViewController: BaseViewController {
             // true
             SC.log("\(lowerLetters.overlaps("c" ..< "f"))")
             // true”
+        }
+
+        // Closed Ranges: a...b
+        do {
+            let closeRange: ClosedRange = 1 ... 3
+            let chartArray = ["a", "b", "c", "d", "e"]
+            SC.log("closeRange: \(chartArray[closeRange])")
+            // closeRange: ["b", "c", "d"]
+
+            let countRange: CountableClosedRange = 1 ... 3
+            SC.log("countRange: \(chartArray[countRange])")
+            // countRange: ["b", "c", "d"]
+            for index in countRange {
+                SC.log(chartArray[index])
+            }
+            // b
+            // c
+            // d
+        }
+
+        // Half-Open Range:a..<b
+        do {
+            let halfRange: Range = 1 ..< 3
+            let chartArray = ["a", "b", "c", "d", "e"]
+            SC.log("halfRange: \(chartArray[halfRange])")
+            // halfRange: ["b", "c"]
+
+            let halfCountRange: CountableRange = 1 ..< 3
+            SC.log("halfCountRange: \(chartArray[halfCountRange])")
+            //  halfCountRange: ["b", "c"]
+            for index in halfCountRange {
+                SC.log(chartArray[index])
+            }
+            // b
+            // c
+        }
+
+        // Ranges with String
+        do {
+            // Range
+            let letter = "abcde"
+            let start = letter.index(letter.startIndex, offsetBy: 1)
+            let end = letter.index(letter.startIndex, offsetBy: 4)
+            let range = start ..< end
+            SC.log("Rande index: \(letter[range])")
+            // Rande index: bcd
+
+            // NSRange
+            let nsRange = NSRange(location: 1, length: 3)
+            let nsString: NSString = "abcde"
+            SC.log("NSRande: \(nsString.substring(with: nsRange))")
+            // NSRande: bcd
+        }
+
+        // Ranges with emoji String
+        do {
+            // Range
+            let letter = "a😀cde"
+            let start = letter.index(letter.startIndex, offsetBy: 1)
+            let end = letter.index(letter.startIndex, offsetBy: 4)
+            let range = start ..< end
+            SC.log("Rande emoji index: \(letter[range])")
+            // Rande emoji index: 😀cd
+
+            // NSRange
+
+            let nsLetter: NSString = "a😀cde"
+            let nsRange = NSRange(location: 1, length: 3)
+            // emoji笑脸占用了两个UTF-16单元去存储
+            SC.log("NSRande emoji: \(nsLetter.substring(with: nsRange))")
+            // NSRande emoji: 😀c
+        }
+
+        // subscript 下标访问
+        do {
+            SC.log("\(String("abcde"[1 ... 3]))")
+            // bcd
+            SC.log("\(String("abcde"[1 ..< 3]))")
+            // bc
         }
     }
 
