@@ -1262,6 +1262,7 @@ class SCFunctionViewController: BaseViewController {
     func setupUI() {
         title = "Function"
         SC.toast("console logs")
+        SC.log("Log example", "message one", "message two", separator: "\n")
 
         stringFunction()
         arrayAction()
