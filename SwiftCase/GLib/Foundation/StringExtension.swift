@@ -592,4 +592,27 @@ public extension String {
         let result = saveNumberDecimal(numberDecimal: numberDecimal, mode: mode)
         return result.cutLastZeroAfterDot()
     }
+
+    /// 获取文件扩展名
+    var fileExtension: String? {
+        guard let period = lastIndex(of: ".") else {
+            return nil
+        }
+        // 获取.后面的位置
+        let extensionStart = index(after: period)
+        return String(self[extensionStart...])
+    }
+
+    /// 获取文件扩展名
+    var fileName: String? {
+        // 获取文件名
+        let lastFile = (self as NSString).lastPathComponent
+        guard let period = lastFile.lastIndex(of: ".") else {
+            return nil
+        }
+
+        // 获取.前的位置
+        let pointStart = lastFile.index(before: period)
+        return String(lastFile[...pointStart])
+    }
 }

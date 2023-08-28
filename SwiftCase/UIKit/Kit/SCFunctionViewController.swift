@@ -1284,6 +1284,11 @@ class SCFunctionViewController: BaseViewController {
         // APP 系统信息
         SC.log("deviceInfo:  \(SC.deviceInfo())")
 
+        // 文件名称、扩展名
+        let filePath = "/user/abc/hello.abc.swift"
+        SC.log("fileName: \(filePath.fileName ?? "")")
+        SC.log("fileExtension: \(filePath.fileExtension ?? "")")
+
         baskNumber()
         higherOrderFun()
     }

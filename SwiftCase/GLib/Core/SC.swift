@@ -244,7 +244,7 @@ public class SwiftCase: NSObject {
     {
         #if DEBUG
             let date = Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss.SSSZ")
-            let file = (file as NSString).lastPathComponent.replacingOccurrences(of: ".swift", with: "")
+            let file = file.fileName ?? ""
             print("\(date) \(file)[\(line)], \(method)", terminator: separator)
             var i = 0
             let j = items.count
