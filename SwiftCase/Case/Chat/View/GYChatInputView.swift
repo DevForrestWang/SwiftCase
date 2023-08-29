@@ -63,7 +63,7 @@ class GYChatInputView: UIView, UITextViewDelegate, UICollectionViewDataSource, U
 
     func textView(_: UITextView, shouldChangeTextIn _: NSRange, replacementText text: String) -> Bool {
         // 添加发送键的事件
-        if text.elementsEqual("\n") {
+        if text == "\n" {
             if let tempClosure = gyChatInputClosure {
                 tempClosure(.sendText, inputTextView.text)
                 inputTextView.text = ""
