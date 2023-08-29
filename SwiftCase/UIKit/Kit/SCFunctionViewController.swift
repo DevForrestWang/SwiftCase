@@ -1287,6 +1287,41 @@ class SCFunctionViewController: BaseViewController {
         // value:37.0
     }
     
+    /// 强制解包示例
+    public func forcedUnpacking() {
+        // 数据类型转换
+        let strAbc = "abc"
+        let defaultValue = Int(strAbc) !? 0
+        SC.log("abc to Int: \(defaultValue)")
+        SC.log("8 to Int: \(Int("8") !? 0)")
+
+        let defaultWithInfo = Int("8") !? (0, "Expected integer")
+        SC.log("8 to Int with info: \(defaultWithInfo)")
+        // abc to Int: 0
+        // 8 to Int: 8
+        // 8 to Int with info: 8
+
+        // 字符串进行强制解包
+        var strVlue: String? = "String"
+        SC.log("String: \(strVlue !? "n/a")")
+        strVlue = nil
+        SC.log("String is nil: \(strVlue !? "n/a")")
+        // String: String
+        // String is nil: n/a
+
+        // 浮点型强制解包
+        let floatOptional: Float? = nil
+        SC.log("floatOptional init nil: \(floatOptional !? 0)")
+        // floatOptional init nil: 0.0
+
+        let arrayOptional: [String]? = nil
+        let arrayOptionalStrings: [String?]? = [nil]
+        SC.log("arrayOptional init nil: \(arrayOptional !? [])")
+        SC.log("arrayOptionalStrings init [nil]: \(arrayOptionalStrings?[0] !? "n/a")")
+        // arrayOptional init nil: []
+        // arrayOptionalStrings init [nil]: n/a
+    }
+
     // MARK: - UI
 
     func setupUI() {
@@ -1322,6 +1357,7 @@ class SCFunctionViewController: BaseViewController {
         baskNumber()
         higherOrderFun()
         operationAction()
+        forcedUnpacking()
     }
 
     // MARK: - Constraints
