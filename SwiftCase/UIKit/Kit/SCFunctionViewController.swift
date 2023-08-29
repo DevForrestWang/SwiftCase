@@ -566,6 +566,17 @@ class SCFunctionViewController: BaseViewController {
 
         SC.log("numbers first 3:  \(numbers.prefix(upTo: 3))")
         SC.log("numbers from 3:  \(numbers.suffix(from: 3))")
+
+        // 通过下标获取值
+        do {
+            let numbers = [21, 34, 54, 12]
+            SC.log("numbers[guarded: 1]: \(numbers[guarded: 1] ?? 0)")
+            SC.log("numbers[guarded: 5]: \(numbers[guarded: 5] ?? 0)")
+            SC.log("numbers[guarded: -1]: \(numbers[guarded: -1] ?? 0)")
+            // numbers[guarded: 1]: 34
+            // numbers[guarded: 5]: 0
+            // numbers[guarded: -1]: 0
+        }
     }
 
     // MARK: - Dictionaries
@@ -1257,6 +1268,25 @@ class SCFunctionViewController: BaseViewController {
         }
     }
 
+    /// 可选操作符使用
+    public func operationAction() {
+        let bodyTemperature: Double? = 37.0
+        let bloodGlucose: Double? = nil
+        SC.log("bodyTemperature: \(bodyTemperature ?? 0)")
+        SC.log("bloodGlucose: \(bloodGlucose ?? 0)")
+        // bodyTemperature: 37.0
+        // bloodGlucose: 0.0
+
+        SC.log("bodyTemperature ???: \(bodyTemperature ??? "n/a")")
+        SC.log("bloodGlucose ???: \(bloodGlucose ??? "n/a")")
+        // bodyTemperature ???: 37.0
+        // bloodGlucose ???: n/a
+
+        let value: String = bodyTemperature ??? "n/a"
+        SC.log("value:\(value)")
+        // value:37.0
+    }
+    
     // MARK: - UI
 
     func setupUI() {
@@ -1291,6 +1321,7 @@ class SCFunctionViewController: BaseViewController {
 
         baskNumber()
         higherOrderFun()
+        operationAction()
     }
 
     // MARK: - Constraints

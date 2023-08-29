@@ -14,9 +14,18 @@
 import UIKit
 
 public extension Array where Element: Equatable {
+    /// 删除指定元素
     mutating func remove(_ object: Element) {
         if let index = firstIndex(of: object) {
             remove(at: index)
         }
+    }
+
+    // 通过下标获取数组的值，如果越界返回nil
+    subscript(guarded idx: Int) -> Element? {
+        guard (startIndex ..< endIndex).contains(idx) else {
+            return nil
+        }
+        return self[idx]
     }
 }
