@@ -1286,7 +1286,7 @@ class SCFunctionViewController: BaseViewController {
         SC.log("value:\(value)")
         // value:37.0
     }
-    
+
     /// 强制解包示例
     public func forcedUnpacking() {
         // 数据类型转换
@@ -1353,6 +1353,10 @@ class SCFunctionViewController: BaseViewController {
         let filePath = "/user/abc/hello.abc.swift"
         SC.log("fileName: \(filePath.fileName ?? "")")
         SC.log("fileExtension: \(filePath.fileExtension ?? "")")
+
+        // 获取指定下标的值的集合
+        SC.log("Collection subscript: \(Array("abcdefghijklmnopqrstuvwxyz")[indices: 0, 7, 4, 11, 11, 14])")
+        // Collection subscript: ["a", "h", "e", "l", "l", "o"]
 
         baskNumber()
         higherOrderFun()

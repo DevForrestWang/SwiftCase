@@ -260,6 +260,7 @@
 		C60598CB2A66370800CD1AE1 /* Object+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60598CA2A66370800CD1AE1 /* Object+Extension.swift */; };
 		C60598CD2A6646B500CD1AE1 /* SSSandBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60598CC2A6646B500CD1AE1 /* SSSandBox.swift */; };
 		C60598CF2A6646FD00CD1AE1 /* SCAPICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60598CE2A6646FD00CD1AE1 /* SCAPICache.swift */; };
+		C606F0F52AA08E23004A3D4D /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C606F0F42AA08E23004A3D4D /* Collection+Extension.swift */; };
 		C61C4830296BBB01005EA8F4 /* SCPopMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */; };
 		C61C4832296BBB09005EA8F4 /* SwiftPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */; };
 		C622188F2A96FB7900CE7097 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C622188E2A96FB7900CE7097 /* Sequence+Extension.swift */; };
@@ -583,6 +584,7 @@
 		C60598CA2A66370800CD1AE1 /* Object+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+Extension.swift"; sourceTree = "<group>"; };
 		C60598CC2A6646B500CD1AE1 /* SSSandBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSandBox.swift; sourceTree = "<group>"; };
 		C60598CE2A6646FD00CD1AE1 /* SCAPICache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCAPICache.swift; sourceTree = "<group>"; };
+		C606F0F42AA08E23004A3D4D /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopMenuVC.swift; sourceTree = "<group>"; };
 		C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPopMenu.swift; sourceTree = "<group>"; };
 		C622188E2A96FB7900CE7097 /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
@@ -1368,6 +1370,7 @@
 				777BA9D4272B87EA0030DCB9 /* PrintBinaryTree+Extension.swift */,
 				C60598CC2A6646B500CD1AE1 /* SSSandBox.swift */,
 				C64E57612A9D942F00B6BEDA /* SCBase.swift */,
+				C606F0F42AA08E23004A3D4D /* Collection+Extension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1901,6 +1904,7 @@
 				7756E86926FB2E9900AB139F /* Product.swift in Sources */,
 				C88F930326F8D8D300739819 /* SCUIVIewViewController.swift in Sources */,
 				7710F0412771B7720083E067 /* SCBottomCarouseView.swift in Sources */,
+				C606F0F52AA08E23004A3D4D /* Collection+Extension.swift in Sources */,
 				7747B4F6272CF89200D315FA /* GSNode.swift in Sources */,
 				C822E404270EF558001C39FF /* SCUIEventViewVC.swift in Sources */,
 				775F803B277075AC00D167A7 /* UpDownSwipeViewController.swift in Sources */,
