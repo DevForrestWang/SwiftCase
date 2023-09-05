@@ -1322,6 +1322,38 @@ class SCFunctionViewController: BaseViewController {
         // arrayOptionalStrings init [nil]: n/a
     }
 
+    // 属性包装器使用
+    public func propertyWrapperAction() {
+        do {
+            struct User {
+                @SCAtomic @SCapitalized var firstName: String
+                @SCAtomic @SCapitalized var lastName: String
+            }
+
+            let user = User(firstName: "jack", lastName: "long")
+            print(user.firstName, user.lastName)
+            // Jack Long
+
+            user.firstName = "tom"
+            user.lastName = "short"
+            print(user.firstName, user.lastName)
+            // Tom Short
+        }
+
+        do {
+            struct UserDefaultsConfig {
+              @SCUserDefault("hadShownGuideView", defaultValue: false)
+              static var hadShownGuideView: Bool
+            }
+            
+            print(UserDefaultsConfig.hadShownGuideView)
+            UserDefaultsConfig.hadShownGuideView = true
+            print(UserDefaultsConfig.hadShownGuideView)
+            // false，第二次：true
+            // true
+        }
+    }
+
     // MARK: - UI
 
     func setupUI() {
@@ -1362,6 +1394,7 @@ class SCFunctionViewController: BaseViewController {
         higherOrderFun()
         operationAction()
         forcedUnpacking()
+        propertyWrapperAction()
     }
 
     // MARK: - Constraints

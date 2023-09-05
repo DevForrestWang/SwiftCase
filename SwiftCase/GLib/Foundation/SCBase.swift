@@ -44,3 +44,70 @@ func !? <T>(wrapped: T?, defaultValue: @autoclosure () -> T) -> T {
 
     return wrapped ?? defaultValue()
 }
+
+// MARK: - 属性包装器
+
+/// 字符串首字母大写
+@propertyWrapper struct SCapitalized {
+    var wrappedValue: String {
+        didSet { wrappedValue = wrappedValue.capitalized }
+    }
+
+    init(wrappedValue: String) {
+        self.wrappedValue = wrappedValue.capitalized
+    }
+}
+
+/// 属性加锁使用
+@propertyWrapper
+class SCAtomic<T> {
+    private var value: T
+    private let lock = NSRecursiveLock()
+
+    public init(wrappedValue value: T) {
+        self.value = value
+    }
+
+    public var wrappedValue: T {
+        get { getValue() }
+        set { setValue(newValue: newValue) }
+    }
+
+    // 加锁处理获取数据
+    func getValue() -> T {
+        lock.lock()
+        defer { lock.unlock() }
+
+        return value
+    }
+
+    // 设置数据加锁
+    func setValue(newValue: T) {
+        lock.lock()
+        defer { lock.unlock() }
+
+        value = newValue
+    }
+}
+
+/// 保存属性
+@propertyWrapper
+struct SCUserDefault<T> {
+    let key: String
+    let defaultValue: T
+
+    init(_ key: String, defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+
+    var wrappedValue: T {
+        get {
+            return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
+        }
+
+        set {
+            UserDefaults.standard.set(newValue, forKey: key)
+        }
+    }
+}
