@@ -1361,6 +1361,11 @@ class SCFunctionViewController: BaseViewController {
             print(ptr)
         }
 
+        /// 获得值类型真实内存地址，与withUnsafePointer一样效果
+        func getPointer<T>(of value: inout T) -> UnsafeRawPointer {
+            return withUnsafePointer(to: &value) { UnsafeRawPointer($0) }
+        }
+
         var x = 42
         var y = 3.14
         var z = "foo"
@@ -1398,15 +1403,19 @@ class SCFunctionViewController: BaseViewController {
         // 指针地址
         withUnsafePointer(to: &ary1) { ptr in print(ptr) }
         withUnsafePointer(to: &ary2) { ptr in print(ptr) }
+        print(getPointer(of: &ary1))
+        print(getPointer(of: &ary2))
 
         // 指向对象地址
         printPointer(ptr: &ary1)
         printPointer(ptr: &ary2)
         // ary2 = ary1
-        // 0x000000016f1ef1a8
-        // 0x000000016f1ef1a0
-        // 0x00000002826e5c40
-        // 0x00000002826e5c40
+        // 0x000000016fd16b58
+        // 0x000000016fd16b50
+        // 0x000000016fd16b58
+        // 0x000000016fd16b50
+        // 0x00000002823ff7c0
+        // 0x00000002823ff7c0
 
         // 指向不同地址
         ary1.append("ddddddd")
@@ -1416,15 +1425,22 @@ class SCFunctionViewController: BaseViewController {
         // 指针地址
         withUnsafePointer(to: &ary1) { ptr in print(ptr) }
         withUnsafePointer(to: &ary2) { ptr in print(ptr) }
+        print(getPointer(of: &ary1))
+        print(getPointer(of: &ary2))
 
         // 指向对象地址
         printPointer(ptr: &ary1)
         printPointer(ptr: &ary2)
         // change array
-        // 0x000000016f1ef1a8
-        // 0x000000016f1ef1a0
-        // 0x0000000282bc7820
-        // 0x00000002826e5c40
+        // 0x000000016fd16b58
+        // 0x000000016fd16b50
+        // 0x000000016fd16b58
+        // 0x000000016fd16b50
+        // 0x0000000282eec620
+        // 0x00000002823ff7c0
+
+        // 打印对象地址：getPointer(of: &ary1) 或 withUnsafePointer(to: &ary1) { ptr in print(ptr) }
+        // 调试模式，打印地址值：x 0x00000002826e5c40
     }
 
     // MARK: - UI
