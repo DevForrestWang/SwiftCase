@@ -1341,17 +1341,90 @@ class SCFunctionViewController: BaseViewController {
         }
 
         do {
-            struct UserDefaultsConfig {
-              @SCUserDefault("hadShownGuideView", defaultValue: false)
-              static var hadShownGuideView: Bool
+            enum UserDefaultsConfig {
+                @SCUserDefault("hadShownGuideView", defaultValue: false)
+                static var hadShownGuideView: Bool
             }
-            
+
             print(UserDefaultsConfig.hadShownGuideView)
             UserDefaultsConfig.hadShownGuideView = true
             print(UserDefaultsConfig.hadShownGuideView)
             // false，第二次：true
             // true
         }
+    }
+
+    /// 打印内存指针
+    public func showPointer() {
+        /// 打印指向对象地址
+        func printPointer<T>(ptr: UnsafePointer<T>) {
+            print(ptr)
+        }
+
+        var x = 42
+        var y = 3.14
+        var z = "foo"
+        var obj = NSObject()
+
+        print("start withUnsafePointer")
+        withUnsafePointer(to: &x) { ptr in print(ptr) }
+        withUnsafePointer(to: &y) { ptr in print(ptr) }
+        withUnsafePointer(to: &z) { ptr in print(ptr) }
+        withUnsafePointer(to: &obj) { ptr in print(ptr) }
+
+        print("start printPointer")
+        printPointer(ptr: &x)
+        printPointer(ptr: &y)
+        printPointer(ptr: &z)
+        printPointer(ptr: &obj)
+
+        // start withUnsafePointer
+        // 0x000000016f1ef1d0
+        // 0x000000016f1ef1c8
+        // 0x000000016f1ef1b8
+        // 0x000000016f1ef1b0
+        // start printPointer
+        // 0x000000016f1ef1d0
+        // 0x000000016f1ef1c8
+        // 0x000000016f1ef1b8
+        // 0x000000016f1ef1b0
+
+        // 数组
+        var ary1 = ["aaaaaaaaaa", "bbbbbbbbb", "ccccccccccccccccc"]
+        // 指向同一个地址
+        var ary2 = ary1
+
+        print("ary2 = ary1")
+        // 指针地址
+        withUnsafePointer(to: &ary1) { ptr in print(ptr) }
+        withUnsafePointer(to: &ary2) { ptr in print(ptr) }
+
+        // 指向对象地址
+        printPointer(ptr: &ary1)
+        printPointer(ptr: &ary2)
+        // ary2 = ary1
+        // 0x000000016f1ef1a8
+        // 0x000000016f1ef1a0
+        // 0x00000002826e5c40
+        // 0x00000002826e5c40
+
+        // 指向不同地址
+        ary1.append("ddddddd")
+        ary2.removeFirst()
+
+        print("change array")
+        // 指针地址
+        withUnsafePointer(to: &ary1) { ptr in print(ptr) }
+        withUnsafePointer(to: &ary2) { ptr in print(ptr) }
+
+        // 指向对象地址
+        printPointer(ptr: &ary1)
+        printPointer(ptr: &ary2)
+        // change array
+        // 0x000000016f1ef1a8
+        // 0x000000016f1ef1a0
+        // 0x0000000282bc7820
+        // 0x00000002826e5c40
     }
 
     // MARK: - UI
@@ -1395,6 +1468,7 @@ class SCFunctionViewController: BaseViewController {
         operationAction()
         forcedUnpacking()
         propertyWrapperAction()
+        showPointer()
     }
 
     // MARK: - Constraints
