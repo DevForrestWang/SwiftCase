@@ -1356,90 +1356,64 @@ class SCFunctionViewController: BaseViewController {
 
     /// 打印内存指针
     public func showPointer() {
-        /// 打印指向对象地址
-        func printPointer<T>(ptr: UnsafePointer<T>) {
-            print(ptr)
-        }
-
-        /// 获得值类型真实内存地址，与withUnsafePointer一样效果
-        func getPointer<T>(of value: inout T) -> UnsafeRawPointer {
-            return withUnsafePointer(to: &value) { UnsafeRawPointer($0) }
-        }
-
+        // 普通类型数据
         var x = 42
         var y = 3.14
         var z = "foo"
         var obj = NSObject()
 
-        print("start withUnsafePointer")
-        withUnsafePointer(to: &x) { ptr in print(ptr) }
-        withUnsafePointer(to: &y) { ptr in print(ptr) }
-        withUnsafePointer(to: &z) { ptr in print(ptr) }
-        withUnsafePointer(to: &obj) { ptr in print(ptr) }
+        SC.log("Base type pointer")
+        SC.printPointer(ptr: &x)
+        SC.printPointer(ptr: &y)
+        SC.printPointer(ptr: &z)
 
-        print("start printPointer")
-        printPointer(ptr: &x)
-        printPointer(ptr: &y)
-        printPointer(ptr: &z)
-        printPointer(ptr: &obj)
+        SC.printPointer(ptr: &obj)
+        withUnsafePointer(to: &obj) { ptr in SC.log(ptr) }
+        // Base type pointer
+        // 0x000000016d4e6b80
+        // 0x000000016d4e6b78
+        // 0x000000016d4e6b68
+        // 0x000000016d4e6b60 printPointer 与 withUnsafePointer 获取地址相同
+        // 0x000000016d4e6b60
 
-        // start withUnsafePointer
-        // 0x000000016f1ef1d0
-        // 0x000000016f1ef1c8
-        // 0x000000016f1ef1b8
-        // 0x000000016f1ef1b0
-        // start printPointer
-        // 0x000000016f1ef1d0
-        // 0x000000016f1ef1c8
-        // 0x000000016f1ef1b8
-        // 0x000000016f1ef1b0
-
-        // 数组
-        var ary1 = ["aaaaaaaaaa", "bbbbbbbbb", "ccccccccccccccccc"]
+        // 数组类型
+        var ary1 = ["aaa", "bbb", "ccc"]
         // 指向同一个地址
         var ary2 = ary1
 
-        print("ary2 = ary1")
+        SC.log("ary2 = ary1")
         // 指针地址
-        withUnsafePointer(to: &ary1) { ptr in print(ptr) }
-        withUnsafePointer(to: &ary2) { ptr in print(ptr) }
-        print(getPointer(of: &ary1))
-        print(getPointer(of: &ary2))
+        SC.log(SC.getPointer(of: &ary1))
+        SC.log(SC.getPointer(of: &ary2))
 
         // 指向对象地址
-        printPointer(ptr: &ary1)
-        printPointer(ptr: &ary2)
+        SC.printPointer(ptr: &ary1)
+        SC.printPointer(ptr: &ary2)
         // ary2 = ary1
-        // 0x000000016fd16b58
-        // 0x000000016fd16b50
-        // 0x000000016fd16b58
-        // 0x000000016fd16b50
-        // 0x00000002823ff7c0
-        // 0x00000002823ff7c0
+        // 0x000000016d4e6b58 ary1 与 ary2 指针地址没有改变
+        // 0x000000016d4e6b50
+        // 0x0000000283a89740 ary1 与 ary2 指向相通对象
+        // 0x0000000283a89740
 
         // 指向不同地址
-        ary1.append("ddddddd")
+        ary1.append("ddd")
         ary2.removeFirst()
 
-        print("change array")
+        SC.log("change array")
         // 指针地址
-        withUnsafePointer(to: &ary1) { ptr in print(ptr) }
-        withUnsafePointer(to: &ary2) { ptr in print(ptr) }
-        print(getPointer(of: &ary1))
-        print(getPointer(of: &ary2))
+        SC.log(SC.getPointer(of: &ary1))
+        SC.log(SC.getPointer(of: &ary2))
 
         // 指向对象地址
-        printPointer(ptr: &ary1)
-        printPointer(ptr: &ary2)
+        SC.printPointer(ptr: &ary1)
+        SC.printPointer(ptr: &ary2)
         // change array
-        // 0x000000016fd16b58
-        // 0x000000016fd16b50
-        // 0x000000016fd16b58
-        // 0x000000016fd16b50
-        // 0x0000000282eec620
-        // 0x00000002823ff7c0
+        // 0x000000016d4e6b58
+        // 0x000000016d4e6b50
+        // 0x00000002837bc820 ary1 与 ary2 指向不同对象
+        // 0x0000000283a89740
 
-        // 打印对象地址：getPointer(of: &ary1) 或 withUnsafePointer(to: &ary1) { ptr in print(ptr) }
+        // 打印对象地址：getPointer(of: &ary1) 等价与 withUnsafePointer(to: &ary1) { ptr in print(ptr) }
         // 调试模式，打印地址值：x 0x00000002826e5c40
     }
 

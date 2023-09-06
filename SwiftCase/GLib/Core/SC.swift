@@ -255,6 +255,16 @@ public class SwiftCase: NSObject {
         #endif
     }
 
+    /// 打印变量的地址值，如果是数组打印指向的对象地址
+    public static func printPointer<T>(ptr: UnsafePointer<T>) {
+        log(ptr)
+    }
+
+    /// 获取变量的真实内存地址，等同于 withUnsafePointer(to: &x) { ptr in print(ptr) } 方法
+    public static func getPointer<T>(of value: inout T) -> UnsafeRawPointer {
+        return withUnsafePointer(to: &value) { UnsafeRawPointer($0) }
+    }
+
     // MARK: - Private
 
     /// 获取设备标识与名称对应关系，当前值支持手机系统
