@@ -681,6 +681,16 @@ class SCFunctionViewController: BaseViewController {
             for value in someDict.values {
                 SC.log("Dictionary value \(value)")
             }
+
+            // dictionary 转为 元组
+            let result = someDict.map { key, value in
+                SC.log("Dictionary, map key:\(key), value: \(value)")
+                return (key, value)
+            }
+
+            if result.count > 0 {
+                SC.log("key:\(result[0].0), value:\(result[0].1)")
+            }
         }
 
         // 转换为数组
