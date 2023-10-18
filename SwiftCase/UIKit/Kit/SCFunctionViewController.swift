@@ -466,6 +466,20 @@ class SCFunctionViewController: BaseViewController {
             SC.log(num)
         }
 
+        // 两个长度相等的数组遍历
+        do {
+            let numberOneAry = [1, 2, 3, 4]
+            let numberTwoAry = [4, 5, 6, 7]
+
+            if numberOneAry.count != numberTwoAry.count {
+                return
+            }
+
+            for (o, t) in zip(numberOneAry, numberTwoAry) {
+                SC.log("O:\(o), T:\(t)")
+            }
+        }
+
         // 除了第一个元素以外的数组其余部分
         SC.log("dropFirst before, number:\(numbers)")
         for num in numbers.dropFirst() {
