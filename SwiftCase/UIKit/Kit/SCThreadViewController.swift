@@ -137,6 +137,22 @@ class SCThreadViewController: BaseViewController {
 
     // MARK: - Private
 
+    /// 使用 Async/Await 加载数据
+    func loadEpisodes(url: URL) async throws -> [Episode] {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode([Episode].self, from: data)
+    }
+
+    func loadEpisodeData() {
+        if let url = URL(string: "https://talk.objc.io/episodes.json") {
+            Task {
+                let episodAry = try await loadEpisodes(url: url)
+                print("episodAry count: \(episodAry.count)")
+                // episodAry count: 376
+            }
+        }
+    }
+
     // MARK: - UI
 
     func setupUI() {
@@ -155,6 +171,8 @@ class SCThreadViewController: BaseViewController {
 
         perThread = SCPermenantThread()
         perThread?.run()
+
+        loadEpisodeData()
     }
 
     // MARK: - Constraints
@@ -227,4 +245,19 @@ class SCThreadViewController: BaseViewController {
     }
 
     var perThread: SCPermenantThread?
+
+    /// 数据模型
+    struct Episode: Codable {
+        var id: String
+        var title: String
+        var poster_url: String
+        var small_poster_url: String
+        var url: String
+        var synopsis: String
+        var collection: String
+        var released_at: Int64
+        var number: Int
+        var media_duration: Int
+        var subscription_only: Bool
+    }
 }
