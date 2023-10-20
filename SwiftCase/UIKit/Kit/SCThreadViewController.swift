@@ -129,6 +129,23 @@ class SCThreadViewController: BaseViewController {
         perThread?.stop()
     }
 
+    @objc private func asyncAction() {
+        guard let url = URL(string: "https://talk.objc.io/episodes.json") else {
+            return
+        }
+
+        Task {
+            let episodAry = try await loadEpisodes(url: url)
+            SC.toast("episodAry count: \(episodAry.count)")
+            // episodAry count: 376
+
+            if episodAry.count > 0 {
+                let imageAry = try await loadPosterImages(for: episodAry)
+                SC.toast("imageAry count: \(imageAry.count)")
+            }
+        }
+    }
+
     override public func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
         perThread?.executeTask(task: {
             print("执行任务 --- \(Thread.current)")
@@ -138,17 +155,57 @@ class SCThreadViewController: BaseViewController {
     // MARK: - Private
 
     /// 使用 Async/Await 加载数据
-    func loadEpisodes(url: URL) async throws -> [Episode] {
+    private func loadEpisodes(url: URL) async throws -> [Episode] {
         let (data, _) = try await URLSession.shared.data(from: url)
         return try JSONDecoder().decode([Episode].self, from: data)
     }
 
-    func loadEpisodeData() {
-        if let url = URL(string: "https://talk.objc.io/episodes.json") {
-            Task {
-                let episodAry = try await loadEpisodes(url: url)
-                print("episodAry count: \(episodAry.count)")
-                // episodAry count: 376
+    // 执行多个异步加载
+    private func loadEpisodeData() {
+        guard let url = URL(string: "https://talk.objc.io/episodes.json") else {
+            return
+        }
+
+        Task {
+            let episodAry = try await loadEpisodes(url: url)
+            SC.toast("episodAry count: \(episodAry.count)")
+            // episodAry count: 376
+
+            let doubleEpisod = try await loadDoubleEpisodes(url: url)
+            SC.toast("doubleEpisod.0 count: \(doubleEpisod.0.count)")
+        }
+    }
+
+    /// 执行两个异步绑定
+    func loadDoubleEpisodes(url: URL) async throws -> ([Episode], [Episode]) {
+        // async let 语法创建了一个异步绑定
+        async let episodes = loadEpisodes(url: url)
+        async let collections = loadEpisodes(url: url)
+
+        // 等待异步绑定完成
+        return try await (episodes, collections)
+    }
+
+    /// 加载海报
+    func loadPosterImages(for episodes: [Episode]) async throws -> [String: UIImage] {
+        let session = URLSession.shared
+        return try await withThrowingTaskGroup(of: (id: String, image: UIImage).self) { group in
+            for episode in episodes {
+                // 图片地址需要代理，否则会下载失败 或 很慢
+                guard let url = URL(string: episode.poster_url) else {
+                    continue
+                }
+
+                // 添加下载任务
+                group.addTask {
+                    let (imageData, _) = try await session.data(from: url)
+                    return (episode.id, UIImage(data: imageData) ?? UIImage())
+                }
+            }
+
+            // 归并下载任务
+            return try await group.reduce(into: [:]) { dict, pair in
+                dict[pair.id] = pair.image
             }
         }
     }
@@ -163,45 +220,48 @@ class SCThreadViewController: BaseViewController {
         view.addSubview(operationBtn)
         view.addSubview(gcdButton)
         view.addSubview(perThredButton)
+        view.addSubview(asyncButton)
 
         threadButton.addTarget(self, action: #selector(threadBtnAction), for: .touchUpInside)
         operationBtn.addTarget(self, action: #selector(operationBtnAction), for: .touchUpInside)
         gcdButton.addTarget(self, action: #selector(gcgBtnAction), for: .touchUpInside)
         perThredButton.addTarget(self, action: #selector(stopThreadAction), for: .touchUpInside)
+        asyncButton.addTarget(self, action: #selector(asyncAction), for: .touchUpInside)
 
         perThread = SCPermenantThread()
         perThread?.run()
 
-        loadEpisodeData()
+        // loadEpisodeData()
     }
 
     // MARK: - Constraints
 
     func setupConstraints() {
         threadButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(40)
             make.height.equalTo(44)
             make.width.equalToSuperview().offset(-50)
-            make.centerY.equalToSuperview().offset(-180)
             make.centerX.equalToSuperview()
         }
 
         operationBtn.snp.makeConstraints { make in
-            make.height.equalTo(44)
-            make.width.equalToSuperview().offset(-50)
-            make.top.equalTo(threadButton.snp.bottom).offset(40)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(threadButton.snp.bottom).offset(20)
+            make.height.width.centerX.equalTo(threadButton)
         }
 
         gcdButton.snp.makeConstraints { make in
-            make.height.equalTo(44)
-            make.width.equalToSuperview().offset(-50)
-            make.top.equalTo(operationBtn.snp.bottom).offset(40)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(operationBtn.snp.bottom).offset(20)
+            make.height.width.centerX.equalTo(threadButton)
         }
 
         perThredButton.snp.makeConstraints { make in
-            make.top.equalTo(gcdButton.snp.bottom).offset(40)
-            make.height.width.centerX.equalTo(gcdButton)
+            make.top.equalTo(gcdButton.snp.bottom).offset(20)
+            make.height.width.centerX.equalTo(threadButton)
+        }
+
+        asyncButton.snp.makeConstraints { make in
+            make.top.equalTo(perThredButton.snp.bottom).offset(20)
+            make.height.width.centerX.equalTo(threadButton)
         }
     }
 
@@ -239,6 +299,14 @@ class SCThreadViewController: BaseViewController {
     let perThredButton = UIButton().then {
         $0.backgroundColor = .orange
         $0.setTitle("Stop Permenant Thread", for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 16)
+        $0.setTitleColor(.white, for: .normal)
+        $0.layer.cornerRadius = 20
+    }
+
+    let asyncButton = UIButton().then {
+        $0.backgroundColor = .orange
+        $0.setTitle("Async/Await 加载数据", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 20
