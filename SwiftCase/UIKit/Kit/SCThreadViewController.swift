@@ -180,10 +180,10 @@ class SCThreadViewController: BaseViewController {
     func loadDoubleEpisodes(url: URL) async throws -> ([Episode], [Episode]) {
         // async let 语法创建了一个异步绑定
         async let episodes = loadEpisodes(url: url)
-        async let collections = loadEpisodes(url: url)
+        async let episodes2 = loadEpisodes(url: url)
 
         // 等待异步绑定完成
-        return try await (episodes, collections)
+        return try await (episodes, episodes2)
     }
 
     /// 加载海报
