@@ -156,7 +156,12 @@ class SCThreadViewController: BaseViewController {
 
     /// 使用 Async/Await 加载数据
     private func loadEpisodes(url: URL) async throws -> [Episode] {
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await URLSession.shared.data(from: url)
+
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw SCServiceError(retCode: 9001, msg: "No data.")
+        }
+
         return try JSONDecoder().decode([Episode].self, from: data)
     }
 
