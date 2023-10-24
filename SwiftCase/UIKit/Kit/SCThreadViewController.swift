@@ -182,7 +182,7 @@ class SCThreadViewController: BaseViewController {
     }
 
     /// 执行两个异步绑定
-    func loadDoubleEpisodes(url: URL) async throws -> ([Episode], [Episode]) {
+    private func loadDoubleEpisodes(url: URL) async throws -> ([Episode], [Episode]) {
         // async let 语法创建了一个异步绑定
         async let episodes = loadEpisodes(url: url)
         async let episodes2 = loadEpisodes(url: url)
@@ -192,7 +192,7 @@ class SCThreadViewController: BaseViewController {
     }
 
     /// 加载海报
-    func loadPosterImages(for episodes: [Episode]) async throws -> [String: UIImage] {
+    private func loadPosterImages(for episodes: [Episode]) async throws -> [String: UIImage] {
         let session = URLSession.shared
         return try await withThrowingTaskGroup(of: (id: String, image: UIImage).self) { group in
             for episode in episodes {
