@@ -277,6 +277,7 @@
 		C68195232892C08E001CCF50 /* SCSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195222892C08E001CCF50 /* SCSelectDayView.swift */; };
 		C68CB78D2A666EA100F02C10 /* SCShowPopViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68CB78C2A666EA100F02C10 /* SCShowPopViewVC.swift */; };
 		C68DE6162A8C80660085576D /* SCMapPrivacyUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DE6152A8C80660085576D /* SCMapPrivacyUtility.swift */; };
+		C69321B52AEA3C700078D467 /* ArchiveAndUnArchiveDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69321B42AEA3C700078D467 /* ArchiveAndUnArchiveDataVC.swift */; };
 		C6ACB61C2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */; };
 		C6B0AEF32A3AAD5E002A5719 /* SCPopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */; };
 		C6B0AEF52A3AAE2B002A5719 /* SCPopListViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */; };
@@ -602,6 +603,7 @@
 		C68195222892C08E001CCF50 /* SCSelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSelectDayView.swift; sourceTree = "<group>"; };
 		C68CB78C2A666EA100F02C10 /* SCShowPopViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCShowPopViewVC.swift; sourceTree = "<group>"; };
 		C68DE6152A8C80660085576D /* SCMapPrivacyUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCMapPrivacyUtility.swift; sourceTree = "<group>"; };
+		C69321B42AEA3C700078D467 /* ArchiveAndUnArchiveDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAndUnArchiveDataVC.swift; sourceTree = "<group>"; };
 		C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLayoutByScrollViewVC.swift; sourceTree = "<group>"; };
 		C6B0AEF22A3AAD5E002A5719 /* SCPopListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopListView.swift; sourceTree = "<group>"; };
 		C6B0AEF42A3AAE2B002A5719 /* SCPopListViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPopListViewVC.swift; sourceTree = "<group>"; };
@@ -1507,6 +1509,7 @@
 				77A842A8273F62F900D08148 /* SCUIAnimationViewVC.swift */,
 				C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */,
 				C6E590AC2A5E840F00948463 /* SCLayoutByStackViewVC.swift */,
+				C69321B42AEA3C700078D467 /* ArchiveAndUnArchiveDataVC.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -1779,6 +1782,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C69321B52AEA3C700078D467 /* ArchiveAndUnArchiveDataVC.swift in Sources */,
 				77C25440270300C10012F078 /* SCUtils.swift in Sources */,
 				C68032A82A03ACDC00910E71 /* ProvincesModel.swift in Sources */,
 				C6D8BF2F28D8421C009D85D5 /* GYVoiceRecordingObject.swift in Sources */,
