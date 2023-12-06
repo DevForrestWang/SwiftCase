@@ -154,8 +154,31 @@ class SCThreadViewController: BaseViewController {
 
     // MARK: - Private
 
+    // 执行多个异步加载
+    private func loadEpisodeData() {
+        guard let url = URL(string: "https://talk.objc.io/episodes.json") else {
+            return
+        }
+
+        let task = Task {
+            let episodAry = try await loadEpisodes(url: url)
+            SC.toast("episodAry count: \(episodAry.count)")
+            // episodAry count: 376
+
+            let doubleEpisod = try await loadDoubleEpisodes(url: url)
+            SC.toast("doubleEpisod.0 count: \(doubleEpisod.0.count)")
+        }
+
+        // 验证取消操作
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2.5) {
+            task.cancel()
+        }
+    }
+
     /// 使用 Async/Await 加载数据
     private func loadEpisodes(url: URL) async throws -> [Episode] {
+        // 设置取消检查点
+        try Task.checkCancellation()
         let (data, response) = try await URLSession.shared.data(from: url)
 
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
@@ -165,22 +188,6 @@ class SCThreadViewController: BaseViewController {
         return try JSONDecoder().decode([Episode].self, from: data)
     }
 
-    // 执行多个异步加载
-    private func loadEpisodeData() {
-        guard let url = URL(string: "https://talk.objc.io/episodes.json") else {
-            return
-        }
-
-        Task {
-            let episodAry = try await loadEpisodes(url: url)
-            SC.toast("episodAry count: \(episodAry.count)")
-            // episodAry count: 376
-
-            let doubleEpisod = try await loadDoubleEpisodes(url: url)
-            SC.toast("doubleEpisod.0 count: \(doubleEpisod.0.count)")
-        }
-    }
-
     /// 执行两个异步绑定
     private func loadDoubleEpisodes(url: URL) async throws -> ([Episode], [Episode]) {
         // async let 语法创建了一个异步绑定
@@ -188,6 +195,7 @@ class SCThreadViewController: BaseViewController {
         async let episodes2 = loadEpisodes(url: url)
 
         // 等待异步绑定完成
+        try Task.checkCancellation()
         return try await (episodes, episodes2)
     }
 
@@ -236,7 +244,7 @@ class SCThreadViewController: BaseViewController {
         perThread = SCPermenantThread()
         perThread?.run()
 
-        // loadEpisodeData()
+        //loadEpisodeData()
     }
 
     // MARK: - Constraints
