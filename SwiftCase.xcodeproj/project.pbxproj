@@ -267,6 +267,7 @@
 		C62328222899099900A1015E /* GYTextSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62328212899099900A1015E /* GYTextSwitch.swift */; };
 		C64E57622A9D942F00B6BEDA /* SCBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E57612A9D942F00B6BEDA /* SCBase.swift */; };
 		C650D28E2A204A6C008C52E3 /* SCPermenantThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650D28D2A204A6C008C52E3 /* SCPermenantThread.swift */; };
+		C67664B92B245031005978C1 /* SCErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67664B82B245031005978C1 /* SCErrorViewController.swift */; };
 		C68032A82A03ACDC00910E71 /* ProvincesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68032A72A03ACDC00910E71 /* ProvincesModel.swift */; };
 		C68195132892B652001CCF50 /* SCPopupBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195122892B652001CCF50 /* SCPopupBaseView.swift */; };
 		C68195182892BE09001CCF50 /* SCImageTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68195172892BE09001CCF50 /* SCImageTextButton.swift */; };
@@ -593,6 +594,7 @@
 		C64653E72A669E9400940FF5 /* SwiftCaseTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftCaseTestPlan.xctestplan; sourceTree = "<group>"; };
 		C64E57612A9D942F00B6BEDA /* SCBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCBase.swift; sourceTree = "<group>"; };
 		C650D28D2A204A6C008C52E3 /* SCPermenantThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPermenantThread.swift; sourceTree = "<group>"; };
+		C67664B82B245031005978C1 /* SCErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCErrorViewController.swift; sourceTree = "<group>"; };
 		C68032A72A03ACDC00910E71 /* ProvincesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvincesModel.swift; sourceTree = "<group>"; };
 		C68195122892B652001CCF50 /* SCPopupBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopupBaseView.swift; sourceTree = "<group>"; };
 		C68195172892BE09001CCF50 /* SCImageTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCImageTextButton.swift; sourceTree = "<group>"; };
@@ -1510,6 +1512,7 @@
 				C6ACB61B2A5E41920009CF31 /* SCLayoutByScrollViewVC.swift */,
 				C6E590AC2A5E840F00948463 /* SCLayoutByStackViewVC.swift */,
 				C69321B42AEA3C700078D467 /* ArchiveAndUnArchiveDataVC.swift */,
+				C67664B82B245031005978C1 /* SCErrorViewController.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -1966,6 +1969,7 @@
 				77F652A226F5D25F00280568 /* DPInterpreter.swift in Sources */,
 				779843A52702B03F001D73AF /* MessageSendTableViewCell.swift in Sources */,
 				77F652BF26F5E1C900280568 /* AlgorithmViewController.swift in Sources */,
+				C67664B92B245031005978C1 /* SCErrorViewController.swift in Sources */,
 				C88F934426F8DEAD00739819 /* SCBrowsImageCell.swift in Sources */,
 				8A8ED9B6279BFC2400971DDA /* LoginView.swift in Sources */,
 				77062DED2739467700A7F090 /* VertexPath.swift in Sources */,

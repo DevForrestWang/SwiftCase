@@ -244,7 +244,7 @@ class SCThreadViewController: BaseViewController {
                 print("medium2: \(await counter.increment())")
             }
         }
-        
+
         // medium: 1
         // medium2: 2
         // medium: 3

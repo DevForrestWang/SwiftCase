@@ -53,6 +53,7 @@ class UIKitViewController: ItemListViewController {
             SCItemModel(title: "Page Layout by ScrollView", controllerName: "SCLayoutByScrollViewVC", action: nil),
             SCItemModel(title: "Page Layout by StackView", controllerName: "SCLayoutByStackViewVC", action: nil),
             SCItemModel(title: "Archiver And Unarchiver Data", controllerName: "ArchiveAndUnArchiveDataVC", action: nil),
+            SCItemModel(title: "Error handling", controllerName: "SCErrorViewController", action: nil),
         ]
     }
 
