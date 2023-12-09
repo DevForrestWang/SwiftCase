@@ -223,6 +223,39 @@ class SCThreadViewController: BaseViewController {
         }
     }
 
+    /// 资源隔离
+    private func resourceIsolate() {
+        actor Counter {
+            var value = 0
+
+            func increment() -> Int {
+                // 随机柱塞时间
+                usleep(arc4random_uniform(10000))
+                value = value + 1
+                return value
+            }
+        }
+
+        let counter = Counter()
+
+        Task.detached(priority: .medium) {
+            for _ in 0 ..< 1000 {
+                print("medium: \(await counter.increment())")
+                print("medium2: \(await counter.increment())")
+            }
+        }
+        
+        // medium: 1
+        // medium2: 2
+        // medium: 3
+        // medium2: 4
+        // ...
+        // medium: 1997
+        // medium2: 1998
+        // medium: 1999
+        // medium2: 2000
+    }
+
     // MARK: - UI
 
     func setupUI() {
@@ -244,7 +277,8 @@ class SCThreadViewController: BaseViewController {
         perThread = SCPermenantThread()
         perThread?.run()
 
-        //loadEpisodeData()
+        // loadEpisodeData()
+        resourceIsolate()
     }
 
     // MARK: - Constraints
