@@ -35,7 +35,7 @@ class SCErrorViewController: BaseViewController {
     // MARK: - Private
 
     private func testResult() {
-        let result = contents(ofFile: "input.txt")
+        let result = contentsResult(ofFile: "")
         switch result {
         case let .success(contents):
             print(contents)
@@ -45,18 +45,45 @@ class SCErrorViewController: BaseViewController {
                 print("File not found")
             case .noPermission:
                 print("No permission")
+            case let .warning(message: message):
+                print("message:\(message)")
             }
         }
         // File not found
     }
 
     /// 模拟获取文件结果，
-    private func contents(ofFile fileName: String) -> Result<String, FileError> {
-        if fileName.count < 0 {
+    private func contentsResult(ofFile fileName: String) -> Result<String, FileError> {
+        if fileName.count <= 0 {
             return .failure(.fileDoesNotExist)
         }
 
         return .success("Sucessed")
+    }
+
+    /// 抛出异常测试
+    private func testThrows() {
+        do {
+            let result = try contentsThrows(ofFile: "")
+            print(result)
+        } catch FileError.fileDoesNotExist {
+            print("File not found")
+        } catch FileError.noPermission {
+            print("no Permission")
+        } catch let FileError.warning(message) {
+            print("warning: \(message)")
+        } catch {
+            print(error.localizedDescription)
+        }
+
+        // warning: File is not exist.
+    }
+
+    private func contentsThrows(ofFile filename: String) throws -> String {
+        if filename.count <= 0 {
+            throw FileError.warning(message: "File is not exist.")
+        }
+        return "File content."
     }
 
     // MARK: - UI
@@ -65,6 +92,7 @@ class SCErrorViewController: BaseViewController {
         title = "Error"
 
         testResult()
+        testThrows()
     }
 
     // MARK: - Constraints
@@ -78,4 +106,5 @@ class SCErrorViewController: BaseViewController {
 enum FileError: Error {
     case fileDoesNotExist
     case noPermission
+    case warning(message: String)
 }
