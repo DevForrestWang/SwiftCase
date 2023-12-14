@@ -265,6 +265,7 @@
 		C61C4832296BBB09005EA8F4 /* SwiftPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */; };
 		C622188F2A96FB7900CE7097 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C622188E2A96FB7900CE7097 /* Sequence+Extension.swift */; };
 		C62328222899099900A1015E /* GYTextSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62328212899099900A1015E /* GYTextSwitch.swift */; };
+		C6450A282B2AF85700D2BAC0 /* SCEncodingAndDecodingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6450A272B2AF85700D2BAC0 /* SCEncodingAndDecodingVC.swift */; };
 		C64E57622A9D942F00B6BEDA /* SCBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E57612A9D942F00B6BEDA /* SCBase.swift */; };
 		C650D28E2A204A6C008C52E3 /* SCPermenantThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650D28D2A204A6C008C52E3 /* SCPermenantThread.swift */; };
 		C67664B92B245031005978C1 /* SCErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67664B82B245031005978C1 /* SCErrorViewController.swift */; };
@@ -591,6 +592,7 @@
 		C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPopMenu.swift; sourceTree = "<group>"; };
 		C622188E2A96FB7900CE7097 /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
 		C62328212899099900A1015E /* GYTextSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTextSwitch.swift; sourceTree = "<group>"; };
+		C6450A272B2AF85700D2BAC0 /* SCEncodingAndDecodingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCEncodingAndDecodingVC.swift; sourceTree = "<group>"; };
 		C64653E72A669E9400940FF5 /* SwiftCaseTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftCaseTestPlan.xctestplan; sourceTree = "<group>"; };
 		C64E57612A9D942F00B6BEDA /* SCBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCBase.swift; sourceTree = "<group>"; };
 		C650D28D2A204A6C008C52E3 /* SCPermenantThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPermenantThread.swift; sourceTree = "<group>"; };
@@ -1513,6 +1515,7 @@
 				C6E590AC2A5E840F00948463 /* SCLayoutByStackViewVC.swift */,
 				C69321B42AEA3C700078D467 /* ArchiveAndUnArchiveDataVC.swift */,
 				C67664B82B245031005978C1 /* SCErrorViewController.swift */,
+				C6450A272B2AF85700D2BAC0 /* SCEncodingAndDecodingVC.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -1945,6 +1948,7 @@
 				77E0ACB526F5C229000EABC1 /* ContentView.swift in Sources */,
 				C6D68214293E206300EA7925 /* NSMutableAttributedString+Extension.swift in Sources */,
 				C6B0AEF32A3AAD5E002A5719 /* SCPopListView.swift in Sources */,
+				C6450A282B2AF85700D2BAC0 /* SCEncodingAndDecodingVC.swift in Sources */,
 				7756E84B26FAE48200AB139F /* Student.swift in Sources */,
 				7710057B2735299300733EF7 /* MatchToken.swift in Sources */,
 				8A486261279FD5BE004ABF6C /* SCFlexBoxVC.swift in Sources */,
