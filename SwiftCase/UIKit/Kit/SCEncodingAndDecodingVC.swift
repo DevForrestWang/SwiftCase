@@ -69,11 +69,44 @@ class SCEncodingAndDecodingVC: BaseViewController {
         }
     }
 
+    /// 属性包装解码操作
+    private func encodingByWrapperPDemo() {
+        /// 属性包装器的结构体
+        struct APlacemark: Codable {
+            var name: String
+            var coordinate: APCoordinate
+        }
+
+        /// 把 Coordinate 中的 Double 值表示为字符串
+        struct APCoordinate: Codable {
+            @CodedAsString var latitude: Double
+            @CodedAsString var longitude: Double
+        }
+
+        let places = [
+            APlacemark(name: "Berlin", coordinate: APCoordinate(latitude: 52, longitude: 13)),
+            APlacemark(name: "Cape Town", coordinate: APCoordinate(latitude: -34, longitude: 18)),
+        ]
+
+        do {
+            let jsonData = try JSONEncoder().encode(places)
+            let jsonString = String(decoding: jsonData, as: UTF8.self)
+            SC.log("Property Wrapper: \(jsonString)")
+            /*
+             [{"name":"Berlin","coordinate":{"latitude":"52.0","longitude":"13.0"}},
+             {"name":"Cape Town","coordinate":{"longitude":"18.0","latitude":"-34.0"}}]
+             */
+        } catch {
+            SC.log(error.localizedDescription)
+        }
+    }
+
     // MARK: - UI
 
     private func setupUI() {
         encodingDemo()
         decoderDemo()
+        encodingByWrapperPDemo()
     }
 
     // MARK: - Constraints
@@ -90,5 +123,33 @@ class SCEncodingAndDecodingVC: BaseViewController {
     struct Placemark: Codable {
         var name: String
         var coordinate: Coordinate
+    }
+}
+
+/// 属性包装器将字符串转换为Double类型
+@propertyWrapper
+struct CodedAsString: Codable {
+    var wrappedValue: Double
+
+    init(wrappedValue: Double) {
+        self.wrappedValue = wrappedValue
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let str = try container.decode(String.self)
+        guard let value = Double(str) else {
+            let error = EncodingError.Context(
+                codingPath: container.codingPath,
+                debugDescription: "Invalid string representation of double value"
+            )
+            throw EncodingError.invalidValue(str, error)
+        }
+        wrappedValue = value
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(String(wrappedValue))
     }
 }
