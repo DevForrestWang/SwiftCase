@@ -1,5 +1,5 @@
 ## SwiftCase
-
+ 
 **SwiftCase** 是一个Swift的开发示例，便于一些用法的参考，提高开发速度；该项目主要包括：基本组件、设计模式、算法及一些案例。
 
 ![screenshot](images/scdemo.gif)
