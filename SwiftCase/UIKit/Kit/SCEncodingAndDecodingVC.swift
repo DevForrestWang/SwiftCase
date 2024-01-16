@@ -224,16 +224,16 @@ class SCEncodingAndDecodingVC: BaseViewController {
                 let playerDic = convertToDict(model: player, Player.self)
                 SC.log(playerDic ?? "")
                 /*
-                {
-                    HighScore = 50;
-                    History =     (
-                        30,
-                        40,
-                        50
-                    );
-                    Name = Tomas;
-                }
-                */
+                 {
+                     HighScore = 50;
+                     History =     (
+                         30,
+                         40,
+                         50
+                     );
+                     Name = Tomas;
+                 }
+                 */
             }
         }
     }
