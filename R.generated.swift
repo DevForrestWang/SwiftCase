@@ -430,7 +430,7 @@ struct _R {
     var yachtJpg: RswiftResources.FileResource { .init(name: "yacht", pathExtension: "jpg", bundle: bundle, locale: LocaleReference.none) }
   }
 
-  /// This `_R.nib` struct is generated, and contains static references to 3 nibs.
+  /// This `_R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
     let bundle: Foundation.Bundle
 
@@ -442,6 +442,9 @@ struct _R {
 
     /// Nib `MessageTableViewCell`.
     var messageTableViewCell: RswiftResources.NibReference<MessageTableViewCell> { .init(name: "MessageTableViewCell", bundle: bundle) }
+
+    /// Nib `SCRecordPlayVC`.
+    var scRecordPlayVC: RswiftResources.NibReference<UIKit.UIView> { .init(name: "SCRecordPlayVC", bundle: bundle) }
 
     func validate() throws {
 

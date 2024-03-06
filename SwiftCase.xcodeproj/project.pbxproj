@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -261,6 +261,8 @@
 		C60598CD2A6646B500CD1AE1 /* SSSandBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60598CC2A6646B500CD1AE1 /* SSSandBox.swift */; };
 		C60598CF2A6646FD00CD1AE1 /* SCAPICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60598CE2A6646FD00CD1AE1 /* SCAPICache.swift */; };
 		C606F0F52AA08E23004A3D4D /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C606F0F42AA08E23004A3D4D /* Collection+Extension.swift */; };
+		C611D6A32B9849D1005EB8E0 /* SCRecordPlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C611D6A12B9849D1005EB8E0 /* SCRecordPlayVC.swift */; };
+		C611D6A42B9849D1005EB8E0 /* SCRecordPlayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C611D6A22B9849D1005EB8E0 /* SCRecordPlayVC.xib */; };
 		C61C4830296BBB01005EA8F4 /* SCPopMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */; };
 		C61C4832296BBB09005EA8F4 /* SwiftPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */; };
 		C622188F2A96FB7900CE7097 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C622188E2A96FB7900CE7097 /* Sequence+Extension.swift */; };
@@ -588,6 +590,8 @@
 		C60598CC2A6646B500CD1AE1 /* SSSandBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSandBox.swift; sourceTree = "<group>"; };
 		C60598CE2A6646FD00CD1AE1 /* SCAPICache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCAPICache.swift; sourceTree = "<group>"; };
 		C606F0F42AA08E23004A3D4D /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		C611D6A12B9849D1005EB8E0 /* SCRecordPlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCRecordPlayVC.swift; sourceTree = "<group>"; };
+		C611D6A22B9849D1005EB8E0 /* SCRecordPlayVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SCRecordPlayVC.xib; sourceTree = "<group>"; };
 		C61C482F296BBB01005EA8F4 /* SCPopMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopMenuVC.swift; sourceTree = "<group>"; };
 		C61C4831296BBB09005EA8F4 /* SwiftPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPopMenu.swift; sourceTree = "<group>"; };
 		C622188E2A96FB7900CE7097 /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
@@ -733,8 +737,8 @@
 		772D6BD92768737700C12288 /* SwipeView */ = {
 			isa = PBXGroup;
 			children = (
-				7710F0352771B5090083E067 /* View */,
 				7710F0342771B4F20083E067 /* Controller */,
+				7710F0352771B5090083E067 /* View */,
 				7775314E276B229D00A80E96 /* EasyCarouseView */,
 			);
 			path = SwipeView;
@@ -891,12 +895,9 @@
 		7756E86326FB2E9800AB139F /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				7756E86E26FB2F1D00AB139F /* CommonCell.swift */,
-				7756E86C26FB2EFB00AB139F /* CommonList.swift */,
-				7756E86426FB2E9800AB139F /* ListViewController.swift */,
-				7756E86526FB2E9800AB139F /* Product.swift */,
-				7756E86626FB2E9800AB139F /* ProductList.swift */,
-				7756E86726FB2E9800AB139F /* FakeData.swift */,
+				C611D6A72B984A6E005EB8E0 /* Controller */,
+				C611D6A82B984A77005EB8E0 /* View */,
+				C611D6A92B984A8F005EB8E0 /* Model */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -904,8 +905,8 @@
 		775F8037277075AB00D167A7 /* UpDownSwipe */ = {
 			isa = PBXGroup;
 			children = (
-				775F8038277075AB00D167A7 /* UpDownSwipeView.swift */,
-				775F8039277075AB00D167A7 /* UpDownSwipeViewController.swift */,
+				C611D6A52B984A41005EB8E0 /* Controller */,
+				C611D6A62B984A4C005EB8E0 /* View */,
 			);
 			path = UpDownSwipe;
 			sourceTree = "<group>";
@@ -1156,6 +1157,7 @@
 		77F6523126F5CD5200280568 /* Case */ = {
 			isa = PBXGroup;
 			children = (
+				C611D6A02B9849B0005EB8E0 /* RecordPlay */,
 				C61C482E296BBACD005EA8F4 /* PopMenu */,
 				A887BA39284A0448006842C2 /* Chat */,
 				8A8ED9A9279BFC2400971DDA /* MVVM */,
@@ -1232,8 +1234,8 @@
 			isa = PBXGroup;
 			children = (
 				8A8ED9AA279BFC2400971DDA /* Controller */,
-				8A8ED9AC279BFC2400971DDA /* Model */,
 				8A8ED9AE279BFC2400971DDA /* View */,
+				8A8ED9AC279BFC2400971DDA /* Model */,
 				8A8ED9B0279BFC2400971DDA /* ViewModel */,
 			);
 			path = MVVM;
@@ -1285,10 +1287,10 @@
 		A887BA39284A0448006842C2 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				C6D8BF2C28D8420F009D85D5 /* Utils */,
 				A887BA3A284A0448006842C2 /* Controller */,
 				A887BA3C284A0448006842C2 /* Model */,
 				A887BA41284A0448006842C2 /* View */,
+				C6D8BF2C28D8420F009D85D5 /* Utils */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1414,11 +1416,72 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		C611D6A02B9849B0005EB8E0 /* RecordPlay */ = {
+			isa = PBXGroup;
+			children = (
+				C611D6A12B9849D1005EB8E0 /* SCRecordPlayVC.swift */,
+				C611D6A22B9849D1005EB8E0 /* SCRecordPlayVC.xib */,
+			);
+			path = RecordPlay;
+			sourceTree = "<group>";
+		};
+		C611D6A52B984A41005EB8E0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				775F8039277075AB00D167A7 /* UpDownSwipeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C611D6A62B984A4C005EB8E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				775F8038277075AB00D167A7 /* UpDownSwipeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C611D6A72B984A6E005EB8E0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7756E86426FB2E9800AB139F /* ListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C611D6A82B984A77005EB8E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7756E86E26FB2F1D00AB139F /* CommonCell.swift */,
+				7756E86C26FB2EFB00AB139F /* CommonList.swift */,
+				7756E86626FB2E9800AB139F /* ProductList.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C611D6A92B984A8F005EB8E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7756E86526FB2E9800AB139F /* Product.swift */,
+				7756E86726FB2E9800AB139F /* FakeData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C611D6AA2B984AC3005EB8E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C88F934126F8DEAD00739819 /* SCBrowseImageView.swift */,
+				C88F934226F8DEAD00739819 /* SCBrowsImageCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C61C482E296BBACD005EA8F4 /* PopMenu */ = {
 			isa = PBXGroup;
 			children = (
-				C61C4834296BBB6F005EA8F4 /* lib */,
 				C61C4833296BBB66005EA8F4 /* Controller */,
+				C61C4834296BBB6F005EA8F4 /* lib */,
 			);
 			path = PopMenu;
 			sourceTree = "<group>";
@@ -1523,8 +1586,7 @@
 		C88F934026F8DEAD00739819 /* BrowseImages */ = {
 			isa = PBXGroup;
 			children = (
-				C88F934126F8DEAD00739819 /* SCBrowseImageView.swift */,
-				C88F934226F8DEAD00739819 /* SCBrowsImageCell.swift */,
+				C611D6AA2B984AC3005EB8E0 /* View */,
 			);
 			path = BrowseImages;
 			sourceTree = "<group>";
@@ -1633,6 +1695,7 @@
 				77F6522B26F5CBAC00280568 /* icon_between@2x.png in Resources */,
 				779843A42702B03F001D73AF /* MessageSendTableViewCell.xib in Resources */,
 				C6F41919291D05AB00D7A153 /* README.md in Resources */,
+				C611D6A42B9849D1005EB8E0 /* SCRecordPlayVC.xib in Resources */,
 				7765BBF42733B8AF009DF9BD /* trie_data.txt in Resources */,
 				7756E87A26FC17A400AB139F /* nav_btn_closed@2x.png in Resources */,
 				77F6522326F5CBAC00280568 /* icon_right_arrow@2x.png in Resources */,
@@ -2005,6 +2068,7 @@
 				C61C4832296BBB09005EA8F4 /* SwiftPopMenu.swift in Sources */,
 				8AAAEDE427EDB64E009ED9D7 /* DictionaryExtension.swift in Sources */,
 				A887BA49284A0448006842C2 /* GYChatInputCollectionViewCell.swift in Sources */,
+				C611D6A32B9849D1005EB8E0 /* SCRecordPlayVC.swift in Sources */,
 				77F6529E26F5D25F00280568 /* NotificationVisitor.swift in Sources */,
 				C6D6821B293ED00600EA7925 /* SCAttributedStringVC.swift in Sources */,
 				77753153276B229E00A80E96 /* UICollectionView+Register.swift in Sources */,
