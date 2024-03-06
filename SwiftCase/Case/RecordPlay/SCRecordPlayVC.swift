@@ -34,6 +34,7 @@ class SCRecordPlayVC: BaseViewController {
 
     // MARK: - IBActions
 
+    /// 进行录音
     @IBAction func record(_: Any) {
         // Stop the audio player before recording
         if let player = audioPlayer, player.isPlaying {
@@ -69,6 +70,7 @@ class SCRecordPlayVC: BaseViewController {
         playButton.isEnabled = false
     }
 
+    /// 声音播放
     @IBAction func play(_: Any) {
         if !audioRecorder.isRecording {
             guard let player = try? AVAudioPlayer(contentsOf: audioRecorder.url) else {
@@ -87,6 +89,7 @@ class SCRecordPlayVC: BaseViewController {
         }
     }
 
+    /// 暂停声音
     @IBAction func stop(_: Any) {
         recordButton.setImage(UIImage(named: "Record"), for: UIControl.State.normal)
         recordButton.isEnabled = true
@@ -108,30 +111,7 @@ class SCRecordPlayVC: BaseViewController {
 
     // MARK: - Private
 
-    private func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
-            self.elapsedTimeInSecond += 1
-            self.updateTimeLabel()
-        })
-    }
-
-    private func pauseTimer() {
-        timer?.invalidate()
-    }
-
-    private func resetTimer() {
-        timer?.invalidate()
-        elapsedTimeInSecond = 0
-        updateTimeLabel()
-    }
-
-    private func updateTimeLabel() {
-        let seconds = elapsedTimeInSecond % 60
-        let minutes = (elapsedTimeInSecond / 60) % 60
-
-        timeLabel.text = String(format: "%02d:%02d", minutes, seconds)
-    }
-
+    /// 初始化录音配置
     private func configure() {
         // Disable Stop/Play button when application launches
         stopButton.isEnabled = false
@@ -139,10 +119,7 @@ class SCRecordPlayVC: BaseViewController {
 
         // Get the document directory. If fails, just skip the rest of the code
         guard let directoryURL = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first else {
-            let alertMessage = UIAlertController(title: "Error", message: "Failed to get the document directory for recording the audio. Please try again later.", preferredStyle: .alert)
-            alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alertMessage, animated: true, completion: nil)
-
+            showAlert(title: "Error", message: "Failed to get the document directory for recording the audio. Please try again later.", confirmName: "OK")
             return
         }
 
@@ -174,6 +151,36 @@ class SCRecordPlayVC: BaseViewController {
         }
     }
 
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+            self.elapsedTimeInSecond += 1
+            self.updateTimeLabel()
+        })
+    }
+
+    private func pauseTimer() {
+        timer?.invalidate()
+    }
+
+    private func resetTimer() {
+        timer?.invalidate()
+        elapsedTimeInSecond = 0
+        updateTimeLabel()
+    }
+
+    private func updateTimeLabel() {
+        let seconds = elapsedTimeInSecond % 60
+        let minutes = (elapsedTimeInSecond / 60) % 60
+
+        timeLabel.text = String(format: "%02d:%02d", minutes, seconds)
+    }
+
+    private func showAlert(title: String, message: String, confirmName: String) {
+        let alertMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertMessage.addAction(UIAlertAction(title: confirmName, style: .default, handler: nil))
+        present(alertMessage, animated: true, completion: nil)
+    }
+
     // MARK: - UI
 
     private func setupUI() {
@@ -203,9 +210,7 @@ class SCRecordPlayVC: BaseViewController {
 extension SCRecordPlayVC: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_: AVAudioRecorder, successfully flag: Bool) {
         if flag {
-            let alertMessage = UIAlertController(title: "Finish Recording", message: "Successfully recorded the audio!", preferredStyle: .alert)
-            alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alertMessage, animated: true, completion: nil)
+            showAlert(title: "Finish Recording", message: "Successfully recorded the audio!", confirmName: "OK")
         }
     }
 }
@@ -216,9 +221,6 @@ extension SCRecordPlayVC: AVAudioPlayerDelegate {
         playButton.isSelected = false
         audioPlayer?.stop()
         resetTimer()
-
-        let alertMessage = UIAlertController(title: "Finish Playing", message: "Finish playing the recording!", preferredStyle: .alert)
-        alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertMessage, animated: true, completion: nil)
+        showAlert(title: "Finish Playing", message: "Finish playing the recording!", confirmName: "OK")
     }
 }
